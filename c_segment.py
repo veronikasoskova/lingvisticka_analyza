@@ -1,11 +1,17 @@
 """
 c_segment.py — Chapter segmentation for uploaded texts.
 
-Segmentation strategy — hierarchical fallback
----------------------------------------------
-1. Marker-based  : scan for KAPITOLA / Chapter / Kap. / Roman numeral headings
-2. Paragraph-block: split on triple-newlines, group into ~2000-word chunks
-3. Sentence-window: split every N sentences (default 150)
+Segmentation strategy — hierarchical, structure-only
+-----------------------------------------------------
+1. Chapter tier  : scan for KAPITOLA / Chapter / Kap. / Roman-numeral headings
+                   → unit_type='chapter', 3+ markers required
+2. Section tier  : scan for section / subchapter headings (numbered subsections,
+                   Sekce, Oddíl, Section, §, Podkapitola, etc.)
+                   → unit_type='section', 3+ markers required
+3. No-structure  : no reliable structural markers found
+                   → single whole-text unit, unit_type='document'
+
+No synthetic paragraph-block or fixed-sentence segmentation is used.
 
 Returns a list of AnalysisUnit objects ready for process_unit().
 """
@@ -14,7 +20,7 @@ from __future__ import annotations
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 from c_unit import AnalysisUnit
 
@@ -22,18 +28,16 @@ from c_unit import AnalysisUnit
 # C1. CONSTANTS
 # ──────────────────────────────────────────────────────────────────────────────
 
-# Minimum sentences required to keep a chapter as its own unit;
-# shorter chapters are merged into the adjacent one.
+# Minimum sentences required to keep a unit as its own entry;
+# shorter units are merged into the adjacent one.
 _MIN_SENTENCES = 5
 
-# Maximum sentences per chapter (Stanza memory guard).
+# Maximum sentences per unit (Stanza memory guard).
 _MAX_SENTENCES = 3000
 
-# Default sentences per window for fixed-sentence fallback.
-_DEFAULT_WINDOW = 150
-
-# Words per chunk for paragraph-block grouping.
-_WORDS_PER_CHUNK = 2000
+# ──────────────────────────────────────────────────────────────────────────────
+# C2. PATTERNS
+# ──────────────────────────────────────────────────────────────────────────────
 
 # Chapter-marker patterns (Czech + English, case-insensitive).
 _CHAPTER_PATTERNS = [
@@ -41,7 +45,7 @@ _CHAPTER_PATTERNS = [
     r"(?:^|\n)\s*Kapitola\s+\d+",
     r"(?:^|\n)\s*Chapter\s+\d+",
     r"(?:^|\n)\s*Kap\.\s*\d+",
-    r"(?:^|\n)\s*[IVX]{1,6}\.\s{2,}",   # Roman numeral headings  (I.   II.  ...)
+    r"(?:^|\n)\s*[IVX]{1,6}\.\s{2,}",          # Roman numeral headings (I.   II. …)
     r"(?:^|\n)\s*\d+\.\s{2,}[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]",  # "1.   Heading"
 ]
 
@@ -50,31 +54,53 @@ _CHAPTER_RE = re.compile(
     re.MULTILINE,
 )
 
+# Section / subchapter marker patterns (Czech + English).
+_SECTION_PATTERNS = [
+    r"(?:^|\n)\s*Sekce\s+[\d.]+",               # Sekce 1 / Sekce 1.2
+    r"(?:^|\n)\s*SEKCE\s+[\d.]+",
+    r"(?:^|\n)\s*Oddíl\s+[\d.]+",
+    r"(?:^|\n)\s*ODDÍL\s+[\d.]+",
+    r"(?:^|\n)\s*Podkapitola\s+[\d.]+",
+    r"(?:^|\n)\s*Section\s+[\d.]+",
+    r"(?:^|\n)\s*SECTION\s+[\d.]+",
+    r"(?:^|\n)\s*§\s*\d+",                      # § 1, §1
+    r"(?:^|\n)\s*\d+\.\d+\.\s{1,}[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\w]",  # 1.1. Heading
+    r"(?:^|\n)\s*\d+\.\d+\s{2,}[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\w]",    # 1.1  Heading
+]
+
+_SECTION_RE = re.compile(
+    "|".join(_SECTION_PATTERNS),
+    re.MULTILINE,
+)
+
 # Simple sentence-end heuristic (period / ! / ? not inside abbreviations).
 _SENTENCE_END_RE = re.compile(r"(?<=[.!?])\s+")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# C2. HELPERS
+# C3. HELPERS
 # ──────────────────────────────────────────────────────────────────────────────
 
 def _count_sentences(text: str) -> int:
     return max(1, len(_SENTENCE_END_RE.split(text.strip())))
 
 
-def _count_words(text: str) -> int:
-    return len(text.split())
-
-
-def _make_display(index: int, total: int) -> str:
-    """Return a zero-padded chapter label, e.g. 'Kapitola 03'."""
+def _make_display(index: int, total: int, unit_type: str) -> str:
+    """Return a zero-padded unit label, e.g. 'Kapitola 03' or 'Sekce 03'."""
     width = len(str(total))
-    return f"Kapitola {index:0{width}d}"
+    if unit_type == "chapter":
+        label = "Kapitola"
+    elif unit_type == "section":
+        label = "Sekce"
+    else:
+        label = "Dokument"
+    return f"{label} {index:0{width}d}"
 
 
-def _make_unit_id(index: int, total: int) -> str:
+def _make_unit_id(index: int, total: int, unit_type: str) -> str:
     width = len(str(total))
-    return f"chapter_{index:0{width}d}"
+    prefix = "chapter" if unit_type == "chapter" else ("section" if unit_type == "section" else "document")
+    return f"{prefix}_{index:0{width}d}"
 
 
 def _merge_short(chunks: List[str]) -> List[str]:
@@ -88,7 +114,6 @@ def _merge_short(chunks: List[str]) -> List[str]:
         if _count_sentences(combined) < _MIN_SENTENCES:
             carry = combined
         else:
-            # Flush carry into this chunk if it existed
             merged.append(combined)
             carry = ""
     if carry:
@@ -107,19 +132,17 @@ def _split_long(chunks: List[str]) -> List[str]:
         if len(sentences) <= _MAX_SENTENCES:
             result.append(chunk)
             continue
-        sub: List[str] = []
         for i in range(0, len(sentences), _MAX_SENTENCES):
-            sub.append(" ".join(sentences[i: i + _MAX_SENTENCES]))
-        result.extend(sub)
+            result.append(" ".join(sentences[i: i + _MAX_SENTENCES]))
     return result
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# C3. SEGMENTATION STRATEGIES
+# C4. SEGMENTATION TIERS
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _segment_by_markers(text: str) -> Optional[List[str]]:
-    """Strategy 1: split on explicit chapter headings."""
+def _segment_by_chapter_markers(text: str) -> Optional[List[str]]:
+    """Tier 1: split on explicit chapter headings (requires ≥3 markers)."""
     positions = [m.start() for m in _CHAPTER_RE.finditer(text)]
     if len(positions) < 3:
         return None
@@ -130,78 +153,67 @@ def _segment_by_markers(text: str) -> Optional[List[str]]:
     return chunks or None
 
 
-def _segment_by_paragraphs(text: str) -> Optional[List[str]]:
-    """Strategy 2: group triple-newline paragraph blocks into ~2000-word chunks."""
-    paragraphs = re.split(r"\n{3,}", text)
-    if len(paragraphs) < 3:
+def _segment_by_section_markers(text: str) -> Optional[List[str]]:
+    """Tier 2: split on section / subchapter headings (requires ≥3 markers)."""
+    positions = [m.start() for m in _SECTION_RE.finditer(text)]
+    if len(positions) < 3:
         return None
     chunks: List[str] = []
-    current_words = 0
-    current_parts: List[str] = []
-    for para in paragraphs:
-        para = para.strip()
-        if not para:
-            continue
-        wc = _count_words(para)
-        if current_words + wc > _WORDS_PER_CHUNK and current_parts:
-            chunks.append("\n\n".join(current_parts))
-            current_parts = [para]
-            current_words = wc
-        else:
-            current_parts.append(para)
-            current_words += wc
-    if current_parts:
-        chunks.append("\n\n".join(current_parts))
-    return chunks if len(chunks) >= 2 else None
-
-
-def _segment_by_sentences(text: str, window: int = _DEFAULT_WINDOW) -> List[str]:
-    """Strategy 3: fixed-sentence sliding window (always produces output)."""
-    sentences = _SENTENCE_END_RE.split(text.strip())
-    if len(sentences) <= window:
-        return [text.strip()]
-    chunks: List[str] = []
-    for i in range(0, len(sentences), window):
-        chunks.append(" ".join(sentences[i: i + window]))
-    return chunks
+    for i, pos in enumerate(positions):
+        end = positions[i + 1] if i + 1 < len(positions) else len(text)
+        chunks.append(text[pos:end].strip())
+    return chunks or None
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# C4. PUBLIC API
+# C5. PUBLIC API
 # ──────────────────────────────────────────────────────────────────────────────
 
 def segment_book(
     text: str,
     corpus_id: str,
     source_name: str = "uploaded_text",
-    sentence_window: int = _DEFAULT_WINDOW,
+    sentence_window: int = 150,  # kept for API compatibility, not used
 ) -> List[AnalysisUnit]:
     """
     Segment *text* into a list of AnalysisUnit objects.
+
+    Segmentation follows the approved three-tier architecture:
+      1. Real chapter markers  → unit_type='chapter'
+      2. Real section markers  → unit_type='section'
+      3. No reliable structure → single unit, unit_type='document'
 
     Parameters
     ----------
     text           : full text of the uploaded document
     corpus_id      : stable corpus identifier, e.g. 'upload_book_20240101T120000'
     source_name    : original filename / display label for the whole document
-    sentence_window: sentences per chunk for the fallback strategy
+    sentence_window: ignored — kept for backward-compatible call signatures only
 
     Returns
     -------
-    List[AnalysisUnit] — at least one unit, possibly many chapters.
+    List[AnalysisUnit] — one or more units reflecting real document structure.
     """
     text = text.strip()
 
-    # Try each strategy in order of preference.
-    chunks = (
-        _segment_by_markers(text)
-        or _segment_by_paragraphs(text)
-        or _segment_by_sentences(text, sentence_window)
-    )
+    # Tier 1: real chapter structure
+    chunks = _segment_by_chapter_markers(text)
+    if chunks:
+        unit_type = "chapter"
+    else:
+        # Tier 2: real section/subchapter structure
+        chunks = _segment_by_section_markers(text)
+        if chunks:
+            unit_type = "section"
+        else:
+            # Tier 3: no reliable structure → single whole-text unit
+            chunks = [text]
+            unit_type = "document"
 
-    # Post-processing: merge short, split long
-    chunks = _merge_short(chunks)
-    chunks = _split_long(chunks)
+    # Post-processing: merge short, split long (only meaningful for multi-unit tiers)
+    if len(chunks) > 1:
+        chunks = _merge_short(chunks)
+        chunks = _split_long(chunks)
 
     total = len(chunks)
     units: List[AnalysisUnit] = []
@@ -209,9 +221,9 @@ def segment_book(
         units.append(
             AnalysisUnit(
                 corpus_id=corpus_id,
-                unit_id=_make_unit_id(i, total),
-                unit_type="chapter",
-                display_name=_make_display(i, total),
+                unit_id=_make_unit_id(i, total, unit_type),
+                unit_type=unit_type,
+                display_name=_make_display(i, total, unit_type),
                 text=chunk,
             )
         )
@@ -225,3 +237,4 @@ def make_corpus_id(source_name: str) -> str:
     stem = re.sub(r"[^\w]", "_", stem).strip("_")
     ts = datetime.now().strftime("%Y%m%dT%H%M%S")
     return f"upload_{stem}_{ts}"
+

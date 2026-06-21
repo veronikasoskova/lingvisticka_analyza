@@ -2915,6 +2915,7 @@ with tab_analyze:
                 st.session_state["adf_corpus_id"] = _corpus_id
                 st.session_state["adf_lemmas"] = adf_lemmas
                 st.session_state["adf_source"] = source_name
+                st.session_state["adf_seg_mode"] = adf_units[0].unit_type if adf_units else "document"
                 st.session_state.pop("adf_saved_run_id", None)
                 st.session_state["_switch_to_results"] = True
             st.success(T["results_ready_msg"])
@@ -4105,12 +4106,29 @@ with tab_results:
 
     # ── source badge ─────────────────────────────────────────────────────────
     _n_chapters = len(_units) if _units else 1
+    _seg_mode   = st.session_state.get("adf_seg_mode", _units[0].unit_type if _units else "document")
+    # Derive human-readable labels from the actual segmentation tier
+    if _seg_mode == "chapter":
+        _unit_label_sg = "kapitola"
+        _unit_label_pl = "kapitol"
+        _unit_metric   = T.get("metric_chapters", "Kapitol")
+        _col_unit      = "Kapitola"
+    elif _seg_mode == "section":
+        _unit_label_sg = "sekce"
+        _unit_label_pl = "sekcí"
+        _unit_metric   = "Sekcí"
+        _col_unit      = "Sekce"
+    else:
+        _unit_label_sg = "dokument"
+        _unit_label_pl = "dokumentů"
+        _unit_metric   = "Dokument"
+        _col_unit      = "Dokument"
     _hdr_col, _btn_col = st.columns([3, 1])
     with _hdr_col:
         st.subheader(T["results_title"])
         st.caption(
             f"📁 **Nahraný text** — `{_src}` · {_n_chapters} "
-            f"{'kapitola' if _n_chapters == 1 else 'kapitol'}"
+            f"{_unit_label_sg if _n_chapters == 1 else _unit_label_pl}"
         )
 
     # ── headline metrics ──────────────────────────────────────────────────────
@@ -4122,12 +4140,16 @@ with tab_results:
     _c2.metric(T["metric_classified"], f"{_classif}/{_total}",
                f"{100*_classif/_total:.0f} %" if _total else "—")
     _c3.metric(T["metric_confidence"], f"{_mconf:.2f}")
-    _c4.metric(T.get("metric_chapters", "Kapitol"), _n_chapters)
+    _c4.metric(_unit_metric, _n_chapters)
     st.divider()
 
     # ── 0. Chapter overview ───────────────────────────────────────────────────
     if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
-        with st.expander("📑 Přehled kapitol", expanded=False):
+        _overview_title = (
+            "📑 Přehled kapitol" if _seg_mode == "chapter"
+            else ("📑 Přehled sekcí" if _seg_mode == "section" else "📑 Přehled")
+        )
+        with st.expander(_overview_title, expanded=False):
             _chap_rows = []
             for _u in _units:
                 _u_df = _df[_df["unit_id"] == _u.unit_id]
@@ -4139,7 +4161,7 @@ with tab_results:
                     else "—"
                 )
                 _chap_rows.append({
-                    "Kapitola": _u.display_name,
+                    "Jednotka": _u.display_name,
                     "Věty": _u_total,
                     "Průměrná jistota": round(_u_conf, 3),
                     "Dominantní záměr": _u_dom,
@@ -4413,10 +4435,10 @@ with tab_results:
                     ).fillna(0).reset_index()
                     _uid2name_qs = {u.unit_id: u.display_name for u in _units}
                     _int_wide["unit_id"] = _int_wide["unit_id"].map(_uid2name_qs).fillna(_int_wide["unit_id"])
-                    _int_wide = _int_wide.rename(columns={"unit_id": "Kapitola"})
+                    _int_wide = _int_wide.rename(columns={"unit_id": _col_unit})
                     st.caption(T.get("intent_book_heatmap_desc", "Záměry podle kapitol"))
                     st.plotly_chart(
-                        fig_heatmap(_int_wide, "Kapitola",
+                        fig_heatmap(_int_wide, _col_unit,
                                     T.get("intent_book_heatmap_title", "Záměry podle kapitol"),
                                     h=max(300, 30 * len(_units))),
                         use_container_width=True,
@@ -4463,16 +4485,16 @@ with tab_results:
                         if _t == 0:
                             continue
                         _ta_rows.append({
-                            "Kapitola": _u.display_name,
+                            _col_unit: _u.display_name,
                             "tact": (_ud["skinner_class"] == "tact").sum() / _t,
                             "autoclitic": (_ud["skinner_class"] == "autoclitic").sum() / _t,
                         })
                     if _ta_rows:
                         _ta_df2 = pd.DataFrame(_ta_rows)
                         _fig_ta2 = go.Figure()
-                        _fig_ta2.add_bar(name="tact", x=_ta_df2["Kapitola"],
+                        _fig_ta2.add_bar(name="tact", x=_ta_df2[_col_unit],
                                          y=_ta_df2["tact"], marker_color="#3a86ff")
-                        _fig_ta2.add_bar(name="autoclitic", x=_ta_df2["Kapitola"],
+                        _fig_ta2.add_bar(name="autoclitic", x=_ta_df2[_col_unit],
                                          y=_ta_df2["autoclitic"], marker_color="#8338ec")
                         _fig_ta2.update_layout(barmode="group",
                                                title=T.get("tact_autoclitic_title",
@@ -4527,10 +4549,10 @@ with tab_results:
                         # Map unit_id → display_name
                         _uid2name = {u.unit_id: u.display_name for u in _units}
                         _vr_wide["unit_id"] = _vr_wide["unit_id"].map(_uid2name).fillna(_vr_wide["unit_id"])
-                        _vr_wide = _vr_wide.rename(columns={"unit_id": "Kapitola"})
+                        _vr_wide = _vr_wide.rename(columns={"unit_id": _col_unit})
                         st.caption(T.get("verbal_book_heatmap_desc", "Verbální vztahy podle kapitol"))
                         st.plotly_chart(
-                            fig_heatmap(_vr_wide, "Kapitola",
+                            fig_heatmap(_vr_wide, _col_unit,
                                         T.get("verbal_book_heatmap_title",
                                               "Verbální vztahy podle kapitol"), h=400),
                             use_container_width=True,
@@ -4708,9 +4730,9 @@ with tab_results:
                     if not _tfidf_heat.empty:
                         st.caption(T["tfidf_heatmap_desc"])
                         _th_wide = _tfidf_heat.copy()
-                        _th_wide = _th_wide.rename(columns={"book": "Kapitola"})
+                        _th_wide = _th_wide.rename(columns={"book": _col_unit})
                         st.plotly_chart(
-                            fig_heatmap(_th_wide, "Kapitola",
+                            fig_heatmap(_th_wide, _col_unit,
                                         T["tfidf_heatmap_title"], h=420,
                                         fmt=".2f"),
                             use_container_width=True,
@@ -4731,12 +4753,12 @@ with tab_results:
                         .reset_index()
                     )
                     _uid2name = {u.unit_id: u.display_name for u in _units}
-                    _cx_agg["Kapitola"] = _cx_agg["unit_id"].map(_uid2name).fillna(_cx_agg["unit_id"])
+                    _cx_agg[_col_unit] = _cx_agg["unit_id"].map(_uid2name).fillna(_cx_agg["unit_id"])
                     st.caption(T.get("complexity_desc", "Syntaktická složitost"))
                     _sx1, _sx2 = st.columns(2)
                     with _sx1:
                         st.plotly_chart(
-                            fig_hbar(_cx_agg, "avg_tree_depth", "Kapitola",
+                            fig_hbar(_cx_agg, "avg_tree_depth", _col_unit,
                                      T.get("complexity_title", "Hloubka stromu"), h=320,
                                      xlabel=T.get("x_depth", "Hloubka")),
                             use_container_width=True,
@@ -4744,7 +4766,7 @@ with tab_results:
                     with _sx2:
                         if "avg_clause_count" in _cx_agg.columns:
                             st.plotly_chart(
-                                fig_hbar(_cx_agg, "avg_clause_count", "Kapitola",
+                                fig_hbar(_cx_agg, "avg_clause_count", _col_unit,
                                          T.get("complexity_title", "Počet klauzulí"), h=320,
                                          xlabel=T.get("x_clauses", "Klauzule")),
                                 use_container_width=True,
@@ -4769,7 +4791,7 @@ with tab_results:
                             _km = _KM(n_clusters=_n_cl, random_state=42, n_init=10)
                             _labels = _km.fit_predict(_X_sty)
                             _sty_df2 = pd.DataFrame({
-                                "Kapitola": [b for b, _ in _sty_items],
+                                _col_unit: [b for b, _ in _sty_items],
                                 T.get("col_style_cluster", "Stylový shluk"): [f"Shluk {l+1}" for l in _labels],
                             })
                             st.caption(T["style_table_desc"])
@@ -4825,7 +4847,7 @@ with tab_results:
 |---|---|
 | **Zdroj** | `{_src}` |
 | **Korpus ID** | `{_corpus_id}` |
-| **Kapitol** | {_n_chapters} |
+| **{_unit_metric}** | {_n_chapters} |
 | **Věty celkem** | {_total} |
 | **DB řádky (skinner_analysis)** | {_db_n or "—"} |
 | **Biblické běhy v DB** | {len(_runs) - len(_upload_runs)} |
