@@ -2896,30 +2896,29 @@ with tab_analyze:
             _pre_warns = _context_warnings(ctx_source, ctx_interaction, ctx_stimulus, T)
             for _w in _pre_warns:
                 st.warning(_w)
-            if _pre_warns:
-                st.stop()
-            with st.spinner(T["running_pipeline"]):
-                from c_segment import make_corpus_id
-                _corpus_id = make_corpus_id(source_name)
-                adf, adf_rel, adf_ref, adf_units, adf_lemmas = run_upload_pipeline(
-                    text,
-                    corpus_id=_corpus_id,
-                    source=ctx_source,
-                    interaction=ctx_interaction,
-                    stimulus=ctx_stimulus,
-                )
-                st.session_state["adf"] = adf
-                st.session_state["adf_rel"] = adf_rel
-                st.session_state["adf_ref"] = adf_ref
-                st.session_state["adf_units"] = adf_units
-                st.session_state["adf_corpus_id"] = _corpus_id
-                st.session_state["adf_lemmas"] = adf_lemmas
-                st.session_state["adf_source"] = source_name
-                st.session_state["adf_seg_mode"] = adf_units[0].unit_type if adf_units else "document"
-                st.session_state.pop("adf_saved_run_id", None)
-                st.session_state["_switch_to_results"] = True
-            st.success(T["results_ready_msg"])
-            st.rerun()
+            if not _pre_warns:
+                with st.spinner(T["running_pipeline"]):
+                    from c_segment import make_corpus_id
+                    _corpus_id = make_corpus_id(source_name)
+                    adf, adf_rel, adf_ref, adf_units, adf_lemmas = run_upload_pipeline(
+                        text,
+                        corpus_id=_corpus_id,
+                        source=ctx_source,
+                        interaction=ctx_interaction,
+                        stimulus=ctx_stimulus,
+                    )
+                    st.session_state["adf"] = adf
+                    st.session_state["adf_rel"] = adf_rel
+                    st.session_state["adf_ref"] = adf_ref
+                    st.session_state["adf_units"] = adf_units
+                    st.session_state["adf_corpus_id"] = _corpus_id
+                    st.session_state["adf_lemmas"] = adf_lemmas
+                    st.session_state["adf_source"] = source_name
+                    st.session_state["adf_seg_mode"] = adf_units[0].unit_type if adf_units else "document"
+                    st.session_state.pop("adf_saved_run_id", None)
+                    st.session_state["_switch_to_results"] = True
+                st.success(T["results_ready_msg"])
+                st.rerun()
 
     # ── DETAILED MODULE DESCRIPTIONS ─────────────────────────────────────────
     st.divider()
@@ -2953,1138 +2952,1137 @@ with tab_bible:
 
     if db_df is None:
         st.warning(T["no_db"])
-        st.stop()
+    else:
+        # ── TOP METRICS ──────────────────────────────────────────────────────────
+        total_b = len(db_df)
+        books_b = db_df["book"].nunique()
+        cov_b = 100 * (db_df["primary_intention"] != "unclassified").mean()
+        conf_b = db_df["confidence"].mean()
 
-    # ── TOP METRICS ──────────────────────────────────────────────────────────
-    total_b = len(db_df)
-    books_b = db_df["book"].nunique()
-    cov_b = 100 * (db_df["primary_intention"] != "unclassified").mean()
-    conf_b = db_df["confidence"].mean()
-
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric(T["metric_total"], f"{total_b:,}")
-    c2.metric(T["metric_books"], books_b)
-    c3.metric(T["metric_coverage"], f"{cov_b:.1f} %")
-    c4.metric(T["metric_mean_conf"], f"{conf_b:.2f}")
-
-    st.divider()
-
-    # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
-    with st.expander(T["sec_intention"], expanded=True):
-
-        int_cnt  = csv("q_skinner_analytics/q_intention_counts.csv")
-        int_book = csv("q_skinner_analytics/q_intention_by_book.csv")
-        force_cnt = csv("q_skinner_analytics/q_illocutionary_force_counts.csv")
-
-        c1, c2 = st.columns(2)
-
-        with c1:
-            if int_cnt is not None:
-                d = int_cnt.sort_values("count", ascending=False).copy()
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_intention"]] = d["_raw"].map(VI).fillna(d["_raw"])
-                st.caption(T["all_intentions_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_intention"],
-                             T["all_intentions_title"], INT_CLR,
-                             xlabel=T["x_count"], ylabel=T["x_intention"]),
-                    use_container_width=True,
-                )
-        with c2:
-            if force_cnt is not None:
-                d = force_cnt.copy()
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_force"]] = d["_raw"].map(VF).fillna(d["_raw"])
-                st.caption(T["force_all_desc"])
-                st.plotly_chart(
-                    fig_pie(d, T["x_force"], T["x_count"],
-                            T["force_all_title"], FRC_CLR),
-                    use_container_width=True,
-                )
-
-        if int_book is not None:
-            hm = int_book.copy()
-            hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
-            hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
-            _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
-                               key="hm_int_n")
-            hm = _top_n_cols(hm, "file_name", _n_int)
-            st.caption(T["intent_book_heatmap_desc"])
-            st.plotly_chart(
-                fig_heatmap(hm, "file_name",
-                            T["intent_book_heatmap_title"], h=420),
-                use_container_width=True,
-            )
-
-    # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
-    with st.expander(T["sec_strategy"]):
-
-        strat_cnt  = csv("q_skinner_analytics/q_strategy_counts.csv")
-        strat_book = csv("q_skinner_analytics/q_strategy_by_book.csv")
-        pvoc       = csv("q_skinner_analytics/q_political_vocabulary_counts.csv")
-
-        c1, c2 = st.columns(2)
-
-        with c1:
-            if strat_cnt is not None:
-                d = strat_cnt[strat_cnt["primary_strategy"] != "unclassified"].copy()
-                d = d.sort_values("count", ascending=False)
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_strategy"]] = d["_raw"].map(VS).fillna(d["_raw"])
-                st.caption(T["all_strategies_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_strategy"],
-                             T["all_strategies_title"], STR_CLR,
-                             xlabel=T["x_count"], ylabel=T["x_strategy"]),
-                    use_container_width=True,
-                )
-        with c2:
-            if pvoc is not None:
-                st.caption(T["pvoc_desc"])
-                st.plotly_chart(
-                    fig_hbar(pvoc.head(20), "count", "term",
-                             T["pvoc_title"], h=400,
-                             xlabel=T["x_count"]),
-                    use_container_width=True,
-                )
-
-        if strat_book is not None:
-            excl = {"file_name", "total", "unclassified"}
-            s_cols = [c for c in strat_book.columns if c not in excl]
-            hm2 = strat_book[["file_name"] + s_cols].copy()
-            hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
-            st.caption(T["strat_book_heatmap_desc"])
-            st.plotly_chart(
-                fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
-                use_container_width=True,
-            )
-
-    # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
-    with st.expander(T["sec_ratios"]):
-
-        ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
-
-        if ratios is not None:
-            books_lbl = (ratios["file_name"]
-                         .str.replace("bible_BKR_", "")
-                         .str.replace(".txt", ""))
-
-            c1, c2 = st.columns(2)
-
-            with c1:
-                st.caption(T["directive_assertive_desc"])
-                fig = go.Figure()
-                fig.add_bar(name=T["lbl_directive"], x=books_lbl,
-                            y=ratios["directive"], marker_color="#e63946")
-                fig.add_bar(name=T["lbl_assertive"], x=books_lbl,
-                            y=ratios["assertive"], marker_color="#3a86ff")
-                fig.update_layout(barmode="stack",
-                                  title=T["directive_assertive_title"],
-                                  xaxis_title=T["x_book"],
-                                  yaxis_title=T["x_count"],
-                                  height=360, **_LAYOUT)
-                st.plotly_chart(fig, use_container_width=True)
-
-            with c2:
-                st.caption(T["legit_ratio_desc"])
-                ratio_map = {
-                    "legitimation_ratio":             T["lbl_legitimation"],
-                    "ideological_contestation_ratio": T["lbl_contestation"],
-                    "intervention_ratio":             T["lbl_intervention"],
-                }
-                fig2 = go.Figure()
-                for col, label in ratio_map.items():
-                    if col in ratios.columns:
-                        fig2.add_bar(name=label, x=books_lbl, y=ratios[col])
-                fig2.update_layout(
-                    barmode="group",
-                    title=T["legit_ratio_title"],
-                    xaxis_title=T["x_book"],
-                    yaxis_title=T["x_ratio"],
-                    height=360, **_LAYOUT,
-                )
-                st.plotly_chart(fig2, use_container_width=True)
-
-        else:
-            st.info(T["no_ratios"])
-
-    # ── 4. RELIGIOUS ELEMENTS ─────────────────────────────────────────────────
-    with st.expander(T["sec_religious"]):
-
-        field_sum    = csv("religious_elements/field_summary.csv")
-        density_wide = csv("religious_elements/combined_density_by_book.csv")
-        phil         = csv("religious_elements/philosophy_by_book.csv")
-
-        c1, c2 = st.columns(2)
-
-        _rel_el = T.get("rel_elements", {})
-        _rel_ph = T.get("rel_philosophy", {})
-
-        with c1:
-            if field_sum is not None:
-                d = field_sum.sort_values("sentence_count", ascending=False).copy()
-                d["element"] = d["element"].map(lambda v: _rel_el.get(v, v))
-                d = d.rename(columns={"element": T["x_element"],
-                                      "sentence_count": T["x_count"]})
-                st.caption(T["element_coverage_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_element"],
-                             T["element_coverage_title"], h=420,
-                             xlabel=T["x_count"], ylabel=T["x_element"]),
-                    use_container_width=True,
-                )
-        with c2:
-            if phil is not None:
-                pc = phil.groupby("philosophy")["matched_count"].sum().reset_index()
-                pc["philosophy"] = pc["philosophy"].map(lambda v: _rel_ph.get(v, v))
-                st.caption(T["philosophy_desc"])
-                st.plotly_chart(
-                    fig_pie(pc, "philosophy", "matched_count",
-                            T["philosophy_title"]),
-                    use_container_width=True,
-                )
-
-        if density_wide is not None:
-            s_cols = [c for c in density_wide.columns
-                      if c.endswith("_sentence_density")]
-            dn = density_wide[["file_name"] + s_cols].copy()
-            dn.columns = (
-                ["file_name"] +
-                [_rel_el.get(c.replace("_sentence_density", ""),
-                             c.replace("_sentence_density", "")) for c in s_cols]
-            )
-            _n_dens = st.slider(T["top_n_slider"], 5, min(30, len(s_cols)), min(15, len(s_cols)),
-                                key="hm_dens_n")
-            dn = _top_n_cols(dn, "file_name", _n_dens)
-            st.caption(T["density_heatmap_desc"])
-            st.plotly_chart(
-                fig_heatmap(dn, "file_name",
-                            T["density_heatmap_title"],
-                            h=460, fmt="%{z:.2f}"),
-                use_container_width=True,
-            )
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric(T["metric_total"], f"{total_b:,}")
+        c2.metric(T["metric_books"], books_b)
+        c3.metric(T["metric_coverage"], f"{cov_b:.1f} %")
+        c4.metric(T["metric_mean_conf"], f"{conf_b:.2f}")
 
         st.divider()
-        from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
-        st.caption(T["traditions_desc"])
-        c1, c2 = st.columns(2)
-        _LANG_SFXS = ("_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit")
-        def _fmt_trad(k: str) -> str:
-            for sfx in _LANG_SFXS:
-                if k.endswith(sfx):
-                    return k[:-len(sfx)].replace("_", " ").title()
-            return k.replace("_", " ").title()
 
-        with c1:
-            trad_df = pd.DataFrame(
-                [{"tradition": _fmt_trad(k), T["x_categories"]: len(v)}
-                 for k, v in TRADITIONS.items()]
-            ).sort_values(T["x_categories"], ascending=True)
-            st.plotly_chart(
-                fig_hbar(trad_df, T["x_categories"], "tradition",
-                         T["traditions_title"], h=520,
-                         xlabel=T["x_categories"]),
-                use_container_width=True,
-            )
-        with c2:
-            phil_df = pd.DataFrame(
-                [{"influence": k, T["x_terms"]: len(v)}
-                 for k, v in PHILOSOPHICAL_INFLUENCES.items()]
-            ).sort_values(T["x_terms"], ascending=True)
-            st.plotly_chart(
-                fig_hbar(phil_df, T["x_terms"], "influence",
-                         T["traditions_title"], h=480,
-                         xlabel=T["x_terms"]),
-                use_container_width=True,
-            )
+        # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
+        with st.expander(T["sec_intention"], expanded=True):
 
-    # ── 5. CONCEPT CLUSTERS & OPPOSITIONS ────────────────────────────────────
-    with st.expander(T["sec_clusters"]):
+            int_cnt  = csv("q_skinner_analytics/q_intention_counts.csv")
+            int_book = csv("q_skinner_analytics/q_intention_by_book.csv")
+            force_cnt = csv("q_skinner_analytics/q_illocutionary_force_counts.csv")
 
-        c1, c2 = st.columns(2)
-
-        with c1:
-            clust = csv("concept_clusters/cluster_summary.csv")
-            if clust is not None:
-                _cl_map = T.get("cluster_labels", {})
-                clust["label"] = clust["cluster"].str.replace("_cluster", "").map(
-                    lambda v: _cl_map.get(v, v.replace("_", " ").title())
-                )
-                sz = clust["total_pair_count"]
-                fig = go.Figure(go.Scatter(
-                    x=clust["avg_pmi"],
-                    y=clust["edge_count"],
-                    mode="markers+text",
-                    text=clust["label"],
-                    textposition="top center",
-                    marker=dict(
-                        size=(sz / sz.max() * 44 + 12).tolist(),
-                        color="#3a86ff", opacity=0.7,
-                        line=dict(width=1, color="white"),
-                    ),
-                ))
-                fig.update_layout(
-                    title=T["cluster_bubble_title"],
-                    xaxis_title=T["x_avg_pmi"],
-                    yaxis_title=T["x_edges"],
-                    height=400, **_LAYOUT,
-                )
-                st.caption(T["cluster_bubble_desc"])
-                st.plotly_chart(fig, use_container_width=True)
-
-        with c2:
-            opp = csv("opposition_networks/opposition_counts.csv")
-            if opp is not None:
-                st.caption(T["opposition_window_note"] + "  " + T["opposition_desc"])
-                st.plotly_chart(
-                    fig_hbar(opp.head(18), "count", "opposition_pair",
-                             T["opposition_title"], h=420,
-                             xlabel=T["x_count"],
-                             ylabel=T["opposition_title"]),
-                    use_container_width=True,
-                )
-
-        # ── Polarity analysis ─────────────────────────────────────────────────
-        polarity = csv("opposition_networks/opposition_polarity.csv")
-        if polarity is not None:
-            st.divider()
-            st.caption(T["opposition_polarity_desc"])
-            pol = polarity.copy()
-            pol["pair"] = pol["opposition_pair"]
-            pol = pol.sort_values("total", ascending=False).head(16)
-
-            fig_pol = go.Figure()
-            fig_pol.add_bar(
-                name=T["lbl_positive"], x=pol["pair"], y=pol["positive"],
-                marker_color="#57cc99",
-            )
-            fig_pol.add_bar(
-                name=T["lbl_negative"], x=pol["pair"], y=pol["negative"],
-                marker_color="#e63946",
-            )
-            fig_pol.add_bar(
-                name=T["lbl_both"], x=pol["pair"], y=pol["both"],
-                marker_color="#adb5bd",
-            )
-            fig_pol.update_layout(
-                barmode="stack",
-                title=T["opposition_polarity_title"],
-                xaxis_title=T["opposition_title"],
-                yaxis_title=T["x_count"],
-                xaxis_tickangle=-40,
-                height=400, **_LAYOUT,
-            )
-            st.plotly_chart(fig_pol, use_container_width=True)
-
-        # ── Directed edges + examples ─────────────────────────────────────────
-        directed = csv("opposition_networks/opposition_directed_edges.csv")
-        opp_ex   = csv("opposition_networks/opposition_examples.csv")
-
-        # ── Directed chart — full width, ylabel = word not "source" ──────────
-        if directed is not None:
-            st.caption(T["opposition_directed_desc"])
-            st.plotly_chart(
-                fig_hbar(directed.head(20), "weight", "source",
-                         T["opposition_directed_title"], h=420,
-                         xlabel=T["col_weight"], ylabel=T["x_word"]),
-                use_container_width=True,
-            )
-
-        # ── Edge list | Examples — side by side ───────────────────────────────
-        _d1, _d2 = st.columns([1, 2])
-
-        with _d1:
-            if directed is not None:
-                st.markdown(f"**{T['opposition_directed_title']}**")
-                for _, _row in directed.head(15).iterrows():
-                    st.markdown(
-                        f"**{_row['source']}** → {_row['target']} "
-                        f"&nbsp; `{int(_row['weight'])}`"
-                    )
-
-        with _d2:
-            if opp_ex is not None:
-                _pairs_avail = ["— " + T["filter_pair"]] + sorted(
-                    opp_ex["opposition_pair"].unique()
-                )
-                _sel_pair = st.selectbox(
-                    T["filter_pair"], _pairs_avail,
-                    key="opp_pair_sel", label_visibility="collapsed",
-                )
-                _view_ex = (
-                    opp_ex if _sel_pair.startswith("—")
-                    else opp_ex[opp_ex["opposition_pair"] == _sel_pair]
-                ).copy()
-                _view_ex["book"] = (
-                    _view_ex["file_name"]
-                    .str.replace("bible_BKR_", "")
-                    .str.replace(".txt", "")
-                )
-                st.caption(T["opposition_examples_desc"])
-                for _, _er in _view_ex.head(12).iterrows():
-                    st.markdown(
-                        f"*{_er['opposition_pair']}* &nbsp;·&nbsp; "
-                        f"**{_er['book']}**"
-                    )
-                    st.markdown(f"> {_er['sentence']}")
-                    st.divider()
-
-    # ── 6. SEMANTIC CENTRALITY ────────────────────────────────────────────────
-    with st.expander(T["sec_centrality"]):
-
-        cent = csv("weighted_centrality/weighted_semantic_centrality.csv")
-
-        if cent is not None:
-            top_n = st.slider(T["top_n_slider"], 10, 60, 30, key="cent_n")
-            top_w = cent.nlargest(top_n, "weighted_score")
-            st.caption(T["centrality_bar_desc"])
-            st.plotly_chart(
-                fig_hbar(top_w, "weighted_score", "word",
-                         T["centrality_bar_title"],
-                         h=max(380, top_n * 18),
-                         xlabel=T["x_weighted"], ylabel=T["x_word"]),
-                use_container_width=True,
-            )
-            st.dataframe(
-                top_w[["word", "weighted_score",
-                        "connection_count", "avg_pmi"]]
-                .rename(columns={
-                    "word":             T["x_word"],
-                    "weighted_score":   T["x_weighted"],
-                    "connection_count": T["x_connections"],
-                    "avg_pmi":          T["x_avg_pmi"],
-                })
-                .reset_index(drop=True),
-                use_container_width=True,
-                height=360,
-                column_config={
-                    T["x_weighted"]:    st.column_config.NumberColumn(format="%.1f"),
-                    T["x_avg_pmi"]:     st.column_config.NumberColumn(format="%.2f"),
-                },
-            )
-        else:
-            st.info(T["no_centrality"])
-
-    # ── 7. STYLE & AUTHORSHIP ─────────────────────────────────────────────────
-    with st.expander(T["sec_style"]):
-
-        style = csv("style_authorship/book_style_clusters.csv")
-        terms = csv("style_authorship/cluster_top_terms.csv")
-
-        if style is not None:
-            c1, c2 = st.columns([1, 2])
-
-            with c1:
-                sd = style.copy()
-                sd["book"] = (sd["file_name"]
-                              .str.replace("bible_BKR_", "")
-                              .str.replace(".txt", ""))
-                st.caption(T["style_table_desc"])
-                st.dataframe(
-                    sd[["book", "style_cluster", "silhouette_score"]].rename(columns={
-                        "book":             T["x_book"],
-                        "style_cluster":    T["col_style_cluster"],
-                        "silhouette_score": T["col_silhouette"],
-                    }),
-                    use_container_width=True, height=340,
-                    column_config={
-                        T["col_silhouette"]: st.column_config.NumberColumn(format="%.4f"),
-                    },
-                )
-
-            with c2:
-                if terms is not None:
-                    clusters = sorted(terms["cluster"].unique())
-                    sel_clust = st.selectbox(T["select_cluster"], clusters,
-                                             key="style_clust")
-                    sub = terms[terms["cluster"] == sel_clust].head(15)
-                    st.caption(T["cluster_terms_desc"])
-                    st.plotly_chart(
-                        fig_hbar(sub, "tfidf_mean", "term",
-                                 T["cluster_terms_title"], h=360,
-                                 xlabel=T["x_tfidf"]),
-                        use_container_width=True,
-                    )
-        else:
-            st.info(T["no_style"])
-
-    # ── 8. DEPENDENCY HIERARCHY ───────────────────────────────────────────────
-    with st.expander(T["sec_dependency"]):
-
-        dep      = csv("dependency_hierarchy/dependency_counts.csv")
-        dep_book = csv("dependency_hierarchy/dependency_by_book.csv")
-
-        if dep is not None:
             c1, c2 = st.columns(2)
 
             with c1:
-                dep_top = dep[dep["dependency"] != "punct"].head(20).copy()
-                st.caption(T["dep_bar_desc"])
-                st.plotly_chart(
-                    fig_hbar(dep_top, "count", "dependency",
-                             T["dep_bar_title"], h=420,
-                             xlabel=T["x_count"], ylabel=T["x_relation"]),
-                    use_container_width=True,
-                )
-
-            with c2:
-                if dep_book is not None:
-                    excl2 = {"file_name", "total"}
-                    d_cols = [c for c in dep_book.columns if c not in excl2]
-                    _n_dep = st.slider(T["top_n_slider"], 5, min(30, len(d_cols)),
-                                       min(15, len(d_cols)), key="hm_dep_n")
-                    _dep_hm = _top_n_cols(dep_book[["file_name"] + d_cols], "file_name", _n_dep)
-                    st.caption(T["dep_heatmap_desc"])
+                if int_cnt is not None:
+                    d = int_cnt.sort_values("count", ascending=False).copy()
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_intention"]] = d["_raw"].map(VI).fillna(d["_raw"])
+                    st.caption(T["all_intentions_desc"])
                     st.plotly_chart(
-                        fig_heatmap(_dep_hm, "file_name",
-                                    T["dep_heatmap_title"], h=420),
+                        fig_hbar(d, T["x_count"], T["x_intention"],
+                                 T["all_intentions_title"], INT_CLR,
+                                 xlabel=T["x_count"], ylabel=T["x_intention"]),
+                        use_container_width=True,
+                    )
+            with c2:
+                if force_cnt is not None:
+                    d = force_cnt.copy()
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_force"]] = d["_raw"].map(VF).fillna(d["_raw"])
+                    st.caption(T["force_all_desc"])
+                    st.plotly_chart(
+                        fig_pie(d, T["x_force"], T["x_count"],
+                                T["force_all_title"], FRC_CLR),
                         use_container_width=True,
                     )
 
-        complexity_df = csv("dependency_hierarchy/complexity_by_book.csv")
-        if complexity_df is not None:
-            st.divider()
-            cplx = complexity_df.copy()
-            cplx["book"] = (cplx["file_name"]
-                            .str.replace("bible_BKR_", "")
-                            .str.replace(".txt", ""))
-            st.caption(T["complexity_desc"])
-            c1, c2 = st.columns(2)
-            with c1:
+            if int_book is not None:
+                hm = int_book.copy()
+                hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
+                hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
+                _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
+                                   key="hm_int_n")
+                hm = _top_n_cols(hm, "file_name", _n_int)
+                st.caption(T["intent_book_heatmap_desc"])
                 st.plotly_chart(
-                    fig_hbar(cplx, "avg_tree_depth", "book",
-                             T["complexity_title"], h=340,
-                             xlabel=T["x_depth"], ylabel=T["x_book"]),
-                    use_container_width=True,
-                )
-            with c2:
-                st.plotly_chart(
-                    fig_hbar(cplx, "avg_clause_count", "book",
-                             T["complexity_title"], h=340,
-                             xlabel=T["x_clauses"], ylabel=T["x_book"]),
+                    fig_heatmap(hm, "file_name",
+                                T["intent_book_heatmap_title"], h=420),
                     use_container_width=True,
                 )
 
-    # ── 9. VERBAL RELATIONS ───────────────────────────────────────────────────
-    with st.expander(T["sec_verbal"]):
+        # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
+        with st.expander(T["sec_strategy"]):
 
-        vrel_cnt  = csv("verbal_relations_analytics/relation_type_counts.csv")
-        vrel_conf = csv("verbal_relations_analytics/confidence_by_relation.csv")
-        vrel_book = csv("verbal_relations_analytics/relations_by_book.csv")
+            strat_cnt  = csv("q_skinner_analytics/q_strategy_counts.csv")
+            strat_book = csv("q_skinner_analytics/q_strategy_by_book.csv")
+            pvoc       = csv("q_skinner_analytics/q_political_vocabulary_counts.csv")
 
-        c1, c2 = st.columns(2)
-
-        with c1:
-            if vrel_cnt is not None:
-                d = vrel_cnt.sort_values("count", ascending=False).copy()
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_relation"]] = d["_raw"].map(VVT).fillna(d["_raw"])
-                st.caption(T["verbal_types_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_relation"],
-                             T["verbal_types_title"], h=380,
-                             xlabel=T["x_count"], ylabel=T["x_relation"]),
-                    use_container_width=True,
-                )
-
-        with c2:
-            if vrel_conf is not None:
-                d = vrel_conf.sort_values("avg_confidence", ascending=False).copy()
-                d["_raw"] = d["relation_type"]
-                d[T["x_relation"]] = d["_raw"].map(VVT).fillna(d["_raw"])
-                d = d.rename(columns={"avg_confidence": T["x_confidence"]})
-                st.caption(T["verbal_conf_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_confidence"], T["x_relation"],
-                             T["verbal_conf_title"], h=380,
-                             xlabel=T["x_confidence"], ylabel=T["x_relation"]),
-                    use_container_width=True,
-                )
-
-        if vrel_book is not None:
-            excl_v = {"file_name", "total"}
-            v_cols = [c for c in vrel_book.columns if c not in excl_v]
-            hm3 = vrel_book[["file_name"] + v_cols].copy()
-            hm3 = hm3.rename(columns={c: VVT.get(c, c) for c in v_cols})
-            if len(v_cols) > 5:
-                _n_vrel = st.slider(T["top_n_slider"], 5, min(30, len(v_cols)),
-                                    min(9, len(v_cols)), key="hm_vrel_n")
-                hm3 = _top_n_cols(hm3, "file_name", _n_vrel)
-            st.caption(T["verbal_book_heatmap_desc"])
-            st.plotly_chart(
-                fig_heatmap(hm3, "file_name", T["verbal_book_heatmap_title"], h=420),
-                use_container_width=True,
-            )
-
-    # ── 10. TAXONOMY ANALYTICS ────────────────────────────────────────────────
-    with st.expander(T["sec_taxonomy"]):
-
-        tax_class   = csv("taxonomy_analytics/skinner_class_counts.csv")
-        tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
-        tax_control = csv("taxonomy_analytics/control_role_counts.csv")
-
-        c1, c2 = st.columns(2)
-
-        with c1:
-            if tax_class is not None:
-                d = tax_class.sort_values("count", ascending=False).copy()
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_class"]] = d["_raw"].map(VSK).fillna(d["_raw"])
-                st.caption(T["tax_class_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_class"],
-                             T["tax_class_title"], h=320,
-                             xlabel=T["x_count"], ylabel=T["x_class"]),
-                    use_container_width=True,
-                )
-
-        with c2:
-            if tax_control is not None:
-                d = tax_control.sort_values("count", ascending=False).copy()
-                d.columns = ["_raw", T["x_count"]]
-                d[T["x_class"]] = d["_raw"].map(VCR).fillna(d["_raw"])
-                st.caption(T["tax_control_desc"])
-                st.plotly_chart(
-                    fig_hbar(d, T["x_count"], T["x_class"],
-                             T["tax_control_title"], h=280,
-                             xlabel=T["x_count"], ylabel=T["x_class"]),
-                    use_container_width=True,
-                )
-
-        if tax_dial is not None:
-            d = tax_dial.copy()
-            d["book"] = (d["file_name"]
-                         .str.replace("bible_BKR_", "")
-                         .str.replace(".txt", ""))
-            d = d.sort_values("dialogue_density", ascending=True)
-            st.caption(T["tax_dialogue_desc"])
-            fig = px.bar(d, x="dialogue_density", y="book",
-                         orientation="h",
-                         title=T["tax_dialogue_title"],
-                         color_discrete_sequence=["#3a86ff"])
-            fig.update_xaxes(title_text=T["x_density"])
-            fig.update_yaxes(title_text=T["x_book"])
-            fig.update_layout(showlegend=False, height=340, **_LAYOUT)
-            st.plotly_chart(fig, use_container_width=True)
-
-        tact_auto = csv("taxonomy_analytics/tact_vs_autoclitic_by_book.csv")
-        if tact_auto is not None:
-            st.divider()
-            ta = tact_auto.copy()
-            ta["book"] = (ta["file_name"]
-                          .str.replace("bible_BKR_", "")
-                          .str.replace(".txt", ""))
-            st.caption(T["tact_autoclitic_desc"])
-            fig_ta = go.Figure()
-            fig_ta.add_bar(name="tact",      x=ta["book"], y=ta["tact_ratio"],
-                           marker_color="#3a86ff")
-            fig_ta.add_bar(name="autoclitic", x=ta["book"], y=ta["autoclitic_ratio"],
-                           marker_color="#8338ec")
-            fig_ta.update_layout(
-                barmode="group",
-                title=T["tact_autoclitic_title"],
-                xaxis_title=T["x_book"],
-                yaxis_title=T["x_ratio"],
-                height=360, **_LAYOUT,
-            )
-            st.plotly_chart(fig_ta, use_container_width=True)
-
-    # ── 11. SEMANTIC WORD RELATIONS ───────────────────────────────────────────
-    with st.expander(T["sec_word_rel"]):
-
-        top_pmi  = csv("word_relations_analytics/top_pmi_relations.csv")
-        most_con = csv("word_relations_analytics/most_connected_words.csv")
-
-        if top_pmi is None and most_con is None:
-            st.info(T["no_word_rel"])
-        else:
             c1, c2 = st.columns(2)
 
             with c1:
-                if top_pmi is not None:
-                    st.caption(T["top_pmi_desc"])
-                    display_pmi = top_pmi.head(25).rename(columns={
-                        "word1":      T["top_pmi_word1"],
-                        "word2":      T["top_pmi_word2"],
-                        "pair_count": T["top_pmi_count"],
-                        "pmi":        T["top_pmi_pmi"],
-                    })
-                    st.dataframe(display_pmi, use_container_width=True, height=420,
-                                 column_config={
-                                     T["top_pmi_pmi"]: st.column_config.NumberColumn(format="%.2f"),
-                                 })
-
+                if strat_cnt is not None:
+                    d = strat_cnt[strat_cnt["primary_strategy"] != "unclassified"].copy()
+                    d = d.sort_values("count", ascending=False)
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_strategy"]] = d["_raw"].map(VS).fillna(d["_raw"])
+                    st.caption(T["all_strategies_desc"])
+                    st.plotly_chart(
+                        fig_hbar(d, T["x_count"], T["x_strategy"],
+                                 T["all_strategies_title"], STR_CLR,
+                                 xlabel=T["x_count"], ylabel=T["x_strategy"]),
+                        use_container_width=True,
+                    )
             with c2:
-                if most_con is not None:
-                    d = most_con.head(25).copy()
-                    d.columns = [T["x_word"], T["x_connections"]]
-                    st.caption(T["most_connected_desc"])
+                if pvoc is not None:
+                    st.caption(T["pvoc_desc"])
                     st.plotly_chart(
-                        fig_hbar(d, T["x_connections"], T["x_word"],
-                                 T["most_connected_title"], h=420,
-                                 xlabel=T["x_connections"], ylabel=T["x_word"]),
+                        fig_hbar(pvoc.head(20), "count", "term",
+                                 T["pvoc_title"], h=400,
+                                 xlabel=T["x_count"]),
                         use_container_width=True,
                     )
 
-    # ── 12. CORPUS DENSITY ────────────────────────────────────────────────────
-    with st.expander(T["sec_corpus_density"]):
-
-        corp_dens = csv("religious_elements/combined_density_by_book.csv")
-
-        if corp_dens is not None:
-            s_cols = [c for c in corp_dens.columns
-                      if c.endswith("_sentence_density")]
-            dn = corp_dens[["file_name"] + s_cols].copy()
-            dn.columns = (
-                ["file_name"] +
-                [c.replace("_sentence_density", "") for c in s_cols]
-            )
-            st.caption(T["corpus_density_desc"])
-            st.plotly_chart(
-                fig_heatmap(dn, "file_name",
-                            T["corpus_density_title"],
-                            h=420, fmt="%{z:.2f}"),
-                use_container_width=True,
-            )
-        else:
-            st.info("—")
-
-    # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
-    with st.expander(T["sec_patterns"]):
-
-        ref_df = load_refined()
-
-        if ref_df is None:
-            st.info(T["no_patterns"])
-        else:
-            # ── Wordcloud ─────────────────────────────────────────────────────
-            st.caption(T["wordcloud_desc"])
-            sentences_tuple = tuple(db_df["sentence"].dropna().tolist())
-            wc_bytes = compute_wordcloud_img(sentences_tuple)
-            st.image(wc_bytes, use_container_width=True)
-
-            st.divider()
-
-            # ── Bigrams + Trigrams ────────────────────────────────────────────
-            c1, c2 = st.columns(2)
-
-            with c1:
-                bi_df = compute_ngrams(sentences_tuple, 2, 20)
-                if not bi_df.empty:
-                    st.caption(T["bigrams_desc"])
-                    st.plotly_chart(
-                        fig_hbar(bi_df, "count", "ngram",
-                                 T["bigrams_title"], h=480,
-                                 xlabel=T["x_frequency"], ylabel=T["x_ngram"]),
-                        use_container_width=True,
-                    )
-
-            with c2:
-                tri_df = compute_ngrams(sentences_tuple, 3, 15)
-                if not tri_df.empty:
-                    st.caption(T["trigrams_desc"])
-                    st.plotly_chart(
-                        fig_hbar(tri_df, "count", "ngram",
-                                 T["trigrams_title"], h=480,
-                                 xlabel=T["x_frequency"], ylabel=T["x_ngram"]),
-                        use_container_width=True,
-                    )
-
-            st.divider()
-
-            # ── TF-IDF heatmap lemma × book ───────────────────────────────────
-            lemmas_by_book = (
-                ref_df.groupby("book")["lemmas"]
-                .apply(lambda x: " ".join(x.dropna()))
-            )
-            lemmas_items = tuple(sorted(lemmas_by_book.items()))
-            tfidf_df = compute_tfidf_heatmap(lemmas_items, top_n=35)
-
-            if not tfidf_df.empty:
-                st.caption(T["tfidf_heatmap_desc"])
+            if strat_book is not None:
+                excl = {"file_name", "total", "unclassified"}
+                s_cols = [c for c in strat_book.columns if c not in excl]
+                hm2 = strat_book[["file_name"] + s_cols].copy()
+                hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
+                st.caption(T["strat_book_heatmap_desc"])
                 st.plotly_chart(
-                    fig_heatmap(tfidf_df, "book",
-                                T["tfidf_heatmap_title"], h=460,
-                                fmt="%{z:.2f}"),
+                    fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
                     use_container_width=True,
                 )
 
-    # ── 14. SEMANTIC ANALYSIS ─────────────────────────────────────────────────
-    with st.expander(T["sec_semantics"]):
+        # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
+        with st.expander(T["sec_ratios"]):
 
-        ref_df2 = load_refined()
-        verb_df = load_verbal_full()
+            ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
 
-        if ref_df2 is None:
-            st.info(T["no_db"])
-        else:
-            # ── Radar chart: semantic clusters per book ────────────────────────
-            pivot = (
-                ref_df2.groupby(["book", "semantic_cluster"])
-                .size()
-                .unstack(fill_value=0)
-            )
-            pivot_norm   = pivot.div(pivot.sum(axis=1), axis=0)
-            clusters_raw = list(pivot_norm.columns)
-            clusters_t   = [VSC.get(c, c) for c in clusters_raw]
-            pivot_norm.columns = clusters_t
+            if ratios is not None:
+                books_lbl = (ratios["file_name"]
+                             .str.replace("bible_BKR_", "")
+                             .str.replace(".txt", ""))
 
-            st.caption(T["radar_desc"])
-            colors = px.colors.qualitative.Plotly
-            fig_radar = go.Figure()
-            for i, book in enumerate(pivot_norm.index):
-                vals = pivot_norm.loc[book].tolist()
-                vals_closed = vals + [vals[0]]
-                cats_closed = clusters_t + [clusters_t[0]]
-                fig_radar.add_trace(go.Scatterpolar(
-                    r=vals_closed, theta=cats_closed,
-                    fill="toself", name=book,
-                    line_color=colors[i % len(colors)],
-                    opacity=0.75,
-                ))
-            fig_radar.update_layout(
-                title=T["radar_title"],
-                polar=dict(radialaxis=dict(visible=True, range=[0, 1])),
-                height=500, **_LAYOUT,
-            )
-            st.plotly_chart(fig_radar, use_container_width=True)
-
-            st.divider()
-
-            # ── Antithetical sentences ─────────────────────────────────────────
-            if verb_df is not None:
-                anti = verb_df[verb_df["local_pattern"] == "negated_statement"].copy()
                 c1, c2 = st.columns(2)
 
                 with c1:
-                    anti_cnt = (
-                        anti.groupby("book").size()
-                        .reset_index(name=T["x_count"])
-                        .sort_values(T["x_count"], ascending=False)
+                    st.caption(T["directive_assertive_desc"])
+                    fig = go.Figure()
+                    fig.add_bar(name=T["lbl_directive"], x=books_lbl,
+                                y=ratios["directive"], marker_color="#e63946")
+                    fig.add_bar(name=T["lbl_assertive"], x=books_lbl,
+                                y=ratios["assertive"], marker_color="#3a86ff")
+                    fig.update_layout(barmode="stack",
+                                      title=T["directive_assertive_title"],
+                                      xaxis_title=T["x_book"],
+                                      yaxis_title=T["x_count"],
+                                      height=360, **_LAYOUT)
+                    st.plotly_chart(fig, use_container_width=True)
+
+                with c2:
+                    st.caption(T["legit_ratio_desc"])
+                    ratio_map = {
+                        "legitimation_ratio":             T["lbl_legitimation"],
+                        "ideological_contestation_ratio": T["lbl_contestation"],
+                        "intervention_ratio":             T["lbl_intervention"],
+                    }
+                    fig2 = go.Figure()
+                    for col, label in ratio_map.items():
+                        if col in ratios.columns:
+                            fig2.add_bar(name=label, x=books_lbl, y=ratios[col])
+                    fig2.update_layout(
+                        barmode="group",
+                        title=T["legit_ratio_title"],
+                        xaxis_title=T["x_book"],
+                        yaxis_title=T["x_ratio"],
+                        height=360, **_LAYOUT,
                     )
-                    anti_cnt.columns = [T["x_book"], T["x_count"]]
-                    st.caption(T["antithetical_count_desc"])
+                    st.plotly_chart(fig2, use_container_width=True)
+
+            else:
+                st.info(T["no_ratios"])
+
+        # ── 4. RELIGIOUS ELEMENTS ─────────────────────────────────────────────────
+        with st.expander(T["sec_religious"]):
+
+            field_sum    = csv("religious_elements/field_summary.csv")
+            density_wide = csv("religious_elements/combined_density_by_book.csv")
+            phil         = csv("religious_elements/philosophy_by_book.csv")
+
+            c1, c2 = st.columns(2)
+
+            _rel_el = T.get("rel_elements", {})
+            _rel_ph = T.get("rel_philosophy", {})
+
+            with c1:
+                if field_sum is not None:
+                    d = field_sum.sort_values("sentence_count", ascending=False).copy()
+                    d["element"] = d["element"].map(lambda v: _rel_el.get(v, v))
+                    d = d.rename(columns={"element": T["x_element"],
+                                          "sentence_count": T["x_count"]})
+                    st.caption(T["element_coverage_desc"])
                     st.plotly_chart(
-                        fig_hbar(anti_cnt, T["x_count"], T["x_book"],
-                                 T["antithetical_count_title"], h=320,
-                                 xlabel=T["x_count"], ylabel=T["x_book"]),
+                        fig_hbar(d, T["x_count"], T["x_element"],
+                                 T["element_coverage_title"], h=420,
+                                 xlabel=T["x_count"], ylabel=T["x_element"]),
+                        use_container_width=True,
+                    )
+            with c2:
+                if phil is not None:
+                    pc = phil.groupby("philosophy")["matched_count"].sum().reset_index()
+                    pc["philosophy"] = pc["philosophy"].map(lambda v: _rel_ph.get(v, v))
+                    st.caption(T["philosophy_desc"])
+                    st.plotly_chart(
+                        fig_pie(pc, "philosophy", "matched_count",
+                                T["philosophy_title"]),
+                        use_container_width=True,
+                    )
+
+            if density_wide is not None:
+                s_cols = [c for c in density_wide.columns
+                          if c.endswith("_sentence_density")]
+                dn = density_wide[["file_name"] + s_cols].copy()
+                dn.columns = (
+                    ["file_name"] +
+                    [_rel_el.get(c.replace("_sentence_density", ""),
+                                 c.replace("_sentence_density", "")) for c in s_cols]
+                )
+                _n_dens = st.slider(T["top_n_slider"], 5, min(30, len(s_cols)), min(15, len(s_cols)),
+                                    key="hm_dens_n")
+                dn = _top_n_cols(dn, "file_name", _n_dens)
+                st.caption(T["density_heatmap_desc"])
+                st.plotly_chart(
+                    fig_heatmap(dn, "file_name",
+                                T["density_heatmap_title"],
+                                h=460, fmt="%{z:.2f}"),
+                    use_container_width=True,
+                )
+
+            st.divider()
+            from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
+            st.caption(T["traditions_desc"])
+            c1, c2 = st.columns(2)
+            _LANG_SFXS = ("_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit")
+            def _fmt_trad(k: str) -> str:
+                for sfx in _LANG_SFXS:
+                    if k.endswith(sfx):
+                        return k[:-len(sfx)].replace("_", " ").title()
+                return k.replace("_", " ").title()
+
+            with c1:
+                trad_df = pd.DataFrame(
+                    [{"tradition": _fmt_trad(k), T["x_categories"]: len(v)}
+                     for k, v in TRADITIONS.items()]
+                ).sort_values(T["x_categories"], ascending=True)
+                st.plotly_chart(
+                    fig_hbar(trad_df, T["x_categories"], "tradition",
+                             T["traditions_title"], h=520,
+                             xlabel=T["x_categories"]),
+                    use_container_width=True,
+                )
+            with c2:
+                phil_df = pd.DataFrame(
+                    [{"influence": k, T["x_terms"]: len(v)}
+                     for k, v in PHILOSOPHICAL_INFLUENCES.items()]
+                ).sort_values(T["x_terms"], ascending=True)
+                st.plotly_chart(
+                    fig_hbar(phil_df, T["x_terms"], "influence",
+                             T["traditions_title"], h=480,
+                             xlabel=T["x_terms"]),
+                    use_container_width=True,
+                )
+
+        # ── 5. CONCEPT CLUSTERS & OPPOSITIONS ────────────────────────────────────
+        with st.expander(T["sec_clusters"]):
+
+            c1, c2 = st.columns(2)
+
+            with c1:
+                clust = csv("concept_clusters/cluster_summary.csv")
+                if clust is not None:
+                    _cl_map = T.get("cluster_labels", {})
+                    clust["label"] = clust["cluster"].str.replace("_cluster", "").map(
+                        lambda v: _cl_map.get(v, v.replace("_", " ").title())
+                    )
+                    sz = clust["total_pair_count"]
+                    fig = go.Figure(go.Scatter(
+                        x=clust["avg_pmi"],
+                        y=clust["edge_count"],
+                        mode="markers+text",
+                        text=clust["label"],
+                        textposition="top center",
+                        marker=dict(
+                            size=(sz / sz.max() * 44 + 12).tolist(),
+                            color="#3a86ff", opacity=0.7,
+                            line=dict(width=1, color="white"),
+                        ),
+                    ))
+                    fig.update_layout(
+                        title=T["cluster_bubble_title"],
+                        xaxis_title=T["x_avg_pmi"],
+                        yaxis_title=T["x_edges"],
+                        height=400, **_LAYOUT,
+                    )
+                    st.caption(T["cluster_bubble_desc"])
+                    st.plotly_chart(fig, use_container_width=True)
+
+            with c2:
+                opp = csv("opposition_networks/opposition_counts.csv")
+                if opp is not None:
+                    st.caption(T["opposition_window_note"] + "  " + T["opposition_desc"])
+                    st.plotly_chart(
+                        fig_hbar(opp.head(18), "count", "opposition_pair",
+                                 T["opposition_title"], h=420,
+                                 xlabel=T["x_count"],
+                                 ylabel=T["opposition_title"]),
+                        use_container_width=True,
+                    )
+
+            # ── Polarity analysis ─────────────────────────────────────────────────
+            polarity = csv("opposition_networks/opposition_polarity.csv")
+            if polarity is not None:
+                st.divider()
+                st.caption(T["opposition_polarity_desc"])
+                pol = polarity.copy()
+                pol["pair"] = pol["opposition_pair"]
+                pol = pol.sort_values("total", ascending=False).head(16)
+
+                fig_pol = go.Figure()
+                fig_pol.add_bar(
+                    name=T["lbl_positive"], x=pol["pair"], y=pol["positive"],
+                    marker_color="#57cc99",
+                )
+                fig_pol.add_bar(
+                    name=T["lbl_negative"], x=pol["pair"], y=pol["negative"],
+                    marker_color="#e63946",
+                )
+                fig_pol.add_bar(
+                    name=T["lbl_both"], x=pol["pair"], y=pol["both"],
+                    marker_color="#adb5bd",
+                )
+                fig_pol.update_layout(
+                    barmode="stack",
+                    title=T["opposition_polarity_title"],
+                    xaxis_title=T["opposition_title"],
+                    yaxis_title=T["x_count"],
+                    xaxis_tickangle=-40,
+                    height=400, **_LAYOUT,
+                )
+                st.plotly_chart(fig_pol, use_container_width=True)
+
+            # ── Directed edges + examples ─────────────────────────────────────────
+            directed = csv("opposition_networks/opposition_directed_edges.csv")
+            opp_ex   = csv("opposition_networks/opposition_examples.csv")
+
+            # ── Directed chart — full width, ylabel = word not "source" ──────────
+            if directed is not None:
+                st.caption(T["opposition_directed_desc"])
+                st.plotly_chart(
+                    fig_hbar(directed.head(20), "weight", "source",
+                             T["opposition_directed_title"], h=420,
+                             xlabel=T["col_weight"], ylabel=T["x_word"]),
+                    use_container_width=True,
+                )
+
+            # ── Edge list | Examples — side by side ───────────────────────────────
+            _d1, _d2 = st.columns([1, 2])
+
+            with _d1:
+                if directed is not None:
+                    st.markdown(f"**{T['opposition_directed_title']}**")
+                    for _, _row in directed.head(15).iterrows():
+                        st.markdown(
+                            f"**{_row['source']}** → {_row['target']} "
+                            f"&nbsp; `{int(_row['weight'])}`"
+                        )
+
+            with _d2:
+                if opp_ex is not None:
+                    _pairs_avail = ["— " + T["filter_pair"]] + sorted(
+                        opp_ex["opposition_pair"].unique()
+                    )
+                    _sel_pair = st.selectbox(
+                        T["filter_pair"], _pairs_avail,
+                        key="opp_pair_sel", label_visibility="collapsed",
+                    )
+                    _view_ex = (
+                        opp_ex if _sel_pair.startswith("—")
+                        else opp_ex[opp_ex["opposition_pair"] == _sel_pair]
+                    ).copy()
+                    _view_ex["book"] = (
+                        _view_ex["file_name"]
+                        .str.replace("bible_BKR_", "")
+                        .str.replace(".txt", "")
+                    )
+                    st.caption(T["opposition_examples_desc"])
+                    for _, _er in _view_ex.head(12).iterrows():
+                        st.markdown(
+                            f"*{_er['opposition_pair']}* &nbsp;·&nbsp; "
+                            f"**{_er['book']}**"
+                        )
+                        st.markdown(f"> {_er['sentence']}")
+                        st.divider()
+
+        # ── 6. SEMANTIC CENTRALITY ────────────────────────────────────────────────
+        with st.expander(T["sec_centrality"]):
+
+            cent = csv("weighted_centrality/weighted_semantic_centrality.csv")
+
+            if cent is not None:
+                top_n = st.slider(T["top_n_slider"], 10, 60, 30, key="cent_n")
+                top_w = cent.nlargest(top_n, "weighted_score")
+                st.caption(T["centrality_bar_desc"])
+                st.plotly_chart(
+                    fig_hbar(top_w, "weighted_score", "word",
+                             T["centrality_bar_title"],
+                             h=max(380, top_n * 18),
+                             xlabel=T["x_weighted"], ylabel=T["x_word"]),
+                    use_container_width=True,
+                )
+                st.dataframe(
+                    top_w[["word", "weighted_score",
+                            "connection_count", "avg_pmi"]]
+                    .rename(columns={
+                        "word":             T["x_word"],
+                        "weighted_score":   T["x_weighted"],
+                        "connection_count": T["x_connections"],
+                        "avg_pmi":          T["x_avg_pmi"],
+                    })
+                    .reset_index(drop=True),
+                    use_container_width=True,
+                    height=360,
+                    column_config={
+                        T["x_weighted"]:    st.column_config.NumberColumn(format="%.1f"),
+                        T["x_avg_pmi"]:     st.column_config.NumberColumn(format="%.2f"),
+                    },
+                )
+            else:
+                st.info(T["no_centrality"])
+
+        # ── 7. STYLE & AUTHORSHIP ─────────────────────────────────────────────────
+        with st.expander(T["sec_style"]):
+
+            style = csv("style_authorship/book_style_clusters.csv")
+            terms = csv("style_authorship/cluster_top_terms.csv")
+
+            if style is not None:
+                c1, c2 = st.columns([1, 2])
+
+                with c1:
+                    sd = style.copy()
+                    sd["book"] = (sd["file_name"]
+                                  .str.replace("bible_BKR_", "")
+                                  .str.replace(".txt", ""))
+                    st.caption(T["style_table_desc"])
+                    st.dataframe(
+                        sd[["book", "style_cluster", "silhouette_score"]].rename(columns={
+                            "book":             T["x_book"],
+                            "style_cluster":    T["col_style_cluster"],
+                            "silhouette_score": T["col_silhouette"],
+                        }),
+                        use_container_width=True, height=340,
+                        column_config={
+                            T["col_silhouette"]: st.column_config.NumberColumn(format="%.4f"),
+                        },
+                    )
+
+                with c2:
+                    if terms is not None:
+                        clusters = sorted(terms["cluster"].unique())
+                        sel_clust = st.selectbox(T["select_cluster"], clusters,
+                                                 key="style_clust")
+                        sub = terms[terms["cluster"] == sel_clust].head(15)
+                        st.caption(T["cluster_terms_desc"])
+                        st.plotly_chart(
+                            fig_hbar(sub, "tfidf_mean", "term",
+                                     T["cluster_terms_title"], h=360,
+                                     xlabel=T["x_tfidf"]),
+                            use_container_width=True,
+                        )
+            else:
+                st.info(T["no_style"])
+
+        # ── 8. DEPENDENCY HIERARCHY ───────────────────────────────────────────────
+        with st.expander(T["sec_dependency"]):
+
+            dep      = csv("dependency_hierarchy/dependency_counts.csv")
+            dep_book = csv("dependency_hierarchy/dependency_by_book.csv")
+
+            if dep is not None:
+                c1, c2 = st.columns(2)
+
+                with c1:
+                    dep_top = dep[dep["dependency"] != "punct"].head(20).copy()
+                    st.caption(T["dep_bar_desc"])
+                    st.plotly_chart(
+                        fig_hbar(dep_top, "count", "dependency",
+                                 T["dep_bar_title"], h=420,
+                                 xlabel=T["x_count"], ylabel=T["x_relation"]),
                         use_container_width=True,
                     )
 
                 with c2:
-                    st.caption(T["antithetical_desc"])
-                    books_anti = ["— " + T["filter_book_label"]] + sorted(anti["book"].unique())
-                    sel_book = st.selectbox(
-                        T["filter_book_label"], books_anti,
-                        key="anti_book",
-                        label_visibility="collapsed",
+                    if dep_book is not None:
+                        excl2 = {"file_name", "total"}
+                        d_cols = [c for c in dep_book.columns if c not in excl2]
+                        _n_dep = st.slider(T["top_n_slider"], 5, min(30, len(d_cols)),
+                                           min(15, len(d_cols)), key="hm_dep_n")
+                        _dep_hm = _top_n_cols(dep_book[["file_name"] + d_cols], "file_name", _n_dep)
+                        st.caption(T["dep_heatmap_desc"])
+                        st.plotly_chart(
+                            fig_heatmap(_dep_hm, "file_name",
+                                        T["dep_heatmap_title"], h=420),
+                            use_container_width=True,
+                        )
+
+            complexity_df = csv("dependency_hierarchy/complexity_by_book.csv")
+            if complexity_df is not None:
+                st.divider()
+                cplx = complexity_df.copy()
+                cplx["book"] = (cplx["file_name"]
+                                .str.replace("bible_BKR_", "")
+                                .str.replace(".txt", ""))
+                st.caption(T["complexity_desc"])
+                c1, c2 = st.columns(2)
+                with c1:
+                    st.plotly_chart(
+                        fig_hbar(cplx, "avg_tree_depth", "book",
+                                 T["complexity_title"], h=340,
+                                 xlabel=T["x_depth"], ylabel=T["x_book"]),
+                        use_container_width=True,
                     )
-                    view_anti = anti if sel_book.startswith("—") else anti[anti["book"] == sel_book]
-                    st.dataframe(
-                        view_anti[["book", "sentence"]].head(40).rename(
-                            columns={"book": T["x_book"],
-                                     "sentence": T["col_sentence"]}
-                        ),
-                        use_container_width=True, height=300,
-                        column_config={
-                            T["col_sentence"]: st.column_config.TextColumn(width="large"),
-                        },
+                with c2:
+                    st.plotly_chart(
+                        fig_hbar(cplx, "avg_clause_count", "book",
+                                 T["complexity_title"], h=340,
+                                 xlabel=T["x_clauses"], ylabel=T["x_book"]),
+                        use_container_width=True,
                     )
 
-            st.divider()
+        # ── 9. VERBAL RELATIONS ───────────────────────────────────────────────────
+        with st.expander(T["sec_verbal"]):
 
-            # ── Lexical reinforcement per book ────────────────────────────────
-            lemmas_items2 = tuple(
-                (row["book"], row["lemmas"])
-                for _, row in ref_df2[["book", "lemmas"]].iterrows()
-            )
-            reinf_df = compute_lexical_reinforcement(lemmas_items2)
+            vrel_cnt  = csv("verbal_relations_analytics/relation_type_counts.csv")
+            vrel_conf = csv("verbal_relations_analytics/confidence_by_relation.csv")
+            vrel_book = csv("verbal_relations_analytics/relations_by_book.csv")
 
-            if not reinf_df.empty:
-                reinf_df_plot = reinf_df.copy()
-                reinf_df_plot.columns = [T["x_book"], T["x_reinforcement"]]
-                st.caption(T["lexical_reinf_desc"])
+            c1, c2 = st.columns(2)
+
+            with c1:
+                if vrel_cnt is not None:
+                    d = vrel_cnt.sort_values("count", ascending=False).copy()
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_relation"]] = d["_raw"].map(VVT).fillna(d["_raw"])
+                    st.caption(T["verbal_types_desc"])
+                    st.plotly_chart(
+                        fig_hbar(d, T["x_count"], T["x_relation"],
+                                 T["verbal_types_title"], h=380,
+                                 xlabel=T["x_count"], ylabel=T["x_relation"]),
+                        use_container_width=True,
+                    )
+
+            with c2:
+                if vrel_conf is not None:
+                    d = vrel_conf.sort_values("avg_confidence", ascending=False).copy()
+                    d["_raw"] = d["relation_type"]
+                    d[T["x_relation"]] = d["_raw"].map(VVT).fillna(d["_raw"])
+                    d = d.rename(columns={"avg_confidence": T["x_confidence"]})
+                    st.caption(T["verbal_conf_desc"])
+                    st.plotly_chart(
+                        fig_hbar(d, T["x_confidence"], T["x_relation"],
+                                 T["verbal_conf_title"], h=380,
+                                 xlabel=T["x_confidence"], ylabel=T["x_relation"]),
+                        use_container_width=True,
+                    )
+
+            if vrel_book is not None:
+                excl_v = {"file_name", "total"}
+                v_cols = [c for c in vrel_book.columns if c not in excl_v]
+                hm3 = vrel_book[["file_name"] + v_cols].copy()
+                hm3 = hm3.rename(columns={c: VVT.get(c, c) for c in v_cols})
+                if len(v_cols) > 5:
+                    _n_vrel = st.slider(T["top_n_slider"], 5, min(30, len(v_cols)),
+                                        min(9, len(v_cols)), key="hm_vrel_n")
+                    hm3 = _top_n_cols(hm3, "file_name", _n_vrel)
+                st.caption(T["verbal_book_heatmap_desc"])
                 st.plotly_chart(
-                    fig_hbar(reinf_df_plot, T["x_reinforcement"], T["x_book"],
-                             T["lexical_reinf_title"], h=320,
-                             xlabel=T["x_reinforcement"], ylabel=T["x_book"]),
+                    fig_heatmap(hm3, "file_name", T["verbal_book_heatmap_title"], h=420),
                     use_container_width=True,
                 )
 
-    # ── 15. PIPELINE QUALITY ──────────────────────────────────────────────────
-    with st.expander(T["sec_quality"]):
+        # ── 10. TAXONOMY ANALYTICS ────────────────────────────────────────────────
+        with st.expander(T["sec_taxonomy"]):
 
-        st.caption(T["quality_overall_desc"])
+            tax_class   = csv("taxonomy_analytics/skinner_class_counts.csv")
+            tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
+            tax_control = csv("taxonomy_analytics/control_role_counts.csv")
 
-        # ── Overall confidence bands ──────────────────────────────────────────
-        conf_s = db_df["confidence"].dropna()
-        band_low  = int((conf_s < 0.30).sum())
-        band_mid  = int(((conf_s >= 0.30) & (conf_s < 0.60)).sum())
-        band_high = int((conf_s >= 0.60).sum())
+            c1, c2 = st.columns(2)
 
-        c1, c2 = st.columns(2)
+            with c1:
+                if tax_class is not None:
+                    d = tax_class.sort_values("count", ascending=False).copy()
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_class"]] = d["_raw"].map(VSK).fillna(d["_raw"])
+                    st.caption(T["tax_class_desc"])
+                    st.plotly_chart(
+                        fig_hbar(d, T["x_count"], T["x_class"],
+                                 T["tax_class_title"], h=320,
+                                 xlabel=T["x_count"], ylabel=T["x_class"]),
+                        use_container_width=True,
+                    )
 
-        with c1:
-            bins_df = pd.DataFrame({
-                T["x_book"]: [T["conf_band_low"], T["conf_band_mid"], T["conf_band_high"]],
-                T["x_sentences"]: [band_low, band_mid, band_high],
-            })
-            clr_bins = {
-                T["conf_band_low"]:  "#e63946",
-                T["conf_band_mid"]:  "#f4a261",
-                T["conf_band_high"]: "#57cc99",
-            }
-            st.caption(T["conf_bins_desc"])
-            fig_bins = px.bar(
-                bins_df, x=T["x_sentences"], y=T["x_book"],
-                orientation="h", color=T["x_book"],
-                color_discrete_map=clr_bins,
-                title=T["conf_bins_title"],
-            )
-            fig_bins.update_layout(showlegend=False, height=260, **_LAYOUT)
-            st.plotly_chart(fig_bins, use_container_width=True)
+            with c2:
+                if tax_control is not None:
+                    d = tax_control.sort_values("count", ascending=False).copy()
+                    d.columns = ["_raw", T["x_count"]]
+                    d[T["x_class"]] = d["_raw"].map(VCR).fillna(d["_raw"])
+                    st.caption(T["tax_control_desc"])
+                    st.plotly_chart(
+                        fig_hbar(d, T["x_count"], T["x_class"],
+                                 T["tax_control_title"], h=280,
+                                 xlabel=T["x_count"], ylabel=T["x_class"]),
+                        use_container_width=True,
+                    )
 
-        with c2:
-            cov_book = csv("eval/coverage_by_book.csv")
-            if cov_book is not None:
-                cov_plot = cov_book.copy()
-                cov_plot["book"] = (cov_plot["book"]
-                                    .str.replace("bible_BKR_", "")
-                                    .str.replace(".txt", ""))
-                cov_plot = cov_plot.sort_values("coverage_pct", ascending=True)
-                cov_plot.rename(columns={"coverage_pct": T["x_coverage"],
-                                          "book": T["x_book"]}, inplace=True)
-                st.caption(T["coverage_book_desc"])
-                fig_cov = px.bar(
-                    cov_plot, x=T["x_coverage"], y=T["x_book"],
-                    orientation="h", title=T["coverage_book_title"],
-                    color=T["x_coverage"],
-                    color_continuous_scale=["#e63946", "#f4a261", "#57cc99"],
-                    range_color=[85, 100],
+            if tax_dial is not None:
+                d = tax_dial.copy()
+                d["book"] = (d["file_name"]
+                             .str.replace("bible_BKR_", "")
+                             .str.replace(".txt", ""))
+                d = d.sort_values("dialogue_density", ascending=True)
+                st.caption(T["tax_dialogue_desc"])
+                fig = px.bar(d, x="dialogue_density", y="book",
+                             orientation="h",
+                             title=T["tax_dialogue_title"],
+                             color_discrete_sequence=["#3a86ff"])
+                fig.update_xaxes(title_text=T["x_density"])
+                fig.update_yaxes(title_text=T["x_book"])
+                fig.update_layout(showlegend=False, height=340, **_LAYOUT)
+                st.plotly_chart(fig, use_container_width=True)
+
+            tact_auto = csv("taxonomy_analytics/tact_vs_autoclitic_by_book.csv")
+            if tact_auto is not None:
+                st.divider()
+                ta = tact_auto.copy()
+                ta["book"] = (ta["file_name"]
+                              .str.replace("bible_BKR_", "")
+                              .str.replace(".txt", ""))
+                st.caption(T["tact_autoclitic_desc"])
+                fig_ta = go.Figure()
+                fig_ta.add_bar(name="tact",      x=ta["book"], y=ta["tact_ratio"],
+                               marker_color="#3a86ff")
+                fig_ta.add_bar(name="autoclitic", x=ta["book"], y=ta["autoclitic_ratio"],
+                               marker_color="#8338ec")
+                fig_ta.update_layout(
+                    barmode="group",
+                    title=T["tact_autoclitic_title"],
+                    xaxis_title=T["x_book"],
+                    yaxis_title=T["x_ratio"],
+                    height=360, **_LAYOUT,
                 )
-                fig_cov.update_layout(showlegend=False, height=320, **_LAYOUT)
-                st.plotly_chart(fig_cov, use_container_width=True)
+                st.plotly_chart(fig_ta, use_container_width=True)
+
+        # ── 11. SEMANTIC WORD RELATIONS ───────────────────────────────────────────
+        with st.expander(T["sec_word_rel"]):
+
+            top_pmi  = csv("word_relations_analytics/top_pmi_relations.csv")
+            most_con = csv("word_relations_analytics/most_connected_words.csv")
+
+            if top_pmi is None and most_con is None:
+                st.info(T["no_word_rel"])
             else:
-                st.info(T["no_eval"])
+                c1, c2 = st.columns(2)
 
-        st.divider()
+                with c1:
+                    if top_pmi is not None:
+                        st.caption(T["top_pmi_desc"])
+                        display_pmi = top_pmi.head(25).rename(columns={
+                            "word1":      T["top_pmi_word1"],
+                            "word2":      T["top_pmi_word2"],
+                            "pair_count": T["top_pmi_count"],
+                            "pmi":        T["top_pmi_pmi"],
+                        })
+                        st.dataframe(display_pmi, use_container_width=True, height=420,
+                                     column_config={
+                                         T["top_pmi_pmi"]: st.column_config.NumberColumn(format="%.2f"),
+                                     })
 
-        # ── Consistency (ambiguous lemmas) ────────────────────────────────────
-        ambig = csv("eval/ambiguous_lemmas.csv")
-        c1, c2 = st.columns(2)
+                with c2:
+                    if most_con is not None:
+                        d = most_con.head(25).copy()
+                        d.columns = [T["x_word"], T["x_connections"]]
+                        st.caption(T["most_connected_desc"])
+                        st.plotly_chart(
+                            fig_hbar(d, T["x_connections"], T["x_word"],
+                                     T["most_connected_title"], h=420,
+                                     xlabel=T["x_connections"], ylabel=T["x_word"]),
+                            use_container_width=True,
+                        )
 
-        with c1:
-            if ambig is not None:
-                total_lemmas = len(ambig) + max(1, len(ambig))
-                ambig_display = ambig.head(20).copy()
-                ambig_display["n_labels"] = ambig_display["labels"].str.count(r"\|") + 1
-                ambig_display = ambig_display.rename(columns={
-                    "lemma":  T["col_lemma"],
-                    "labels": T["col_classes"],
-                    "n_labels": T["col_n_classes"],
-                })
-                st.caption(T["consistency_desc"])
-                st.dataframe(
-                    ambig_display[[T["col_lemma"], T["col_classes"], T["col_n_classes"]]],
-                    use_container_width=True, height=340,
+        # ── 12. CORPUS DENSITY ────────────────────────────────────────────────────
+        with st.expander(T["sec_corpus_density"]):
+
+            corp_dens = csv("religious_elements/combined_density_by_book.csv")
+
+            if corp_dens is not None:
+                s_cols = [c for c in corp_dens.columns
+                          if c.endswith("_sentence_density")]
+                dn = corp_dens[["file_name"] + s_cols].copy()
+                dn.columns = (
+                    ["file_name"] +
+                    [c.replace("_sentence_density", "") for c in s_cols]
                 )
+                st.caption(T["corpus_density_desc"])
+                st.plotly_chart(
+                    fig_heatmap(dn, "file_name",
+                                T["corpus_density_title"],
+                                h=420, fmt="%{z:.2f}"),
+                    use_container_width=True,
+                )
+            else:
+                st.info("—")
 
-        with c2:
-            outliers = csv("eval/book_outliers.csv")
-            if outliers is not None:
-                out_display = outliers.copy()
-                out_display["book"] = (out_display["book"]
-                                       .str.replace("bible_BKR_", "")
-                                       .str.replace(".txt", ""))
-                out_display = out_display.rename(columns={
-                    "book":    T["x_book"],
-                    "label":   T["col_label_q"],
-                    "ratio":   T["x_ratio"],
-                    "z_score": T["col_z_score"],
+        # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
+        with st.expander(T["sec_patterns"]):
+
+            ref_df = load_refined()
+
+            if ref_df is None:
+                st.info(T["no_patterns"])
+            else:
+                # ── Wordcloud ─────────────────────────────────────────────────────
+                st.caption(T["wordcloud_desc"])
+                sentences_tuple = tuple(db_df["sentence"].dropna().tolist())
+                wc_bytes = compute_wordcloud_img(sentences_tuple)
+                st.image(wc_bytes, use_container_width=True)
+
+                st.divider()
+
+                # ── Bigrams + Trigrams ────────────────────────────────────────────
+                c1, c2 = st.columns(2)
+
+                with c1:
+                    bi_df = compute_ngrams(sentences_tuple, 2, 20)
+                    if not bi_df.empty:
+                        st.caption(T["bigrams_desc"])
+                        st.plotly_chart(
+                            fig_hbar(bi_df, "count", "ngram",
+                                     T["bigrams_title"], h=480,
+                                     xlabel=T["x_frequency"], ylabel=T["x_ngram"]),
+                            use_container_width=True,
+                        )
+
+                with c2:
+                    tri_df = compute_ngrams(sentences_tuple, 3, 15)
+                    if not tri_df.empty:
+                        st.caption(T["trigrams_desc"])
+                        st.plotly_chart(
+                            fig_hbar(tri_df, "count", "ngram",
+                                     T["trigrams_title"], h=480,
+                                     xlabel=T["x_frequency"], ylabel=T["x_ngram"]),
+                            use_container_width=True,
+                        )
+
+                st.divider()
+
+                # ── TF-IDF heatmap lemma × book ───────────────────────────────────
+                lemmas_by_book = (
+                    ref_df.groupby("book")["lemmas"]
+                    .apply(lambda x: " ".join(x.dropna()))
+                )
+                lemmas_items = tuple(sorted(lemmas_by_book.items()))
+                tfidf_df = compute_tfidf_heatmap(lemmas_items, top_n=35)
+
+                if not tfidf_df.empty:
+                    st.caption(T["tfidf_heatmap_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(tfidf_df, "book",
+                                    T["tfidf_heatmap_title"], h=460,
+                                    fmt="%{z:.2f}"),
+                        use_container_width=True,
+                    )
+
+        # ── 14. SEMANTIC ANALYSIS ─────────────────────────────────────────────────
+        with st.expander(T["sec_semantics"]):
+
+            ref_df2 = load_refined()
+            verb_df = load_verbal_full()
+
+            if ref_df2 is None:
+                st.info(T["no_db"])
+            else:
+                # ── Radar chart: semantic clusters per book ────────────────────────
+                pivot = (
+                    ref_df2.groupby(["book", "semantic_cluster"])
+                    .size()
+                    .unstack(fill_value=0)
+                )
+                pivot_norm   = pivot.div(pivot.sum(axis=1), axis=0)
+                clusters_raw = list(pivot_norm.columns)
+                clusters_t   = [VSC.get(c, c) for c in clusters_raw]
+                pivot_norm.columns = clusters_t
+
+                st.caption(T["radar_desc"])
+                colors = px.colors.qualitative.Plotly
+                fig_radar = go.Figure()
+                for i, book in enumerate(pivot_norm.index):
+                    vals = pivot_norm.loc[book].tolist()
+                    vals_closed = vals + [vals[0]]
+                    cats_closed = clusters_t + [clusters_t[0]]
+                    fig_radar.add_trace(go.Scatterpolar(
+                        r=vals_closed, theta=cats_closed,
+                        fill="toself", name=book,
+                        line_color=colors[i % len(colors)],
+                        opacity=0.75,
+                    ))
+                fig_radar.update_layout(
+                    title=T["radar_title"],
+                    polar=dict(radialaxis=dict(visible=True, range=[0, 1])),
+                    height=500, **_LAYOUT,
+                )
+                st.plotly_chart(fig_radar, use_container_width=True)
+
+                st.divider()
+
+                # ── Antithetical sentences ─────────────────────────────────────────
+                if verb_df is not None:
+                    anti = verb_df[verb_df["local_pattern"] == "negated_statement"].copy()
+                    c1, c2 = st.columns(2)
+
+                    with c1:
+                        anti_cnt = (
+                            anti.groupby("book").size()
+                            .reset_index(name=T["x_count"])
+                            .sort_values(T["x_count"], ascending=False)
+                        )
+                        anti_cnt.columns = [T["x_book"], T["x_count"]]
+                        st.caption(T["antithetical_count_desc"])
+                        st.plotly_chart(
+                            fig_hbar(anti_cnt, T["x_count"], T["x_book"],
+                                     T["antithetical_count_title"], h=320,
+                                     xlabel=T["x_count"], ylabel=T["x_book"]),
+                            use_container_width=True,
+                        )
+
+                    with c2:
+                        st.caption(T["antithetical_desc"])
+                        books_anti = ["— " + T["filter_book_label"]] + sorted(anti["book"].unique())
+                        sel_book = st.selectbox(
+                            T["filter_book_label"], books_anti,
+                            key="anti_book",
+                            label_visibility="collapsed",
+                        )
+                        view_anti = anti if sel_book.startswith("—") else anti[anti["book"] == sel_book]
+                        st.dataframe(
+                            view_anti[["book", "sentence"]].head(40).rename(
+                                columns={"book": T["x_book"],
+                                         "sentence": T["col_sentence"]}
+                            ),
+                            use_container_width=True, height=300,
+                            column_config={
+                                T["col_sentence"]: st.column_config.TextColumn(width="large"),
+                            },
+                        )
+
+                st.divider()
+
+                # ── Lexical reinforcement per book ────────────────────────────────
+                lemmas_items2 = tuple(
+                    (row["book"], row["lemmas"])
+                    for _, row in ref_df2[["book", "lemmas"]].iterrows()
+                )
+                reinf_df = compute_lexical_reinforcement(lemmas_items2)
+
+                if not reinf_df.empty:
+                    reinf_df_plot = reinf_df.copy()
+                    reinf_df_plot.columns = [T["x_book"], T["x_reinforcement"]]
+                    st.caption(T["lexical_reinf_desc"])
+                    st.plotly_chart(
+                        fig_hbar(reinf_df_plot, T["x_reinforcement"], T["x_book"],
+                                 T["lexical_reinf_title"], h=320,
+                                 xlabel=T["x_reinforcement"], ylabel=T["x_book"]),
+                        use_container_width=True,
+                    )
+
+        # ── 15. PIPELINE QUALITY ──────────────────────────────────────────────────
+        with st.expander(T["sec_quality"]):
+
+            st.caption(T["quality_overall_desc"])
+
+            # ── Overall confidence bands ──────────────────────────────────────────
+            conf_s = db_df["confidence"].dropna()
+            band_low  = int((conf_s < 0.30).sum())
+            band_mid  = int(((conf_s >= 0.30) & (conf_s < 0.60)).sum())
+            band_high = int((conf_s >= 0.60).sum())
+
+            c1, c2 = st.columns(2)
+
+            with c1:
+                bins_df = pd.DataFrame({
+                    T["x_book"]: [T["conf_band_low"], T["conf_band_mid"], T["conf_band_high"]],
+                    T["x_sentences"]: [band_low, band_mid, band_high],
                 })
-                st.caption(T["outliers_desc"])
+                clr_bins = {
+                    T["conf_band_low"]:  "#e63946",
+                    T["conf_band_mid"]:  "#f4a261",
+                    T["conf_band_high"]: "#57cc99",
+                }
+                st.caption(T["conf_bins_desc"])
+                fig_bins = px.bar(
+                    bins_df, x=T["x_sentences"], y=T["x_book"],
+                    orientation="h", color=T["x_book"],
+                    color_discrete_map=clr_bins,
+                    title=T["conf_bins_title"],
+                )
+                fig_bins.update_layout(showlegend=False, height=260, **_LAYOUT)
+                st.plotly_chart(fig_bins, use_container_width=True)
+
+            with c2:
+                cov_book = csv("eval/coverage_by_book.csv")
+                if cov_book is not None:
+                    cov_plot = cov_book.copy()
+                    cov_plot["book"] = (cov_plot["book"]
+                                        .str.replace("bible_BKR_", "")
+                                        .str.replace(".txt", ""))
+                    cov_plot = cov_plot.sort_values("coverage_pct", ascending=True)
+                    cov_plot.rename(columns={"coverage_pct": T["x_coverage"],
+                                              "book": T["x_book"]}, inplace=True)
+                    st.caption(T["coverage_book_desc"])
+                    fig_cov = px.bar(
+                        cov_plot, x=T["x_coverage"], y=T["x_book"],
+                        orientation="h", title=T["coverage_book_title"],
+                        color=T["x_coverage"],
+                        color_continuous_scale=["#e63946", "#f4a261", "#57cc99"],
+                        range_color=[85, 100],
+                    )
+                    fig_cov.update_layout(showlegend=False, height=320, **_LAYOUT)
+                    st.plotly_chart(fig_cov, use_container_width=True)
+                else:
+                    st.info(T["no_eval"])
+
+            st.divider()
+
+            # ── Consistency (ambiguous lemmas) ────────────────────────────────────
+            ambig = csv("eval/ambiguous_lemmas.csv")
+            c1, c2 = st.columns(2)
+
+            with c1:
+                if ambig is not None:
+                    total_lemmas = len(ambig) + max(1, len(ambig))
+                    ambig_display = ambig.head(20).copy()
+                    ambig_display["n_labels"] = ambig_display["labels"].str.count(r"\|") + 1
+                    ambig_display = ambig_display.rename(columns={
+                        "lemma":  T["col_lemma"],
+                        "labels": T["col_classes"],
+                        "n_labels": T["col_n_classes"],
+                    })
+                    st.caption(T["consistency_desc"])
+                    st.dataframe(
+                        ambig_display[[T["col_lemma"], T["col_classes"], T["col_n_classes"]]],
+                        use_container_width=True, height=340,
+                    )
+
+            with c2:
+                outliers = csv("eval/book_outliers.csv")
+                if outliers is not None:
+                    out_display = outliers.copy()
+                    out_display["book"] = (out_display["book"]
+                                           .str.replace("bible_BKR_", "")
+                                           .str.replace(".txt", ""))
+                    out_display = out_display.rename(columns={
+                        "book":    T["x_book"],
+                        "label":   T["col_label_q"],
+                        "ratio":   T["x_ratio"],
+                        "z_score": T["col_z_score"],
+                    })
+                    st.caption(T["outliers_desc"])
+                    st.dataframe(
+                        out_display,
+                        use_container_width=True, height=200,
+                        column_config={
+                            T["x_ratio"]:    st.column_config.NumberColumn(format="%.3f"),
+                            T["col_z_score"]: st.column_config.NumberColumn(format="%.2f"),
+                        },
+                    )
+                else:
+                    st.info(T["no_eval"])
+
+            st.divider()
+
+            # ── Sample sentences ──────────────────────────────────────────────────
+            sample = csv("eval/random_sample.csv")
+            if sample is not None:
+                sample_display = sample.copy()
+                sample_display["file_name"] = (sample_display["file_name"]
+                                               .str.replace("bible_BKR_", "")
+                                               .str.replace(".txt", ""))
+                sample_display = sample_display.rename(columns={
+                    "file_name":         T["x_book"],
+                    "illocutionary_force": T["col_force"],
+                    "primary_intention": T["col_intention"],
+                    "confidence":        T["col_confidence"],
+                    "sentence":          T["col_sentence"],
+                })
+                keep = [T["x_book"], T["col_force"], T["col_intention"],
+                        T["col_confidence"], T["col_sentence"]]
+                keep = [c for c in keep if c in sample_display.columns]
+                st.caption(T["sample_desc"])
                 st.dataframe(
-                    out_display,
-                    use_container_width=True, height=200,
+                    sample_display[keep],
+                    use_container_width=True, height=440,
                     column_config={
-                        T["x_ratio"]:    st.column_config.NumberColumn(format="%.3f"),
-                        T["col_z_score"]: st.column_config.NumberColumn(format="%.2f"),
+                        T["col_sentence"]:    st.column_config.TextColumn(width="large"),
+                        T["col_confidence"]:  st.column_config.NumberColumn(format="%.2f"),
                     },
                 )
             else:
                 st.info(T["no_eval"])
 
-        st.divider()
+        # ── 16. LINGUISTIC FEATURES ──────────────────────────────────────────────
+        with st.expander(T["sec_ling_features"]):
 
-        # ── Sample sentences ──────────────────────────────────────────────────
-        sample = csv("eval/random_sample.csv")
-        if sample is not None:
-            sample_display = sample.copy()
-            sample_display["file_name"] = (sample_display["file_name"]
-                                           .str.replace("bible_BKR_", "")
-                                           .str.replace(".txt", ""))
-            sample_display = sample_display.rename(columns={
-                "file_name":         T["x_book"],
-                "illocutionary_force": T["col_force"],
-                "primary_intention": T["col_intention"],
-                "confidence":        T["col_confidence"],
-                "sentence":          T["col_sentence"],
-            })
-            keep = [T["x_book"], T["col_force"], T["col_intention"],
-                    T["col_confidence"], T["col_sentence"]]
-            keep = [c for c in keep if c in sample_display.columns]
-            st.caption(T["sample_desc"])
-            st.dataframe(
-                sample_display[keep],
-                use_container_width=True, height=440,
-                column_config={
-                    T["col_sentence"]:    st.column_config.TextColumn(width="large"),
-                    T["col_confidence"]:  st.column_config.NumberColumn(format="%.2f"),
-                },
-            )
-        else:
-            st.info(T["no_eval"])
+            _ling_cols = {
+                "type_token_ratio", "has_coordination", "dative_present",
+                "indirect_object_present", "adjective_count", "adverb_count",
+                "pronoun_count",
+            }
+            if db_df is not None and _ling_cols.issubset(db_df.columns):
 
-    # ── 16. LINGUISTIC FEATURES ──────────────────────────────────────────────
-    with st.expander(T["sec_ling_features"]):
+                _ldf = db_df.copy()
 
-        _ling_cols = {
-            "type_token_ratio", "has_coordination", "dative_present",
-            "indirect_object_present", "adjective_count", "adverb_count",
-            "pronoun_count",
-        }
-        if db_df is not None and _ling_cols.issubset(db_df.columns):
+                # ── 1. TTR bar chart ──────────────────────────────────────────────
+                st.caption(T["ling_ttr_desc"])
+                _ttr = (
+                    _ldf.groupby("book")["type_token_ratio"]
+                    .mean()
+                    .reset_index()
+                    .sort_values("type_token_ratio", ascending=True)
+                )
+                _ttr.columns = [T["x_book"], T["col_ttr"]]
+                st.plotly_chart(
+                    fig_hbar(_ttr, T["col_ttr"], T["x_book"],
+                             T["ling_ttr_title"], h=380,
+                             xlabel=T["col_ttr"], ylabel=T["x_book"]),
+                    use_container_width=True,
+                )
 
-            _ldf = db_df.copy()
+                st.divider()
 
-            # ── 1. TTR bar chart ──────────────────────────────────────────────
-            st.caption(T["ling_ttr_desc"])
-            _ttr = (
-                _ldf.groupby("book")["type_token_ratio"]
-                .mean()
-                .reset_index()
-                .sort_values("type_token_ratio", ascending=True)
-            )
-            _ttr.columns = [T["x_book"], T["col_ttr"]]
-            st.plotly_chart(
-                fig_hbar(_ttr, T["col_ttr"], T["x_book"],
-                         T["ling_ttr_title"], h=380,
-                         xlabel=T["col_ttr"], ylabel=T["x_book"]),
-                use_container_width=True,
-            )
+                # ── 2. Boolean syntactic features grouped bar ─────────────────────
+                st.caption(T["ling_bool_desc"])
+                _bool_agg = (
+                    _ldf.groupby("book")[
+                        ["has_coordination", "dative_present", "indirect_object_present"]
+                    ]
+                    .mean()
+                    .mul(100)
+                    .reset_index()
+                    .sort_values("has_coordination", ascending=True)
+                )
+                _fig_bool = go.Figure()
+                _fig_bool.add_trace(go.Bar(
+                    name=T["lbl_coordination"],
+                    x=_bool_agg["has_coordination"],
+                    y=_bool_agg["book"],
+                    orientation="h",
+                    marker_color="#4895ef",
+                ))
+                _fig_bool.add_trace(go.Bar(
+                    name=T["lbl_dative"],
+                    x=_bool_agg["dative_present"],
+                    y=_bool_agg["book"],
+                    orientation="h",
+                    marker_color="#f4a261",
+                ))
+                _fig_bool.add_trace(go.Bar(
+                    name=T["lbl_iobj"],
+                    x=_bool_agg["indirect_object_present"],
+                    y=_bool_agg["book"],
+                    orientation="h",
+                    marker_color="#57cc99",
+                ))
+                _fig_bool.update_layout(
+                    barmode="group",
+                    title=T["ling_bool_title"],
+                    xaxis_title="%",
+                    height=420,
+                    **_LAYOUT,
+                )
+                st.plotly_chart(_fig_bool, use_container_width=True)
 
-            st.divider()
+                st.divider()
 
-            # ── 2. Boolean syntactic features grouped bar ─────────────────────
-            st.caption(T["ling_bool_desc"])
-            _bool_agg = (
-                _ldf.groupby("book")[
-                    ["has_coordination", "dative_present", "indirect_object_present"]
-                ]
-                .mean()
-                .mul(100)
-                .reset_index()
-                .sort_values("has_coordination", ascending=True)
-            )
-            _fig_bool = go.Figure()
-            _fig_bool.add_trace(go.Bar(
-                name=T["lbl_coordination"],
-                x=_bool_agg["has_coordination"],
-                y=_bool_agg["book"],
-                orientation="h",
-                marker_color="#4895ef",
-            ))
-            _fig_bool.add_trace(go.Bar(
-                name=T["lbl_dative"],
-                x=_bool_agg["dative_present"],
-                y=_bool_agg["book"],
-                orientation="h",
-                marker_color="#f4a261",
-            ))
-            _fig_bool.add_trace(go.Bar(
-                name=T["lbl_iobj"],
-                x=_bool_agg["indirect_object_present"],
-                y=_bool_agg["book"],
-                orientation="h",
-                marker_color="#57cc99",
-            ))
-            _fig_bool.update_layout(
-                barmode="group",
-                title=T["ling_bool_title"],
-                xaxis_title="%",
-                height=420,
-                **_LAYOUT,
-            )
-            st.plotly_chart(_fig_bool, use_container_width=True)
+                # ── 3. POS counts grouped bar ────────────────────────────────────
+                st.caption(T["ling_pos_desc"])
+                _pos_agg = (
+                    _ldf.groupby("book")[
+                        ["adjective_count", "adverb_count", "pronoun_count"]
+                    ]
+                    .mean()
+                    .reset_index()
+                    .sort_values("adjective_count", ascending=True)
+                )
+                _fig_pos = go.Figure()
+                _fig_pos.add_trace(go.Bar(
+                    name=T["lbl_adj"],
+                    x=_pos_agg["adjective_count"],
+                    y=_pos_agg["book"],
+                    orientation="h",
+                    marker_color="#7b2d8b",
+                ))
+                _fig_pos.add_trace(go.Bar(
+                    name=T["lbl_adv"],
+                    x=_pos_agg["adverb_count"],
+                    y=_pos_agg["book"],
+                    orientation="h",
+                    marker_color="#e63946",
+                ))
+                _fig_pos.add_trace(go.Bar(
+                    name=T["lbl_pron"],
+                    x=_pos_agg["pronoun_count"],
+                    y=_pos_agg["book"],
+                    orientation="h",
+                    marker_color="#ffd166",
+                ))
+                _fig_pos.update_layout(
+                    barmode="group",
+                    title=T["ling_pos_title"],
+                    height=420,
+                    **_LAYOUT,
+                )
+                st.plotly_chart(_fig_pos, use_container_width=True)
 
-            st.divider()
+                st.divider()
 
-            # ── 3. POS counts grouped bar ────────────────────────────────────
-            st.caption(T["ling_pos_desc"])
-            _pos_agg = (
-                _ldf.groupby("book")[
-                    ["adjective_count", "adverb_count", "pronoun_count"]
-                ]
-                .mean()
-                .reset_index()
-                .sort_values("adjective_count", ascending=True)
-            )
-            _fig_pos = go.Figure()
-            _fig_pos.add_trace(go.Bar(
-                name=T["lbl_adj"],
-                x=_pos_agg["adjective_count"],
-                y=_pos_agg["book"],
-                orientation="h",
-                marker_color="#7b2d8b",
-            ))
-            _fig_pos.add_trace(go.Bar(
-                name=T["lbl_adv"],
-                x=_pos_agg["adverb_count"],
-                y=_pos_agg["book"],
-                orientation="h",
-                marker_color="#e63946",
-            ))
-            _fig_pos.add_trace(go.Bar(
-                name=T["lbl_pron"],
-                x=_pos_agg["pronoun_count"],
-                y=_pos_agg["book"],
-                orientation="h",
-                marker_color="#ffd166",
-            ))
-            _fig_pos.update_layout(
-                barmode="group",
-                title=T["ling_pos_title"],
-                height=420,
-                **_LAYOUT,
-            )
-            st.plotly_chart(_fig_pos, use_container_width=True)
+                # ── 4. Most formulaic sentences table ────────────────────────────
+                st.caption(T["ling_formulaic_desc"])
+                _form = (
+                    _ldf[_ldf["sentence"].str.split().str.len() >= 5]
+                    .nsmallest(15, "type_token_ratio")
+                    [["book", "sentence", "type_token_ratio"]]
+                    .rename(columns={
+                        "book":             T["x_book"],
+                        "sentence":         T["col_sentence"],
+                        "type_token_ratio": T["col_ttr"],
+                    })
+                )
+                st.dataframe(
+                    _form,
+                    use_container_width=True,
+                    height=380,
+                    column_config={
+                        T["col_sentence"]: st.column_config.TextColumn(width="large"),
+                        T["col_ttr"]:      st.column_config.NumberColumn(format="%.3f"),
+                    },
+                )
 
-            st.divider()
-
-            # ── 4. Most formulaic sentences table ────────────────────────────
-            st.caption(T["ling_formulaic_desc"])
-            _form = (
-                _ldf[_ldf["sentence"].str.split().str.len() >= 5]
-                .nsmallest(15, "type_token_ratio")
-                [["book", "sentence", "type_token_ratio"]]
-                .rename(columns={
-                    "book":             T["x_book"],
-                    "sentence":         T["col_sentence"],
-                    "type_token_ratio": T["col_ttr"],
-                })
-            )
-            st.dataframe(
-                _form,
-                use_container_width=True,
-                height=380,
-                column_config={
-                    T["col_sentence"]: st.column_config.TextColumn(width="large"),
-                    T["col_ttr"]:      st.column_config.NumberColumn(format="%.3f"),
-                },
-            )
-
-        else:
-            st.info(T["no_db"])
+            else:
+                st.info(T["no_db"])
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 3 — RESULTS

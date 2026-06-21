@@ -1,0 +1,4 @@
+cluster,word1,word2,pair_count,pmi,matched_seed
+theological_cluster,milost,pokoj,8,10.75,milost
+theological_cluster,milost,vám,8,9.47,milost
+theological_cluster,boha,milost,7,10.277,milost
