@@ -37,6 +37,7 @@ TRANSLATIONS = {
         "tab_analyze": "📝 Analyzovat text",
         "tab_bible": "📚 Biblický korpus",
         "export_pdf": "📄  Exportovat report jako PDF",
+        "tab_compare": "📊 Porovnání",
         "pdf_generating": "Generuje se PDF…",
         "pdf_ready": "Report připraven ke stažení.",
         "pdf_error": "Chyba při generování PDF",
@@ -580,6 +581,7 @@ TRANSLATIONS = {
         "tab_analyze": "📝 Analyzovať text",
         "tab_bible": "📚 Biblický korpus",
         "export_pdf": "📄  Exportovať report ako PDF",
+        "tab_compare": "📊 Porovnanie",
         "pdf_generating": "Generuje sa PDF…",
         "pdf_ready": "Report pripravený na stiahnutie.",
         "pdf_error": "Chyba pri generovaní PDF",
@@ -1104,6 +1106,7 @@ TRANSLATIONS = {
         "tab_analyze": "📝 Analyze Text",
         "tab_bible": "📚 Bible Corpus",
         "export_pdf": "📄  Export Report as PDF",
+        "tab_compare": "📊 Comparison",
         "pdf_generating": "Generating PDF…",
         "pdf_ready": "Report ready for download.",
         "pdf_error": "PDF generation error",
@@ -1863,6 +1866,46 @@ def csv(rel: str) -> pd.DataFrame | None:
     return pd.read_csv(p) if p.exists() else None
 
 
+def _table_columns(conn, table: str) -> set[str]:
+    return {row[1] for row in conn.execute(f'PRAGMA table_info("{table}")')}
+
+
+def _latest_bible_run_id(conn, table: str) -> str | None:
+    cols = _table_columns(conn, table)
+    if "corpus_id" in cols:
+        row = conn.execute(
+            f'SELECT run_id FROM "{table}" WHERE corpus_id = ? ORDER BY rowid DESC LIMIT 1',
+            ("bible_bkr",),
+        ).fetchone()
+    else:
+        row = conn.execute(
+            f'SELECT run_id FROM "{table}" WHERE run_id NOT LIKE ? ORDER BY rowid DESC LIMIT 1',
+            ("upload_%",),
+        ).fetchone()
+    return row[0] if row else None
+
+
+def _display_series(df: pd.DataFrame, file_col: str = "file_name") -> pd.Series:
+    if "display_name" in df.columns:
+        display = df["display_name"].fillna("")
+        if (display.astype(str).str.strip() != "").any():
+            return display
+    if file_col in df.columns:
+        return (
+            df[file_col]
+            .astype(str)
+            .str.replace("bible_BKR_", "", regex=False)
+            .str.replace("bible_bkr_", "", regex=False)
+            .str.replace(".txt", "", regex=False)
+        )
+    return pd.Series(["—"] * len(df), index=df.index)
+
+
+def _select_existing(conn, table: str, columns: list[str]) -> str:
+    existing = _table_columns(conn, table)
+    return ", ".join(col for col in columns if col in existing)
+
+
 @st.cache_data(ttl=300)
 def load_db() -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
@@ -1870,26 +1913,29 @@ def load_db() -> pd.DataFrame | None:
         return None
     import sqlite3
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM skinner_analysis WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = _latest_bible_run_id(conn, "skinner_analysis")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
+    _select = _select_existing(conn, "skinner_analysis", [
+        "sentence_id", "sentence", "file_name", "display_name", "unit_id", "corpus_id",
+        "illocutionary_force", "primary_intention", "secondary_intention", "primary_strategy",
+        "confidence", "type_token_ratio", "has_coordination", "dative_present",
+        "indirect_object_present", "adjective_count", "adverb_count", "pronoun_count",
+    ])
+    if not _select:
+        conn.close()
+        return None
     df = pd.read_sql(
-        """SELECT sentence_id, sentence, file_name,
-                  illocutionary_force, primary_intention, secondary_intention,
-                  primary_strategy, CAST(confidence AS REAL) AS confidence,
-                  CAST(type_token_ratio AS REAL) AS type_token_ratio,
-                  has_coordination, dative_present, indirect_object_present,
-                  adjective_count, adverb_count, pronoun_count
-           FROM skinner_analysis WHERE run_id = ?""",
+        f'SELECT {_select} FROM "skinner_analysis" WHERE run_id = ?',
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
+    if "confidence" in df.columns:
+        df["confidence"] = pd.to_numeric(df["confidence"], errors="coerce")
+    if "type_token_ratio" in df.columns:
+        df["type_token_ratio"] = pd.to_numeric(df["type_token_ratio"], errors="coerce")
+    df["book"] = _display_series(df)
     return df
 
 
@@ -2443,10 +2489,11 @@ def _save_to_db(
 
 
 def _read_upload(f) -> str:
+    data = f.getvalue() if hasattr(f, "getvalue") else f.read()
     if f.name.lower().endswith(".pdf"):
         import pdfplumber
         pages = []
-        with pdfplumber.open(io.BytesIO(f.read())) as pdf:
+        with pdfplumber.open(io.BytesIO(data)) as pdf:
             for page in pdf.pages:
                 # x_tolerance=7 merges character-spaced PDFs ("T H E" → "THE")
                 words = page.extract_words(x_tolerance=7, y_tolerance=5)
@@ -2455,7 +2502,7 @@ def _read_upload(f) -> str:
                 else:
                     pages.append(page.extract_text() or "")
         return "\n\n".join(pages)
-    return f.read().decode("utf-8", errors="replace")
+    return data.decode("utf-8", errors="replace")
 
 
 @st.cache_resource(show_spinner="Loading Stanza NLP model (first run ~10 s)…")
@@ -2476,7 +2523,7 @@ def run_upload_pipeline(
     stimulus: str = "unknown",
     sentence_window: int = 150,
 ) -> tuple:
-    """Run the full 4-stage pipeline on an uploaded text, segmented into chapters.
+    """Run the full 4-stage pipeline on an uploaded text.
 
     Returns
     -------
@@ -2554,6 +2601,56 @@ def _context_warnings(source: str, interaction: str, stimulus: str, T: dict) -> 
     if interaction == "dialogue" and stimulus == "none":
         warns.append(T["ctx_warn_dialogue_none"])
     return warns
+
+
+def _upload_structure_kind(units) -> str:
+    if not units:
+        return "document"
+    if any(getattr(u, "unit_type", "") == "chapter" for u in units):
+        return "chapter"
+    if any(getattr(u, "unit_type", "") == "section" for u in units):
+        return "section"
+    return "document"
+
+
+def _upload_structure_badge(units) -> str:
+    kind = _upload_structure_kind(units)
+    if kind == "chapter":
+        return "🔖 Reálné kapitoly"
+    if kind == "section":
+        return "🔖 Reálné podkapitoly / sekce"
+    return "📄 Jednotný text bez strukturální segmentace"
+
+
+def _upload_units_label(units) -> str:
+    kind = _upload_structure_kind(units)
+    if kind == "chapter":
+        return "kapitol"
+    if kind == "section":
+        return "sekcí"
+    return "jednotka"
+
+
+def _upload_unit_axis_label(units) -> str:
+    kind = _upload_structure_kind(units)
+    if kind == "chapter":
+        return "Kapitola"
+    if kind == "section":
+        return "Sekce"
+    return "Jednotka"
+
+
+def _upload_units_metric_label(units) -> str:
+    kind = _upload_structure_kind(units)
+    if kind == "chapter":
+        return "Kapitoly"
+    if kind == "section":
+        return "Sekce"
+    return "Jednotky"
+
+
+def _provenance_caption(*parts: str) -> str:
+    return " · ".join(p for p in parts if p)
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -2638,22 +2735,23 @@ def load_refined() -> pd.DataFrame | None:
         return None
     import sqlite3
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM refined_descriptions WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = _latest_bible_run_id(conn, "refined_descriptions")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
+    _select = _select_existing(conn, "refined_descriptions", [
+        "sentence_id", "sentence", "file_name", "display_name", "unit_id", "corpus_id",
+        "description_type", "semantic_cluster", "lemmas",
+    ])
+    if not _select:
+        conn.close()
+        return None
     df = pd.read_sql(
-        """SELECT sentence_id, sentence, file_name,
-                  description_type, semantic_cluster, lemmas
-           FROM refined_descriptions WHERE run_id=?""",
+        f'SELECT {_select} FROM "refined_descriptions" WHERE run_id = ?',
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
+    df["book"] = _display_series(df)
     return df
 
 
@@ -2664,22 +2762,25 @@ def load_verbal_full() -> pd.DataFrame | None:
         return None
     import sqlite3
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM verbal_relations WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = _latest_bible_run_id(conn, "verbal_relations")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
+    _select = _select_existing(conn, "verbal_relations", [
+        "sentence_id", "sentence", "file_name", "display_name", "unit_id", "corpus_id",
+        "local_pattern", "semantic_cluster", "confidence",
+    ])
+    if not _select:
+        conn.close()
+        return None
     df = pd.read_sql(
-        """SELECT sentence_id, sentence, file_name,
-                  local_pattern, semantic_cluster
-           FROM verbal_relations WHERE run_id=?""",
+        f'SELECT {_select} FROM "verbal_relations" WHERE run_id = ?',
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
+    if "confidence" in df.columns:
+        df["confidence"] = pd.to_numeric(df["confidence"], errors="coerce")
+    df["book"] = _display_series(df)
     return df
 
 
@@ -2773,8 +2874,13 @@ if st.session_state.pop("_switch_to_results", False):
         unsafe_allow_html=True,
     )
 
-tab_analyze, tab_bible, tab_results = st.tabs(
-    [T["tab_analyze"], T["tab_bible"], T["tab_results"]]
+tab_analyze, tab_bible, tab_results, tab_compare = st.tabs(
+    [
+        T["tab_analyze"],
+        T["tab_bible"],
+        T["tab_results"],
+        T.get("tab_compare", "📊 Porovnání"),
+    ]
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -2878,6 +2984,44 @@ with tab_analyze:
 
     st.divider()
 
+    _preview_text = ""
+    _preview_source = "pasted_text"
+    if uploaded:
+        _preview_text = _read_upload(uploaded)
+        _preview_source = uploaded.name
+    elif pasted.strip():
+        _preview_text = pasted.strip()
+
+    if _preview_text:
+        from c_segment import segment_book
+
+        _preview_units = segment_book(
+            _preview_text,
+            corpus_id="preview_upload",
+            source_name=_preview_source,
+        )
+        _preview_kind = _upload_structure_kind(_preview_units)
+        _preview_label = _upload_units_label(_preview_units)
+        with st.expander("🧭 Náhled strukturální segmentace", expanded=False):
+            st.caption(
+                _provenance_caption(
+                    "📤 Nahraný text",
+                    "🔄 Živý výpočet",
+                    _upload_structure_badge(_preview_units),
+                )
+            )
+            if _preview_kind == "document":
+                st.info("Text bude analyzován jako jeden celek bez strukturální segmentace.")
+            else:
+                st.success(
+                    f"Text bude rozdělen do {len(_preview_units)} {_preview_label} na základě reálných nadpisů."
+                )
+                _preview_names = [u.display_name for u in _preview_units[:8]]
+                if _preview_names:
+                    st.markdown("\n".join(f"- `{name}`" for name in _preview_names))
+
+        st.divider()
+
     # ── RUN BUTTON ───────────────────────────────────────────────────────────
     st.caption(T["run_hint"])
     if st.button(T["run_button"], type="primary", use_container_width=True):
@@ -2947,6 +3091,7 @@ with tab_bible:
 
     st.subheader(T["bible_header"])
     st.caption(T["bible_caption"])
+    st.caption(_provenance_caption("📖 Biblický korpus", "💾 Předpočítáno", "66 knih BKR"))
 
     db_df = load_db()
 
@@ -4102,15 +4247,22 @@ with tab_results:
     _ldat     = st.session_state.get("adf_lemmas", [])
     _src      = st.session_state.get("adf_source", "—")
     _corpus_id = st.session_state.get("adf_corpus_id", "")
+    _structure_badge = _upload_structure_badge(_units)
+    _unit_axis = _upload_unit_axis_label(_units)
+    _unit_label = _upload_units_label(_units)
 
     # ── source badge ─────────────────────────────────────────────────────────
-    _n_chapters = len(_units) if _units else 1
+    _n_units = len(_units) if _units else 1
     _hdr_col, _btn_col = st.columns([3, 1])
     with _hdr_col:
         st.subheader(T["results_title"])
         st.caption(
-            f"📁 **Nahraný text** — `{_src}` · {_n_chapters} "
-            f"{'kapitola' if _n_chapters == 1 else 'kapitol'}"
+            _provenance_caption(
+                f"📤 Nahraný text — `{_src}`",
+                "🔄 Živý výpočet",
+                _structure_badge,
+                f"{_n_units} {_unit_label}" if _n_units > 1 else "1 jednotka",
+            )
         )
 
     # ── headline metrics ──────────────────────────────────────────────────────
@@ -4122,12 +4274,12 @@ with tab_results:
     _c2.metric(T["metric_classified"], f"{_classif}/{_total}",
                f"{100*_classif/_total:.0f} %" if _total else "—")
     _c3.metric(T["metric_confidence"], f"{_mconf:.2f}")
-    _c4.metric(T.get("metric_chapters", "Kapitol"), _n_chapters)
+    _c4.metric(_upload_units_metric_label(_units), _n_units)
     st.divider()
 
     # ── 0. Chapter overview ───────────────────────────────────────────────────
     if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
-        with st.expander("📑 Přehled kapitol", expanded=False):
+        with st.expander(f"📑 Přehled {_unit_label}", expanded=False):
             _chap_rows = []
             for _u in _units:
                 _u_df = _df[_df["unit_id"] == _u.unit_id]
@@ -4139,7 +4291,7 @@ with tab_results:
                     else "—"
                 )
                 _chap_rows.append({
-                    "Kapitola": _u.display_name,
+                    _unit_axis: _u.display_name,
                     "Věty": _u_total,
                     "Průměrná jistota": round(_u_conf, 3),
                     "Dominantní záměr": _u_dom,
@@ -4400,7 +4552,7 @@ with tab_results:
                     st.dataframe(_aa_sample, use_container_width=True, height=280)
 
             # ── Chapter-level intention heatmap ───────────────────────────────
-            if _units and len(_units) >= 3 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
+            if _units and len(_units) >= 2 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
                 st.divider()
                 _int_pivot = (
                     _df.groupby(["unit_id", "primary_intention"])
@@ -4413,16 +4565,16 @@ with tab_results:
                     ).fillna(0).reset_index()
                     _uid2name_qs = {u.unit_id: u.display_name for u in _units}
                     _int_wide["unit_id"] = _int_wide["unit_id"].map(_uid2name_qs).fillna(_int_wide["unit_id"])
-                    _int_wide = _int_wide.rename(columns={"unit_id": "Kapitola"})
-                    st.caption(T.get("intent_book_heatmap_desc", "Záměry podle kapitol"))
+                    _int_wide = _int_wide.rename(columns={"unit_id": _unit_axis})
+                    st.caption(f"Záměry podle jednotek — {_structure_badge.lower()}")
                     st.plotly_chart(
-                        fig_heatmap(_int_wide, "Kapitola",
-                                    T.get("intent_book_heatmap_title", "Záměry podle kapitol"),
+                        fig_heatmap(_int_wide, _unit_axis,
+                                    f"Záměry podle {_unit_label}",
                                     h=max(300, 30 * len(_units))),
                         use_container_width=True,
                     )
-            elif _units and len(_units) < 3 and "primary_intention" in _df.columns:
-                st.info("Kapitolová heatmapa vyžaduje alespoň 3 kapitoly.")
+            elif _units and len(_units) < 2 and "primary_intention" in _df.columns:
+                st.info("Vícejednotková heatmapa je dostupná jen při reálné strukturální segmentaci.")
 
     # ── 2. B.F. Skinner ───────────────────────────────────────────────────────
     if st.session_state.get("sel_bf_skinner", True) and not _df.empty:
@@ -4453,7 +4605,7 @@ with tab_results:
                                      xlabel=T["x_count"]),
                             use_container_width=True,
                         )
-                # Chapter-level tact vs autoclitic heatmap (if multiple chapters)
+                # Structured-unit tact vs autoclitic heatmap
                 if _units and len(_units) > 1 and "unit_id" in _df.columns:
                     st.divider()
                     _ta_rows = []
@@ -4463,20 +4615,20 @@ with tab_results:
                         if _t == 0:
                             continue
                         _ta_rows.append({
-                            "Kapitola": _u.display_name,
+                            _unit_axis: _u.display_name,
                             "tact": (_ud["skinner_class"] == "tact").sum() / _t,
                             "autoclitic": (_ud["skinner_class"] == "autoclitic").sum() / _t,
                         })
                     if _ta_rows:
                         _ta_df2 = pd.DataFrame(_ta_rows)
                         _fig_ta2 = go.Figure()
-                        _fig_ta2.add_bar(name="tact", x=_ta_df2["Kapitola"],
+                        _fig_ta2.add_bar(name="tact", x=_ta_df2[_unit_axis],
                                          y=_ta_df2["tact"], marker_color="#3a86ff")
-                        _fig_ta2.add_bar(name="autoclitic", x=_ta_df2["Kapitola"],
+                        _fig_ta2.add_bar(name="autoclitic", x=_ta_df2[_unit_axis],
                                          y=_ta_df2["autoclitic"], marker_color="#8338ec")
                         _fig_ta2.update_layout(barmode="group",
                                                title=T.get("tact_autoclitic_title",
-                                                           "Tact vs Autoclitic podle kapitol"),
+                                                           "Tact vs Autoclitic podle jednotek"),
                                                height=320, **_LAYOUT)
                         st.caption(T.get("tact_autoclitic_desc", ""))
                         st.plotly_chart(_fig_ta2, use_container_width=True)
@@ -4527,12 +4679,12 @@ with tab_results:
                         # Map unit_id → display_name
                         _uid2name = {u.unit_id: u.display_name for u in _units}
                         _vr_wide["unit_id"] = _vr_wide["unit_id"].map(_uid2name).fillna(_vr_wide["unit_id"])
-                        _vr_wide = _vr_wide.rename(columns={"unit_id": "Kapitola"})
-                        st.caption(T.get("verbal_book_heatmap_desc", "Verbální vztahy podle kapitol"))
+                        _vr_wide = _vr_wide.rename(columns={"unit_id": _unit_axis})
+                        st.caption(f"Verbální vztahy podle jednotek — {_structure_badge.lower()}")
                         st.plotly_chart(
-                            fig_heatmap(_vr_wide, "Kapitola",
+                            fig_heatmap(_vr_wide, _unit_axis,
                                         T.get("verbal_book_heatmap_title",
-                                              "Verbální vztahy podle kapitol"), h=400),
+                                              "Verbální vztahy podle jednotek"), h=400),
                             use_container_width=True,
                         )
             else:
@@ -4688,7 +4840,7 @@ with tab_results:
                         use_container_width=True,
                     )
 
-            # TF-IDF by chapter heatmap (requires multiple chapters)
+            # TF-IDF by structured units
             if _units and len(_units) >= 3 and not _df.empty and "unit_id" in _df.columns:
                 st.divider()
                 _tfidf_items = []
@@ -4708,15 +4860,15 @@ with tab_results:
                     if not _tfidf_heat.empty:
                         st.caption(T["tfidf_heatmap_desc"])
                         _th_wide = _tfidf_heat.copy()
-                        _th_wide = _th_wide.rename(columns={"book": "Kapitola"})
+                        _th_wide = _th_wide.rename(columns={"book": _unit_axis})
                         st.plotly_chart(
-                            fig_heatmap(_th_wide, "Kapitola",
+                            fig_heatmap(_th_wide, _unit_axis,
                                         T["tfidf_heatmap_title"], h=420,
                                         fmt=".2f"),
                             use_container_width=True,
                         )
             elif _units and len(_units) < 3:
-                st.info("Kapitolová TF-IDF heatmapa vyžaduje alespoň 3 kapitoly.")
+                st.info("TF-IDF heatmapa vyžaduje alespoň 3 reálně detekované jednotky.")
 
     # ── 8. Štýl a syntax ─────────────────────────────────────────────────────
     if st.session_state.get("sel_style", False):
@@ -4731,12 +4883,12 @@ with tab_results:
                         .reset_index()
                     )
                     _uid2name = {u.unit_id: u.display_name for u in _units}
-                    _cx_agg["Kapitola"] = _cx_agg["unit_id"].map(_uid2name).fillna(_cx_agg["unit_id"])
+                    _cx_agg[_unit_axis] = _cx_agg["unit_id"].map(_uid2name).fillna(_cx_agg["unit_id"])
                     st.caption(T.get("complexity_desc", "Syntaktická složitost"))
                     _sx1, _sx2 = st.columns(2)
                     with _sx1:
                         st.plotly_chart(
-                            fig_hbar(_cx_agg, "avg_tree_depth", "Kapitola",
+                            fig_hbar(_cx_agg, "avg_tree_depth", _unit_axis,
                                      T.get("complexity_title", "Hloubka stromu"), h=320,
                                      xlabel=T.get("x_depth", "Hloubka")),
                             use_container_width=True,
@@ -4744,7 +4896,7 @@ with tab_results:
                     with _sx2:
                         if "avg_clause_count" in _cx_agg.columns:
                             st.plotly_chart(
-                                fig_hbar(_cx_agg, "avg_clause_count", "Kapitola",
+                                fig_hbar(_cx_agg, "avg_clause_count", _unit_axis,
                                          T.get("complexity_title", "Počet klauzulí"), h=320,
                                          xlabel=T.get("x_clauses", "Klauzule")),
                                 use_container_width=True,
@@ -4769,7 +4921,7 @@ with tab_results:
                             _km = _KM(n_clusters=_n_cl, random_state=42, n_init=10)
                             _labels = _km.fit_predict(_X_sty)
                             _sty_df2 = pd.DataFrame({
-                                "Kapitola": [b for b, _ in _sty_items],
+                                _unit_axis: [b for b, _ in _sty_items],
                                 T.get("col_style_cluster", "Stylový shluk"): [f"Shluk {l+1}" for l in _labels],
                             })
                             st.caption(T["style_table_desc"])
@@ -4777,7 +4929,7 @@ with tab_results:
                         except Exception:
                             pass
             else:
-                st.info("Spusťte plnou analýzu s alespoň 2 kapitolami pro zobrazení stylu.")
+                st.info("Spusťte plnou analýzu s alespoň 2 reálně detekovanými jednotkami pro zobrazení stylu.")
 
     # ── 9. Kvalita výsledkov ──────────────────────────────────────────────────
     if st.session_state.get("sel_quality", True):
@@ -4819,13 +4971,13 @@ with tab_results:
             _db_n = count_table_rows(TABLE_SKINNER)
             _runs = list_runs(TABLE_SKINNER)
             _upload_runs = [r for r in _runs if "upload_" in r]
-            _seg_method = "marker" if _units and len(_units) > 1 else "single"
             st.markdown(f"""
 | | |
 |---|---|
 | **Zdroj** | `{_src}` |
 | **Korpus ID** | `{_corpus_id}` |
-| **Kapitol** | {_n_chapters} |
+| **Struktura** | {_structure_badge} |
+| **Jednotek** | {_n_units} |
 | **Věty celkem** | {_total} |
 | **DB řádky (skinner_analysis)** | {_db_n or "—"} |
 | **Biblické běhy v DB** | {len(_runs) - len(_upload_runs)} |
@@ -4858,3 +5010,169 @@ with tab_results:
                 st.rerun()
             except Exception as _exc:
                 st.error(f"{T['save_error']}: {_exc}")
+
+
+with tab_compare:
+
+    st.subheader(T.get("tab_compare", "📊 Porovnání"))
+    st.caption(_provenance_caption("📖 Biblický korpus", "📤 Nahraný text", "⚖️ Explicitní porovnání"))
+
+    if "adf" not in st.session_state:
+        st.info("Nejprve spusťte analýzu v záložce Analyzovat text.")
+        st.stop()
+
+    _cmp_df = st.session_state["adf"]
+    _cmp_rel = st.session_state.get("adf_rel", pd.DataFrame())
+    _cmp_ref = st.session_state.get("adf_ref", pd.DataFrame())
+    _cmp_units = st.session_state.get("adf_units", [])
+    _cmp_src = st.session_state.get("adf_source", "—")
+    _cmp_axis = _upload_unit_axis_label(_cmp_units)
+    _cmp_badge = _upload_structure_badge(_cmp_units)
+
+    _bible_df = load_db()
+    if _bible_df is None:
+        st.warning(T["no_db"])
+        st.stop()
+
+    _bible_rel = load_verbal_full()
+    _bible_ref = load_refined()
+    _bible_complexity = csv("dependency_hierarchy/complexity_by_book.csv")
+
+    st.caption(
+        _provenance_caption(
+            f"📤 `{_cmp_src}`",
+            _cmp_badge,
+            "📖 Bible corpus = fixed BKR benchmark",
+        )
+    )
+
+    with st.expander("📊 Záměry — porovnání", expanded=True):
+        _up = (_cmp_df["primary_intention"].value_counts(normalize=True) * 100).rename("Upload")
+        _bi = (_bible_df["primary_intention"].value_counts(normalize=True) * 100).rename("Bible corpus")
+        _cmp = pd.concat([_up, _bi], axis=1).fillna(0).reset_index().rename(columns={"index": "raw"})
+        _cmp["Záměr"] = _cmp["raw"].map(VI).fillna(_cmp["raw"])
+        _cmp_long = _cmp.melt(id_vars=["Záměr"], value_vars=["Upload", "Bible corpus"],
+                              var_name="Zdroj", value_name="Podíl %")
+        st.caption(_provenance_caption("📤 Upload-only results", "📖 Bible-only benchmark", "🔄 + 💾"))
+        _fig_cmp_int = px.bar(
+            _cmp_long, x="Podíl %", y="Záměr", color="Zdroj", barmode="group",
+            title="Distribuce záměrů: upload vs. Bible corpus", orientation="h",
+            color_discrete_map={"Upload": "#3a86ff", "Bible corpus": "#8338ec"},
+        )
+        _fig_cmp_int.update_layout(height=440, **_LAYOUT)
+        st.plotly_chart(_fig_cmp_int, use_container_width=True)
+
+        if len(_cmp_units) >= 2 and "unit_id" in _cmp_df.columns:
+            _heat = (_cmp_df.groupby(["unit_id", "primary_intention"]).size()
+                     .reset_index(name="count")
+                     .pivot(index="unit_id", columns="primary_intention", values="count")
+                     .fillna(0).reset_index())
+            _id2name = {u.unit_id: u.display_name for u in _cmp_units}
+            _heat["unit_id"] = _heat["unit_id"].map(_id2name).fillna(_heat["unit_id"])
+            _heat = _heat.rename(columns={"unit_id": _cmp_axis})
+            st.caption(f"Upload heatmap po jednotkách — {_cmp_badge.lower()}")
+            st.plotly_chart(
+                fig_heatmap(_heat, _cmp_axis, f"Upload: záměry podle {_upload_units_label(_cmp_units)}", h=320),
+                use_container_width=True,
+            )
+        else:
+            st.info("Vícejednotkový pohled je dostupný jen při reálně detekované struktuře.")
+
+    with st.expander("🎯 Strategie — porovnání"):
+        _up = (_cmp_df["primary_strategy"].value_counts(normalize=True) * 100).rename("Upload")
+        _bi = (_bible_df["primary_strategy"].value_counts(normalize=True) * 100).rename("Bible corpus")
+        _cmp = pd.concat([_up, _bi], axis=1).fillna(0).reset_index().rename(columns={"index": "raw"})
+        _cmp["Strategie"] = _cmp["raw"].map(VS).fillna(_cmp["raw"])
+        _cmp_long = _cmp.melt(id_vars=["Strategie"], value_vars=["Upload", "Bible corpus"],
+                              var_name="Zdroj", value_name="Podíl %")
+        _fig_cmp_str = px.bar(
+            _cmp_long, x="Podíl %", y="Strategie", color="Zdroj", barmode="group",
+            title="Rétorické strategie: upload vs. Bible corpus", orientation="h",
+            color_discrete_map={"Upload": "#3a86ff", "Bible corpus": "#8338ec"},
+        )
+        _fig_cmp_str.update_layout(height=420, **_LAYOUT)
+        st.plotly_chart(_fig_cmp_str, use_container_width=True)
+
+    with st.expander("🔗 Verbální vztahy — porovnání"):
+        if _cmp_rel.empty or _bible_rel is None:
+            st.info("Verbální vztahy nejsou pro porovnání dostupné.")
+        else:
+            _up = (_cmp_rel["local_pattern"].value_counts(normalize=True) * 100).rename("Upload")
+            _bi = (_bible_rel["local_pattern"].value_counts(normalize=True) * 100).rename("Bible corpus")
+            _cmp = pd.concat([_up, _bi], axis=1).fillna(0).reset_index().rename(columns={"index": "raw"})
+            _cmp["Vztah"] = _cmp["raw"].map(VVT).fillna(_cmp["raw"])
+            _cmp_long = _cmp.melt(id_vars=["Vztah"], value_vars=["Upload", "Bible corpus"],
+                                  var_name="Zdroj", value_name="Podíl %")
+            _fig_cmp_rel = px.bar(
+                _cmp_long, x="Podíl %", y="Vztah", color="Zdroj", barmode="group",
+                title="Verbální vztahy: upload vs. Bible corpus", orientation="h",
+                color_discrete_map={"Upload": "#3a86ff", "Bible corpus": "#8338ec"},
+            )
+            _fig_cmp_rel.update_layout(height=420, **_LAYOUT)
+            st.plotly_chart(_fig_cmp_rel, use_container_width=True)
+
+    with st.expander("🧠 Sémantické shluky — porovnání"):
+        if _cmp_ref.empty or _bible_ref is None or "semantic_cluster" not in _cmp_ref.columns:
+            st.info("Sémantické shluky nejsou pro porovnání dostupné.")
+        else:
+            _up = (_cmp_ref["semantic_cluster"].value_counts(normalize=True) * 100).rename("Upload")
+            _bi = (_bible_ref["semantic_cluster"].value_counts(normalize=True) * 100).rename("Bible corpus")
+            _cmp = pd.concat([_up, _bi], axis=1).fillna(0).reset_index().rename(columns={"index": "Shluk"})
+            _cmp_long = _cmp.melt(id_vars=["Shluk"], value_vars=["Upload", "Bible corpus"],
+                                  var_name="Zdroj", value_name="Podíl %")
+            _fig_cmp_sem = px.bar(
+                _cmp_long, x="Podíl %", y="Shluk", color="Zdroj", barmode="group",
+                title="Sémantické shluky: upload vs. Bible corpus", orientation="h",
+                color_discrete_map={"Upload": "#3a86ff", "Bible corpus": "#8338ec"},
+            )
+            _fig_cmp_sem.update_layout(height=420, **_LAYOUT)
+            st.plotly_chart(_fig_cmp_sem, use_container_width=True)
+
+    with st.expander("📐 Syntaktická složitost — porovnání"):
+        if _cmp_ref.empty or "avg_tree_depth" not in _cmp_ref.columns or _bible_complexity is None:
+            st.info("Syntaktická složitost není pro porovnání dostupná.")
+        else:
+            _complexity_cols = [c for c in ["avg_tree_depth", "avg_clause_count"] if c in _cmp_ref.columns]
+            _upload_complexity = (_cmp_ref.groupby("unit_id")[_complexity_cols]
+                                  .mean().reset_index())
+            _id2name = {u.unit_id: u.display_name for u in _cmp_units}
+            _upload_complexity["label"] = _upload_complexity["unit_id"].map(_id2name).fillna(_upload_complexity["unit_id"])
+            _fig_depth = go.Figure()
+            _fig_depth.add_trace(go.Box(
+                y=_bible_complexity["avg_tree_depth"],
+                name="Bible corpus",
+                marker_color="#8338ec",
+                boxmean=True,
+            ))
+            _fig_depth.add_trace(go.Scatter(
+                x=["Upload"] * len(_upload_complexity),
+                y=_upload_complexity["avg_tree_depth"],
+                mode="markers+text",
+                text=_upload_complexity["label"],
+                textposition="top center",
+                marker=dict(color="#3a86ff", size=9),
+                name="Upload",
+            ))
+            _fig_depth.update_layout(title="Průměrná hloubka stromu: upload vs. Bible corpus", height=420, **_LAYOUT)
+            st.plotly_chart(_fig_depth, use_container_width=True)
+
+    with st.expander("⚡ Jistota klasifikace — porovnání"):
+        _hist = pd.concat([
+            pd.DataFrame({"confidence": _cmp_df["confidence"], "Zdroj": "Upload"}),
+            pd.DataFrame({"confidence": _bible_df["confidence"], "Zdroj": "Bible corpus"}),
+        ], ignore_index=True)
+        _fig_conf = px.histogram(
+            _hist, x="confidence", color="Zdroj", nbins=20, barmode="overlay",
+            title="Jistota klasifikace: upload vs. Bible corpus",
+            color_discrete_map={"Upload": "#3a86ff", "Bible corpus": "#8338ec"},
+        )
+        _fig_conf.update_layout(height=360, **_LAYOUT)
+        st.plotly_chart(_fig_conf, use_container_width=True)
+
+    with st.expander("ℹ️ Co nelze porovnat"):
+        st.markdown(
+            "- **PMI / konceptové clustery / opoziční sítě** z Bible Corpus jsou předpočítané batch analýzy a nemají poctivý upload ekvivalent.\n"
+            "- **Bible-only poměry** (např. knižní poměry a některé eval CSV) zůstávají v Bible Corpus tab.\n"
+            "- **Vícejednotkové heatmapy** jsou dostupné jen pokud upload obsahuje reálnou strukturu kapitol nebo sekcí.\n"
+            "- **Žádné Bible-only CSV** se v Results tab nepoužívají; Comparison je jediné místo, kde se upload a Bible ukazují vedle sebe."
+        )

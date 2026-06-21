@@ -222,7 +222,9 @@ def _illocutionary_density(
 # J0-4. CROSS-VALIDÁCIA S detect_book_genre()
 # ==========================================================
 
-def _genre_cross_validate(dominant_mode: str, file_name: str) -> tuple[str, str]:
+def _genre_cross_validate(dominant_mode: str, file_name: str, enabled: bool = True) -> tuple[str, str]:
+    if not enabled:
+        return "generic_mode", "genre_priors_disabled"
     if not file_name:
         return "unknown", ""
     try:
@@ -253,6 +255,7 @@ def _genre_cross_validate(dominant_mode: str, file_name: str) -> tuple[str, str]
 def resolve_discursive_context(
     features: List[SentenceFeatures],
     file_name: str = "",
+    allow_genre_priors: bool = True,
 ) -> DiscursiveContext:
     if not features:
         return DiscursiveContext(
@@ -277,7 +280,11 @@ def resolve_discursive_context(
         and epistolar_d > 0.03
     )
 
-    genre_signal, genre_note = _genre_cross_validate(dominant_mode, file_name)
+    genre_signal, genre_note = _genre_cross_validate(
+        dominant_mode,
+        file_name,
+        enabled=allow_genre_priors,
+    )
 
     return DiscursiveContext(
         dominant_mode=dominant_mode,

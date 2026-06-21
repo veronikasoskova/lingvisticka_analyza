@@ -36,6 +36,13 @@ def process_unit(
     Returns a ProcessedUnit with three row-lists ready for insert_rows().
     """
 
+    if unit.unit_type == "book":
+        input_unit = "book"
+    elif unit.unit_type in {"chapter", "section"}:
+        input_unit = unit.unit_type
+    else:
+        input_unit = "document"
+
     text_input = create_input_from_text(
         text=unit.text,
         source=unit.source,
@@ -43,12 +50,16 @@ def process_unit(
         stimulus=unit.stimulus,
         corpus_id=unit.corpus_id,
         source_id=unit.unit_id,
-        unit="chapter" if unit.unit_type == "chapter" else "book",
+        unit=input_unit,
     )
 
     preprocessed = preprocess_text(text_input)
     features = extract_features(preprocessed)
-    disc_context = resolve_discursive_context(features, unit.unit_id)
+    disc_context = resolve_discursive_context(
+        features,
+        unit.unit_id,
+        allow_genre_priors=(unit.corpus_id == "bible_bkr" and unit.unit_type == "book"),
+    )
     semantics = semantic_enrichment(features)
     rst_relations = annotate_rst(features)
 

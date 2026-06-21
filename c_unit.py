@@ -1,6 +1,6 @@
 """
 c_unit.py — AnalysisUnit dataclass
-Unified model for both Bible books and uploaded text chapters.
+Unified model for Bible books and uploaded text units.
 """
 from __future__ import annotations
 
@@ -12,16 +12,16 @@ from c_input import SourceType, InteractionType, StimulusType, TextUnitType
 
 @dataclass
 class AnalysisUnit:
-    """Single unit of analysis — one Bible book or one chapter of an uploaded text."""
+    """Single unit of analysis — one Bible book or one uploaded text unit."""
 
     corpus_id: str
     """Stable corpus identifier.  'bible_bkr'  |  'upload_{stem}_{ts}'"""
 
     unit_id: str
-    """Unique identifier within the corpus.  e.g. 'genesis'  |  'chapter_03'"""
+    """Unique identifier within the corpus.  e.g. 'genesis' | 'chapter_03' | 'section_02' | 'whole'"""
 
     unit_type: TextUnitType
-    """Granularity level: 'book' for Bible books, 'chapter' for upload segments."""
+    """Granularity level: 'book' for Bible books, 'chapter'/'section'/'document' for uploads."""
 
     display_name: str
     """Human-readable label used in UI and chart axes."""
