@@ -147,13 +147,24 @@ def latest_run_id(table: str) -> str | None:
 
 
 def _latest_pipeline_run_id(table: str) -> str | None:
-    """Return the most recent non-upload run_id (ordered by rowid), or None."""
+    """Return the most recent Bible-corpus run_id (ordered by rowid), or None.
+
+    Prefers rows where corpus_id = 'bible_bkr' when that column exists.
+    Falls back to the old run_id NOT LIKE 'upload_%' guard for backward compat.
+    """
     conn = get_conn()
     try:
-        row = conn.execute(
-            f'SELECT run_id FROM "{table}" WHERE run_id NOT LIKE \'upload_%\''
-            f' ORDER BY id DESC LIMIT 1'
-        ).fetchone()
+        existing = {row[1] for row in conn.execute(f'PRAGMA table_info("{table}")')}
+        if "corpus_id" in existing:
+            row = conn.execute(
+                f'SELECT run_id FROM "{table}" WHERE corpus_id = \'bible_bkr\''
+                f' ORDER BY id DESC LIMIT 1'
+            ).fetchone()
+        else:
+            row = conn.execute(
+                f'SELECT run_id FROM "{table}" WHERE run_id NOT LIKE \'upload_%\''
+                f' ORDER BY id DESC LIMIT 1'
+            ).fetchone()
         return row[0] if row else None
     except sqlite3.OperationalError:
         return None
