@@ -2422,13 +2422,24 @@ def _make_upload_run_id(source_name: str) -> str:
     return f"upload_{stem}_{ts}"
 
 
-def _save_to_db(df: pd.DataFrame, run_id: str) -> int:
-    """Write analysis DataFrame to TABLE_SKINNER under run_id. Returns row count."""
+def _save_to_db(
+    skinner_df: pd.DataFrame,
+    run_id: str,
+    rel_df: "pd.DataFrame | None" = None,
+    ref_df: "pd.DataFrame | None" = None,
+) -> int:
+    """Write all three analysis DataFrames to DB under run_id. Returns total row count."""
     import sys as _sys
     _sys.path.insert(0, str(SRC))
-    from n_db import insert_rows, TABLE_SKINNER
-    rows = df.to_dict("records")
-    return insert_rows(TABLE_SKINNER, rows, run_id)
+    from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
+    total = 0
+    if skinner_df is not None and not skinner_df.empty:
+        total += insert_rows(TABLE_SKINNER, skinner_df.to_dict("records"), run_id)
+    if rel_df is not None and not rel_df.empty:
+        total += insert_rows(TABLE_RELATIONS, rel_df.to_dict("records"), run_id)
+    if ref_df is not None and not ref_df.empty:
+        total += insert_rows(TABLE_REFINED, ref_df.to_dict("records"), run_id)
+    return total
 
 
 def _read_upload(f) -> str:
@@ -2457,12 +2468,68 @@ def _pipeline():
     return create_input_from_text, preprocess_text, extract_features, semantic_enrichment, classify_q_skinner
 
 
+def run_upload_pipeline(
+    text: str,
+    corpus_id: str,
+    source: str = "uploaded_document",
+    interaction: str = "unknown",
+    stimulus: str = "unknown",
+    sentence_window: int = 150,
+) -> tuple:
+    """Run the full 4-stage pipeline on an uploaded text, segmented into chapters.
+
+    Returns
+    -------
+    (skinner_df, rel_df, ref_df, units, lemmas)
+    where `units` is a list of AnalysisUnit objects and `lemmas` is the
+    per-sentence (sentence, lemma_string) list for backward compatibility.
+    """
+    from c_segment import segment_book
+    from k_pipeline_core import process_unit
+
+    units = segment_book(
+        text=text,
+        corpus_id=corpus_id,
+        source_name=corpus_id,
+        sentence_window=sentence_window,
+    )
+
+    all_sk, all_rel, all_ref = [], [], []
+    lemmas = []
+
+    # Warm up Stanza via existing cache
+    _pipeline()
+
+    for unit in units:
+        # Override source/interaction/stimulus on the unit from user selection
+        unit.source = source
+        unit.interaction = interaction
+        unit.stimulus = stimulus
+
+        result = process_unit(unit)
+
+        all_sk.extend(result.skinner_rows)
+        all_rel.extend(result.relation_rows)
+        all_ref.extend(result.refined_rows)
+
+    # Build backward-compat lemmas list from skinner rows (sentence + lemmas col)
+    for row in all_sk:
+        lemmas.append((row.get("sentence", ""), row.get("lemmas", "")))
+
+    skinner_df = pd.DataFrame(all_sk) if all_sk else pd.DataFrame()
+    rel_df = pd.DataFrame(all_rel) if all_rel else pd.DataFrame()
+    ref_df = pd.DataFrame(all_ref) if all_ref else pd.DataFrame()
+
+    return skinner_df, rel_df, ref_df, units, lemmas
+
+
 def run_pipeline(
     text: str,
     source: str = "uploaded_document",
     interaction: str = "unknown",
     stimulus: str = "unknown",
 ) -> tuple:
+    """Legacy single-stage pipeline (Q. Skinner only). Kept for compatibility."""
     from dataclasses import asdict
     mk_input, preprocess, extract, enrich, classify = _pipeline()
     inp = mk_input(text=text, source=source, interaction=interaction, stimulus=stimulus)
@@ -2472,6 +2539,7 @@ def run_pipeline(
     rows = [asdict(classify(f, s, inp)) for f, s in zip(feats, sems)]
     lemmas = [(f.sentence, f.lemmas) for f in feats]
     return pd.DataFrame(rows), lemmas
+
 
 
 def _context_warnings(source: str, interaction: str, stimulus: str, T: dict) -> list[str]:
@@ -2831,15 +2899,23 @@ with tab_analyze:
             if _pre_warns:
                 st.stop()
             with st.spinner(T["running_pipeline"]):
-                adf, adf_lemmas = run_pipeline(
+                from c_segment import make_corpus_id
+                _corpus_id = make_corpus_id(source_name)
+                adf, adf_rel, adf_ref, adf_units, adf_lemmas = run_upload_pipeline(
                     text,
+                    corpus_id=_corpus_id,
                     source=ctx_source,
                     interaction=ctx_interaction,
                     stimulus=ctx_stimulus,
                 )
                 st.session_state["adf"] = adf
+                st.session_state["adf_rel"] = adf_rel
+                st.session_state["adf_ref"] = adf_ref
+                st.session_state["adf_units"] = adf_units
+                st.session_state["adf_corpus_id"] = _corpus_id
                 st.session_state["adf_lemmas"] = adf_lemmas
                 st.session_state["adf_source"] = source_name
+                st.session_state["adf_seg_mode"] = adf_units[0].unit_type if adf_units else "document"
                 st.session_state.pop("adf_saved_run_id", None)
                 st.session_state["_switch_to_results"] = True
             st.success(T["results_ready_msg"])
@@ -4020,24 +4096,78 @@ with tab_results:
         st.info(T["results_empty"])
         st.stop()
 
-    _df   = st.session_state["adf"]
-    _ldat = st.session_state.get("adf_lemmas", [])
-    _src  = st.session_state.get("adf_source", "—")
+    _df       = st.session_state["adf"]
+    _rel_df   = st.session_state.get("adf_rel", pd.DataFrame())
+    _ref_df   = st.session_state.get("adf_ref", pd.DataFrame())
+    _units    = st.session_state.get("adf_units", [])
+    _ldat     = st.session_state.get("adf_lemmas", [])
+    _src      = st.session_state.get("adf_source", "—")
+    _corpus_id = st.session_state.get("adf_corpus_id", "")
 
-    # ── headline metrics ──────────────────────────────────────────────────────
+    # ── source badge ─────────────────────────────────────────────────────────
+    _n_chapters = len(_units) if _units else 1
+    _seg_mode   = st.session_state.get("adf_seg_mode", _units[0].unit_type if _units else "document")
+    # Derive human-readable labels from the actual segmentation tier
+    if _seg_mode == "chapter":
+        _unit_label_sg = "kapitola"
+        _unit_label_pl = "kapitol"
+        _unit_metric   = T.get("metric_chapters", "Kapitol")
+        _col_unit      = "Kapitola"
+    elif _seg_mode == "section":
+        _unit_label_sg = "sekce"
+        _unit_label_pl = "sekcí"
+        _unit_metric   = "Sekcí"
+        _col_unit      = "Sekce"
+    else:
+        _unit_label_sg = "dokument"
+        _unit_label_pl = "dokumentů"
+        _unit_metric   = "Dokument"
+        _col_unit      = "Dokument"
     _hdr_col, _btn_col = st.columns([3, 1])
     with _hdr_col:
         st.subheader(T["results_title"])
+        st.caption(
+            f"📁 **Nahraný text** — `{_src}` · {_n_chapters} "
+            f"{_unit_label_sg if _n_chapters == 1 else _unit_label_pl}"
+        )
+
+    # ── headline metrics ──────────────────────────────────────────────────────
     _total   = len(_df)
-    _classif = int((_df["primary_intention"] != "unclassified").sum())
-    _mconf   = float(_df["confidence"].mean())
+    _classif = int((_df["primary_intention"] != "unclassified").sum()) if "primary_intention" in _df.columns else 0
+    _mconf   = float(_df["confidence"].mean()) if "confidence" in _df.columns and _total else 0.0
     _c1, _c2, _c3, _c4 = st.columns(4)
     _c1.metric(T["metric_sentences"], _total)
     _c2.metric(T["metric_classified"], f"{_classif}/{_total}",
                f"{100*_classif/_total:.0f} %" if _total else "—")
     _c3.metric(T["metric_confidence"], f"{_mconf:.2f}")
-    _c4.metric("Source", _src[:30])
+    _c4.metric(_unit_metric, _n_chapters)
     st.divider()
+
+    # ── 0. Chapter overview ───────────────────────────────────────────────────
+    if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
+        _overview_title = (
+            "📑 Přehled kapitol" if _seg_mode == "chapter"
+            else ("📑 Přehled sekcí" if _seg_mode == "section" else "📑 Přehled")
+        )
+        with st.expander(_overview_title, expanded=False):
+            _chap_rows = []
+            for _u in _units:
+                _u_df = _df[_df["unit_id"] == _u.unit_id]
+                _u_total = len(_u_df)
+                _u_conf  = float(_u_df["confidence"].mean()) if _u_total and "confidence" in _u_df.columns else 0.0
+                _u_dom   = (
+                    _u_df["primary_intention"].value_counts().index[0]
+                    if _u_total and "primary_intention" in _u_df.columns
+                    else "—"
+                )
+                _chap_rows.append({
+                    "Jednotka": _u.display_name,
+                    "Věty": _u_total,
+                    "Průměrná jistota": round(_u_conf, 3),
+                    "Dominantní záměr": _u_dom,
+                })
+            if _chap_rows:
+                st.dataframe(pd.DataFrame(_chap_rows), use_container_width=True, height=320)
 
     # ── PDF export ────────────────────────────────────────────────────────────
     with _btn_col:
@@ -4291,61 +4421,144 @@ with tab_results:
                     st.caption("Vzorka viet s príznakom anachronizmu")
                     st.dataframe(_aa_sample, use_container_width=True, height=280)
 
+            # ── Chapter-level intention heatmap ───────────────────────────────
+            if _units and len(_units) >= 3 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
+                st.divider()
+                _int_pivot = (
+                    _df.groupby(["unit_id", "primary_intention"])
+                    .size()
+                    .reset_index(name="count")
+                )
+                if not _int_pivot.empty:
+                    _int_wide = _int_pivot.pivot(
+                        index="unit_id", columns="primary_intention", values="count"
+                    ).fillna(0).reset_index()
+                    _uid2name_qs = {u.unit_id: u.display_name for u in _units}
+                    _int_wide["unit_id"] = _int_wide["unit_id"].map(_uid2name_qs).fillna(_int_wide["unit_id"])
+                    _int_wide = _int_wide.rename(columns={"unit_id": _col_unit})
+                    st.caption(T.get("intent_book_heatmap_desc", "Záměry podle kapitol"))
+                    st.plotly_chart(
+                        fig_heatmap(_int_wide, _col_unit,
+                                    T.get("intent_book_heatmap_title", "Záměry podle kapitol"),
+                                    h=max(300, 30 * len(_units))),
+                        use_container_width=True,
+                    )
+            elif _units and len(_units) < 3 and "primary_intention" in _df.columns:
+                st.info("Kapitolová heatmapa vyžaduje alespoň 3 kapitoly.")
+
     # ── 2. B.F. Skinner ───────────────────────────────────────────────────────
-    if st.session_state.get("sel_bf_skinner", True) and _ldat:
+    if st.session_state.get("sel_bf_skinner", True) and not _df.empty:
         with st.expander(f"⚡ {T['ana_bf_name']}"):
-            _tax_cl = csv("taxonomy_analytics/skinner_class_counts.csv")
-            _tax_di = csv("taxonomy_analytics/dialogue_density_by_book.csv")
-            _tax_ta = csv("taxonomy_analytics/tact_vs_autoclitic_by_book.csv")
-            if _tax_cl is not None:
+            st.caption(f"*[Nahraný text]*")
+            if "skinner_class" in _df.columns:
                 _bc1, _bc2 = st.columns(2)
                 with _bc1:
-                    _d = _tax_cl.sort_values("count", ascending=False).copy()
-                    _d.columns = ["_raw", T["x_count"]]
-                    _d[T["x_class"]] = _d["_raw"].map(VSK).fillna(_d["_raw"])
+                    _sk_counts = (_df["skinner_class"].value_counts()
+                                  .reset_index())
+                    _sk_counts.columns = ["_raw", T["x_count"]]
+                    _sk_counts[T["x_class"]] = _sk_counts["_raw"].map(VSK).fillna(_sk_counts["_raw"])
                     st.caption(T["tax_class_desc"])
                     st.plotly_chart(
-                        fig_hbar(_d, T["x_count"], T["x_class"],
+                        fig_hbar(_sk_counts, T["x_count"], T["x_class"],
                                  T["tax_class_title"], h=300,
                                  xlabel=T["x_count"]),
                         use_container_width=True,
                     )
                 with _bc2:
-                    if _tax_ta is not None:
-                        _ta = _tax_ta.copy()
-                        _ta["book"] = (_ta["file_name"]
-                                       .str.replace("bible_BKR_","")
-                                       .str.replace(".txt",""))
-                        st.caption(T["tact_autoclitic_desc"])
-                        _fig_ta = go.Figure()
-                        _fig_ta.add_bar(name="tact", x=_ta["book"], y=_ta["tact_ratio"],
-                                        marker_color="#3a86ff")
-                        _fig_ta.add_bar(name="autoclitic", x=_ta["book"],
-                                        y=_ta["autoclitic_ratio"], marker_color="#8338ec")
-                        _fig_ta.update_layout(barmode="group",
-                                              title=T["tact_autoclitic_title"],
-                                              height=300, **_LAYOUT)
-                        st.plotly_chart(_fig_ta, use_container_width=True)
+                    if "control_role" in _df.columns:
+                        _cr = _df["control_role"].value_counts().reset_index()
+                        _cr.columns = ["role", T["x_count"]]
+                        st.caption(T["tax_control_desc"])
+                        st.plotly_chart(
+                            fig_hbar(_cr, T["x_count"], "role",
+                                     T["tax_control_title"], h=300,
+                                     xlabel=T["x_count"]),
+                            use_container_width=True,
+                        )
+                # Chapter-level tact vs autoclitic heatmap (if multiple chapters)
+                if _units and len(_units) > 1 and "unit_id" in _df.columns:
+                    st.divider()
+                    _ta_rows = []
+                    for _u in _units:
+                        _ud = _df[_df["unit_id"] == _u.unit_id]
+                        _t = len(_ud)
+                        if _t == 0:
+                            continue
+                        _ta_rows.append({
+                            _col_unit: _u.display_name,
+                            "tact": (_ud["skinner_class"] == "tact").sum() / _t,
+                            "autoclitic": (_ud["skinner_class"] == "autoclitic").sum() / _t,
+                        })
+                    if _ta_rows:
+                        _ta_df2 = pd.DataFrame(_ta_rows)
+                        _fig_ta2 = go.Figure()
+                        _fig_ta2.add_bar(name="tact", x=_ta_df2[_col_unit],
+                                         y=_ta_df2["tact"], marker_color="#3a86ff")
+                        _fig_ta2.add_bar(name="autoclitic", x=_ta_df2[_col_unit],
+                                         y=_ta_df2["autoclitic"], marker_color="#8338ec")
+                        _fig_ta2.update_layout(barmode="group",
+                                               title=T.get("tact_autoclitic_title",
+                                                           "Tact vs Autoclitic podle kapitol"),
+                                               height=320, **_LAYOUT)
+                        st.caption(T.get("tact_autoclitic_desc", ""))
+                        st.plotly_chart(_fig_ta2, use_container_width=True)
             else:
-                st.info("Run `k_apply_all_to_bible.py` + `l_taxonomy_analytics.py`.")
+                st.info("Spusťte plnou analýzu pro zobrazení Skinnerovy taxonomie.")
 
     # ── 3. Verbálne vzťahy ────────────────────────────────────────────────────
     if st.session_state.get("sel_verbal", True):
         with st.expander(f"⚡ {T['ana_verbal_name']}"):
-            _vr = csv("verbal_relations_analytics/relation_type_counts.csv")
-            if _vr is not None:
-                _d = _vr.sort_values("count", ascending=False).copy()
-                _d.columns = ["_raw", T["x_count"]]
-                _d[T["x_relation"]] = _d["_raw"].map(VVT).fillna(_d["_raw"])
-                st.caption(T["verbal_types_desc"])
-                st.plotly_chart(
-                    fig_hbar(_d, T["x_count"], T["x_relation"],
-                             T["verbal_types_title"], h=340,
-                             xlabel=T["x_count"]),
-                    use_container_width=True,
-                )
+            st.caption(f"*[Nahraný text]*")
+            if not _rel_df.empty and "local_pattern" in _rel_df.columns:
+                _vr1, _vr2 = st.columns(2)
+                with _vr1:
+                    _vr_counts = _rel_df["local_pattern"].value_counts().reset_index()
+                    _vr_counts.columns = ["_raw", T["x_count"]]
+                    _vr_counts[T["x_relation"]] = _vr_counts["_raw"].map(VVT).fillna(_vr_counts["_raw"])
+                    st.caption(T["verbal_types_desc"])
+                    st.plotly_chart(
+                        fig_hbar(_vr_counts, T["x_count"], T["x_relation"],
+                                 T["verbal_types_title"], h=340,
+                                 xlabel=T["x_count"]),
+                        use_container_width=True,
+                    )
+                with _vr2:
+                    if "confidence" in _rel_df.columns:
+                        _vr_conf = _rel_df.copy()
+                        _vr_conf[T["x_relation"]] = (
+                            _vr_conf["local_pattern"].map(VVT).fillna(_vr_conf["local_pattern"])
+                        )
+                        st.caption(T["verbal_conf_desc"])
+                        st.plotly_chart(
+                            fig_box_confidence(_vr_conf, T["x_relation"], "confidence",
+                                               T["verbal_conf_title"]),
+                            use_container_width=True,
+                        )
+                # Chapter-level verbal relations heatmap
+                if _units and len(_units) > 1 and "unit_id" in _rel_df.columns:
+                    st.divider()
+                    _vr_pivot = (
+                        _rel_df.groupby(["unit_id", "local_pattern"])
+                        .size()
+                        .reset_index(name="count")
+                    )
+                    if not _vr_pivot.empty:
+                        _vr_wide = _vr_pivot.pivot(
+                            index="unit_id", columns="local_pattern", values="count"
+                        ).fillna(0).reset_index()
+                        # Map unit_id → display_name
+                        _uid2name = {u.unit_id: u.display_name for u in _units}
+                        _vr_wide["unit_id"] = _vr_wide["unit_id"].map(_uid2name).fillna(_vr_wide["unit_id"])
+                        _vr_wide = _vr_wide.rename(columns={"unit_id": _col_unit})
+                        st.caption(T.get("verbal_book_heatmap_desc", "Verbální vztahy podle kapitol"))
+                        st.plotly_chart(
+                            fig_heatmap(_vr_wide, _col_unit,
+                                        T.get("verbal_book_heatmap_title",
+                                              "Verbální vztahy podle kapitol"), h=400),
+                            use_container_width=True,
+                        )
             else:
-                st.info("Run `m_verbal_relations.py` + `o_verbal_relations_analytics.py`.")
+                st.info("Spusťte plnou analýzu pro zobrazení verbálních vztahů.")
 
     # ── 4. Sémantika ──────────────────────────────────────────────────────────
     if st.session_state.get("sel_semantics", True) and _ldat:
@@ -4410,23 +4623,49 @@ with tab_results:
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_network", False):
         with st.expander(f"🕐 {T['ana_network_name']}"):
-            _cent = csv("weighted_centrality/weighted_semantic_centrality.csv")
-            _pmi  = csv("word_relations_analytics/top_pmi_relations.csv")
-            if _cent is not None:
-                _top = _cent.nlargest(25,"weighted_score")
-                st.caption(T["centrality_bar_desc"])
-                st.plotly_chart(
-                    fig_hbar(_top,"weighted_score","word",
-                             T["centrality_bar_title"],h=500,
-                             xlabel=T["x_weighted"]),
-                    use_container_width=True,
-                )
-            if _pmi is not None:
-                st.dataframe(_pmi.head(20).rename(columns={
-                    "word1":T["top_pmi_word1"],"word2":T["top_pmi_word2"],
-                    "pair_count":T["top_pmi_count"],"pmi":T["top_pmi_pmi"],
-                }), use_container_width=True, height=300)
-            if _cent is None and _pmi is None:
+            st.caption(f"*[Nahraný text — výpočet živě]*")
+            # Compute PMI in-memory from upload lemmas
+            if _ldat:
+                from collections import Counter as _PMICounter
+                from math import log as _log
+                _pmi_tokens = [t for _, ls in _ldat for t in str(ls).split()
+                               if len(t) > 2 and t.isalpha()]
+                _pmi_freq: dict = dict(_PMICounter(_pmi_tokens).most_common(500))
+                _total_pmi = max(sum(_pmi_freq.values()), 1)
+                _window_pairs: "_PMICounter" = _PMICounter()
+                for _ii in range(len(_ldat)):
+                    _win_toks = set()
+                    for _, _ls_j in _ldat[max(0, _ii-2): _ii+3]:
+                        _win_toks.update(_ls_j.split())
+                    _win_list = sorted(_win_toks)
+                    for _wi in range(len(_win_list)):
+                        for _wj in range(_wi + 1, len(_win_list)):
+                            if _win_list[_wi] in _pmi_freq and _win_list[_wj] in _pmi_freq:
+                                _window_pairs[(_win_list[_wi], _win_list[_wj])] += 1
+                _pmi_rows = []
+                _pair_total = max(sum(_window_pairs.values()), 1)
+                for (_w1, _w2), _cnt in _window_pairs.most_common(200):
+                    if _cnt < 3:
+                        continue
+                    _p_joint = _cnt / _pair_total
+                    _p_w1 = _pmi_freq.get(_w1, 1) / _total_pmi
+                    _p_w2 = _pmi_freq.get(_w2, 1) / _total_pmi
+                    _pmi_val = _log(_p_joint / (_p_w1 * _p_w2) + 1e-10)
+                    if _pmi_val > 0:
+                        _pmi_rows.append({
+                            "word1": _w1, "word2": _w2,
+                            "pair_count": _cnt, "pmi": round(_pmi_val, 3),
+                        })
+                if _pmi_rows:
+                    _pmi_df_live = pd.DataFrame(_pmi_rows).nlargest(20, "pmi")
+                    st.caption(T["top_pmi_desc"])
+                    st.dataframe(_pmi_df_live.rename(columns={
+                        "word1": T["top_pmi_word1"], "word2": T["top_pmi_word2"],
+                        "pair_count": T["top_pmi_count"], "pmi": T["top_pmi_pmi"],
+                    }), use_container_width=True, height=300)
+                else:
+                    st.info(T["no_word_rel"])
+            else:
                 st.info(T["no_word_rel"])
 
     # ── 7. Textové vzory + opozície ───────────────────────────────────────────
@@ -4471,62 +4710,129 @@ with tab_results:
                         use_container_width=True,
                     )
 
+            # TF-IDF by chapter heatmap (requires multiple chapters)
+            if _units and len(_units) >= 3 and not _df.empty and "unit_id" in _df.columns:
+                st.divider()
+                _tfidf_items = []
+                for _u in _units:
+                    _u_lems = " ".join(
+                        ls for _, ls in _ldat
+                        if ls  # all lemmas available (per-sentence)
+                    ) if not _df[_df["unit_id"] == _u.unit_id].empty else ""
+                    # Use lemmas from skinner rows that belong to this unit
+                    _u_rows = _df[_df["unit_id"] == _u.unit_id]
+                    if "lemmas" in _u_rows.columns:
+                        _u_lems = " ".join(_u_rows["lemmas"].dropna().astype(str))
+                    if _u_lems.strip():
+                        _tfidf_items.append((_u.display_name, _u_lems))
+                if len(_tfidf_items) >= 3:
+                    _tfidf_heat = compute_tfidf_heatmap(tuple(_tfidf_items), top_n=25)
+                    if not _tfidf_heat.empty:
+                        st.caption(T["tfidf_heatmap_desc"])
+                        _th_wide = _tfidf_heat.copy()
+                        _th_wide = _th_wide.rename(columns={"book": _col_unit})
+                        st.plotly_chart(
+                            fig_heatmap(_th_wide, _col_unit,
+                                        T["tfidf_heatmap_title"], h=420,
+                                        fmt=".2f"),
+                            use_container_width=True,
+                        )
+            elif _units and len(_units) < 3:
+                st.info("Kapitolová TF-IDF heatmapa vyžaduje alespoň 3 kapitoly.")
+
     # ── 8. Štýl a syntax ─────────────────────────────────────────────────────
     if st.session_state.get("sel_style", False):
         with st.expander(f"🕐 {T['ana_style_name']}"):
-            _cplx = csv("dependency_hierarchy/complexity_by_book.csv")
-            _sty  = csv("style_authorship/book_style_clusters.csv")
-            if _cplx is not None:
-                _cx = _cplx.copy()
-                _cx["book"] = (_cx["file_name"]
-                               .str.replace("bible_BKR_","").str.replace(".txt",""))
-                st.caption(T["complexity_desc"])
-                _sx1, _sx2 = st.columns(2)
-                with _sx1:
-                    st.plotly_chart(
-                        fig_hbar(_cx,"avg_tree_depth","book",
-                                 T["complexity_title"],h=320,
-                                 xlabel=T["x_depth"]),
-                        use_container_width=True,
+            st.caption(f"*[Nahraný text — výpočet živě]*")
+            if not _df.empty and "unit_id" in _df.columns and _units and len(_units) >= 2:
+                # Tree depth and clause count from refined_descriptions if available
+                if not _ref_df.empty and "avg_tree_depth" in _ref_df.columns and "unit_id" in _ref_df.columns:
+                    _cx_agg = (
+                        _ref_df.groupby("unit_id")[["avg_tree_depth", "avg_clause_count"]]
+                        .mean()
+                        .reset_index()
                     )
-                with _sx2:
-                    st.plotly_chart(
-                        fig_hbar(_cx,"avg_clause_count","book",
-                                 T["complexity_title"],h=320,
-                                 xlabel=T["x_clauses"]),
-                        use_container_width=True,
-                    )
-            if _cplx is None and _sty is None:
-                st.info("Run `x_style_authorship.py` + `y_dependency_hierarchy.py`.")
+                    _uid2name = {u.unit_id: u.display_name for u in _units}
+                    _cx_agg[_col_unit] = _cx_agg["unit_id"].map(_uid2name).fillna(_cx_agg["unit_id"])
+                    st.caption(T.get("complexity_desc", "Syntaktická složitost"))
+                    _sx1, _sx2 = st.columns(2)
+                    with _sx1:
+                        st.plotly_chart(
+                            fig_hbar(_cx_agg, "avg_tree_depth", _col_unit,
+                                     T.get("complexity_title", "Hloubka stromu"), h=320,
+                                     xlabel=T.get("x_depth", "Hloubka")),
+                            use_container_width=True,
+                        )
+                    with _sx2:
+                        if "avg_clause_count" in _cx_agg.columns:
+                            st.plotly_chart(
+                                fig_hbar(_cx_agg, "avg_clause_count", _col_unit,
+                                         T.get("complexity_title", "Počet klauzulí"), h=320,
+                                         xlabel=T.get("x_clauses", "Klauzule")),
+                                use_container_width=True,
+                            )
+                # TF-IDF chapter style clustering
+                if not _df.empty and "lemmas" in _df.columns and len(_units) >= 4:
+                    st.divider()
+                    _sty_items = []
+                    for _u in _units:
+                        _u_rows = _df[_df["unit_id"] == _u.unit_id]
+                        _u_lems = " ".join(_u_rows["lemmas"].dropna().astype(str))
+                        if _u_lems.strip():
+                            _sty_items.append((_u.display_name, _u_lems))
+                    if len(_sty_items) >= 4:
+                        try:
+                            from sklearn.cluster import KMeans as _KM
+                            from sklearn.feature_extraction.text import TfidfVectorizer as _TfV
+                            _n_cl = min(4, len(_sty_items))
+                            _tfidf_v = _TfV(max_features=300, min_df=1,
+                                            token_pattern=r"[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]{3,}")
+                            _X_sty = _tfidf_v.fit_transform([d for _, d in _sty_items]).toarray()
+                            _km = _KM(n_clusters=_n_cl, random_state=42, n_init=10)
+                            _labels = _km.fit_predict(_X_sty)
+                            _sty_df2 = pd.DataFrame({
+                                _col_unit: [b for b, _ in _sty_items],
+                                T.get("col_style_cluster", "Stylový shluk"): [f"Shluk {l+1}" for l in _labels],
+                            })
+                            st.caption(T["style_table_desc"])
+                            st.dataframe(_sty_df2, use_container_width=True)
+                        except Exception:
+                            pass
+            else:
+                st.info("Spusťte plnou analýzu s alespoň 2 kapitolami pro zobrazení stylu.")
 
     # ── 9. Kvalita výsledkov ──────────────────────────────────────────────────
     if st.session_state.get("sel_quality", True):
         with st.expander(f"⚡ {T['ana_quality_name']}"):
-            _cband_l = int((_df["confidence"] < 0.30).sum())
-            _cband_m = int(((_df["confidence"]>=0.30)&(_df["confidence"]<0.60)).sum())
-            _cband_h = int((_df["confidence"]>=0.60).sum())
-            _qdf = pd.DataFrame({
-                T["x_book"]: [T["conf_band_low"],T["conf_band_mid"],T["conf_band_high"]],
-                T["x_sentences"]: [_cband_l,_cband_m,_cband_h],
-            })
-            _qclr = {T["conf_band_low"]:"#e63946",
-                     T["conf_band_mid"]:"#f4a261",
-                     T["conf_band_high"]:"#57cc99"}
-            st.caption(T["conf_bins_desc"])
-            _fig_q = px.bar(_qdf, x=T["x_sentences"], y=T["x_book"],
-                            orientation="h", color=T["x_book"],
-                            color_discrete_map=_qclr, title=T["conf_bins_title"])
-            _fig_q.update_layout(showlegend=False, height=220, **_LAYOUT)
-            st.plotly_chart(_fig_q, use_container_width=True)
+            if "confidence" in _df.columns and not _df.empty:
+                _cband_l = int((_df["confidence"] < 0.30).sum())
+                _cband_m = int(((_df["confidence"]>=0.30)&(_df["confidence"]<0.60)).sum())
+                _cband_h = int((_df["confidence"]>=0.60).sum())
+                _qdf = pd.DataFrame({
+                    T["x_book"]: [T["conf_band_low"],T["conf_band_mid"],T["conf_band_high"]],
+                    T["x_sentences"]: [_cband_l,_cband_m,_cband_h],
+                })
+                _qclr = {T["conf_band_low"]:"#e63946",
+                         T["conf_band_mid"]:"#f4a261",
+                         T["conf_band_high"]:"#57cc99"}
+                st.caption(T["conf_bins_desc"])
+                _fig_q = px.bar(_qdf, x=T["x_sentences"], y=T["x_book"],
+                                orientation="h", color=T["x_book"],
+                                color_discrete_map=_qclr, title=T["conf_bins_title"])
+                _fig_q.update_layout(showlegend=False, height=220, **_LAYOUT)
+                st.plotly_chart(_fig_q, use_container_width=True)
 
-            _dfbx = _df.copy()
-            _dfbx[T["x_intention"]] = (_dfbx["primary_intention"]
-                                       .map(VI).fillna(_dfbx["primary_intention"]))
-            st.plotly_chart(
-                fig_box_confidence(_dfbx, T["x_intention"], "confidence",
-                                   T["conf_hist_title"], INT_CLR),
-                use_container_width=True,
-            )
+                if "primary_intention" in _df.columns:
+                    _dfbx = _df.copy()
+                    _dfbx[T["x_intention"]] = (_dfbx["primary_intention"]
+                                               .map(VI).fillna(_dfbx["primary_intention"]))
+                    st.plotly_chart(
+                        fig_box_confidence(_dfbx, T["x_intention"], "confidence",
+                                           T["conf_hist_title"], INT_CLR),
+                        use_container_width=True,
+                    )
+            else:
+                st.info("Spusťte plnou analýzu pro zobrazení kvality klasifikace.")
 
     # ── 10. Dashboard ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_dashboard", True):
@@ -4534,15 +4840,18 @@ with tab_results:
             from n_db import count_table_rows, list_runs, TABLE_SKINNER
             _db_n = count_table_rows(TABLE_SKINNER)
             _runs = list_runs(TABLE_SKINNER)
-            _upload_runs = [r for r in _runs if r.startswith("upload_")]
+            _upload_runs = [r for r in _runs if "upload_" in r]
+            _seg_method = "marker" if _units and len(_units) > 1 else "single"
             st.markdown(f"""
 | | |
 |---|---|
-| **Source** | `{_src}` |
-| **Sentences** | {_total} |
-| **DB rows (skinner_analysis)** | {_db_n or "—"} |
-| **Bible runs in DB** | {len(_runs) - len(_upload_runs)} |
-| **Upload runs in DB** | {len(_upload_runs)} |
+| **Zdroj** | `{_src}` |
+| **Korpus ID** | `{_corpus_id}` |
+| **{_unit_metric}** | {_n_chapters} |
+| **Věty celkem** | {_total} |
+| **DB řádky (skinner_analysis)** | {_db_n or "—"} |
+| **Biblické běhy v DB** | {len(_runs) - len(_upload_runs)} |
+| **Upload běhy v DB** | {len(_upload_runs)} |
 | **NLP model** | `{pipeline_lang}` |
 """)
 
@@ -4557,7 +4866,11 @@ with tab_results:
             _src2 = st.session_state.get("adf_source","unknown")
             _rid = _make_upload_run_id(_src2)
             try:
-                _nn = _save_to_db(_df, _rid)
+                _nn = _save_to_db(
+                    _df, _rid,
+                    rel_df=st.session_state.get("adf_rel"),
+                    ref_df=st.session_state.get("adf_ref"),
+                )
                 st.session_state["adf_saved_run_id"] = _rid
                 st.success(
                     f"{T['save_success']}  ·  "

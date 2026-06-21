@@ -1,21 +1,14 @@
 from pathlib import Path
-from dataclasses import asdict
 from typing import List
 import os
 
 from c_input import create_input_from_file
-from d_preprocessing import preprocess_text
-from e_extraction import extract_features
-from f_semantics import semantic_enrichment
+from c_unit import AnalysisUnit
 from h_classifiers import apply_skinner_rules, SkinnerDecision
 from j0_context_profile import get_builtin_profile
-from j0_discursive_context import resolve_discursive_context
-from j0_rst_relations import annotate_rst
-from j_q_skinner_taxonomy import classify_q_skinner
+from k_pipeline_core import process_unit
 
 _BKR_PROFILE = get_builtin_profile("biblical_czech_bkr")
-from m_verbal_relations import classify_relation
-from p_refine_descriptions import refine_description
 from a_paths import BIBLE_FOLDER
 from n_db import (
     insert_rows, make_run_id, DB_PATH,
@@ -31,7 +24,7 @@ FILES_LIMIT = int(os.environ.get("PIPELINE_FILES_LIMIT", 10))
 
 
 # ==========================================================
-# K2. INPUT CREATION
+# K2. INPUT CREATION (kept for _classify_file / training data)
 # ==========================================================
 
 def _make_input(file_path):
@@ -48,54 +41,31 @@ def _make_input(file_path):
 
 
 # ==========================================================
-# K3–K5. PER-BOOK PIPELINE  (Stanza runs once per book)
+# K3–K5. PER-BOOK PIPELINE  (thin wrapper around process_unit)
 # ==========================================================
 
 def _process_book(file_path):
     """
-    Run Stanza once, then apply all three classifiers
-    to the shared features/semantics.
+    Run the shared 4-stage pipeline on one Bible book.
     Returns (skinner_rows, relation_rows, refined_rows).
     """
-
-    text_input   = _make_input(file_path)
-    preprocessed = preprocess_text(text_input)
-    features     = extract_features(preprocessed)
-    disc_context = resolve_discursive_context(features, file_path.name)
-    semantics    = semantic_enrichment(features)
-
-    skinner_rows  = []
-    relation_rows = []
-    refined_rows  = []
-
-    rst_relations = annotate_rst(features)
-
-    for i, (feat, sem) in enumerate(zip(features, semantics)):
-
-        if feat.root_lemma is None:
-            continue
-
-        # K3 — Q. Skinner taxonomy
-        sk = classify_q_skinner(feat, sem, text_input, context=disc_context,
-                                profile=_BKR_PROFILE)
-        sk_row = asdict(sk)
-        sk_row["file_name"]    = file_path.name
-        sk_row["rst_relation"] = rst_relations[i]
-        skinner_rows.append(sk_row)
-
-        # K4 — Verbal relations
-        rel = classify_relation(feat, sem, file_name=file_path.name)
-        rel_row = asdict(rel)
-        rel_row["file_name"] = file_path.name
-        relation_rows.append(rel_row)
-
-        # K5 — Refined descriptions
-        ref = refine_description(feat, sem)
-        ref_row = asdict(ref)
-        ref_row["file_name"] = file_path.name
-        refined_rows.append(ref_row)
-
-    return skinner_rows, relation_rows, refined_rows
+    text = file_path.read_text(encoding="utf-8")
+    unit = AnalysisUnit(
+        corpus_id="bible_bkr",
+        unit_id=file_path.name,
+        unit_type="book",
+        display_name=(
+            file_path.stem
+            .replace("bible_BKR_", "")
+            .replace("bible_bkr_", "")
+        ),
+        text=text,
+        source="written_record",
+        interaction="monologue",
+        stimulus="unknown",
+    )
+    result = process_unit(unit, profile=_BKR_PROFILE)
+    return result.skinner_rows, result.relation_rows, result.refined_rows
 
 
 def _write_db(rows, table, run_id):

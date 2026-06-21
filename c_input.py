@@ -44,6 +44,7 @@ TextUnitType = Literal[
     "document",
     "book",
     "chapter",
+    "section",
     "verse",
     "paragraph",
     "sentence",
