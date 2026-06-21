@@ -1,0 +1,8 @@
+relation_type,count,avg_confidence,min_confidence,max_confidence
+reported_speech,593,0.598,0.152,1.043
+narrative,502,0.604,0.258,1.002
+doctrinal,321,0.595,0.148,0.984
+lyrical,347,0.61,0.181,1.057
+command_obedience,472,0.61,0.225,1.115
+prophetic,183,0.609,0.164,0.949
+wisdom,119,0.577,0.125,0.944

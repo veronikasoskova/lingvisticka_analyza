@@ -10,5 +10,6 @@ build/
 .venv
 venv/
 *.sqlite3
-*.db
 .DS_Store
+# Generated DB files are tracked so the app works on a fresh clone.
+# To exclude them, add: output/*.db

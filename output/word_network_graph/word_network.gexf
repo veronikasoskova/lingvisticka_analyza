@@ -1,0 +1,1157 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-06-21">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="4" title="pair_count" type="long" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="community" type="long" />
+      <attribute id="1" title="betweenness" type="double" />
+      <attribute id="2" title="eigenvector" type="double" />
+      <attribute id="3" title="degree" type="long" />
+    </attributes>
+    <nodes>
+      <node id="nešlechetnost" label="nešlechetnost">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="troji" label="troji">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="jich" label="jich">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="načteno" label="načteno">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="samého" label="samého">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="sebe" label="sebe">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="pokolení" label="pokolení">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="praví" label="praví">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.022435" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="6" />
+        </attvalues>
+      </node>
+      <node id="takto" label="takto">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="6" />
+        </attvalues>
+      </node>
+      <node id="ježíše" label="ježíše">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="krista," label="krista,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="jejich," label="jejich,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="rodiny" label="rodiny">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="našeho" label="našeho">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="pána" label="pána">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="ruku" label="ruku">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="svou" label="svou">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="apoštol" label="apoštol">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.021888" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="hospodin:" label="hospodin:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.01751" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="5" />
+        </attvalues>
+      </node>
+      <node id="hospodinovo" label="hospodinovo">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="slovo" label="slovo">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.022161" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="oheň" label="oheň">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="pošli" label="pošli">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="anděl" label="anděl">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="hospodinův" label="hospodinův">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="píši" label="píši">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="vám," label="vám,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="synu" label="synu">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.000274" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="člověčí," label="člověčí,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="milost" label="milost">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="pokoj" label="pokoj">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="bohu" label="bohu">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.000274" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="díky" label="díky">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="hospodinovo," label="hospodinovo,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="stalo" label="stalo">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.041587" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="zástupů:" label="zástupů:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="boha" label="boha">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="vždycky" label="vždycky">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="synů" label="synů">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.001368" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="jeden" label="jeden">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="každý" label="každý">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jemu:" label="jemu:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="řekli" label="řekli">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="vám" label="vám">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="proti" label="proti">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="tobě," label="tobě,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="set" label="set">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="kteříž" label="kteříž">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.002736" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="5" />
+        </attvalues>
+      </node>
+      <node id="těm," label="těm,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jestliže" label="jestliže">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="obět" label="obět">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="kterýž" label="kterýž">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.052531" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="5" />
+        </attvalues>
+      </node>
+      <node id="ten," label="ten,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="můj," label="můj,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="bůh:" label="bůh:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="řekl" label="řekl">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.139535" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="12" />
+        </attvalues>
+      </node>
+      <node id="jsem:" label="jsem:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="ti," label="ti,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="skrze" label="skrze">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.032011" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="padesáte" label="padesáte">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="satanovi:" label="satanovi:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="tomu," label="tomu,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="david:" label="david:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="mi:" label="mi:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="ty," label="ty,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jim:" label="jim:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="kteréž" label="kteréž">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="se," label="se,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="jest" label="jest">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.022161" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="3" />
+        </attvalues>
+      </node>
+      <node id="kde" label="kde">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jemu" label="jemu">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="když" label="když">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.077975" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="5" />
+        </attvalues>
+      </node>
+      <node id="přišel" label="přišel">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="opět" label="opět">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="vás" label="vás">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.041587" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="pak," label="pak,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="abych" label="abych">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jsem" label="jsem">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.159508" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="8" />
+        </attvalues>
+      </node>
+      <node id="nyní" label="nyní">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="protož" label="protož">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.041587" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="4" />
+        </attvalues>
+      </node>
+      <node id="sobě" label="sobě">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="král" label="král">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="jsou" label="jsou">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="zajisté" label="zajisté">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="řekl:" label="řekl:">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+      <node id="byl" label="byl">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="2" />
+        </attvalues>
+      </node>
+      <node id="aj," label="aj,">
+        <attvalues>
+          <attvalue for="0" value="-1" />
+          <attvalue for="1" value="0.0" />
+          <attvalue for="2" value="0.0" />
+          <attvalue for="3" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="nešlechetnost" target="troji" id="0" weight="12.143">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="nešlechetnost" target="hospodin:" id="1" weight="10.821">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="nešlechetnost" target="takto" id="2" weight="10.365">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="nešlechetnost" target="praví" id="3" weight="10.098">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="troji" target="hospodin:" id="4" weight="11.143">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="troji" target="takto" id="5" weight="10.687">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="troji" target="praví" id="6" weight="10.42">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="jich" target="načteno" id="7" weight="11.764">
+        <attvalues>
+          <attvalue for="4" value="10" />
+        </attvalues>
+      </edge>
+      <edge source="jich" target="pokolení" id="8" weight="11.179">
+        <attvalues>
+          <attvalue for="4" value="10" />
+        </attvalues>
+      </edge>
+      <edge source="načteno" target="pokolení" id="9" weight="11.558">
+        <attvalues>
+          <attvalue for="4" value="10" />
+        </attvalues>
+      </edge>
+      <edge source="samého" target="sebe" id="10" weight="12.295">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="praví" target="takto" id="11" weight="10.227">
+        <attvalues>
+          <attvalue for="4" value="21" />
+        </attvalues>
+      </edge>
+      <edge source="praví" target="hospodin:" id="12" weight="9.799">
+        <attvalues>
+          <attvalue for="4" value="13" />
+        </attvalues>
+      </edge>
+      <edge source="praví" target="zástupů:" id="13" weight="10.42">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="praví" target="protož" id="14" weight="7.011">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="takto" target="hospodin:" id="15" weight="10.258">
+        <attvalues>
+          <attvalue for="4" value="13" />
+        </attvalues>
+      </edge>
+      <edge source="takto" target="zástupů:" id="16" weight="10.879">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="takto" target="protož" id="17" weight="6.792">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="ježíše" target="krista," id="18" weight="11.377">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="ježíše" target="apoštol" id="19" weight="11.207">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="krista," target="apoštol" id="20" weight="11.447">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jejich," target="rodiny" id="21" weight="11.225">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="jejich," target="synů" id="22" weight="9.087">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="rodiny" target="synů" id="23" weight="9.853">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="našeho" target="pána" id="24" weight="11.764">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="ruku" target="svou" id="25" weight="11.49">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="apoštol" target="skrze" id="26" weight="9.259">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="hospodin:" target="řekl" id="27" weight="6.821">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="hospodinovo" target="slovo" id="28" weight="10.71">
+        <attvalues>
+          <attvalue for="4" value="10" />
+        </attvalues>
+      </edge>
+      <edge source="hospodinovo" target="stalo" id="29" weight="10.143">
+        <attvalues>
+          <attvalue for="4" value="10" />
+        </attvalues>
+      </edge>
+      <edge source="slovo" target="hospodinovo," id="30" weight="10.71">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="slovo" target="stalo" id="31" weight="9.295">
+        <attvalues>
+          <attvalue for="4" value="15" />
+        </attvalues>
+      </edge>
+      <edge source="slovo" target="kteréž" id="32" weight="8.125">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="oheň" target="pošli" id="33" weight="11.42">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="anděl" target="hospodinův" id="34" weight="11.616">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="píši" target="vám," id="35" weight="11.295">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="synu" target="člověčí," id="36" weight="11.464">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="synu" target="můj," id="37" weight="9.786">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="milost" target="pokoj" id="38" weight="10.75">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="milost" target="boha" id="39" weight="10.277">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="milost" target="vám" id="40" weight="9.47">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="pokoj" target="boha" id="41" weight="10.377">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="pokoj" target="vám" id="42" weight="9.74">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="bohu" target="díky" id="43" weight="11.143">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="bohu" target="vždycky" id="44" weight="10.71">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="stalo" target="se," id="45" weight="8.092">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="stalo" target="když" id="46" weight="6.428">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="boha" target="vám" id="47" weight="9.097">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="synů" target="set" id="48" weight="10.005">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="synů" target="padesáte" id="49" weight="9.157">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jeden" target="každý" id="50" weight="10.616">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jemu:" target="řekli" id="51" weight="10.349">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="proti" target="tobě," id="52" weight="10.529">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="kteříž" target="těm," id="53" weight="9.442">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="kteříž" target="ti," id="54" weight="9.027">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="kteříž" target="ty," id="55" weight="8.179">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="kteříž" target="pak," id="56" weight="7.442">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="kteříž" target="jsou" id="57" weight="6.272">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jestliže" target="obět" id="58" weight="9.594">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="kterýž" target="ten," id="59" weight="8.553">
+        <attvalues>
+          <attvalue for="4" value="12" />
+        </attvalues>
+      </edge>
+      <edge source="kterýž" target="tomu," id="60" weight="8.54">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="kterýž" target="byl" id="61" weight="5.686">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="kterýž" target="řekl" id="62" weight="5.219">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="kterýž" target="jest" id="63" weight="5.16">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="bůh:" target="řekl" id="64" weight="8.821">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="jsem:" id="65" weight="8.821">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="satanovi:" id="66" weight="8.821">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="david:" id="67" weight="8.821">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="mi:" id="68" weight="8.335">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="jim:" id="69" weight="8.143">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="jemu" id="70" weight="7.821">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="opět" id="71" weight="7.651">
+        <attvalues>
+          <attvalue for="4" value="8" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="král" id="72" weight="6.285">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="řekl" target="jsem" id="73" weight="5.402">
+        <attvalues>
+          <attvalue for="4" value="13" />
+        </attvalues>
+      </edge>
+      <edge source="skrze" target="vás" id="74" weight="7.571">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="se," target="když" id="75" weight="6.214">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jest" target="kde" id="76" weight="8.084">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jest" target="zajisté" id="77" weight="6.055">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="když" target="přišel" id="78" weight="7.75">
+        <attvalues>
+          <attvalue for="4" value="9" />
+        </attvalues>
+      </edge>
+      <edge source="když" target="aj," id="79" weight="5.428">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="když" target="jsem" id="80" weight="4.439">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="vás" target="jsem" id="81" weight="6.072">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="abych" target="jsem" id="82" weight="7.153">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+      <edge source="jsem" target="sobě" id="83" weight="6.761">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="jsem" target="řekl:" id="84" weight="5.913">
+        <attvalues>
+          <attvalue for="4" value="5" />
+        </attvalues>
+      </edge>
+      <edge source="jsem" target="byl" id="85" weight="4.976">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="jsem" target="protož" id="86" weight="4.521">
+        <attvalues>
+          <attvalue for="4" value="6" />
+        </attvalues>
+      </edge>
+      <edge source="nyní" target="protož" id="87" weight="7.108">
+        <attvalues>
+          <attvalue for="4" value="7" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
