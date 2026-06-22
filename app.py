@@ -254,7 +254,7 @@ TRANSLATIONS = {
         "x_reinforcement": "Míra opakování",
         "filter_book_label": "Filtrovat knihu",
         "filter_group_label": "Skupina knih",
-        "group_all": "— Všechny skupiny",
+        "group_all": "— Celá Bible",
         "group_pentateuch":     "Pentateuch",
         "group_historical":     "Historické knihy",
         "group_wisdom":         "Knihy moudrosti",
@@ -265,6 +265,7 @@ TRANSLATIONS = {
         "group_general":        "Obecné listy",
         "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Data nejsou k dispozici.",
+        "no_group_data": "Pro vybranou skupinu nejsou dostupná data.",
         # Section 15 — Pipeline Quality
         "sec_quality": "✅ Kvalita pipeline",
         "quality_overall_desc": "Přehled **kvality automatické klasifikace** celého korpusu: kolik vět bylo klasifikováno, jak jistý byl algoritmus a které knihy nebo třídy se klasifikovaly méně spolehlivě.",
@@ -808,7 +809,7 @@ TRANSLATIONS = {
         "x_reinforcement": "Miera opakovania",
         "filter_book_label": "Filtrovať knihu",
         "filter_group_label": "Skupina kníh",
-        "group_all": "— Všetky skupiny",
+        "group_all": "— Celá Biblia",
         "group_pentateuch":     "Pentateuch",
         "group_historical":     "Historické knihy",
         "group_wisdom":         "Múdrostné knihy",
@@ -819,6 +820,7 @@ TRANSLATIONS = {
         "group_general":        "Všeobecné listy",
         "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Dáta nie sú k dispozícii.",
+        "no_group_data": "Pre vybranú skupinu nie sú dostupné dáta.",
         # Section 15
         "sec_quality": "✅ Kvalita pipeline",
         "quality_overall_desc": "Prehľad **kvality automatickej klasifikácie** celého korpusu: koľko viet bolo klasifikovaných, aká istá bol algoritmus a ktoré knihy alebo triedy sa klasifikovali menej spoľahlivo.",
@@ -1358,7 +1360,7 @@ TRANSLATIONS = {
         "x_reinforcement": "Repetition rate",
         "filter_book_label": "Filter book",
         "filter_group_label": "Book group",
-        "group_all": "— All groups",
+        "group_all": "— Whole Bible",
         "group_pentateuch":     "Pentateuch",
         "group_historical":     "Historical Books",
         "group_wisdom":         "Wisdom Books",
@@ -1369,6 +1371,7 @@ TRANSLATIONS = {
         "group_general":        "General Epistles",
         "group_apocalypse":     "Apocalypse",
         "no_patterns": "Data not available.",
+        "no_group_data": "No data is available for the selected group.",
         # Section 15
         "sec_quality": "✅ Pipeline Quality",
         "quality_overall_desc": "Overview of the **quality of the automatic classification** of the full corpus: how many sentences were classified, how confident the algorithm was, and which books or classes were classified less reliably.",
@@ -2032,16 +2035,24 @@ BOOK_NAMES: dict[str, dict[str, str]] = {
 }
 
 
-def _bkr_book(s: "pd.Series") -> "pd.Series":
-    """Convert a Series of BKR abbreviations to full book names for the current UI language."""
-    def _abbr(v):
-        x = str(v or "").strip()
-        if x.startswith("bible_BKR_"):
-            x = x[len("bible_BKR_"):]
-        if x.endswith(".txt"):
-            x = x[:-4]
+def _bkr_abbr(v: object) -> str:
+    """Normalize raw file names, abbreviations, or localized labels to a BKR abbreviation."""
+    x = str(v or "").strip()
+    if x.startswith("bible_BKR_"):
+        x = x[len("bible_BKR_"):]
+    if x.endswith(".txt"):
+        x = x[:-4]
+    if x in BOOK_NAMES:
         return x
-    return s.map(lambda x: BOOK_NAMES.get(_abbr(x), {}).get(lang, _abbr(x)))
+    for abbr, names in BOOK_NAMES.items():
+        if x in names.values():
+            return abbr
+    return x
+
+
+def _bkr_book(s: "pd.Series") -> "pd.Series":
+    """Convert a Series of BKR identifiers to full book names for the current UI language."""
+    return s.map(lambda x: BOOK_NAMES.get(_bkr_abbr(x), {}).get(lang, str(x or "").strip()))
 
 
 def _localize_book_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -3334,7 +3345,7 @@ with tab_bible:
             _grp_book_set: "set[str] | None" = None
         else:
             _grp_book_set = {
-                BOOK_NAMES[a].get(lang, a)
+                a
                 for gk, abbrevs in BOOK_GROUPS
                 if T.get(gk, gk) == _sel_grp
                 for a in abbrevs
@@ -3345,13 +3356,13 @@ with tab_bible:
             """Filter df rows to the selected book group (no-op when all groups selected)."""
             if _grp_book_set is None or df is None or col not in df.columns:
                 return df
-            return df[df[col].isin(_grp_book_set)]
+            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
 
         def _flt_csv(df: "pd.DataFrame | None", col: str = "file_name") -> "pd.DataFrame | None":
             """Filter wide CSV (rows = books) to the selected book group."""
             if _grp_book_set is None or df is None or col not in df.columns:
                 return df
-            return df[df[col].isin(_grp_book_set)]
+            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
 
         # Apply the group filter to the main DB frame used by all later sections
         db_df = _flt(db_df)
@@ -3393,17 +3404,20 @@ with tab_bible:
 
             if int_book is not None:
                 hm = _flt_csv(int_book).copy()
-                hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
-                hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
-                _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
-                                   key="hm_int_n")
-                hm = _top_n_cols(hm, "file_name", _n_int)
-                st.caption(T["intent_book_heatmap_desc"])
-                st.plotly_chart(
-                    fig_heatmap(hm, "file_name",
-                                T["intent_book_heatmap_title"], h=420),
-                    use_container_width=True,
-                )
+                if hm.empty:
+                    st.info(T["no_group_data"])
+                else:
+                    hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
+                    hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
+                    _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
+                                       key="hm_int_n")
+                    hm = _top_n_cols(hm, "file_name", _n_int)
+                    st.caption(T["intent_book_heatmap_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(hm, "file_name",
+                                    T["intent_book_heatmap_title"], h=420),
+                        use_container_width=True,
+                    )
 
         # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_strategy"]):
@@ -3441,12 +3455,15 @@ with tab_bible:
                 excl = {"file_name", "total", "unclassified"}
                 s_cols = [c for c in strat_book.columns if c not in excl]
                 hm2 = _flt_csv(strat_book)[["file_name"] + s_cols].copy()
-                hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
-                st.caption(T["strat_book_heatmap_desc"])
-                st.plotly_chart(
-                    fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
-                    use_container_width=True,
-                )
+                if hm2.empty:
+                    st.info(T["no_group_data"])
+                else:
+                    hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
+                    st.caption(T["strat_book_heatmap_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
+                        use_container_width=True,
+                    )
 
         # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_ratios"]):
