@@ -4,6 +4,8 @@ Czech biblical text analysis: illocutionary force · intention · rhetorical str
 """
 
 import io
+import logging
+import os
 import sys
 from pathlib import Path
 
@@ -15,6 +17,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+
+LOG = logging.getLogger(__name__)
 
 # ──────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG
@@ -45,6 +49,13 @@ TRANSLATIONS = {
         # Tab 1
         "upload_header": "Nahrajte nebo vložte text",
         "upload_label": "Nahrát .txt nebo .pdf",
+        "upload_limit_caption": "Aktivní Streamlit limit: upload {upload_mb} · message {message_mb}",
+        "upload_path_label": "…nebo načíst soubor z workspace/cesty serveru",
+        "upload_path_placeholder": "např. /workspaces/lingvisticka_analyza/moje_data/dokument.pdf",
+        "upload_path_help": "Použijte pro velké PDF v Codespaces: nahrajte soubor do workspace a sem vložte jeho cestu.",
+        "upload_codespaces_warning": "V GitHub Codespaces může upload přes prohlížeč skončit HTTP 413 ještě před aplikací. Pro velké PDF použijte pole s cestou k souboru ve workspace.",
+        "upload_invalid_path": "Soubor na zadané cestě nebyl nalezen nebo není čitelný.",
+        "upload_unsupported_type": "Podporované jsou jen soubory .txt a .pdf.",
         "paste_label": "…nebo vložit text sem",
         "run_button": "▶  Spustit analýzu",
         "reading_file": "Čtení souboru…",
@@ -647,6 +658,13 @@ TRANSLATIONS = {
         "lang_label": "Jazyk",
         "upload_header": "Nahrajte alebo vložte text",
         "upload_label": "Nahrať .txt alebo .pdf",
+        "upload_limit_caption": "Aktívny Streamlit limit: upload {upload_mb} · message {message_mb}",
+        "upload_path_label": "…alebo načítať súbor z workspace/cesty servera",
+        "upload_path_placeholder": "napr. /workspaces/lingvisticka_analyza/moje_data/dokument.pdf",
+        "upload_path_help": "Použite pre veľké PDF v Codespaces: nahrajte súbor do workspace a sem vložte jeho cestu.",
+        "upload_codespaces_warning": "V GitHub Codespaces môže upload cez prehliadač skončiť HTTP 413 ešte pred aplikáciou. Pre veľké PDF použite pole s cestou k súboru vo workspace.",
+        "upload_invalid_path": "Súbor na zadanej ceste sa nenašiel alebo sa nedá prečítať.",
+        "upload_unsupported_type": "Podporované sú len súbory .txt a .pdf.",
         "paste_label": "…alebo vložiť text sem",
         "run_button": "▶  Spustiť analýzu",
         "reading_file": "Čítanie súboru…",
@@ -1231,6 +1249,13 @@ TRANSLATIONS = {
         "lang_label": "Language",
         "upload_header": "Upload or paste text",
         "upload_label": "Upload .txt or .pdf",
+        "upload_limit_caption": "Active Streamlit limit: upload {upload_mb} · message {message_mb}",
+        "upload_path_label": "...or load a file from the workspace/server path",
+        "upload_path_placeholder": "e.g. /workspaces/lingvisticka_analyza/my_data/document.pdf",
+        "upload_path_help": "Use this for large PDFs in Codespaces: put the file into the workspace and paste its path here.",
+        "upload_codespaces_warning": "In GitHub Codespaces, browser upload can fail with HTTP 413 before the request reaches the app. For large PDFs, use the workspace file path field below.",
+        "upload_invalid_path": "The file path was not found or could not be read.",
+        "upload_unsupported_type": "Only .txt and .pdf files are supported.",
         "paste_label": "…or paste text here",
         "run_button": "▶  Run Pipeline",
         "reading_file": "Reading file…",
@@ -2948,18 +2973,45 @@ def _save_to_db(
     return total
 
 
-def _read_upload(f) -> tuple[str, str | None]:
-    """Read an uploaded file and return (text, error_message).
+def _is_codespaces() -> bool:
+    return os.getenv("CODESPACES", "").lower() == "true"
+
+
+def _streamlit_limit_label(limit_mb: int | None) -> str:
+    if limit_mb is None:
+        return "n/a"
+    if int(limit_mb) == 0:
+        return "unlimited"
+    return f"{int(limit_mb)} MB"
+
+
+def _active_streamlit_limits() -> tuple[int | None, int | None]:
+    from streamlit import config as _st_config
+
+    def _read(key: str) -> int | None:
+        try:
+            value = _st_config.get_option(key)
+        except Exception:
+            return None
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
+    return _read("server.maxUploadSize"), _read("server.maxMessageSize")
+
+
+def _read_upload_bytes(file_name: str, raw: bytes) -> tuple[str, str | None]:
+    """Decode upload bytes and return (text, error_message).
 
     Returns (text, None) on success.  Returns ("", error_message) when the
     file could not be read so the caller can surface a meaningful warning.
     """
-    if f.name.lower().endswith(".pdf"):
+    if not raw:
+        return "", "upload_empty_file"
+    if file_name.lower().endswith(".pdf"):
         try:
             import pdfplumber
-            raw = f.read()
-            if not raw:
-                return "", "upload_empty_file"
             pages = []
             with pdfplumber.open(io.BytesIO(raw)) as pdf:
                 for page in pdf.pages:
@@ -2975,10 +3027,35 @@ def _read_upload(f) -> tuple[str, str | None]:
             return text, None
         except Exception as exc:
             return "", f"upload_pdf_error: {exc}"
-    raw = f.read()
-    if not raw:
-        return "", "upload_empty_file"
     return raw.decode("utf-8", errors="replace"), None
+
+
+def _read_upload(f) -> tuple[str, str | None]:
+    raw = f.read()
+    LOG.info("Upload request reached app for %s (%d bytes).", getattr(f, "name", "uploaded_file"), len(raw))
+    return _read_upload_bytes(getattr(f, "name", "uploaded_file"), raw)
+
+
+def _read_upload_path(path_value: str) -> tuple[str, str | None, str]:
+    raw_path = (path_value or "").strip()
+    candidate = Path(raw_path).expanduser()
+    if not candidate.is_absolute():
+        candidate = (SRC / candidate).resolve()
+    try:
+        candidate = candidate.resolve(strict=True)
+    except FileNotFoundError:
+        return "", "upload_invalid_path", raw_path
+    if not candidate.is_file():
+        return "", "upload_invalid_path", str(candidate)
+    if candidate.suffix.lower() not in {".txt", ".pdf"}:
+        return "", "upload_unsupported_type", str(candidate)
+    try:
+        raw = candidate.read_bytes()
+    except OSError:
+        return "", "upload_invalid_path", str(candidate)
+    LOG.info("Workspace file read reached app for %s (%d bytes).", candidate, len(raw))
+    text, err = _read_upload_bytes(candidate.name, raw)
+    return text, err, candidate.name
 
 
 @st.cache_resource(show_spinner="Loading Stanza NLP model (first run ~10 s)…")
@@ -3313,6 +3390,11 @@ with tab_analyze:
     col_up, col_paste = st.columns([1, 2])
     with col_up:
         uploaded = st.file_uploader(T["upload_label"], type=["txt", "pdf"])
+        upload_path = st.text_input(
+            T["upload_path_label"],
+            placeholder=T["upload_path_placeholder"],
+            help=T["upload_path_help"],
+        )
     with col_paste:
         pasted = st.text_area(
             T["paste_label"], height=130,
@@ -3322,6 +3404,15 @@ with tab_analyze:
                 "Jděte do všeho světa a kažte evangelium."
             ),
         )
+    _upload_limit, _message_limit = _active_streamlit_limits()
+    st.caption(
+        T["upload_limit_caption"].format(
+            upload_mb=_streamlit_limit_label(_upload_limit),
+            message_mb=_streamlit_limit_label(_message_limit),
+        )
+    )
+    if _is_codespaces():
+        st.info(T["upload_codespaces_warning"])
 
     # ── SEGMENTATION PREVIEW ─────────────────────────────────────────────────
     _preview_text = pasted.strip() if pasted.strip() else None
@@ -3431,6 +3522,9 @@ with tab_analyze:
             with st.spinner(T["reading_file"]):
                 text, _read_err = _read_upload(uploaded)
             source_name = uploaded.name
+        elif upload_path.strip():
+            with st.spinner(T["reading_file"]):
+                text, _read_err, source_name = _read_upload_path(upload_path)
         elif pasted.strip():
             text = pasted.strip()
 

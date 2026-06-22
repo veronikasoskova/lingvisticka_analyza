@@ -17,10 +17,16 @@ cd lingvisticka_analyza
 bash setup.sh
 
 # 3. Launch
-streamlit run app.py
+streamlit run app.py --server.maxUploadSize 2048 --server.maxMessageSize 2048
 ```
 
 The app opens at **http://localhost:8501**.
+
+In **GitHub Codespaces**, browser upload can still fail with **HTTP 413 before the
+request reaches Streamlit**, because the forwarded-port proxy applies its own
+request-size limit. For large PDFs, copy the file into the Codespaces workspace
+first and use the app's **workspace/server path** field instead of the browser
+upload widget.
 
 ---
 

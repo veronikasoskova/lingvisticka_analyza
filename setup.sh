@@ -45,4 +45,4 @@ echo "      python3 l_taxonomy_analytics.py        # regenerate analytics CSVs"
 
 echo ""
 echo "=== Setup complete. Start the app with: ==="
-echo "    streamlit run $SCRIPT_DIR/app.py"
+echo "    streamlit run $SCRIPT_DIR/app.py --server.maxUploadSize 2048 --server.maxMessageSize 2048"

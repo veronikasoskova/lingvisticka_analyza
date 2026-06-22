@@ -9,5 +9,5 @@
     }
   },
   "postCreateCommand": "bash setup.sh",
-  "postStartCommand": "streamlit run app.py --server.headless true --server.port 8501 &"
+  "postStartCommand": "bash -lc 'cd \"${containerWorkspaceFolder}\" && streamlit run \"${containerWorkspaceFolder}/app.py\" --server.headless true --server.port 8501 --server.maxUploadSize 2048 --server.maxMessageSize 2048 &'"
 }
