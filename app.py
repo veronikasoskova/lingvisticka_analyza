@@ -55,6 +55,7 @@ TRANSLATIONS = {
         "upload_path_help": "Použijte pro velké PDF v Codespaces: nahrajte soubor do workspace a sem vložte jeho cestu.",
         "upload_codespaces_warning": "V GitHub Codespaces může upload přes prohlížeč skončit HTTP 413 ještě před aplikací. Pro velké PDF použijte pole s cestou k souboru ve workspace.",
         "upload_invalid_path": "Soubor na zadané cestě nebyl nalezen nebo není čitelný.",
+        "upload_path_outside_workspace": "Z bezpečnostních důvodů lze načítat jen soubory uložené v aktuálním workspace aplikace.",
         "upload_unsupported_type": "Podporované jsou jen soubory .txt a .pdf.",
         "paste_label": "…nebo vložit text sem",
         "run_button": "▶  Spustit analýzu",
@@ -664,6 +665,7 @@ TRANSLATIONS = {
         "upload_path_help": "Použite pre veľké PDF v Codespaces: nahrajte súbor do workspace a sem vložte jeho cestu.",
         "upload_codespaces_warning": "V GitHub Codespaces môže upload cez prehliadač skončiť HTTP 413 ešte pred aplikáciou. Pre veľké PDF použite pole s cestou k súboru vo workspace.",
         "upload_invalid_path": "Súbor na zadanej ceste sa nenašiel alebo sa nedá prečítať.",
+        "upload_path_outside_workspace": "Z bezpečnostných dôvodov možno načítať len súbory uložené v aktuálnom workspace aplikácie.",
         "upload_unsupported_type": "Podporované sú len súbory .txt a .pdf.",
         "paste_label": "…alebo vložiť text sem",
         "run_button": "▶  Spustiť analýzu",
@@ -1255,6 +1257,7 @@ TRANSLATIONS = {
         "upload_path_help": "Use this for large PDFs in Codespaces: put the file into the workspace and paste its path here.",
         "upload_codespaces_warning": "In GitHub Codespaces, browser upload can fail with HTTP 413 before the request reaches the app. For large PDFs, use the workspace file path field below.",
         "upload_invalid_path": "The file path was not found or could not be read.",
+        "upload_path_outside_workspace": "For security reasons, only files inside the app workspace can be loaded.",
         "upload_unsupported_type": "Only .txt and .pdf files are supported.",
         "paste_label": "…or paste text here",
         "run_button": "▶  Run Pipeline",
@@ -3001,6 +3004,15 @@ def _active_streamlit_limits() -> tuple[int | None, int | None]:
     return _read("server.maxUploadSize"), _read("server.maxMessageSize")
 
 
+def _allowed_upload_roots() -> tuple[Path, ...]:
+    roots = {SRC.resolve()}
+    for env_name in ("GITHUB_WORKSPACE", "CODESPACE_VSCODE_FOLDER"):
+        raw = os.getenv(env_name)
+        if raw:
+            roots.add(Path(raw).expanduser().resolve())
+    return tuple(sorted(roots, key=str))
+
+
 def _read_upload_bytes(file_name: str, raw: bytes) -> tuple[str, str | None]:
     """Decode upload bytes and return (text, error_message).
 
@@ -3045,6 +3057,8 @@ def _read_upload_path(path_value: str) -> tuple[str, str | None, str]:
         candidate = candidate.resolve(strict=True)
     except FileNotFoundError:
         return "", "upload_invalid_path", raw_path
+    if not any(candidate.is_relative_to(root) for root in _allowed_upload_roots()):
+        return "", "upload_path_outside_workspace", str(candidate)
     if not candidate.is_file():
         return "", "upload_invalid_path", str(candidate)
     if candidate.suffix.lower() not in {".txt", ".pdf"}:
