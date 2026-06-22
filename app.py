@@ -2202,7 +2202,7 @@ def csv(rel: str) -> pd.DataFrame | None:
 
 
 @st.cache_data(ttl=300)
-def load_db() -> pd.DataFrame | None:
+def load_db(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
@@ -2974,7 +2974,7 @@ def _top_n_cols(df_wide: pd.DataFrame, id_col: str, n: int) -> pd.DataFrame:
 # ──────────────────────────────────────────────────────────────────────────────
 
 @st.cache_data(ttl=300)
-def load_refined() -> pd.DataFrame | None:
+def load_refined(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
@@ -2996,7 +2996,7 @@ def load_refined() -> pd.DataFrame | None:
 
 
 @st.cache_data(ttl=300)
-def load_verbal_full() -> pd.DataFrame | None:
+def load_verbal_full(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
@@ -3301,7 +3301,7 @@ with tab_bible:
     st.subheader(T["bible_header"])
     st.caption(T["bible_caption"])
 
-    db_df = load_db()
+    db_df = load_db(lang)
 
     if db_df is None:
         st.warning(T["no_db"])
@@ -3317,6 +3317,44 @@ with tab_bible:
         c2.metric(T["metric_books"], books_b)
         c3.metric(T["metric_coverage"], f"{cov_b:.1f} %")
         c4.metric(T["metric_mean_conf"], f"{conf_b:.2f}")
+
+        st.divider()
+
+        # ── BOOK GROUP FILTER ─────────────────────────────────────────────────────
+        _all_grps_lbl = T.get("group_all", "— All groups")
+        _grp_label_options = [_all_grps_lbl] + [T.get(gk, gk) for gk, _ in BOOK_GROUPS]
+        _sel_grp = st.selectbox(
+            T.get("filter_group_label", "Book group"),
+            _grp_label_options,
+            key="bible_top_group",
+        )
+
+        # Build the set of localized book names belonging to the chosen group
+        if _sel_grp == _all_grps_lbl:
+            _grp_book_set: "set[str] | None" = None
+        else:
+            _grp_book_set = {
+                BOOK_NAMES[a].get(lang, a)
+                for gk, abbrevs in BOOK_GROUPS
+                if T.get(gk, gk) == _sel_grp
+                for a in abbrevs
+                if a in BOOK_NAMES
+            }
+
+        def _flt(df: "pd.DataFrame | None", col: str = "book") -> "pd.DataFrame | None":
+            """Filter df rows to the selected book group (no-op when all groups selected)."""
+            if _grp_book_set is None or df is None or col not in df.columns:
+                return df
+            return df[df[col].isin(_grp_book_set)]
+
+        def _flt_csv(df: "pd.DataFrame | None", col: str = "file_name") -> "pd.DataFrame | None":
+            """Filter wide CSV (rows = books) to the selected book group."""
+            if _grp_book_set is None or df is None or col not in df.columns:
+                return df
+            return df[df[col].isin(_grp_book_set)]
+
+        # Apply the group filter to the main DB frame used by all later sections
+        db_df = _flt(db_df)
 
         st.divider()
 
@@ -3354,7 +3392,7 @@ with tab_bible:
                     )
 
             if int_book is not None:
-                hm = int_book.copy()
+                hm = _flt_csv(int_book).copy()
                 hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
                 hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
                 _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
@@ -3402,7 +3440,7 @@ with tab_bible:
             if strat_book is not None:
                 excl = {"file_name", "total", "unclassified"}
                 s_cols = [c for c in strat_book.columns if c not in excl]
-                hm2 = strat_book[["file_name"] + s_cols].copy()
+                hm2 = _flt_csv(strat_book)[["file_name"] + s_cols].copy()
                 hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
                 st.caption(T["strat_book_heatmap_desc"])
                 st.plotly_chart(
@@ -4007,7 +4045,7 @@ with tab_bible:
         # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_patterns"]):
 
-            ref_df = load_refined()
+            ref_df = load_refined(lang)
             if ref_df is not None:
                 ref_df = ref_df.copy()
                 ref_df["book"] = _bkr_book(ref_df["book"])
@@ -4070,8 +4108,8 @@ with tab_bible:
         # ── 14. SEMANTIC ANALYSIS ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_semantics"]):
 
-            ref_df2 = load_refined()
-            verb_df = load_verbal_full()
+            ref_df2 = load_refined(lang)
+            verb_df = load_verbal_full(lang)
             if ref_df2 is not None:
                 ref_df2 = ref_df2.copy()
                 ref_df2["book"] = _bkr_book(ref_df2["book"])
