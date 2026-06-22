@@ -50,6 +50,8 @@ TRANSLATIONS = {
         "reading_file": "Čtení souboru…",
         "running_pipeline": "Probíhá analýza…",
         "no_text_warning": "Nahrajte soubor nebo vložte text.",
+        "upload_pdf_no_text": "PDF neobsahuje žádný extrahovatelný text — pravděpodobně jde o skenovaný dokument (obrázkové PDF). Zkuste soubor převést na textové PDF nebo vložte text ručně.",
+        "upload_empty_file": "Nahraný soubor je prázdný nebo se nepodařilo přečíst jeho obsah. Zkuste soubor nahrát znovu.",
         "metric_sentences": "Vět celkem",
         "metric_classified": "Klasifikováno",
         "metric_confidence": "Průměrná jistota",
@@ -650,6 +652,8 @@ TRANSLATIONS = {
         "reading_file": "Čítanie súboru…",
         "running_pipeline": "Prebieha analýza…",
         "no_text_warning": "Nahrajte súbor alebo vložte text.",
+        "upload_pdf_no_text": "PDF neobsahuje žiadny extrahovateľný text — pravdepodobne ide o skenovaný dokument (obrázkové PDF). Skúste súbor konvertovať na textové PDF alebo vložte text ručne.",
+        "upload_empty_file": "Nahraný súbor je prázdny alebo sa nepodarilo prečítať jeho obsah. Skúste súbor nahrať znova.",
         "metric_sentences": "Viet celkom",
         "metric_classified": "Klasifikovaných",
         "metric_confidence": "Priemerná istota",
@@ -1232,6 +1236,8 @@ TRANSLATIONS = {
         "reading_file": "Reading file…",
         "running_pipeline": "Running Skinner pipeline…",
         "no_text_warning": "Please upload a file or paste text first.",
+        "upload_pdf_no_text": "The PDF contains no extractable text — it is likely a scanned/image-only PDF. Try converting it to a text-based PDF or paste the text manually.",
+        "upload_empty_file": "The uploaded file is empty or its content could not be read. Please try uploading the file again.",
         "metric_sentences": "Sentences",
         "metric_classified": "Classified",
         "metric_confidence": "Mean confidence",
@@ -2942,20 +2948,37 @@ def _save_to_db(
     return total
 
 
-def _read_upload(f) -> str:
+def _read_upload(f) -> tuple[str, str | None]:
+    """Read an uploaded file and return (text, error_message).
+
+    Returns (text, None) on success.  Returns ("", error_message) when the
+    file could not be read so the caller can surface a meaningful warning.
+    """
     if f.name.lower().endswith(".pdf"):
-        import pdfplumber
-        pages = []
-        with pdfplumber.open(io.BytesIO(f.read())) as pdf:
-            for page in pdf.pages:
-                # x_tolerance=7 merges character-spaced PDFs ("T H E" → "THE")
-                words = page.extract_words(x_tolerance=7, y_tolerance=5)
-                if words:
-                    pages.append(" ".join(w["text"] for w in words))
-                else:
-                    pages.append(page.extract_text() or "")
-        return "\n\n".join(pages)
-    return f.read().decode("utf-8", errors="replace")
+        try:
+            import pdfplumber
+            raw = f.read()
+            if not raw:
+                return "", "upload_empty_file"
+            pages = []
+            with pdfplumber.open(io.BytesIO(raw)) as pdf:
+                for page in pdf.pages:
+                    # x_tolerance=7 merges character-spaced PDFs ("T H E" → "THE")
+                    words = page.extract_words(x_tolerance=7, y_tolerance=5)
+                    if words:
+                        pages.append(" ".join(w["text"] for w in words))
+                    else:
+                        pages.append(page.extract_text() or "")
+            text = "\n\n".join(pages).strip()
+            if not text:
+                return "", "upload_pdf_no_text"
+            return text, None
+        except Exception as exc:
+            return "", f"upload_pdf_error: {exc}"
+    raw = f.read()
+    if not raw:
+        return "", "upload_empty_file"
+    return raw.decode("utf-8", errors="replace"), None
 
 
 @st.cache_resource(show_spinner="Loading Stanza NLP model (first run ~10 s)…")
@@ -3402,15 +3425,21 @@ with tab_analyze:
     st.caption(T["run_hint"])
     if st.button(T["run_button"], type="primary", use_container_width=True):
         text = ""
+        _read_err = None
         source_name = "pasted_text"
         if uploaded:
             with st.spinner(T["reading_file"]):
-                text = _read_upload(uploaded)
+                text, _read_err = _read_upload(uploaded)
             source_name = uploaded.name
         elif pasted.strip():
             text = pasted.strip()
 
-        if not text:
+        if _read_err:
+            # Surface a clear message for scanned PDFs, empty files, etc.
+            _err_key = _read_err.split(":")[0].strip()
+            _err_msg = T.get(_err_key, _read_err)
+            st.error(_err_msg)
+        elif not text:
             st.warning(T["no_text_warning"])
         else:
             _pre_warns = _context_warnings(ctx_source, ctx_interaction, ctx_stimulus, T)
