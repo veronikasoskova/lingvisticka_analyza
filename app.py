@@ -80,6 +80,7 @@ TRANSLATIONS = {
         "col_locution": "Lokuce",
         "col_convention": "Konvence",
         "col_pol_vocab": "Polit. slovník",
+        "col_ling_ctx": "Lingvistický kontext",
         # Tab 2
         "bible_header": "Analýza biblického korpusu",
         "bible_caption": "Předpočítáno z české Bible (Kralická, BKR) — spusťte `k_apply_all_to_bible.py` pro aktualizaci.",
@@ -535,13 +536,18 @@ TRANSLATIONS = {
         "dashboard_secondary_layer": "Behaviorální vrstva B. F. Skinnera",
         "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nalezeny třídy `skinner_class`)",
         "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pro tento běh (chybí `skinner_class`)",
-        "qs_direct_outputs_title": "Priame výstupy pipeline",
+        "qs_direct_outputs_title": "Přímé výstupy pipeline",
         "qs_rst_title": "RST vztahy mezi větami",
         "qs_rst_desc": "Distribuce RST vztahů detegovaných mezi sousedními větami.",
-        "qs_perloc_title": "Perlokucní efekty (top 12)",
+        "qs_perloc_title": "Perlokuční efekty (top 12)",
         "qs_perloc_desc": "Nejčastější zamýšlené efekty výroku na čtenáře/posluchače.",
         "qs_context_note_title": "Kontextové poznámky (výběr)",
         "qs_context_note_desc": "Věty, kde model zachytil napětí mezi diskurzivním módem a klasifikovaným záměrem.",
+        "ling_features_title": "Lingvistické příznaky",
+        "ling_features_ttr_title": "Type-token ratio (TTR) podle záměru",
+        "ling_features_ttr_desc": "Průměrné TTR (lexikální rozmanitost) pro každou kategorii záměru.",
+        "ling_features_pos_title": "POS příznaky podle záměru",
+        "ling_features_pos_desc": "Průměrný počet přídavných jmen, příslovcí a zájmen na větu pro každý záměr.",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická složitost podle knih",
         "complexity_desc": "Průměrná hloubka závislostního stromu a průměrný počet vedlejších vět na větu v každé biblické knize. Vyšší hodnota = syntakticky složitější text.",
@@ -674,6 +680,7 @@ TRANSLATIONS = {
         "col_locution": "Lokúcia",
         "col_convention": "Konvencia",
         "col_pol_vocab": "Polit. slovník",
+        "col_ling_ctx": "Lingvistický kontext",
         "bible_header": "Analýza biblického korpusu",
         "bible_caption": "Predpočítané z českej Biblie (Kralická, BKR) — spustite `k_apply_all_to_bible.py` pre aktualizáciu.",
         "metric_total": "Viet celkom",
@@ -1118,6 +1125,11 @@ TRANSLATIONS = {
         "qs_perloc_desc": "Najčastejšie zamýšľané efekty výroku na čitateľa/poslucháča.",
         "qs_context_note_title": "Kontextové poznámky (výber)",
         "qs_context_note_desc": "Vety, kde model zachytil napätie medzi diskurzívnym módom a klasifikovaným zámerom.",
+        "ling_features_title": "Lingvistické príznaky",
+        "ling_features_ttr_title": "Type-token ratio (TTR) podľa zámerov",
+        "ling_features_ttr_desc": "Priemerné TTR (lexikálna rozmanitosť) pre každú kategóriu zámerov.",
+        "ling_features_pos_title": "POS príznaky podľa zámerov",
+        "ling_features_pos_desc": "Priemerný počet prídavných mien, prísloviek a zámen na vetu pre každý zámer.",
         "save_error": "Chyba pri ukladaní",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická zložitosť podľa kníh",
@@ -1250,6 +1262,7 @@ TRANSLATIONS = {
         "col_locution": "Locution",
         "col_convention": "Convention",
         "col_pol_vocab": "Pol. vocab",
+        "col_ling_ctx": "Linguistic context",
         "bible_header": "Bible Corpus Analytics",
         "bible_caption": "Pre-computed from Czech Bible (Kralická, BKR) — run `k_apply_all_to_bible.py` to refresh.",
         "metric_total": "Total sentences",
@@ -1698,6 +1711,11 @@ TRANSLATIONS = {
         "qs_perloc_desc": "Most frequent intended effects of utterances on the reader/listener.",
         "qs_context_note_title": "Context notes (sample)",
         "qs_context_note_desc": "Sentences where the model detected tension between discourse mode and classified intention.",
+        "ling_features_title": "Linguistic features",
+        "ling_features_ttr_title": "Type-token ratio (TTR) by intention",
+        "ling_features_ttr_desc": "Average TTR (lexical diversity) per intention category.",
+        "ling_features_pos_title": "POS features by intention",
+        "ling_features_pos_desc": "Average adjective, adverb and pronoun count per sentence for each intention.",
         # Section 16 — new analytics
         "complexity_title": "Syntactic Complexity by Book",
         "complexity_desc": "Average dependency tree depth and average clause count per sentence in each biblical book. Higher = syntactically more complex text.",
@@ -4827,7 +4845,7 @@ with tab_results:
             if _sel_str: _view = _view[_view["primary_strategy"].isin(_sel_str)]
             _DISP = ["sentence_id","sentence","primary_intention","secondary_intention",
                      "illocutionary_force","primary_strategy","confidence","reason",
-                     "locution","convention","political_vocabulary"]
+                     "locution","convention","political_vocabulary","linguistic_context"]
             _show = [c for c in _DISP if c in _view.columns]
             st.dataframe(
                 _view[_show].rename(columns={
@@ -4839,6 +4857,7 @@ with tab_results:
                     "confidence": T["col_confidence"], "reason": T["col_reason"],
                     "locution": T["col_locution"], "convention": T["col_convention"],
                     "political_vocabulary": T["col_pol_vocab"],
+                    "linguistic_context": T.get("col_ling_ctx", "Linguistic context"),
                 }),
                 use_container_width=True, height=400,
                 column_config={
@@ -5043,6 +5062,77 @@ with tab_results:
                         use_container_width=True,
                         height=320,
                     )
+
+            # ── Linguistic features (TTR + POS stats) ────────────────────────
+            _ling_cols = ["type_token_ratio", "adjective_count", "adverb_count",
+                          "pronoun_count", "has_coordination", "dative_present",
+                          "indirect_object_present"]
+            if any(c in _df.columns for c in _ling_cols) and "primary_intention" in _df.columns:
+                st.divider()
+                st.subheader(T.get("ling_features_title", "Lingvistické príznaky"))
+                _lf1, _lf2 = st.columns(2)
+                with _lf1:
+                    if "type_token_ratio" in _df.columns:
+                        _ttr_agg = (
+                            _df.groupby("primary_intention")["type_token_ratio"]
+                            .mean()
+                            .reset_index()
+                            .rename(columns={"primary_intention": "_raw",
+                                             "type_token_ratio": T.get("col_ttr", "TTR")})
+                        )
+                        _ttr_agg[T.get("x_intention", "Intention")] = (
+                            _ttr_agg["_raw"].map(VI).fillna(_ttr_agg["_raw"])
+                        )
+                        _ttr_agg = _ttr_agg.sort_values(T.get("col_ttr", "TTR"), ascending=True)
+                        if not _ttr_agg.empty:
+                            st.caption(T.get("ling_features_ttr_desc", ""))
+                            _fig_ttr = px.bar(
+                                _ttr_agg,
+                                x=T.get("col_ttr", "TTR"),
+                                y=T.get("x_intention", "Intention"),
+                                orientation="h",
+                                title=T.get("ling_features_ttr_title", "TTR by intention"),
+                                color_discrete_sequence=["#06d6a0"],
+                            )
+                            _fig_ttr.update_layout(showlegend=False, height=360, **_LAYOUT)
+                            st.plotly_chart(_fig_ttr, use_container_width=True)
+                with _lf2:
+                    _pos_cols = [c for c in ["adjective_count", "adverb_count", "pronoun_count"]
+                                 if c in _df.columns]
+                    if _pos_cols and "primary_intention" in _df.columns:
+                        _pos_agg = (
+                            _df.groupby("primary_intention")[_pos_cols]
+                            .mean()
+                            .reset_index()
+                        )
+                        _pos_agg[T.get("x_intention", "Intention")] = (
+                            _pos_agg["primary_intention"].map(VI).fillna(_pos_agg["primary_intention"])
+                        )
+                        _pos_agg = _pos_agg.sort_values(_pos_cols[0], ascending=True)
+                        if not _pos_agg.empty:
+                            st.caption(T.get("ling_features_pos_desc", ""))
+                            _fig_pos = go.Figure()
+                            _pos_colors = ["#fb5607", "#ffbe0b", "#8338ec"]
+                            _pos_labels = {
+                                "adjective_count": T.get("lbl_adj", "Adj"),
+                                "adverb_count":    T.get("lbl_adv", "Adv"),
+                                "pronoun_count":   T.get("lbl_pron", "Pron"),
+                            }
+                            for _ci, _pc in enumerate(_pos_cols):
+                                _fig_pos.add_bar(
+                                    name=_pos_labels.get(_pc, _pc),
+                                    x=_pos_agg[_pc],
+                                    y=_pos_agg[T.get("x_intention", "Intention")],
+                                    orientation="h",
+                                    marker_color=_pos_colors[_ci % len(_pos_colors)],
+                                )
+                            _fig_pos.update_layout(
+                                barmode="group",
+                                title=T.get("ling_features_pos_title", "POS by intention"),
+                                height=360,
+                                **_LAYOUT,
+                            )
+                            st.plotly_chart(_fig_pos, use_container_width=True)
 
             # ── Chapter-level intention heatmap ───────────────────────────────
             if _units and len(_units) >= 3 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
