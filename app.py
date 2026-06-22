@@ -129,6 +129,7 @@ TRANSLATIONS = {
             "war_conflict":      "Válka a konflikt",
             "eschatology":       "Eschatologie",
             "royal_power":       "Královská moc",
+            "sacred_space":      "Posvátný prostor",
             "monotheism":        "Monoteismus",
             "genealogy_lineage": "Genealogie",
             "divine":            "Božské prvky",
@@ -693,6 +694,7 @@ TRANSLATIONS = {
             "war_conflict":      "Vojna a konflikt",
             "eschatology":       "Eschatológia",
             "royal_power":       "Kráľovská moc",
+            "sacred_space":      "Posvätný priestor",
             "monotheism":        "Monoteizmus",
             "genealogy_lineage": "Genealógia",
             "divine":            "Božské prvky",
@@ -1244,6 +1246,7 @@ TRANSLATIONS = {
             "war_conflict":      "War & Conflict",
             "eschatology":       "Eschatology",
             "royal_power":       "Royal Power",
+            "sacred_space":      "Sacred Space",
             "monotheism":        "Monotheism",
             "genealogy_lineage": "Genealogy",
             "divine":            "Divine Elements",
@@ -2059,9 +2062,59 @@ def _localize_book_columns(df: pd.DataFrame) -> pd.DataFrame:
     """Normalize Bible file/book columns to localized display labels."""
     out = df.copy()
     for col in ("file_name", "book"):
-        if col in out.columns and out[col].dtype == object:
+        if col in out.columns and pd.api.types.is_string_dtype(out[col]):
             out[col] = _bkr_book(out[col])
     return out
+
+
+_RELIGIOUS_ELEMENT_ALIASES: dict[str, str] = {
+    "covenant law": "covenant_law",
+    "divine": "divine",
+    "divine elements": "divine",
+    "divine hierarchy": "divine_hierarchy",
+    "eschatology": "eschatology",
+    "genealogy": "genealogy_lineage",
+    "genealogy lineage": "genealogy_lineage",
+    "holy war": "war_conflict",
+    "kingdom": "royal_power",
+    "kinship": "kinship",
+    "law": "legal",
+    "legal": "legal",
+    "legal elements": "legal",
+    "life death": "life_death",
+    "moral": "moral",
+    "moral elements": "moral",
+    "monotheism": "monotheism",
+    "prophecy": "prophetic_speech",
+    "prophetic speech": "prophetic_speech",
+    "ritual": "ritual_sacrifice",
+    "ritual sacrifice": "ritual_sacrifice",
+    "royal power": "royal_power",
+    "sacred space": "sacred_space",
+    "sacrifice": "ritual_sacrifice",
+    "war conflict": "war_conflict",
+    "wisdom": "wisdom",
+}
+
+
+def _rel_key(v: object) -> str:
+    x = str(v or "").strip()
+    if not x:
+        return x
+    if x in T.get("rel_elements", {}):
+        return x
+    norm = " ".join(
+        x.replace("&", " ")
+         .replace("-", " ")
+         .replace("_", " ")
+         .split()
+    ).lower()
+    return _RELIGIOUS_ELEMENT_ALIASES.get(norm, x)
+
+
+def _rel_label(v: object) -> str:
+    key = _rel_key(v)
+    return T.get("rel_elements", {}).get(key, str(v or "").strip())
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -2206,7 +2259,6 @@ STR_CLR = translate_clr(STRATEGY_CLR, VS)
 # DATA HELPERS
 # ──────────────────────────────────────────────────────────────────────────────
 
-@st.cache_data(ttl=300)
 def csv(rel: str) -> pd.DataFrame | None:
     p = OUTPUT / rel
     return _localize_book_columns(pd.read_csv(p)) if p.exists() else None
@@ -2934,7 +2986,7 @@ def fig_pie(df, names, values, title, clr=None):
 def fig_heatmap(df_wide, id_col, title, h=420, fmt=None):
     cols = [c for c in df_wide.columns if c not in (id_col, "total")]
     z = df_wide[cols].values
-    if df_wide[id_col].dtype == object:
+    if pd.api.types.is_string_dtype(df_wide[id_col]):
         abbrevs = (df_wide[id_col]
                    .str.replace("bible_BKR_", "", regex=False)
                    .str.replace(".txt", "", regex=False))
@@ -3530,7 +3582,7 @@ with tab_bible:
             with c1:
                 if field_sum is not None:
                     d = field_sum.sort_values("sentence_count", ascending=False).copy()
-                    d["element"] = d["element"].map(lambda v: _rel_el.get(v, v))
+                    d["element"] = d["element"].map(_rel_label)
                     d = d.rename(columns={"element": T["x_element"],
                                           "sentence_count": T["x_count"]})
                     st.caption(T["element_coverage_desc"])
@@ -3557,8 +3609,7 @@ with tab_bible:
                 dn = density_wide[["file_name"] + s_cols].copy()
                 dn.columns = (
                     ["file_name"] +
-                    [_rel_el.get(c.replace("_sentence_density", ""),
-                                 c.replace("_sentence_density", "")) for c in s_cols]
+                    [_rel_label(c.replace("_sentence_density", "")) for c in s_cols]
                 )
                 _n_dens = st.slider(T["top_n_slider"], 5, min(30, len(s_cols)), min(15, len(s_cols)),
                                     key="hm_dens_n")
@@ -4047,7 +4098,7 @@ with tab_bible:
                 dn = corp_dens[["file_name"] + s_cols].copy()
                 dn.columns = (
                     ["file_name"] +
-                    [c.replace("_sentence_density", "") for c in s_cols]
+                    [_rel_label(c.replace("_sentence_density", "")) for c in s_cols]
                 )
                 st.caption(T["corpus_density_desc"])
                 st.plotly_chart(
