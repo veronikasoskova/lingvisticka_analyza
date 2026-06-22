@@ -3013,6 +3013,25 @@ def _allowed_upload_roots() -> tuple[Path, ...]:
     return tuple(sorted(roots, key=str))
 
 
+@st.cache_data(ttl=30)
+def _workspace_upload_map() -> dict[str, str]:
+    upload_map: dict[str, str] = {}
+    for root in _allowed_upload_roots():
+        for path in root.rglob("*"):
+            if not path.is_file() or path.suffix.lower() not in {".txt", ".pdf"}:
+                continue
+            try:
+                rel = path.relative_to(root)
+            except ValueError:
+                continue
+            if any(part.startswith(".") for part in rel.parts):
+                continue
+            resolved = str(path.resolve())
+            upload_map[rel.as_posix()] = resolved
+            upload_map[resolved] = resolved
+    return upload_map
+
+
 def _read_upload_bytes(file_name: str, raw: bytes) -> tuple[str, str | None]:
     """Decode upload bytes and return (text, error_message).
 
@@ -3050,15 +3069,10 @@ def _read_upload(f) -> tuple[str, str | None]:
 
 def _read_upload_path(path_value: str) -> tuple[str, str | None, str]:
     raw_path = (path_value or "").strip()
-    candidate = Path(raw_path).expanduser()
-    if not candidate.is_absolute():
-        candidate = (SRC / candidate).resolve()
-    try:
-        candidate = candidate.resolve(strict=True)
-    except FileNotFoundError:
+    candidate_str = _workspace_upload_map().get(raw_path)
+    if not candidate_str:
         return "", "upload_invalid_path", raw_path
-    if not any(candidate.is_relative_to(root) for root in _allowed_upload_roots()):
-        return "", "upload_path_outside_workspace", str(candidate)
+    candidate = Path(candidate_str)
     if not candidate.is_file():
         return "", "upload_invalid_path", str(candidate)
     if candidate.suffix.lower() not in {".txt", ".pdf"}:
