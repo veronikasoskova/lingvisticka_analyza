@@ -509,7 +509,7 @@ TRANSLATIONS = {
         "complexity_title": "Syntaktická složitost podle knih",
         "complexity_desc": "Průměrná hloubka závislostního stromu a průměrný počet vedlejších vět na větu v každé biblické knize. Vyšší hodnota = syntakticky složitější text.",
         "tact_autoclitic_title": "Tact vs. Autoclitic podle knih",
-        "tact_autoclitic_desc": "Podíl vět klasifikovaných jako **tact** (assertive — popis skutečnosti) vs. **autoclitic** (declarative — komentář k vlastní řeči) v každé biblické knize.",
+        "tact_autoclitic_desc": "Podíl vět klasifikovaných jako **tact** (asertiv — popis skutečnosti) vs. **autoclitic** (deklarativ — komentář k vlastní řeči) v každé biblické knize.",
         "traditions_title": "Tradice a filozofické vlivy — přehled",
         "cluster_labels": {
             "royal":       "Královská moc",
@@ -1049,7 +1049,7 @@ TRANSLATIONS = {
         "complexity_title": "Syntaktická zložitosť podľa kníh",
         "complexity_desc": "Priemerná hĺbka závislostného stromu a priemerný počet vedľajších viet na vetu v každej biblickej knihe. Vyššia hodnota = syntakticky zložitejší text.",
         "tact_autoclitic_title": "Tact vs. Autoclitic podľa kníh",
-        "tact_autoclitic_desc": "Podiel viet klasifikovaných ako **tact** (assertive — popis skutočnosti) vs. **autoclitic** (declarative — komentár k vlastnej reči) v každej biblickej knihe.",
+        "tact_autoclitic_desc": "Podiel viet klasifikovaných ako **tact** (asertív — popis skutočnosti) vs. **autoclitic** (deklaratív — komentár k vlastnej reči) v každej biblickej knihe.",
         "traditions_title": "Tradície a filozofické vplyvy — prehľad",
         "cluster_labels": {
             "royal":       "Kráľovská moc",
@@ -1208,6 +1208,40 @@ TRANSLATIONS = {
         "element_coverage_desc": "Sentences containing given religious elements — shows the thematic focus of the corpus.",
         "philosophy_title": "Philosophical Traditions",
         "philosophy_desc": "Presence of philosophical and theological traditions in the text.",
+        "rel_elements": {
+            "covenant_law":      "Covenant & Law",
+            "prophetic_speech":  "Prophetic Speech",
+            "divine_hierarchy":  "Divine Hierarchy",
+            "legal":             "Legal Elements",
+            "life_death":        "Life & Death",
+            "wisdom":            "Wisdom",
+            "ritual_sacrifice":  "Ritual Sacrifice",
+            "moral":             "Moral Elements",
+            "war_conflict":      "War & Conflict",
+            "eschatology":       "Eschatology",
+            "royal_power":       "Royal Power",
+            "monotheism":        "Monotheism",
+            "genealogy_lineage": "Genealogy",
+            "divine":            "Divine Elements",
+            "kinship":           "Kinship",
+        },
+        "rel_philosophy": {
+            "platonic":      "Platonism",
+            "neoplatonic":   "Neoplatonism",
+            "stoic":         "Stoicism",
+            "gnostic":       "Gnosticism",
+            "aristotelian":  "Aristotelianism",
+            "pythagorean":   "Pythagoreanism",
+            "epicurean":     "Epicureanism",
+            "hermetic":      "Hermeticism",
+            "sufi":          "Sufism",
+            "kabbalistic":   "Kabbalah",
+            "theosophical":  "Theosophy",
+            "jungian":       "Jungianism",
+            "new_age":       "New Age",
+            "shamanic":      "Shamanism",
+            "tantric":       "Tantrism",
+        },
         "density_heatmap_title": "Religious Element Density by Book",
         "density_heatmap_desc": "Proportion of sentences with given religious elements per book (0–1) — darker = element dominates in that book.",
         "sec_clusters": "🔗 Concept Clusters & Semantic Oppositions",
@@ -1843,8 +1877,94 @@ VSK = VALUE_LABELS["skinner_class"][lang]
 VCR = VALUE_LABELS["control_role"][lang]
 VVT = VALUE_LABELS["verbal_type"][lang]
 
+# ──────────────────────────────────────────────────────────────────────────────
+# BIBLE BOOK NAME MAPPING  (BKR abbreviation → full name per language)
+# ──────────────────────────────────────────────────────────────────────────────
 
-def translate_clr(clr: dict, label_map: dict) -> dict:
+BOOK_NAMES: dict[str, dict[str, str]] = {
+    # Pentateuch
+    "Gn":  {"cs": "Genesis",            "sk": "Genezis",            "en": "Genesis"},
+    "Ex":  {"cs": "Exodus",             "sk": "Exodus",             "en": "Exodus"},
+    "Lv":  {"cs": "Leviticus",          "sk": "Levitikus",          "en": "Leviticus"},
+    "Nu":  {"cs": "Numeri",             "sk": "Numeri",             "en": "Numbers"},
+    "Dt":  {"cs": "Deuteronomium",      "sk": "Deuteronómium",      "en": "Deuteronomy"},
+    # Historical books
+    "Joz": {"cs": "Jozue",              "sk": "Jozua",              "en": "Joshua"},
+    "Sd":  {"cs": "Soudců",             "sk": "Sudcov",             "en": "Judges"},
+    "Rt":  {"cs": "Rut",                "sk": "Rút",                "en": "Ruth"},
+    "1S":  {"cs": "1. Samuelova",       "sk": "1. Samuelova",       "en": "1 Samuel"},
+    "2S":  {"cs": "2. Samuelova",       "sk": "2. Samuelova",       "en": "2 Samuel"},
+    "1Kr": {"cs": "1. Královská",       "sk": "1. Kráľovská",       "en": "1 Kings"},
+    "2Kr": {"cs": "2. Královská",       "sk": "2. Kráľovská",       "en": "2 Kings"},
+    "1Pa": {"cs": "1. Paralipomenon",   "sk": "1. Kroník",          "en": "1 Chronicles"},
+    "2Pa": {"cs": "2. Paralipomenon",   "sk": "2. Kroník",          "en": "2 Chronicles"},
+    "Ezd": {"cs": "Ezdráš",             "sk": "Ezdráš",             "en": "Ezra"},
+    "Neh": {"cs": "Nehemiáš",           "sk": "Nehemiáš",           "en": "Nehemiah"},
+    "Est": {"cs": "Ester",              "sk": "Ester",              "en": "Esther"},
+    # Wisdom books
+    "Jb":  {"cs": "Job",                "sk": "Jób",                "en": "Job"},
+    "Z":   {"cs": "Žalmy",              "sk": "Žalmy",              "en": "Psalms"},
+    "Pr":  {"cs": "Přísloví",           "sk": "Príslovia",          "en": "Proverbs"},
+    "Kaz": {"cs": "Kazatel",            "sk": "Kazateľ",            "en": "Ecclesiastes"},
+    "Pis": {"cs": "Píseň písní",        "sk": "Pieseň piesní",      "en": "Song of Solomon"},
+    # Major prophets
+    "Iz":  {"cs": "Izajáš",             "sk": "Izaiáš",             "en": "Isaiah"},
+    "Jr":  {"cs": "Jeremijáš",          "sk": "Jeremiáš",           "en": "Jeremiah"},
+    "Pl":  {"cs": "Pláč Jeremijášův",   "sk": "Náreky Jeremiášove", "en": "Lamentations"},
+    "Ez":  {"cs": "Ezechiel",           "sk": "Ezechiel",           "en": "Ezekiel"},
+    "Da":  {"cs": "Daniel",             "sk": "Daniel",             "en": "Daniel"},
+    # Minor prophets
+    "Oz":  {"cs": "Ozeáš",              "sk": "Hozeáš",             "en": "Hosea"},
+    "Jl":  {"cs": "Joel",               "sk": "Joel",               "en": "Joel"},
+    "Am":  {"cs": "Ámos",               "sk": "Amos",               "en": "Amos"},
+    "Abd": {"cs": "Abdiáš",             "sk": "Abdiáš",             "en": "Obadiah"},
+    "Jon": {"cs": "Jonáš",              "sk": "Jonáš",              "en": "Jonah"},
+    "Mi":  {"cs": "Micheáš",            "sk": "Micheáš",            "en": "Micah"},
+    "Na":  {"cs": "Nahum",              "sk": "Nahum",              "en": "Nahum"},
+    "Abk": {"cs": "Abakuk",             "sk": "Habakuk",            "en": "Habakkuk"},
+    "Sf":  {"cs": "Sofonjáš",           "sk": "Sofoniáš",           "en": "Zephaniah"},
+    "Ag":  {"cs": "Ageus",              "sk": "Aggeus",             "en": "Haggai"},
+    "Za":  {"cs": "Zacharjáš",          "sk": "Zachariáš",          "en": "Zechariah"},
+    "Mal": {"cs": "Malachiáš",          "sk": "Malachiáš",          "en": "Malachi"},
+    # Gospels & Acts
+    "Mt":  {"cs": "Matouš",             "sk": "Matúš",              "en": "Matthew"},
+    "Mk":  {"cs": "Marek",              "sk": "Marek",              "en": "Mark"},
+    "L":   {"cs": "Lukáš",              "sk": "Lukáš",              "en": "Luke"},
+    "J":   {"cs": "Jan",                "sk": "Ján",                "en": "John"},
+    "Sk":  {"cs": "Skutky apoštolů",    "sk": "Skutky apoštolov",   "en": "Acts"},
+    # Pauline epistles
+    "R":   {"cs": "Římanům",            "sk": "Rímskym",            "en": "Romans"},
+    "1K":  {"cs": "1. Korintským",      "sk": "1. Korintanom",      "en": "1 Corinthians"},
+    "2K":  {"cs": "2. Korintským",      "sk": "2. Korintanom",      "en": "2 Corinthians"},
+    "Ga":  {"cs": "Galatským",          "sk": "Galaťanom",          "en": "Galatians"},
+    "Ef":  {"cs": "Efezským",           "sk": "Efezanom",           "en": "Ephesians"},
+    "Fp":  {"cs": "Filipským",          "sk": "Filipanom",          "en": "Philippians"},
+    "Ko":  {"cs": "Kolosanům",          "sk": "Kološanom",          "en": "Colossians"},
+    "1Te": {"cs": "1. Tesalonickým",    "sk": "1. Tesaloničanom",   "en": "1 Thessalonians"},
+    "2Te": {"cs": "2. Tesalonickým",    "sk": "2. Tesaloničanom",   "en": "2 Thessalonians"},
+    "1Tm": {"cs": "1. Timoteovi",       "sk": "1. Timotejovi",      "en": "1 Timothy"},
+    "2Tm": {"cs": "2. Timoteovi",       "sk": "2. Timotejovi",      "en": "2 Timothy"},
+    "Tit": {"cs": "Titovi",             "sk": "Títovi",             "en": "Titus"},
+    "Fm":  {"cs": "Filemonovi",         "sk": "Filemonovi",         "en": "Philemon"},
+    # General epistles
+    "Zd":  {"cs": "Židům",              "sk": "Židom",              "en": "Hebrews"},
+    "Jk":  {"cs": "Jakub",              "sk": "Jakub",              "en": "James"},
+    "1P":  {"cs": "1. Petrův",          "sk": "1. Petrov",          "en": "1 Peter"},
+    "2P":  {"cs": "2. Petrův",          "sk": "2. Petrov",          "en": "2 Peter"},
+    "1J":  {"cs": "1. Janův",           "sk": "1. Jánov",           "en": "1 John"},
+    "2J":  {"cs": "2. Janův",           "sk": "2. Jánov",           "en": "2 John"},
+    "3J":  {"cs": "3. Janův",           "sk": "3. Jánov",           "en": "3 John"},
+    "Ju":  {"cs": "Judův",              "sk": "Júda",               "en": "Jude"},
+    # Apocalypse
+    "Zj":  {"cs": "Zjevení",            "sk": "Zjavenie",           "en": "Revelation"},
+}
+
+
+def _bkr_book(s: "pd.Series") -> "pd.Series":
+    """Convert a Series of BKR abbreviations to full book names for the current UI language."""
+    return s.map(lambda x: BOOK_NAMES.get(x, {}).get(lang, x))
+
+
     return {label_map.get(k, k): v for k, v in clr.items()}
 
 
@@ -2261,8 +2381,10 @@ def generate_pdf_report(
             fig_tc.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
             if _tax_ta.exists():
                 _ta = pd.read_csv(_tax_ta)
-                _ta["book"] = (_ta["file_name"]
-                               .str.replace("bible_BKR_","").str.replace(".txt",""))
+                _ta["book"] = _bkr_book(
+                    _ta["file_name"]
+                    .str.replace("bible_BKR_","", regex=False)
+                    .str.replace(".txt","", regex=False))
                 fig_ta = go.Figure()
                 fig_ta.add_bar(name="tact", x=_ta["book"], y=_ta["tact_ratio"],
                                marker_color="#3a86ff")
@@ -2376,8 +2498,10 @@ def generate_pdf_report(
             story += _section(T.get("ana_style_name","Style & Syntax"), "🕐")
             story.append(Paragraph(T.get("ana_style_q",""), sty["caption"]))
             _cx = pd.read_csv(_cplx_path)
-            _cx["book"] = (_cx["file_name"]
-                           .str.replace("bible_BKR_","").str.replace(".txt",""))
+            _cx["book"] = _bkr_book(
+                _cx["file_name"]
+                .str.replace("bible_BKR_","", regex=False)
+                .str.replace(".txt","", regex=False))
             fig_d = px.bar(_cx, x="avg_tree_depth", y="book", orientation="h",
                            title=T.get("x_depth","Avg tree depth"))
             fig_d.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
@@ -2627,9 +2751,13 @@ def fig_pie(df, names, values, title, clr=None):
 def fig_heatmap(df_wide, id_col, title, h=420, fmt=None):
     cols = [c for c in df_wide.columns if c not in (id_col, "total")]
     z = df_wide[cols].values
-    y_labels = (df_wide[id_col].str.replace("bible_BKR_", "")
-                                .str.replace(".txt", "")
-                if df_wide[id_col].dtype == object else df_wide[id_col])
+    if df_wide[id_col].dtype == object:
+        abbrevs = (df_wide[id_col]
+                   .str.replace("bible_BKR_", "", regex=False)
+                   .str.replace(".txt", "", regex=False))
+        y_labels = _bkr_book(abbrevs)
+    else:
+        y_labels = df_wide[id_col]
     fig = go.Figure(go.Heatmap(
         z=z, x=cols, y=y_labels,
         colorscale="Blues",
@@ -3118,9 +3246,10 @@ with tab_bible:
             ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
 
             if ratios is not None:
-                books_lbl = (ratios["file_name"]
-                             .str.replace("bible_BKR_", "")
-                             .str.replace(".txt", ""))
+                books_lbl = _bkr_book(
+                    ratios["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
 
                 c1, c2 = st.columns(2)
 
@@ -3368,11 +3497,10 @@ with tab_bible:
                         opp_ex if _sel_pair.startswith("—")
                         else opp_ex[opp_ex["opposition_pair"] == _sel_pair]
                     ).copy()
-                    _view_ex["book"] = (
+                    _view_ex["book"] = _bkr_book(
                         _view_ex["file_name"]
-                        .str.replace("bible_BKR_", "")
-                        .str.replace(".txt", "")
-                    )
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     st.caption(T["opposition_examples_desc"])
                     for _, _er in _view_ex.head(12).iterrows():
                         st.markdown(
@@ -3429,9 +3557,10 @@ with tab_bible:
 
                 with c1:
                     sd = style.copy()
-                    sd["book"] = (sd["file_name"]
-                                  .str.replace("bible_BKR_", "")
-                                  .str.replace(".txt", ""))
+                    sd["book"] = _bkr_book(
+                        sd["file_name"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     st.caption(T["style_table_desc"])
                     st.dataframe(
                         sd[["book", "style_cluster", "silhouette_score"]].rename(columns={
@@ -3498,9 +3627,10 @@ with tab_bible:
             if complexity_df is not None:
                 st.divider()
                 cplx = complexity_df.copy()
-                cplx["book"] = (cplx["file_name"]
-                                .str.replace("bible_BKR_", "")
-                                .str.replace(".txt", ""))
+                cplx["book"] = _bkr_book(
+                    cplx["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 st.caption(T["complexity_desc"])
                 c1, c2 = st.columns(2)
                 with c1:
@@ -3606,9 +3736,10 @@ with tab_bible:
 
             if tax_dial is not None:
                 d = tax_dial.copy()
-                d["book"] = (d["file_name"]
-                             .str.replace("bible_BKR_", "")
-                             .str.replace(".txt", ""))
+                d["book"] = _bkr_book(
+                    d["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 d = d.sort_values("dialogue_density", ascending=True)
                 st.caption(T["tax_dialogue_desc"])
                 fig = px.bar(d, x="dialogue_density", y="book",
@@ -3624,9 +3755,10 @@ with tab_bible:
             if tact_auto is not None:
                 st.divider()
                 ta = tact_auto.copy()
-                ta["book"] = (ta["file_name"]
-                              .str.replace("bible_BKR_", "")
-                              .str.replace(".txt", ""))
+                ta["book"] = _bkr_book(
+                    ta["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 st.caption(T["tact_autoclitic_desc"])
                 fig_ta = go.Figure()
                 fig_ta.add_bar(name="tact",      x=ta["book"], y=ta["tact_ratio"],
@@ -3706,6 +3838,9 @@ with tab_bible:
         with st.expander("📖 " + T["sec_patterns"]):
 
             ref_df = load_refined()
+            if ref_df is not None:
+                ref_df = ref_df.copy()
+                ref_df["book"] = _bkr_book(ref_df["book"])
 
             if ref_df is None:
                 st.info(T["no_patterns"])
@@ -3767,6 +3902,12 @@ with tab_bible:
 
             ref_df2 = load_refined()
             verb_df = load_verbal_full()
+            if ref_df2 is not None:
+                ref_df2 = ref_df2.copy()
+                ref_df2["book"] = _bkr_book(ref_df2["book"])
+            if verb_df is not None:
+                verb_df = verb_df.copy()
+                verb_df["book"] = _bkr_book(verb_df["book"])
 
             if ref_df2 is None:
                 st.info(T["no_db"])
@@ -3901,9 +4042,10 @@ with tab_bible:
                 cov_book = csv("eval/coverage_by_book.csv")
                 if cov_book is not None:
                     cov_plot = cov_book.copy()
-                    cov_plot["book"] = (cov_plot["book"]
-                                        .str.replace("bible_BKR_", "")
-                                        .str.replace(".txt", ""))
+                    cov_plot["book"] = _bkr_book(
+                        cov_plot["book"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     cov_plot = cov_plot.sort_values("coverage_pct", ascending=True)
                     cov_plot.rename(columns={"coverage_pct": T["x_coverage"],
                                               "book": T["x_book"]}, inplace=True)
@@ -3946,9 +4088,10 @@ with tab_bible:
                 outliers = csv("eval/book_outliers.csv")
                 if outliers is not None:
                     out_display = outliers.copy()
-                    out_display["book"] = (out_display["book"]
-                                           .str.replace("bible_BKR_", "")
-                                           .str.replace(".txt", ""))
+                    out_display["book"] = _bkr_book(
+                        out_display["book"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     out_display = out_display.rename(columns={
                         "book":    T["x_book"],
                         "label":   T["col_label_q"],
@@ -3973,9 +4116,10 @@ with tab_bible:
             sample = csv("eval/random_sample.csv")
             if sample is not None:
                 sample_display = sample.copy()
-                sample_display["file_name"] = (sample_display["file_name"]
-                                               .str.replace("bible_BKR_", "")
-                                               .str.replace(".txt", ""))
+                sample_display["file_name"] = _bkr_book(
+                    sample_display["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 sample_display = sample_display.rename(columns={
                     "file_name":         T["x_book"],
                     "illocutionary_force": T["col_force"],
@@ -4009,6 +4153,7 @@ with tab_bible:
             if db_df is not None and _ling_cols.issubset(db_df.columns):
 
                 _ldf = db_df.copy()
+                _ldf["book"] = _bkr_book(_ldf["book"])
 
                 # ── 1. TTR bar chart ──────────────────────────────────────────────
                 st.caption(T["ling_ttr_desc"])
