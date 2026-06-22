@@ -253,6 +253,17 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexikální opakování** měří, jak často se stejná slova opakují uvnitř jedné věty. Vyšší hodnota = věty v dané knize obsahují více opakujících se slov (typické pro poetické nebo rituální texty). Hodnota 0 = každé slovo se ve větě vyskytuje jen jednou.",
         "x_reinforcement": "Míra opakování",
         "filter_book_label": "Filtrovat knihu",
+        "filter_group_label": "Skupina knih",
+        "group_all": "— Všechny skupiny",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historické knihy",
+        "group_wisdom":         "Knihy moudrosti",
+        "group_major_prophets": "Velcí proroci",
+        "group_minor_prophets": "Malí proroci",
+        "group_gospels_acts":   "Evangelia a Skutky",
+        "group_pauline":        "Pavlovy listy",
+        "group_general":        "Obecné listy",
+        "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Data nejsou k dispozici.",
         # Section 15 — Pipeline Quality
         "sec_quality": "✅ Kvalita pipeline",
@@ -796,6 +807,17 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexikálne opakovanie** meria, ako často sa rovnaké slová opakujú v rámci jednej vety. Vyššia hodnota = vety v danej knihe obsahujú viac opakujúcich sa slov (typické pre poetické alebo rituálne texty). Hodnota 0 = každé slovo sa vo vete vyskytuje len raz.",
         "x_reinforcement": "Miera opakovania",
         "filter_book_label": "Filtrovať knihu",
+        "filter_group_label": "Skupina kníh",
+        "group_all": "— Všetky skupiny",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historické knihy",
+        "group_wisdom":         "Múdrostné knihy",
+        "group_major_prophets": "Veľkí proroci",
+        "group_minor_prophets": "Malí proroci",
+        "group_gospels_acts":   "Evanjeliá a Skutky",
+        "group_pauline":        "Pavlove listy",
+        "group_general":        "Všeobecné listy",
+        "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Dáta nie sú k dispozícii.",
         # Section 15
         "sec_quality": "✅ Kvalita pipeline",
@@ -1335,6 +1357,17 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexical repetition** measures how often the same words recur within a single sentence. Higher value = sentences in that book contain more repeated words (typical of poetic or ritual texts). Value 0 = every word appears only once per sentence.",
         "x_reinforcement": "Repetition rate",
         "filter_book_label": "Filter book",
+        "filter_group_label": "Book group",
+        "group_all": "— All groups",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historical Books",
+        "group_wisdom":         "Wisdom Books",
+        "group_major_prophets": "Major Prophets",
+        "group_minor_prophets": "Minor Prophets",
+        "group_gospels_acts":   "Gospels & Acts",
+        "group_pauline":        "Pauline Epistles",
+        "group_general":        "General Epistles",
+        "group_apocalypse":     "Apocalypse",
         "no_patterns": "Data not available.",
         # Section 15
         "sec_quality": "✅ Pipeline Quality",
@@ -2018,6 +2051,77 @@ def _localize_book_columns(df: pd.DataFrame) -> pd.DataFrame:
         if col in out.columns and out[col].dtype == object:
             out[col] = _bkr_book(out[col])
     return out
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# BOOK GROUPS  (canon sections, ordered; key matches i18n "group_*" labels)
+# ──────────────────────────────────────────────────────────────────────────────
+
+BOOK_GROUPS: list[tuple[str, list[str]]] = [
+    ("group_pentateuch",     ["Gn", "Ex", "Lv", "Nu", "Dt"]),
+    ("group_historical",     ["Joz", "Sd", "Rt", "1S", "2S", "1Kr", "2Kr",
+                               "1Pa", "2Pa", "Ezd", "Neh", "Est"]),
+    ("group_wisdom",         ["Jb", "Z", "Pr", "Kaz", "Pis"]),
+    ("group_major_prophets", ["Iz", "Jr", "Pl", "Ez", "Da"]),
+    ("group_minor_prophets", ["Oz", "Jl", "Am", "Abd", "Jon", "Mi",
+                               "Na", "Abk", "Sf", "Ag", "Za", "Mal"]),
+    ("group_gospels_acts",   ["Mt", "Mk", "L", "J", "Sk"]),
+    ("group_pauline",        ["R", "1K", "2K", "Ga", "Ef", "Fp", "Ko",
+                               "1Te", "2Te", "1Tm", "2Tm", "Tit", "Fm"]),
+    ("group_general",        ["Zd", "Jk", "1P", "2P", "1J", "2J", "3J", "Ju"]),
+    ("group_apocalypse",     ["Zj"]),
+]
+
+
+def _grouped_book_selectbox(key_prefix: str, available_books: list[str]) -> "str | None":
+    """Two-level book selector: first a canon group, then an individual book.
+
+    Returns the selected localized book name, or ``None`` when no specific book
+    is chosen (= show all).
+    """
+    available_set = set(available_books)
+
+    # Build list of (localized_group_label, [localized_book_names]) for groups
+    # that have at least one book present in the available data.
+    groups: list[tuple[str, list[str]]] = []
+    for gkey, abbrevs in BOOK_GROUPS:
+        names_in_group = [
+            BOOK_NAMES[a][lang]
+            for a in abbrevs
+            if a in BOOK_NAMES and BOOK_NAMES[a].get(lang) in available_set
+        ]
+        if names_in_group:
+            groups.append((T.get(gkey, gkey), names_in_group))
+
+    all_groups_lbl = T.get("group_all", "— All groups")
+    all_books_lbl  = "— " + T.get("filter_book_label", "All books")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        sel_grp = st.selectbox(
+            T.get("filter_group_label", "Group"),
+            [all_groups_lbl] + [g[0] for g in groups],
+            key=f"{key_prefix}_group",
+            label_visibility="collapsed",
+        )
+
+    # Determine the book list for the chosen group
+    if sel_grp == all_groups_lbl:
+        book_options = sorted(available_books)
+    else:
+        book_options = next(
+            (names for lbl, names in groups if lbl == sel_grp), sorted(available_books)
+        )
+
+    with col2:
+        sel_book = st.selectbox(
+            T.get("filter_book_label", "Book"),
+            [all_books_lbl] + book_options,
+            key=f"{key_prefix}_book",
+            label_visibility="collapsed",
+        )
+
+    return None if sel_book.startswith("—") else sel_book
 
 
 def translate_clr(clr: dict, label_map: dict) -> dict:
@@ -4033,13 +4137,10 @@ with tab_bible:
 
                     with c2:
                         st.caption(T["antithetical_desc"])
-                        books_anti = ["— " + T["filter_book_label"]] + sorted(anti["book"].unique())
-                        sel_book = st.selectbox(
-                            T["filter_book_label"], books_anti,
-                            key="anti_book",
-                            label_visibility="collapsed",
+                        sel_book = _grouped_book_selectbox(
+                            "anti", sorted(anti["book"].unique().tolist())
                         )
-                        view_anti = anti if sel_book.startswith("—") else anti[anti["book"] == sel_book]
+                        view_anti = anti if sel_book is None else anti[anti["book"] == sel_book]
                         st.dataframe(
                             view_anti[["book", "sentence"]].head(40).rename(
                                 columns={"book": T["x_book"],
