@@ -188,7 +188,7 @@ TRANSLATIONS = {
         "verbal_book_heatmap_title": "Slovesné vztahy podle knih",
         "verbal_book_heatmap_desc": "Slovesné vztahy per kniha — tmavší = typ dominuje v dané knize.",
         # Section 10
-        "sec_taxonomy": "🏷️ Skinnerova behaviorální taxonomie",
+        "sec_taxonomy": "🏷️ Funkční třídy vět (B. F. Skinner)",
         "tax_class_title": "Skinnerovy funkční třídy",
         "tax_class_desc": "Klasifikace vět podle **Skinnerovy behaviorální taxonomie** jazyka: `tact` = popis/pojmenování světa · `mand` = příkaz nebo žádost · `echoic` = citace nebo opakování · `intraverbal` = odpověď na verbální podnět · `autoclitic` = komentář k vlastní řeči. `none` = věty bez přiřazené třídy.",
         "tax_dialogue_title": "Hustota dialogu podle knih",
@@ -332,12 +332,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ O analýzách",
         "about_text": (
             "Přehled 10 analytických okruhů:\n\n"
-            "1. **B.F. Skinner** — Klasifikuje věty podle behaviorální taxonomie jazyka: "
-            "mand (příkaz), tact (popis světa), echoic (citace), intraverbální (reakce na řeč), "
-            "autoklit (komentář k vlastní řeči). Vychází z Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifikuje ilokuční záměr každé věty (co chce mluvčí vykonat) "
-            "a rétorickou strategii (jak záměru dosahuje). Vychází z teorie řečových aktů Austina "
-            "a Quintina Skinnera (1969–2002).\n\n"
+            "**Pozor:** aplikace pracuje se dvěma odlišnými Skinnerovskými přístupy. "
+            "**Quentin Skinner** vysvětluje ilokuční záměr a rétorickou strategii textu; "
+            "**B. F. Skinner** třídí funkční typ výpovědi.\n\n"
+            "1. **Ilokuční a rétorická analýza (Quentin Skinner)** — Hlavní interpretační vrstva. "
+            "Identifikuje ilokuční záměr každé věty (co chce mluvčí vykonat) a rétorickou strategii "
+            "(jak záměru dosahuje). Vychází z teorie řečových aktů Austina a Quintina Skinnera (1969–2002).\n\n"
+            "2. **Behaviorální taxonomie vět (B. F. Skinner)** — Doplňková klasifikační vrstva. "
+            "Klasifikuje věty podle behaviorální taxonomie jazyka: mand (příkaz), tact (popis světa), "
+            "echoic (citace), intraverbální (reakce na řeč), autoklit (komentář k vlastní řeči). "
+            "Vychází z Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbální vztahy** — Klasifikuje žánr verbální interakce: přímá řeč, genealogie, "
             "lyrika, proroctví, modlitba, moudrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Zpracovává text přes Stanza NLP (lemmatizace, POS, dependency) "
@@ -358,6 +362,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
+            "**Role v aplikaci:** Doplňková taxonomická vrstva. Zobrazuje se pouze tehdy, když jsou "
+            "k dispozici třídy `skinner_class`.\n\n"
             "**Teoretické zakotvení:** B. F. Skinner v díle *Verbal Behavior* (1957) redefinoval jazyk "
             "jako chování kontrolované stimuly a zpevňováním — ne jako systém znaků, ale jako funkci.\n\n"
             "**Typy verbálního chování:**\n"
@@ -371,6 +377,7 @@ TRANSLATIONS = {
             "Echoické formule jsou typické pro liturgické a rituální texty."
         ),
         "ana_qs_detail": (
+            "**Role v aplikaci:** Hlavní interpretační vrstva a primární produkční výstup aplikace.\n\n"
             "**Teoretické zakotvení:** Quentin Skinner (1969–2002) rozvinul metodologii analýzy "
             "politického myšlení, v níž klíčovým pojmem je ilokuční záměr — co chce autor textem "
             "v konkrétním historickém kontextu *vykonat*. Vychází z teorie řečových aktů "
@@ -498,10 +505,15 @@ TRANSLATIONS = {
         "results_title": "Výsledky analýzy",
         "results_ready_msg": "Analýza dokončena — výsledky jsou v záložce Výsledky.",
         # 10 analysis modules
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "Jaký typ verbálního chování text reprezentuje — příkaz, pozorování, citace?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "Co chce autor textem dosáhnout a jakou rétorickou strategii použil?",
+        "ana_bf_name":        "Behaviorální taxonomie vět (B. F. Skinner)",
+        "ana_bf_q":           "Jaký funkční typ verbálního chování věta představuje — mand, tact, echoic, intraverbal nebo autoclitic?",
+        "ana_bf_role":        "Doplňková klasifikační vrstva · zobrazuje se jen při dostupnosti tříd `skinner_class`.",
+        "ana_bf_badge":       "doplňková vrstva",
+        "ana_bf_missing":     "Doplňková behaviorální taxonomie se zobrazí jen tehdy, když jsou k dispozici třídy `skinner_class`. Tento běh proto vrstvu B. F. Skinnera samostatně nezobrazuje.",
+        "ana_qs_name":        "Ilokuční a rétorická analýza (Quentin Skinner)",
+        "ana_qs_q":           "Co chce autor textem vykonat a jakou rétorickou strategii k tomu používá?",
+        "ana_qs_role":        "Hlavní interpretační vrstva · vždy součást produkční analýzy.",
+        "ana_qs_badge":       "hlavní vrstva",
         "ana_verbal_name":    "Verbální vztahy",
         "ana_verbal_q":       "Jaký žánr verbální interakce dominuje — dialog, chvála, nářek, moudrý výrok?",
         "ana_semantics_name": "Sémantika a obsah",
@@ -518,6 +530,11 @@ TRANSLATIONS = {
         "ana_quality_q":      "Jak spolehlivá je klasifikace a kde může být nejistá?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "Jaký je technický stav analýzy a které moduly proběhly úspěšně?",
+        "dashboard_primary_layer": "Hlavní vrstva",
+        "dashboard_primary_layer_value": "Quentin Skinner — vždy součást analýzy",
+        "dashboard_secondary_layer": "Doplňková vrstva",
+        "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nalezeny třídy `skinner_class`)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pro tento běh (chybí `skinner_class`)",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická složitost podle knih",
         "complexity_desc": "Průměrná hloubka závislostního stromu a průměrný počet vedlejších vět na větu v každé biblické knize. Vyšší hodnota = syntakticky složitější text.",
@@ -747,7 +764,7 @@ TRANSLATIONS = {
         "verbal_conf_desc": "**Priemerná istota algoritmu** pri klasifikácii každého typu slovesného vzťahu. Vyššia hodnota = algoritmus je pri rozpoznávaní tohto typu sebajistejší.",
         "verbal_book_heatmap_title": "Slovesné vzťahy podľa kníh — heatmapa",
         "verbal_book_heatmap_desc": "Počet každého **typu slovesného vzťahu** v jednotlivých biblických knihách. Tmavšia bunka = daný typ sa v knihe vyskytuje výraznejšie.",
-        "sec_taxonomy": "🏷️ Skinnerova behaviorálna taxonómia",
+        "sec_taxonomy": "🏷️ Funkčné triedy viet (B. F. Skinner)",
         "tax_class_title": "Skinnerove funkčné triedy",
         "tax_class_desc": "Klasifikácia viet podľa **Skinnerovej behaviorálnej taxonómie** jazyka: `tact` = popis/pomenovanie sveta · `mand` = príkaz alebo žiadosť · `echoic` = citácia alebo opakovanie · `intraverbal` = odpoveď na verbálny podnet · `autoclitic` = komentár k vlastnej reči. `none` = vety bez priradenej triedy.",
         "tax_dialogue_title": "Hustota dialógu podľa kníh",
@@ -887,12 +904,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ O analýzach",
         "about_text": (
             "Prehľad 10 analytických okruhov:\n\n"
-            "1. **B.F. Skinner** — Klasifikuje vety podľa behavioriálnej taxonómie jazyka: "
-            "mand (príkaz), tact (popis sveta), echoic (citácia), intraverbálny (reakcia na reč), "
-            "autoklit (komentár k vlastnej reči). Vychádza z Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifikuje ilokučný zámer každej vety (čo chce hovoriaci vykonať) "
-            "a rétorickú stratégiu (ako zámer dosahuje). Vychádza z teórie rečových aktov Austina "
-            "a Quintina Skinnera (1969–2002).\n\n"
+            "**Pozor:** aplikácia pracuje s dvoma odlišnými Skinnerovskými prístupmi. "
+            "**Quentin Skinner** vysvetľuje ilokučný zámer a rétorickú stratégiu textu; "
+            "**B. F. Skinner** triedi funkčný typ výpovede.\n\n"
+            "1. **Ilokučná a rétorická analýza (Quentin Skinner)** — Hlavná interpretačná vrstva. "
+            "Identifikuje ilokučný zámer každej vety (čo chce hovoriaci vykonať) a rétorickú stratégiu "
+            "(ako zámer dosahuje). Vychádza z teórie rečových aktov Austina a Quintina Skinnera (1969–2002).\n\n"
+            "2. **Behaviorálna taxonómia viet (B. F. Skinner)** — Doplnková klasifikačná vrstva. "
+            "Klasifikuje vety podľa behaviorálnej taxonómie jazyka: mand (príkaz), tact (popis sveta), "
+            "echoic (citácia), intraverbálny (reakcia na reč), autoklit (komentár k vlastnej reči). "
+            "Vychádza z Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbálne vzťahy** — Klasifikuje žáner verbálnej interakcie: priama reč, "
             "genealógia, lyrika, proroctvo, modlitba, múdrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Spracováva text cez Stanza NLP (lematizácia, POS, dependency) "
@@ -913,6 +934,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
+            "**Rola v aplikácii:** Doplnková taxonomická vrstva. Zobrazuje sa len vtedy, keď sú "
+            "k dispozícii triedy `skinner_class`.\n\n"
             "**Teoretické zakotvenie:** B. F. Skinner v diele *Verbal Behavior* (1957) redefinoval jazyk "
             "ako správanie kontrolované stimulmi a spevňovaním — nie ako systém znakov, ale ako funkciu.\n\n"
             "**Typy verbálneho správania:**\n"
@@ -926,6 +949,7 @@ TRANSLATIONS = {
             "Echoické formuly sú typické pre liturgické a rituálne texty."
         ),
         "ana_qs_detail": (
+            "**Rola v aplikácii:** Hlavná interpretačná vrstva a primárny produkčný výstup aplikácie.\n\n"
             "**Teoretické zakotvenie:** Quentin Skinner (1969–2002) rozvinul metodológiu analýzy "
             "politického myslenia, v ktorej je kľúčovým pojmom ilokučný zámer — čo chce autor textom "
             "v konkrétnom historickom kontexte *vykonať*. Vychádza z teórie rečových aktov "
@@ -1050,10 +1074,15 @@ TRANSLATIONS = {
         "results_empty": "Najprv spustite analýzu v záložke Analyzovať text.",
         "results_title": "Výsledky analýzy",
         "results_ready_msg": "Analýza dokončená — výsledky sú v záložke Výsledky.",
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "Aký typ verbálneho správania text reprezentuje — príkaz, pozorovanie, citácia?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "Čo chcel autor textom dosiahnuť a akú rétorickú stratégiu použil?",
+        "ana_bf_name":        "Behaviorálna taxonómia viet (B. F. Skinner)",
+        "ana_bf_q":           "Aký funkčný typ verbálneho správania veta predstavuje — mand, tact, echoic, intraverbal alebo autoclitic?",
+        "ana_bf_role":        "Doplnková klasifikačná vrstva · zobrazuje sa len pri dostupnosti tried `skinner_class`.",
+        "ana_bf_badge":       "doplnková vrstva",
+        "ana_bf_missing":     "Doplnková behaviorálna taxonómia sa zobrazí len vtedy, keď sú k dispozícii triedy `skinner_class`. Tento beh preto vrstvu B. F. Skinnera samostatne nezobrazuje.",
+        "ana_qs_name":        "Ilokučná a rétorická analýza (Quentin Skinner)",
+        "ana_qs_q":           "Čo chce autor textom vykonať a akú rétorickú stratégiu na to používa?",
+        "ana_qs_role":        "Hlavná interpretačná vrstva · vždy súčasť produkčnej analýzy.",
+        "ana_qs_badge":       "hlavná vrstva",
         "ana_verbal_name":    "Verbálne vzťahy",
         "ana_verbal_q":       "Aký žáner verbálnej interakcie dominuje — dialóg, nárek, chvála, múdrostný výrok?",
         "ana_semantics_name": "Sémantika a obsah",
@@ -1070,6 +1099,11 @@ TRANSLATIONS = {
         "ana_quality_q":      "Ako spoľahlivá je klasifikácia a kde môže byť neistá?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "Aký je technický stav analýzy a ktoré moduly bežali úspešne?",
+        "dashboard_primary_layer": "Hlavná vrstva",
+        "dashboard_primary_layer_value": "Quentin Skinner — vždy súčasť analýzy",
+        "dashboard_secondary_layer": "Doplnková vrstva",
+        "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nájdené triedy `skinner_class`)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pre tento beh (chýba `skinner_class`)",
         "save_error": "Chyba pri ukladaní",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická zložitosť podľa kníh",
@@ -1299,7 +1333,7 @@ TRANSLATIONS = {
         "verbal_conf_desc": "Classification reliability per verbal relation type.",
         "verbal_book_heatmap_title": "Verbal Relations by Book",
         "verbal_book_heatmap_desc": "Verbal relations per book — darker = type dominates in that book.",
-        "sec_taxonomy": "🏷️ Skinner Behavioural Taxonomy",
+        "sec_taxonomy": "🏷️ Sentence Functional Classes (B. F. Skinner)",
         "tax_class_title": "Skinner Functional Classes",
         "tax_class_desc": "Sentence classification according to **Skinner's behavioural taxonomy** of language: `tact` = description/naming of the world · `mand` = command or request · `echoic` = quotation or repetition · `intraverbal` = response to a verbal stimulus · `autoclitic` = commentary on one's own speech. `none` = unassigned.",
         "tax_dialogue_title": "Dialogue Density by Book",
@@ -1440,12 +1474,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ About the Analyses",
         "about_text": (
             "Overview of 10 analysis modules:\n\n"
-            "1. **B.F. Skinner** — Classifies sentences by behavioural taxonomy of language: "
-            "mand (command), tact (world description), echoic (quotation), intraverbal (response to speech), "
-            "autoclitic (self-commentary). Based on Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifies the illocutionary intent of each sentence (what the speaker aims to do) "
-            "and the rhetorical strategy (how they achieve it). Based on speech act theory "
-            "(Austin, Searle, Q. Skinner 1969–2002).\n\n"
+            "**Note:** the app works with two distinct Skinnerian approaches. "
+            "**Quentin Skinner** explains illocutionary intent and rhetorical strategy; "
+            "**B. F. Skinner** classifies the functional type of an utterance.\n\n"
+            "1. **Illocutionary & Rhetorical Analysis (Quentin Skinner)** — Primary interpretive layer. "
+            "Identifies the illocutionary intent of each sentence (what the speaker aims to do) and the rhetorical "
+            "strategy (how that intent is pursued). Based on speech act theory (Austin, Searle, Q. Skinner 1969–2002).\n\n"
+            "2. **Sentence Behavioural Taxonomy (B. F. Skinner)** — Supplementary classification layer. "
+            "Classifies sentences by the behavioural taxonomy of language: mand (command), tact (world description), "
+            "echoic (quotation), intraverbal (response to speech), autoclitic (self-commentary). "
+            "Based on Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbal Relations** — Classifies the verbal interaction genre: reported speech, "
             "genealogy, lyric, prophecy, prayer, wisdom saying.\n\n"
             "4. **Semantics & Content** — Processes text via Stanza NLP (lemmatisation, POS, dependency) "
@@ -1466,6 +1504,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Detailed Module Descriptions",
         "ana_bf_detail": (
+            "**Role in the app:** Supplementary taxonomic layer. Displayed only when "
+            "`skinner_class` labels are available.\n\n"
             "**Theoretical grounding:** B. F. Skinner in *Verbal Behavior* (1957) redefined language "
             "as behaviour controlled by stimuli and reinforcement — not a sign system, but a function.\n\n"
             "**Types of verbal behaviour:**\n"
@@ -1479,6 +1519,7 @@ TRANSLATIONS = {
             "Echoic formulas are typical of liturgical and ritual texts."
         ),
         "ana_qs_detail": (
+            "**Role in the app:** Primary interpretive layer and the main production output of the app.\n\n"
             "**Theoretical grounding:** Quentin Skinner (1969–2002) developed a methodology "
             "of intellectual history in which the key concept is illocutionary intent — "
             "what the author aims to *do* with a text in a specific historical context. "
@@ -1606,10 +1647,15 @@ TRANSLATIONS = {
         "results_empty": "Run an analysis in the Analyze Text tab first.",
         "results_title": "Analysis Results",
         "results_ready_msg": "Analysis complete — results are in the Results tab.",
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "What type of verbal behaviour does the text represent — command, observation, quotation?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "What did the author intend with the text and what rhetorical strategy did they use?",
+        "ana_bf_name":        "Sentence Behavioural Taxonomy (B. F. Skinner)",
+        "ana_bf_q":           "What functional type of verbal behaviour does each sentence represent — mand, tact, echoic, intraverbal or autoclitic?",
+        "ana_bf_role":        "Supplementary classification layer · shown only when `skinner_class` labels are available.",
+        "ana_bf_badge":       "supplementary",
+        "ana_bf_missing":     "The supplementary behavioural taxonomy is shown only when `skinner_class` labels are available. This run therefore does not display the B. F. Skinner layer separately.",
+        "ana_qs_name":        "Illocutionary & Rhetorical Analysis (Quentin Skinner)",
+        "ana_qs_q":           "What does the author seek to do with the text and which rhetorical strategy is used?",
+        "ana_qs_role":        "Primary interpretive layer · always part of the production analysis.",
+        "ana_qs_badge":       "primary layer",
         "ana_verbal_name":    "Verbal Relations",
         "ana_verbal_q":       "What verbal interaction genre dominates — dialogue, lament, praise, wisdom saying?",
         "ana_semantics_name": "Semantics & Content",
@@ -1626,6 +1672,11 @@ TRANSLATIONS = {
         "ana_quality_q":      "How reliable is the classification and where might it be uncertain?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "What is the technical state of the analysis and which modules ran successfully?",
+        "dashboard_primary_layer": "Primary layer",
+        "dashboard_primary_layer_value": "Quentin Skinner — always included in the analysis",
+        "dashboard_secondary_layer": "Supplementary layer",
+        "dashboard_secondary_layer_on": "B. F. Skinner — available (`skinner_class` labels found)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — unavailable for this run (`skinner_class` missing)",
         # Section 16 — new analytics
         "complexity_title": "Syntactic Complexity by Book",
         "complexity_desc": "Average dependency tree depth and average clause count per sentence in each biblical book. Higher = syntactically more complex text.",
@@ -2466,6 +2517,7 @@ def generate_pdf_report(
     if session.get("sel_q_skinner", True):
         story += _section(T.get("ana_qs_name","Q. Skinner"), "⚡")
         story.append(Paragraph(T.get("ana_qs_q",""), sty["caption"]))
+        story.append(Paragraph(T.get("ana_qs_role",""), sty["caption"]))
 
         ic = df["primary_intention"].value_counts().reset_index()
         ic.columns = ["_raw", "count"]
@@ -2608,6 +2660,7 @@ def generate_pdf_report(
         if _tax_cl.exists():
             story += _section(T.get("ana_bf_name","B.F. Skinner"), "⚡")
             story.append(Paragraph(T.get("ana_bf_q",""), sty["caption"]))
+            story.append(Paragraph(T.get("ana_bf_role",""), sty["caption"]))
             _tc = pd.read_csv(_tax_cl)
             _tc.columns = ["_raw", "count"]
             _tc["class"] = _tc["_raw"].map(vsk).fillna(_tc["_raw"])
@@ -2789,6 +2842,13 @@ def generate_pdf_report(
         dash_data = [
             ["Source", _src],
             ["Sentences", str(_total)],
+            [T.get("dashboard_primary_layer", "Primary layer"),
+             T.get("dashboard_primary_layer_value", "Quentin Skinner — always included in the analysis")],
+            [T.get("dashboard_secondary_layer", "Supplementary layer"),
+             T.get(
+                 "dashboard_secondary_layer_on" if "skinner_class" in df.columns else "dashboard_secondary_layer_off",
+                 "B. F. Skinner — unavailable for this run",
+             )],
             ["DB rows (skinner_analysis)", str(_db_n or "—")],
             ["Bible runs in DB", str(len(_runs)-len(_upr))],
             ["Upload runs in DB", str(len(_upr))],
@@ -3270,8 +3330,8 @@ with tab_analyze:
     st.subheader(T["select_analyses"])
 
     _MODS = [
-        ("sel_bf_skinner",   "⚡", T["ana_bf_name"],        "~1 min",  T["ana_bf_q"]),
-        ("sel_q_skinner",    "⚡", T["ana_qs_name"],         "~1 min",  T["ana_qs_q"]),
+        ("sel_q_skinner",    "⚡", T["ana_qs_name"],         "~1 min",  T["ana_qs_q"], T["ana_qs_badge"]),
+        ("sel_bf_skinner",   "⚡", T["ana_bf_name"],        "~1 min",  T["ana_bf_q"], T["ana_bf_badge"]),
         ("sel_verbal",       "⚡", T["ana_verbal_name"],     "~1 min",  T["ana_verbal_q"]),
         ("sel_semantics",    "⚡", T["ana_semantics_name"],  "~1 min",  T["ana_semantics_q"]),
         ("sel_religious",    "⚡", T["ana_religious_name"],  "~1 min",  T["ana_religious_q"]),
@@ -3283,10 +3343,15 @@ with tab_analyze:
     ]
 
     _cb_cols = st.columns(2)
-    for _idx, (_key, _icon, _name, _time, _question) in enumerate(_MODS):
+    for _idx, _mod in enumerate(_MODS):
+        if len(_mod) == 6:
+            _key, _icon, _name, _time, _question, _badge = _mod
+        else:
+            _key, _icon, _name, _time, _question = _mod
+            _badge = ""
         with _cb_cols[_idx % 2]:
             st.checkbox(
-                f"{_icon} **{_name}** `{_time}`",
+                f"{_icon} **{_name}** `{_time}`" + (f" · *{_badge}*" if _badge else ""),
                 value=st.session_state.get(_key, _idx < 5),
                 key=_key,
                 help=_question,
@@ -3340,8 +3405,8 @@ with tab_analyze:
     st.divider()
     with st.expander(T["detail_expander_title"]):
         _DETAIL_MODS = [
-            (T["ana_bf_name"],        T["ana_bf_detail"]),
             (T["ana_qs_name"],        T["ana_qs_detail"]),
+            (T["ana_bf_name"],        T["ana_bf_detail"]),
             (T["ana_verbal_name"],    T["ana_verbal_detail"]),
             (T["ana_semantics_name"], T["ana_semantics_detail"]),
             (T["ana_religious_name"], T["ana_religious_detail"]),
@@ -4675,6 +4740,7 @@ with tab_results:
     # ── 1. Q. Skinner — core classification ──────────────────────────────────
     if st.session_state.get("sel_q_skinner", True):
         with st.expander(f"📤 ⚡ {T['ana_qs_name']}", expanded=True):
+            st.caption(T.get("ana_qs_role", ""))
             _r1, _r2 = st.columns(2)
             with _r1:
                 _ic = _df["primary_intention"].value_counts().reset_index()
@@ -4919,7 +4985,7 @@ with tab_results:
     # ── 2. B.F. Skinner ───────────────────────────────────────────────────────
     if st.session_state.get("sel_bf_skinner", True) and not _df.empty:
         with st.expander(f"📤 ⚡ {T['ana_bf_name']}"):
-            st.caption(f"*[Nahraný text]*")
+            st.caption(T.get("ana_bf_role", ""))
             if "skinner_class" in _df.columns:
                 _bc1, _bc2 = st.columns(2)
                 with _bc1:
@@ -4973,7 +5039,7 @@ with tab_results:
                         st.caption(T.get("tact_autoclitic_desc", ""))
                         st.plotly_chart(_fig_ta2, use_container_width=True)
             else:
-                st.info("Spusťte plnou analýzu pro zobrazení Skinnerovy taxonomie.")
+                st.info(T.get("ana_bf_missing", ""))
 
     # ── 3. Verbálne vzťahy ────────────────────────────────────────────────────
     if st.session_state.get("sel_verbal", True):
@@ -5319,6 +5385,8 @@ with tab_results:
 | **Korpus ID** | `{_corpus_id}` |
 | **{_unit_metric}** | {_n_chapters} |
 | **Věty celkem** | {_total} |
+| **{T['dashboard_primary_layer']}** | {T['dashboard_primary_layer_value']} |
+| **{T['dashboard_secondary_layer']}** | {T['dashboard_secondary_layer_on'] if "skinner_class" in _df.columns else T['dashboard_secondary_layer_off']} |
 | **DB řádky (skinner_analysis)** | {_db_n or "—"} |
 | **Biblické běhy v DB** | {len(_runs) - len(_upload_runs)} |
 | **Upload běhy v DB** | {len(_upload_runs)} |
