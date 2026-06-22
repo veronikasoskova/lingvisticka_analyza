@@ -338,7 +338,7 @@ TRANSLATIONS = {
             "1. **Ilokuční a rétorická analýza (Quentin Skinner)** — Hlavní interpretační vrstva. "
             "Identifikuje ilokuční záměr každé věty (co chce mluvčí vykonat) a rétorickou strategii "
             "(jak záměru dosahuje). Vychází z teorie řečových aktů Austina a Quintina Skinnera (1969–2002).\n\n"
-            "2. **Behaviorální taxonomie vět (B. F. Skinner)** — Doplňková klasifikační vrstva. "
+            "2. **Behaviorální taxonomie vět (B. F. Skinner)** — Samostatná behaviorální vrstva. "
             "Klasifikuje věty podle behaviorální taxonomie jazyka: mand (příkaz), tact (popis světa), "
             "echoic (citace), intraverbální (reakce na řeč), autoklit (komentář k vlastní řeči). "
             "Vychází z Verbal Behavior (Skinner, 1957).\n\n"
@@ -362,7 +362,7 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
-            "**Role v aplikaci:** Doplňková taxonomická vrstva. Zobrazuje se pouze tehdy, když jsou "
+            "**Role v aplikaci:** Samostatná behaviorální taxonomická vrstva. Zobrazuje se tehdy, když jsou "
             "k dispozici třídy `skinner_class`.\n\n"
             "**Teoretické zakotvení:** B. F. Skinner v díle *Verbal Behavior* (1957) redefinoval jazyk "
             "jako chování kontrolované stimuly a zpevňováním — ne jako systém znaků, ale jako funkci.\n\n"
@@ -507,9 +507,9 @@ TRANSLATIONS = {
         # 10 analysis modules
         "ana_bf_name":        "Behaviorální taxonomie vět (B. F. Skinner)",
         "ana_bf_q":           "Jaký funkční typ verbálního chování věta představuje — mand, tact, echoic, intraverbal nebo autoclitic?",
-        "ana_bf_role":        "Doplňková klasifikační vrstva · zobrazuje se jen při dostupnosti tříd `skinner_class`.",
-        "ana_bf_badge":       "doplňková vrstva",
-        "ana_bf_missing":     "Doplňková behaviorální taxonomie se zobrazí jen tehdy, když jsou k dispozici třídy `skinner_class`. Tento běh proto vrstvu B. F. Skinnera samostatně nezobrazuje.",
+        "ana_bf_role":        "Samostatná behaviorální vrstva · zobrazuje se při dostupnosti tříd `skinner_class`.",
+        "ana_bf_badge":       "behaviorální vrstva",
+        "ana_bf_missing":     "Behaviorální taxonomie B. F. Skinnera se zobrazí tehdy, když jsou k dispozici třídy `skinner_class`. Tento běh proto samostatnou vrstvu B. F. Skinnera nezobrazuje.",
         "ana_qs_name":        "Ilokuční a rétorická analýza (Quentin Skinner)",
         "ana_qs_q":           "Co chce autor textem vykonat a jakou rétorickou strategii k tomu používá?",
         "ana_qs_role":        "Hlavní interpretační vrstva · vždy součást produkční analýzy.",
@@ -532,9 +532,16 @@ TRANSLATIONS = {
         "ana_dashboard_q":    "Jaký je technický stav analýzy a které moduly proběhly úspěšně?",
         "dashboard_primary_layer": "Hlavní vrstva",
         "dashboard_primary_layer_value": "Quentin Skinner — vždy součást analýzy",
-        "dashboard_secondary_layer": "Doplňková vrstva",
+        "dashboard_secondary_layer": "Behaviorální vrstva B. F. Skinnera",
         "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nalezeny třídy `skinner_class`)",
         "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pro tento běh (chybí `skinner_class`)",
+        "qs_direct_outputs_title": "Priame výstupy pipeline",
+        "qs_rst_title": "RST vztahy mezi větami",
+        "qs_rst_desc": "Distribuce RST vztahů detegovaných mezi sousedními větami.",
+        "qs_perloc_title": "Perlokucní efekty (top 12)",
+        "qs_perloc_desc": "Nejčastější zamýšlené efekty výroku na čtenáře/posluchače.",
+        "qs_context_note_title": "Kontextové poznámky (výběr)",
+        "qs_context_note_desc": "Věty, kde model zachytil napětí mezi diskurzivním módem a klasifikovaným záměrem.",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická složitost podle knih",
         "complexity_desc": "Průměrná hloubka závislostního stromu a průměrný počet vedlejších vět na větu v každé biblické knize. Vyšší hodnota = syntakticky složitější text.",
@@ -910,7 +917,7 @@ TRANSLATIONS = {
             "1. **Ilokučná a rétorická analýza (Quentin Skinner)** — Hlavná interpretačná vrstva. "
             "Identifikuje ilokučný zámer každej vety (čo chce hovoriaci vykonať) a rétorickú stratégiu "
             "(ako zámer dosahuje). Vychádza z teórie rečových aktov Austina a Quintina Skinnera (1969–2002).\n\n"
-            "2. **Behaviorálna taxonómia viet (B. F. Skinner)** — Doplnková klasifikačná vrstva. "
+            "2. **Behaviorálna taxonómia viet (B. F. Skinner)** — Samostatná behaviorálna vrstva. "
             "Klasifikuje vety podľa behaviorálnej taxonómie jazyka: mand (príkaz), tact (popis sveta), "
             "echoic (citácia), intraverbálny (reakcia na reč), autoklit (komentár k vlastnej reči). "
             "Vychádza z Verbal Behavior (Skinner, 1957).\n\n"
@@ -934,7 +941,7 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
-            "**Rola v aplikácii:** Doplnková taxonomická vrstva. Zobrazuje sa len vtedy, keď sú "
+            "**Rola v aplikácii:** Samostatná behaviorálna taxonomická vrstva. Zobrazuje sa vtedy, keď sú "
             "k dispozícii triedy `skinner_class`.\n\n"
             "**Teoretické zakotvenie:** B. F. Skinner v diele *Verbal Behavior* (1957) redefinoval jazyk "
             "ako správanie kontrolované stimulmi a spevňovaním — nie ako systém znakov, ale ako funkciu.\n\n"
@@ -1076,9 +1083,9 @@ TRANSLATIONS = {
         "results_ready_msg": "Analýza dokončená — výsledky sú v záložke Výsledky.",
         "ana_bf_name":        "Behaviorálna taxonómia viet (B. F. Skinner)",
         "ana_bf_q":           "Aký funkčný typ verbálneho správania veta predstavuje — mand, tact, echoic, intraverbal alebo autoclitic?",
-        "ana_bf_role":        "Doplnková klasifikačná vrstva · zobrazuje sa len pri dostupnosti tried `skinner_class`.",
-        "ana_bf_badge":       "doplnková vrstva",
-        "ana_bf_missing":     "Doplnková behaviorálna taxonómia sa zobrazí len vtedy, keď sú k dispozícii triedy `skinner_class`. Tento beh preto vrstvu B. F. Skinnera samostatne nezobrazuje.",
+        "ana_bf_role":        "Samostatná behaviorálna vrstva · zobrazuje sa pri dostupnosti tried `skinner_class`.",
+        "ana_bf_badge":       "behaviorálna vrstva",
+        "ana_bf_missing":     "Behaviorálna taxonómia B. F. Skinnera sa zobrazí vtedy, keď sú k dispozícii triedy `skinner_class`. Tento beh preto samostatnú vrstvu B. F. Skinnera nezobrazuje.",
         "ana_qs_name":        "Ilokučná a rétorická analýza (Quentin Skinner)",
         "ana_qs_q":           "Čo chce autor textom vykonať a akú rétorickú stratégiu na to používa?",
         "ana_qs_role":        "Hlavná interpretačná vrstva · vždy súčasť produkčnej analýzy.",
@@ -1101,9 +1108,16 @@ TRANSLATIONS = {
         "ana_dashboard_q":    "Aký je technický stav analýzy a ktoré moduly bežali úspešne?",
         "dashboard_primary_layer": "Hlavná vrstva",
         "dashboard_primary_layer_value": "Quentin Skinner — vždy súčasť analýzy",
-        "dashboard_secondary_layer": "Doplnková vrstva",
+        "dashboard_secondary_layer": "Behaviorálna vrstva B. F. Skinnera",
         "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nájdené triedy `skinner_class`)",
         "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pre tento beh (chýba `skinner_class`)",
+        "qs_direct_outputs_title": "Priame výstupy pipeline",
+        "qs_rst_title": "RST vzťahy medzi vetami",
+        "qs_rst_desc": "Distribúcia RST vzťahov detegovaných medzi susednými vetami.",
+        "qs_perloc_title": "Perlokučné efekty (top 12)",
+        "qs_perloc_desc": "Najčastejšie zamýšľané efekty výroku na čitateľa/poslucháča.",
+        "qs_context_note_title": "Kontextové poznámky (výber)",
+        "qs_context_note_desc": "Vety, kde model zachytil napätie medzi diskurzívnym módom a klasifikovaným zámerom.",
         "save_error": "Chyba pri ukladaní",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická zložitosť podľa kníh",
@@ -1480,7 +1494,7 @@ TRANSLATIONS = {
             "1. **Illocutionary & Rhetorical Analysis (Quentin Skinner)** — Primary interpretive layer. "
             "Identifies the illocutionary intent of each sentence (what the speaker aims to do) and the rhetorical "
             "strategy (how that intent is pursued). Based on speech act theory (Austin, Searle, Q. Skinner 1969–2002).\n\n"
-            "2. **Sentence Behavioural Taxonomy (B. F. Skinner)** — Supplementary classification layer. "
+            "2. **Sentence Behavioural Taxonomy (B. F. Skinner)** — Dedicated behavioural layer. "
             "Classifies sentences by the behavioural taxonomy of language: mand (command), tact (world description), "
             "echoic (quotation), intraverbal (response to speech), autoclitic (self-commentary). "
             "Based on Verbal Behavior (Skinner, 1957).\n\n"
@@ -1504,7 +1518,7 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Detailed Module Descriptions",
         "ana_bf_detail": (
-            "**Role in the app:** Supplementary taxonomic layer. Displayed only when "
+            "**Role in the app:** Dedicated behavioural taxonomic layer. Displayed when "
             "`skinner_class` labels are available.\n\n"
             "**Theoretical grounding:** B. F. Skinner in *Verbal Behavior* (1957) redefined language "
             "as behaviour controlled by stimuli and reinforcement — not a sign system, but a function.\n\n"
@@ -1649,9 +1663,9 @@ TRANSLATIONS = {
         "results_ready_msg": "Analysis complete — results are in the Results tab.",
         "ana_bf_name":        "Sentence Behavioural Taxonomy (B. F. Skinner)",
         "ana_bf_q":           "What functional type of verbal behaviour does each sentence represent — mand, tact, echoic, intraverbal or autoclitic?",
-        "ana_bf_role":        "Supplementary classification layer · shown only when `skinner_class` labels are available.",
-        "ana_bf_badge":       "supplementary",
-        "ana_bf_missing":     "The supplementary behavioural taxonomy is shown only when `skinner_class` labels are available. This run therefore does not display the B. F. Skinner layer separately.",
+        "ana_bf_role":        "Dedicated behavioural layer · shown when `skinner_class` labels are available.",
+        "ana_bf_badge":       "behavioural layer",
+        "ana_bf_missing":     "The B. F. Skinner behavioural taxonomy is shown when `skinner_class` labels are available. This run therefore does not display the B. F. Skinner layer separately.",
         "ana_qs_name":        "Illocutionary & Rhetorical Analysis (Quentin Skinner)",
         "ana_qs_q":           "What does the author seek to do with the text and which rhetorical strategy is used?",
         "ana_qs_role":        "Primary interpretive layer · always part of the production analysis.",
@@ -1674,9 +1688,16 @@ TRANSLATIONS = {
         "ana_dashboard_q":    "What is the technical state of the analysis and which modules ran successfully?",
         "dashboard_primary_layer": "Primary layer",
         "dashboard_primary_layer_value": "Quentin Skinner — always included in the analysis",
-        "dashboard_secondary_layer": "Supplementary layer",
+        "dashboard_secondary_layer": "B. F. Skinner behavioural layer",
         "dashboard_secondary_layer_on": "B. F. Skinner — available (`skinner_class` labels found)",
         "dashboard_secondary_layer_off": "B. F. Skinner — unavailable for this run (`skinner_class` missing)",
+        "qs_direct_outputs_title": "Direct pipeline outputs",
+        "qs_rst_title": "RST relations between sentences",
+        "qs_rst_desc": "Distribution of RST relations detected between neighboring sentences.",
+        "qs_perloc_title": "Perlocutionary effects (top 12)",
+        "qs_perloc_desc": "Most frequent intended effects of utterances on the reader/listener.",
+        "qs_context_note_title": "Context notes (sample)",
+        "qs_context_note_desc": "Sentences where the model detected tension between discourse mode and classified intention.",
         # Section 16 — new analytics
         "complexity_title": "Syntactic Complexity by Book",
         "complexity_desc": "Average dependency tree depth and average clause count per sentence in each biblical book. Higher = syntactically more complex text.",
@@ -2844,7 +2865,7 @@ def generate_pdf_report(
             ["Sentences", str(_total)],
             [T.get("dashboard_primary_layer", "Primary layer"),
              T.get("dashboard_primary_layer_value", "Quentin Skinner — always included in the analysis")],
-            [T.get("dashboard_secondary_layer", "Supplementary layer"),
+            [T.get("dashboard_secondary_layer", "B. F. Skinner behavioural layer"),
              T.get(
                  "dashboard_secondary_layer_on" if "skinner_class" in df.columns else "dashboard_secondary_layer_off",
                  "B. F. Skinner — unavailable for this run",
@@ -4956,6 +4977,72 @@ with tab_results:
                 if not _aa_sample.empty:
                     st.caption("Vzorka viet s príznakom anachronizmu")
                     st.dataframe(_aa_sample, use_container_width=True, height=280)
+
+            # ── Direct pipeline outputs not shown in top charts ───────────────
+            st.divider()
+            st.subheader(T.get("qs_direct_outputs_title", "Priame výstupy pipeline"))
+            _dx1, _dx2 = st.columns(2)
+
+            with _dx1:
+                if "rst_relation" in _df.columns:
+                    _rst = _df["rst_relation"].dropna().value_counts().reset_index()
+                    _rst.columns = ["rst_relation", T["x_count"]]
+                    if not _rst.empty:
+                        st.caption(T.get("qs_rst_desc", "Distribúcia RST vzťahov medzi susednými vetami."))
+                        st.plotly_chart(
+                            fig_hbar(
+                                _rst,
+                                T["x_count"],
+                                "rst_relation",
+                                T.get("qs_rst_title", "RST vzťahy medzi vetami"),
+                                h=320,
+                                xlabel=T["x_count"],
+                            ),
+                            use_container_width=True,
+                        )
+
+            with _dx2:
+                if "perlocutionary_effect" in _df.columns:
+                    _pe = (
+                        _df["perlocutionary_effect"]
+                        .dropna()
+                        .astype(str)
+                        .str.strip()
+                    )
+                    _pe = _pe[(_pe != "") & (_pe != "none")]
+                    _pe_df = _pe.value_counts().head(12).reset_index()
+                    _pe_df.columns = ["perlocutionary_effect", T["x_count"]]
+                    if not _pe_df.empty:
+                        st.caption(T.get("qs_perloc_desc", "Najčastejšie zamýšľané efekty výroku."))
+                        st.plotly_chart(
+                            fig_hbar(
+                                _pe_df,
+                                T["x_count"],
+                                "perlocutionary_effect",
+                                T.get("qs_perloc_title", "Perlokučné efekty"),
+                                h=320,
+                                xlabel=T["x_count"],
+                            ),
+                            use_container_width=True,
+                        )
+
+            if "context_note" in _df.columns:
+                _cn = _df.copy()
+                _cn["context_note"] = _cn["context_note"].astype(str).str.strip()
+                _cn = _cn[(_cn["context_note"] != "") & (_cn["context_note"].str.lower() != "none")]
+                if not _cn.empty:
+                    st.caption(T.get("qs_context_note_desc", "Vety s kontextovým napätím medzi módom a zámerom."))
+                    _cn_cols = [c for c in ["sentence_id", "sentence", "primary_intention", "context_note"] if c in _cn.columns]
+                    st.dataframe(
+                        _cn[_cn_cols].head(20).rename(columns={
+                            "sentence_id": T.get("col_id", "ID"),
+                            "sentence": T.get("col_sentence", "Sentence"),
+                            "primary_intention": T.get("col_intention", "Intention"),
+                            "context_note": T.get("qs_context_note_title", "Context note"),
+                        }),
+                        use_container_width=True,
+                        height=320,
+                    )
 
             # ── Chapter-level intention heatmap ───────────────────────────────
             if _units and len(_units) >= 3 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
