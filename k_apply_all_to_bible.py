@@ -4,6 +4,8 @@ import os
 
 from c_input import create_input_from_file
 from c_unit import AnalysisUnit
+# B.F. Skinner verbal-behavior rules are used here only for training-data
+# generation (make_training_data_from_bible), not in the production process_unit().
 from h_classifiers import apply_skinner_rules, SkinnerDecision
 from j0_context_profile import get_builtin_profile
 from k_pipeline_core import process_unit
@@ -129,6 +131,7 @@ def _build_training_rows(
 
 
 def make_training_data_from_bible() -> None:
+    """Generate B.F. Skinner-style training rows (training-only pathway)."""
 
     files = sorted(BIBLE_FOLDER.glob("*.txt"))[:FILES_LIMIT]
 

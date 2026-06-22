@@ -2,6 +2,13 @@
 k_pipeline_core.py — Shared 4-stage analysis pipeline
 Extracted from k_apply_all_to_bible._process_book() so that both
 the Bible batch runner and the upload flow call the same code.
+
+Architectural note:
+- process_unit() is the production pipeline built around Quentin Skinner
+  illocutionary analysis + downstream RST/relation/refinement stages.
+- B.F. Skinner verbal-behavior rules (apply_skinner_rules in h_classifiers)
+  are intentionally not part of this production path and are used only for
+  training-data generation in k_apply_all_to_bible.make_training_data_from_bible().
 """
 from __future__ import annotations
 

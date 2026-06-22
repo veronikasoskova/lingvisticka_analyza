@@ -1,3 +1,5 @@
+"""B.F. Skinner — Verbal Behavior classifier and training helpers."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass

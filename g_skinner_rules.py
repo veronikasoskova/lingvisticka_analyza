@@ -1,4 +1,7 @@
+"""B.F. Skinner — Verbal Behavior framework rules and proxy detectors."""
+
 from __future__ import annotations
+
 from typing import List, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
