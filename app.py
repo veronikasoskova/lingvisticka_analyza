@@ -2011,6 +2011,15 @@ def _bkr_book(s: "pd.Series") -> "pd.Series":
     return s.map(lambda x: BOOK_NAMES.get(_abbr(x), {}).get(lang, _abbr(x)))
 
 
+def _localize_book_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize Bible file/book columns to localized display labels."""
+    out = df.copy()
+    for col in ("file_name", "book"):
+        if col in out.columns and out[col].dtype == object:
+            out[col] = _bkr_book(out[col])
+    return out
+
+
 def translate_clr(clr: dict, label_map: dict) -> dict:
     return {label_map.get(k, k): v for k, v in clr.items()}
 
@@ -2085,7 +2094,7 @@ STR_CLR = translate_clr(STRATEGY_CLR, VS)
 @st.cache_data(ttl=300)
 def csv(rel: str) -> pd.DataFrame | None:
     p = OUTPUT / rel
-    return pd.read_csv(p) if p.exists() else None
+    return _localize_book_columns(pd.read_csv(p)) if p.exists() else None
 
 
 @st.cache_data(ttl=300)
@@ -2111,8 +2120,7 @@ def load_db() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 def _fig_png(fig, w: int = 820, h: int = 380) -> bytes:
@@ -2880,8 +2888,7 @@ def load_refined() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=300)
@@ -2903,8 +2910,7 @@ def load_verbal_full() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=600)
