@@ -253,6 +253,7 @@ def _genre_cross_validate(dominant_mode: str, file_name: str) -> tuple[str, str]
 def resolve_discursive_context(
     features: List[SentenceFeatures],
     file_name: str = "",
+    use_genre_priors: bool = True,
 ) -> DiscursiveContext:
     if not features:
         return DiscursiveContext(
@@ -277,7 +278,11 @@ def resolve_discursive_context(
         and epistolar_d > 0.03
     )
 
-    genre_signal, genre_note = _genre_cross_validate(dominant_mode, file_name)
+    genre_signal, genre_note = (
+        _genre_cross_validate(dominant_mode, file_name)
+        if use_genre_priors
+        else ("unknown", "")
+    )
 
     return DiscursiveContext(
         dominant_mode=dominant_mode,

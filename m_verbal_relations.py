@@ -360,6 +360,14 @@ def classify_relation(
     """
     Classify verbal relation type for a sentence.
 
+    Methodological note
+    -------------------
+    This classifier is intentionally hybrid: it combines selected B.F. Skinner
+    verbal-behavior operant proxies (currently request/mand-like and
+    uncertainty/autoclitic-like) with Bible-genre relation categories
+    (genealogical, wisdom, historical_event, prophetic, lyrical, reported).
+    The hybrid layer is specific to the biblical corpus use case.
+
     Priority waterfall — rationale for ordering
     -------------------------------------------
     1.  Lyrical (strong signals: lament / praise / trust / remembrance)
@@ -461,6 +469,7 @@ def classify_relation(
         confidence    = 0.80
         explanation   = "Sentence reports verbal interaction or quoted speech."
 
+    # ── B.F. Skinner operant types ───────────────────────────────────────────
     # ── 3. REQUEST / MAND ───────────────────────────────────────────────────
 
     elif (
@@ -479,6 +488,7 @@ def classify_relation(
         confidence    = 0.80
         explanation   = "Sentence expresses request-like verbal relation."
 
+    # ── Bible-genre specific relation types ─────────────────────────────────
     # ── 4. GENEALOGICAL ─────────────────────────────────────────────────────
 
     elif (
@@ -553,6 +563,7 @@ def classify_relation(
         confidence    = 0.75
         explanation   = "Sentence describes event or creation."
 
+    # ── B.F. Skinner operant types ───────────────────────────────────────────
     # ── 7. UNCERTAINTY / AUTOCLITIC ─────────────────────────────────────────
 
     elif (

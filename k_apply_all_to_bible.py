@@ -4,6 +4,8 @@ import os
 
 from c_input import create_input_from_file
 from c_unit import AnalysisUnit
+# B.F. Skinner verbal-behavior rules are used here only for training-data
+# generation (make_training_data_from_bible), not in the production process_unit().
 from h_classifiers import apply_skinner_rules, SkinnerDecision
 from j0_context_profile import get_builtin_profile
 from k_pipeline_core import process_unit
@@ -65,6 +67,9 @@ def _process_book(file_path):
         stimulus="unknown",
     )
     result = process_unit(unit, profile=_BKR_PROFILE)
+    # NOTE: _BKR_PROFILE contains Bible-specific genre priors (biblical_czech_bkr).
+    #       It MUST NOT be applied to upload runs — process_unit() called from
+    #       run_upload_pipeline() passes profile=None intentionally.
     return result.skinner_rows, result.relation_rows, result.refined_rows
 
 
@@ -126,6 +131,7 @@ def _build_training_rows(
 
 
 def make_training_data_from_bible() -> None:
+    """Generate B.F. Skinner-style training rows (training-only pathway)."""
 
     files = sorted(BIBLE_FOLDER.glob("*.txt"))[:FILES_LIMIT]
 

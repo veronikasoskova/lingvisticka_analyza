@@ -170,3 +170,13 @@ def _latest_pipeline_run_id(table: str) -> str | None:
         return None
     finally:
         conn.close()
+
+
+def latest_bible_run_id(table: str) -> str | None:
+    """Public alias of _latest_pipeline_run_id().
+
+    Returns the most-recent run_id for Bible-corpus rows in *table*, or None.
+    Uses corpus_id = 'bible_bkr' when the column exists; falls back to the
+    run_id NOT LIKE 'upload_%' guard for older databases.
+    """
+    return _latest_pipeline_run_id(table)

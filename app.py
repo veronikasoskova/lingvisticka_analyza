@@ -43,7 +43,7 @@ TRANSLATIONS = {
         "pdf_filename": "skinner_report.pdf",
         "lang_label": "Jazyk",
         # Tab 1
-        "upload_header": "Nahrajte nebo vložte český text",
+        "upload_header": "Nahrajte nebo vložte text",
         "upload_label": "Nahrát .txt nebo .pdf",
         "paste_label": "…nebo vložit text sem",
         "run_button": "▶  Spustit analýzu",
@@ -129,6 +129,7 @@ TRANSLATIONS = {
             "war_conflict":      "Válka a konflikt",
             "eschatology":       "Eschatologie",
             "royal_power":       "Královská moc",
+            "sacred_space":      "Posvátný prostor",
             "monotheism":        "Monoteismus",
             "genealogy_lineage": "Genealogie",
             "divine":            "Božské prvky",
@@ -187,7 +188,7 @@ TRANSLATIONS = {
         "verbal_book_heatmap_title": "Slovesné vztahy podle knih",
         "verbal_book_heatmap_desc": "Slovesné vztahy per kniha — tmavší = typ dominuje v dané knize.",
         # Section 10
-        "sec_taxonomy": "🏷️ Skinnerova behaviorální taxonomie",
+        "sec_taxonomy": "🏷️ Funkční třídy vět (B. F. Skinner)",
         "tax_class_title": "Skinnerovy funkční třídy",
         "tax_class_desc": "Klasifikace vět podle **Skinnerovy behaviorální taxonomie** jazyka: `tact` = popis/pojmenování světa · `mand` = příkaz nebo žádost · `echoic` = citace nebo opakování · `intraverbal` = odpověď na verbální podnět · `autoclitic` = komentář k vlastní řeči. `none` = věty bez přiřazené třídy.",
         "tax_dialogue_title": "Hustota dialogu podle knih",
@@ -253,7 +254,19 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexikální opakování** měří, jak často se stejná slova opakují uvnitř jedné věty. Vyšší hodnota = věty v dané knize obsahují více opakujících se slov (typické pro poetické nebo rituální texty). Hodnota 0 = každé slovo se ve větě vyskytuje jen jednou.",
         "x_reinforcement": "Míra opakování",
         "filter_book_label": "Filtrovat knihu",
+        "filter_group_label": "Skupina knih",
+        "group_all": "— Celá Bible",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historické knihy",
+        "group_wisdom":         "Knihy moudrosti",
+        "group_major_prophets": "Velcí proroci",
+        "group_minor_prophets": "Malí proroci",
+        "group_gospels_acts":   "Evangelia a Skutky",
+        "group_pauline":        "Pavlovy listy",
+        "group_general":        "Obecné listy",
+        "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Data nejsou k dispozici.",
+        "no_group_data": "Pro vybranou skupinu nejsou dostupná data.",
         # Section 15 — Pipeline Quality
         "sec_quality": "✅ Kvalita pipeline",
         "quality_overall_desc": "Přehled **kvality automatické klasifikace** celého korpusu: kolik vět bylo klasifikováno, jak jistý byl algoritmus a které knihy nebo třídy se klasifikovaly méně spolehlivě.",
@@ -319,12 +332,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ O analýzách",
         "about_text": (
             "Přehled 10 analytických okruhů:\n\n"
-            "1. **B.F. Skinner** — Klasifikuje věty podle behaviorální taxonomie jazyka: "
-            "mand (příkaz), tact (popis světa), echoic (citace), intraverbální (reakce na řeč), "
-            "autoklit (komentář k vlastní řeči). Vychází z Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifikuje ilokuční záměr každé věty (co chce mluvčí vykonat) "
-            "a rétorickou strategii (jak záměru dosahuje). Vychází z teorie řečových aktů Austina "
-            "a Quintina Skinnera (1969–2002).\n\n"
+            "**Pozor:** aplikace pracuje se dvěma odlišnými Skinnerovskými přístupy. "
+            "**Quentin Skinner** vysvětluje ilokuční záměr a rétorickou strategii textu; "
+            "**B. F. Skinner** třídí funkční typ výpovědi.\n\n"
+            "1. **Ilokuční a rétorická analýza (Quentin Skinner)** — Hlavní interpretační vrstva. "
+            "Identifikuje ilokuční záměr každé věty (co chce mluvčí vykonat) a rétorickou strategii "
+            "(jak záměru dosahuje). Vychází z teorie řečových aktů Austina a Quintina Skinnera (1969–2002).\n\n"
+            "2. **Behaviorální taxonomie vět (B. F. Skinner)** — Doplňková klasifikační vrstva. "
+            "Klasifikuje věty podle behaviorální taxonomie jazyka: mand (příkaz), tact (popis světa), "
+            "echoic (citace), intraverbální (reakce na řeč), autoklit (komentář k vlastní řeči). "
+            "Vychází z Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbální vztahy** — Klasifikuje žánr verbální interakce: přímá řeč, genealogie, "
             "lyrika, proroctví, modlitba, moudrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Zpracovává text přes Stanza NLP (lemmatizace, POS, dependency) "
@@ -345,6 +362,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
+            "**Role v aplikaci:** Doplňková taxonomická vrstva. Zobrazuje se pouze tehdy, když jsou "
+            "k dispozici třídy `skinner_class`.\n\n"
             "**Teoretické zakotvení:** B. F. Skinner v díle *Verbal Behavior* (1957) redefinoval jazyk "
             "jako chování kontrolované stimuly a zpevňováním — ne jako systém znaků, ale jako funkci.\n\n"
             "**Typy verbálního chování:**\n"
@@ -358,6 +377,7 @@ TRANSLATIONS = {
             "Echoické formule jsou typické pro liturgické a rituální texty."
         ),
         "ana_qs_detail": (
+            "**Role v aplikaci:** Hlavní interpretační vrstva a primární produkční výstup aplikace.\n\n"
             "**Teoretické zakotvení:** Quentin Skinner (1969–2002) rozvinul metodologii analýzy "
             "politického myšlení, v níž klíčovým pojmem je ilokuční záměr — co chce autor textem "
             "v konkrétním historickém kontextu *vykonat*. Vychází z teorie řečových aktů "
@@ -485,10 +505,15 @@ TRANSLATIONS = {
         "results_title": "Výsledky analýzy",
         "results_ready_msg": "Analýza dokončena — výsledky jsou v záložce Výsledky.",
         # 10 analysis modules
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "Jaký typ verbálního chování text reprezentuje — příkaz, pozorování, citace?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "Co chce autor textem dosáhnout a jakou rétorickou strategii použil?",
+        "ana_bf_name":        "Behaviorální taxonomie vět (B. F. Skinner)",
+        "ana_bf_q":           "Jaký funkční typ verbálního chování věta představuje — mand, tact, echoic, intraverbal nebo autoclitic?",
+        "ana_bf_role":        "Doplňková klasifikační vrstva · zobrazuje se jen při dostupnosti tříd `skinner_class`.",
+        "ana_bf_badge":       "doplňková vrstva",
+        "ana_bf_missing":     "Doplňková behaviorální taxonomie se zobrazí jen tehdy, když jsou k dispozici třídy `skinner_class`. Tento běh proto vrstvu B. F. Skinnera samostatně nezobrazuje.",
+        "ana_qs_name":        "Ilokuční a rétorická analýza (Quentin Skinner)",
+        "ana_qs_q":           "Co chce autor textem vykonat a jakou rétorickou strategii k tomu používá?",
+        "ana_qs_role":        "Hlavní interpretační vrstva · vždy součást produkční analýzy.",
+        "ana_qs_badge":       "hlavní vrstva",
         "ana_verbal_name":    "Verbální vztahy",
         "ana_verbal_q":       "Jaký žánr verbální interakce dominuje — dialog, chvála, nářek, moudrý výrok?",
         "ana_semantics_name": "Sémantika a obsah",
@@ -505,11 +530,16 @@ TRANSLATIONS = {
         "ana_quality_q":      "Jak spolehlivá je klasifikace a kde může být nejistá?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "Jaký je technický stav analýzy a které moduly proběhly úspěšně?",
+        "dashboard_primary_layer": "Hlavní vrstva",
+        "dashboard_primary_layer_value": "Quentin Skinner — vždy součást analýzy",
+        "dashboard_secondary_layer": "Doplňková vrstva",
+        "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nalezeny třídy `skinner_class`)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pro tento běh (chybí `skinner_class`)",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická složitost podle knih",
         "complexity_desc": "Průměrná hloubka závislostního stromu a průměrný počet vedlejších vět na větu v každé biblické knize. Vyšší hodnota = syntakticky složitější text.",
         "tact_autoclitic_title": "Tact vs. Autoclitic podle knih",
-        "tact_autoclitic_desc": "Podíl vět klasifikovaných jako **tact** (assertive — popis skutečnosti) vs. **autoclitic** (declarative — komentář k vlastní řeči) v každé biblické knize.",
+        "tact_autoclitic_desc": "Podíl vět klasifikovaných jako **tact** (asertiv — popis skutečnosti) vs. **autoclitic** (deklarativ — komentář k vlastní řeči) v každé biblické knize.",
         "traditions_title": "Tradice a filozofické vlivy — přehled",
         "cluster_labels": {
             "royal":       "Královská moc",
@@ -572,6 +602,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Nekonzistentní kontext: psaný/nahraný zdroj nemůže být řízen sluchovým verbálním stimulem — to předpokládá mluvenou interakci.",
         "ctx_warn_written_spoken":"Nekonzistentní kontext: mluvený záznam nemůže být řízen psaným stimulem.",
         "ctx_warn_dialogue_none":"Nekonzistentní kontext: dialog vyžaduje verbální stimul — stimulus 'žádný' dialog vylučuje.",
+        # Tab 4
+        "tab_compare": "🔄 Porovnání",
+        "compare_title": "Porovnání analýz",
+        "compare_placeholder": (
+            "Tato záložka bude obsahovat nástroje pro porovnání výsledků analýzy "
+            "nahraného textu s biblickým korpusem (BKR). "
+            "Funkce je připravena k implementaci ve fázi 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Náhled segmentace",
+        "seg_method_chapter": "kapitoly (strukturní nadpisy)",
+        "seg_method_section": "sekce (podnadpisy)",
+        "seg_method_single": "jeden dokument (bez struktury)",
+        "seg_preview_unit": "jednotka",
+        "seg_preview_units": "jednotky",
     },
 
     "sk": {
@@ -585,7 +630,7 @@ TRANSLATIONS = {
         "pdf_error": "Chyba pri generovaní PDF",
         "pdf_filename": "skinner_report.pdf",
         "lang_label": "Jazyk",
-        "upload_header": "Nahrajte alebo vložte český text",
+        "upload_header": "Nahrajte alebo vložte text",
         "upload_label": "Nahrať .txt alebo .pdf",
         "paste_label": "…alebo vložiť text sem",
         "run_button": "▶  Spustiť analýzu",
@@ -666,6 +711,7 @@ TRANSLATIONS = {
             "war_conflict":      "Vojna a konflikt",
             "eschatology":       "Eschatológia",
             "royal_power":       "Kráľovská moc",
+            "sacred_space":      "Posvätný priestor",
             "monotheism":        "Monoteizmus",
             "genealogy_lineage": "Genealógia",
             "divine":            "Božské prvky",
@@ -718,7 +764,7 @@ TRANSLATIONS = {
         "verbal_conf_desc": "**Priemerná istota algoritmu** pri klasifikácii každého typu slovesného vzťahu. Vyššia hodnota = algoritmus je pri rozpoznávaní tohto typu sebajistejší.",
         "verbal_book_heatmap_title": "Slovesné vzťahy podľa kníh — heatmapa",
         "verbal_book_heatmap_desc": "Počet každého **typu slovesného vzťahu** v jednotlivých biblických knihách. Tmavšia bunka = daný typ sa v knihe vyskytuje výraznejšie.",
-        "sec_taxonomy": "🏷️ Skinnerova behaviorálna taxonómia",
+        "sec_taxonomy": "🏷️ Funkčné triedy viet (B. F. Skinner)",
         "tax_class_title": "Skinnerove funkčné triedy",
         "tax_class_desc": "Klasifikácia viet podľa **Skinnerovej behaviorálnej taxonómie** jazyka: `tact` = popis/pomenovanie sveta · `mand` = príkaz alebo žiadosť · `echoic` = citácia alebo opakovanie · `intraverbal` = odpoveď na verbálny podnet · `autoclitic` = komentár k vlastnej reči. `none` = vety bez priradenej triedy.",
         "tax_dialogue_title": "Hustota dialógu podľa kníh",
@@ -781,7 +827,19 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexikálne opakovanie** meria, ako často sa rovnaké slová opakujú v rámci jednej vety. Vyššia hodnota = vety v danej knihe obsahujú viac opakujúcich sa slov (typické pre poetické alebo rituálne texty). Hodnota 0 = každé slovo sa vo vete vyskytuje len raz.",
         "x_reinforcement": "Miera opakovania",
         "filter_book_label": "Filtrovať knihu",
+        "filter_group_label": "Skupina kníh",
+        "group_all": "— Celá Biblia",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historické knihy",
+        "group_wisdom":         "Múdrostné knihy",
+        "group_major_prophets": "Veľkí proroci",
+        "group_minor_prophets": "Malí proroci",
+        "group_gospels_acts":   "Evanjeliá a Skutky",
+        "group_pauline":        "Pavlove listy",
+        "group_general":        "Všeobecné listy",
+        "group_apocalypse":     "Apokalypsa",
         "no_patterns": "Dáta nie sú k dispozícii.",
+        "no_group_data": "Pre vybranú skupinu nie sú dostupné dáta.",
         # Section 15
         "sec_quality": "✅ Kvalita pipeline",
         "quality_overall_desc": "Prehľad **kvality automatickej klasifikácie** celého korpusu: koľko viet bolo klasifikovaných, aká istá bol algoritmus a ktoré knihy alebo triedy sa klasifikovali menej spoľahlivo.",
@@ -846,12 +904,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ O analýzach",
         "about_text": (
             "Prehľad 10 analytických okruhov:\n\n"
-            "1. **B.F. Skinner** — Klasifikuje vety podľa behavioriálnej taxonómie jazyka: "
-            "mand (príkaz), tact (popis sveta), echoic (citácia), intraverbálny (reakcia na reč), "
-            "autoklit (komentár k vlastnej reči). Vychádza z Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifikuje ilokučný zámer každej vety (čo chce hovoriaci vykonať) "
-            "a rétorickú stratégiu (ako zámer dosahuje). Vychádza z teórie rečových aktov Austina "
-            "a Quintina Skinnera (1969–2002).\n\n"
+            "**Pozor:** aplikácia pracuje s dvoma odlišnými Skinnerovskými prístupmi. "
+            "**Quentin Skinner** vysvetľuje ilokučný zámer a rétorickú stratégiu textu; "
+            "**B. F. Skinner** triedi funkčný typ výpovede.\n\n"
+            "1. **Ilokučná a rétorická analýza (Quentin Skinner)** — Hlavná interpretačná vrstva. "
+            "Identifikuje ilokučný zámer každej vety (čo chce hovoriaci vykonať) a rétorickú stratégiu "
+            "(ako zámer dosahuje). Vychádza z teórie rečových aktov Austina a Quintina Skinnera (1969–2002).\n\n"
+            "2. **Behaviorálna taxonómia viet (B. F. Skinner)** — Doplnková klasifikačná vrstva. "
+            "Klasifikuje vety podľa behaviorálnej taxonómie jazyka: mand (príkaz), tact (popis sveta), "
+            "echoic (citácia), intraverbálny (reakcia na reč), autoklit (komentár k vlastnej reči). "
+            "Vychádza z Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbálne vzťahy** — Klasifikuje žáner verbálnej interakcie: priama reč, "
             "genealógia, lyrika, proroctvo, modlitba, múdrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Spracováva text cez Stanza NLP (lematizácia, POS, dependency) "
@@ -872,6 +934,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Podrobný popis analýz",
         "ana_bf_detail": (
+            "**Rola v aplikácii:** Doplnková taxonomická vrstva. Zobrazuje sa len vtedy, keď sú "
+            "k dispozícii triedy `skinner_class`.\n\n"
             "**Teoretické zakotvenie:** B. F. Skinner v diele *Verbal Behavior* (1957) redefinoval jazyk "
             "ako správanie kontrolované stimulmi a spevňovaním — nie ako systém znakov, ale ako funkciu.\n\n"
             "**Typy verbálneho správania:**\n"
@@ -885,6 +949,7 @@ TRANSLATIONS = {
             "Echoické formuly sú typické pre liturgické a rituálne texty."
         ),
         "ana_qs_detail": (
+            "**Rola v aplikácii:** Hlavná interpretačná vrstva a primárny produkčný výstup aplikácie.\n\n"
             "**Teoretické zakotvenie:** Quentin Skinner (1969–2002) rozvinul metodológiu analýzy "
             "politického myslenia, v ktorej je kľúčovým pojmom ilokučný zámer — čo chce autor textom "
             "v konkrétnom historickom kontexte *vykonať*. Vychádza z teórie rečových aktov "
@@ -1009,10 +1074,15 @@ TRANSLATIONS = {
         "results_empty": "Najprv spustite analýzu v záložke Analyzovať text.",
         "results_title": "Výsledky analýzy",
         "results_ready_msg": "Analýza dokončená — výsledky sú v záložke Výsledky.",
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "Aký typ verbálneho správania text reprezentuje — príkaz, pozorovanie, citácia?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "Čo chcel autor textom dosiahnuť a akú rétorickú stratégiu použil?",
+        "ana_bf_name":        "Behaviorálna taxonómia viet (B. F. Skinner)",
+        "ana_bf_q":           "Aký funkčný typ verbálneho správania veta predstavuje — mand, tact, echoic, intraverbal alebo autoclitic?",
+        "ana_bf_role":        "Doplnková klasifikačná vrstva · zobrazuje sa len pri dostupnosti tried `skinner_class`.",
+        "ana_bf_badge":       "doplnková vrstva",
+        "ana_bf_missing":     "Doplnková behaviorálna taxonómia sa zobrazí len vtedy, keď sú k dispozícii triedy `skinner_class`. Tento beh preto vrstvu B. F. Skinnera samostatne nezobrazuje.",
+        "ana_qs_name":        "Ilokučná a rétorická analýza (Quentin Skinner)",
+        "ana_qs_q":           "Čo chce autor textom vykonať a akú rétorickú stratégiu na to používa?",
+        "ana_qs_role":        "Hlavná interpretačná vrstva · vždy súčasť produkčnej analýzy.",
+        "ana_qs_badge":       "hlavná vrstva",
         "ana_verbal_name":    "Verbálne vzťahy",
         "ana_verbal_q":       "Aký žáner verbálnej interakcie dominuje — dialóg, nárek, chvála, múdrostný výrok?",
         "ana_semantics_name": "Sémantika a obsah",
@@ -1029,12 +1099,17 @@ TRANSLATIONS = {
         "ana_quality_q":      "Ako spoľahlivá je klasifikácia a kde môže byť neistá?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "Aký je technický stav analýzy a ktoré moduly bežali úspešne?",
+        "dashboard_primary_layer": "Hlavná vrstva",
+        "dashboard_primary_layer_value": "Quentin Skinner — vždy súčasť analýzy",
+        "dashboard_secondary_layer": "Doplnková vrstva",
+        "dashboard_secondary_layer_on": "B. F. Skinner — dostupná (nájdené triedy `skinner_class`)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — nedostupná pre tento beh (chýba `skinner_class`)",
         "save_error": "Chyba pri ukladaní",
         # Section 16 — new analytics
         "complexity_title": "Syntaktická zložitosť podľa kníh",
         "complexity_desc": "Priemerná hĺbka závislostného stromu a priemerný počet vedľajších viet na vetu v každej biblickej knihe. Vyššia hodnota = syntakticky zložitejší text.",
         "tact_autoclitic_title": "Tact vs. Autoclitic podľa kníh",
-        "tact_autoclitic_desc": "Podiel viet klasifikovaných ako **tact** (assertive — popis skutočnosti) vs. **autoclitic** (declarative — komentár k vlastnej reči) v každej biblickej knihe.",
+        "tact_autoclitic_desc": "Podiel viet klasifikovaných ako **tact** (asertív — popis skutočnosti) vs. **autoclitic** (deklaratív — komentár k vlastnej reči) v každej biblickej knihe.",
         "traditions_title": "Tradície a filozofické vplyvy — prehľad",
         "cluster_labels": {
             "royal":       "Kráľovská moc",
@@ -1096,6 +1171,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Nekonzistentný kontext: písaný/nahraný zdroj nemôže byť riadený sluchovým verbálnym stimulom — to predpokladá hovorenú interakciu.",
         "ctx_warn_written_spoken":"Nekonzistentný kontext: hovorený záznam nemôže byť riadený písaným stimulom.",
         "ctx_warn_dialogue_none":"Nekonzistentný kontext: dialóg vyžaduje verbálny stimul — stimul 'žiadny' dialóg vylučuje.",
+        # Tab 4
+        "tab_compare": "🔄 Porovnanie",
+        "compare_title": "Porovnanie analýz",
+        "compare_placeholder": (
+            "Táto záložka bude obsahovať nástroje na porovnanie výsledkov analýzy "
+            "nahratého textu s biblickým korpusom (BKR). "
+            "Funkcia je pripravená na implementáciu vo fáze 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Náhľad segmentácie",
+        "seg_method_chapter": "kapitoly (štrukturálne nadpisy)",
+        "seg_method_section": "sekcie (podnadpisy)",
+        "seg_method_single": "jeden dokument (bez štruktúry)",
+        "seg_preview_unit": "jednotka",
+        "seg_preview_units": "jednotky",
     },
 
     "en": {
@@ -1109,7 +1199,7 @@ TRANSLATIONS = {
         "pdf_error": "PDF generation error",
         "pdf_filename": "skinner_report.pdf",
         "lang_label": "Language",
-        "upload_header": "Upload or paste Czech text",
+        "upload_header": "Upload or paste text",
         "upload_label": "Upload .txt or .pdf",
         "paste_label": "…or paste text here",
         "run_button": "▶  Run Pipeline",
@@ -1178,6 +1268,41 @@ TRANSLATIONS = {
         "element_coverage_desc": "Sentences containing given religious elements — shows the thematic focus of the corpus.",
         "philosophy_title": "Philosophical Traditions",
         "philosophy_desc": "Presence of philosophical and theological traditions in the text.",
+        "rel_elements": {
+            "covenant_law":      "Covenant & Law",
+            "prophetic_speech":  "Prophetic Speech",
+            "divine_hierarchy":  "Divine Hierarchy",
+            "legal":             "Legal Elements",
+            "life_death":        "Life & Death",
+            "wisdom":            "Wisdom",
+            "ritual_sacrifice":  "Ritual Sacrifice",
+            "moral":             "Moral Elements",
+            "war_conflict":      "War & Conflict",
+            "eschatology":       "Eschatology",
+            "royal_power":       "Royal Power",
+            "sacred_space":      "Sacred Space",
+            "monotheism":        "Monotheism",
+            "genealogy_lineage": "Genealogy",
+            "divine":            "Divine Elements",
+            "kinship":           "Kinship",
+        },
+        "rel_philosophy": {
+            "platonic":      "Platonism",
+            "neoplatonic":   "Neoplatonism",
+            "stoic":         "Stoicism",
+            "gnostic":       "Gnosticism",
+            "aristotelian":  "Aristotelianism",
+            "pythagorean":   "Pythagoreanism",
+            "epicurean":     "Epicureanism",
+            "hermetic":      "Hermeticism",
+            "sufi":          "Sufism",
+            "kabbalistic":   "Kabbalah",
+            "theosophical":  "Theosophy",
+            "jungian":       "Jungianism",
+            "new_age":       "New Age",
+            "shamanic":      "Shamanism",
+            "tantric":       "Tantrism",
+        },
         "density_heatmap_title": "Religious Element Density by Book",
         "density_heatmap_desc": "Proportion of sentences with given religious elements per book (0–1) — darker = element dominates in that book.",
         "sec_clusters": "🔗 Concept Clusters & Semantic Oppositions",
@@ -1208,7 +1333,7 @@ TRANSLATIONS = {
         "verbal_conf_desc": "Classification reliability per verbal relation type.",
         "verbal_book_heatmap_title": "Verbal Relations by Book",
         "verbal_book_heatmap_desc": "Verbal relations per book — darker = type dominates in that book.",
-        "sec_taxonomy": "🏷️ Skinner Behavioural Taxonomy",
+        "sec_taxonomy": "🏷️ Sentence Functional Classes (B. F. Skinner)",
         "tax_class_title": "Skinner Functional Classes",
         "tax_class_desc": "Sentence classification according to **Skinner's behavioural taxonomy** of language: `tact` = description/naming of the world · `mand` = command or request · `echoic` = quotation or repetition · `intraverbal` = response to a verbal stimulus · `autoclitic` = commentary on one's own speech. `none` = unassigned.",
         "tax_dialogue_title": "Dialogue Density by Book",
@@ -1271,7 +1396,19 @@ TRANSLATIONS = {
         "lexical_reinf_desc": "**Lexical repetition** measures how often the same words recur within a single sentence. Higher value = sentences in that book contain more repeated words (typical of poetic or ritual texts). Value 0 = every word appears only once per sentence.",
         "x_reinforcement": "Repetition rate",
         "filter_book_label": "Filter book",
+        "filter_group_label": "Book group",
+        "group_all": "— Whole Bible",
+        "group_pentateuch":     "Pentateuch",
+        "group_historical":     "Historical Books",
+        "group_wisdom":         "Wisdom Books",
+        "group_major_prophets": "Major Prophets",
+        "group_minor_prophets": "Minor Prophets",
+        "group_gospels_acts":   "Gospels & Acts",
+        "group_pauline":        "Pauline Epistles",
+        "group_general":        "General Epistles",
+        "group_apocalypse":     "Apocalypse",
         "no_patterns": "Data not available.",
+        "no_group_data": "No data is available for the selected group.",
         # Section 15
         "sec_quality": "✅ Pipeline Quality",
         "quality_overall_desc": "Overview of the **quality of the automatic classification** of the full corpus: how many sentences were classified, how confident the algorithm was, and which books or classes were classified less reliably.",
@@ -1337,12 +1474,16 @@ TRANSLATIONS = {
         "about_title": "ℹ️ About the Analyses",
         "about_text": (
             "Overview of 10 analysis modules:\n\n"
-            "1. **B.F. Skinner** — Classifies sentences by behavioural taxonomy of language: "
-            "mand (command), tact (world description), echoic (quotation), intraverbal (response to speech), "
-            "autoclitic (self-commentary). Based on Verbal Behavior (Skinner, 1957).\n\n"
-            "2. **Q. Skinner** — Identifies the illocutionary intent of each sentence (what the speaker aims to do) "
-            "and the rhetorical strategy (how they achieve it). Based on speech act theory "
-            "(Austin, Searle, Q. Skinner 1969–2002).\n\n"
+            "**Note:** the app works with two distinct Skinnerian approaches. "
+            "**Quentin Skinner** explains illocutionary intent and rhetorical strategy; "
+            "**B. F. Skinner** classifies the functional type of an utterance.\n\n"
+            "1. **Illocutionary & Rhetorical Analysis (Quentin Skinner)** — Primary interpretive layer. "
+            "Identifies the illocutionary intent of each sentence (what the speaker aims to do) and the rhetorical "
+            "strategy (how that intent is pursued). Based on speech act theory (Austin, Searle, Q. Skinner 1969–2002).\n\n"
+            "2. **Sentence Behavioural Taxonomy (B. F. Skinner)** — Supplementary classification layer. "
+            "Classifies sentences by the behavioural taxonomy of language: mand (command), tact (world description), "
+            "echoic (quotation), intraverbal (response to speech), autoclitic (self-commentary). "
+            "Based on Verbal Behavior (Skinner, 1957).\n\n"
             "3. **Verbal Relations** — Classifies the verbal interaction genre: reported speech, "
             "genealogy, lyric, prophecy, prayer, wisdom saying.\n\n"
             "4. **Semantics & Content** — Processes text via Stanza NLP (lemmatisation, POS, dependency) "
@@ -1363,6 +1504,8 @@ TRANSLATIONS = {
         ),
         "detail_expander_title": "📖 Detailed Module Descriptions",
         "ana_bf_detail": (
+            "**Role in the app:** Supplementary taxonomic layer. Displayed only when "
+            "`skinner_class` labels are available.\n\n"
             "**Theoretical grounding:** B. F. Skinner in *Verbal Behavior* (1957) redefined language "
             "as behaviour controlled by stimuli and reinforcement — not a sign system, but a function.\n\n"
             "**Types of verbal behaviour:**\n"
@@ -1376,6 +1519,7 @@ TRANSLATIONS = {
             "Echoic formulas are typical of liturgical and ritual texts."
         ),
         "ana_qs_detail": (
+            "**Role in the app:** Primary interpretive layer and the main production output of the app.\n\n"
             "**Theoretical grounding:** Quentin Skinner (1969–2002) developed a methodology "
             "of intellectual history in which the key concept is illocutionary intent — "
             "what the author aims to *do* with a text in a specific historical context. "
@@ -1503,10 +1647,15 @@ TRANSLATIONS = {
         "results_empty": "Run an analysis in the Analyze Text tab first.",
         "results_title": "Analysis Results",
         "results_ready_msg": "Analysis complete — results are in the Results tab.",
-        "ana_bf_name":        "B.F. Skinner",
-        "ana_bf_q":           "What type of verbal behaviour does the text represent — command, observation, quotation?",
-        "ana_qs_name":        "Q. Skinner",
-        "ana_qs_q":           "What did the author intend with the text and what rhetorical strategy did they use?",
+        "ana_bf_name":        "Sentence Behavioural Taxonomy (B. F. Skinner)",
+        "ana_bf_q":           "What functional type of verbal behaviour does each sentence represent — mand, tact, echoic, intraverbal or autoclitic?",
+        "ana_bf_role":        "Supplementary classification layer · shown only when `skinner_class` labels are available.",
+        "ana_bf_badge":       "supplementary",
+        "ana_bf_missing":     "The supplementary behavioural taxonomy is shown only when `skinner_class` labels are available. This run therefore does not display the B. F. Skinner layer separately.",
+        "ana_qs_name":        "Illocutionary & Rhetorical Analysis (Quentin Skinner)",
+        "ana_qs_q":           "What does the author seek to do with the text and which rhetorical strategy is used?",
+        "ana_qs_role":        "Primary interpretive layer · always part of the production analysis.",
+        "ana_qs_badge":       "primary layer",
         "ana_verbal_name":    "Verbal Relations",
         "ana_verbal_q":       "What verbal interaction genre dominates — dialogue, lament, praise, wisdom saying?",
         "ana_semantics_name": "Semantics & Content",
@@ -1523,6 +1672,11 @@ TRANSLATIONS = {
         "ana_quality_q":      "How reliable is the classification and where might it be uncertain?",
         "ana_dashboard_name": "Dashboard",
         "ana_dashboard_q":    "What is the technical state of the analysis and which modules ran successfully?",
+        "dashboard_primary_layer": "Primary layer",
+        "dashboard_primary_layer_value": "Quentin Skinner — always included in the analysis",
+        "dashboard_secondary_layer": "Supplementary layer",
+        "dashboard_secondary_layer_on": "B. F. Skinner — available (`skinner_class` labels found)",
+        "dashboard_secondary_layer_off": "B. F. Skinner — unavailable for this run (`skinner_class` missing)",
         # Section 16 — new analytics
         "complexity_title": "Syntactic Complexity by Book",
         "complexity_desc": "Average dependency tree depth and average clause count per sentence in each biblical book. Higher = syntactically more complex text.",
@@ -1579,6 +1733,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Inconsistent context: a written/uploaded source cannot be controlled by an auditory verbal stimulus — that presupposes spoken interaction.",
         "ctx_warn_written_spoken":"Inconsistent context: a spoken recording cannot be controlled by a written verbal stimulus.",
         "ctx_warn_dialogue_none":"Inconsistent context: dialogue requires a verbal stimulus — stimulus 'none' rules out dialogue.",
+        # Tab 4
+        "tab_compare": "🔄 Comparison",
+        "compare_title": "Compare Analyses",
+        "compare_placeholder": (
+            "This tab will contain tools for comparing uploaded-text analysis results "
+            "with the Bible corpus (BKR). "
+            "Feature is ready for implementation in Phase 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Segmentation preview",
+        "seg_method_chapter": "chapters (structural headings)",
+        "seg_method_section": "sections (subheadings)",
+        "seg_method_single": "single document (no structure)",
+        "seg_preview_unit": "unit",
+        "seg_preview_units": "units",
     },
 }
 
@@ -1591,17 +1760,20 @@ VALUE_LABELS = {
         "cs": {
             "directive": "Direktiva", "assertive": "Asertiv",
             "commissive": "Komisiv", "expressive": "Expresiv",
-            "declarative": "Deklarativ", "unknown": "Neznámé",
+            "declarative": "Deklarativ", "declarative_assertion": "Deklarativ",
+            "unknown": "Neznámé",
         },
         "sk": {
             "directive": "Direktíva", "assertive": "Asertív",
             "commissive": "Komisív", "expressive": "Expresív",
-            "declarative": "Deklaratív", "unknown": "Neznáme",
+            "declarative": "Deklaratív", "declarative_assertion": "Deklaratív",
+            "unknown": "Neznáme",
         },
         "en": {
             "directive": "Directive", "assertive": "Assertive",
             "commissive": "Commissive", "expressive": "Expressive",
-            "declarative": "Declarative", "unknown": "Unknown",
+            "declarative": "Declarative", "declarative_assertion": "Declarative assertion",
+            "unknown": "Unknown",
         },
     },
     "intention": {
@@ -1651,6 +1823,18 @@ VALUE_LABELS = {
             "contrast": "Kontrast",
             "repetition": "Opakování",
             "narrative_example": "Příklad",
+            "antithetical_disputation": "Antitetický spor",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Smluvní zaslíbení",
+            "declarative_assertion": "Deklarativní tvrzení",
+            "dialogic_controversy": "Dialogický spor",
+            "doxological_hymn": "Doxologický hymnus",
+            "missionary_commission": "Misijní pověření",
+            "narrative_chronicle": "Narativní kronika",
+            "prophetic_admonition": "Prorocké napomenutí",
+            "theological_rationale": "Teologické zdůvodnění",
+            "theophanic_self_presentation": "Teofanické sebepředstavení",
+            "woe_oracle": "Běda výrok",
             "unclassified": "Neklasif.",
         },
         "sk": {
@@ -1664,6 +1848,18 @@ VALUE_LABELS = {
             "contrast": "Kontrast",
             "repetition": "Opakovanie",
             "narrative_example": "Príklad",
+            "antithetical_disputation": "Antitetický spor",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Zmluvné zasľúbenie",
+            "declarative_assertion": "Deklaratívne tvrdenie",
+            "dialogic_controversy": "Dialogický spor",
+            "doxological_hymn": "Doxologický hymnus",
+            "missionary_commission": "Misijné poverenie",
+            "narrative_chronicle": "Narativná kronika",
+            "prophetic_admonition": "Prorocké napomenutie",
+            "theological_rationale": "Teologické zdôvodnenie",
+            "theophanic_self_presentation": "Teofanické sebapredstavenie",
+            "woe_oracle": "Výrok beda",
             "unclassified": "Neklasif.",
         },
         "en": {
@@ -1677,6 +1873,18 @@ VALUE_LABELS = {
             "contrast": "Contrast",
             "repetition": "Repetition",
             "narrative_example": "Example",
+            "antithetical_disputation": "Antithetical disputation",
+            "apodictic_law": "Apodictic law",
+            "covenant_promise": "Covenant promise",
+            "declarative_assertion": "Declarative assertion",
+            "dialogic_controversy": "Dialogic controversy",
+            "doxological_hymn": "Doxological hymn",
+            "missionary_commission": "Missionary commission",
+            "narrative_chronicle": "Narrative chronicle",
+            "prophetic_admonition": "Prophetic admonition",
+            "theological_rationale": "Theological rationale",
+            "theophanic_self_presentation": "Theophanic self-presentation",
+            "woe_oracle": "Woe oracle",
             "unclassified": "Unclassif.",
         },
     },
@@ -1798,6 +2006,238 @@ VSK = VALUE_LABELS["skinner_class"][lang]
 VCR = VALUE_LABELS["control_role"][lang]
 VVT = VALUE_LABELS["verbal_type"][lang]
 
+# ──────────────────────────────────────────────────────────────────────────────
+# BIBLE BOOK NAME MAPPING  (BKR abbreviation → full name per language)
+# ──────────────────────────────────────────────────────────────────────────────
+
+BOOK_NAMES: dict[str, dict[str, str]] = {
+    # Pentateuch
+    "Gn":  {"cs": "Genesis",            "sk": "Genezis",            "en": "Genesis"},
+    "Ex":  {"cs": "Exodus",             "sk": "Exodus",             "en": "Exodus"},
+    "Lv":  {"cs": "Leviticus",          "sk": "Levitikus",          "en": "Leviticus"},
+    "Nu":  {"cs": "Numeri",             "sk": "Numeri",             "en": "Numbers"},
+    "Dt":  {"cs": "Deuteronomium",      "sk": "Deuteronómium",      "en": "Deuteronomy"},
+    # Historical books
+    "Joz": {"cs": "Jozue",              "sk": "Jozua",              "en": "Joshua"},
+    "Sd":  {"cs": "Soudců",             "sk": "Sudcov",             "en": "Judges"},
+    "Rt":  {"cs": "Rut",                "sk": "Rút",                "en": "Ruth"},
+    "1S":  {"cs": "1. Samuelova",       "sk": "1. Samuelova",       "en": "1 Samuel"},
+    "2S":  {"cs": "2. Samuelova",       "sk": "2. Samuelova",       "en": "2 Samuel"},
+    "1Kr": {"cs": "1. Královská",       "sk": "1. Kráľovská",       "en": "1 Kings"},
+    "2Kr": {"cs": "2. Královská",       "sk": "2. Kráľovská",       "en": "2 Kings"},
+    "1Pa": {"cs": "1. Paralipomenon",   "sk": "1. Kroník",          "en": "1 Chronicles"},
+    "2Pa": {"cs": "2. Paralipomenon",   "sk": "2. Kroník",          "en": "2 Chronicles"},
+    "Ezd": {"cs": "Ezdráš",             "sk": "Ezdráš",             "en": "Ezra"},
+    "Neh": {"cs": "Nehemiáš",           "sk": "Nehemiáš",           "en": "Nehemiah"},
+    "Est": {"cs": "Ester",              "sk": "Ester",              "en": "Esther"},
+    # Wisdom books
+    "Jb":  {"cs": "Job",                "sk": "Jób",                "en": "Job"},
+    "Z":   {"cs": "Žalmy",              "sk": "Žalmy",              "en": "Psalms"},
+    "Pr":  {"cs": "Přísloví",           "sk": "Príslovia",          "en": "Proverbs"},
+    "Kaz": {"cs": "Kazatel",            "sk": "Kazateľ",            "en": "Ecclesiastes"},
+    "Pis": {"cs": "Píseň písní",        "sk": "Pieseň piesní",      "en": "Song of Solomon"},
+    # Major prophets
+    "Iz":  {"cs": "Izajáš",             "sk": "Izaiáš",             "en": "Isaiah"},
+    "Jr":  {"cs": "Jeremijáš",          "sk": "Jeremiáš",           "en": "Jeremiah"},
+    "Pl":  {"cs": "Pláč Jeremijášův",   "sk": "Náreky Jeremiášove", "en": "Lamentations"},
+    "Ez":  {"cs": "Ezechiel",           "sk": "Ezechiel",           "en": "Ezekiel"},
+    "Da":  {"cs": "Daniel",             "sk": "Daniel",             "en": "Daniel"},
+    # Minor prophets
+    "Oz":  {"cs": "Ozeáš",              "sk": "Hozeáš",             "en": "Hosea"},
+    "Jl":  {"cs": "Joel",               "sk": "Joel",               "en": "Joel"},
+    "Am":  {"cs": "Ámos",               "sk": "Amos",               "en": "Amos"},
+    "Abd": {"cs": "Abdiáš",             "sk": "Abdiáš",             "en": "Obadiah"},
+    "Jon": {"cs": "Jonáš",              "sk": "Jonáš",              "en": "Jonah"},
+    "Mi":  {"cs": "Micheáš",            "sk": "Micheáš",            "en": "Micah"},
+    "Na":  {"cs": "Nahum",              "sk": "Nahum",              "en": "Nahum"},
+    "Abk": {"cs": "Abakuk",             "sk": "Habakuk",            "en": "Habakkuk"},
+    "Sf":  {"cs": "Sofonjáš",           "sk": "Sofoniáš",           "en": "Zephaniah"},
+    "Ag":  {"cs": "Ageus",              "sk": "Aggeus",             "en": "Haggai"},
+    "Za":  {"cs": "Zacharjáš",          "sk": "Zachariáš",          "en": "Zechariah"},
+    "Mal": {"cs": "Malachiáš",          "sk": "Malachiáš",          "en": "Malachi"},
+    # Gospels & Acts
+    "Mt":  {"cs": "Matouš",             "sk": "Matúš",              "en": "Matthew"},
+    "Mk":  {"cs": "Marek",              "sk": "Marek",              "en": "Mark"},
+    "L":   {"cs": "Lukáš",              "sk": "Lukáš",              "en": "Luke"},
+    "J":   {"cs": "Jan",                "sk": "Ján",                "en": "John"},
+    "Sk":  {"cs": "Skutky apoštolů",    "sk": "Skutky apoštolov",   "en": "Acts"},
+    # Pauline epistles
+    "R":   {"cs": "Římanům",            "sk": "Rímskym",            "en": "Romans"},
+    "1K":  {"cs": "1. Korintským",      "sk": "1. Korintanom",      "en": "1 Corinthians"},
+    "2K":  {"cs": "2. Korintským",      "sk": "2. Korintanom",      "en": "2 Corinthians"},
+    "Ga":  {"cs": "Galatským",          "sk": "Galaťanom",          "en": "Galatians"},
+    "Ef":  {"cs": "Efezským",           "sk": "Efezanom",           "en": "Ephesians"},
+    "Fp":  {"cs": "Filipským",          "sk": "Filipanom",          "en": "Philippians"},
+    "Ko":  {"cs": "Kolosanům",          "sk": "Kološanom",          "en": "Colossians"},
+    "1Te": {"cs": "1. Tesalonickým",    "sk": "1. Tesaloničanom",   "en": "1 Thessalonians"},
+    "2Te": {"cs": "2. Tesalonickým",    "sk": "2. Tesaloničanom",   "en": "2 Thessalonians"},
+    "1Tm": {"cs": "1. Timoteovi",       "sk": "1. Timotejovi",      "en": "1 Timothy"},
+    "2Tm": {"cs": "2. Timoteovi",       "sk": "2. Timotejovi",      "en": "2 Timothy"},
+    "Tit": {"cs": "Titovi",             "sk": "Títovi",             "en": "Titus"},
+    "Fm":  {"cs": "Filemonovi",         "sk": "Filemonovi",         "en": "Philemon"},
+    # General epistles
+    "Zd":  {"cs": "Židům",              "sk": "Židom",              "en": "Hebrews"},
+    "Jk":  {"cs": "Jakub",              "sk": "Jakub",              "en": "James"},
+    "1P":  {"cs": "1. Petrův",          "sk": "1. Petrov",          "en": "1 Peter"},
+    "2P":  {"cs": "2. Petrův",          "sk": "2. Petrov",          "en": "2 Peter"},
+    "1J":  {"cs": "1. Janův",           "sk": "1. Jánov",           "en": "1 John"},
+    "2J":  {"cs": "2. Janův",           "sk": "2. Jánov",           "en": "2 John"},
+    "3J":  {"cs": "3. Janův",           "sk": "3. Jánov",           "en": "3 John"},
+    "Ju":  {"cs": "Judův",              "sk": "Júda",               "en": "Jude"},
+    # Apocalypse
+    "Zj":  {"cs": "Zjevení",            "sk": "Zjavenie",           "en": "Revelation"},
+}
+
+
+def _bkr_abbr(v: object) -> str:
+    """Normalize raw file names, abbreviations, or localized labels to a BKR abbreviation."""
+    x = str(v or "").strip()
+    if x.startswith("bible_BKR_"):
+        x = x[len("bible_BKR_"):]
+    if x.endswith(".txt"):
+        x = x[:-4]
+    if x in BOOK_NAMES:
+        return x
+    for abbr, names in BOOK_NAMES.items():
+        if x in names.values():
+            return abbr
+    return x
+
+
+def _bkr_book(s: "pd.Series") -> "pd.Series":
+    """Convert a Series of BKR identifiers to full book names for the current UI language."""
+    return s.map(lambda x: BOOK_NAMES.get(_bkr_abbr(x), {}).get(lang, str(x or "").strip()))
+
+
+def _localize_book_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize Bible file/book columns to localized display labels."""
+    out = df.copy()
+    for col in ("file_name", "book"):
+        if col in out.columns and pd.api.types.is_string_dtype(out[col]):
+            out[col] = _bkr_book(out[col])
+    return out
+
+
+_RELIGIOUS_ELEMENT_ALIASES: dict[str, str] = {
+    "covenant law": "covenant_law",
+    "divine": "divine",
+    "divine elements": "divine",
+    "divine hierarchy": "divine_hierarchy",
+    "eschatology": "eschatology",
+    "genealogy": "genealogy_lineage",
+    "genealogy lineage": "genealogy_lineage",
+    "holy war": "war_conflict",
+    "kingdom": "royal_power",
+    "kinship": "kinship",
+    "law": "legal",
+    "legal": "legal",
+    "legal elements": "legal",
+    "life death": "life_death",
+    "moral": "moral",
+    "moral elements": "moral",
+    "monotheism": "monotheism",
+    "prophecy": "prophetic_speech",
+    "prophetic speech": "prophetic_speech",
+    "ritual": "ritual_sacrifice",
+    "ritual sacrifice": "ritual_sacrifice",
+    "royal power": "royal_power",
+    "sacred space": "sacred_space",
+    "sacrifice": "ritual_sacrifice",
+    "war conflict": "war_conflict",
+    "wisdom": "wisdom",
+}
+
+
+def _rel_key(v: object) -> str:
+    x = str(v or "").strip()
+    if not x:
+        return x
+    if x in T.get("rel_elements", {}):
+        return x
+    norm = " ".join(
+        x.replace("&", " ")
+         .replace("-", " ")
+         .replace("_", " ")
+         .split()
+    ).lower()
+    return _RELIGIOUS_ELEMENT_ALIASES.get(norm, x)
+
+
+def _rel_label(v: object) -> str:
+    key = _rel_key(v)
+    return T.get("rel_elements", {}).get(key, str(v or "").strip())
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# BOOK GROUPS  (canon sections, ordered; key matches i18n "group_*" labels)
+# ──────────────────────────────────────────────────────────────────────────────
+
+BOOK_GROUPS: list[tuple[str, list[str]]] = [
+    ("group_pentateuch",     ["Gn", "Ex", "Lv", "Nu", "Dt"]),
+    ("group_historical",     ["Joz", "Sd", "Rt", "1S", "2S", "1Kr", "2Kr",
+                               "1Pa", "2Pa", "Ezd", "Neh", "Est"]),
+    ("group_wisdom",         ["Jb", "Z", "Pr", "Kaz", "Pis"]),
+    ("group_major_prophets", ["Iz", "Jr", "Pl", "Ez", "Da"]),
+    ("group_minor_prophets", ["Oz", "Jl", "Am", "Abd", "Jon", "Mi",
+                               "Na", "Abk", "Sf", "Ag", "Za", "Mal"]),
+    ("group_gospels_acts",   ["Mt", "Mk", "L", "J", "Sk"]),
+    ("group_pauline",        ["R", "1K", "2K", "Ga", "Ef", "Fp", "Ko",
+                               "1Te", "2Te", "1Tm", "2Tm", "Tit", "Fm"]),
+    ("group_general",        ["Zd", "Jk", "1P", "2P", "1J", "2J", "3J", "Ju"]),
+    ("group_apocalypse",     ["Zj"]),
+]
+
+
+def _grouped_book_selectbox(key_prefix: str, available_books: list[str]) -> "str | None":
+    """Two-level book selector: first a canon group, then an individual book.
+
+    Returns the selected localized book name, or ``None`` when no specific book
+    is chosen (= show all).
+    """
+    available_set = set(available_books)
+
+    # Build list of (localized_group_label, [localized_book_names]) for groups
+    # that have at least one book present in the available data.
+    groups: list[tuple[str, list[str]]] = []
+    for gkey, abbrevs in BOOK_GROUPS:
+        names_in_group = [
+            BOOK_NAMES[a][lang]
+            for a in abbrevs
+            if a in BOOK_NAMES and BOOK_NAMES[a].get(lang) in available_set
+        ]
+        if names_in_group:
+            groups.append((T.get(gkey, gkey), names_in_group))
+
+    all_groups_lbl = T.get("group_all", "— All groups")
+    all_books_lbl  = "— " + T.get("filter_book_label", "All books")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        sel_grp = st.selectbox(
+            T.get("filter_group_label", "Group"),
+            [all_groups_lbl] + [g[0] for g in groups],
+            key=f"{key_prefix}_group",
+            label_visibility="collapsed",
+        )
+
+    # Determine the book list for the chosen group
+    if sel_grp == all_groups_lbl:
+        book_options = sorted(available_books)
+    else:
+        book_options = next(
+            (names for lbl, names in groups if lbl == sel_grp), sorted(available_books)
+        )
+
+    with col2:
+        sel_book = st.selectbox(
+            T.get("filter_book_label", "Book"),
+            [all_books_lbl] + book_options,
+            key=f"{key_prefix}_book",
+            label_visibility="collapsed",
+        )
+
+    return None if sel_book.startswith("—") else sel_book
+
 
 def translate_clr(clr: dict, label_map: dict) -> dict:
     return {label_map.get(k, k): v for k, v in clr.items()}
@@ -1832,6 +2272,7 @@ FORCE_CLR = {
     "commissive":  "#2a9d8f",
     "expressive":  "#57cc99",
     "declarative": "#8338ec",
+    "declarative_assertion": "#8338ec",
     "unknown":     "#6c757d",
 }
 
@@ -1846,6 +2287,18 @@ STRATEGY_CLR = {
     "contrast":             "#118ab2",
     "repetition":           "#06d6a0",
     "narrative_example":    "#ffd166",
+    "antithetical_disputation":  "#577590",
+    "apodictic_law":             "#f94144",
+    "covenant_promise":          "#43aa8b",
+    "declarative_assertion":     "#3a86ff",
+    "dialogic_controversy":      "#f3722c",
+    "doxological_hymn":          "#9b5de5",
+    "missionary_commission":     "#277da1",
+    "narrative_chronicle":       "#4d908e",
+    "prophetic_admonition":      "#f8961e",
+    "theological_rationale":     "#7209b7",
+    "theophanic_self_presentation":"#4361ee",
+    "woe_oracle":                "#d00000",
     "unclassified":         "#adb5bd",
 }
 
@@ -1857,27 +2310,23 @@ STR_CLR = translate_clr(STRATEGY_CLR, VS)
 # DATA HELPERS
 # ──────────────────────────────────────────────────────────────────────────────
 
-@st.cache_data(ttl=300)
 def csv(rel: str) -> pd.DataFrame | None:
     p = OUTPUT / rel
-    return pd.read_csv(p) if p.exists() else None
+    return _localize_book_columns(pd.read_csv(p)) if p.exists() else None
 
 
 @st.cache_data(ttl=300)
-def load_db() -> pd.DataFrame | None:
+def load_db(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM skinner_analysis WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("skinner_analysis")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   illocutionary_force, primary_intention, secondary_intention,
@@ -1889,8 +2338,7 @@ def load_db() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 def _fig_png(fig, w: int = 820, h: int = 380) -> bytes:
@@ -2069,6 +2517,7 @@ def generate_pdf_report(
     if session.get("sel_q_skinner", True):
         story += _section(T.get("ana_qs_name","Q. Skinner"), "⚡")
         story.append(Paragraph(T.get("ana_qs_q",""), sty["caption"]))
+        story.append(Paragraph(T.get("ana_qs_role",""), sty["caption"]))
 
         ic = df["primary_intention"].value_counts().reset_index()
         ic.columns = ["_raw", "count"]
@@ -2211,6 +2660,7 @@ def generate_pdf_report(
         if _tax_cl.exists():
             story += _section(T.get("ana_bf_name","B.F. Skinner"), "⚡")
             story.append(Paragraph(T.get("ana_bf_q",""), sty["caption"]))
+            story.append(Paragraph(T.get("ana_bf_role",""), sty["caption"]))
             _tc = pd.read_csv(_tax_cl)
             _tc.columns = ["_raw", "count"]
             _tc["class"] = _tc["_raw"].map(vsk).fillna(_tc["_raw"])
@@ -2219,8 +2669,10 @@ def generate_pdf_report(
             fig_tc.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
             if _tax_ta.exists():
                 _ta = pd.read_csv(_tax_ta)
-                _ta["book"] = (_ta["file_name"]
-                               .str.replace("bible_BKR_","").str.replace(".txt",""))
+                _ta["book"] = _bkr_book(
+                    _ta["file_name"]
+                    .str.replace("bible_BKR_","", regex=False)
+                    .str.replace(".txt","", regex=False))
                 fig_ta = go.Figure()
                 fig_ta.add_bar(name="tact", x=_ta["book"], y=_ta["tact_ratio"],
                                marker_color="#3a86ff")
@@ -2334,8 +2786,10 @@ def generate_pdf_report(
             story += _section(T.get("ana_style_name","Style & Syntax"), "🕐")
             story.append(Paragraph(T.get("ana_style_q",""), sty["caption"]))
             _cx = pd.read_csv(_cplx_path)
-            _cx["book"] = (_cx["file_name"]
-                           .str.replace("bible_BKR_","").str.replace(".txt",""))
+            _cx["book"] = _bkr_book(
+                _cx["file_name"]
+                .str.replace("bible_BKR_","", regex=False)
+                .str.replace(".txt","", regex=False))
             fig_d = px.bar(_cx, x="avg_tree_depth", y="book", orientation="h",
                            title=T.get("x_depth","Avg tree depth"))
             fig_d.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
@@ -2388,6 +2842,13 @@ def generate_pdf_report(
         dash_data = [
             ["Source", _src],
             ["Sentences", str(_total)],
+            [T.get("dashboard_primary_layer", "Primary layer"),
+             T.get("dashboard_primary_layer_value", "Quentin Skinner — always included in the analysis")],
+            [T.get("dashboard_secondary_layer", "Supplementary layer"),
+             T.get(
+                 "dashboard_secondary_layer_on" if "skinner_class" in df.columns else "dashboard_secondary_layer_off",
+                 "B. F. Skinner — unavailable for this run",
+             )],
             ["DB rows (skinner_analysis)", str(_db_n or "—")],
             ["Bible runs in DB", str(len(_runs)-len(_upr))],
             ["Upload runs in DB", str(len(_upr))],
@@ -2585,9 +3046,13 @@ def fig_pie(df, names, values, title, clr=None):
 def fig_heatmap(df_wide, id_col, title, h=420, fmt=None):
     cols = [c for c in df_wide.columns if c not in (id_col, "total")]
     z = df_wide[cols].values
-    y_labels = (df_wide[id_col].str.replace("bible_BKR_", "")
-                                .str.replace(".txt", "")
-                if df_wide[id_col].dtype == object else df_wide[id_col])
+    if pd.api.types.is_string_dtype(df_wide[id_col]):
+        abbrevs = (df_wide[id_col]
+                   .str.replace("bible_BKR_", "", regex=False)
+                   .str.replace(".txt", "", regex=False))
+        y_labels = _bkr_book(abbrevs)
+    else:
+        y_labels = df_wide[id_col]
     fig = go.Figure(go.Heatmap(
         z=z, x=cols, y=y_labels,
         colorscale="Blues",
@@ -2632,20 +3097,17 @@ def _top_n_cols(df_wide: pd.DataFrame, id_col: str, n: int) -> pd.DataFrame:
 # ──────────────────────────────────────────────────────────────────────────────
 
 @st.cache_data(ttl=300)
-def load_refined() -> pd.DataFrame | None:
+def load_refined(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM refined_descriptions WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("refined_descriptions")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   description_type, semantic_cluster, lemmas
@@ -2653,25 +3115,21 @@ def load_refined() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=300)
-def load_verbal_full() -> pd.DataFrame | None:
+def load_verbal_full(lang: str = "sk") -> pd.DataFrame | None:
     db = OUTPUT / "bible_analysis.db"
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM verbal_relations WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("verbal_relations")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   local_pattern, semantic_cluster
@@ -2679,8 +3137,7 @@ def load_verbal_full() -> pd.DataFrame | None:
         conn, params=(run_id,),
     )
     conn.close()
-    df["book"] = df["file_name"].str.replace("bible_BKR_", "").str.replace(".txt", "")
-    return df
+    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=600)
@@ -2773,8 +3230,8 @@ if st.session_state.pop("_switch_to_results", False):
         unsafe_allow_html=True,
     )
 
-tab_analyze, tab_bible, tab_results = st.tabs(
-    [T["tab_analyze"], T["tab_bible"], T["tab_results"]]
+tab_analyze, tab_bible, tab_results, tab_compare = st.tabs(
+    [T["tab_analyze"], T["tab_bible"], T["tab_results"], T["tab_compare"]]
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -2802,6 +3259,25 @@ with tab_analyze:
                 "Nebudete-li činiti pokání, všickni podobně zahynete. "
                 "Jděte do všeho světa a kažte evangelium."
             ),
+        )
+
+    # ── SEGMENTATION PREVIEW ─────────────────────────────────────────────────
+    _preview_text = pasted.strip() if pasted.strip() else None
+    if _preview_text:
+        from c_segment import segment_book as _seg_preview
+        _prev_units = _seg_preview(_preview_text, corpus_id="preview")
+        _prev_n = len(_prev_units)
+        _prev_method = (_prev_units[0].segmentation_method if _prev_units else "single_unit") or "single_unit"
+        _method_labels = {
+            "chapter_markers": T["seg_method_chapter"],
+            "section_markers": T["seg_method_section"],
+            "single_unit":     T["seg_method_single"],
+        }
+        _unit_word = T["seg_preview_unit"] if _prev_n == 1 else T["seg_preview_units"]
+        st.info(
+            f"🔍 **{T['seg_preview_title']}:** "
+            f"{_method_labels.get(_prev_method, _prev_method)} · "
+            f"**{_prev_n}** {_unit_word}"
         )
 
     # ── CONTEXT PARAMETERS ───────────────────────────────────────────────────
@@ -2854,8 +3330,8 @@ with tab_analyze:
     st.subheader(T["select_analyses"])
 
     _MODS = [
-        ("sel_bf_skinner",   "⚡", T["ana_bf_name"],        "~1 min",  T["ana_bf_q"]),
-        ("sel_q_skinner",    "⚡", T["ana_qs_name"],         "~1 min",  T["ana_qs_q"]),
+        ("sel_q_skinner",    "⚡", T["ana_qs_name"],         "~1 min",  T["ana_qs_q"], T["ana_qs_badge"]),
+        ("sel_bf_skinner",   "⚡", T["ana_bf_name"],        "~1 min",  T["ana_bf_q"], T["ana_bf_badge"]),
         ("sel_verbal",       "⚡", T["ana_verbal_name"],     "~1 min",  T["ana_verbal_q"]),
         ("sel_semantics",    "⚡", T["ana_semantics_name"],  "~1 min",  T["ana_semantics_q"]),
         ("sel_religious",    "⚡", T["ana_religious_name"],  "~1 min",  T["ana_religious_q"]),
@@ -2867,10 +3343,15 @@ with tab_analyze:
     ]
 
     _cb_cols = st.columns(2)
-    for _idx, (_key, _icon, _name, _time, _question) in enumerate(_MODS):
+    for _idx, _mod in enumerate(_MODS):
+        if len(_mod) == 6:
+            _key, _icon, _name, _time, _question, _badge = _mod
+        else:
+            _key, _icon, _name, _time, _question = _mod
+            _badge = ""
         with _cb_cols[_idx % 2]:
             st.checkbox(
-                f"{_icon} **{_name}** `{_time}`",
+                f"{_icon} **{_name}** `{_time}`" + (f" · *{_badge}*" if _badge else ""),
                 value=st.session_state.get(_key, _idx < 5),
                 key=_key,
                 help=_question,
@@ -2924,8 +3405,8 @@ with tab_analyze:
     st.divider()
     with st.expander(T["detail_expander_title"]):
         _DETAIL_MODS = [
-            (T["ana_bf_name"],        T["ana_bf_detail"]),
             (T["ana_qs_name"],        T["ana_qs_detail"]),
+            (T["ana_bf_name"],        T["ana_bf_detail"]),
             (T["ana_verbal_name"],    T["ana_verbal_detail"]),
             (T["ana_semantics_name"], T["ana_semantics_detail"]),
             (T["ana_religious_name"], T["ana_religious_detail"]),
@@ -2948,7 +3429,7 @@ with tab_bible:
     st.subheader(T["bible_header"])
     st.caption(T["bible_caption"])
 
-    db_df = load_db()
+    db_df = load_db(lang)
 
     if db_df is None:
         st.warning(T["no_db"])
@@ -2967,8 +3448,46 @@ with tab_bible:
 
         st.divider()
 
+        # ── BOOK GROUP FILTER ─────────────────────────────────────────────────────
+        _all_grps_lbl = T.get("group_all", "— All groups")
+        _grp_label_options = [_all_grps_lbl] + [T.get(gk, gk) for gk, _ in BOOK_GROUPS]
+        _sel_grp = st.selectbox(
+            T.get("filter_group_label", "Book group"),
+            _grp_label_options,
+            key="bible_top_group",
+        )
+
+        # Build the set of localized book names belonging to the chosen group
+        if _sel_grp == _all_grps_lbl:
+            _grp_book_set: "set[str] | None" = None
+        else:
+            _grp_book_set = {
+                a
+                for gk, abbrevs in BOOK_GROUPS
+                if T.get(gk, gk) == _sel_grp
+                for a in abbrevs
+                if a in BOOK_NAMES
+            }
+
+        def _flt(df: "pd.DataFrame | None", col: str = "book") -> "pd.DataFrame | None":
+            """Filter df rows to the selected book group (no-op when all groups selected)."""
+            if _grp_book_set is None or df is None or col not in df.columns:
+                return df
+            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
+
+        def _flt_csv(df: "pd.DataFrame | None", col: str = "file_name") -> "pd.DataFrame | None":
+            """Filter wide CSV (rows = books) to the selected book group."""
+            if _grp_book_set is None or df is None or col not in df.columns:
+                return df
+            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
+
+        # Apply the group filter to the main DB frame used by all later sections
+        db_df = _flt(db_df)
+
+        st.divider()
+
         # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_intention"], expanded=True):
+        with st.expander("📖 " + T["sec_intention"], expanded=True):
 
             int_cnt  = csv("q_skinner_analytics/q_intention_counts.csv")
             int_book = csv("q_skinner_analytics/q_intention_by_book.csv")
@@ -3001,21 +3520,24 @@ with tab_bible:
                     )
 
             if int_book is not None:
-                hm = int_book.copy()
-                hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
-                hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
-                _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
-                                   key="hm_int_n")
-                hm = _top_n_cols(hm, "file_name", _n_int)
-                st.caption(T["intent_book_heatmap_desc"])
-                st.plotly_chart(
-                    fig_heatmap(hm, "file_name",
-                                T["intent_book_heatmap_title"], h=420),
-                    use_container_width=True,
-                )
+                hm = _flt_csv(int_book).copy()
+                if hm.empty:
+                    st.info(T["no_group_data"])
+                else:
+                    hm_cols = [c for c in hm.columns if c not in {"file_name", "total"}]
+                    hm = hm.rename(columns={c: VI.get(c, c) for c in hm_cols})
+                    _n_int = st.slider(T["top_n_slider"], 5, min(30, len(hm_cols)), min(15, len(hm_cols)),
+                                       key="hm_int_n")
+                    hm = _top_n_cols(hm, "file_name", _n_int)
+                    st.caption(T["intent_book_heatmap_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(hm, "file_name",
+                                    T["intent_book_heatmap_title"], h=420),
+                        use_container_width=True,
+                    )
 
         # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_strategy"]):
+        with st.expander("📖 " + T["sec_strategy"]):
 
             strat_cnt  = csv("q_skinner_analytics/q_strategy_counts.csv")
             strat_book = csv("q_skinner_analytics/q_strategy_by_book.csv")
@@ -3049,23 +3571,27 @@ with tab_bible:
             if strat_book is not None:
                 excl = {"file_name", "total", "unclassified"}
                 s_cols = [c for c in strat_book.columns if c not in excl]
-                hm2 = strat_book[["file_name"] + s_cols].copy()
-                hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
-                st.caption(T["strat_book_heatmap_desc"])
-                st.plotly_chart(
-                    fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
-                    use_container_width=True,
-                )
+                hm2 = _flt_csv(strat_book)[["file_name"] + s_cols].copy()
+                if hm2.empty:
+                    st.info(T["no_group_data"])
+                else:
+                    hm2 = hm2.rename(columns={c: VS.get(c, c) for c in s_cols})
+                    st.caption(T["strat_book_heatmap_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(hm2, "file_name", T["strat_book_heatmap_title"], h=420),
+                        use_container_width=True,
+                    )
 
         # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
-        with st.expander(T["sec_ratios"]):
+        with st.expander("📖 " + T["sec_ratios"]):
 
             ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
 
             if ratios is not None:
-                books_lbl = (ratios["file_name"]
-                             .str.replace("bible_BKR_", "")
-                             .str.replace(".txt", ""))
+                books_lbl = _bkr_book(
+                    ratios["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
 
                 c1, c2 = st.columns(2)
 
@@ -3107,7 +3633,7 @@ with tab_bible:
                 st.info(T["no_ratios"])
 
         # ── 4. RELIGIOUS ELEMENTS ─────────────────────────────────────────────────
-        with st.expander(T["sec_religious"]):
+        with st.expander("📖 " + T["sec_religious"]):
 
             field_sum    = csv("religious_elements/field_summary.csv")
             density_wide = csv("religious_elements/combined_density_by_book.csv")
@@ -3115,13 +3641,12 @@ with tab_bible:
 
             c1, c2 = st.columns(2)
 
-            _rel_el = T.get("rel_elements", {})
             _rel_ph = T.get("rel_philosophy", {})
 
             with c1:
                 if field_sum is not None:
                     d = field_sum.sort_values("sentence_count", ascending=False).copy()
-                    d["element"] = d["element"].map(lambda v: _rel_el.get(v, v))
+                    d["element"] = d["element"].map(_rel_label)
                     d = d.rename(columns={"element": T["x_element"],
                                           "sentence_count": T["x_count"]})
                     st.caption(T["element_coverage_desc"])
@@ -3148,8 +3673,7 @@ with tab_bible:
                 dn = density_wide[["file_name"] + s_cols].copy()
                 dn.columns = (
                     ["file_name"] +
-                    [_rel_el.get(c.replace("_sentence_density", ""),
-                                 c.replace("_sentence_density", "")) for c in s_cols]
+                    [_rel_label(c.replace("_sentence_density", "")) for c in s_cols]
                 )
                 _n_dens = st.slider(T["top_n_slider"], 5, min(30, len(s_cols)), min(15, len(s_cols)),
                                     key="hm_dens_n")
@@ -3197,7 +3721,7 @@ with tab_bible:
                 )
 
         # ── 5. CONCEPT CLUSTERS & OPPOSITIONS ────────────────────────────────────
-        with st.expander(T["sec_clusters"]):
+        with st.expander("📖 " + T["sec_clusters"]):
 
             c1, c2 = st.columns(2)
 
@@ -3313,11 +3837,10 @@ with tab_bible:
                         opp_ex if _sel_pair.startswith("—")
                         else opp_ex[opp_ex["opposition_pair"] == _sel_pair]
                     ).copy()
-                    _view_ex["book"] = (
+                    _view_ex["book"] = _bkr_book(
                         _view_ex["file_name"]
-                        .str.replace("bible_BKR_", "")
-                        .str.replace(".txt", "")
-                    )
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     st.caption(T["opposition_examples_desc"])
                     for _, _er in _view_ex.head(12).iterrows():
                         st.markdown(
@@ -3328,7 +3851,7 @@ with tab_bible:
                         st.divider()
 
         # ── 6. SEMANTIC CENTRALITY ────────────────────────────────────────────────
-        with st.expander(T["sec_centrality"]):
+        with st.expander("📖 " + T["sec_centrality"]):
 
             cent = csv("weighted_centrality/weighted_semantic_centrality.csv")
 
@@ -3364,7 +3887,7 @@ with tab_bible:
                 st.info(T["no_centrality"])
 
         # ── 7. STYLE & AUTHORSHIP ─────────────────────────────────────────────────
-        with st.expander(T["sec_style"]):
+        with st.expander("📖 " + T["sec_style"]):
 
             style = csv("style_authorship/book_style_clusters.csv")
             terms = csv("style_authorship/cluster_top_terms.csv")
@@ -3374,9 +3897,10 @@ with tab_bible:
 
                 with c1:
                     sd = style.copy()
-                    sd["book"] = (sd["file_name"]
-                                  .str.replace("bible_BKR_", "")
-                                  .str.replace(".txt", ""))
+                    sd["book"] = _bkr_book(
+                        sd["file_name"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     st.caption(T["style_table_desc"])
                     st.dataframe(
                         sd[["book", "style_cluster", "silhouette_score"]].rename(columns={
@@ -3407,7 +3931,7 @@ with tab_bible:
                 st.info(T["no_style"])
 
         # ── 8. DEPENDENCY HIERARCHY ───────────────────────────────────────────────
-        with st.expander(T["sec_dependency"]):
+        with st.expander("📖 " + T["sec_dependency"]):
 
             dep      = csv("dependency_hierarchy/dependency_counts.csv")
             dep_book = csv("dependency_hierarchy/dependency_by_book.csv")
@@ -3443,9 +3967,10 @@ with tab_bible:
             if complexity_df is not None:
                 st.divider()
                 cplx = complexity_df.copy()
-                cplx["book"] = (cplx["file_name"]
-                                .str.replace("bible_BKR_", "")
-                                .str.replace(".txt", ""))
+                cplx["book"] = _bkr_book(
+                    cplx["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 st.caption(T["complexity_desc"])
                 c1, c2 = st.columns(2)
                 with c1:
@@ -3464,7 +3989,7 @@ with tab_bible:
                     )
 
         # ── 9. VERBAL RELATIONS ───────────────────────────────────────────────────
-        with st.expander(T["sec_verbal"]):
+        with st.expander("📖 " + T["sec_verbal"]):
 
             vrel_cnt  = csv("verbal_relations_analytics/relation_type_counts.csv")
             vrel_conf = csv("verbal_relations_analytics/confidence_by_relation.csv")
@@ -3515,7 +4040,7 @@ with tab_bible:
                 )
 
         # ── 10. TAXONOMY ANALYTICS ────────────────────────────────────────────────
-        with st.expander(T["sec_taxonomy"]):
+        with st.expander("📖 " + T["sec_taxonomy"]):
 
             tax_class   = csv("taxonomy_analytics/skinner_class_counts.csv")
             tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
@@ -3551,9 +4076,10 @@ with tab_bible:
 
             if tax_dial is not None:
                 d = tax_dial.copy()
-                d["book"] = (d["file_name"]
-                             .str.replace("bible_BKR_", "")
-                             .str.replace(".txt", ""))
+                d["book"] = _bkr_book(
+                    d["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 d = d.sort_values("dialogue_density", ascending=True)
                 st.caption(T["tax_dialogue_desc"])
                 fig = px.bar(d, x="dialogue_density", y="book",
@@ -3569,9 +4095,10 @@ with tab_bible:
             if tact_auto is not None:
                 st.divider()
                 ta = tact_auto.copy()
-                ta["book"] = (ta["file_name"]
-                              .str.replace("bible_BKR_", "")
-                              .str.replace(".txt", ""))
+                ta["book"] = _bkr_book(
+                    ta["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 st.caption(T["tact_autoclitic_desc"])
                 fig_ta = go.Figure()
                 fig_ta.add_bar(name="tact",      x=ta["book"], y=ta["tact_ratio"],
@@ -3588,7 +4115,7 @@ with tab_bible:
                 st.plotly_chart(fig_ta, use_container_width=True)
 
         # ── 11. SEMANTIC WORD RELATIONS ───────────────────────────────────────────
-        with st.expander(T["sec_word_rel"]):
+        with st.expander("📖 " + T["sec_word_rel"]):
 
             top_pmi  = csv("word_relations_analytics/top_pmi_relations.csv")
             most_con = csv("word_relations_analytics/most_connected_words.csv")
@@ -3625,7 +4152,7 @@ with tab_bible:
                         )
 
         # ── 12. CORPUS DENSITY ────────────────────────────────────────────────────
-        with st.expander(T["sec_corpus_density"]):
+        with st.expander("📖 " + T["sec_corpus_density"]):
 
             corp_dens = csv("religious_elements/combined_density_by_book.csv")
 
@@ -3635,7 +4162,7 @@ with tab_bible:
                 dn = corp_dens[["file_name"] + s_cols].copy()
                 dn.columns = (
                     ["file_name"] +
-                    [c.replace("_sentence_density", "") for c in s_cols]
+                    [_rel_label(c.replace("_sentence_density", "")) for c in s_cols]
                 )
                 st.caption(T["corpus_density_desc"])
                 st.plotly_chart(
@@ -3648,9 +4175,12 @@ with tab_bible:
                 st.info("—")
 
         # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
-        with st.expander(T["sec_patterns"]):
+        with st.expander("📖 " + T["sec_patterns"]):
 
-            ref_df = load_refined()
+            ref_df = load_refined(lang)
+            if ref_df is not None:
+                ref_df = ref_df.copy()
+                ref_df["book"] = _bkr_book(ref_df["book"])
 
             if ref_df is None:
                 st.info(T["no_patterns"])
@@ -3708,10 +4238,16 @@ with tab_bible:
                     )
 
         # ── 14. SEMANTIC ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_semantics"]):
+        with st.expander("📖 " + T["sec_semantics"]):
 
-            ref_df2 = load_refined()
-            verb_df = load_verbal_full()
+            ref_df2 = load_refined(lang)
+            verb_df = load_verbal_full(lang)
+            if ref_df2 is not None:
+                ref_df2 = ref_df2.copy()
+                ref_df2["book"] = _bkr_book(ref_df2["book"])
+            if verb_df is not None:
+                verb_df = verb_df.copy()
+                verb_df["book"] = _bkr_book(verb_df["book"])
 
             if ref_df2 is None:
                 st.info(T["no_db"])
@@ -3771,13 +4307,10 @@ with tab_bible:
 
                     with c2:
                         st.caption(T["antithetical_desc"])
-                        books_anti = ["— " + T["filter_book_label"]] + sorted(anti["book"].unique())
-                        sel_book = st.selectbox(
-                            T["filter_book_label"], books_anti,
-                            key="anti_book",
-                            label_visibility="collapsed",
+                        sel_book = _grouped_book_selectbox(
+                            "anti", sorted(anti["book"].unique().tolist())
                         )
-                        view_anti = anti if sel_book.startswith("—") else anti[anti["book"] == sel_book]
+                        view_anti = anti if sel_book is None else anti[anti["book"] == sel_book]
                         st.dataframe(
                             view_anti[["book", "sentence"]].head(40).rename(
                                 columns={"book": T["x_book"],
@@ -3810,7 +4343,7 @@ with tab_bible:
                     )
 
         # ── 15. PIPELINE QUALITY ──────────────────────────────────────────────────
-        with st.expander(T["sec_quality"]):
+        with st.expander("📖 " + T["sec_quality"]):
 
             st.caption(T["quality_overall_desc"])
 
@@ -3846,9 +4379,10 @@ with tab_bible:
                 cov_book = csv("eval/coverage_by_book.csv")
                 if cov_book is not None:
                     cov_plot = cov_book.copy()
-                    cov_plot["book"] = (cov_plot["book"]
-                                        .str.replace("bible_BKR_", "")
-                                        .str.replace(".txt", ""))
+                    cov_plot["book"] = _bkr_book(
+                        cov_plot["book"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     cov_plot = cov_plot.sort_values("coverage_pct", ascending=True)
                     cov_plot.rename(columns={"coverage_pct": T["x_coverage"],
                                               "book": T["x_book"]}, inplace=True)
@@ -3891,9 +4425,10 @@ with tab_bible:
                 outliers = csv("eval/book_outliers.csv")
                 if outliers is not None:
                     out_display = outliers.copy()
-                    out_display["book"] = (out_display["book"]
-                                           .str.replace("bible_BKR_", "")
-                                           .str.replace(".txt", ""))
+                    out_display["book"] = _bkr_book(
+                        out_display["book"]
+                        .str.replace("bible_BKR_", "", regex=False)
+                        .str.replace(".txt", "", regex=False))
                     out_display = out_display.rename(columns={
                         "book":    T["x_book"],
                         "label":   T["col_label_q"],
@@ -3918,9 +4453,10 @@ with tab_bible:
             sample = csv("eval/random_sample.csv")
             if sample is not None:
                 sample_display = sample.copy()
-                sample_display["file_name"] = (sample_display["file_name"]
-                                               .str.replace("bible_BKR_", "")
-                                               .str.replace(".txt", ""))
+                sample_display["file_name"] = _bkr_book(
+                    sample_display["file_name"]
+                    .str.replace("bible_BKR_", "", regex=False)
+                    .str.replace(".txt", "", regex=False))
                 sample_display = sample_display.rename(columns={
                     "file_name":         T["x_book"],
                     "illocutionary_force": T["col_force"],
@@ -3944,7 +4480,7 @@ with tab_bible:
                 st.info(T["no_eval"])
 
         # ── 16. LINGUISTIC FEATURES ──────────────────────────────────────────────
-        with st.expander(T["sec_ling_features"]):
+        with st.expander("📖 " + T["sec_ling_features"]):
 
             _ling_cols = {
                 "type_token_ratio", "has_coordination", "dative_present",
@@ -3954,6 +4490,7 @@ with tab_bible:
             if db_df is not None and _ling_cols.issubset(db_df.columns):
 
                 _ldf = db_df.copy()
+                _ldf["book"] = _bkr_book(_ldf["book"])
 
                 # ── 1. TTR bar chart ──────────────────────────────────────────────
                 st.caption(T["ling_ttr_desc"])
@@ -4144,8 +4681,8 @@ with tab_results:
     # ── 0. Chapter overview ───────────────────────────────────────────────────
     if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
         _overview_title = (
-            "📑 Přehled kapitol" if _seg_mode == "chapter"
-            else ("📑 Přehled sekcí" if _seg_mode == "section" else "📑 Přehled")
+            "📤 📑 Přehled kapitol" if _seg_mode == "chapter"
+            else ("📤 📑 Přehled sekcí" if _seg_mode == "section" else "📤 📑 Přehled")
         )
         with st.expander(_overview_title, expanded=False):
             _chap_rows = []
@@ -4202,7 +4739,8 @@ with tab_results:
 
     # ── 1. Q. Skinner — core classification ──────────────────────────────────
     if st.session_state.get("sel_q_skinner", True):
-        with st.expander(f"⚡ {T['ana_qs_name']}", expanded=True):
+        with st.expander(f"📤 ⚡ {T['ana_qs_name']}", expanded=True):
+            st.caption(T.get("ana_qs_role", ""))
             _r1, _r2 = st.columns(2)
             with _r1:
                 _ic = _df["primary_intention"].value_counts().reset_index()
@@ -4446,8 +4984,8 @@ with tab_results:
 
     # ── 2. B.F. Skinner ───────────────────────────────────────────────────────
     if st.session_state.get("sel_bf_skinner", True) and not _df.empty:
-        with st.expander(f"⚡ {T['ana_bf_name']}"):
-            st.caption(f"*[Nahraný text]*")
+        with st.expander(f"📤 ⚡ {T['ana_bf_name']}"):
+            st.caption(T.get("ana_bf_role", ""))
             if "skinner_class" in _df.columns:
                 _bc1, _bc2 = st.columns(2)
                 with _bc1:
@@ -4501,11 +5039,11 @@ with tab_results:
                         st.caption(T.get("tact_autoclitic_desc", ""))
                         st.plotly_chart(_fig_ta2, use_container_width=True)
             else:
-                st.info("Spusťte plnou analýzu pro zobrazení Skinnerovy taxonomie.")
+                st.info(T.get("ana_bf_missing", ""))
 
     # ── 3. Verbálne vzťahy ────────────────────────────────────────────────────
     if st.session_state.get("sel_verbal", True):
-        with st.expander(f"⚡ {T['ana_verbal_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_verbal_name']}"):
             st.caption(f"*[Nahraný text]*")
             if not _rel_df.empty and "local_pattern" in _rel_df.columns:
                 _vr1, _vr2 = st.columns(2)
@@ -4560,7 +5098,7 @@ with tab_results:
 
     # ── 4. Sémantika ──────────────────────────────────────────────────────────
     if st.session_state.get("sel_semantics", True) and _ldat:
-        with st.expander(f"⚡ {T['ana_semantics_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_semantics_name']}"):
             from collections import Counter as _SC
             _STOP_S = {"být","ten","on","se","si","the","be","have","that","this",
                        "which","with","from","they","their","are","was","were",
@@ -4579,7 +5117,7 @@ with tab_results:
 
     # ── 5. Náboženské elementy ────────────────────────────────────────────────
     if st.session_state.get("sel_religious", True) and _ldat:
-        with st.expander(f"⚡ {T['ana_religious_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_religious_name']}"):
             from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
             _ls = set(t for _,ls in _ldat for t in ls.split()
                       if len(t)>2 and t.isalpha())
@@ -4620,7 +5158,7 @@ with tab_results:
 
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_network", False):
-        with st.expander(f"🕐 {T['ana_network_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_network_name']}"):
             st.caption(f"*[Nahraný text — výpočet živě]*")
             # Compute PMI in-memory from upload lemmas
             if _ldat:
@@ -4668,7 +5206,7 @@ with tab_results:
 
     # ── 7. Textové vzory + opozície ───────────────────────────────────────────
     if st.session_state.get("sel_patterns", False) and _ldat:
-        with st.expander(f"🕐 {T['ana_patterns_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_patterns_name']}"):
             from w_opposition_networks import OPPOSITION_PAIRS
             from collections import Counter as _OC
             _oh: "_OC" = _OC()
@@ -4740,7 +5278,7 @@ with tab_results:
 
     # ── 8. Štýl a syntax ─────────────────────────────────────────────────────
     if st.session_state.get("sel_style", False):
-        with st.expander(f"🕐 {T['ana_style_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_style_name']}"):
             st.caption(f"*[Nahraný text — výpočet živě]*")
             if not _df.empty and "unit_id" in _df.columns and _units and len(_units) >= 2:
                 # Tree depth and clause count from refined_descriptions if available
@@ -4801,7 +5339,7 @@ with tab_results:
 
     # ── 9. Kvalita výsledkov ──────────────────────────────────────────────────
     if st.session_state.get("sel_quality", True):
-        with st.expander(f"⚡ {T['ana_quality_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_quality_name']}"):
             if "confidence" in _df.columns and not _df.empty:
                 _cband_l = int((_df["confidence"] < 0.30).sum())
                 _cband_m = int(((_df["confidence"]>=0.30)&(_df["confidence"]<0.60)).sum())
@@ -4834,7 +5372,7 @@ with tab_results:
 
     # ── 10. Dashboard ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_dashboard", True):
-        with st.expander(f"⚡ {T['ana_dashboard_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_dashboard_name']}"):
             from n_db import count_table_rows, list_runs, TABLE_SKINNER
             _db_n = count_table_rows(TABLE_SKINNER)
             _runs = list_runs(TABLE_SKINNER)
@@ -4847,6 +5385,8 @@ with tab_results:
 | **Korpus ID** | `{_corpus_id}` |
 | **{_unit_metric}** | {_n_chapters} |
 | **Věty celkem** | {_total} |
+| **{T['dashboard_primary_layer']}** | {T['dashboard_primary_layer_value']} |
+| **{T['dashboard_secondary_layer']}** | {T['dashboard_secondary_layer_on'] if "skinner_class" in _df.columns else T['dashboard_secondary_layer_off']} |
 | **DB řádky (skinner_analysis)** | {_db_n or "—"} |
 | **Biblické běhy v DB** | {len(_runs) - len(_upload_runs)} |
 | **Upload běhy v DB** | {len(_upload_runs)} |
@@ -4878,3 +5418,13 @@ with tab_results:
                 st.rerun()
             except Exception as _exc:
                 st.error(f"{T['save_error']}: {_exc}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 4 — COMPARISON  (placeholder — Phase 2)
+# ══════════════════════════════════════════════════════════════════════════════
+
+with tab_compare:
+
+    st.subheader(T["compare_title"])
+    st.info(T["compare_placeholder"])

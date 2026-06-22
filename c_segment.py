@@ -200,15 +200,18 @@ def segment_book(
     chunks = _segment_by_chapter_markers(text)
     if chunks:
         unit_type = "chapter"
+        seg_method: str = "chapter_markers"
     else:
         # Tier 2: real section/subchapter structure
         chunks = _segment_by_section_markers(text)
         if chunks:
             unit_type = "section"
+            seg_method = "section_markers"
         else:
             # Tier 3: no reliable structure → single whole-text unit
             chunks = [text]
             unit_type = "document"
+            seg_method = "single_unit"
 
     # Post-processing: merge short, split long (only meaningful for multi-unit tiers)
     if len(chunks) > 1:
@@ -225,6 +228,7 @@ def segment_book(
                 unit_type=unit_type,
                 display_name=_make_display(i, total, unit_type),
                 text=chunk,
+                segmentation_method=seg_method,
             )
         )
     return units
