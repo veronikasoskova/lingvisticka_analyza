@@ -1670,17 +1670,20 @@ VALUE_LABELS = {
         "cs": {
             "directive": "Direktiva", "assertive": "Asertiv",
             "commissive": "Komisiv", "expressive": "Expresiv",
-            "declarative": "Deklarativ", "unknown": "Neznámé",
+            "declarative": "Deklarativ", "declarative_assertion": "Deklarativ",
+            "unknown": "Neznámé",
         },
         "sk": {
             "directive": "Direktíva", "assertive": "Asertív",
             "commissive": "Komisív", "expressive": "Expresív",
-            "declarative": "Deklaratív", "unknown": "Neznáme",
+            "declarative": "Deklaratív", "declarative_assertion": "Deklaratív",
+            "unknown": "Neznáme",
         },
         "en": {
             "directive": "Directive", "assertive": "Assertive",
             "commissive": "Commissive", "expressive": "Expressive",
-            "declarative": "Declarative", "unknown": "Unknown",
+            "declarative": "Declarative", "declarative_assertion": "Declarative assertion",
+            "unknown": "Unknown",
         },
     },
     "intention": {
@@ -1730,6 +1733,18 @@ VALUE_LABELS = {
             "contrast": "Kontrast",
             "repetition": "Opakování",
             "narrative_example": "Příklad",
+            "antithetical_disputation": "Antitetický spor",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Smluvní zaslíbení",
+            "declarative_assertion": "Deklarativní tvrzení",
+            "dialogic_controversy": "Dialogický spor",
+            "doxological_hymn": "Doxologický hymnus",
+            "missionary_commission": "Misijní pověření",
+            "narrative_chronicle": "Narativní kronika",
+            "prophetic_admonition": "Prorocké napomenutí",
+            "theological_rationale": "Teologické zdůvodnění",
+            "theophanic_self_presentation": "Teofanické sebepředstavení",
+            "woe_oracle": "Běda výrok",
             "unclassified": "Neklasif.",
         },
         "sk": {
@@ -1743,6 +1758,18 @@ VALUE_LABELS = {
             "contrast": "Kontrast",
             "repetition": "Opakovanie",
             "narrative_example": "Príklad",
+            "antithetical_disputation": "Antitetický spor",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Zmluvné zasľúbenie",
+            "declarative_assertion": "Deklaratívne tvrdenie",
+            "dialogic_controversy": "Dialogický spor",
+            "doxological_hymn": "Doxologický hymnus",
+            "missionary_commission": "Misijné poverenie",
+            "narrative_chronicle": "Narativná kronika",
+            "prophetic_admonition": "Prorocké napomenutie",
+            "theological_rationale": "Teologické zdôvodnenie",
+            "theophanic_self_presentation": "Teofanické sebapredstavenie",
+            "woe_oracle": "Výrok beda",
             "unclassified": "Neklasif.",
         },
         "en": {
@@ -1756,6 +1783,18 @@ VALUE_LABELS = {
             "contrast": "Contrast",
             "repetition": "Repetition",
             "narrative_example": "Example",
+            "antithetical_disputation": "Antithetical disputation",
+            "apodictic_law": "Apodictic law",
+            "covenant_promise": "Covenant promise",
+            "declarative_assertion": "Declarative assertion",
+            "dialogic_controversy": "Dialogic controversy",
+            "doxological_hymn": "Doxological hymn",
+            "missionary_commission": "Missionary commission",
+            "narrative_chronicle": "Narrative chronicle",
+            "prophetic_admonition": "Prophetic admonition",
+            "theological_rationale": "Theological rationale",
+            "theophanic_self_presentation": "Theophanic self-presentation",
+            "woe_oracle": "Woe oracle",
             "unclassified": "Unclassif.",
         },
     },
@@ -1962,9 +2001,17 @@ BOOK_NAMES: dict[str, dict[str, str]] = {
 
 def _bkr_book(s: "pd.Series") -> "pd.Series":
     """Convert a Series of BKR abbreviations to full book names for the current UI language."""
-    return s.map(lambda x: BOOK_NAMES.get(x, {}).get(lang, x))
+    def _abbr(v):
+        x = str(v or "").strip()
+        if x.startswith("bible_BKR_"):
+            x = x[len("bible_BKR_"):]
+        if x.endswith(".txt"):
+            x = x[:-4]
+        return x
+    return s.map(lambda x: BOOK_NAMES.get(_abbr(x), {}).get(lang, _abbr(x)))
 
 
+def translate_clr(clr: dict, label_map: dict) -> dict:
     return {label_map.get(k, k): v for k, v in clr.items()}
 
 
@@ -1997,6 +2044,7 @@ FORCE_CLR = {
     "commissive":  "#2a9d8f",
     "expressive":  "#57cc99",
     "declarative": "#8338ec",
+    "declarative_assertion": "#8338ec",
     "unknown":     "#6c757d",
 }
 
@@ -2011,6 +2059,18 @@ STRATEGY_CLR = {
     "contrast":             "#118ab2",
     "repetition":           "#06d6a0",
     "narrative_example":    "#ffd166",
+    "antithetical_disputation":  "#577590",
+    "apodictic_law":             "#f94144",
+    "covenant_promise":          "#43aa8b",
+    "declarative_assertion":     "#3a86ff",
+    "dialogic_controversy":      "#f3722c",
+    "doxological_hymn":          "#9b5de5",
+    "missionary_commission":     "#277da1",
+    "narrative_chronicle":       "#4d908e",
+    "prophetic_admonition":      "#f8961e",
+    "theological_rationale":     "#7209b7",
+    "theophanic_self_presentation":"#4361ee",
+    "woe_oracle":                "#d00000",
     "unclassified":         "#adb5bd",
 }
 
