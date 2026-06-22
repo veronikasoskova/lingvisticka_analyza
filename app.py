@@ -3576,7 +3576,6 @@ with tab_bible:
 
             c1, c2 = st.columns(2)
 
-            _rel_el = T.get("rel_elements", {})
             _rel_ph = T.get("rel_philosophy", {})
 
             with c1:
