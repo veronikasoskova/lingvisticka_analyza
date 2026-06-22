@@ -43,12 +43,13 @@ def process_unit(
         stimulus=unit.stimulus,
         corpus_id=unit.corpus_id,
         source_id=unit.unit_id,
-        unit="chapter" if unit.unit_type == "chapter" else "book",
+        unit=unit.unit_type,
     )
 
     preprocessed = preprocess_text(text_input)
     features = extract_features(preprocessed)
-    disc_context = resolve_discursive_context(features, unit.unit_id)
+    _use_genre_priors = unit.corpus_id == "bible_bkr" and unit.unit_type == "book"
+    disc_context = resolve_discursive_context(features, unit.unit_id, use_genre_priors=_use_genre_priors)
     semantics = semantic_enrichment(features)
     rst_relations = annotate_rst(features)
 
