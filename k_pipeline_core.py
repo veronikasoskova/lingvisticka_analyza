@@ -49,6 +49,10 @@ def process_unit(
     preprocessed = preprocess_text(text_input)
     features = extract_features(preprocessed)
     _use_genre_priors = unit.corpus_id == "bible_bkr" and unit.unit_type == "book"
+    # Genre priors (biblical register weights) are enabled only for the Bible
+    # corpus (corpus_id='bible_bkr', unit_type='book').  For uploaded texts,
+    # use_genre_priors=False so the classifier uses generic, corpus-neutral
+    # priors — this is intentional and keeps upload results unbiased.
     disc_context = resolve_discursive_context(features, unit.unit_id, use_genre_priors=_use_genre_priors)
     semantics = semantic_enrichment(features)
     rst_relations = annotate_rst(features)

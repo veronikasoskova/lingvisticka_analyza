@@ -65,6 +65,9 @@ def _process_book(file_path):
         stimulus="unknown",
     )
     result = process_unit(unit, profile=_BKR_PROFILE)
+    # NOTE: _BKR_PROFILE contains Bible-specific genre priors (biblical_czech_bkr).
+    #       It MUST NOT be applied to upload runs — process_unit() called from
+    #       run_upload_pipeline() passes profile=None intentionally.
     return result.skinner_rows, result.relation_rows, result.refined_rows
 
 

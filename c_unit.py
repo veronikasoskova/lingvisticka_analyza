@@ -5,9 +5,13 @@ Unified model for both Bible books and uploaded text chapters.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Literal, Optional
 
 from c_input import SourceType, InteractionType, StimulusType, TextUnitType
+
+
+# Segmentation strategies produced by c_segment.segment_book().
+SegmentationMethod = Literal["chapter_markers", "section_markers", "single_unit"]
 
 
 @dataclass
@@ -32,6 +36,8 @@ class AnalysisUnit:
     source: SourceType = "written_record"
     interaction: InteractionType = "monologue"
     stimulus: StimulusType = "unknown"
+    segmentation_method: Optional[SegmentationMethod] = None
+    """How the document was split into units. None for Bible books (no segmentation)."""
 
 
 @dataclass

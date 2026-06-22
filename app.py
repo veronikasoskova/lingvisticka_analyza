@@ -572,6 +572,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Nekonzistentní kontext: psaný/nahraný zdroj nemůže být řízen sluchovým verbálním stimulem — to předpokládá mluvenou interakci.",
         "ctx_warn_written_spoken":"Nekonzistentní kontext: mluvený záznam nemůže být řízen psaným stimulem.",
         "ctx_warn_dialogue_none":"Nekonzistentní kontext: dialog vyžaduje verbální stimul — stimulus 'žádný' dialog vylučuje.",
+        # Tab 4
+        "tab_compare": "🔄 Porovnání",
+        "compare_title": "Porovnání analýz",
+        "compare_placeholder": (
+            "Tato záložka bude obsahovat nástroje pro porovnání výsledků analýzy "
+            "nahraného textu s biblickým korpusem (BKR). "
+            "Funkce je připravena k implementaci ve fázi 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Náhled segmentace",
+        "seg_method_chapter": "kapitoly (strukturní nadpisy)",
+        "seg_method_section": "sekce (podnadpisy)",
+        "seg_method_single": "jeden dokument (bez struktury)",
+        "seg_preview_unit": "jednotka",
+        "seg_preview_units": "jednotky",
     },
 
     "sk": {
@@ -1096,6 +1111,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Nekonzistentný kontext: písaný/nahraný zdroj nemôže byť riadený sluchovým verbálnym stimulom — to predpokladá hovorenú interakciu.",
         "ctx_warn_written_spoken":"Nekonzistentný kontext: hovorený záznam nemôže byť riadený písaným stimulom.",
         "ctx_warn_dialogue_none":"Nekonzistentný kontext: dialóg vyžaduje verbálny stimul — stimul 'žiadny' dialóg vylučuje.",
+        # Tab 4
+        "tab_compare": "🔄 Porovnanie",
+        "compare_title": "Porovnanie analýz",
+        "compare_placeholder": (
+            "Táto záložka bude obsahovať nástroje na porovnanie výsledkov analýzy "
+            "nahratého textu s biblickým korpusom (BKR). "
+            "Funkcia je pripravená na implementáciu vo fáze 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Náhľad segmentácie",
+        "seg_method_chapter": "kapitoly (štrukturálne nadpisy)",
+        "seg_method_section": "sekcie (podnadpisy)",
+        "seg_method_single": "jeden dokument (bez štruktúry)",
+        "seg_preview_unit": "jednotka",
+        "seg_preview_units": "jednotky",
     },
 
     "en": {
@@ -1579,6 +1609,21 @@ TRANSLATIONS = {
         "ctx_warn_audio_written":"Inconsistent context: a written/uploaded source cannot be controlled by an auditory verbal stimulus — that presupposes spoken interaction.",
         "ctx_warn_written_spoken":"Inconsistent context: a spoken recording cannot be controlled by a written verbal stimulus.",
         "ctx_warn_dialogue_none":"Inconsistent context: dialogue requires a verbal stimulus — stimulus 'none' rules out dialogue.",
+        # Tab 4
+        "tab_compare": "🔄 Comparison",
+        "compare_title": "Compare Analyses",
+        "compare_placeholder": (
+            "This tab will contain tools for comparing uploaded-text analysis results "
+            "with the Bible corpus (BKR). "
+            "Feature is ready for implementation in Phase 2."
+        ),
+        # Segmentation preview (Tab 1)
+        "seg_preview_title": "Segmentation preview",
+        "seg_method_chapter": "chapters (structural headings)",
+        "seg_method_section": "sections (subheadings)",
+        "seg_method_single": "single document (no structure)",
+        "seg_preview_unit": "unit",
+        "seg_preview_units": "units",
     },
 }
 
@@ -1869,15 +1914,12 @@ def load_db() -> pd.DataFrame | None:
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM skinner_analysis WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("skinner_analysis")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   illocutionary_force, primary_intention, secondary_intention,
@@ -2637,15 +2679,12 @@ def load_refined() -> pd.DataFrame | None:
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM refined_descriptions WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("refined_descriptions")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   description_type, semantic_cluster, lemmas
@@ -2663,15 +2702,12 @@ def load_verbal_full() -> pd.DataFrame | None:
     if not db.exists():
         return None
     import sqlite3
+    from n_db import latest_bible_run_id
     conn = sqlite3.connect(db)
-    _row = conn.execute(
-        "SELECT run_id FROM verbal_relations WHERE run_id NOT LIKE 'upload_%'"
-        " ORDER BY rowid DESC LIMIT 1"
-    ).fetchone()
-    if _row is None:
+    run_id = latest_bible_run_id("verbal_relations")
+    if run_id is None:
         conn.close()
         return None
-    run_id = _row[0]
     df = pd.read_sql(
         """SELECT sentence_id, sentence, file_name,
                   local_pattern, semantic_cluster
@@ -2773,8 +2809,8 @@ if st.session_state.pop("_switch_to_results", False):
         unsafe_allow_html=True,
     )
 
-tab_analyze, tab_bible, tab_results = st.tabs(
-    [T["tab_analyze"], T["tab_bible"], T["tab_results"]]
+tab_analyze, tab_bible, tab_results, tab_compare = st.tabs(
+    [T["tab_analyze"], T["tab_bible"], T["tab_results"], T["tab_compare"]]
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -2802,6 +2838,25 @@ with tab_analyze:
                 "Nebudete-li činiti pokání, všickni podobně zahynete. "
                 "Jděte do všeho světa a kažte evangelium."
             ),
+        )
+
+    # ── SEGMENTATION PREVIEW ─────────────────────────────────────────────────
+    _preview_text = pasted.strip() if pasted.strip() else None
+    if _preview_text:
+        from c_segment import segment_book as _seg_preview
+        _prev_units = _seg_preview(_preview_text, corpus_id="preview")
+        _prev_n = len(_prev_units)
+        _prev_method = (_prev_units[0].segmentation_method if _prev_units else "single_unit") or "single_unit"
+        _method_labels = {
+            "chapter_markers": T["seg_method_chapter"],
+            "section_markers": T["seg_method_section"],
+            "single_unit":     T["seg_method_single"],
+        }
+        _unit_word = T["seg_preview_unit"] if _prev_n == 1 else T["seg_preview_units"]
+        st.info(
+            f"🔍 **{T['seg_preview_title']}:** "
+            f"{_method_labels.get(_prev_method, _prev_method)} · "
+            f"**{_prev_n}** {_unit_word}"
         )
 
     # ── CONTEXT PARAMETERS ───────────────────────────────────────────────────
@@ -2968,7 +3023,7 @@ with tab_bible:
         st.divider()
 
         # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_intention"], expanded=True):
+        with st.expander("📖 " + T["sec_intention"], expanded=True):
 
             int_cnt  = csv("q_skinner_analytics/q_intention_counts.csv")
             int_book = csv("q_skinner_analytics/q_intention_by_book.csv")
@@ -3015,7 +3070,7 @@ with tab_bible:
                 )
 
         # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_strategy"]):
+        with st.expander("📖 " + T["sec_strategy"]):
 
             strat_cnt  = csv("q_skinner_analytics/q_strategy_counts.csv")
             strat_book = csv("q_skinner_analytics/q_strategy_by_book.csv")
@@ -3058,7 +3113,7 @@ with tab_bible:
                 )
 
         # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
-        with st.expander(T["sec_ratios"]):
+        with st.expander("📖 " + T["sec_ratios"]):
 
             ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
 
@@ -3107,7 +3162,7 @@ with tab_bible:
                 st.info(T["no_ratios"])
 
         # ── 4. RELIGIOUS ELEMENTS ─────────────────────────────────────────────────
-        with st.expander(T["sec_religious"]):
+        with st.expander("📖 " + T["sec_religious"]):
 
             field_sum    = csv("religious_elements/field_summary.csv")
             density_wide = csv("religious_elements/combined_density_by_book.csv")
@@ -3197,7 +3252,7 @@ with tab_bible:
                 )
 
         # ── 5. CONCEPT CLUSTERS & OPPOSITIONS ────────────────────────────────────
-        with st.expander(T["sec_clusters"]):
+        with st.expander("📖 " + T["sec_clusters"]):
 
             c1, c2 = st.columns(2)
 
@@ -3328,7 +3383,7 @@ with tab_bible:
                         st.divider()
 
         # ── 6. SEMANTIC CENTRALITY ────────────────────────────────────────────────
-        with st.expander(T["sec_centrality"]):
+        with st.expander("📖 " + T["sec_centrality"]):
 
             cent = csv("weighted_centrality/weighted_semantic_centrality.csv")
 
@@ -3364,7 +3419,7 @@ with tab_bible:
                 st.info(T["no_centrality"])
 
         # ── 7. STYLE & AUTHORSHIP ─────────────────────────────────────────────────
-        with st.expander(T["sec_style"]):
+        with st.expander("📖 " + T["sec_style"]):
 
             style = csv("style_authorship/book_style_clusters.csv")
             terms = csv("style_authorship/cluster_top_terms.csv")
@@ -3407,7 +3462,7 @@ with tab_bible:
                 st.info(T["no_style"])
 
         # ── 8. DEPENDENCY HIERARCHY ───────────────────────────────────────────────
-        with st.expander(T["sec_dependency"]):
+        with st.expander("📖 " + T["sec_dependency"]):
 
             dep      = csv("dependency_hierarchy/dependency_counts.csv")
             dep_book = csv("dependency_hierarchy/dependency_by_book.csv")
@@ -3464,7 +3519,7 @@ with tab_bible:
                     )
 
         # ── 9. VERBAL RELATIONS ───────────────────────────────────────────────────
-        with st.expander(T["sec_verbal"]):
+        with st.expander("📖 " + T["sec_verbal"]):
 
             vrel_cnt  = csv("verbal_relations_analytics/relation_type_counts.csv")
             vrel_conf = csv("verbal_relations_analytics/confidence_by_relation.csv")
@@ -3515,7 +3570,7 @@ with tab_bible:
                 )
 
         # ── 10. TAXONOMY ANALYTICS ────────────────────────────────────────────────
-        with st.expander(T["sec_taxonomy"]):
+        with st.expander("📖 " + T["sec_taxonomy"]):
 
             tax_class   = csv("taxonomy_analytics/skinner_class_counts.csv")
             tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
@@ -3588,7 +3643,7 @@ with tab_bible:
                 st.plotly_chart(fig_ta, use_container_width=True)
 
         # ── 11. SEMANTIC WORD RELATIONS ───────────────────────────────────────────
-        with st.expander(T["sec_word_rel"]):
+        with st.expander("📖 " + T["sec_word_rel"]):
 
             top_pmi  = csv("word_relations_analytics/top_pmi_relations.csv")
             most_con = csv("word_relations_analytics/most_connected_words.csv")
@@ -3625,7 +3680,7 @@ with tab_bible:
                         )
 
         # ── 12. CORPUS DENSITY ────────────────────────────────────────────────────
-        with st.expander(T["sec_corpus_density"]):
+        with st.expander("📖 " + T["sec_corpus_density"]):
 
             corp_dens = csv("religious_elements/combined_density_by_book.csv")
 
@@ -3648,7 +3703,7 @@ with tab_bible:
                 st.info("—")
 
         # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
-        with st.expander(T["sec_patterns"]):
+        with st.expander("📖 " + T["sec_patterns"]):
 
             ref_df = load_refined()
 
@@ -3708,7 +3763,7 @@ with tab_bible:
                     )
 
         # ── 14. SEMANTIC ANALYSIS ─────────────────────────────────────────────────
-        with st.expander(T["sec_semantics"]):
+        with st.expander("📖 " + T["sec_semantics"]):
 
             ref_df2 = load_refined()
             verb_df = load_verbal_full()
@@ -3810,7 +3865,7 @@ with tab_bible:
                     )
 
         # ── 15. PIPELINE QUALITY ──────────────────────────────────────────────────
-        with st.expander(T["sec_quality"]):
+        with st.expander("📖 " + T["sec_quality"]):
 
             st.caption(T["quality_overall_desc"])
 
@@ -3944,7 +3999,7 @@ with tab_bible:
                 st.info(T["no_eval"])
 
         # ── 16. LINGUISTIC FEATURES ──────────────────────────────────────────────
-        with st.expander(T["sec_ling_features"]):
+        with st.expander("📖 " + T["sec_ling_features"]):
 
             _ling_cols = {
                 "type_token_ratio", "has_coordination", "dative_present",
@@ -4144,8 +4199,8 @@ with tab_results:
     # ── 0. Chapter overview ───────────────────────────────────────────────────
     if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
         _overview_title = (
-            "📑 Přehled kapitol" if _seg_mode == "chapter"
-            else ("📑 Přehled sekcí" if _seg_mode == "section" else "📑 Přehled")
+            "📤 📑 Přehled kapitol" if _seg_mode == "chapter"
+            else ("📤 📑 Přehled sekcí" if _seg_mode == "section" else "📤 📑 Přehled")
         )
         with st.expander(_overview_title, expanded=False):
             _chap_rows = []
@@ -4202,7 +4257,7 @@ with tab_results:
 
     # ── 1. Q. Skinner — core classification ──────────────────────────────────
     if st.session_state.get("sel_q_skinner", True):
-        with st.expander(f"⚡ {T['ana_qs_name']}", expanded=True):
+        with st.expander(f"📤 ⚡ {T['ana_qs_name']}", expanded=True):
             _r1, _r2 = st.columns(2)
             with _r1:
                 _ic = _df["primary_intention"].value_counts().reset_index()
@@ -4446,7 +4501,7 @@ with tab_results:
 
     # ── 2. B.F. Skinner ───────────────────────────────────────────────────────
     if st.session_state.get("sel_bf_skinner", True) and not _df.empty:
-        with st.expander(f"⚡ {T['ana_bf_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_bf_name']}"):
             st.caption(f"*[Nahraný text]*")
             if "skinner_class" in _df.columns:
                 _bc1, _bc2 = st.columns(2)
@@ -4505,7 +4560,7 @@ with tab_results:
 
     # ── 3. Verbálne vzťahy ────────────────────────────────────────────────────
     if st.session_state.get("sel_verbal", True):
-        with st.expander(f"⚡ {T['ana_verbal_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_verbal_name']}"):
             st.caption(f"*[Nahraný text]*")
             if not _rel_df.empty and "local_pattern" in _rel_df.columns:
                 _vr1, _vr2 = st.columns(2)
@@ -4560,7 +4615,7 @@ with tab_results:
 
     # ── 4. Sémantika ──────────────────────────────────────────────────────────
     if st.session_state.get("sel_semantics", True) and _ldat:
-        with st.expander(f"⚡ {T['ana_semantics_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_semantics_name']}"):
             from collections import Counter as _SC
             _STOP_S = {"být","ten","on","se","si","the","be","have","that","this",
                        "which","with","from","they","their","are","was","were",
@@ -4579,7 +4634,7 @@ with tab_results:
 
     # ── 5. Náboženské elementy ────────────────────────────────────────────────
     if st.session_state.get("sel_religious", True) and _ldat:
-        with st.expander(f"⚡ {T['ana_religious_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_religious_name']}"):
             from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
             _ls = set(t for _,ls in _ldat for t in ls.split()
                       if len(t)>2 and t.isalpha())
@@ -4620,7 +4675,7 @@ with tab_results:
 
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_network", False):
-        with st.expander(f"🕐 {T['ana_network_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_network_name']}"):
             st.caption(f"*[Nahraný text — výpočet živě]*")
             # Compute PMI in-memory from upload lemmas
             if _ldat:
@@ -4668,7 +4723,7 @@ with tab_results:
 
     # ── 7. Textové vzory + opozície ───────────────────────────────────────────
     if st.session_state.get("sel_patterns", False) and _ldat:
-        with st.expander(f"🕐 {T['ana_patterns_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_patterns_name']}"):
             from w_opposition_networks import OPPOSITION_PAIRS
             from collections import Counter as _OC
             _oh: "_OC" = _OC()
@@ -4740,7 +4795,7 @@ with tab_results:
 
     # ── 8. Štýl a syntax ─────────────────────────────────────────────────────
     if st.session_state.get("sel_style", False):
-        with st.expander(f"🕐 {T['ana_style_name']}"):
+        with st.expander(f"📤 🕐 {T['ana_style_name']}"):
             st.caption(f"*[Nahraný text — výpočet živě]*")
             if not _df.empty and "unit_id" in _df.columns and _units and len(_units) >= 2:
                 # Tree depth and clause count from refined_descriptions if available
@@ -4801,7 +4856,7 @@ with tab_results:
 
     # ── 9. Kvalita výsledkov ──────────────────────────────────────────────────
     if st.session_state.get("sel_quality", True):
-        with st.expander(f"⚡ {T['ana_quality_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_quality_name']}"):
             if "confidence" in _df.columns and not _df.empty:
                 _cband_l = int((_df["confidence"] < 0.30).sum())
                 _cband_m = int(((_df["confidence"]>=0.30)&(_df["confidence"]<0.60)).sum())
@@ -4834,7 +4889,7 @@ with tab_results:
 
     # ── 10. Dashboard ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_dashboard", True):
-        with st.expander(f"⚡ {T['ana_dashboard_name']}"):
+        with st.expander(f"📤 ⚡ {T['ana_dashboard_name']}"):
             from n_db import count_table_rows, list_runs, TABLE_SKINNER
             _db_n = count_table_rows(TABLE_SKINNER)
             _runs = list_runs(TABLE_SKINNER)
@@ -4878,3 +4933,13 @@ with tab_results:
                 st.rerun()
             except Exception as _exc:
                 st.error(f"{T['save_error']}: {_exc}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 4 — COMPARISON  (placeholder — Phase 2)
+# ══════════════════════════════════════════════════════════════════════════════
+
+with tab_compare:
+
+    st.subheader(T["compare_title"])
+    st.info(T["compare_placeholder"])
