@@ -28,6 +28,10 @@ request-size limit. For large PDFs, copy the file into the Codespaces workspace
 first and use the app's **workspace/server path** field instead of the browser
 upload widget.
 
+If a Codespaces preview tab opens a non-root path and shows **404**, open the
+forwarded port directly from **Ports → 8501 → Open in Browser**. The app is
+served on the root URL (`/`) of the forwarded `8501` domain.
+
 ---
 
 ## What `setup.sh` does
