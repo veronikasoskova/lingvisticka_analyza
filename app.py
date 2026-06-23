@@ -3330,6 +3330,118 @@ def compute_wordcloud_img(sentences: tuple) -> bytes:
     return buf.read()
 
 
+# Lemmas of Czech functional words (as produced by Stanza cs-pdt / BKR).
+# Covers: auxiliaries, pronouns (personal / reflexive / demonstrative /
+# relative / indefinite), prepositions, conjunctions, particles, and common
+# BKR archaic forms — anything that does NOT carry content meaning.
+_WC_STOP_LEMMAS: frozenset = frozenset({
+    # auxiliaries / copula
+    "být", "bývat", "bývávat", "jest",
+    # personal pronouns
+    "já", "ty", "on", "ona", "ono", "my", "vy", "oni", "ony",
+    # reflexive
+    "se", "si", "sebe",
+    # possessive reflexive
+    "svůj",
+    # possessive
+    "jeho", "její", "jejich", "náš", "váš",
+    # demonstrative
+    "ten", "tento", "tenhle", "tamten", "onen", "takový", "týž",
+    "sám", "samý",
+    # interrogative / relative pronouns & adverbs
+    "kdo", "co", "který", "jaký", "jenž", "čí",
+    "jak", "kde", "kam", "kdy", "proč", "kudy",
+    # indefinite
+    "někdo", "něco", "nějaký", "některý", "kdosi", "cosi",
+    "kdekoli", "kdokoli", "cokoli",
+    # negative
+    "nikdo", "nic", "žádný",
+    # determiners
+    "všechen", "všichni", "každý", "celý", "jiný", "druhý",
+    "oba", "obou",
+    # prepositions
+    "v", "ve", "z", "ze", "s", "se", "k", "ke", "na", "pro",
+    "při", "po", "do", "od", "nad", "pod", "před", "za", "mezi",
+    "u", "o", "ob", "přes", "skrze", "dle", "kvůli", "vůči",
+    "mimo", "bez", "okolo", "kolem", "podél", "blízko", "napříč",
+    # conjunctions
+    "a", "i", "nebo", "ani", "ale", "nýbrž", "avšak", "však",
+    "přesto", "přestože", "ačkoliv", "ač", "protože", "poněvadž",
+    "než", "neboť", "či", "jestli", "jestliže", "ježto", "jakož",
+    "aby", "ať", "kdyby", "pokud", "dokud", "pakliž", "pakli",
+    "kdeže", "zatímco",
+    # particles / modal adverbs
+    "pak", "již", "ještě", "jen", "jenom", "také", "též", "zase",
+    "právě", "vždy", "vůbec", "nikdy", "sice", "přece", "ovšem",
+    "totiž", "tedy", "tak", "zde", "tu", "tam", "nato", "potom",
+    "poté", "tehdy", "ano", "ne", "nikoliv", "nikoli",
+    "velmi", "více", "méně", "méně", "nyní", "teď", "tehdy",
+    "odtud", "odtad", "odtaď", "dosud", "poněkud",
+    # BKR archaic / enclitic forms (Stanza lemmatises these to their base)
+    "toho", "tomu", "tou", "tím", "tuto",
+    "neboť", "bys", "buď", "kdyžto", "aniž",
+    "kteříž", "kteroužto", "jímž", "nimiž", "nimž",
+    "by", "li", "nu",
+    # short noise tokens
+    "ta", "to", "no",
+})
+
+
+@st.cache_data(ttl=600)
+def compute_wordcloud_from_lemmas(lemmas_tuple: tuple) -> bytes:
+    """Generate a word cloud from pre-lemmatised token strings.
+
+    Pipeline: lemma strings → split tokens → stop-word filter →
+              length filter (>2 chars, alpha-only) → frequency count →
+              WordCloud.
+
+    Parameters
+    ----------
+    lemmas_tuple : tuple of str
+        Each element is a space-separated lemma string for one sentence,
+        as stored in the ``lemmas`` column of refined_descriptions /
+        skinner_analysis (produced by e_extraction.extract_features).
+
+    Returns
+    -------
+    bytes  PNG image of the word cloud, or ``b""`` when no tokens remain.
+    """
+    from wordcloud import WordCloud
+    from collections import Counter
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import io as _io
+
+    tokens = []
+    for lemma_str in lemmas_tuple:
+        for tok in str(lemma_str or "").split():
+            if (
+                len(tok) > 2
+                and tok.isalpha()
+                and tok not in _WC_STOP_LEMMAS
+            ):
+                tokens.append(tok)
+
+    if not tokens:
+        return b""
+
+    freq = Counter(tokens)
+    wc = WordCloud(
+        width=960, height=420, background_color="white",
+        colormap="Blues_r", max_words=200, collocations=False,
+    ).generate_from_frequencies(freq)
+    buf = _io.BytesIO()
+    fig, ax = plt.subplots(figsize=(12, 5))
+    ax.imshow(wc, interpolation="bilinear")
+    ax.axis("off")
+    fig.tight_layout(pad=0)
+    fig.savefig(buf, format="png", dpi=100, bbox_inches="tight")
+    plt.close(fig)
+    buf.seek(0)
+    return buf.read()
+
+
 @st.cache_data(ttl=600)
 def compute_ngrams(sentences: tuple, n: int, top_k: int = 20) -> pd.DataFrame:
     from sklearn.feature_extraction.text import CountVectorizer
@@ -4377,13 +4489,17 @@ with tab_bible:
             else:
                 # ── Wordcloud ─────────────────────────────────────────────────────
                 st.caption(T["wordcloud_desc"])
-                sentences_tuple = tuple(db_df["sentence"].dropna().tolist())
-                wc_bytes = compute_wordcloud_img(sentences_tuple)
-                st.image(wc_bytes, use_container_width=True)
+                # Use lemmatised tokens (ref_df.lemmas) so that the cloud shows
+                # content words only; functional words are removed by _WC_STOP_LEMMAS.
+                _wc_lemmas_tuple = tuple(ref_df["lemmas"].dropna().tolist())
+                wc_bytes = compute_wordcloud_from_lemmas(_wc_lemmas_tuple)
+                if wc_bytes:
+                    st.image(wc_bytes, use_container_width=True)
 
                 st.divider()
 
-                # ── Bigrams + Trigrams ────────────────────────────────────────────
+                # ── Bigrams + Trigrams (kept on raw sentences for natural phrasing) ─
+                sentences_tuple = tuple(db_df["sentence"].dropna().tolist())
                 c1, c2 = st.columns(2)
 
                 with c1:
