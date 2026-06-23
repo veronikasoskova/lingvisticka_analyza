@@ -249,6 +249,7 @@ TRANSLATIONS = {
         "sec_patterns": "🔠 Textové vzory",
         "wordcloud_title": "Oblak slov — nejčastější slova v korpusu",
         "wordcloud_desc": "Nejčastější lemmatizovaná slova v celém korpusu — větší = četnější.",
+        "wordcloud_no_lemmas": "Pro word cloud nejsou dostupná zpracovaná lemmata.",
         "bigrams_title": "Nejčastější slovní dvojice",
         "bigrams_desc": "Nejčastější slovní dvojice — ustálené fráze a kolokace textu.",
         "trigrams_title": "Nejčastější slovní trojice",
@@ -845,6 +846,7 @@ TRANSLATIONS = {
         "sec_patterns": "🔠 Textové vzory",
         "wordcloud_title": "Oblak slov — najčastejšie slová v korpuse",
         "wordcloud_desc": "Najčastejšie lematizované slová v celom korpuse — väčšie = početnejšie.",
+        "wordcloud_no_lemmas": "Pre word cloud nie sú dostupné spracované lemy.",
         "bigrams_title": "Najčastejšie slovné dvojice",
         "bigrams_desc": "Najčastejšie slovné dvojice — ustálené frázy a kolokácie textu.",
         "trigrams_title": "Najčastejšie slovné trojice",
@@ -1437,6 +1439,7 @@ TRANSLATIONS = {
         "sec_patterns": "🔠 Text Patterns",
         "wordcloud_title": "Word Cloud — most frequent words in the corpus",
         "wordcloud_desc": "The word cloud shows the **most frequently occurring words** in the full biblical corpus. Larger word = more frequent in the text. Words are shown in their lemmatised (base) form.",
+        "wordcloud_no_lemmas": "Processed lemmas are not available for the word cloud.",
         "bigrams_title": "Top Word Pairs (Bigrams)",
         "bigrams_desc": "Shows the **most frequently recurring pairs of adjacent words** (bigrams) in the text. Helps reveal fixed phrases and recurring collocations.",
         "trigrams_title": "Top Word Triples (Trigrams)",
@@ -4491,10 +4494,15 @@ with tab_bible:
                 st.caption(T["wordcloud_desc"])
                 # Use lemmatised tokens (ref_df.lemmas) so that the cloud shows
                 # content words only; functional words are removed by _WC_STOP_LEMMAS.
-                _wc_lemmas_tuple = tuple(ref_df["lemmas"].dropna().tolist())
-                wc_bytes = compute_wordcloud_from_lemmas(_wc_lemmas_tuple)
-                if wc_bytes:
-                    st.image(wc_bytes, use_container_width=True)
+                if "lemmas" not in ref_df.columns:
+                    st.info(T["wordcloud_no_lemmas"])
+                else:
+                    _wc_lemmas_tuple = tuple(ref_df["lemmas"].dropna().astype(str).tolist())
+                    wc_bytes = compute_wordcloud_from_lemmas(_wc_lemmas_tuple)
+                    if wc_bytes:
+                        st.image(wc_bytes, use_container_width=True)
+                    else:
+                        st.info(T["wordcloud_no_lemmas"])
 
                 st.divider()
 
