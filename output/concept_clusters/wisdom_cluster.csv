@@ -1,5 +1,3 @@
 cluster,word1,word2,pair_count,pmi,matched_seed
-wisdom_cluster,slovo,stalo,15,9.295,slovo
-wisdom_cluster,hospodinovo,slovo,10,10.71,slovo
-wisdom_cluster,"hospodinovo,",slovo,7,10.71,slovo
-wisdom_cluster,kteréž,slovo,5,8.125,slovo
+wisdom_cluster,hospodinovo,slovo,17,9.742,slovo
+wisdom_cluster,slovo,stalo,15,8.291,slovo
