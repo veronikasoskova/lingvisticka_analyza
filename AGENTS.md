@@ -10,7 +10,8 @@ Standard setup/usage lives in `README.md` and `setup.sh`. Notes below are the no
 
 Single service: the Streamlit web app.
 
-- Run: `streamlit run app.py --server.headless true --server.port 8501` (serves on http://localhost:8501).
+- The Cloud Agent environment `start` command launches it automatically on http://localhost:8501 (binds `0.0.0.0:8501`, waits until `/_stcore/health` is OK, then returns). It is a no-op if the app is already healthy.
+- If you need to start it by hand: `python3 -m streamlit run app.py --server.headless true --server.port 8501 --server.address 0.0.0.0`.
 - Tabs: **Analyzovat text** (Tab 1) runs the live Stanza NLP pipeline on pasted/uploaded Czech text; **Biblický korpus** (Tab 2) reads the pre-computed `output/bible_analysis.db`; **Výsledky** shows the last Tab-1 run.
 
 ### Non-obvious caveats
