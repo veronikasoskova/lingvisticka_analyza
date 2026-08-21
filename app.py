@@ -669,6 +669,8 @@ TRANSLATIONS = {
         "x_clauses": "Průměrný počet klauzulí",
         "x_terms": "Termíny",
         "x_categories": "Kategorie",
+        "x_tradition": "Tradice",
+        "x_influence": "Vliv",
         # Opposition polarity & directed network
         "opposition_window_note": "Opozice detekované v kontextovém okně ±3 vět.",
         "opposition_polarity_title": "Polarita opozic — pozitivní vs. negativní framing",
@@ -730,6 +732,48 @@ TRANSLATIONS = {
         "seg_method_single": "jeden dokument (bez struktury)",
         "seg_preview_unit": "jednotka",
         "seg_preview_units": "jednotky",
+        # Displayed data labels (must follow UI language)
+        "aa_title": "Anti-anachronismus",
+        "aa_clear": "bez příznaku",
+        "aa_flagged": "s příznakem",
+        "aa_terms_title": "Frekvence anachronických termínů",
+        "aa_share_desc": "Podíl vět s anachronickým příznakem",
+        "aa_sample": "Vzorek vět s příznakem anachronismu",
+        "aa_pct_title": "Anti-anachronismus — {n} vět ({pct:.1f} %)",
+        "convention_types_title": "Typy konvence (top 15)",
+        "secondary_strategy_title": "Sekundární strategie",
+        "uploaded_text_badge": "Nahraný text",
+        "uploaded_live_badge": "Nahraný text — výpočet živě",
+        "need_full_analysis_verbal": "Spusťte plnou analýzu pro zobrazení verbálních vztahů.",
+        "need_full_analysis_style": "Spusťte plnou analýzu s alespoň 2 kapitolami pro zobrazení stylu.",
+        "need_full_analysis_quality": "Spusťte plnou analýzu pro zobrazení kvality klasifikace.",
+        "cluster_n": "Shluk {n}",
+        "unit_chapter_sg": "kapitola",
+        "unit_chapter_pl": "kapitoly",
+        "unit_section_sg": "sekce",
+        "unit_section_pl": "sekce",
+        "unit_document_sg": "dokument",
+        "unit_document_pl": "dokumenty",
+        "metric_chapters": "Kapitoly",
+        "metric_sections": "Sekce",
+        "metric_documents": "Dokument",
+        "col_chapter": "Kapitola",
+        "col_section": "Sekce",
+        "col_document": "Dokument",
+        "overview_chapters": "Přehled kapitol",
+        "overview_sections": "Přehled sekcí",
+        "overview_generic": "Přehled",
+        "tradition_lang": {
+            "czech": "čeština", "english": "angličtina", "arabic": "arabština",
+            "hebrew": "hebrejština", "pali": "pálí", "sanskrit": "sanskrt",
+        },
+        "tradition_base": {
+            "christian": "Křesťanství", "jewish": "Judaismus", "islamic": "Islám",
+            "hermetic": "Hermetismus", "buddhist": "Buddhismus", "hindu": "Hinduismus",
+            "sufi": "Súfismus", "kabbalistic": "Kabala", "theosophical": "Teosofie",
+            "new_age": "New Age", "shamanic": "Šamanismus", "tantric": "Tantrismus",
+            "gnostic": "Gnóze", "zoroastrian": "Zoroastrismus", "taoist": "Taoismus",
+        },
     },
 
     "sk": {
@@ -1343,7 +1387,7 @@ TRANSLATIONS = {
             "theological": "Teologické",
             "war":         "Vojna",
             "wisdom":      "Múdrosť",
-            "cultic":      "Kultický",
+            "cultic":      "Kultový",
             "divine":      "Božské",
             "moral":       "Morálne",
         },
@@ -1352,6 +1396,8 @@ TRANSLATIONS = {
         "x_clauses": "Priemerný počet klauzúl",
         "x_terms": "Termíny",
         "x_categories": "Kategórie",
+        "x_tradition": "Tradícia",
+        "x_influence": "Vplyv",
         "opposition_window_note": "Opozície detegované v kontextovom okne ±3 viet.",
         "opposition_polarity_title": "Polarita opozícií — pozitívny vs. negatívny framing",
         "opposition_polarity_desc": "Pre každý opozičný pár: koľko viet ho rámuje z **pozitívneho pólu** (svetlo, život, dobro…) vs. z **negatívneho pólu** (tma, smrť, zlo…). Neutrálne = oba póly prítomné v kotevnej vete súčasne.",
@@ -1412,6 +1458,48 @@ TRANSLATIONS = {
         "seg_method_single": "jeden dokument (bez štruktúry)",
         "seg_preview_unit": "jednotka",
         "seg_preview_units": "jednotky",
+        # Displayed data labels (must follow UI language)
+        "aa_title": "Anti-anachronizmus",
+        "aa_clear": "bez príznaku",
+        "aa_flagged": "s príznakom",
+        "aa_terms_title": "Frekvencia anachronických termínov",
+        "aa_share_desc": "Podiel viet s anachronickým príznakom",
+        "aa_sample": "Vzorka viet s príznakom anachronizmu",
+        "aa_pct_title": "Anti-anachronizmus — {n} viet ({pct:.1f} %)",
+        "convention_types_title": "Typy konvencie (top 15)",
+        "secondary_strategy_title": "Sekundárna stratégia",
+        "uploaded_text_badge": "Nahraný text",
+        "uploaded_live_badge": "Nahraný text — výpočet naživo",
+        "need_full_analysis_verbal": "Spustite plnú analýzu pre zobrazenie verbálnych vzťahov.",
+        "need_full_analysis_style": "Spustite plnú analýzu s aspoň 2 kapitolami pre zobrazenie štýlu.",
+        "need_full_analysis_quality": "Spustite plnú analýzu pre zobrazenie kvality klasifikácie.",
+        "cluster_n": "Zhluk {n}",
+        "unit_chapter_sg": "kapitola",
+        "unit_chapter_pl": "kapitoly",
+        "unit_section_sg": "sekcia",
+        "unit_section_pl": "sekcie",
+        "unit_document_sg": "dokument",
+        "unit_document_pl": "dokumenty",
+        "metric_chapters": "Kapitoly",
+        "metric_sections": "Sekcie",
+        "metric_documents": "Dokument",
+        "col_chapter": "Kapitola",
+        "col_section": "Sekcia",
+        "col_document": "Dokument",
+        "overview_chapters": "Prehľad kapitol",
+        "overview_sections": "Prehľad sekcií",
+        "overview_generic": "Prehľad",
+        "tradition_lang": {
+            "czech": "čeština", "english": "angličtina", "arabic": "arabčina",
+            "hebrew": "hebrejčina", "pali": "pálí", "sanskrit": "sanskrit",
+        },
+        "tradition_base": {
+            "christian": "Kresťanstvo", "jewish": "Judizmus", "islamic": "Islam",
+            "hermetic": "Hermetizmus", "buddhist": "Buddhizmus", "hindu": "Hinduizmus",
+            "sufi": "Súfizmus", "kabbalistic": "Kabala", "theosophical": "Teozofia",
+            "new_age": "New Age", "shamanic": "Šamanizmus", "tantric": "Tantrizmus",
+            "gnostic": "Gnóza", "zoroastrian": "Zoroastrizmus", "taoist": "Taoizmus",
+        },
     },
 
     "en": {
@@ -2028,6 +2116,8 @@ TRANSLATIONS = {
         "x_clauses": "Avg clause count",
         "x_terms": "Terms",
         "x_categories": "Categories",
+        "x_tradition": "Tradition",
+        "x_influence": "Influence",
         "opposition_window_note": "Oppositions detected in a ±3-sentence context window.",
         "opposition_polarity_title": "Opposition Polarity — positive vs. negative framing",
         "opposition_polarity_desc": "For each opposition pair: how many sentences frame it from the **positive pole** (light, life, good…) vs. the **negative pole** (darkness, death, evil…). Neutral = both poles present in the anchor sentence simultaneously.",
@@ -2088,6 +2178,48 @@ TRANSLATIONS = {
         "seg_method_single": "single document (no structure)",
         "seg_preview_unit": "unit",
         "seg_preview_units": "units",
+        # Displayed data labels (must follow UI language)
+        "aa_title": "Anti-anachronism",
+        "aa_clear": "unflagged",
+        "aa_flagged": "flagged",
+        "aa_terms_title": "Frequency of anachronistic terms",
+        "aa_share_desc": "Share of sentences with an anachronism flag",
+        "aa_sample": "Sample sentences flagged as anachronistic",
+        "aa_pct_title": "Anti-anachronism — {n} sentences ({pct:.1f}%)",
+        "convention_types_title": "Convention types (top 15)",
+        "secondary_strategy_title": "Secondary strategy",
+        "uploaded_text_badge": "Uploaded text",
+        "uploaded_live_badge": "Uploaded text — computed live",
+        "need_full_analysis_verbal": "Run the full analysis to display verbal relations.",
+        "need_full_analysis_style": "Run the full analysis with at least 2 chapters to display style.",
+        "need_full_analysis_quality": "Run the full analysis to display classification quality.",
+        "cluster_n": "Cluster {n}",
+        "unit_chapter_sg": "chapter",
+        "unit_chapter_pl": "chapters",
+        "unit_section_sg": "section",
+        "unit_section_pl": "sections",
+        "unit_document_sg": "document",
+        "unit_document_pl": "documents",
+        "metric_chapters": "Chapters",
+        "metric_sections": "Sections",
+        "metric_documents": "Document",
+        "col_chapter": "Chapter",
+        "col_section": "Section",
+        "col_document": "Document",
+        "overview_chapters": "Chapter overview",
+        "overview_sections": "Section overview",
+        "overview_generic": "Overview",
+        "tradition_lang": {
+            "czech": "Czech", "english": "English", "arabic": "Arabic",
+            "hebrew": "Hebrew", "pali": "Pali", "sanskrit": "Sanskrit",
+        },
+        "tradition_base": {
+            "christian": "Christianity", "jewish": "Judaism", "islamic": "Islam",
+            "hermetic": "Hermeticism", "buddhist": "Buddhism", "hindu": "Hinduism",
+            "sufi": "Sufism", "kabbalistic": "Kabbalah", "theosophical": "Theosophy",
+            "new_age": "New Age", "shamanic": "Shamanism", "tantric": "Tantrism",
+            "gnostic": "Gnosticism", "zoroastrian": "Zoroastrianism", "taoist": "Taoism",
+        },
     },
 }
 
@@ -2195,7 +2327,7 @@ VALUE_LABELS = {
             "dialogic_controversy": "Dialogický spor",
             "doxological_hymn": "Doxologický hymnus",
             "missionary_commission": "Misijné poverenie",
-            "narrative_chronicle": "Narativná kronika",
+            "narrative_chronicle": "Naratívna kronika",
             "prophetic_admonition": "Prorocké napomenutie",
             "theological_rationale": "Teologické zdôvodnenie",
             "theophanic_self_presentation": "Teofanické sebapredstavenie",
@@ -2233,16 +2365,40 @@ VALUE_LABELS = {
             "description": "Popis", "neutral": "Neutrální",
             "request": "Žádost", "negation": "Negace",
             "uncertainty": "Nejistota",
+            "wisdom_instruction": "Mudroslovné učení",
+            "covenant_relationship": "Smluvní vztah",
+            "divine_authority": "Božská autorita",
+            "moral_command": "Morální příkaz",
+            "prophetic_judgment": "Prorocký soud",
+            "worship": "Bohoslužba",
+            "historical_narrative": "Historické vyprávění",
+            "eschatological_warning": "Eschatologické varování",
         },
         "sk": {
             "description": "Popis", "neutral": "Neutrálny",
             "request": "Žiadosť", "negation": "Negácia",
             "uncertainty": "Neistota",
+            "wisdom_instruction": "Mudroslovné učenie",
+            "covenant_relationship": "Zmluvný vzťah",
+            "divine_authority": "Božská autorita",
+            "moral_command": "Morálny príkaz",
+            "prophetic_judgment": "Prorocký súd",
+            "worship": "Bohoslužba",
+            "historical_narrative": "Historické rozprávanie",
+            "eschatological_warning": "Eschatologické varovanie",
         },
         "en": {
             "description": "Description", "neutral": "Neutral",
             "request": "Request", "negation": "Negation",
             "uncertainty": "Uncertainty",
+            "wisdom_instruction": "Wisdom instruction",
+            "covenant_relationship": "Covenant relationship",
+            "divine_authority": "Divine authority",
+            "moral_command": "Moral command",
+            "prophetic_judgment": "Prophetic judgment",
+            "worship": "Worship",
+            "historical_narrative": "Historical narrative",
+            "eschatological_warning": "Eschatological warning",
         },
     },
     "skinner_class": {
@@ -2278,6 +2434,13 @@ VALUE_LABELS = {
             "reported_speech": "Přímá řeč",
             "request_relation": "Žádost",
             "wisdom_relation": "Moudrost",
+            # legacy demo-DB keys
+            "narrative": "Vyprávění",
+            "doctrinal": "Doktrinální",
+            "lyrical": "Lyrická",
+            "command_obedience": "Příkaz / poslušnost",
+            "prophetic": "Prorocká",
+            "wisdom": "Moudrost",
         },
         "sk": {
             "autoclitic_relation": "Autoklit.",
@@ -2289,6 +2452,13 @@ VALUE_LABELS = {
             "reported_speech": "Priama reč",
             "request_relation": "Žiadosť",
             "wisdom_relation": "Múdrosť",
+            # legacy demo-DB keys
+            "narrative": "Rozprávanie",
+            "doctrinal": "Doktrinálna",
+            "lyrical": "Lyrická",
+            "command_obedience": "Príkaz / poslušnosť",
+            "prophetic": "Prorocká",
+            "wisdom": "Múdrosť",
         },
         "en": {
             "autoclitic_relation": "Autoclitic",
@@ -2300,6 +2470,205 @@ VALUE_LABELS = {
             "reported_speech": "Rep. speech",
             "request_relation": "Request",
             "wisdom_relation": "Wisdom",
+            # legacy demo-DB keys
+            "narrative": "Narrative",
+            "doctrinal": "Doctrinal",
+            "lyrical": "Lyrical",
+            "command_obedience": "Command / obedience",
+            "prophetic": "Prophetic",
+            "wisdom": "Wisdom",
+        },
+    },
+    "description_type": {
+        "cs": {
+            "theological_statement": "Teologické tvrzení",
+            "prophetic_announcement": "Prorocké oznámení",
+            "general_narrative": "Narativní popis",
+            "legal_normative": "Právní norma",
+            "wisdom_maxim": "Mudroslovný výrok",
+            "ritual_liturgical": "Rituální / liturgický",
+            "moral_statement": "Morální výrok",
+            "social_relation": "Sociální vztah",
+            "creation_narrative": "Stvoření",
+            "genealogical_record": "Genealogický záznam",
+            "eschatological": "Eschatologický",
+            "attribute_description": "Popis vlastnosti",
+            "state_description": "Popis stavu",
+            "prophetic_oracle": "Prorocký výrok",
+            "blessing_formula": "Požehnání",
+            "lament": "Nářek",
+            "wisdom_saying": "Mudroslovný výrok",
+            "legal_injunction": "Právní příkaz",
+            "divine_speech": "Boží řeč",
+            "narrative_event": "Narativní událost",
+            "doxological_praise": "Doxologická chvála",
+            "covenant_formula": "Smluvní formule",
+        },
+        "sk": {
+            "theological_statement": "Teologické tvrdenie",
+            "prophetic_announcement": "Prorocké oznámenie",
+            "general_narrative": "Naratívny popis",
+            "legal_normative": "Právna norma",
+            "wisdom_maxim": "Mudroslovný výrok",
+            "ritual_liturgical": "Rituálny / liturgický",
+            "moral_statement": "Morálny výrok",
+            "social_relation": "Sociálny vzťah",
+            "creation_narrative": "Stvorenie",
+            "genealogical_record": "Genealogický záznam",
+            "eschatological": "Eschatologický",
+            "attribute_description": "Popis vlastnosti",
+            "state_description": "Popis stavu",
+            "prophetic_oracle": "Prorocký výrok",
+            "blessing_formula": "Požehnanie",
+            "lament": "Nárek",
+            "wisdom_saying": "Mudroslovný výrok",
+            "legal_injunction": "Právny príkaz",
+            "divine_speech": "Božia reč",
+            "narrative_event": "Naratívna udalosť",
+            "doxological_praise": "Doxologická chvála",
+            "covenant_formula": "Zmluvná formula",
+        },
+        "en": {
+            "theological_statement": "Theological statement",
+            "prophetic_announcement": "Prophetic announcement",
+            "general_narrative": "Narrative",
+            "legal_normative": "Legal / normative",
+            "wisdom_maxim": "Wisdom maxim",
+            "ritual_liturgical": "Ritual / liturgical",
+            "moral_statement": "Moral statement",
+            "social_relation": "Social relation",
+            "creation_narrative": "Creation narrative",
+            "genealogical_record": "Genealogical record",
+            "eschatological": "Eschatological",
+            "attribute_description": "Attribute description",
+            "state_description": "State description",
+            "prophetic_oracle": "Prophetic oracle",
+            "blessing_formula": "Blessing formula",
+            "lament": "Lament",
+            "wisdom_saying": "Wisdom saying",
+            "legal_injunction": "Legal injunction",
+            "divine_speech": "Divine speech",
+            "narrative_event": "Narrative event",
+            "doxological_praise": "Doxological praise",
+            "covenant_formula": "Covenant formula",
+        },
+    },
+    "convention": {
+        "cs": {
+            "dialogic_controversy": "Dialogický spor",
+            "antithetical_disputation": "Antitetický spor",
+            "theophanic_self_presentation": "Teofanické sebepředstavení",
+            "prophetic_admonition": "Prorocké napomenutí",
+            "missionary_commission": "Misijní pověření",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Smluvní zaslíbení",
+            "woe_oracle": "Běda výrok",
+            "deliberative_rhetoric": "Deliberativní rétorika",
+            "elenctic_questioning": "Elenktický dotaz",
+            "theological_rationale": "Teologické zdůvodnění",
+            "doxological_hymn": "Doxologický hymnus",
+            "declarative_assertion": "Deklarativní tvrzení",
+            "narrative_chronicle": "Narativní kronika",
+            "enumerative_list": "Enumerativní výčet",
+            "undetermined": "Neurčeno",
+            "právní formule": "právní formule",
+            "hymnický žánr": "hymnický žánr",
+            "narativní žánr": "narativní žánr",
+            "smlouva": "smlouva",
+            "prorocký žánr": "prorocký žánr",
+            "doxologie": "doxologie",
+            "mudroslovný žánr": "mudroslovný žánr",
+            "zákon": "zákon",
+        },
+        "sk": {
+            "dialogic_controversy": "Dialogický spor",
+            "antithetical_disputation": "Antitetický spor",
+            "theophanic_self_presentation": "Teofanické sebapredstavenie",
+            "prophetic_admonition": "Prorocké napomenutie",
+            "missionary_commission": "Misijné poverenie",
+            "apodictic_law": "Apodiktický zákon",
+            "covenant_promise": "Zmluvné zasľúbenie",
+            "woe_oracle": "Výrok beda",
+            "deliberative_rhetoric": "Deliberatívna rétorika",
+            "elenctic_questioning": "Elenktický dopyt",
+            "theological_rationale": "Teologické zdôvodnenie",
+            "doxological_hymn": "Doxologický hymnus",
+            "declarative_assertion": "Deklaratívne tvrdenie",
+            "narrative_chronicle": "Naratívna kronika",
+            "enumerative_list": "Enumeratívny výpočet",
+            "undetermined": "Neurčené",
+            "právní formule": "právna formula",
+            "hymnický žánr": "hymnický žáner",
+            "narativní žánr": "naratívny žáner",
+            "smlouva": "zmluva",
+            "prorocký žánr": "prorocký žáner",
+            "doxologie": "doxológia",
+            "mudroslovný žánr": "mudroslovný žáner",
+            "zákon": "zákon",
+        },
+        "en": {
+            "dialogic_controversy": "Dialogic controversy",
+            "antithetical_disputation": "Antithetical disputation",
+            "theophanic_self_presentation": "Theophanic self-presentation",
+            "prophetic_admonition": "Prophetic admonition",
+            "missionary_commission": "Missionary commission",
+            "apodictic_law": "Apodictic law",
+            "covenant_promise": "Covenant promise",
+            "woe_oracle": "Woe oracle",
+            "deliberative_rhetoric": "Deliberative rhetoric",
+            "elenctic_questioning": "Elenctic questioning",
+            "theological_rationale": "Theological rationale",
+            "doxological_hymn": "Doxological hymn",
+            "declarative_assertion": "Declarative assertion",
+            "narrative_chronicle": "Narrative chronicle",
+            "enumerative_list": "Enumerative list",
+            "undetermined": "Undetermined",
+            "právní formule": "legal formula",
+            "hymnický žánr": "hymnic genre",
+            "narativní žánr": "narrative genre",
+            "smlouva": "covenant",
+            "prorocký žánr": "prophetic genre",
+            "doxologie": "doxology",
+            "mudroslovný žánr": "wisdom genre",
+            "zákon": "law",
+        },
+    },
+    "locution": {
+        "cs": {
+            "výrok o Bohu": "výrok o Bohu",
+            "přímý příkaz": "přímý příkaz",
+            "zaslíbení": "zaslíbení",
+            "výzva k poslušnosti": "výzva k poslušnosti",
+            "narativní popis": "narativní popis",
+            "prorocké zvolání": "prorocké zvolání",
+            "chvála": "chvála",
+            "nářek": "nářek",
+            "právní předpis": "právní předpis",
+            "teologické tvrzení": "teologické tvrzení",
+        },
+        "sk": {
+            "výrok o Bohu": "výrok o Bohu",
+            "přímý příkaz": "priamy príkaz",
+            "zaslíbení": "zasľúbenie",
+            "výzva k poslušnosti": "výzva k poslušnosti",
+            "narativní popis": "naratívny popis",
+            "prorocké zvolání": "prorocké zvolanie",
+            "chvála": "chvála",
+            "nářek": "nárek",
+            "právní předpis": "právny predpis",
+            "teologické tvrzení": "teologické tvrdenie",
+        },
+        "en": {
+            "výrok o Bohu": "statement about God",
+            "přímý příkaz": "direct command",
+            "zaslíbení": "promise",
+            "výzva k poslušnosti": "call to obedience",
+            "narativní popis": "narrative description",
+            "prorocké zvolání": "prophetic exclamation",
+            "chvála": "praise",
+            "nářek": "lament",
+            "právní předpis": "legal precept",
+            "teologické tvrzení": "theological statement",
         },
     },
 }
@@ -2345,6 +2714,69 @@ VSC = VALUE_LABELS["semantic_cluster"][lang]
 VSK = VALUE_LABELS["skinner_class"][lang]
 VCR = VALUE_LABELS["control_role"][lang]
 VVT = VALUE_LABELS["verbal_type"][lang]
+VD  = VALUE_LABELS["description_type"][lang]
+VC  = VALUE_LABELS["convention"][lang]
+VL  = VALUE_LABELS["locution"][lang]
+
+
+def _vlabel(value, mapping: dict) -> str:
+    """Map a stored classifier key (or Czech demo phrase) to the UI language."""
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    s = str(value).strip()
+    if not s or s in {"None", "nan", "NaN"}:
+        return ""
+    return mapping.get(s, s)
+
+
+def _vmap_series(s: pd.Series, mapping: dict) -> pd.Series:
+    return s.map(lambda v: _vlabel(v, mapping))
+
+
+def _localize_df_values(df: pd.DataFrame) -> pd.DataFrame:
+    """Translate categorical analysis columns to the active UI language."""
+    out = df.copy()
+    col_maps = {
+        "primary_intention": VI,
+        "secondary_intention": VI,
+        "illocutionary_force": VF,
+        "primary_strategy": VS,
+        "secondary_strategy": VS,
+        "convention": VC,
+        "locution": VL,
+        "relation_type": VVT,
+        "subtype": VVT,
+        "semantic_cluster": VSC,
+        "description_type": VD,
+        "skinner_class": VSK,
+        "control_role": VCR,
+    }
+    for col, mp in col_maps.items():
+        if col in out.columns:
+            out[col] = _vmap_series(out[col], mp)
+    return out
+
+
+def _labeled_multiselect(label: str, raw_values, mapping: dict, widget_key: str):
+    """Multiselect showing translated labels while filtering by stored keys."""
+    keys = []
+    seen = set()
+    for v in raw_values:
+        s = "" if v is None else str(v).strip()
+        if not s or s in {"None", "nan", "NaN"} or s in seen:
+            continue
+        seen.add(s)
+        keys.append(s)
+    keys.sort(key=lambda k: _vlabel(k, mapping).casefold())
+    labels = [_vlabel(k, mapping) for k in keys]
+    inv = {lab: k for k, lab in zip(keys, labels)}
+    chosen = st.multiselect(label, labels, key=widget_key)
+    return [inv[c] for c in chosen if c in inv]
 
 # ──────────────────────────────────────────────────────────────────────────────
 # BIBLE BOOK NAME MAPPING  (BKR abbreviation → full name per language)
@@ -2359,14 +2791,14 @@ BOOK_NAMES: dict[str, dict[str, str]] = {
     "Dt":  {"cs": "Deuteronomium",      "sk": "Deuteronómium",      "en": "Deuteronomy"},
     # Historical books
     "Joz": {"cs": "Jozue",              "sk": "Jozua",              "en": "Joshua"},
-    "Sd":  {"cs": "Soudců",             "sk": "Sudcov",             "en": "Judges"},
+    "Sd":  {"cs": "Soudců",             "sk": "Sudcovia",           "en": "Judges"},
     "Rt":  {"cs": "Rut",                "sk": "Rút",                "en": "Ruth"},
     "1S":  {"cs": "1. Samuelova",       "sk": "1. Samuelova",       "en": "1 Samuel"},
     "2S":  {"cs": "2. Samuelova",       "sk": "2. Samuelova",       "en": "2 Samuel"},
     "1Kr": {"cs": "1. Královská",       "sk": "1. Kráľovská",       "en": "1 Kings"},
     "2Kr": {"cs": "2. Královská",       "sk": "2. Kráľovská",       "en": "2 Kings"},
-    "1Pa": {"cs": "1. Paralipomenon",   "sk": "1. Kroník",          "en": "1 Chronicles"},
-    "2Pa": {"cs": "2. Paralipomenon",   "sk": "2. Kroník",          "en": "2 Chronicles"},
+    "1Pa": {"cs": "1. Paralipomenon",   "sk": "1. kniha kroník",    "en": "1 Chronicles"},
+    "2Pa": {"cs": "2. Paralipomenon",   "sk": "2. kniha kroník",    "en": "2 Chronicles"},
     "Ezd": {"cs": "Ezdráš",             "sk": "Ezdráš",             "en": "Ezra"},
     "Neh": {"cs": "Nehemiáš",           "sk": "Nehemiáš",           "en": "Nehemiah"},
     "Est": {"cs": "Ester",              "sk": "Ester",              "en": "Esther"},
@@ -2402,13 +2834,13 @@ BOOK_NAMES: dict[str, dict[str, str]] = {
     "J":   {"cs": "Jan",                "sk": "Ján",                "en": "John"},
     "Sk":  {"cs": "Skutky apoštolů",    "sk": "Skutky apoštolov",   "en": "Acts"},
     # Pauline epistles
-    "R":   {"cs": "Římanům",            "sk": "Rímskym",            "en": "Romans"},
-    "1K":  {"cs": "1. Korintským",      "sk": "1. Korintanom",      "en": "1 Corinthians"},
-    "2K":  {"cs": "2. Korintským",      "sk": "2. Korintanom",      "en": "2 Corinthians"},
+    "R":   {"cs": "Římanům",            "sk": "Rimanom",            "en": "Romans"},
+    "1K":  {"cs": "1. Korintským",      "sk": "1. Korinťanom",      "en": "1 Corinthians"},
+    "2K":  {"cs": "2. Korintským",      "sk": "2. Korinťanom",      "en": "2 Corinthians"},
     "Ga":  {"cs": "Galatským",          "sk": "Galaťanom",          "en": "Galatians"},
     "Ef":  {"cs": "Efezským",           "sk": "Efezanom",           "en": "Ephesians"},
     "Fp":  {"cs": "Filipským",          "sk": "Filipanom",          "en": "Philippians"},
-    "Ko":  {"cs": "Kolosanům",          "sk": "Kološanom",          "en": "Colossians"},
+    "Ko":  {"cs": "Kolosanům",          "sk": "Kolosanom",          "en": "Colossians"},
     "1Te": {"cs": "1. Tesalonickým",    "sk": "1. Tesaloničanom",   "en": "1 Thessalonians"},
     "2Te": {"cs": "2. Tesalonickým",    "sk": "2. Tesaloničanom",   "en": "2 Thessalonians"},
     "1Tm": {"cs": "1. Timoteovi",       "sk": "1. Timotejovi",      "en": "1 Timothy"},
@@ -2423,7 +2855,7 @@ BOOK_NAMES: dict[str, dict[str, str]] = {
     "1J":  {"cs": "1. Janův",           "sk": "1. Jánov",           "en": "1 John"},
     "2J":  {"cs": "2. Janův",           "sk": "2. Jánov",           "en": "2 John"},
     "3J":  {"cs": "3. Janův",           "sk": "3. Jánov",           "en": "3 John"},
-    "Ju":  {"cs": "Judův",              "sk": "Júda",               "en": "Jude"},
+    "Ju":  {"cs": "Judův",              "sk": "Júdov",              "en": "Jude"},
     # Apocalypse
     "Zj":  {"cs": "Zjevení",            "sk": "Zjavenie",           "en": "Revelation"},
 }
@@ -2919,7 +3351,18 @@ def generate_pdf_report(
                      "illocutionary_force","primary_strategy","secondary_strategy",
                      "convention","confidence","reason"]
         show = [c for c in disp_cols if c in df.columns]
-        story += _table(df[show].head(40))
+        _pdf_tbl = df[show].head(40).copy()
+        _conv_map = VALUE_LABELS["convention"][lang]
+        _loc_map = VALUE_LABELS["locution"][lang]
+        for _col, _mp in (
+            ("primary_intention", vi), ("secondary_intention", vi),
+            ("illocutionary_force", vf), ("primary_strategy", vs),
+            ("secondary_strategy", vs), ("convention", _conv_map),
+            ("locution", _loc_map),
+        ):
+            if _col in _pdf_tbl.columns:
+                _pdf_tbl[_col] = _pdf_tbl[_col].map(lambda v, m=_mp: m.get(str(v), v) if pd.notna(v) else v)
+        story += _table(_pdf_tbl)
 
         # Secondary intention
         story.append(PageBreak())
@@ -2939,20 +3382,22 @@ def generate_pdf_report(
             fig_ss2 = px.bar(_ss2.sort_values("count"), x="count", y="strategy_lbl",
                              orientation="h", color="strategy_lbl",
                              color_discrete_map=str_clr,
-                             title="Sekundárna stratégia")
+                             title=T.get("secondary_strategy_title", "Secondary strategy"))
             fig_ss2.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
             story += _side_by_side(fig_si, fig_ss2,
                                    T.get("secondary_intent_desc",""),
                                    T.get("strategy_bar_desc",""))
 
         # Convention types
-        story += _section("Typy konvencie", "📜")
+        story += _section(T.get("convention_types_title", "Convention types"), "📜")
         _cv = df["convention"].dropna().value_counts().head(15).reset_index()
         _cv.columns = ["convention", "count"]
         if not _cv.empty:
+            _cv["convention"] = _cv["convention"].map(
+                lambda v: VALUE_LABELS["convention"][lang].get(str(v), v))
             fig_cv = px.bar(_cv.sort_values("count"), x="count", y="convention",
                             orientation="h", color_discrete_sequence=["#8338ec"],
-                            title="Typy konvencie (top 15)")
+                            title=T.get("convention_types_title", "Convention types (top 15)"))
             fig_cv.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
 
             # Political vocabulary
@@ -2968,25 +3413,28 @@ def generate_pdf_report(
                                 title=T.get("pvoc_title","Political vocabulary"))
                 fig_pv.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
                 story += _side_by_side(fig_cv, fig_pv,
-                                       "Top 15 rétorických konvencií",
+                                       T.get("convention_types_title", ""),
                                        T.get("pvoc_desc",""))
             else:
-                story += _chart(fig_cv, "Top 15 rétorických konvencií")
+                story += _chart(fig_cv, T.get("convention_types_title", ""))
 
         # Anti-anachronism
         if "anti_anachronism" in df.columns:
-            story += _section("Anti-anachronizmus", "⚠️")
+            story += _section(T.get("aa_title", "Anti-anachronism"), "⚠️")
             _flagged_n = (df["anti_anachronism"] != "none_flagged").sum()
             _tot_n = len(df)
+            _aa_clear = T.get("aa_clear", "clear")
+            _aa_flagged = T.get("aa_flagged", "flagged")
             _aa_pie_df = pd.DataFrame({
-                "status": ["bez príznaku", "s príznakom"],
+                "status": [_aa_clear, _aa_flagged],
                 "count": [_tot_n - _flagged_n, _flagged_n],
             })
             fig_aapie = px.pie(_aa_pie_df, names="status", values="count",
                                color="status",
-                               color_discrete_map={"bez príznaku":"#76B7B2","s príznakom":"#E15759"},
+                               color_discrete_map={_aa_clear:"#76B7B2", _aa_flagged:"#E15759"},
                                hole=0.35,
-                               title=f"Anti-anachronizmus — {_flagged_n} viet ({100*_flagged_n/_tot_n:.1f}%)")
+                               title=T.get("aa_pct_title", "Anti-anachronism — {n} ({pct:.1f}%)").format(
+                                   n=_flagged_n, pct=(100*_flagged_n/_tot_n if _tot_n else 0)))
             fig_aapie.update_layout(margin=dict(t=40,b=4,l=4,r=4))
             _terms_pdf = []
             for _v in df["anti_anachronism"].dropna():
@@ -2999,11 +3447,11 @@ def generate_pdf_report(
             if not _tc_pdf.empty:
                 fig_aaterms = px.bar(_tc_pdf.sort_values("count"), x="count", y="term",
                                      orientation="h", color_discrete_sequence=["#E15759"],
-                                     title="Frekvencia anachronických termínov")
+                                     title=T.get("aa_terms_title", "Anachronistic terms"))
                 fig_aaterms.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
                 story += _side_by_side(fig_aapie, fig_aaterms)
             else:
-                story += _chart(fig_aapie, "Podiel viet s anachronickým príznakom")
+                story += _chart(fig_aapie, T.get("aa_share_desc", ""))
 
     # ── 2. B.F. Skinner ──────────────────────────────────────────────────────
     if session.get("sel_bf_skinner", True):
@@ -4115,29 +4563,35 @@ with tab_bible:
             c1, c2 = st.columns(2)
             _LANG_SFXS = ("_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit")
             def _fmt_trad(k: str) -> str:
+                base, lang_key = k, ""
                 for sfx in _LANG_SFXS:
                     if k.endswith(sfx):
-                        return k[:-len(sfx)].replace("_", " ").title()
-                return k.replace("_", " ").title()
+                        base = k[:-len(sfx)]
+                        lang_key = sfx[1:]
+                        break
+                label = T.get("tradition_base", {}).get(base, base.replace("_", " ").title())
+                lang_l = T.get("tradition_lang", {}).get(lang_key, "")
+                return f"{label} ({lang_l})" if lang_l else label
 
             with c1:
                 trad_df = pd.DataFrame(
-                    [{"tradition": _fmt_trad(k), T["x_categories"]: len(v)}
+                    [{T["x_tradition"]: _fmt_trad(k), T["x_categories"]: len(v)}
                      for k, v in TRADITIONS.items()]
                 ).sort_values(T["x_categories"], ascending=True)
                 st.plotly_chart(
-                    fig_hbar(trad_df, T["x_categories"], "tradition",
+                    fig_hbar(trad_df, T["x_categories"], T["x_tradition"],
                              T["traditions_title"], h=520,
                              xlabel=T["x_categories"]),
                     use_container_width=True,
                 )
             with c2:
+                _rel_ph = T.get("rel_philosophy", {})
                 phil_df = pd.DataFrame(
-                    [{"influence": k, T["x_terms"]: len(v)}
+                    [{T["x_influence"]: _rel_ph.get(k, k), T["x_terms"]: len(v)}
                      for k, v in PHILOSOPHICAL_INFLUENCES.items()]
                 ).sort_values(T["x_terms"], ascending=True)
                 st.plotly_chart(
-                    fig_hbar(phil_df, T["x_terms"], "influence",
+                    fig_hbar(phil_df, T["x_terms"], T["x_influence"],
                              T["traditions_title"], h=480,
                              xlabel=T["x_terms"]),
                     use_container_width=True,
@@ -4852,6 +5306,11 @@ with tab_bible:
                         out_display["book"]
                         .str.replace("bible_BKR_", "", regex=False)
                         .str.replace(".txt", "", regex=False))
+                    if "label" in out_display.columns:
+                        _lab_map = {**VI, **VS, **VF, **VVT, **VSK}
+                        out_display["label"] = out_display["label"].map(
+                            lambda v: _lab_map.get(str(v), v) if pd.notna(v) else v
+                        )
                     out_display = out_display.rename(columns={
                         "book":    T["x_book"],
                         "label":   T["col_label_q"],
@@ -4875,7 +5334,7 @@ with tab_bible:
             # ── Sample sentences ──────────────────────────────────────────────────
             sample = csv("eval/random_sample.csv")
             if sample is not None:
-                sample_display = sample.copy()
+                sample_display = _localize_df_values(sample.copy())
                 sample_display["file_name"] = _bkr_book(
                     sample_display["file_name"]
                     .str.replace("bible_BKR_", "", regex=False)
@@ -5067,25 +5526,25 @@ with tab_results:
     _seg_mode   = st.session_state.get("adf_seg_mode", _units[0].unit_type if _units else "document")
     # Derive human-readable labels from the actual segmentation tier
     if _seg_mode == "chapter":
-        _unit_label_sg = "kapitola"
-        _unit_label_pl = "kapitol"
-        _unit_metric   = T.get("metric_chapters", "Kapitol")
-        _col_unit      = "Kapitola"
+        _unit_label_sg = T.get("unit_chapter_sg", "chapter")
+        _unit_label_pl = T.get("unit_chapter_pl", "chapters")
+        _unit_metric   = T.get("metric_chapters", "Chapters")
+        _col_unit      = T.get("col_chapter", "Chapter")
     elif _seg_mode == "section":
-        _unit_label_sg = "sekce"
-        _unit_label_pl = "sekcí"
-        _unit_metric   = "Sekcí"
-        _col_unit      = "Sekce"
+        _unit_label_sg = T.get("unit_section_sg", "section")
+        _unit_label_pl = T.get("unit_section_pl", "sections")
+        _unit_metric   = T.get("metric_sections", "Sections")
+        _col_unit      = T.get("col_section", "Section")
     else:
-        _unit_label_sg = "dokument"
-        _unit_label_pl = "dokumentů"
-        _unit_metric   = "Dokument"
-        _col_unit      = "Dokument"
+        _unit_label_sg = T.get("unit_document_sg", "document")
+        _unit_label_pl = T.get("unit_document_pl", "documents")
+        _unit_metric   = T.get("metric_documents", "Document")
+        _col_unit      = T.get("col_document", "Document")
     _hdr_col, _btn_col = st.columns([3, 1])
     with _hdr_col:
         st.subheader(T["results_title"])
         st.caption(
-            f"📁 **Nahraný text** — `{_src}` · {_n_chapters} "
+            f"📁 **{T.get('uploaded_text_badge', 'Uploaded text')}** — `{_src}` · {_n_chapters} "
             f"{_unit_label_sg if _n_chapters == 1 else _unit_label_pl}"
         )
 
@@ -5104,8 +5563,9 @@ with tab_results:
     # ── 0. Chapter overview ───────────────────────────────────────────────────
     if _units and len(_units) > 1 and not _df.empty and "unit_id" in _df.columns:
         _overview_title = (
-            "📤 📑 Přehled kapitol" if _seg_mode == "chapter"
-            else ("📤 📑 Přehled sekcí" if _seg_mode == "section" else "📤 📑 Přehled")
+            "📤 📑 " + T.get("overview_chapters", "Chapter overview") if _seg_mode == "chapter"
+            else ("📤 📑 " + T.get("overview_sections", "Section overview") if _seg_mode == "section"
+                  else "📤 📑 " + T.get("overview_generic", "Overview"))
         )
         with st.expander(_overview_title, expanded=False):
             _chap_rows = []
@@ -5217,13 +5677,11 @@ with tab_results:
             st.subheader(T["section_sentence_table"])
             _fi, _fs = st.columns(2)
             with _fi:
-                _sel_int = st.multiselect(T["filter_intention"],
-                                          sorted(_df["primary_intention"].unique()),
-                                          key="res_fi")
+                _sel_int = _labeled_multiselect(
+                    T["filter_intention"], _df["primary_intention"].unique(), VI, "res_fi")
             with _fs:
-                _sel_str = st.multiselect(T["filter_strategy"],
-                                          sorted(_df["primary_strategy"].unique()),
-                                          key="res_fs")
+                _sel_str = _labeled_multiselect(
+                    T["filter_strategy"], _df["primary_strategy"].unique(), VS, "res_fs")
             _view = _df.copy()
             if _sel_int: _view = _view[_view["primary_intention"].isin(_sel_int)]
             if _sel_str: _view = _view[_view["primary_strategy"].isin(_sel_str)]
@@ -5232,7 +5690,7 @@ with tab_results:
                      "locution","convention","political_vocabulary"]
             _show = [c for c in _DISP if c in _view.columns]
             st.dataframe(
-                _view[_show].rename(columns={
+                _localize_df_values(_view[_show]).rename(columns={
                     "sentence_id": T["col_id"], "sentence": T["col_sentence"],
                     "primary_intention": T["col_intention"],
                     "secondary_intention": T["col_2nd_intention"],
@@ -5296,10 +5754,12 @@ with tab_results:
                 _cv.columns = ["convention", T["x_count"]]
                 if not _cv.empty:
                     st.caption(T.get("all_strategies_desc", "Top 15 convention types"))
+                    _cv_plot = _cv.copy()
+                    _cv_plot["convention"] = _vmap_series(_cv_plot["convention"], VC)
                     _fig_cv = px.bar(
-                        _cv.sort_values(T["x_count"], ascending=True),
+                        _cv_plot.sort_values(T["x_count"], ascending=True),
                         x=T["x_count"], y="convention", orientation="h",
-                        title="Convention types (top 15)",
+                        title=T.get("convention_types_title", "Convention types (top 15)"),
                         color_discrete_sequence=["#8338ec"],
                     )
                     _fig_cv.update_layout(showlegend=False, height=420, **_LAYOUT)
@@ -5326,7 +5786,7 @@ with tab_results:
 
             # ── Anti-anachronism ──────────────────────────────────────────────
             st.divider()
-            st.subheader("Anti-anachronizmus")
+            st.subheader(T.get("aa_title", "Anti-anachronizmus"))
             _qs_r5, _qs_r6 = st.columns(2)
             _aa_col = "anti_anachronism"
             if _aa_col in _df.columns:
@@ -5334,14 +5794,18 @@ with tab_results:
                 _total_aa = len(_df)
                 with _qs_r5:
                     _aa_pie = pd.DataFrame({
-                        "status": ["bez príznaku", "s príznakom"],
+                        "status": [T.get("aa_clear", "clear"), T.get("aa_flagged", "flagged")],
                         T["x_count"]: [_total_aa - _flagged, _flagged],
                     })
                     _fig_aa = px.pie(
                         _aa_pie, names="status", values=T["x_count"],
-                        title=f"Anti-anachronizmus — {_flagged} viet ({100*_flagged/_total_aa:.1f}%)",
+                        title=T.get("aa_pct_title", "Anti-anachronism — {n} ({pct:.1f}%)").format(
+                            n=_flagged, pct=(100*_flagged/_total_aa if _total_aa else 0)),
                         color="status",
-                        color_discrete_map={"bez príznaku": "#76B7B2", "s príznakom": "#E15759"},
+                        color_discrete_map={
+                            T.get("aa_clear", "clear"): "#76B7B2",
+                            T.get("aa_flagged", "flagged"): "#E15759",
+                        },
                         hole=0.35,
                     )
                     _fig_aa.update_layout(height=360, **_LAYOUT)
@@ -5366,7 +5830,7 @@ with tab_results:
                         _fig_tc = px.bar(
                             _tc.sort_values(T["x_count"], ascending=True),
                             x=T["x_count"], y="term", orientation="h",
-                            title="Anachronické termíny — frekvencia",
+                            title=T.get("aa_terms_title", "Anachronistic terms"),
                             color_discrete_sequence=["#E15759"],
                         )
                         _fig_tc.update_layout(showlegend=False, height=360, **_LAYOUT)
@@ -5377,8 +5841,8 @@ with tab_results:
                               [["sentence", "primary_intention", _aa_col]]
                               .head(10))
                 if not _aa_sample.empty:
-                    st.caption("Vzorka viet s príznakom anachronizmu")
-                    st.dataframe(_aa_sample, use_container_width=True, height=280)
+                    st.caption(T.get("aa_sample", ""))
+                    st.dataframe(_localize_df_values(_aa_sample), use_container_width=True, height=280)
 
             # ── Chapter-level intention heatmap ───────────────────────────────
             if _units and len(_units) >= 3 and "unit_id" in _df.columns and "primary_intention" in _df.columns:
@@ -5467,7 +5931,7 @@ with tab_results:
     # ── 3. Verbálne vzťahy ────────────────────────────────────────────────────
     if st.session_state.get("sel_verbal", True):
         with st.expander(f"📤 ⚡ {T['ana_verbal_name']}"):
-            st.caption(f"*[Nahraný text]*")
+            st.caption(f"*[{T.get('uploaded_text_badge', 'Uploaded text')}]*")
             if not _rel_df.empty and "local_pattern" in _rel_df.columns:
                 _vr1, _vr2 = st.columns(2)
                 with _vr1:
@@ -5517,7 +5981,7 @@ with tab_results:
                             use_container_width=True,
                         )
             else:
-                st.info("Spusťte plnou analýzu pro zobrazení verbálních vztahů.")
+                st.info(T.get("need_full_analysis_verbal", ""))
 
     # ── 4. Sémantika ──────────────────────────────────────────────────────────
     if st.session_state.get("sel_semantics", True) and _ldat:
@@ -5632,7 +6096,7 @@ with tab_results:
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_network", False):
         with st.expander(f"📤 🕐 {T['ana_network_name']}"):
-            st.caption(f"*[Nahraný text — výpočet živě]*")
+            st.caption(f"*[{T.get('uploaded_live_badge', 'Uploaded text — live')}]*")
             # Compute PMI in-memory from upload lemmas
             if _ldat:
                 from collections import Counter as _PMICounter
@@ -5754,7 +6218,7 @@ with tab_results:
     # ── 8. Štýl a syntax ─────────────────────────────────────────────────────
     if st.session_state.get("sel_style", False):
         with st.expander(f"📤 🕐 {T['ana_style_name']}"):
-            st.caption(f"*[Nahraný text — výpočet živě]*")
+            st.caption(f"*[{T.get('uploaded_live_badge', 'Uploaded text — live')}]*")
             if not _df.empty and "unit_id" in _df.columns and _units and len(_units) >= 2:
                 # Tree depth and clause count from refined_descriptions if available
                 if not _ref_df.empty and "avg_tree_depth" in _ref_df.columns and "unit_id" in _ref_df.columns:
@@ -5804,14 +6268,16 @@ with tab_results:
                             _labels = _km.fit_predict(_X_sty)
                             _sty_df2 = pd.DataFrame({
                                 _col_unit: [b for b, _ in _sty_items],
-                                T.get("col_style_cluster", "Stylový shluk"): [f"Shluk {l+1}" for l in _labels],
+                                T.get("col_style_cluster", "Style cluster"): [
+                                    T.get("cluster_n", "Cluster {n}").format(n=l+1) for l in _labels
+                                ],
                             })
                             st.caption(T["style_table_desc"])
                             st.dataframe(_sty_df2, use_container_width=True)
                         except Exception:
                             pass
             else:
-                st.info("Spusťte plnou analýzu s alespoň 2 kapitolami pro zobrazení stylu.")
+                st.info(T.get("need_full_analysis_style", ""))
 
     # ── 9. Kvalita výsledkov ──────────────────────────────────────────────────
     if st.session_state.get("sel_quality", True):
@@ -5844,7 +6310,7 @@ with tab_results:
                         use_container_width=True,
                     )
             else:
-                st.info("Spusťte plnou analýzu pro zobrazení kvality klasifikace.")
+                st.info(T.get("need_full_analysis_quality", ""))
 
     # ── 10. Dashboard ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_dashboard", True):
