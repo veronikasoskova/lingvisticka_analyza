@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import ast
 import random
+import re
 import sqlite3
 import sys
 from collections import Counter
@@ -29,6 +30,7 @@ SRC = Path(__file__).parent
 sys.path.insert(0, str(SRC))
 
 from a_paths import BIBLE_FOLDER, OUTPUT_DIR
+from t_config_tradition import canonicalize_lemma
 
 DB_PATH = OUTPUT_DIR / "bible_analysis.db"
 RUN_ID  = "2024-01-01T00:00:00"        # fixed run_id for demo data
@@ -194,8 +196,13 @@ def _make_relation_row(sentence_id: int, sentence: str, file_name: str) -> dict:
 
 def _make_refined_row(sentence_id: int, sentence: str, file_name: str) -> dict:
     dtype = _weighted_choice(DESCRIPTION_TYPES, DESC_WEIGHTS)
-    words = sentence.lower().split()
-    lemmas = " ".join(dict.fromkeys(words[:6]))   # simple pseudo-lemmas
+    raw_words = sentence.lower().split()
+    words = []
+    for token in raw_words:
+        token = re.sub(r"[^\wáéíóúýěščřžďťňůäöüľĺŕ]+", "", token, flags=re.UNICODE)
+        if token:
+            words.append(canonicalize_lemma(token))
+    lemmas = " ".join(dict.fromkeys(words[:8]))   # pseudo-lemmas + BKR aliases
     return {
         "sentence_id":    sentence_id,
         "sentence":       sentence,

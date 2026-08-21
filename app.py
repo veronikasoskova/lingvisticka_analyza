@@ -135,7 +135,14 @@ TRANSLATIONS = {
         "tradition_diagnostic_title": "Diagnostické příznaky tradic",
         "tradition_diagnostic_desc": (
             "Vysoce přesné identifikátory tradice (buddha, akáša, alláh, sefírot…). "
-            "U křesťanského korpusu by měly být téměř nulové s výjimkou křesťanských/židovských termínů."
+            "U křesťanského korpusu: vrstva YHWH (Hospodin) ve SZ a christologické termíny v NZ — "
+            "ne cizí tradice. Cizí identifikátory (buddha, akáša…) by měly být téměř nulové."
+        ),
+        "supporting_title": "Podpůrné sdílené motívy u zjištěné tradice",
+        "supporting_desc": (
+            "Obecná slova (duše, světlo, vědomí…) se **nemažou**. V Bibli zůstávají "
+            "jen jako sdílené motívy. V teosofické nebo buddhistické knize se k tradici "
+            "přičtou **až když** ji už identifikovaly diagnostické termíny (akáša, buddha…)."
         ),
         "religious_polyvalent_explainer": (
             "**Proč se v Bibli jeví motivy jiných tradic?**\n\n"
@@ -149,8 +156,10 @@ TRANSLATIONS = {
             "- **duše / tělo** — biblická antropologie (hebr. *nefeš*, ř. *psyché*). "
             "Platónský dualizmus je jiný pojem. Částečný hellénistický vliv je možný "
             "v moudrostní literatuře a u Pavla, ale slovo „duše“ samo o sobě to nedokazuje.\n"
-            "- **slovo (logos)** — J 1. Kralická Bible překládá λόγος jako **Slovo**, "
-            "ne jako „logos“. Stoický a později teosofický Logos je pozdější čtení.\n"
+            "- **slovo (logos)** — lemma se **nemaže**. Ve větě rozlišujeme tři použití:\n"
+            "  (1) **Janovské Slovo** (počátek / světlo / tělo) — křesťanský motiv, který je formálně blízký stoickému Logu, ne důkaz stoicismu;\n"
+            "  (2) **slovo Hospodinovo / slovo Boží** (dabar YHWH) — prorocký registr;\n"
+            "  (3) **běžné slovo** — řeč a zpráva, ne λόγος.\n"
             "- **tajemství** — Pavlův μυστήριον (skrytý plán spásy), ne gnostická gnóze.\n"
             "- **duch** — hebr. *rúach* / ř. *pneuma*. Duch Boží, ne šamanský animismus.\n\n"
             "**Skutečný historický kontakt** (ne falešný poplach):\n"
@@ -160,11 +169,17 @@ TRANSLATIONS = {
             "- Teosofie, New Age, jungiánství a tantra jsou novověké; jejich termíny "
             "(akáša, nirvána, sefírot, čakra) se v Bibli nevyskytují.\n\n"
             "**Jak to číst v analýze:**\n"
-            "- **Tematická pole** (božské, zákon, oběť…) popisují, *o čem* text mluví.\n"
-            "- **Diagnostické termíny** identifikují, *ke které* tradici text patří.\n"
+            "- **Tematická pole** (božské, zákon, oběť…) popisují, *o čem* text mluví. "
+            "Obecná slova (pán, krev, syn, život…) v poli zůstávají, počítají se jen v odpovídajícím souvýskytu.\n"
+            "- **Diagnostické vrstvy:** *YHWH* (Hospodin / Jahve) je společné SZ jméno Boží; "
+            "*křesťanské příznaky* jsou novozákonní (Kristus, evangelium, kříž). "
+            "Hospodin se z křesťanského pole **nebere pryč** — BKR je křesťanský překlad — "
+            "ale sám o sobě neoznačuje NZ.\n"
             "- **Sdílené motivy** ukazují polyvalentní slovní zásobu — ne přiřazení k cizí tradici.\n"
             "Sekce je připravená i na nahrané ne-křesťanské knihy (teosofie, buddhismus…): "
-            "ty se poznají diagnostickými termíny, ne obecnými slovy jako „duše“."
+            "ty se poznají diagnostickými termíny, ne obecnými slovy jako „duše“. "
+            "Slova jako duše/světlo/vědomí se **nemažou** — v Bibli zůstanou jako sdílené motivy; "
+            "v teosofické knize se k tradici přičtou, až když ji už identifikoval termín jako akáša."
         ),
         "rel_elements": {
             "covenant_law":      "Smlouva a zákon",
@@ -184,6 +199,8 @@ TRANSLATIONS = {
             "divine":            "Božské prvky",
             "kinship":           "Příbuzenství",
             "christian_elements": "Křesťanské příznaky",
+            "yhwh_elements":     "YHWH / Hospodin",
+            "yhwh":              "YHWH / Hospodin",
             "jewish_elements":   "Židovské příznaky",
             "buddhist_elements": "Buddhistické prvky",
             "hindu_elements":    "Hinduistické prvky",
@@ -209,6 +226,8 @@ TRANSLATIONS = {
             "soul_body":           "Duše / tělo",
             "spirit":              "Duch",
             "logos_word":          "Slovo (logos)",
+            "word_of_god":         "Slovo Hospodinovo / slovo Boží",
+            "word_common":         "Běžné slovo",
             "mystery":             "Tajemství",
             "love":                "Láska",
             "one_unity":           "Jedno / jednota",
@@ -216,6 +235,7 @@ TRANSLATIONS = {
             "number_harmony":      "Číslo / harmonie",
             "virtue_nature_fate":  "Ctnost / příroda / osud",
             "pleasure_pain":       "Slast / bolest",
+            "consciousness_energy": "Vědomí / energie",
         },
         "rel_philosophy": {
             "platonic":      "Platonismus",
@@ -810,7 +830,14 @@ TRANSLATIONS = {
         "tradition_diagnostic_title": "Diagnostické príznaky tradícií",
         "tradition_diagnostic_desc": (
             "Vysoko presné identifikátory tradície (buddha, akáša, alláh, sefírot…). "
-            "Pri kresťanskom korpuse by mali byť takmer nulové s výnimkou kresťanských/židovských termínov."
+            "Pri kresťanskom korpuse: vrstva YHWH (Hospodin) v SZ a christologické termíny v NZ — "
+            "nie cudzia tradícia. Cudzie identifikátory (buddha, akáša…) by mali byť takmer nulové."
+        ),
+        "supporting_title": "Podporujúce zdieľané motívy pri zistenej tradícii",
+        "supporting_desc": (
+            "Obecné slová (duša, svetlo, vedomie…) sa **nemažú**. V Biblii ostávajú "
+            "len ako zdieľané motívy. V teozofickej alebo buddhistickej knihe sa k tradícii "
+            "pripočítajú **až keď** ju už identifikovali diagnostické termíny (akáša, buddha…)."
         ),
         "religious_polyvalent_explainer": (
             "**Prečo sa v Biblii javia motívy iných tradícií?**\n\n"
@@ -824,8 +851,10 @@ TRANSLATIONS = {
             "- **duša / telo** — biblická antropológia (hebr. *nefeš*, gr. *psyché*). "
             "Platónsky dualizmus je iný pojem. Čiastočný helenistický vplyv je možný "
             "v múdrostnej literatúre a u Pavla, ale slovo „duša“ samo o sebe to nedokazuje.\n"
-            "- **slovo (logos)** — J 1. Králická Biblia prekladá λόγος ako **Slovo**, "
-            "nie ako „logos“. Stoický a neskôr teozofický Logos je neskoršie čítanie.\n"
+            "- **slovo (logos)** — lemma sa **nemaže**. Vo vete rozlišujeme tri použitia:\n"
+            "  (1) **Jánovské Slovo** (počiatok / svetlo / telo) — kresťanský motív, ktorý je formálne blízky stoickému Logu, nie dôkaz stoicizmu;\n"
+            "  (2) **slovo Hospodinovo / slovo Božie** (dabar YHWH) — prorocký register;\n"
+            "  (3) **bežné slovo** — reč a správa, nie λόγος.\n"
             "- **tajomstvo** — Pavlov μυστήριον (skrytý plán spásy), nie gnostická gnóza.\n"
             "- **duch** — hebr. *rúach* / gr. *pneuma*. Duch Boží, nie šamanský animizmus.\n\n"
             "**Skutočný historický kontakt** (nie falošný poplach):\n"
@@ -835,11 +864,17 @@ TRANSLATIONS = {
             "- Teozofia, New Age, jungiánstvo a tantra sú novoveké; ich termíny "
             "(akáša, nirvána, sefírot, čakra) sa v Biblii nevyskytujú.\n\n"
             "**Ako to čítať v analýze:**\n"
-            "- **Tematické polia** (božské, zákon, obeta…) popisujú, *o čom* text hovorí.\n"
-            "- **Diagnostické termíny** identifikujú, *ku ktorej* tradícii text patrí.\n"
+            "- **Tematické polia** (božské, zákon, obeta…) popisujú, *o čom* text hovorí. "
+            "Obecné slová (pán, krv, syn, život…) v poli ostávajú, počítajú sa len v zodpovedajúcom súvýskyte.\n"
+            "- **Diagnostické vrstvy:** *YHWH* (Hospodin / Jahve) je spoločné SZ meno Božie; "
+            "*kresťanské príznaky* sú novozákonné (Kristus, evanjelium, kríž). "
+            "Hospodin sa z kresťanského poľa **neberie preč** — BKR je kresťanský preklad — "
+            "ale sám osebe neoznačuje NZ.\n"
             "- **Zdieľané motívy** ukazujú polyvalentnú slovnú zásobu — nie priradenie k cudzej tradícii.\n"
             "Sekcia je pripravená aj na nahraté nekresťanské knihy (teozofia, buddhizmus…): "
-            "tie sa spoznajú diagnostickými termínmi, nie obecnými slovami ako „duša“."
+            "tie sa spoznajú diagnostickými termínmi, nie obecnými slovami ako „duša“. "
+            "Slová ako duša/svetlo/vedomie sa **nemažú** — v Biblii ostanú ako zdieľané motívy; "
+            "v teozofickej knihe sa k tradícii pripočítajú, až keď ju už identifikoval termín ako akáša."
         ),
         "rel_elements": {
             "covenant_law":      "Zmluva a zákon",
@@ -859,6 +894,8 @@ TRANSLATIONS = {
             "divine":            "Božské prvky",
             "kinship":           "Príbuzenstvo",
             "christian_elements": "Kresťanské príznaky",
+            "yhwh_elements":     "YHWH / Hospodin",
+            "yhwh":              "YHWH / Hospodin",
             "jewish_elements":   "Židovské príznaky",
             "buddhist_elements": "Buddhistické prvky",
             "hindu_elements":    "Hinduistické prvky",
@@ -884,6 +921,8 @@ TRANSLATIONS = {
             "soul_body":           "Duša / telo",
             "spirit":              "Duch",
             "logos_word":          "Slovo (logos)",
+            "word_of_god":         "Slovo Hospodinovo / slovo Božie",
+            "word_common":         "Bežné slovo",
             "mystery":             "Tajomstvo",
             "love":                "Láska",
             "one_unity":           "Jedno / jednota",
@@ -891,6 +930,7 @@ TRANSLATIONS = {
             "number_harmony":      "Číslo / harmónia",
             "virtue_nature_fate":  "Cnosť / príroda / osud",
             "pleasure_pain":       "Slasť / bolesť",
+            "consciousness_energy": "Vedomie / energia",
         },
         "rel_philosophy": {
             "platonic":      "Platonizmus",
@@ -1472,7 +1512,14 @@ TRANSLATIONS = {
         "tradition_diagnostic_title": "Tradition diagnostic markers",
         "tradition_diagnostic_desc": (
             "High-precision tradition identifiers (buddha, akasha, allah, sefirot…). "
-            "In a Christian corpus they should be near zero except for Christian/Jewish terms."
+            "In a Christian corpus: the YHWH layer (Hospodin) in the OT and christological terms in the NT — "
+            "not a foreign tradition. Foreign identifiers (buddha, akasha…) should be near zero."
+        ),
+        "supporting_title": "Supporting shared motifs for the detected tradition",
+        "supporting_desc": (
+            "Generic words (soul, light, consciousness…) are **not deleted**. In the Bible they stay "
+            "as shared motifs only. In a Theosophical or Buddhist book they are counted toward that "
+            "tradition **only after** diagnostic terms (akasha, buddha…) have already identified it."
         ),
         "religious_polyvalent_explainer": (
             "**Why do other traditions' motifs appear in the Bible?**\n\n"
@@ -1486,8 +1533,10 @@ TRANSLATIONS = {
             "- **soul / body** — biblical anthropology (Heb. *nephesh*, Gk. *psychē*). "
             "Platonic dualism is a different concept. Some Hellenistic influence is possible "
             "in wisdom literature and Paul, but the word “soul” alone does not prove it.\n"
-            "- **word (logos)** — Jn 1. The Kralice Bible translates λόγος as **Word**, "
-            "not as “logos”. The Stoic and later Theosophical Logos is a later reading.\n"
+            "- **word (logos)** — the lemma is **not deleted**. Three uses in a sentence:\n"
+            "  (1) **Johannine Word** (beginning / light / flesh) — a Christian motif formally close to the Stoic Logos, not proof of Stoicism;\n"
+            "  (2) **word of the LORD / word of God** (dabar YHWH) — prophetic register;\n"
+            "  (3) **ordinary word** — speech and report, not λόγος.\n"
             "- **mystery** — Paul's μυστήριον (hidden plan of salvation), not Gnostic gnosis.\n"
             "- **spirit** — Heb. *ruach* / Gk. *pneuma*. The Spirit of God, not shamanic animism.\n\n"
             "**Real historical contact** (not a false alarm):\n"
@@ -1497,11 +1546,17 @@ TRANSLATIONS = {
             "- Theosophy, New Age, Jungianism and Tantra are modern; their terms "
             "(akasha, nirvana, sefirot, chakra) do not occur in the Bible.\n\n"
             "**How to read the analysis:**\n"
-            "- **Thematic fields** (divine, law, sacrifice…) describe *what* the text talks about.\n"
-            "- **Diagnostic terms** identify *which* tradition the text belongs to.\n"
+            "- **Thematic fields** (divine, law, sacrifice…) describe *what* the text talks about. "
+            "Generic lemmas (lord, blood, son, life…) stay in the field and count only with supporting co-text.\n"
+            "- **Diagnostic layers:** *YHWH* (Hospodin / Yahweh) is the shared OT divine name; "
+            "*Christian markers* are New Testament terms (Christ, gospel, cross). "
+            "Hospodin is **not removed** from the Christian field — BKR is a Christian translation — "
+            "but by itself it does not mark the NT.\n"
             "- **Shared motifs** show polyvalent vocabulary — not attribution to a foreign tradition.\n"
             "This section is also prepared for uploaded non-Christian books (Theosophy, Buddhism…): "
-            "those are recognised by diagnostic terms, not by generic words such as “soul”."
+            "those are recognised by diagnostic terms, not by generic words such as “soul”. "
+            "Words such as soul/light/consciousness are **not deleted** — in the Bible they stay as shared motifs; "
+            "in a Theosophical book they count toward that tradition only after a term such as akasha has identified it."
         ),
         "rel_elements": {
             "covenant_law":      "Covenant & Law",
@@ -1521,6 +1576,8 @@ TRANSLATIONS = {
             "divine":            "Divine Elements",
             "kinship":           "Kinship",
             "christian_elements": "Christian markers",
+            "yhwh_elements":     "YHWH / LORD",
+            "yhwh":              "YHWH / LORD",
             "jewish_elements":   "Jewish markers",
             "buddhist_elements": "Buddhist elements",
             "hindu_elements":    "Hindu elements",
@@ -1546,6 +1603,8 @@ TRANSLATIONS = {
             "soul_body":           "Soul / body",
             "spirit":              "Spirit",
             "logos_word":          "Word (logos)",
+            "word_of_god":         "Word of the LORD / word of God",
+            "word_common":         "Ordinary word",
             "mystery":             "Mystery",
             "love":                "Love",
             "one_unity":           "The One / unity",
@@ -1553,6 +1612,7 @@ TRANSLATIONS = {
             "number_harmony":      "Number / harmony",
             "virtue_nature_fate":  "Virtue / nature / fate",
             "pleasure_pain":       "Pleasure / pain",
+            "consciousness_energy": "Consciousness / energy",
         },
         "rel_philosophy": {
             "platonic":      "Platonism",
@@ -3013,12 +3073,17 @@ def generate_pdf_report(
     if session.get("sel_religious", True) and lemmas_data:
         story += _section(T.get("ana_religious_name","Religious Elements"), "⚡")
         story.append(Paragraph(T.get("ana_religious_q",""), sty["caption"]))
-        from t_config_tradition import analyze_lemma_set
-        _all_l = [t for _,ls in lemmas_data for t in ls.split() if len(t)>2 and t.isalpha()]
-        _scored = analyze_lemma_set(_all_l)
+        from t_config_tradition import analyze_sentences, canonicalize_lemma
+        _sents = [
+            [canonicalize_lemma(t) for t in ls.split() if t]
+            for _, ls in lemmas_data
+        ]
+        _scored = analyze_sentences(_sents)
+        _layers = ", ".join(_scored.get("detected_layers") or [_scored["detected_tradition"]])
         story.append(Paragraph(
             f"{T.get('detected_tradition_label','Detected tradition')}: "
-            f"<b>{_scored['detected_tradition']}</b>",
+            f"<b>{_scored['detected_tradition']}</b>"
+            f" ({_layers})",
             sty["caption"],
         ))
         _elh = {k: len(v) for k, v in _scored["thematic"].items()}
@@ -4008,6 +4073,7 @@ with tab_bible:
                 )
             else:
                 st.caption(T.get("no_foreign_hits", ""))
+            st.caption(T.get("supporting_desc", ""))
 
             if density_wide is not None:
                 s_cols = [c for c in density_wide.columns
@@ -5460,15 +5526,18 @@ with tab_results:
     # ── 5. Náboženské elementy ────────────────────────────────────────────────
     if st.session_state.get("sel_religious", True) and _ldat:
         with st.expander(f"📤 ⚡ {T['ana_religious_name']}"):
-            from t_config_tradition import analyze_lemma_set
-            _all_up = [t for _,ls in _ldat for t in ls.split()
-                       if len(t)>2 and t.isalpha()]
-            _scored = analyze_lemma_set(_all_up)
+            from t_config_tradition import analyze_sentences, canonicalize_lemma
+            _sents = [
+                [canonicalize_lemma(t) for t in ls.split() if t]
+                for _, ls in _ldat
+            ]
+            _scored = analyze_sentences(_sents)
             _r3_el = T.get("rel_elements", {})
             _r3_ph = T.get("rel_philosophy", {})
+            _layers = ", ".join(_scored.get("detected_layers") or [_scored["detected_tradition"]])
             st.caption(
                 f"{T.get('detected_tradition_label', 'Detected tradition')}: "
-                f"**{_scored['detected_tradition']}**"
+                f"**{_scored['detected_tradition']}** ({_layers})"
             )
             st.markdown(T.get("religious_polyvalent_explainer", ""))
             _elh = {k: len(v) for k, v in _scored["thematic"].items()}
@@ -5528,6 +5597,20 @@ with tab_results:
                     fig_hbar(_sdf, T["x_count"], "motif",
                              T.get("shared_motifs_title", "Shared motifs"),
                              h=280, xlabel=T["x_count"]),
+                    use_container_width=True,
+                )
+            _sup = {k: len(v) for k, v in _scored.get("supporting", {}).items()}
+            if _sup:
+                _sdf2 = pd.DataFrame(
+                    sorted({_r3_el.get(k, _r3_ph.get(k, k)): v
+                            for k, v in _sup.items()}.items(),
+                           key=lambda x: -x[1]),
+                    columns=["tradition", T["x_count"]])
+                st.caption(T.get("supporting_desc", ""))
+                st.plotly_chart(
+                    fig_hbar(_sdf2, T["x_count"], "tradition",
+                             T.get("supporting_title", "Supporting motifs"),
+                             h=240, xlabel=T["x_count"]),
                     use_container_width=True,
                 )
 

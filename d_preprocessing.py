@@ -1,7 +1,6 @@
 import os
 import re
 import unicodedata
-import stanza
 
 from dataclasses import dataclass, field
 from typing import List, Dict
@@ -35,6 +34,7 @@ _PIPELINE_CONFIGS = {
 
 
 def get_nlp(lang: str = "cs"):
+    import stanza
 
     if lang not in _NLP_CACHE:
         cfg = _PIPELINE_CONFIGS.get(lang)
@@ -73,6 +73,23 @@ _BKR_ENCLITIC_RE = re.compile(
     r"(\w)-(li|ž|ť)\b",
     re.IGNORECASE | re.UNICODE,
 )
+
+# Attached emphatic -ť without hyphen ("nyníť", "neníť", "umíť").
+# Do NOT split lexicalised conjunctions (neboť, vždyť, ať, byť).
+_BKR_KEEP_T = frozenset({"neboť", "vždyť", "ať", "byť"})
+_BKR_ATTACHED_T_RE = re.compile(
+    r"\b\w{3,}ť\b",
+    re.IGNORECASE | re.UNICODE,
+)
+
+
+def _split_attached_t(text: str) -> str:
+    def repl(match: re.Match) -> str:
+        token = match.group(0)
+        if token.lower() in _BKR_KEEP_T:
+            return token
+        return token[:-1] + " ť"
+    return _BKR_ATTACHED_T_RE.sub(repl, text)
 
 
 def _normalize_universal(text: str) -> str:
@@ -120,10 +137,12 @@ def normalize_bkr(text: str) -> str:
     Steps
     -----
     1-4. Universal normalization via _normalize_universal().
-    5.   Czech BKR enclitic splitting: "p\u0159ijde\u0161-li" -> "p\u0159ijde\u0161 li".
+    5.   Czech BKR hyphenated enclitics: "přijdeš-li" -> "přijdeš li".
+    6.   Attached emphatic -ť: "nyníť" -> "nyní ť" (not "neboť").
     """
     text = _normalize_universal(text)
     text = _BKR_ENCLITIC_RE.sub(r"\1 \2", text)
+    text = _split_attached_t(text)
     text = re.sub(r"[ \t]{2,}", " ", text)
     return text.strip()
 
@@ -298,6 +317,14 @@ if __name__ == "__main__":
          "jestliže přijde"),
         ("Nicméně půjdeme.",          # no enclitic — must NOT change
          "Nicméně půjdeme."),
+        ("nyníť pravím vám",
+         "nyní ť pravím vám"),
+        ("neníť to tak",
+         "není ť to tak"),
+        ("neboť Bůh miloval svět",    # lexicalised — must NOT split
+         "neboť Bůh miloval svět"),
+        ("vždyť on jest",
+         "vždyť on jest"),
     ]
     _ok = True
     for _inp, _expected in _cases:

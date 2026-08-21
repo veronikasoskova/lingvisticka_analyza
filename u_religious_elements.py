@@ -11,6 +11,10 @@ from t_config_tradition import (
     BKR_PHILOSOPHICAL_INFLUENCES,
     SHARED_MOTIFS,
     TRADITION_DIAGNOSTIC,
+    canonicalize_lemma,
+    field_hits,
+    motif_hits,
+    lexicon_hits,
 )
 from n_db import load_rows as _db_load, TABLE_REFINED
 
@@ -30,8 +34,12 @@ def load_rows():
     return _db_load(TABLE_REFINED)
 
 
+def get_lemma_list(row):
+    return [canonicalize_lemma(w) for w in row.get("lemmas", "").split() if w]
+
+
 def get_lemmas(row):
-    return set(row.get("lemmas", "").split())
+    return set(get_lemma_list(row))
 
 
 # ==========================================================
@@ -93,7 +101,7 @@ def _role_weight(lemma: str, row: dict) -> float:
         return 1.0
     # Fallback: position heuristic
     _ROLE_WEIGHT_COUNTER["positional"] += 1  # TEMP
-    lemma_list = row.get("lemmas", "").split()
+    lemma_list = get_lemma_list(row)
     return _role_weight_position(lemma, lemma_list)
 
 
@@ -117,7 +125,7 @@ def compute_density_by_book(rows, active_elements):
         lemmas = get_lemmas(row)
 
         for element_name, lexicon in active_elements.items():
-            hits = lemmas & lexicon
+            hits = field_hits(lemmas, element_name, lexicon)
             s    = by_book[fname][element_name]
             s["total_sentences"] += 1
             s["total_lemmas"]    += len(lemmas)
@@ -175,7 +183,7 @@ def compute_fields_by_sentence(rows, active_elements):
         matched   = {}
 
         for element_name, lexicon in active_elements.items():
-            hits = lemmas & lexicon
+            hits = field_hits(lemmas, element_name, lexicon)
             if hits:
                 matched[element_name] = hits
 
@@ -250,7 +258,7 @@ def compute_philosophy_by_book(rows, bkr_filter: bool = True):
         for phil_name, lexicon in lexicons.items():
             if not lexicon:
                 continue
-            hits = lemmas & lexicon
+            hits = lexicon_hits(lemmas, lexicon)
             if hits:
                 by_book[fname][phil_name]["matched_count"] += 1
                 by_book[fname][phil_name]["top_words"].update(hits)
@@ -289,7 +297,7 @@ def compute_shared_motifs_by_book(rows):
         fname  = row["file_name"]
         lemmas = get_lemmas(row)
         for motif_name, meta in SHARED_MOTIFS.items():
-            hits = lemmas & meta["lemmas"]
+            hits = motif_hits(lemmas, meta)
             if hits:
                 by_book[fname][motif_name]["matched_count"] += 1
                 by_book[fname][motif_name]["top_words"].update(hits)
@@ -319,7 +327,7 @@ def compute_tradition_diagnostics_by_book(rows):
     """
     High-precision tradition identifiers (buddha, akáša, alláh, sefírot…).
     On a Christian Bible corpus this should be empty or nearly empty,
-    except for Christian/Jewish diagnostic terms (kristus, hospodin, tóra).
+    except for YHWH names (hospodin) and NT christological terms (kristus).
     """
     by_book = defaultdict(lambda: defaultdict(lambda: {
         "matched_count": 0,
@@ -330,7 +338,7 @@ def compute_tradition_diagnostics_by_book(rows):
         fname  = row["file_name"]
         lemmas = get_lemmas(row)
         for trad_name, lexicon in TRADITION_DIAGNOSTIC.items():
-            hits = lemmas & lexicon
+            hits = lexicon_hits(lemmas, lexicon)
             if hits:
                 by_book[fname][trad_name]["matched_count"] += 1
                 by_book[fname][trad_name]["top_words"].update(hits)

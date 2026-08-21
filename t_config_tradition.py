@@ -30,6 +30,68 @@ def _W(*words: str) -> frozenset[str]:
 
 
 # ==========================================================
+# BKR / inflection aliases applied at match time
+# Demo rows and cs-pdt often keep surface forms (Krista, obět, temnostech).
+# Canonicalize so they still hit the lexicon — lemmas are not deleted.
+# ==========================================================
+
+LEMMA_ALIASES: dict[str, str] = {
+    "obět": "oběť",
+    "oběti": "oběť",
+    "obětech": "oběť",
+    "obětmi": "oběť",
+    "temnost": "temnota",
+    "temnosti": "temnota",
+    "temnostech": "temnota",
+    "temnostem": "temnota",
+    "tmy": "tma",
+    "tmu": "tma",
+    "tmě": "tma",
+    "tmách": "tma",
+    "jezukrist": "ježíš",
+    "jezukrista": "ježíš",
+    "jezukristu": "ježíš",
+    "jezukristem": "ježíš",
+    "jezukristus": "ježíš",
+    "jezis": "ježíš",
+    "ježíše": "ježíš",
+    "ježíši": "ježíš",
+    "ježíšem": "ježíš",
+    "krista": "kristus",
+    "kristu": "kristus",
+    "kristem": "kristus",
+    "kristův": "kristus",
+    "kristovi": "kristus",
+    "kristova": "kristus",
+    "kristovo": "kristus",
+    "hospodina": "hospodin",
+    "hospodinu": "hospodin",
+    "hospodine": "hospodin",
+    "hospodinem": "hospodin",
+    "hospodinův": "hospodin",
+    "hospodinova": "hospodin",
+    "hospodinovo": "hospodin",
+    "hospodinovi": "hospodin",
+    "slova": "slovo",
+    "slovem": "slovo",
+    "slovu": "slovo",
+    "slově": "slovo",
+    "krve": "krev",
+    "krví": "krev",
+    "krvi": "krev",
+}
+
+
+def canonicalize_lemma(word: str) -> str:
+    w = str(word).strip().lower()
+    return LEMMA_ALIASES.get(w, w)
+
+
+def canonicalize_lemmas(lemmas: Iterable[str]) -> set[str]:
+    return {canonicalize_lemma(w) for w in lemmas if str(w).strip()}
+
+
+# ==========================================================
 # POLYVALENT lemmas — never count as foreign-tradition evidence
 # ==========================================================
 
@@ -240,10 +302,120 @@ THEMATIC_ELEMENTS: dict[str, frozenset] = {
 
 
 # ==========================================================
+# Context gates — keep noisy lemmas in the field, count them only
+# when the sentence co-text supports the intended sense.
+# Lemmas are never deleted from THEMATIC_ELEMENTS.
+# ==========================================================
+
+CONTEXT_GATES: dict[str, dict[str, dict[str, frozenset]]] = {
+    "divine": {
+        "pán": {
+            "require_any": _W(
+                "bůh", "hospodin", "ježíš", "kristus", "hospodinův", "boží",
+                "god", "jesus", "christ",
+            ),
+        },
+        "sláva": {
+            "require_any": _W(
+                "bůh", "hospodin", "ježíš", "kristus", "svatý", "boží",
+                "god", "jesus", "christ",
+            ),
+        },
+        "svatý": {
+            "require_any": _W(
+                "bůh", "hospodin", "duch", "ježíš", "kristus", "izrael",
+                "god", "spirit", "jesus", "christ",
+            ),
+        },
+    },
+    "kinship": {
+        "syn": {
+            "exclude_if_any": _W(
+                "bůh", "člověk", "hospodin", "kristus", "boží",
+                "god", "christ", "man",
+            ),
+        },
+        "otec": {
+            "exclude_if_any": _W(
+                "nebeský", "bůh", "hospodin", "boží", "god",
+            ),
+        },
+        "muž": {
+            "require_any": _W(
+                "žena", "manželka", "vdova", "ženit", "nevěsta", "manžel",
+                "wife", "woman", "widow",
+            ),
+        },
+        "žena": {
+            "require_any": _W(
+                "muž", "manžel", "vdova", "porodit", "matka", "nevěsta",
+                "husband", "man", "widow", "mother",
+            ),
+        },
+        "rod": {
+            "require_any": _W(
+                "pokolení", "otec", "syn", "dům", "zplodit", "potomek",
+                "lineage", "father", "son",
+            ),
+        },
+    },
+    "ritual_sacrifice": {
+        "krev": {
+            "require_any": _W(
+                "oběť", "obětovat", "oltář", "beránek", "smlouva", "kněz",
+                "kropit", "sacrifice", "altar", "lamb", "covenant", "priest",
+            ),
+        },
+    },
+    "wisdom": {
+        "rada": {
+            "require_any": _W(
+                "moudrost", "rozum", "rozumnost", "bázeň", "hospodin",
+                "přísloví", "poučení", "wisdom", "proverb",
+            ),
+        },
+        "učení": {
+            "require_any": _W(
+                "moudrost", "zákon", "evangelium", "poučení", "přísloví",
+                "naučení", "wisdom", "law", "gospel",
+            ),
+        },
+    },
+    "life_death": {
+        "život": {
+            "require_any": _W(
+                "věčný", "smrt", "vzkříšení", "vzkřísit", "duše", "bůh",
+                "živý", "zemřít", "eternal", "death", "resurrection", "soul",
+                "god",
+            ),
+        },
+    },
+}
+
+# Johannine / creation co-text for Slovo as λόγος (Christian sense that
+# is formally close to Stoic Logos).  "bůh" alone is NOT enough — that is
+# ordinary "slovo Boží" / dabar, handled as word_of_god.
+LOGOS_PROLOGUE_CONTEXT = _W(
+    "počátek", "počátku", "stvořit", "stvoření", "světlo", "život",
+    "tělo", "vtělit", "vtělení",
+    "beginning", "create", "created", "light", "life", "flesh",
+)
+WORD_OF_GOD_CONTEXT = _W(
+    "hospodin", "bůh", "prorok", "proroctví", "zákon", "kázat", "kázání",
+    "výrok", "hospodinovo", "boží",
+    "god", "prophet", "prophecy", "law", "preach",
+)
+
+
+# ==========================================================
 # 2. TRADITION-DIAGNOSTIC LEXICONS  (high precision)
 # ==========================================================
 
-CHRISTIAN_ELEMENTS = distinctive((
+# NT-distinctive Christian markers.  Hospodin is NOT the sole Christian
+# identifier: it is a Czech rendering of YHWH shared by Jewish and Christian
+# Bibles.  Kept separately in YHWH_ELEMENTS and also inside CHRISTIAN_ELEMENTS
+# (thematic field of the Christian Czech Bible), not as diagnostic "christian".
+CHRISTOLOGICAL_ELEMENTS = distinctive((
     "kristus", "ježíš", "jezukristus", "jezis", "ježíšův",
     "christ", "jesus", "christus",
     "evangelium", "gospel", "evangelista",
@@ -253,7 +425,6 @@ CHRISTIAN_ELEMENTS = distinctive((
     "křest", "křtít", "křtění", "baptism", "baptize",
     "eucharistie", "eucharist",
     "trojice", "trinity", "trinitarian",
-    "hospodin",
     "spasitel", "saviour", "savior", "vykupitel", "redeemer",
     "farizej", "saducej", "pharisee", "sadducee",
     "letnice", "pentecost",
@@ -261,17 +432,32 @@ CHRISTIAN_ELEMENTS = distinctive((
     "evangelijní",
 ))
 
+# Biblical theonym layer (YHWH / Adonai / Elohim).  Shared by Jewish scripture
+# and the Christian Old Testament; BKR translates the Tetragrammaton as Hospodin.
+YHWH_ELEMENTS = distinctive((
+    "hospodin", "hospodinův", "hospodinovo",
+    "jehova", "jehovah", "jahve", "yahweh", "yhwh",
+    "adonai", "elohim", "tetragrammaton",
+))
+
+# Thematic Christian-Czech field: christological terms PLUS Hospodin, because
+# the Kralice Bible is a Christian canon that names God Hospodin.  Diagnostic
+# family "christian" uses CHRISTOLOGICAL_ELEMENTS only.
+CHRISTIAN_ELEMENTS = distinctive(
+    tuple(CHRISTOLOGICAL_ELEMENTS | YHWH_ELEMENTS)
+)
+
 JEWISH_ELEMENTS = distinctive((
     "tóra", "torah", "talmud", "mišna", "mishnah", "gemara",
     "halacha", "halakhah", "agada", "aggadah",
     "šabat", "sabat", "shabbat", "sabbath",
     "košer", "kosher", "kašrut", "kashrut",
     "tefilin", "tefillin", "mezuza", "mezuzah",
-    "jahve", "yhwh", "adonai", "elohim",
     "rabi", "rabbi", "rabín",
     "midraš", "midrash", "tanach", "tanakh",
     "menora", "menorah", "chanuka", "hanukkah", "pesach", "sukot", "sukkot",
     "synagoga", "synagogue",
+    # yhwh / jahve / adonai / elohim live in YHWH_ELEMENTS (theonym layer)
 ))
 
 ISLAMIC_ELEMENTS = distinctive((
@@ -454,7 +640,8 @@ TAOIST_ELEMENTS = distinctive((
 
 
 TRADITION_DIAGNOSTIC: dict[str, frozenset] = {
-    "christian":     CHRISTIAN_ELEMENTS,
+    "christian":     CHRISTOLOGICAL_ELEMENTS,
+    "yhwh":          YHWH_ELEMENTS,
     "jewish":        JEWISH_ELEMENTS,
     "islamic":       ISLAMIC_ELEMENTS,
     "buddhist":      BUDDHIST_ELEMENTS,
@@ -579,12 +766,15 @@ SHARED_MOTIFS: dict[str, dict] = {
         "lemmas": _W("světlo", "tma", "temnota", "temný", "světelný",
                      "light", "darkness", "dark"),
         "biblical_home": "Gn 1; J 1; 1J — stvoření a janovský dualismus",
-        "later_traditions": ("gnostic", "zoroastrian", "new_age"),
+        "later_traditions": ("gnostic", "zoroastrian", "new_age", "theosophical"),
     },
     "soul_body": {
         "lemmas": _W("duše", "tělo", "soul", "body"),
         "biblical_home": "hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",
-        "later_traditions": ("platonic", "neoplatonic", "pythagorean"),
+        "later_traditions": (
+            "platonic", "neoplatonic", "pythagorean",
+            "theosophical", "hindu", "buddhist", "new_age",
+        ),
     },
     "spirit": {
         "lemmas": _W("duch", "duchovní", "spirit", "spiritual"),
@@ -593,13 +783,37 @@ SHARED_MOTIFS: dict[str, dict] = {
     },
     "logos_word": {
         "lemmas": _W("slovo", "word"),
-        "biblical_home": "J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",
+        "require_any": LOGOS_PROLOGUE_CONTEXT,
+        "biblical_home": (
+            "J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív "
+            "(Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — "
+            "nie dôkaz, že Ján je stoik, a nie každé české „slovo“."
+        ),
         "later_traditions": ("stoic", "neoplatonic", "theosophical"),
+    },
+    "word_of_god": {
+        "lemmas": _W("slovo", "word"),
+        "require_any": WORD_OF_GOD_CONTEXT,
+        "exclude_if_any": LOGOS_PROLOGUE_CONTEXT,
+        "biblical_home": (
+            "dabar YHWH / slovo Hospodinovo alebo slovo Boží — "
+            "prorocký a zmluvný register, nie stoický Logos"
+        ),
+        "later_traditions": (),
+    },
+    "word_common": {
+        "lemmas": _W("slovo", "word"),
+        "exclude_if_any": LOGOS_PROLOGUE_CONTEXT | WORD_OF_GOD_CONTEXT,
+        "biblical_home": (
+            "bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, "
+            "ale nie je λόγος ani dabar"
+        ),
+        "later_traditions": (),
     },
     "mystery": {
         "lemmas": _W("tajemství", "skrytý", "mystery", "hidden"),
         "biblical_home": "Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",
-        "later_traditions": ("gnostic", "hermetic", "kabbalistic"),
+        "later_traditions": ("gnostic", "hermetic", "kabbalistic", "theosophical"),
     },
     "love": {
         "lemmas": _W("láska", "milovat", "love"),
@@ -609,12 +823,12 @@ SHARED_MOTIFS: dict[str, dict] = {
     "one_unity": {
         "lemmas": _W("jedno", "jediný", "jednota", "one"),
         "biblical_home": "Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",
-        "later_traditions": ("neoplatonic",),
+        "later_traditions": ("neoplatonic", "theosophical"),
     },
     "immortality": {
         "lemmas": _W("nesmrtelnost", "immortality", "věčný", "věčnost"),
         "biblical_home": "NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",
-        "later_traditions": ("platonic",),
+        "later_traditions": ("platonic", "theosophical", "hindu", "buddhist"),
     },
     "number_harmony": {
         "lemmas": _W("číslo", "harmonie", "number", "harmony"),
@@ -630,6 +844,14 @@ SHARED_MOTIFS: dict[str, dict] = {
         "lemmas": _W("slast", "bolest", "klid", "pleasure", "pain"),
         "biblical_home": "pastorálne listy a žalmy, nie epikurejská ataraxia",
         "later_traditions": ("epicurean",),
+    },
+    "consciousness_energy": {
+        "lemmas": _W(
+            "vědomí", "consciousness", "energie", "energy",
+            "probuzení", "awakening", "plán", "plan",
+        ),
+        "biblical_home": "v BKR takmer neprítomné; v teozofii/New Age ide o kľúčový slovník",
+        "later_traditions": ("theosophical", "new_age", "tantric", "jungian"),
     },
 }
 
@@ -672,10 +894,12 @@ TRADITIONS: dict[str, dict[str, frozenset]] = {
     "christian_czech": {
         **_CS_THEMATIC,
         "christian_elements": CHRISTIAN_ELEMENTS,
+        "yhwh_elements":      YHWH_ELEMENTS,
     },
     "christian_english": {
         **_EN_CORE,
         "christian_elements": CHRISTIAN_ELEMENTS,
+        "yhwh_elements":      YHWH_ELEMENTS,
         "divine": DIVINE_ELEMENTS,
         "moral": MORAL_ELEMENTS,
     },
@@ -688,6 +912,7 @@ TRADITIONS: dict[str, dict[str, frozenset]] = {
         "genealogy_lineage": GENEALOGY_LINEAGE,
         "eschatology":       ESCHATOLOGY,
         "jewish_elements":   JEWISH_ELEMENTS,
+        "yhwh_elements":     YHWH_ELEMENTS,
     },
     "jewish_czech": {
         "monotheism":        MONOTHEISM,
@@ -697,6 +922,7 @@ TRADITIONS: dict[str, dict[str, frozenset]] = {
         "sacred_space":      SACRED_SPACE,
         "genealogy_lineage": GENEALOGY_LINEAGE,
         "jewish_elements":   JEWISH_ELEMENTS,
+        "yhwh_elements":     YHWH_ELEMENTS,
     },
     "islamic_arabic": {
         "monotheism":        MONOTHEISM,
@@ -869,6 +1095,7 @@ UNIVERSAL_RELIGIOUS_ELEMENTS: dict[str, frozenset] = {
     "hindu_elements":     HINDU_ELEMENTS,
     "islamic_elements":   ISLAMIC_ELEMENTS,
     "christian_elements": CHRISTIAN_ELEMENTS,
+    "yhwh_elements":      YHWH_ELEMENTS,
     "jewish_elements":    JEWISH_ELEMENTS,
     "zoroastrian":        ZOROASTRIAN_ELEMENTS,
     "taoist":             TAOIST_ELEMENTS,
@@ -967,11 +1194,14 @@ def detect_tradition_from_lemmas(lemma_counts: dict) -> str:
     labelled Gnostic / Platonic / Theosophical / Shamanic.
     Returns 'unknown' when there is no distinctive evidence.
     """
+    canonical_counts: Counter = Counter()
+    for lemma, n in lemma_counts.items():
+        canonical_counts[canonicalize_lemma(lemma)] += n
     best_tradition = "unknown"
     best_score = 0.0
     for family, lexicon in TRADITION_DIAGNOSTIC.items():
         score = sum(
-            lemma_counts.get(lemma, 0) * _FAMILY_LEMMA_IDF.get(lemma, 1.0)
+            canonical_counts.get(lemma, 0) * _FAMILY_LEMMA_IDF.get(lemma, 1.0)
             for lemma in lexicon
         )
         if score > best_score:
@@ -984,40 +1214,116 @@ def _intersect(lemmas: set[str], lexicon: frozenset) -> set[str]:
     return {w for w in lemmas if w in lexicon}
 
 
-def analyze_lemma_set(lemmas: Iterable[str]) -> dict:
-    """
-    Score a bag of lemmas on all four layers.
+def _gate_allows(sentence: set[str], gate: dict | None) -> bool:
+    if not gate:
+        return True
+    req = gate.get("require_any")
+    if req and not (sentence & set(req)):
+        return False
+    excl = gate.get("exclude_if_any")
+    if excl and (sentence & set(excl)):
+        return False
+    return True
 
-    Returns dict with keys:
-      thematic, tradition_diagnostic, philosophical, shared_motifs,
-      detected_tradition
-    Each of the first four maps name → set of matching lemmas (non-empty only).
+
+def field_hits(
+    sentence_lemmas: Iterable[str],
+    field_name: str,
+    lexicon: frozenset,
+) -> set[str]:
+    """Intersect a sentence with a thematic field, applying CONTEXT_GATES."""
+    sentence = canonicalize_lemmas(sentence_lemmas)
+    gates = CONTEXT_GATES.get(field_name, {})
+    hits: set[str] = set()
+    for w in sentence:
+        if w in lexicon and _gate_allows(sentence, gates.get(w)):
+            hits.add(w)
+    return hits
+
+
+def motif_hits(sentence_lemmas: Iterable[str], meta: dict) -> set[str]:
+    """Shared-motif hits in one sentence, including require/exclude co-text."""
+    sentence = canonicalize_lemmas(sentence_lemmas)
+    hits = sentence & set(meta["lemmas"])
+    if not hits:
+        return set()
+    if not _gate_allows(sentence, {
+        "require_any": meta.get("require_any"),
+        "exclude_if_any": meta.get("exclude_if_any"),
+    }):
+        return set()
+    return hits
+
+
+def lexicon_hits(sentence_lemmas: Iterable[str], lexicon: frozenset) -> set[str]:
+    return canonicalize_lemmas(sentence_lemmas) & set(lexicon)
+
+
+def analyze_sentences(sentences: Iterable[Iterable[str]]) -> dict:
     """
-    lemma_set = {str(w).lower() for w in lemmas if str(w).strip()}
-    thematic = {
-        k: hits for k, v in THEMATIC_ELEMENTS.items()
-        if (hits := _intersect(lemma_set, v))
-    }
-    diagnostic = {
-        k: hits for k, v in TRADITION_DIAGNOSTIC.items()
-        if (hits := _intersect(lemma_set, v))
-    }
-    philosophical = {
-        k: hits for k, v in PHILOSOPHICAL_INFLUENCES.items()
-        if (hits := _intersect(lemma_set, v))
-    }
-    shared = {
-        k: hits for k, meta in SHARED_MOTIFS.items()
-        if (hits := _intersect(lemma_set, meta["lemmas"]))
-    }
-    counts = Counter(lemma_set)
+    Score one or more sentences on all layers.
+
+    Context gates and logos/slovo splits apply *per sentence*.
+    Polyvalent words are never deleted: they appear in shared_motifs
+    (and in word_common when slovo is ordinary speech).  They count as
+    supporting evidence for a tradition only after distinctive terms
+    have already identified it.
+    """
+    thematic: dict[str, set[str]] = {}
+    diagnostic: dict[str, set[str]] = {}
+    philosophical: dict[str, set[str]] = {}
+    shared: dict[str, set[str]] = {}
+    all_lemmas: list[str] = []
+
+    for raw in sentences:
+        sentence = canonicalize_lemmas(raw)
+        if not sentence:
+            continue
+        all_lemmas.extend(sentence)
+        for field, lexicon in THEMATIC_ELEMENTS.items():
+            hits = field_hits(sentence, field, lexicon)
+            if hits:
+                thematic.setdefault(field, set()).update(hits)
+        for family, lexicon in TRADITION_DIAGNOSTIC.items():
+            hits = lexicon_hits(sentence, lexicon)
+            if hits:
+                diagnostic.setdefault(family, set()).update(hits)
+        for name, lexicon in PHILOSOPHICAL_INFLUENCES.items():
+            hits = lexicon_hits(sentence, lexicon)
+            if hits:
+                philosophical.setdefault(name, set()).update(hits)
+        for motif_name, meta in SHARED_MOTIFS.items():
+            hits = motif_hits(sentence, meta)
+            if hits:
+                shared.setdefault(motif_name, set()).update(hits)
+
+    detected_keys = set(diagnostic) | set(philosophical)
+    supporting: dict[str, set[str]] = {}
+    for motif_name, hits in shared.items():
+        for trad in SHARED_MOTIFS[motif_name]["later_traditions"]:
+            if trad in detected_keys:
+                supporting.setdefault(trad, set()).update(hits)
+
+    counts = Counter(all_lemmas)
     return {
         "thematic": thematic,
         "tradition_diagnostic": diagnostic,
         "philosophical": philosophical,
         "shared_motifs": shared,
+        "supporting": supporting,
         "detected_tradition": detect_tradition_from_lemmas(counts),
+        "detected_layers": sorted(diagnostic),
     }
+
+
+def analyze_lemma_set(lemmas: Iterable[str]) -> dict:
+    """
+    Score a bag of lemmas as a single sentence.
+
+    For uploaded documents call analyze_sentences() with one iterable
+    per sentence so co-occurrence gates stay local.
+    """
+    return analyze_sentences([lemmas])
 
 
 def get_active_elements(tradition: str) -> dict:
