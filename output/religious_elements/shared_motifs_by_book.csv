@@ -1,0 +1,40 @@
+file_name,motif,matched_count,hit_kind,biblical_home,later_traditions,top_words
+bible_BKR_1K.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_1P.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_1P.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,duše:1; tělo:1
+bible_BKR_1Te.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_1Tm.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_2Te.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic,tajemství:1
+bible_BKR_Abk.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_Ag.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Am.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Ef.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic,tajemství:1
+bible_BKR_Ef.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,tělo:1
+bible_BKR_Est.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Ez.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Ez.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic,jedno:1
+bible_BKR_Gn.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age,světlo:1
+bible_BKR_Iz.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_J.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age,světlo:1
+bible_BKR_J.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_J.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,tělo:1
+bible_BKR_Jl.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Jon.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Jon.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,duše:1
+bible_BKR_Joz.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,duše:1
+bible_BKR_Jr.txt,logos_word,6,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:6
+bible_BKR_Ju.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_Ko.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic,tajemství:1
+bible_BKR_L.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_Mi.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Mk.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Oz.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Pis.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,duše:1
+bible_BKR_Sf.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Tit.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Za.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean,tělo:1
+bible_BKR_Zd.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Zd.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_Zj.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo, nie ako 'logos'",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Zj.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic,tajemství:1
+bible_BKR_Zj.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3

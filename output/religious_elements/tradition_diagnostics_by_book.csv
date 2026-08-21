@@ -1,0 +1,46 @@
+file_name,tradition,matched_count,hit_kind,top_words
+bible_BKR_1K.txt,christian,2,distinctive,apoštol:1; kristus:1
+bible_BKR_1Kr.txt,christian,1,distinctive,hospodin:1
+bible_BKR_1P.txt,christian,1,distinctive,apoštol:1
+bible_BKR_1S.txt,christian,2,distinctive,hospodin:2
+bible_BKR_1Te.txt,christian,1,distinctive,evangelium:1
+bible_BKR_1Tm.txt,christian,2,distinctive,apoštol:1; evangelium:1
+bible_BKR_2K.txt,christian,2,distinctive,apoštol:1; ježíš:1
+bible_BKR_2P.txt,christian,1,distinctive,apoštol:1
+bible_BKR_2Pa.txt,christian,1,distinctive,hospodin:1
+bible_BKR_2S.txt,christian,1,distinctive,hospodin:1
+bible_BKR_2Te.txt,christian,2,distinctive,evangelium:1; ježíš:1
+bible_BKR_2Tm.txt,christian,2,distinctive,apoštol:1; ježíš:1; kristus:1
+bible_BKR_Abd.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Abk.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Ag.txt,christian,7,distinctive,hospodin:7
+bible_BKR_Am.txt,christian,3,distinctive,hospodin:3
+bible_BKR_Dt.txt,christian,5,distinctive,hospodin:5
+bible_BKR_Ef.txt,christian,1,distinctive,apoštol:1
+bible_BKR_Fp.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Ga.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Gn.txt,christian,3,distinctive,hospodin:3
+bible_BKR_Iz.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Jb.txt,christian,6,distinctive,hospodin:6
+bible_BKR_Jl.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Jon.txt,christian,3,distinctive,hospodin:3
+bible_BKR_Joz.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Jr.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Ko.txt,christian,1,distinctive,apoštol:1
+bible_BKR_Lv.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Mal.txt,christian,3,distinctive,hospodin:3
+bible_BKR_Mi.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Mk.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Mt.txt,christian,1,distinctive,ježíš:1
+bible_BKR_Na.txt,christian,5,distinctive,hospodin:5
+bible_BKR_Nu.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Oz.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Pl.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Pr.txt,christian,1,distinctive,hospodin:1
+bible_BKR_R.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Rt.txt,christian,1,distinctive,hospodin:1
+bible_BKR_Sd.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Sf.txt,christian,2,distinctive,hospodin:2
+bible_BKR_Tit.txt,christian,1,distinctive,apoštol:1
+bible_BKR_Z.txt,christian,3,distinctive,hospodin:3
+bible_BKR_Za.txt,christian,7,distinctive,hospodin:7

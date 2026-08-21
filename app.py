@@ -115,8 +115,57 @@ TRANSLATIONS = {
         "sec_religious": "✝️ Náboženské prvky",
         "element_coverage_title": "Výskyt náboženských prvků",
         "element_coverage_desc": "Počet vět s danými náboženskými prvky — ukazuje tematické zaměření korpusu.",
-        "philosophy_title": "Filozofické tradice",
-        "philosophy_desc": "Přítomnost filozofických a teologických tradic v textu.",
+        "philosophy_title": "Filozofické tradice (diagnostické termíny)",
+        "philosophy_desc": (
+            "Pouze **diagnostické** termíny (gnóze, platón, akáša…). "
+            "Obecná biblická slova (světlo, duše, tajemství) sem nepatří — "
+            "jsou to sdílené motivy, ne důkaz cizí tradice."
+        ),
+        "shared_motifs_title": "Sdílené / polyvalentní motivy",
+        "shared_motifs_desc": (
+            "Slova, která mají **vlastní biblický význam** a později je převzaly "
+            "jiné tradice. Nejsou důkazem, že Bible je gnostická, platónská nebo teosofická."
+        ),
+        "distinctive_phil_empty": (
+            "V Kralické Bibli se nenašly diagnostické termíny cizích filozofických tradic "
+            "(očekávané). Graf vpravo ukazuje sdílené motivy, nikoli cizí vliv."
+        ),
+        "detected_tradition_label": "Detekovaná tradice",
+        "no_foreign_hits": "Žádné diagnostické termíny cizích náboženských tradic.",
+        "tradition_diagnostic_title": "Diagnostické příznaky tradic",
+        "tradition_diagnostic_desc": (
+            "Vysoce přesné identifikátory tradice (buddha, akáša, alláh, sefírot…). "
+            "U křesťanského korpusu by měly být téměř nulové s výjimkou křesťanských/židovských termínů."
+        ),
+        "religious_polyvalent_explainer": (
+            "**Proč se v Bibli jeví motivy jiných tradic?**\n\n"
+            "Detektor je lexikální: hledá shodu lemmatu se slovníkem tradice. "
+            "Mnohá slova jsou **polyvalentní** — mají vlastní biblický význam, "
+            "ale později si je osvojily jiné tradice. To **není** důkaz, že Bible "
+            "je gnostická, platónská, teosofická nebo buddhistická.\n\n"
+            "**Příklady (zdá se to tak, ale není):**\n"
+            "- **světlo / tma** — Gn 1; J 1; 1J. Janovský dualismus. Gnóze (2.–3. stol.) "
+            "si tento jazyk vypůjčila; nevznikla z něj Bible.\n"
+            "- **duše / tělo** — biblická antropologie (hebr. *nefeš*, ř. *psyché*). "
+            "Platónský dualizmus je jiný pojem. Částečný hellénistický vliv je možný "
+            "v moudrostní literatuře a u Pavla, ale slovo „duše“ samo o sobě to nedokazuje.\n"
+            "- **slovo (logos)** — J 1. Kralická Bible překládá λόγος jako **Slovo**, "
+            "ne jako „logos“. Stoický a později teosofický Logos je pozdější čtení.\n"
+            "- **tajemství** — Pavlův μυστήριον (skrytý plán spásy), ne gnostická gnóze.\n"
+            "- **duch** — hebr. *rúach* / ř. *pneuma*. Duch Boží, ne šamanský animismus.\n\n"
+            "**Skutečný historický kontakt** (ne falešný poplach):\n"
+            "- Septuaginta a Nový zákon vznikaly v hellénistickém světě; Jan, Pavel "
+            "a moudrostní literatura sdílejí slovník se středním platonismem.\n"
+            "- Gnóze vznikla *až po* Novém zákoně a biblický jazyk si vypůjčila.\n"
+            "- Teosofie, New Age, jungiánství a tantra jsou novověké; jejich termíny "
+            "(akáša, nirvána, sefírot, čakra) se v Bibli nevyskytují.\n\n"
+            "**Jak to číst v analýze:**\n"
+            "- **Tematická pole** (božské, zákon, oběť…) popisují, *o čem* text mluví.\n"
+            "- **Diagnostické termíny** identifikují, *ke které* tradici text patří.\n"
+            "- **Sdílené motivy** ukazují polyvalentní slovní zásobu — ne přiřazení k cizí tradici.\n"
+            "Sekce je připravená i na nahrané ne-křesťanské knihy (teosofie, buddhismus…): "
+            "ty se poznají diagnostickými termíny, ne obecnými slovy jako „duše“."
+        ),
         "rel_elements": {
             "covenant_law":      "Smlouva a zákon",
             "prophetic_speech":  "Prorocká řeč",
@@ -134,6 +183,39 @@ TRANSLATIONS = {
             "genealogy_lineage": "Genealogie",
             "divine":            "Božské prvky",
             "kinship":           "Příbuzenství",
+            "christian_elements": "Křesťanské příznaky",
+            "jewish_elements":   "Židovské příznaky",
+            "buddhist_elements": "Buddhistické prvky",
+            "hindu_elements":    "Hinduistické prvky",
+            "islamic_elements":  "Islámské prvky",
+            "mystical_union":    "Mystické sjednocení",
+            "esoteric_knowledge": "Ezoterické poznání",
+            "hermetic":          "Hermetismus",
+            "sufi":              "Súfismus",
+            "kabbalistic":       "Kabala",
+            "theosophical":      "Teosofie",
+            "jungian":           "Jungiánství",
+            "new_age":           "New Age",
+            "shamanic":          "Šamanismus",
+            "tantric":           "Tantrismus",
+            "gnostic":           "Gnóze",
+            "zoroastrian":       "Zoroastrismus",
+            "taoist":            "Taoismus",
+            "platonic":          "Platonismus",
+            "neoplatonic":       "Neoplatonismus",
+        },
+        "rel_motifs": {
+            "light_darkness":      "Světlo / tma",
+            "soul_body":           "Duše / tělo",
+            "spirit":              "Duch",
+            "logos_word":          "Slovo (logos)",
+            "mystery":             "Tajemství",
+            "love":                "Láska",
+            "one_unity":           "Jedno / jednota",
+            "immortality":         "Nesmrtelnost / věčnost",
+            "number_harmony":      "Číslo / harmonie",
+            "virtue_nature_fate":  "Ctnost / příroda / osud",
+            "pleasure_pain":       "Slast / bolest",
         },
         "rel_philosophy": {
             "platonic":      "Platonismus",
@@ -151,6 +233,8 @@ TRANSLATIONS = {
             "new_age":       "New Age",
             "shamanic":      "Šamanismus",
             "tantric":       "Tantrismus",
+            "zoroastrian":   "Zoroastrismus",
+            "taoist":        "Taoismus",
         },
         "density_heatmap_title": "Hustota náboženských prvků podle knih",
         "density_heatmap_desc": "Podíl vět s danými náboženskými prvky per kniha (0–1) — tmavší = prvek dominuje v dané knize.",
@@ -346,8 +430,9 @@ TRANSLATIONS = {
             "lyrika, proroctví, modlitba, moudrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Zpracovává text přes Stanza NLP (lemmatizace, POS, dependency) "
             "a extrahuje sémantické shluky a obsahové kategorie.\n\n"
-            "5. **Náboženské prvky** — Detekuje přítomnost 23 náboženských tradic "
-            "a 15 filozofických vlivů pomocí specializovaných lexikálních slovníků.\n\n"
+            "5. **Náboženské prvky** — Tři vrstvy: tematická pole, diagnostické termíny tradic "
+            "(připraveno i na teosofické a buddhistické knihy) a sdílené polyvalentní motivy, "
+            "které se nesmějí číst jako důkaz cizího vlivu v Bibli.\n\n"
             "6. **Síť slov** — Buduje sémantickou síť na základě PMI (síla asociace slov); "
             "identifikuje centrální pojmy a tematické shluky.\n\n"
             "7. **Textové vzory** — Analyzuje n-gramy, sémantické opozice (±3 věty) "
@@ -422,16 +507,24 @@ TRANSLATIONS = {
             "Vysoký podíl request = modlitební nebo direktivní žánr."
         ),
         "ana_religious_detail": (
-            "**Metodika:** Detekce náboženských elementů probíhá přes lexikální porovnávání "
-            "s rozsáhlými frozenset slovníky 23 tradic a 15 filozofických vlivů. "
-            "Každý element je reprezentován sadou lemmat typických pro danou tradici.\n\n"
-            "**Tradice (výběr):** kresťanská česká/anglická, hebrejská, islámská, buddhistická, "
-            "hinduistická, hermetická, kabalistická, súfijská, teosofická, šamanská, tantrická.\n\n"
-            "**Filozofické vlivy:** platonismus, neoplatonismus, gnosticismus, stoicismus, "
-            "aristotelismus, hermetismus, jungiánismus, new-age a další.\n\n"
-            "**Interpretace:** Přítomnost tradice je měřena počtem lemmat z daného slovníku "
-            "v textu. Nejde o důkaz příslušnosti textu k tradici — spíše o ukazatel "
-            "tematické příbuznosti. Různé tradice mohou sdílet lexikum (např. 'duch', 'světlo')."
+            "**Metodika:** Detekce má tři vrstvy, které se nesmějí směšovat.\n\n"
+            "1. **Tematická pole** (oběť, zákon, příbuzenství…) — o čem text mluví. "
+            "Univerzální, použitelná i na nekřesťanské knihy.\n"
+            "2. **Diagnostické termíny** (buddha, akáša, alláh, sefírot, čakra…) — "
+            "ke které tradici text patří. Obecná biblická slova sem nepatří.\n"
+            "3. **Sdílené / polyvalentní motivy** (světlo/tma, duše/tělo, slovo, tajemství) — "
+            "biblická slova, která později převzaly jiné tradice. **Nejsou důkazem** "
+            "gnosticismu, platonismu ani teosofie v Bibli.\n\n"
+            "**Proč se to tak jeví:** detektor porovnává lemmata. „Světlo“ v J 1 je "
+            "janovská teologie, ne gnóze; gnóze (2.–3. stol.) si janovský jazyk vypůjčila. "
+            "„Duše“ je hebrejské *nefeš*, ne platónský dualizmus. Kralická Bible překládá "
+            "λόγος jako *Slovo*, ne jako teosofický Logos.\n\n"
+            "**Historický kontakt (reálný, ne falešný):** Septuaginta a NZ vznikaly "
+            "v hellénistickém světě; částečné sdílení slovníku se středním platonismem "
+            "u Jana a Pavla je možné. Teosofie, buddhismus a New Age mají vlastní "
+            "diagnostické termíny, které se v Bibli nevyskytují.\n\n"
+            "Sekce je připravená na nahrané teosofické, buddhistické a podobné knihy: "
+            "ty se rozpoznají diagnostickými termíny, ne slovem „duše“."
         ),
         "ana_network_detail": (
             "**Metodika:** Sémantická síť je budována na základě PMI "
@@ -697,8 +790,57 @@ TRANSLATIONS = {
         "sec_religious": "✝️ Náboženské prvky",
         "element_coverage_title": "Výskyt náboženských prvkov",
         "element_coverage_desc": "Počet viet s danými náboženskými prvkami — ukazuje tematické zameranie korpusu.",
-        "philosophy_title": "Filozofické tradície",
-        "philosophy_desc": "Prítomnosť filozofických a teologických tradícií v texte.",
+        "philosophy_title": "Filozofické tradície (diagnostické termíny)",
+        "philosophy_desc": (
+            "Len **diagnostické** termíny (gnóza, platón, akáša…). "
+            "Bežné biblické slová (svetlo, duša, tajomstvo) sem nepatria — "
+            "sú to zdieľané motívy, nie dôkaz cudzej tradície."
+        ),
+        "shared_motifs_title": "Zdieľané / polyvalentné motívy",
+        "shared_motifs_desc": (
+            "Slová, ktoré majú **vlastný biblický význam** a neskôr ich prevzali "
+            "iné tradície. Nie sú dôkazom, že Biblia je gnostická, platónska alebo teozofická."
+        ),
+        "distinctive_phil_empty": (
+            "V Králickej Biblii sa nenašli diagnostické termíny cudzích filozofických tradícií "
+            "(očakávané). Graf vpravo ukazuje zdieľané motívy, nie cudzí vplyv."
+        ),
+        "detected_tradition_label": "Detekovaná tradícia",
+        "no_foreign_hits": "Žiadne diagnostické termíny cudzích náboženských tradícií.",
+        "tradition_diagnostic_title": "Diagnostické príznaky tradícií",
+        "tradition_diagnostic_desc": (
+            "Vysoko presné identifikátory tradície (buddha, akáša, alláh, sefírot…). "
+            "Pri kresťanskom korpuse by mali byť takmer nulové s výnimkou kresťanských/židovských termínov."
+        ),
+        "religious_polyvalent_explainer": (
+            "**Prečo sa v Biblii javia motívy iných tradícií?**\n\n"
+            "Detektor je lexikálny: hľadá zhodu lemy so slovníkom tradície. "
+            "Mnohé slová sú **polyvalentné** — majú vlastný biblický význam, "
+            "ale neskôr si ich osvojili iné tradície. To **nie je** dôkaz, že Biblia "
+            "je gnostická, platónska, teozofická alebo buddhistická.\n\n"
+            "**Príklady (javí sa to tak, ale nie je):**\n"
+            "- **svetlo / tma** — Gn 1; J 1; 1J. Jánovský dualizmus. Gnóza (2.–3. stor.) "
+            "si tento jazyk vypožičala; nevznikla z neho Biblia.\n"
+            "- **duša / telo** — biblická antropológia (hebr. *nefeš*, gr. *psyché*). "
+            "Platónsky dualizmus je iný pojem. Čiastočný helenistický vplyv je možný "
+            "v múdrostnej literatúre a u Pavla, ale slovo „duša“ samo o sebe to nedokazuje.\n"
+            "- **slovo (logos)** — J 1. Králická Biblia prekladá λόγος ako **Slovo**, "
+            "nie ako „logos“. Stoický a neskôr teozofický Logos je neskoršie čítanie.\n"
+            "- **tajomstvo** — Pavlov μυστήριον (skrytý plán spásy), nie gnostická gnóza.\n"
+            "- **duch** — hebr. *rúach* / gr. *pneuma*. Duch Boží, nie šamanský animizmus.\n\n"
+            "**Skutočný historický kontakt** (nie falošný poplach):\n"
+            "- Septuaginta a Nový zákon vznikali v helenistickom svete; Ján, Pavol "
+            "a múdrostná literatúra zdieľajú slovník so stredným platonizmom.\n"
+            "- Gnóza vznikla *až po* Novom zákone a biblický jazyk si vypožičala.\n"
+            "- Teozofia, New Age, jungiánstvo a tantra sú novoveké; ich termíny "
+            "(akáša, nirvána, sefírot, čakra) sa v Biblii nevyskytujú.\n\n"
+            "**Ako to čítať v analýze:**\n"
+            "- **Tematické polia** (božské, zákon, obeta…) popisujú, *o čom* text hovorí.\n"
+            "- **Diagnostické termíny** identifikujú, *ku ktorej* tradícii text patrí.\n"
+            "- **Zdieľané motívy** ukazujú polyvalentnú slovnú zásobu — nie priradenie k cudzej tradícii.\n"
+            "Sekcia je pripravená aj na nahraté nekresťanské knihy (teozofia, buddhizmus…): "
+            "tie sa spoznajú diagnostickými termínmi, nie obecnými slovami ako „duša“."
+        ),
         "rel_elements": {
             "covenant_law":      "Zmluva a zákon",
             "prophetic_speech":  "Prorocká reč",
@@ -716,6 +858,39 @@ TRANSLATIONS = {
             "genealogy_lineage": "Genealógia",
             "divine":            "Božské prvky",
             "kinship":           "Príbuzenstvo",
+            "christian_elements": "Kresťanské príznaky",
+            "jewish_elements":   "Židovské príznaky",
+            "buddhist_elements": "Buddhistické prvky",
+            "hindu_elements":    "Hinduistické prvky",
+            "islamic_elements":  "Islamské prvky",
+            "mystical_union":    "Mystické zjednotenie",
+            "esoteric_knowledge": "Ezoterické poznanie",
+            "hermetic":          "Hermetizmus",
+            "sufi":              "Súfizmus",
+            "kabbalistic":       "Kabala",
+            "theosophical":      "Teozofia",
+            "jungian":           "Jungiánstvo",
+            "new_age":           "New Age",
+            "shamanic":          "Šamanizmus",
+            "tantric":           "Tantrizmus",
+            "gnostic":           "Gnóza",
+            "zoroastrian":       "Zoroastrizmus",
+            "taoist":            "Taoizmus",
+            "platonic":          "Platonizmus",
+            "neoplatonic":       "Neoplatonizmus",
+        },
+        "rel_motifs": {
+            "light_darkness":      "Svetlo / tma",
+            "soul_body":           "Duša / telo",
+            "spirit":              "Duch",
+            "logos_word":          "Slovo (logos)",
+            "mystery":             "Tajomstvo",
+            "love":                "Láska",
+            "one_unity":           "Jedno / jednota",
+            "immortality":         "Nesmrteľnosť / večnosť",
+            "number_harmony":      "Číslo / harmónia",
+            "virtue_nature_fate":  "Cnosť / príroda / osud",
+            "pleasure_pain":       "Slasť / bolesť",
         },
         "rel_philosophy": {
             "platonic":      "Platonizmus",
@@ -733,6 +908,8 @@ TRANSLATIONS = {
             "new_age":       "New Age",
             "shamanic":      "Šamanizmus",
             "tantric":       "Tantrické vplyvy",
+            "zoroastrian":   "Zoroastrizmus",
+            "taoist":        "Taoizmus",
         },
         "density_heatmap_title": "Hustota náboženských prvkov podľa kníh",
         "density_heatmap_desc": "Podiel viet s danými náboženskými prvkami per kniha (0–1) — tmavšia = prvok dominuje v danej knihe.",
@@ -918,8 +1095,9 @@ TRANSLATIONS = {
             "genealógia, lyrika, proroctvo, modlitba, múdrostný výrok.\n\n"
             "4. **Sémantika a obsah** — Spracováva text cez Stanza NLP (lematizácia, POS, dependency) "
             "a extrahuje sémantické zhluky a obsahové kategórie.\n\n"
-            "5. **Náboženské elementy** — Deteguje prítomnosť 23 náboženských tradícií "
-            "a 15 filozofických vplyvov pomocou špecializovaných lexikálnych slovníkov.\n\n"
+            "5. **Náboženské elementy** — Tri vrstvy: tematické polia, diagnostické termíny tradícií "
+            "(pripravené aj na teozofické a buddhistické knihy) a zdieľané polyvalentné motívy, "
+            "ktoré sa nesmú čítať ako dôkaz cudzieho vplyvu v Biblii.\n\n"
             "6. **Sieť slov** — Buduje sémantickú sieť na základe PMI (sila asociácie slov); "
             "identifikuje centrálne pojmy a tematické zoskupenia.\n\n"
             "7. **Textové vzory** — Analyzuje n-gramy, sémantické opozície (±3 vety) "
@@ -993,16 +1171,24 @@ TRANSLATIONS = {
             "Vysoký podiel request = modlitebný alebo direktívny žáner."
         ),
         "ana_religious_detail": (
-            "**Metodika:** Detekcia náboženských elementov prebieha cez lexikálne porovnávanie "
-            "s rozsiahlymi frozenset slovníkmi 23 tradícií a 15 filozofických vplyvov. "
-            "Každý element je reprezentovaný sadou lemiem typických pre danú tradíciu.\n\n"
-            "**Tradície (výber):** kresťanská česká/anglická, hebrejská, islamská, buddhistická, "
-            "hinduistická, hermetická, kabalistická, súfijská, teosofická, šamanská, tantrická.\n\n"
-            "**Filozofické vplyvy:** platonizmus, neoplatonizmus, gnosticizmus, stoicizmus, "
-            "aristotelizmus, hermétizmus, jungiánizmus, new-age a ďalšie.\n\n"
-            "**Interpretácia:** Prítomnosť tradície sa meria počtom lemiem z daného slovníka "
-            "v texte. Nie je to dôkaz príslušnosti textu k tradícii — skôr ukazovateľ "
-            "tematickej príbuznosti. Rôzne tradície môžu zdieľať lexikum (napr. 'duch', 'svetlo')."
+            "**Metodika:** Detekcia má tri vrstvy, ktoré sa nesmú zmiešavať.\n\n"
+            "1. **Tematické polia** (obeta, zákon, príbuzenstvo…) — o čom text hovorí. "
+            "Univerzálne, použiteľné aj na nekresťanské knihy.\n"
+            "2. **Diagnostické termíny** (buddha, akáša, alláh, sefírot, čakra…) — "
+            "ku ktorej tradícii text patrí. Bežné biblické slová sem nepatria.\n"
+            "3. **Zdieľané / polyvalentné motívy** (svetlo/tma, duša/telo, slovo, tajomstvo) — "
+            "biblické slová, ktoré neskôr prevzali iné tradície. **Nie sú dôkazom** "
+            "gnosticizmu, platonizmu ani teozofie v Biblii.\n\n"
+            "**Prečo sa to tak javí:** detektor porovnáva lemy. „Svetlo“ v J 1 je "
+            "jánovská teológia, nie gnóza; gnóza (2.–3. stor.) si jánovský jazyk vypožičala. "
+            "„Duša“ je hebrejské *nefeš*, nie platónsky dualizmus. Králická Biblia prekladá "
+            "λόγος ako *Slovo*, nie ako teozofický Logos.\n\n"
+            "**Historický kontakt (reálny, nie falošný):** Septuaginta a NZ vznikali "
+            "v helenistickom svete; čiastočné zdieľanie slovníka so stredným platonizmom "
+            "u Jána a Pavla je možné. Teozofia, buddhizmus a New Age majú vlastné "
+            "diagnostické termíny, ktoré sa v Biblii nevyskytujú.\n\n"
+            "Sekcia je pripravená na nahraté teozofické, buddhistické a podobné knihy: "
+            "tie sa spoznajú diagnostickými termínmi, nie slovom „duša“."
         ),
         "ana_network_detail": (
             "**Metodika:** Sémantická sieť je budovaná na základe PMI "
@@ -1266,8 +1452,57 @@ TRANSLATIONS = {
         "sec_religious": "✝️ Religious Elements",
         "element_coverage_title": "Religious Element Coverage",
         "element_coverage_desc": "Sentences containing given religious elements — shows the thematic focus of the corpus.",
-        "philosophy_title": "Philosophical Traditions",
-        "philosophy_desc": "Presence of philosophical and theological traditions in the text.",
+        "philosophy_title": "Philosophical Traditions (diagnostic terms)",
+        "philosophy_desc": (
+            "Only **diagnostic** terms (gnosis, Plato, akasha…). "
+            "Ordinary biblical words (light, soul, mystery) do not belong here — "
+            "they are shared motifs, not evidence of a foreign tradition."
+        ),
+        "shared_motifs_title": "Shared / polyvalent motifs",
+        "shared_motifs_desc": (
+            "Words that have **their own biblical meaning** and were later reused "
+            "by other traditions. They are not evidence that the Bible is Gnostic, Platonic or Theosophical."
+        ),
+        "distinctive_phil_empty": (
+            "No diagnostic terms of foreign philosophical traditions were found in the Kralice Bible "
+            "(expected). The chart on the right shows shared motifs, not foreign influence."
+        ),
+        "detected_tradition_label": "Detected tradition",
+        "no_foreign_hits": "No diagnostic terms of foreign religious traditions.",
+        "tradition_diagnostic_title": "Tradition diagnostic markers",
+        "tradition_diagnostic_desc": (
+            "High-precision tradition identifiers (buddha, akasha, allah, sefirot…). "
+            "In a Christian corpus they should be near zero except for Christian/Jewish terms."
+        ),
+        "religious_polyvalent_explainer": (
+            "**Why do other traditions' motifs appear in the Bible?**\n\n"
+            "The detector is lexical: it matches lemmas against a tradition's word-list. "
+            "Many words are **polyvalent** — they have their own biblical meaning, "
+            "but later traditions reused them. That is **not** evidence that the Bible "
+            "is Gnostic, Platonic, Theosophical or Buddhist.\n\n"
+            "**Examples (it looks that way, but it is not):**\n"
+            "- **light / darkness** — Gn 1; Jn 1; 1 Jn. Johannine dualism. Gnosticism (2nd–3rd c.) "
+            "borrowed this language; the Bible did not come from it.\n"
+            "- **soul / body** — biblical anthropology (Heb. *nephesh*, Gk. *psychē*). "
+            "Platonic dualism is a different concept. Some Hellenistic influence is possible "
+            "in wisdom literature and Paul, but the word “soul” alone does not prove it.\n"
+            "- **word (logos)** — Jn 1. The Kralice Bible translates λόγος as **Word**, "
+            "not as “logos”. The Stoic and later Theosophical Logos is a later reading.\n"
+            "- **mystery** — Paul's μυστήριον (hidden plan of salvation), not Gnostic gnosis.\n"
+            "- **spirit** — Heb. *ruach* / Gk. *pneuma*. The Spirit of God, not shamanic animism.\n\n"
+            "**Real historical contact** (not a false alarm):\n"
+            "- The Septuagint and the New Testament arose in a Hellenistic world; John, Paul "
+            "and wisdom literature share vocabulary with Middle Platonism.\n"
+            "- Gnosticism arose *after* the New Testament and borrowed biblical language.\n"
+            "- Theosophy, New Age, Jungianism and Tantra are modern; their terms "
+            "(akasha, nirvana, sefirot, chakra) do not occur in the Bible.\n\n"
+            "**How to read the analysis:**\n"
+            "- **Thematic fields** (divine, law, sacrifice…) describe *what* the text talks about.\n"
+            "- **Diagnostic terms** identify *which* tradition the text belongs to.\n"
+            "- **Shared motifs** show polyvalent vocabulary — not attribution to a foreign tradition.\n"
+            "This section is also prepared for uploaded non-Christian books (Theosophy, Buddhism…): "
+            "those are recognised by diagnostic terms, not by generic words such as “soul”."
+        ),
         "rel_elements": {
             "covenant_law":      "Covenant & Law",
             "prophetic_speech":  "Prophetic Speech",
@@ -1285,6 +1520,39 @@ TRANSLATIONS = {
             "genealogy_lineage": "Genealogy",
             "divine":            "Divine Elements",
             "kinship":           "Kinship",
+            "christian_elements": "Christian markers",
+            "jewish_elements":   "Jewish markers",
+            "buddhist_elements": "Buddhist elements",
+            "hindu_elements":    "Hindu elements",
+            "islamic_elements":  "Islamic elements",
+            "mystical_union":    "Mystical union",
+            "esoteric_knowledge": "Esoteric knowledge",
+            "hermetic":          "Hermeticism",
+            "sufi":              "Sufism",
+            "kabbalistic":       "Kabbalah",
+            "theosophical":      "Theosophy",
+            "jungian":           "Jungianism",
+            "new_age":           "New Age",
+            "shamanic":          "Shamanism",
+            "tantric":           "Tantrism",
+            "gnostic":           "Gnosticism",
+            "zoroastrian":       "Zoroastrianism",
+            "taoist":            "Taoism",
+            "platonic":          "Platonism",
+            "neoplatonic":       "Neoplatonism",
+        },
+        "rel_motifs": {
+            "light_darkness":      "Light / darkness",
+            "soul_body":           "Soul / body",
+            "spirit":              "Spirit",
+            "logos_word":          "Word (logos)",
+            "mystery":             "Mystery",
+            "love":                "Love",
+            "one_unity":           "The One / unity",
+            "immortality":         "Immortality / eternity",
+            "number_harmony":      "Number / harmony",
+            "virtue_nature_fate":  "Virtue / nature / fate",
+            "pleasure_pain":       "Pleasure / pain",
         },
         "rel_philosophy": {
             "platonic":      "Platonism",
@@ -1302,6 +1570,10 @@ TRANSLATIONS = {
             "new_age":       "New Age",
             "shamanic":      "Shamanism",
             "tantric":       "Tantrism",
+            "zoroastrian":   "Zoroastrianism",
+            "taoist":        "Taoism",
+            "zoroastrian":   "Zoroastrianism",
+            "taoist":        "Taoism",
         },
         "density_heatmap_title": "Religious Element Density by Book",
         "density_heatmap_desc": "Proportion of sentences with given religious elements per book (0–1) — darker = element dominates in that book.",
@@ -1488,8 +1760,9 @@ TRANSLATIONS = {
             "genealogy, lyric, prophecy, prayer, wisdom saying.\n\n"
             "4. **Semantics & Content** — Processes text via Stanza NLP (lemmatisation, POS, dependency) "
             "and extracts semantic clusters and content categories.\n\n"
-            "5. **Religious Elements** — Detects the presence of 23 religious traditions "
-            "and 15 philosophical influences using specialised lexical dictionaries.\n\n"
+            "5. **Religious Elements** — Three layers: thematic fields, diagnostic tradition terms "
+            "(also prepared for Theosophical and Buddhist books), and shared polyvalent motifs "
+            "that must not be read as evidence of foreign influence in the Bible.\n\n"
             "6. **Word Network** — Builds a semantic network based on PMI (word association strength); "
             "identifies central concepts and thematic clusters.\n\n"
             "7. **Text Patterns** — Analyses n-grams, semantic oppositions (±3 sentences) "
@@ -1564,17 +1837,24 @@ TRANSLATIONS = {
             "High proportion of requests = prayer or directive genre."
         ),
         "ana_religious_detail": (
-            "**Methodology:** Religious element detection uses lexical matching against "
-            "frozenset dictionaries for 23 traditions and 15 philosophical influences. "
-            "Each element is represented by a set of lemmas typical for that tradition.\n\n"
-            "**Traditions (selection):** Christian Czech/English, Hebrew, Islamic, Buddhist, "
-            "Hindu, Hermetic, Kabbalistic, Sufi, Theosophical, Shamanic, Tantric.\n\n"
-            "**Philosophical influences:** Platonism, Neoplatonism, Gnosticism, Stoicism, "
-            "Aristotelianism, Hermeticism, Jungianism, New Age and others.\n\n"
-            "**Interpretation:** A tradition's presence is measured by the number of matching "
-            "lemmas in the text — not proof of the text belonging to that tradition, "
-            "but an indicator of thematic affinity. Different traditions may share lexis "
-            "(e.g. 'spirit', 'light', 'wisdom')."
+            "**Methodology:** Detection has three layers that must not be mixed.\n\n"
+            "1. **Thematic fields** (sacrifice, law, kinship…) — what the text talks about. "
+            "Universal, usable on non-Christian books too.\n"
+            "2. **Diagnostic terms** (buddha, akasha, allah, sefirot, chakra…) — "
+            "which tradition the text belongs to. Ordinary biblical words do not belong here.\n"
+            "3. **Shared / polyvalent motifs** (light/darkness, soul/body, word, mystery) — "
+            "biblical words later reused by other traditions. They are **not evidence** "
+            "of Gnosticism, Platonism or Theosophy in the Bible.\n\n"
+            "**Why it looks that way:** the detector matches lemmas. “Light” in Jn 1 is "
+            "Johannine theology, not Gnosticism; Gnosticism (2nd–3rd c.) borrowed Johannine language. "
+            "“Soul” is Hebrew *nephesh*, not Platonic dualism. The Kralice Bible translates "
+            "λόγος as *Word*, not as the Theosophical Logos.\n\n"
+            "**Historical contact (real, not a false alarm):** the Septuagint and the NT arose "
+            "in a Hellenistic world; some shared vocabulary with Middle Platonism in John and Paul "
+            "is possible. Theosophy, Buddhism and New Age have their own diagnostic terms, "
+            "which do not occur in the Bible.\n\n"
+            "This section is prepared for uploaded Theosophical, Buddhist and similar books: "
+            "those are recognised by diagnostic terms, not by the word “soul”."
         ),
         "ana_network_detail": (
             "**Methodology:** The semantic network is built using PMI "
@@ -2145,6 +2425,13 @@ _RELIGIOUS_ELEMENT_ALIASES: dict[str, str] = {
     "sacrifice": "ritual_sacrifice",
     "war conflict": "war_conflict",
     "wisdom": "wisdom",
+    "christian elements": "christian_elements",
+    "jewish elements": "jewish_elements",
+    "buddhist elements": "buddhist_elements",
+    "hindu elements": "hindu_elements",
+    "islamic elements": "islamic_elements",
+    "mystical union": "mystical_union",
+    "esoteric knowledge": "esoteric_knowledge",
 }
 
 
@@ -2166,6 +2453,11 @@ def _rel_key(v: object) -> str:
 def _rel_label(v: object) -> str:
     key = _rel_key(v)
     return T.get("rel_elements", {}).get(key, str(v or "").strip())
+
+
+def _rel_motif_label(v: object) -> str:
+    key = str(v or "").strip()
+    return T.get("rel_motifs", {}).get(key, key.replace("_", " "))
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -2721,19 +3013,26 @@ def generate_pdf_report(
     if session.get("sel_religious", True) and lemmas_data:
         story += _section(T.get("ana_religious_name","Religious Elements"), "⚡")
         story.append(Paragraph(T.get("ana_religious_q",""), sty["caption"]))
-        from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES as PHI
-        _ls = set(t for _,ls in lemmas_data for t in ls.split() if len(t)>2 and t.isalpha())
-        _tname = "christian_english" if pipeline_lang=="en" else "christian_czech"
-        _elh = {el:len(_ls&lx) for el,lx in TRADITIONS.get(_tname,{}).items() if _ls&lx}
-        _phh = {ph:len(_ls&lx) for ph,lx in PHI.items() if _ls&lx}
+        from t_config_tradition import analyze_lemma_set
+        _all_l = [t for _,ls in lemmas_data for t in ls.split() if len(t)>2 and t.isalpha()]
+        _scored = analyze_lemma_set(_all_l)
+        story.append(Paragraph(
+            f"{T.get('detected_tradition_label','Detected tradition')}: "
+            f"<b>{_scored['detected_tradition']}</b>",
+            sty["caption"],
+        ))
+        _elh = {k: len(v) for k, v in _scored["thematic"].items()}
+        _phh = {k: len(v) for k, v in _scored["philosophical"].items()}
+        _dgh = {k: len(v) for k, v in _scored["tradition_diagnostic"].items()}
         if _elh:
             _edf = pd.DataFrame(sorted(_elh.items(),key=lambda x:-x[1]),
                                 columns=["element","count"])
             fig_el = px.bar(_edf, x="count", y="element", orientation="h",
                             title=T.get("element_coverage_title","Religious Elements"))
             fig_el.update_layout(showlegend=False, margin=dict(t=40,b=4,l=4,r=4))
-            if _phh:
-                _pdf = pd.DataFrame(sorted(_phh.items(),key=lambda x:-x[1]),
+            _src = _dgh or _phh
+            if _src:
+                _pdf = pd.DataFrame(sorted(_src.items(),key=lambda x:-x[1]),
                                     columns=["influence","count"])
                 fig_ph = px.bar(_pdf, x="count", y="influence", orientation="h",
                                 title=T.get("philosophy_title","Philosophy"))
@@ -2741,6 +3040,7 @@ def generate_pdf_report(
                 story += _side_by_side(fig_el, fig_ph)
             else:
                 story += _chart(fig_el)
+        story.append(Paragraph(T.get("shared_motifs_desc",""), sty["caption"]))
 
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if session.get("sel_network", False):
@@ -3638,6 +3938,10 @@ with tab_bible:
             field_sum    = csv("religious_elements/field_summary.csv")
             density_wide = csv("religious_elements/combined_density_by_book.csv")
             phil         = csv("religious_elements/philosophy_by_book.csv")
+            shared       = csv("religious_elements/shared_motifs_by_book.csv")
+            diag         = csv("religious_elements/tradition_diagnostics_by_book.csv")
+
+            st.markdown(T.get("religious_polyvalent_explainer", ""))
 
             c1, c2 = st.columns(2)
 
@@ -3657,7 +3961,8 @@ with tab_bible:
                         use_container_width=True,
                     )
             with c2:
-                if phil is not None:
+                _phil_ok = phil is not None and not phil.empty
+                if _phil_ok:
                     pc = phil.groupby("philosophy")["matched_count"].sum().reset_index()
                     pc["philosophy"] = pc["philosophy"].map(lambda v: _rel_ph.get(v, v))
                     st.caption(T["philosophy_desc"])
@@ -3666,6 +3971,43 @@ with tab_bible:
                                 T["philosophy_title"]),
                         use_container_width=True,
                     )
+                elif shared is not None and not shared.empty:
+                    pc = shared.groupby("motif")["matched_count"].sum().reset_index()
+                    pc["motif"] = pc["motif"].map(_rel_motif_label)
+                    st.caption(T.get("shared_motifs_desc", ""))
+                    st.plotly_chart(
+                        fig_pie(pc, "motif", "matched_count",
+                                T.get("shared_motifs_title", "Shared motifs")),
+                        use_container_width=True,
+                    )
+                else:
+                    st.info(T.get("distinctive_phil_empty", "—"))
+
+            if shared is not None and not shared.empty and _phil_ok:
+                st.caption(T.get("shared_motifs_desc", ""))
+                sm = shared.groupby("motif")["matched_count"].sum().reset_index()
+                sm["motif"] = sm["motif"].map(_rel_motif_label)
+                sm = sm.sort_values("matched_count", ascending=False)
+                st.plotly_chart(
+                    fig_hbar(sm, "matched_count", "motif",
+                             T.get("shared_motifs_title", "Shared motifs"), h=320,
+                             xlabel=T["x_count"]),
+                    use_container_width=True,
+                )
+
+            if diag is not None and not diag.empty:
+                st.caption(T.get("tradition_diagnostic_desc", ""))
+                dc = diag.groupby("tradition")["matched_count"].sum().reset_index()
+                dc["tradition"] = dc["tradition"].map(_rel_label)
+                dc = dc.sort_values("matched_count", ascending=False)
+                st.plotly_chart(
+                    fig_hbar(dc, "matched_count", "tradition",
+                             T.get("tradition_diagnostic_title", "Diagnostics"),
+                             h=280, xlabel=T["x_count"]),
+                    use_container_width=True,
+                )
+            else:
+                st.caption(T.get("no_foreign_hits", ""))
 
             if density_wide is not None:
                 s_cols = [c for c in density_wide.columns
@@ -5118,16 +5460,21 @@ with tab_results:
     # ── 5. Náboženské elementy ────────────────────────────────────────────────
     if st.session_state.get("sel_religious", True) and _ldat:
         with st.expander(f"📤 ⚡ {T['ana_religious_name']}"):
-            from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
-            _ls = set(t for _,ls in _ldat for t in ls.split()
-                      if len(t)>2 and t.isalpha())
-            _tname = "christian_english" if pipeline_lang=="en" else "christian_czech"
-            _elh = {el:len(_ls&lx) for el,lx in TRADITIONS.get(_tname,{}).items()
-                    if _ls&lx}
-            _phh = {ph:len(_ls&lx) for ph,lx in PHILOSOPHICAL_INFLUENCES.items()
-                    if _ls&lx}
+            from t_config_tradition import analyze_lemma_set
+            _all_up = [t for _,ls in _ldat for t in ls.split()
+                       if len(t)>2 and t.isalpha()]
+            _scored = analyze_lemma_set(_all_up)
             _r3_el = T.get("rel_elements", {})
             _r3_ph = T.get("rel_philosophy", {})
+            st.caption(
+                f"{T.get('detected_tradition_label', 'Detected tradition')}: "
+                f"**{_scored['detected_tradition']}**"
+            )
+            st.markdown(T.get("religious_polyvalent_explainer", ""))
+            _elh = {k: len(v) for k, v in _scored["thematic"].items()}
+            _phh = {k: len(v) for k, v in _scored["philosophical"].items()}
+            _dgh = {k: len(v) for k, v in _scored["tradition_diagnostic"].items()}
+            _smh = {k: len(v) for k, v in _scored["shared_motifs"].items()}
             _re1, _re2 = st.columns(2)
             with _re1:
                 if _elh:
@@ -5141,9 +5488,24 @@ with tab_results:
                                  xlabel=T["x_count"]),
                         use_container_width=True,
                     )
-                else: st.info("—")
+                else:
+                    st.info("—")
             with _re2:
-                if _phh:
+                if _dgh:
+                    _ddf = pd.DataFrame(
+                        sorted({_r3_el.get(k, _r3_ph.get(k,k)):v
+                                for k,v in _dgh.items()}.items(),
+                               key=lambda x:-x[1]),
+                        columns=["tradition",T["x_count"]])
+                    st.caption(T.get("tradition_diagnostic_desc", ""))
+                    st.plotly_chart(
+                        fig_hbar(_ddf,T["x_count"],"tradition",
+                                 T.get("tradition_diagnostic_title",
+                                       "Diagnostics"),h=320,
+                                 xlabel=T["x_count"]),
+                        use_container_width=True,
+                    )
+                elif _phh:
                     _pdf2 = pd.DataFrame(
                         sorted({_r3_ph.get(k,k):v for k,v in _phh.items()}.items(),
                                key=lambda x:-x[1]),
@@ -5154,7 +5516,20 @@ with tab_results:
                                  xlabel=T["x_count"]),
                         use_container_width=True,
                     )
-                else: st.info("—")
+                else:
+                    st.info(T.get("no_foreign_hits", "—"))
+            if _smh:
+                _sdf = pd.DataFrame(
+                    sorted({_rel_motif_label(k):v for k,v in _smh.items()}.items(),
+                           key=lambda x:-x[1]),
+                    columns=["motif", T["x_count"]])
+                st.caption(T.get("shared_motifs_desc", ""))
+                st.plotly_chart(
+                    fig_hbar(_sdf, T["x_count"], "motif",
+                             T.get("shared_motifs_title", "Shared motifs"),
+                             h=280, xlabel=T["x_count"]),
+                    use_container_width=True,
+                )
 
     # ── 6. Sieť slov ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_network", False):
