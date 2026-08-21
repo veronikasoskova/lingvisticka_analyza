@@ -1,0 +1,4 @@
+cluster,word1,word2,pair_count,pmi,matched_seed
+covenant_cluster,hospodin,zákon,8,7.767,zákon
+covenant_cluster,boží,svědectví,6,10.085,svědectví
+covenant_cluster,soudu,spravedlnost,5,11.939,spravedlnost

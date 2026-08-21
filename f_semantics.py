@@ -19,6 +19,8 @@ import numpy as np
 
 from e_extraction import SentenceFeatures
 from a_paths import MODELS_DIR
+from lexicons_common import OPPOSITIONS, opposition_present_in
+from t_config_tradition import canonicalize_lemma
 
 
 # ==========================================================
@@ -114,31 +116,6 @@ NEGATION_WORDS: frozenset = frozenset({
     "zakázat",              # prohibitive verb
     "zapírat",
 })
-
-OPPOSITIONS: dict = {
-    "dobrý":         "špatný",
-    "světlo":        "tma",
-    "život":         "smrt",
-    "požehnat":      "proklít",
-    "spravedlivý":   "bezbožný",
-    "pravda":        "lež",
-    "duch":          "tělo",
-    "čistý":         "nečistý",
-    "víra":          "skutky",
-    "milost":        "zákon",
-    "bůh":           "modla",
-    "hospodin":      "baal",
-    "moudrost":      "bláznovství",
-    "požehnání":     "zlořečení",
-    "nebe":          "země",
-    "den":           "noc",
-    "pravice":       "levice",
-    "chudý":         "bohatý",
-    "pokoj":         "boj",
-    "láska":         "nenávist",
-    "milosrdenství": "spravedlnost",
-    "svoboda":       "otroctví",
-}
 
 
 # ==========================================================
@@ -397,11 +374,8 @@ def lexical_reinforcement(words: list[str]) -> float:
 
 
 def opposition_present(words: list[str]) -> bool:
-    lowered = {w.lower() for w in words}
-    return any(
-        w in OPPOSITIONS and OPPOSITIONS[w] in lowered
-        for w in lowered
-    )
+    tokens = {canonicalize_lemma(w) for w in words if w}
+    return opposition_present_in(tokens)
 
 
 # ==========================================================

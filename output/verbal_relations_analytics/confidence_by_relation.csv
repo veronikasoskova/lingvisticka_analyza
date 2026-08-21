@@ -1,8 +1,10 @@
 relation_type,count,avg_confidence,min_confidence,max_confidence
-reported_speech,593,0.598,0.152,1.043
-narrative,502,0.604,0.258,1.002
-doctrinal,321,0.595,0.148,0.984
-lyrical,347,0.61,0.181,1.057
-command_obedience,472,0.61,0.225,1.115
-prophetic,183,0.609,0.164,0.949
-wisdom,119,0.577,0.125,0.944
+historical_event_relation,397,0.588,0.205,1.023
+lyrical_relation,334,0.602,0.231,0.97
+wisdom_relation,178,0.608,0.247,0.959
+request_relation,350,0.591,0.192,0.95
+autoclitic_relation,99,0.606,0.251,0.94
+descriptive_relation,323,0.613,0.195,0.968
+reported_speech,490,0.606,0.134,1.005
+prophetic_relation,225,0.58,0.185,1.057
+genealogical_relation,141,0.583,0.248,1.022

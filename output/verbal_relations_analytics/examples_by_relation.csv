@@ -1,141 +1,181 @@
 relation_type,subtype,sentence,file_name,confidence
-reported_speech,reported_speech,"Což bylo od počátku, což jsme slýchali, co jsme očima svýma viděli, a co jsme pilně spatřili, a čeho se ruce naše dotýkaly, o slovu života,",bible_BKR_1J.txt,0.698
-reported_speech,reported_speech,"A totoť píšeme vám, aby radost vaše byla plná.",bible_BKR_1J.txt,0.492
-reported_speech,reported_speech,"Pakliť chodíme v světle, jako on jest v světle, obecenství máme vespolek, a krev Krista Ježíše Syna jeho očišťuje nás od všelikého hříchu.",bible_BKR_1J.txt,0.679
-reported_speech,reported_speech,"Díme-li, že jsme nehřešili, činíme jej lhářem, a neníť v nás slova jeho.",bible_BKR_1J.txt,0.767
-reported_speech,reported_speech,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt,0.685
-reported_speech,reported_speech,"A po tomť známe, že jsme jej poznali, jestliže přikázaní jeho ostříháme.",bible_BKR_1J.txt,0.641
-reported_speech,reported_speech,"Bratří, ne nové přikázaní píši vám, ale přikázaní staré, kteréž jste měli od počátku. A to přikázaní staré jestiť slovo to, kteréž jste slyšeli od počátku.",bible_BKR_1J.txt,0.596
-reported_speech,reported_speech,"Píši vám, dítky, že jste poznali Otce. Psal jsem vám, otcové, že jste poznali toho, kterýž jest od počátku. Psal jsem vám, mládenci, že silní jste, a slovo Boží v vás zůstává, a že jste svítězili nad tím zlostníkem.",bible_BKR_1J.txt,0.546
-reported_speech,reported_speech,"Ale pomazání to, kteréž jste vzali od něho, v vás zůstává, aniž potřebujete, aby kdo učil vás, ale jakž pomazání to učí vás o všech věcech, a pravéť jest a neoklamavatelné, a jakž naučilo vás, tak v něm zůstávejte.",bible_BKR_1J.txt,0.756
-reported_speech,reported_speech,"Poněvadž víte, že on spravedlivý jest, znejtež také, že každý, kdož činí spravedlnost, z něho jest narozen.",bible_BKR_1J.txt,0.649
-reported_speech,reported_speech,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt,0.323
-reported_speech,reported_speech,"Tak že, nemáte žádného nedostatku v žádném daru, očekávajíce zjevení Pána našeho Jezukrista,",bible_BKR_1K.txt,0.354
-reported_speech,reported_speech,"Nebo oznámeno jest mi o vás, bratří moji, od domácích Chloe, že by mezi vámi byly různice.",bible_BKR_1K.txt,0.549
-reported_speech,reported_speech,"Křtilť jsem také i Štěpánovu čeled. Více nevím, abych koho jiného křtil.",bible_BKR_1K.txt,0.496
-reported_speech,reported_speech,"Ale povolaným i Židům i Řekům Krista, Boží moc a Boží moudrost.",bible_BKR_1K.txt,0.579
-reported_speech,reported_speech,"A neurozené u světa a za nic položené vyvolil Bůh, anobrž kteréž nejsou, aby ty věci, kteréž jsou, zahladil,",bible_BKR_1K.txt,0.759
-reported_speech,reported_speech,Proto aby se nechlubilo před oblíčejem jeho žádné tělo.,bible_BKR_1K.txt,0.582
-reported_speech,reported_speech,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt,0.562
-reported_speech,reported_speech,"A byl jsem já u vás v mdlobě, a v bázni, i v strachu mnohém.",bible_BKR_1K.txt,0.681
-reported_speech,reported_speech,"Ale jakož psáno jest: Čeho oko nevídalo, ani ucho neslýchalo, ani na srdce lidské nevstoupilo, co připravil Bůh těm, kteříž jej milují.",bible_BKR_1K.txt,0.49
-narrative,narrative,"(Nebo ten život zjeven jest, a my jsme viděli, a svědčíme, i zvěstujeme vám ten život věčný, kterýž byl u Otce, a zjeven jest nám),",bible_BKR_1J.txt,0.68
-narrative,narrative,"Dí-liť kdo: Znám jej, a přikázaní jeho neostříhá, lhářť jest, a pravdy v něm není.",bible_BKR_1J.txt,0.556
-narrative,narrative,"Kdo praví, že v něm zůstává, tenť má, jakž on chodil, tak choditi.",bible_BKR_1J.txt,0.664
-narrative,narrative,"Píši vám, synáčkové, žeť jsou vám odpuštěni hříchové pro jméno jeho.",bible_BKR_1J.txt,0.674
-narrative,narrative,"Píši vám, otcové, že jste poznali toho, kterýž jest od počátku. Píši vám, mládenci, že jste svítězili nad tím zlostníkem.",bible_BKR_1J.txt,0.599
-narrative,narrative,"Dítky, poslední hodina jest, a jakož jste slýchali, že antikrist přijíti má, i nyníť antikristové mnozí povstali. Odkudž známe, že poslední hodina jest.",bible_BKR_1J.txt,0.667
-narrative,narrative,"Vy pak máte pomazání od Svatého, a znáte všecko.",bible_BKR_1J.txt,0.643
-narrative,narrative,"A protož zůstaniž v vás to, což jste slýchali od počátku. Zůstane-liť v vás to, co jste slýchali od počátku, i vy také v Synu i v Otci zůstanete.",bible_BKR_1J.txt,0.352
-narrative,narrative,"A toť jest to zaslíbení, kteréž on nám zaslíbil, totiž ten život věčný.",bible_BKR_1J.txt,0.522
-narrative,narrative,"A nyní, synáčkové, zůstávejtež v něm, abychom, když by se ukázal, smělé doufání měli, a nebyli zahanbeni od něho v příchodu jeho.",bible_BKR_1J.txt,0.579
-narrative,narrative,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt,0.454
-narrative,narrative,"Církvi Boží, kteráž jest v Korintu, posvěceným v Kristu Ježíši, povolaným svatým, spolu se všechněmi, kteříž vzývají jméno Pána našeho Jezukrista na všelikém místě, i jejich i našem:",bible_BKR_1K.txt,0.52
-narrative,narrative,Kterýž i utvrdí vás až do konce bez ouhony ke dni Pána našeho Jezukrista.,bible_BKR_1K.txt,0.723
-narrative,narrative,"Míním pak toto, že jeden každý z vás říká: Já jsem Pavlův, já Apollův, já Petrův, já pak Kristův.",bible_BKR_1K.txt,0.766
-narrative,narrative,"Děkuji Bohu, že jsem žádného z vás nekřtil, než Krispa a Gáia,",bible_BKR_1K.txt,0.746
-narrative,narrative,Kde jest moudrý? A kde učený? A kde chytrák tohoto světa? Zdaliž Bůh neobrátil moudrosti tohoto světa v bláznovství?,bible_BKR_1K.txt,0.703
-narrative,narrative,"Myť pak kážeme Krista ukřižovaného, Židům zajisté pohoršení, a Řekům bláznovství,",bible_BKR_1K.txt,0.748
-narrative,narrative,"Nebo tak jsem usoudil nic jiného neuměti mezi vámi, nežli Ježíše Krista, a to toho ukřižovaného.",bible_BKR_1K.txt,0.497
-narrative,narrative,"A řeč má a kázaní mé nebylo v slibných lidské moudrosti řečech, ale v dokázaní Ducha a moci,",bible_BKR_1K.txt,0.429
-narrative,narrative,"Nebo nabiv volů a krmného dobytka a ovec množství, pozval všech synů královských, i Abiatara kněze a Joába hejtmana vojska, Šalomouna pak služebníka tvého nepozval.",bible_BKR_1Kr.txt,0.617
-doctrinal,doctrinal,"Což jsme viděli a slyšeli, zvěstujeme vám, abyste i vy s námi obecenství měli, a obecenství naše aby bylo s Otcem i s Synem jeho Jezukristem.",bible_BKR_1J.txt,0.389
-doctrinal,doctrinal,"Pakliť díme, že hříchu nemáme, sami se svodíme, a pravdy v nás není.",bible_BKR_1J.txt,0.771
-doctrinal,doctrinal,"Nemilujtež světa, ani těch věcí, kteréž na světě jsou. Miluje-liť kdo svět, neníť lásky Otcovy v něm.",bible_BKR_1J.txt,0.44
-doctrinal,doctrinal,"Nepsal jsem vám, proto že byste neznali pravdy, ale že ji znáte, a že všeliká lež není z pravdy.",bible_BKR_1J.txt,0.771
-doctrinal,doctrinal,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt,0.703
-doctrinal,doctrinal,"Nebo psáno jest: Zahladím moudrost moudrých, a opatrnost opatrných zavrhu.",bible_BKR_1K.txt,0.419
-doctrinal,doctrinal,"Král pak David sstaral se a sešel věkem, a ačkoli jej šaty přikrývali, však nemohl se zahřívati.",bible_BKR_1Kr.txt,0.549
-doctrinal,doctrinal,"Adoniáš pak syn Haggity pozdvihoval se, říkaje: Jáť budu kralovati. I najednal sobě vozů a jezdců, a padesáte mužů, kteříž by běhali před ním.",bible_BKR_1Kr.txt,0.501
-doctrinal,doctrinal,"I mluvil Nátan k Betsabé matce Šalomounově, řka: Neslyšela-lis, že kraluje Adoniáš syn Haggity, a pán náš David nic neví o tom?",bible_BKR_1Kr.txt,0.571
-doctrinal,doctrinal,"Jdiž, a vejda k králi Davidovi, rci jemu: Zdaliž jsi ty, pane můj králi, nepřisáhl služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a onť seděti bude na stolici mé? Pročež tedy kraluje Adoniáš?",bible_BKR_1Kr.txt,0.731
-doctrinal,doctrinal,"Vzal také Sádoch kněz roh oleje z stánku, a pomazal Šalomouna. Potom troubili trubou, a řekl všecken lid: Živ buď král Šalomoun.",bible_BKR_1Kr.txt,0.662
-doctrinal,doctrinal,"K dědictví neporušitelnému a nepoškvrněnému a neuvadlému, kteréž se chová v nebesích, vám,",bible_BKR_1P.txt,0.735
-doctrinal,doctrinal,"Kteréhož neviděvše, milujete; kteréhož nyní nevidouce, a však v něho věříce, veselíte se radostí nevymluvnou a oslavenou,",bible_BKR_1P.txt,0.539
-doctrinal,doctrinal,"O kterémž spasení bedlivě přemyšlovali, a je vystihati usilovali proroci, kteříž o té milosti, kteráž se vám státi měla, prorokovali,",bible_BKR_1P.txt,0.983
-doctrinal,doctrinal,"Protož přepášíce bedra mysli své, a střízlivi jsouce, dokonale doufejte v té milosti, kteráž vám dána bude při zjevení Ježíše Krista,",bible_BKR_1P.txt,0.434
-doctrinal,doctrinal,"Předzvěděného zajisté před ustanovením světa, zjeveného pak v časích posledních pro vás,",bible_BKR_1P.txt,0.698
-doctrinal,doctrinal,"Vám tedy věřícím jest poctivost, ale nepovolným kámen, kterýž zavrhli stavitelé, tenť jest učiněn v hlavu úhelní, a kámen úrazu, a skála pohoršení,",bible_BKR_1P.txt,0.85
-doctrinal,doctrinal,"Noé, Sem, Cham a Jáfet.",bible_BKR_1Pa.txt,0.774
-doctrinal,doctrinal,"Synové pak Javanovi: Elisa, Tarsis, Cetim a Rodanim.",bible_BKR_1Pa.txt,0.535
-doctrinal,doctrinal,"A Aradia, Samarea a Amatea.",bible_BKR_1Pa.txt,0.478
-lyrical,lyrical,"Toť jest tedy zvěstování to, kteréž jsme slýchali od něho, a zvěstujeme vám: Že Bůh jest světlo, a tmy v něm nižádné není.",bible_BKR_1J.txt,0.725
-lyrical,lyrical,"A onť jest obět slitování za hříchy naše, a netoliko za naše, ale i za všeho světa.",bible_BKR_1J.txt,0.799
-lyrical,lyrical,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt,0.563
-lyrical,lyrical,"Každý kdož zapírá Syna, nemáť ani Otce.",bible_BKR_1J.txt,0.532
-lyrical,lyrical,"Pohleďte, jakou lásku dal nám Otec, totiž abychom synové Boží slouli. Protoť svět nezná nás, že jeho nezná.",bible_BKR_1J.txt,0.483
-lyrical,lyrical,"Děkuji Bohu svému vždycky z vás pro tu milost Boží, kteráž dána jest vám v Kristu Ježíši,",bible_BKR_1K.txt,0.796
-lyrical,lyrical,"Poněvadž i Židé zázraků žádají, i Řekové hledají moudrosti.",bible_BKR_1K.txt,0.834
-lyrical,lyrical,"Nebo to bláznovství Boží jest moudřejší nežli lidé, a mdloba Boží jest silnější než lidé.",bible_BKR_1K.txt,0.701
-lyrical,lyrical,"Ale což bláznivého jest u světa, to vyvolil Bůh, aby zahanbil moudré, a to, což jest u světa mdlé, vyvolil Bůh, aby zahanbil silné.",bible_BKR_1K.txt,0.725
-lyrical,lyrical,"Aby, jakož jest napsáno, kdo se chlubí, v Pánu se chlubil.",bible_BKR_1K.txt,0.701
-lyrical,lyrical,"Jíž žádný z knížat světa tohoto nepoznal. Nebo kdyby byli poznali, nebyliť by Pána slávy ukřižovali.",bible_BKR_1K.txt,0.645
-lyrical,lyrical,"I mluvíval s Joábem synem Sarvie a s Abiatarem knězem, kteříž napomáhali Adoniášovi.",bible_BKR_1Kr.txt,0.559
-lyrical,lyrical,"A aj, když ty ještě tam mluviti budeš s králem, přijduť za tebou a doplním řeč tvou.",bible_BKR_1Kr.txt,0.695
-lyrical,lyrical,"I odpověděla jemu: Pane můj, ty jsi přisáhl skrze Hospodina Boha svého služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a on seděti bude na stolici mé.",bible_BKR_1Kr.txt,0.838
-lyrical,lyrical,"A naklonivši hlavy Betsabé tváří k zemi, poklonu učinila králi a řekla: Živ buď pán můj král David na věky.",bible_BKR_1Kr.txt,0.757
-lyrical,lyrical,"I pomaže ho tam Sádoch kněz a Nátan prorok za krále nad Izraelem, a troubiti budete troubou, a díte: Živ buď král Šalomoun.",bible_BKR_1Kr.txt,0.669
-lyrical,lyrical,"Petr, apoštol Ježíše Krista, příchozím rozptýleným v Pontu, Galacii, Kappadocii, v Azii, a v Bitynii,",bible_BKR_1P.txt,0.639
-lyrical,lyrical,"Vyvoleným podlé předzvědění Boha Otce, v posvěcení Ducha, ku poslušenství a skropení krví Ježíše Krista: Milost vám a pokoj rozmnožen buď.",bible_BKR_1P.txt,0.376
-lyrical,lyrical,"V čemžto veselíte se, maličko nyní, (jestliže kdy potřebí jest), zkormouceni jsouce v rozličných pokušeních,",bible_BKR_1P.txt,0.648
-lyrical,lyrical,"Jakož napsáno jest: Svatí buďte, nebo já svatý jsem.",bible_BKR_1P.txt,0.534
-command_obedience,command_obedience,"Díme-li, že s ním obecenství máme, a ve tmě chodíme, lžeme, a nečiníme pravdy.",bible_BKR_1J.txt,0.284
-command_obedience,command_obedience,"Jestliže pak budeme vyznávati hříchy své, věrnýť jest Bůh a spravedlivý, aby nám odpustil hříchy, a očistil nás od všeliké nepravosti.",bible_BKR_1J.txt,0.567
-command_obedience,command_obedience,"Kdo praví, že jest v světle, a bratra svého nenávidí, v temnostiť jest až posavad.",bible_BKR_1J.txt,0.554
-command_obedience,command_obedience,"Kdož miluje bratra svého, v světle zůstává, a pohoršení v něm není.",bible_BKR_1J.txt,0.389
-command_obedience,command_obedience,"Ale kdož nenávidí bratra svého, v temnosti jest, a v temnosti chodí, a neví, kam jde; nebo temnost oslepila oči jeho.",bible_BKR_1J.txt,0.405
-command_obedience,command_obedience,"Nebo všecko, což jest na světě, jako žádost těla, a žádost očí, a pýcha života, toť není z Otce, ale jest z světa.",bible_BKR_1J.txt,0.702
-command_obedience,command_obedience,"Z násť vyšli, ale nebyli z nás. Nebo byť byli z nás, byliť by zůstali s námi, ale vyšli z nás, aby zjeveni byli, že nejsou všickni z nás.",bible_BKR_1J.txt,0.55
-command_obedience,command_obedience,"Tyto věci psal jsem vám o těch, kteříž vás svodí.",bible_BKR_1J.txt,0.775
-command_obedience,command_obedience,"Že všemi věcmi obohaceni jste v něm, každým slovem i všelikým uměním,",bible_BKR_1K.txt,0.262
-command_obedience,command_obedience,"Věrnýť jest Bůh, skrze něhož povoláni jste k účastenství Syna jeho Jezukrista, Pána našeho.",bible_BKR_1K.txt,0.596
-command_obedience,command_obedience,"Nebo když v moudrosti Boží svět nepoznal skrze moudrost Boha, zalíbilo se Bohu skrze bláznové kázaní spasiti věřící,",bible_BKR_1K.txt,0.727
-command_obedience,command_obedience,"I já přišed k vám, bratří, nepřišel jsem s důstojností řeči neb moudrosti, zvěstuje vám svědectví Boží.",bible_BKR_1K.txt,0.632
-command_obedience,command_obedience,"Moudrost pak mluvíme mezi dokonalými, ale moudrost ne tohoto světa, ani knížat světa tohoto, kteráž hynou.",bible_BKR_1K.txt,0.528
-command_obedience,command_obedience,"Ale mluvíme tu moudrost Boží v tajemství skrytou, kterouž Bůh předuložil před věky k slávě naší,",bible_BKR_1K.txt,0.573
-command_obedience,command_obedience,"Kterážto děvečka byla velmi krásná. I opatrovala krále a přisluhovala jemu, ale král jí nepoznal.",bible_BKR_1Kr.txt,0.482
-command_obedience,command_obedience,"A nikdy ho nezarmoutil otec jeho, aby řekl: Proč jsi to učinil? Nebo byl i on velmi krásné postavy, kteréhož porodila po Absolonovi.",bible_BKR_1Kr.txt,0.537
-command_obedience,command_obedience,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt,0.468
-command_obedience,command_obedience,"Tedy nabil Adoniáš ovcí a volů a krmného dobytka u kamene Zohelet, kterýž byl u studnice Rogel, a pozval všech bratří svých synů královských, i všech mužů Judských, služebníků králových.",bible_BKR_1Kr.txt,1.115
-command_obedience,command_obedience,"Nátana však proroka a Banaiáše a jiných přednějších mužů, ani Šalomouna bratra svého nepozval.",bible_BKR_1Kr.txt,0.483
-command_obedience,command_obedience,"Protož nyní poď, prosím, a dámť radu, kterouž vysvobodíš život svůj, i život syna svého Šalomouna.",bible_BKR_1Kr.txt,0.772
-prophetic,prophetic,"Ale kdožť ostříhá slova jeho, v pravděť láska Boží v tom jest dokonalá. Po tomť známe, že jsme v něm.",bible_BKR_1J.txt,0.686
-prophetic,prophetic,"A zase přikázaní nové píši vám, kteréž jest pravé i v něm i v vás. Nebo tma pomíjí, a světlo to pravé již svítí.",bible_BKR_1J.txt,0.626
-prophetic,prophetic,"Svět pak hyne i žádost jeho, ale kdož činí vůli Boží, tenť trvá na věky.",bible_BKR_1J.txt,0.394
-prophetic,prophetic,"Prosímť pak vás, bratří, skrze jméno Pána našeho Jezukrista, abyste jednostejně mluvili všickni, a aby nebylo mezi vámi roztržek, ale buďte spojeni jednostejnou myslí, a jednostejným smyslem.",bible_BKR_1K.txt,0.487
-prophetic,prophetic,"Vidíte zajisté povolání své, bratří, že nemnozí moudří podlé těla, nemnozí mocní, nemnozí urození.",bible_BKR_1K.txt,0.626
-prophetic,prophetic,"A protož hledajíce děvečky krásné ve všech končinách Izraelských, nalezli Abizag Sunamitskou, a přivedli ji k králi.",bible_BKR_1Kr.txt,0.571
-prophetic,prophetic,"I řekl jim král: Vezměte s sebou služebníky pána svého, a vsaďte Šalomouna syna mého na mezkyni mou, a veďte ji k Gihonu.",bible_BKR_1Kr.txt,0.524
-prophetic,prophetic,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt,0.718
-prophetic,prophetic,"Ale drahou krví jakožto Beránka nevinného a nepoškvrněného, Krista,",bible_BKR_1P.txt,0.485
-prophetic,prophetic,"Nebo všeliké tělo jest jako tráva, a všeliká sláva člověka jako květ trávy. Usvadla tráva, a květ její spadl.",bible_BKR_1P.txt,0.509
-prophetic,prophetic,"Protož složíce velikou zlost, a všelikou lest, a pokrytství, a závist, i všecka utrhání,",bible_BKR_1P.txt,0.757
-prophetic,prophetic,"Odpověděla Anna, řkuci: Nikoli, pane můj, žena jsem ducha truchlivého, ani vína ani nápoje opojného jsem nepila, ale vylila jsem duši svou před Hospodinem.",bible_BKR_1S.txt,0.539
-prophetic,prophetic,"Jakož víte, že jednoho každého z vás, jako otec dítek svých, napomínali jsme a potěšovali,",bible_BKR_1Te.txt,0.694
-prophetic,prophetic,Vy jistě jste sláva naše i radost.,bible_BKR_1Te.txt,0.614
-prophetic,prophetic,"Ale proto milosrdenství jsem došel, aby na mně prvním dokázal Ježíš Kristus všeliké dobrotivosti, ku příkladu těm, kteříž mají uvěřiti v něho k životu věčnému.",bible_BKR_1Tm.txt,0.763
-prophetic,prophetic,"Ale však spasena bude v plození dětí, jestliže by zůstala u víře, a v lásce, a v posvěcení, s středmostí.",bible_BKR_1Tm.txt,0.7
-prophetic,prophetic,"Ne piján vína, ne bitec, ani mrzkého zisku žádostivý, ale mírný, ne svárlivý, ne lakomec,",bible_BKR_1Tm.txt,0.57
-prophetic,prophetic,"Přichází-li kdo k vám, a tohoto učení nepřináší, nepřijímejte ho do domu, aniž ho pozdravujte.",bible_BKR_2J.txt,0.638
-prophetic,prophetic,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_2K.txt,0.556
-prophetic,prophetic,"Jakož jste i poznali nás z částky, žeť jsme chlouba vaše, podobně jako i vy naše, v den Pána Ježíše.",bible_BKR_2K.txt,0.702
-wisdom,wisdom,Rozdělen-liž jest Kristus? Zdali Pavel ukřižován jest za vás? aneb zdali jste ve jménu Pavlovu pokřtěni byli?,bible_BKR_1K.txt,0.663
-wisdom,wisdom,"Aby někdo neřekl, že jsem ve jménu svém křtil.",bible_BKR_1K.txt,0.483
-wisdom,wisdom,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt,0.483
-wisdom,wisdom,"Nebo slovo kříže těm, kteříž hynou, bláznovstvím jest, ale nám, kteříž spasení dosahujeme, moc Boží jest.",bible_BKR_1K.txt,0.357
-wisdom,wisdom,"Aby víra vaše nebyla na moudrosti lidské založena, ale na moci Boží.",bible_BKR_1K.txt,0.489
-wisdom,wisdom,"Vystihajíce to, na který aneb jaký čas mínil by ten, kterýž v nich byl, Duch Kristův, předpovídající o utrpeních Kristových a o veliké za tím slávě.",bible_BKR_1P.txt,0.83
-wisdom,wisdom,"Kterýmžto zjeveno jest, že ne sobě, ale nám tím přisluhovali, což jest vám nyní zvěstováno skrze ty, kteříž vám kázali evangelium, v Duchu svatém seslaném s nebe, na kteréž věci žádostivi jsou andělé patřiti.",bible_BKR_1P.txt,0.484
-wisdom,wisdom,"A poněvadž Otcem nazýváte toho, kterýž bez přijímání osob soudí vedlé skutků jednoho každého, viztež, abyste v bázni čas svého zde putování konali,",bible_BKR_1P.txt,0.125
-wisdom,wisdom,"Nejmilejší, prosímť vás, abyste jakožto příchozí a pohostinní zdržovali se od tělesných žádostí, kteréž rytěřují proti duši,",bible_BKR_1P.txt,0.805
-wisdom,wisdom,"Lučiště i silní potříni jsou, a mdlí opásáni jsou silou.",bible_BKR_1S.txt,0.696
-wisdom,wisdom,Nebo která jest naše naděje neb radost aneb koruna chlouby? Zdali ne i vy před oblíčejem Pána našeho Jezukrista v příchodu jeho?,bible_BKR_1Te.txt,0.45
-wisdom,wisdom,"Maje víru a dobré svědomí, kteréž někteří potrativše, zhynuli u víře.",bible_BKR_1Tm.txt,0.712
-wisdom,wisdom,"Napomínámť pak, aby přede vším činěny bývaly pokorné modlitby, prosby, žádosti a díků činění za všecky lidi,",bible_BKR_1Tm.txt,0.887
-wisdom,wisdom,"Nebo kdož takového pozdravuje, obcuje skutkům jeho zlým.",bible_BKR_2J.txt,0.618
-wisdom,wisdom,"Nebo jestliže já vás zarmoutím, i kdo jest, ješto by mne obveselil, než ten, kterýž jest ode mne zarmoucen?",bible_BKR_2K.txt,0.79
-wisdom,wisdom,"A vyšed k pramenu těch vod, vsypal tam sůl a řekl: Takto praví Hospodin: Uzdravuji vody tyto; nebudeť více odtud smrti, ani nedochůdčete.",bible_BKR_2Kr.txt,0.539
-wisdom,wisdom,Takť zajisté hojné způsobeno vám bude vjití k věčnému království Pána našeho a spasitele Jezukrista.,bible_BKR_2P.txt,0.672
-wisdom,wisdom,"Nebo ne nějakých vtipně složených básní následujíce, známu učinili jsme vám Pána našeho Jezukrista moc a příchod, ale jakožto ti, kteříž jsme očima svýma viděli jeho velebnost.",bible_BKR_2P.txt,0.292
-wisdom,wisdom,"A mámeť přepevnou řeč prorockou, kteréžto že šetříte jako svíce v temném místě svítící, dobře činíte, až by se den rozednil, a dennice vzešla v srdcích vašich,",bible_BKR_2P.txt,0.523
-wisdom,wisdom,"Přes to pošli mi také dříví cedrového a jedlového, a algumim z Libánu; nebo vím, že služebníci tvoji umějí sekati dříví Libánské. A hle, služebníci moji budou s služebníky tvými,",bible_BKR_2Pa.txt,0.452
+historical_event_relation,historical_event_relation,"Což bylo od počátku, což jsme slýchali, co jsme očima svýma viděli, a co jsme pilně spatřili, a čeho se ruce naše dotýkaly, o slovu života,",bible_BKR_1J.txt,0.698
+historical_event_relation,historical_event_relation,"Díme-li, že s ním obecenství máme, a ve tmě chodíme, lžeme, a nečiníme pravdy.",bible_BKR_1J.txt,0.459
+historical_event_relation,historical_event_relation,"Dí-liť kdo: Znám jej, a přikázaní jeho neostříhá, lhářť jest, a pravdy v něm není.",bible_BKR_1J.txt,0.326
+historical_event_relation,historical_event_relation,"Ale kdožť ostříhá slova jeho, v pravděť láska Boží v tom jest dokonalá. Po tomť známe, že jsme v něm.",bible_BKR_1J.txt,0.482
+historical_event_relation,historical_event_relation,"Kdo praví, že v něm zůstává, tenť má, jakž on chodil, tak choditi.",bible_BKR_1J.txt,0.525
+historical_event_relation,historical_event_relation,"Tyto věci psal jsem vám o těch, kteříž vás svodí.",bible_BKR_1J.txt,0.509
+historical_event_relation,historical_event_relation,"Ale pomazání to, kteréž jste vzali od něho, v vás zůstává, aniž potřebujete, aby kdo učil vás, ale jakž pomazání to učí vás o všech věcech, a pravéť jest a neoklamavatelné, a jakž naučilo vás, tak v něm zůstávejte.",bible_BKR_1J.txt,0.633
+historical_event_relation,historical_event_relation,"Pohleďte, jakou lásku dal nám Otec, totiž abychom synové Boží slouli. Protoť svět nezná nás, že jeho nezná.",bible_BKR_1J.txt,0.411
+historical_event_relation,historical_event_relation,Kterýž i utvrdí vás až do konce bez ouhony ke dni Pána našeho Jezukrista.,bible_BKR_1K.txt,0.565
+historical_event_relation,historical_event_relation,"Ale povolaným i Židům i Řekům Krista, Boží moc a Boží moudrost.",bible_BKR_1K.txt,0.596
+historical_event_relation,historical_event_relation,"Nebo to bláznovství Boží jest moudřejší nežli lidé, a mdloba Boží jest silnější než lidé.",bible_BKR_1K.txt,0.451
+historical_event_relation,historical_event_relation,Proto aby se nechlubilo před oblíčejem jeho žádné tělo.,bible_BKR_1K.txt,0.77
+historical_event_relation,historical_event_relation,"Moudrost pak mluvíme mezi dokonalými, ale moudrost ne tohoto světa, ani knížat světa tohoto, kteráž hynou.",bible_BKR_1K.txt,0.529
+historical_event_relation,historical_event_relation,"A nikdy ho nezarmoutil otec jeho, aby řekl: Proč jsi to učinil? Nebo byl i on velmi krásné postavy, kteréhož porodila po Absolonovi.",bible_BKR_1Kr.txt,0.688
+historical_event_relation,historical_event_relation,"A odpovídaje král David, řekl: Zavolejte mi Betsabé. Kteráž všedši před krále, stála před ním.",bible_BKR_1Kr.txt,0.566
+historical_event_relation,historical_event_relation,"Kteréhož neviděvše, milujete; kteréhož nyní nevidouce, a však v něho věříce, veselíte se radostí nevymluvnou a oslavenou,",bible_BKR_1P.txt,0.407
+historical_event_relation,historical_event_relation,"Docházejíce konce víry své, spasení duší.",bible_BKR_1P.txt,0.777
+historical_event_relation,historical_event_relation,"Vědouce, že ne porušitelnými věcmi, stříbrem neb zlatem, vykoupeni jste z marného svého obcování toho, od otců vydaného,",bible_BKR_1P.txt,0.738
+historical_event_relation,historical_event_relation,"Poněvadž duše své očistili jste poslušenstvím pravdy skrze Ducha, k milování neošemetnému bratrstva, z čistého srdce jedni druhé milujte snažně,",bible_BKR_1P.txt,0.633
+historical_event_relation,historical_event_relation,"Ale vy jste rod vyvolený, královské kněžstvo, národ svatý, lid dobytý, abyste zvěstovali ctnosti toho, kterýž vás povolal ze tmy v předivné světlo své.",bible_BKR_1P.txt,0.502
+lyrical_relation,lyrical_relation,"(Nebo ten život zjeven jest, a my jsme viděli, a svědčíme, i zvěstujeme vám ten život věčný, kterýž byl u Otce, a zjeven jest nám),",bible_BKR_1J.txt,0.539
+lyrical_relation,lyrical_relation,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt,0.842
+lyrical_relation,lyrical_relation,"Píši vám, synáčkové, žeť jsou vám odpuštěni hříchové pro jméno jeho.",bible_BKR_1J.txt,0.669
+lyrical_relation,lyrical_relation,"Píši vám, dítky, že jste poznali Otce. Psal jsem vám, otcové, že jste poznali toho, kterýž jest od počátku. Psal jsem vám, mládenci, že silní jste, a slovo Boží v vás zůstává, a že jste svítězili nad tím zlostníkem.",bible_BKR_1J.txt,0.421
+lyrical_relation,lyrical_relation,"Svět pak hyne i žádost jeho, ale kdož činí vůli Boží, tenť trvá na věky.",bible_BKR_1J.txt,0.668
+lyrical_relation,lyrical_relation,"Z násť vyšli, ale nebyli z nás. Nebo byť byli z nás, byliť by zůstali s námi, ale vyšli z nás, aby zjeveni byli, že nejsou všickni z nás.",bible_BKR_1J.txt,0.696
+lyrical_relation,lyrical_relation,"Každý kdož zapírá Syna, nemáť ani Otce.",bible_BKR_1J.txt,0.766
+lyrical_relation,lyrical_relation,"Církvi Boží, kteráž jest v Korintu, posvěceným v Kristu Ježíši, povolaným svatým, spolu se všechněmi, kteříž vzývají jméno Pána našeho Jezukrista na všelikém místě, i jejich i našem:",bible_BKR_1K.txt,0.713
+lyrical_relation,lyrical_relation,"Že všemi věcmi obohaceni jste v něm, každým slovem i všelikým uměním,",bible_BKR_1K.txt,0.341
+lyrical_relation,lyrical_relation,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt,0.551
+lyrical_relation,lyrical_relation,"Tak že, nemáte žádného nedostatku v žádném daru, očekávajíce zjevení Pána našeho Jezukrista,",bible_BKR_1K.txt,0.647
+lyrical_relation,lyrical_relation,"Míním pak toto, že jeden každý z vás říká: Já jsem Pavlův, já Apollův, já Petrův, já pak Kristův.",bible_BKR_1K.txt,0.509
+lyrical_relation,lyrical_relation,"I mluvíval s Joábem synem Sarvie a s Abiatarem knězem, kteříž napomáhali Adoniášovi.",bible_BKR_1Kr.txt,0.618
+lyrical_relation,lyrical_relation,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt,0.695
+lyrical_relation,lyrical_relation,"A aj, když ty ještě tam mluviti budeš s králem, přijduť za tebou a doplním řeč tvou.",bible_BKR_1Kr.txt,0.499
+lyrical_relation,lyrical_relation,"I odpověděla jemu: Pane můj, ty jsi přisáhl skrze Hospodina Boha svého služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a on seděti bude na stolici mé.",bible_BKR_1Kr.txt,0.444
+lyrical_relation,lyrical_relation,"Sic jinak bude to, když usne pán můj král s otci svými, že já a syn můj Šalomoun budeme jako hříšníci.",bible_BKR_1Kr.txt,0.806
+lyrical_relation,lyrical_relation,"Zatím řekl Nátan: Pane můj králi, ty-lis pověděl: Adoniáš kralovati bude po mně, a on seděti bude na stolici mé?",bible_BKR_1Kr.txt,0.635
+lyrical_relation,lyrical_relation,"A odpovídaje Banaiáš syn Joiadův králi, řekl: Amen. Způsobiž to Hospodin, Bůh pána mého krále.",bible_BKR_1Kr.txt,0.303
+lyrical_relation,lyrical_relation,"Vzal také Sádoch kněz roh oleje z stánku, a pomazal Šalomouna. Potom troubili trubou, a řekl všecken lid: Živ buď král Šalomoun.",bible_BKR_1Kr.txt,0.53
+wisdom_relation,wisdom_relation,"Což jsme viděli a slyšeli, zvěstujeme vám, abyste i vy s námi obecenství měli, a obecenství naše aby bylo s Otcem i s Synem jeho Jezukristem.",bible_BKR_1J.txt,0.655
+wisdom_relation,wisdom_relation,"A onť jest obět slitování za hříchy naše, a netoliko za naše, ale i za všeho světa.",bible_BKR_1J.txt,0.826
+wisdom_relation,wisdom_relation,"Kdo praví, že jest v světle, a bratra svého nenávidí, v temnostiť jest až posavad.",bible_BKR_1J.txt,0.527
+wisdom_relation,wisdom_relation,"Vidíte zajisté povolání své, bratří, že nemnozí moudří podlé těla, nemnozí mocní, nemnozí urození.",bible_BKR_1K.txt,0.46
+wisdom_relation,wisdom_relation,"Ale což bláznivého jest u světa, to vyvolil Bůh, aby zahanbil moudré, a to, což jest u světa mdlé, vyvolil Bůh, aby zahanbil silné.",bible_BKR_1K.txt,0.735
+wisdom_relation,wisdom_relation,"Nebo tak jsem usoudil nic jiného neuměti mezi vámi, nežli Ježíše Krista, a to toho ukřižovaného.",bible_BKR_1K.txt,0.722
+wisdom_relation,wisdom_relation,"Nátana však proroka a Banaiáše a jiných přednějších mužů, ani Šalomouna bratra svého nepozval.",bible_BKR_1Kr.txt,0.564
+wisdom_relation,wisdom_relation,"A nyní, hle, Adoniáš kraluje, ty pak nyní, pane můj králi, nic nevíš o tom.",bible_BKR_1Kr.txt,0.66
+wisdom_relation,wisdom_relation,"A aj, když ještě ona mluvila s králem, přišel Nátan prorok.",bible_BKR_1Kr.txt,0.539
+wisdom_relation,wisdom_relation,"I řekl jim král: Vezměte s sebou služebníky pána svého, a vsaďte Šalomouna syna mého na mezkyni mou, a veďte ji k Gihonu.",bible_BKR_1Kr.txt,0.328
+wisdom_relation,wisdom_relation,"Nebo všeliké tělo jest jako tráva, a všeliká sláva člověka jako květ trávy. Usvadla tráva, a květ její spadl.",bible_BKR_1P.txt,0.584
+wisdom_relation,wisdom_relation,"Protož složíce velikou zlost, a všelikou lest, a pokrytství, a závist, i všecka utrhání,",bible_BKR_1P.txt,0.459
+wisdom_relation,wisdom_relation,"A Aradia, Samarea a Amatea.",bible_BKR_1Pa.txt,0.79
+wisdom_relation,wisdom_relation,"Sárug, Náchor, Táre,",bible_BKR_1Pa.txt,0.636
+wisdom_relation,wisdom_relation,"Přesto kormoutila ji také velmi protivnice její, toliko aby ji popouzela, proto že Hospodin zavřel byl život její.",bible_BKR_1S.txt,0.728
+wisdom_relation,wisdom_relation,"Vstala tedy Anna, když pojedli v Sílo a napili se; a Elí kněz seděl na stolici u veřeje chrámu Hospodinova.",bible_BKR_1S.txt,0.8
+wisdom_relation,wisdom_relation,"I stalo se po vyplnění dnů, jakž počala Anna, že porodila syna, a nazvala jméno jeho Samuel; nebo řekla: Vyprosila jsem ho na Hospodinu.",bible_BKR_1S.txt,0.433
+wisdom_relation,wisdom_relation,"Ona pak řekla: Poslyš mne, pane můj. Jako jest živa duše tvá, pane můj, já jsem žena ta, kteráž jsem stála tuto s tebou, modleci se Hospodinu.",bible_BKR_1S.txt,0.522
+wisdom_relation,wisdom_relation,"Hospodin umrtvuje i obživuje, uvodí do pekla i vyvodí.",bible_BKR_1S.txt,0.793
+wisdom_relation,wisdom_relation,"Onť ostříhá noh svatých svých, ale bezbožní ve tmě umlknou; nebo ne v síle záleží síla člověka.",bible_BKR_1S.txt,0.605
+request_relation,request_relation,"A totoť píšeme vám, aby radost vaše byla plná.",bible_BKR_1J.txt,0.492
+request_relation,request_relation,"Toť jest tedy zvěstování to, kteréž jsme slýchali od něho, a zvěstujeme vám: Že Bůh jest světlo, a tmy v něm nižádné není.",bible_BKR_1J.txt,0.725
+request_relation,request_relation,"Pakliť díme, že hříchu nemáme, sami se svodíme, a pravdy v nás není.",bible_BKR_1J.txt,0.61
+request_relation,request_relation,"Díme-li, že jsme nehřešili, činíme jej lhářem, a neníť v nás slova jeho.",bible_BKR_1J.txt,0.83
+request_relation,request_relation,"Nemilujtež světa, ani těch věcí, kteréž na světě jsou. Miluje-liť kdo svět, neníť lásky Otcovy v něm.",bible_BKR_1J.txt,0.543
+request_relation,request_relation,"Dítky, poslední hodina jest, a jakož jste slýchali, že antikrist přijíti má, i nyníť antikristové mnozí povstali. Odkudž známe, že poslední hodina jest.",bible_BKR_1J.txt,0.526
+request_relation,request_relation,"Nepsal jsem vám, proto že byste neznali pravdy, ale že ji znáte, a že všeliká lež není z pravdy.",bible_BKR_1J.txt,0.675
+request_relation,request_relation,"A toť jest to zaslíbení, kteréž on nám zaslíbil, totiž ten život věčný.",bible_BKR_1J.txt,0.239
+request_relation,request_relation,"Poněvadž víte, že on spravedlivý jest, znejtež také, že každý, kdož činí spravedlnost, z něho jest narozen.",bible_BKR_1J.txt,0.498
+request_relation,request_relation,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt,0.779
+request_relation,request_relation,"Věrnýť jest Bůh, skrze něhož povoláni jste k účastenství Syna jeho Jezukrista, Pána našeho.",bible_BKR_1K.txt,0.556
+request_relation,request_relation,"I já přišed k vám, bratří, nepřišel jsem s důstojností řeči neb moudrosti, zvěstuje vám svědectví Boží.",bible_BKR_1K.txt,0.618
+request_relation,request_relation,"A byl jsem já u vás v mdlobě, a v bázni, i v strachu mnohém.",bible_BKR_1K.txt,0.455
+request_relation,request_relation,"Aby víra vaše nebyla na moudrosti lidské založena, ale na moci Boží.",bible_BKR_1K.txt,0.72
+request_relation,request_relation,"Jíž žádný z knížat světa tohoto nepoznal. Nebo kdyby byli poznali, nebyliť by Pána slávy ukřižovali.",bible_BKR_1K.txt,0.515
+request_relation,request_relation,"Ale jakož psáno jest: Čeho oko nevídalo, ani ucho neslýchalo, ani na srdce lidské nevstoupilo, co připravil Bůh těm, kteříž jej milují.",bible_BKR_1K.txt,0.423
+request_relation,request_relation,"Král pak David sstaral se a sešel věkem, a ačkoli jej šaty přikrývali, však nemohl se zahřívati.",bible_BKR_1Kr.txt,0.599
+request_relation,request_relation,"Kterážto děvečka byla velmi krásná. I opatrovala krále a přisluhovala jemu, ale král jí nepoznal.",bible_BKR_1Kr.txt,0.665
+request_relation,request_relation,"Tedy nabil Adoniáš ovcí a volů a krmného dobytka u kamene Zohelet, kterýž byl u studnice Rogel, a pozval všech bratří svých synů královských, i všech mužů Judských, služebníků králových.",bible_BKR_1Kr.txt,0.771
+request_relation,request_relation,"Ješto ty, pane můj králi, víš, že oči všeho Izraele na tebe jsou obráceny, abys jim oznámil, kdo by seděti měl na stolici pána mého krále po tobě.",bible_BKR_1Kr.txt,0.644
+autoclitic_relation,autoclitic_relation,"Pakliť chodíme v světle, jako on jest v světle, obecenství máme vespolek, a krev Krista Ježíše Syna jeho očišťuje nás od všelikého hříchu.",bible_BKR_1J.txt,0.392
+autoclitic_relation,autoclitic_relation,"A po tomť známe, že jsme jej poznali, jestliže přikázaní jeho ostříháme.",bible_BKR_1J.txt,0.479
+autoclitic_relation,autoclitic_relation,"Ale kdož nenávidí bratra svého, v temnosti jest, a v temnosti chodí, a neví, kam jde; nebo temnost oslepila oči jeho.",bible_BKR_1J.txt,0.617
+autoclitic_relation,autoclitic_relation,"Prosímť pak vás, bratří, skrze jméno Pána našeho Jezukrista, abyste jednostejně mluvili všickni, a aby nebylo mezi vámi roztržek, ale buďte spojeni jednostejnou myslí, a jednostejným smyslem.",bible_BKR_1K.txt,0.61
+autoclitic_relation,autoclitic_relation,Kde jest moudrý? A kde učený? A kde chytrák tohoto světa? Zdaliž Bůh neobrátil moudrosti tohoto světa v bláznovství?,bible_BKR_1K.txt,0.676
+autoclitic_relation,autoclitic_relation,"A neurozené u světa a za nic položené vyvolil Bůh, anobrž kteréž nejsou, aby ty věci, kteréž jsou, zahladil,",bible_BKR_1K.txt,0.495
+autoclitic_relation,autoclitic_relation,"Ale mluvíme tu moudrost Boží v tajemství skrytou, kterouž Bůh předuložil před věky k slávě naší,",bible_BKR_1K.txt,0.774
+autoclitic_relation,autoclitic_relation,"I mluvil Nátan k Betsabé matce Šalomounově, řka: Neslyšela-lis, že kraluje Adoniáš syn Haggity, a pán náš David nic neví o tom?",bible_BKR_1Kr.txt,0.847
+autoclitic_relation,autoclitic_relation,"Protož nyní poď, prosím, a dámť radu, kterouž vysvobodíš život svůj, i život syna svého Šalomouna.",bible_BKR_1Kr.txt,0.54
+autoclitic_relation,autoclitic_relation,"Požehnaný Bůh a Otec Pána našeho Ježíše Krista, kterýž podlé mnohého milosrdenství svého znovu zplodil nás v naději živou skrze vzkříšení Ježíše Krista z mrtvých,",bible_BKR_1P.txt,0.91
+autoclitic_relation,autoclitic_relation,"Předzvěděného zajisté před ustanovením světa, zjeveného pak v časích posledních pro vás,",bible_BKR_1P.txt,0.625
+autoclitic_relation,autoclitic_relation,"Jakožto nyní zrozená nemluvňátka, mléka beze lsti, Božího slova žádostivi buďte, abyste jím rostli,",bible_BKR_1P.txt,0.424
+autoclitic_relation,autoclitic_relation,"A synové Chusovi: Sába, Evila, Sabata, Regma, Sabatacha. Synové pak Regmovi: Sába a Dedan.",bible_BKR_1Pa.txt,0.68
+autoclitic_relation,autoclitic_relation,Synové pak Lotanovi: Hori a Homam. Sestra pak Lotanova: Tamna.,bible_BKR_1Pa.txt,0.639
+autoclitic_relation,autoclitic_relation,"Synové Sobalovi: Alian, Manáhat, Ebal, Sefi a Onam. Synové pak Sebeonovi: Aia a Ana.",bible_BKR_1Pa.txt,0.591
+autoclitic_relation,autoclitic_relation,"Potom, když ho odchovala, vedla jej s sebou, se třmi volky a jednou efi mouky a nádobou vína, i uvedla jej do domu Hospodinova v Sílo; dítě pak ještě bylo malé.",bible_BKR_1S.txt,0.818
+autoclitic_relation,autoclitic_relation,"Timoteovi, vlastnímu synu u víře: Milost, milosrdenství a pokoj od Boha Otce našeho, a od Krista Ježíše Pána našeho.",bible_BKR_1Tm.txt,0.467
+autoclitic_relation,autoclitic_relation,"Od čehož někteří jako od cíle pobloudivše, uchýlili se k marnomluvnosti,",bible_BKR_1Tm.txt,0.603
+autoclitic_relation,autoclitic_relation,"Kterýž by dům svůj dobře spravoval, kterýž by dítky měl v poddanosti se vší poctivostí.",bible_BKR_1Tm.txt,0.711
+autoclitic_relation,autoclitic_relation,"Ale anděl Hospodinův řekl Eliášovi Tesbitskému: Vstana, jdi vstříc poslům krále Samařského a mluv k nim: Zdali není Boha v Izraeli, že jdete dotazovati se Belzebuba, boha Akaron?",bible_BKR_2Kr.txt,0.451
+descriptive_relation,descriptive_relation,"Jestliže pak budeme vyznávati hříchy své, věrnýť jest Bůh a spravedlivý, aby nám odpustil hříchy, a očistil nás od všeliké nepravosti.",bible_BKR_1J.txt,0.585
+descriptive_relation,descriptive_relation,"Píši vám, otcové, že jste poznali toho, kterýž jest od počátku. Píši vám, mládenci, že jste svítězili nad tím zlostníkem.",bible_BKR_1J.txt,0.522
+descriptive_relation,descriptive_relation,"Vy pak máte pomazání od Svatého, a znáte všecko.",bible_BKR_1J.txt,0.769
+descriptive_relation,descriptive_relation,"Děkuji Bohu svému vždycky z vás pro tu milost Boží, kteráž dána jest vám v Kristu Ježíši,",bible_BKR_1K.txt,0.575
+descriptive_relation,descriptive_relation,"Nebo když v moudrosti Boží svět nepoznal skrze moudrost Boha, zalíbilo se Bohu skrze bláznové kázaní spasiti věřící,",bible_BKR_1K.txt,0.435
+descriptive_relation,descriptive_relation,"Poněvadž i Židé zázraků žádají, i Řekové hledají moudrosti.",bible_BKR_1K.txt,0.481
+descriptive_relation,descriptive_relation,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt,0.66
+descriptive_relation,descriptive_relation,"Aby, jakož jest napsáno, kdo se chlubí, v Pánu se chlubil.",bible_BKR_1K.txt,0.715
+descriptive_relation,descriptive_relation,"I řekli jemu služebníci jeho: Nechť pohledají pánu našemu králi děvečky panny, kteráž by byla při králi a opatrovala jej, a aby spala v lůnu jeho, a zahřívala pána našeho krále.",bible_BKR_1Kr.txt,0.728
+descriptive_relation,descriptive_relation,"A tak vešla Betsabé k králi do pokoje. Král pak již byl velmi starý, a Abizag Sunamitská přisluhovala králi.",bible_BKR_1Kr.txt,0.518
+descriptive_relation,descriptive_relation,"A naklonivši hlavy Betsabé tváří k zemi, poklonu učinila králi a řekla: Živ buď pán můj král David na věky.",bible_BKR_1Kr.txt,0.76
+descriptive_relation,descriptive_relation,"I pomaže ho tam Sádoch kněz a Nátan prorok za krále nad Izraelem, a troubiti budete troubou, a díte: Živ buď král Šalomoun.",bible_BKR_1Kr.txt,0.595
+descriptive_relation,descriptive_relation,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt,0.558
+descriptive_relation,descriptive_relation,"A tak šli dolů Sádoch kněz a Nátan prorok, a Banaiáš syn Joiadův, Cheretejští také i Peletejští, a vsadili Šalomouna na mezkyni krále Davida, a dovedli jej k Gihonu.",bible_BKR_1Kr.txt,0.301
+descriptive_relation,descriptive_relation,"Kterýmžto zjeveno jest, že ne sobě, ale nám tím přisluhovali, což jest vám nyní zvěstováno skrze ty, kteříž vám kázali evangelium, v Duchu svatém seslaném s nebe, na kteréž věci žádostivi jsou andělé patřiti.",bible_BKR_1P.txt,0.749
+descriptive_relation,descriptive_relation,"Jakož napsáno jest: Svatí buďte, nebo já svatý jsem.",bible_BKR_1P.txt,0.671
+descriptive_relation,descriptive_relation,"Ale slovo Páně zůstává na věky. Totoť pak jest to slovo, kteréž zvěstováno jest vám.",bible_BKR_1P.txt,0.729
+descriptive_relation,descriptive_relation,"Vám tedy věřícím jest poctivost, ale nepovolným kámen, kterýž zavrhli stavitelé, tenť jest učiněn v hlavu úhelní, a kámen úrazu, a skála pohoršení,",bible_BKR_1P.txt,0.723
+descriptive_relation,descriptive_relation,"Kteříž jste někdy ani lidem nebyli, nyní pak jste lid Boží; kteříž jste někdy byli nedošli milosrdenství, nyní pak jste došli milosrdenství.",bible_BKR_1P.txt,0.693
+descriptive_relation,descriptive_relation,"Obcování své mezi pohany majíce dobré, aby místo toho, kdež utrhají vám jako zločincům, dobré skutky vaše spatřujíce, velebili Boha v den navštívení.",bible_BKR_1P.txt,0.729
+reported_speech,reported_speech,"Bratří, ne nové přikázaní píši vám, ale přikázaní staré, kteréž jste měli od počátku. A to přikázaní staré jestiť slovo to, kteréž jste slyšeli od počátku.",bible_BKR_1J.txt,0.411
+reported_speech,reported_speech,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt,0.746
+reported_speech,reported_speech,"A protož zůstaniž v vás to, což jste slýchali od počátku. Zůstane-liť v vás to, co jste slýchali od počátku, i vy také v Synu i v Otci zůstanete.",bible_BKR_1J.txt,0.458
+reported_speech,reported_speech,"A nyní, synáčkové, zůstávejtež v něm, abychom, když by se ukázal, smělé doufání měli, a nebyli zahanbeni od něho v příchodu jeho.",bible_BKR_1J.txt,0.592
+reported_speech,reported_speech,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt,0.847
+reported_speech,reported_speech,"Nebo oznámeno jest mi o vás, bratří moji, od domácích Chloe, že by mezi vámi byly různice.",bible_BKR_1K.txt,0.736
+reported_speech,reported_speech,"Aby někdo neřekl, že jsem ve jménu svém křtil.",bible_BKR_1K.txt,0.771
+reported_speech,reported_speech,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt,0.452
+reported_speech,reported_speech,"Myť pak kážeme Krista ukřižovaného, Židům zajisté pohoršení, a Řekům bláznovství,",bible_BKR_1K.txt,0.579
+reported_speech,reported_speech,"A řeč má a kázaní mé nebylo v slibných lidské moudrosti řečech, ale v dokázaní Ducha a moci,",bible_BKR_1K.txt,0.692
+reported_speech,reported_speech,"Jdiž, a vejda k králi Davidovi, rci jemu: Zdaliž jsi ty, pane můj králi, nepřisáhl služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a onť seděti bude na stolici mé? Pročež tedy kraluje Adoniáš?",bible_BKR_1Kr.txt,0.288
+reported_speech,reported_speech,"Tedy Betsabé naklonivši hlavy, poklonila se králi. Jížto řekl král: Což chceš?",bible_BKR_1Kr.txt,0.473
+reported_speech,reported_speech,"Tak-liž jest ode pána mého krále nařízeno? Mně jsi zajisté neoznámil služebníku svému, kdo bude seděti na stolici pána mého krále po tobě?",bible_BKR_1Kr.txt,0.419
+reported_speech,reported_speech,"I vstoupil všecken lid za ním; kterýžto lid prozpěvoval s plésáním, a veselil se radostí velikou, tak až se všudy rozléhalo od zvuku jejich.",bible_BKR_1Kr.txt,0.645
+reported_speech,reported_speech,"Petr, apoštol Ježíše Krista, příchozím rozptýleným v Pontu, Galacii, Kappadocii, v Azii, a v Bitynii,",bible_BKR_1P.txt,0.601
+reported_speech,reported_speech,"O kterémž spasení bedlivě přemyšlovali, a je vystihati usilovali proroci, kteříž o té milosti, kteráž se vám státi měla, prorokovali,",bible_BKR_1P.txt,0.388
+reported_speech,reported_speech,"Vystihajíce to, na který aneb jaký čas mínil by ten, kterýž v nich byl, Duch Kristův, předpovídající o utrpeních Kristových a o veliké za tím slávě.",bible_BKR_1P.txt,0.613
+reported_speech,reported_speech,"A poněvadž Otcem nazýváte toho, kterýž bez přijímání osob soudí vedlé skutků jednoho každého, viztež, abyste v bázni čas svého zde putování konali,",bible_BKR_1P.txt,0.547
+reported_speech,reported_speech,"Jestliže však okusili jste, kterak dobrotivý jest Pán.",bible_BKR_1P.txt,0.542
+reported_speech,reported_speech,"Enoch, Matuzalém, Lámech,",bible_BKR_1Pa.txt,0.64
+prophetic_relation,prophetic_relation,"A zase přikázaní nové píši vám, kteréž jest pravé i v něm i v vás. Nebo tma pomíjí, a světlo to pravé již svítí.",bible_BKR_1J.txt,0.529
+prophetic_relation,prophetic_relation,"Kdož miluje bratra svého, v světle zůstává, a pohoršení v něm není.",bible_BKR_1J.txt,0.423
+prophetic_relation,prophetic_relation,"Nebo všecko, což jest na světě, jako žádost těla, a žádost očí, a pýcha života, toť není z Otce, ale jest z světa.",bible_BKR_1J.txt,0.649
+prophetic_relation,prophetic_relation,"Nebo slovo kříže těm, kteříž hynou, bláznovstvím jest, ale nám, kteříž spasení dosahujeme, moc Boží jest.",bible_BKR_1K.txt,0.546
+prophetic_relation,prophetic_relation,"Nebo psáno jest: Zahladím moudrost moudrých, a opatrnost opatrných zavrhu.",bible_BKR_1K.txt,0.785
+prophetic_relation,prophetic_relation,"A protož hledajíce děvečky krásné ve všech končinách Izraelských, nalezli Abizag Sunamitskou, a přivedli ji k králi.",bible_BKR_1Kr.txt,0.655
+prophetic_relation,prophetic_relation,"Adoniáš pak syn Haggity pozdvihoval se, říkaje: Jáť budu kralovati. I najednal sobě vozů a jezdců, a padesáte mužů, kteříž by běhali před ním.",bible_BKR_1Kr.txt,0.539
+prophetic_relation,prophetic_relation,"Nebo nabiv volů a krmného dobytka a ovec množství, pozval všech synů královských, i Abiatara kněze a Joába hejtmana vojska, Šalomouna pak služebníka tvého nepozval.",bible_BKR_1Kr.txt,0.455
+prophetic_relation,prophetic_relation,"I oznámili králi, řkouce: Aj, teď Nátan prorok. A tak všel před krále, a poklonil se jemu tváří svou až k zemi.",bible_BKR_1Kr.txt,0.651
+prophetic_relation,prophetic_relation,"Mne pak služebníka tvého, a Sádocha kněze, a Banaiáše syna Joiadova, a Šalomouna služebníka tvého nepozval.",bible_BKR_1Kr.txt,0.567
+prophetic_relation,prophetic_relation,"I přisáhl král, řka: Živť jest Hospodin, kterýž vysvobodil duši mou ze všelikých úzkostí,",bible_BKR_1Kr.txt,0.371
+prophetic_relation,prophetic_relation,"Řekl ještě král David: Zavolejte ke mně Sádocha kněze a Nátana proroka, a Banaiáše syna Joiadova. Kteřížto vešli před krále.",bible_BKR_1Kr.txt,0.573
+prophetic_relation,prophetic_relation,"Kteříž skrze něho věříte v Boha, jenž jej vzkřísil z mrtvých, a dal jemu slávu, aby víra vaše a naděje byla v Bohu.",bible_BKR_1P.txt,1.057
+prophetic_relation,prophetic_relation,"Nejmilejší, prosímť vás, abyste jakožto příchozí a pohostinní zdržovali se od tělesných žádostí, kteréž rytěřují proti duši,",bible_BKR_1P.txt,0.787
+prophetic_relation,prophetic_relation,"Synové Jáfetovi: Gomer, Magog, Madai, Javan, Tubal, Mešech a Tiras.",bible_BKR_1Pa.txt,0.67
+prophetic_relation,prophetic_relation,"Synové Chamovi: Chus, Mizraim, Put a Kanán.",bible_BKR_1Pa.txt,0.945
+prophetic_relation,prophetic_relation,"Fetruzim také a Chasluim, (odkudž pošli Filistinští), a Kafturim.",bible_BKR_1Pa.txt,0.53
+prophetic_relation,prophetic_relation,"Synové Semovi: Elam, Assur, Arfaxad, Lud, Aram, Hus a Hul, Geter a Mas.",bible_BKR_1Pa.txt,0.642
+prophetic_relation,prophetic_relation,"A Ebale, Abimahele a Sebai,",bible_BKR_1Pa.txt,0.436
+prophetic_relation,prophetic_relation,"Když pak přišel den, v němž obětoval Elkána, dal Penenně manželce své, a všechněm synům i dcerám jejím díly.",bible_BKR_1S.txt,0.363
+genealogical_relation,genealogical_relation,Rozdělen-liž jest Kristus? Zdali Pavel ukřižován jest za vás? aneb zdali jste ve jménu Pavlovu pokřtěni byli?,bible_BKR_1K.txt,0.494
+genealogical_relation,genealogical_relation,"Děkuji Bohu, že jsem žádného z vás nekřtil, než Krispa a Gáia,",bible_BKR_1K.txt,0.697
+genealogical_relation,genealogical_relation,"Křtilť jsem také i Štěpánovu čeled. Více nevím, abych koho jiného křtil.",bible_BKR_1K.txt,0.592
+genealogical_relation,genealogical_relation,"Že jakož jsem přisáhl tobě skrze Hospodina Boha Izraelského, řka, že syn tvůj Šalomoun kralovati bude po mně, a on seděti bude na stolici mé místo mně, takť učiním dnes.",bible_BKR_1Kr.txt,0.639
+genealogical_relation,genealogical_relation,"Kteříž mocí Boží ostříháni býváte skrze víru k spasení, kteréž hotovo jest, aby zjeveno bylo v času posledním.",bible_BKR_1P.txt,0.308
+genealogical_relation,genealogical_relation,"Jakožto synové poslušní, nepřirovnávající se prvním neznámosti své žádostem.",bible_BKR_1P.txt,0.545
+genealogical_relation,genealogical_relation,"Ale jakž ten, kterýž vás povolal, svatý jest, i vy svatí ve všem obcování buďte;",bible_BKR_1P.txt,0.753
+genealogical_relation,genealogical_relation,"K kterémuž přistupujíce k kameni živému, od lidí zajisté zavrženému, ale od Boha vyvolenému a drahému,",bible_BKR_1P.txt,0.438
+genealogical_relation,genealogical_relation,"Těm, kteříž se urážejí na slovu, nepovolní jsouce, k čemuž i odloženi jsou.",bible_BKR_1P.txt,0.429
+genealogical_relation,genealogical_relation,"Synové pak Javanovi: Elisa, Tarsis, Cetim a Rodanim.",bible_BKR_1Pa.txt,0.5
+genealogical_relation,genealogical_relation,"A Hevea, Aracea a Sinea,",bible_BKR_1Pa.txt,0.742
+genealogical_relation,genealogical_relation,"Heberovi pak narodili se dva synové, z nichž jednoho jméno Peleg, proto že za dnů jeho rozdělena byla země, jméno pak bratra jeho Jektan.",bible_BKR_1Pa.txt,0.576
+genealogical_relation,genealogical_relation,"Heber, Peleg, Réhu,",bible_BKR_1Pa.txt,0.582
+genealogical_relation,genealogical_relation,"Masma, Dumah, Massa, Hadad a Tema,",bible_BKR_1Pa.txt,0.666
+genealogical_relation,genealogical_relation,"Synové pak Cetury, ženiny Abrahamovy: Ta porodila Zamrana, Jeksana, Madana, Madiana, Jezbocha a Suecha. Synové pak Jeksanovi: Sába a Dedan.",bible_BKR_1Pa.txt,0.54
+genealogical_relation,genealogical_relation,"Protož já také oddávám jej Hospodinu; po všecky dny, v nichž živ bude, oddanýť jest Hospodinu. A učinil tu poklonu Hospodinu.",bible_BKR_1S.txt,0.549
+genealogical_relation,genealogical_relation,"Hospodin ochuzuje i zbohacuje, ponižuje i povyšuje.",bible_BKR_1S.txt,0.693
+genealogical_relation,genealogical_relation,"Nedopouštějíce nám mluviti pohanům, aby spaseni byli, aby tak vždy doplňovali hříchy své. Nebo vylit jest na ně hněv konečný.",bible_BKR_1Te.txt,0.528
+genealogical_relation,genealogical_relation,"Pavel, apoštol Ježíše Krista, podlé zřízení Boha spasitele našeho, a Pána Jezukrista, naděje naší,",bible_BKR_1Tm.txt,0.35
+genealogical_relation,genealogical_relation,"Protož děkuji tomu, kterýž mne zmocnil, Kristu Ježíši Pánu našemu, že mne za věrného soudil, aby mne v službě té postavil,",bible_BKR_1Tm.txt,0.705

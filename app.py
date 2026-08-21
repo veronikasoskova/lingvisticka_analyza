@@ -663,6 +663,11 @@ TRANSLATIONS = {
             "cultic":      "Kultický",
             "divine":      "Božské",
             "moral":       "Morální",
+            "covenant":    "Smlouva a zákon",
+            "judgment":    "Soud",
+            "salvation":   "Spása",
+            "creation":    "Stvoření",
+            "prophetic":   "Prorocké",
         },
         "traditions_desc": "Počet aktivních lexikálních kategorií pro každou tradici / počet termínů pro každý filozofický vliv zahrnutý v analýze.",
         "x_depth": "Průměrná hloubka stromu",
@@ -1390,6 +1395,11 @@ TRANSLATIONS = {
             "cultic":      "Kultový",
             "divine":      "Božské",
             "moral":       "Morálne",
+            "covenant":    "Zmluva a zákon",
+            "judgment":    "Súd",
+            "salvation":   "Spása",
+            "creation":    "Stvorenie",
+            "prophetic":   "Prorocké",
         },
         "traditions_desc": "Počet aktívnych lexikálnych kategórií pre každú tradíciu / počet termínov pre každý filozofický vplyv zahrnutý v analýze.",
         "x_depth": "Priemerná hĺbka stromu",
@@ -2111,6 +2121,21 @@ TRANSLATIONS = {
         "tact_autoclitic_title": "Tact vs. Autoclitic by Book",
         "tact_autoclitic_desc": "Proportion of sentences classified as **tact** (assertive — world description) vs. **autoclitic** (declarative — commentary on own speech) per biblical book.",
         "traditions_title": "Traditions & Philosophical Influences — Overview",
+        "cluster_labels": {
+            "royal":       "Royal power",
+            "kinship":     "Kinship",
+            "theological": "Theological",
+            "war":         "War",
+            "wisdom":      "Wisdom",
+            "cultic":      "Cultic",
+            "divine":      "Divine",
+            "moral":       "Moral",
+            "covenant":    "Covenant & law",
+            "judgment":    "Judgment",
+            "salvation":   "Salvation",
+            "creation":    "Creation",
+            "prophetic":   "Prophetic",
+        },
         "traditions_desc": "Number of active lexical categories per tradition / number of terms per philosophical influence included in the analysis.",
         "x_depth": "Avg tree depth",
         "x_clauses": "Avg clause count",
@@ -3571,18 +3596,10 @@ def generate_pdf_report(
     if session.get("sel_patterns", False) and lemmas_data:
         story += _section(T.get("ana_patterns_name","Text Patterns"), "🕐")
         story.append(Paragraph(T.get("ana_patterns_q",""), sty["caption"]))
-        from w_opposition_networks import OPPOSITION_PAIRS
-        from collections import Counter as _OC
-        _oh: dict = {}
-        _nl = len(lemmas_data)
-        for _ii,(_,_ls_i) in enumerate(lemmas_data):
-            _win2: set = set()
-            for _,_ls_j in lemmas_data[max(0,_ii-3):min(_nl,_ii+4)]:
-                _win2 |= set(_ls_j.split())
-            for _w1,_w2 in OPPOSITION_PAIRS:
-                if _w1 in _win2 and _w2 in _win2:
-                    _k = f"{_w1} | {_w2}"
-                    _oh[_k] = _oh.get(_k,0)+1
+        from w_opposition_networks import count_oppositions_in_lemma_windows
+        _oh = count_oppositions_in_lemma_windows(
+            [_ls for _, _ls in lemmas_data], window=3,
+        )
         if _oh:
             _odf = pd.DataFrame(sorted(_oh.items(),key=lambda x:-x[1])[:15],
                                 columns=[T.get("opposition_title","Pair"),"count"])
@@ -6144,17 +6161,10 @@ with tab_results:
     # ── 7. Textové vzory + opozície ───────────────────────────────────────────
     if st.session_state.get("sel_patterns", False) and _ldat:
         with st.expander(f"📤 🕐 {T['ana_patterns_name']}"):
-            from w_opposition_networks import OPPOSITION_PAIRS
-            from collections import Counter as _OC
-            _oh: "_OC" = _OC()
-            _nl = len(_ldat)
-            for _ii,(_, _ls_i) in enumerate(_ldat):
-                _win2: set = set()
-                for _,_ls_j in _ldat[max(0,_ii-3):min(_nl,_ii+4)]:
-                    _win2 |= set(_ls_j.split())
-                for _w1,_w2 in OPPOSITION_PAIRS:
-                    if _w1 in _win2 and _w2 in _win2:
-                        _oh[f"{_w1} | {_w2}"] += 1
+            from w_opposition_networks import count_oppositions_in_lemma_windows
+            _oh = count_oppositions_in_lemma_windows(
+                [_ls for _, _ls in _ldat], window=3,
+            )
             if _oh:
                 _od = pd.DataFrame(_oh.most_common(15),
                                    columns=[T["opposition_title"],T["x_count"]])

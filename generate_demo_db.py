@@ -203,7 +203,7 @@ def _make_refined_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         token = re.sub(r"[^\wáéíóúýěščřžďťňůäöüľĺŕ]+", "", token, flags=re.UNICODE)
         if token:
             words.append(canonicalize_lemma(token))
-    lemmas = " ".join(dict.fromkeys(words[:8]))   # pseudo-lemmas + BKR aliases
+        lemmas = " ".join(dict.fromkeys(words))
     return {
         "sentence_id":    sentence_id,
         "sentence":       sentence,

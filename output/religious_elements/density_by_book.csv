@@ -1,1189 +1,1189 @@
 file_name,element,matched_sentences,sentence_count,sentence_density,matched_lemmas,total_lemmas,token_density,role_weighted_score,role_weighted_density,top_words
-bible_BKR_1J.txt,christian_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,divine,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,eschatology,1,40,0.025,1,238,0.0042,1.3,0.0325,poslední:1
-bible_BKR_1J.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,monotheism,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,moral,1,40,0.025,1,238,0.0042,1.0,0.025,spravedlivý:1
-bible_BKR_1J.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,ritual_sacrifice,1,40,0.025,1,238,0.0042,1.0,0.025,oběť:1
-bible_BKR_1J.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1J.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1K.txt,christian_elements,4,40,0.1,5,235,0.02128,5.0,0.125,kristus:3; apoštol:1; ježíš:1
-bible_BKR_1K.txt,covenant_law,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,divine,6,40,0.15,6,235,0.02553,6.6,0.165,kristus:3; ježíš:1; milost:1; víra:1
-bible_BKR_1K.txt,divine_hierarchy,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,eschatology,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,genealogy_lineage,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,kinship,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,legal,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,life_death,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,monotheism,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,moral,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,prophetic_speech,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,ritual_sacrifice,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,royal_power,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,sacred_space,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,war_conflict,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1K.txt,wisdom,3,40,0.075,3,235,0.01277,3.3,0.0825,moudrost:3
-bible_BKR_1K.txt,yhwh_elements,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,christian_elements,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_1Kr.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,divine,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_1Kr.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,kinship,4,40,0.1,4,239,0.01674,3.8,0.095,syn:3; otec:1
-bible_BKR_1Kr.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,monotheism,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_1Kr.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,ritual_sacrifice,4,40,0.1,4,239,0.01674,3.6,0.09,kněz:4
-bible_BKR_1Kr.txt,royal_power,3,40,0.075,3,239,0.01255,3.3,0.0825,král:3
-bible_BKR_1Kr.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_1Kr.txt,yhwh_elements,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_1P.txt,christian_elements,1,40,0.025,2,237,0.00844,2.3,0.0575,apoštol:1; ježíš:1
-bible_BKR_1P.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,divine,2,40,0.05,2,237,0.00844,2.3,0.0575,ježíš:1; bůh:1
-bible_BKR_1P.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,genealogy_lineage,1,40,0.025,1,237,0.00422,1.0,0.025,rod:1
-bible_BKR_1P.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,monotheism,1,40,0.025,1,237,0.00422,1.3,0.0325,bůh:1
-bible_BKR_1P.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1P.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,christian_elements,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,covenant_law,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,divine,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,divine_hierarchy,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,eschatology,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,genealogy_lineage,1,40,0.025,1,207,0.00483,1.0,0.025,prvorozený:1
-bible_BKR_1Pa.txt,kinship,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,legal,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,life_death,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,monotheism,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,moral,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,prophetic_speech,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,ritual_sacrifice,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,royal_power,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,sacred_space,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,war_conflict,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,wisdom,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1Pa.txt,yhwh_elements,0,40,0.0,0,207,0.0,0.0,0.0,
-bible_BKR_1S.txt,christian_elements,3,40,0.075,3,238,0.01261,3.6,0.09,hospodin:3
-bible_BKR_1S.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,divine,3,40,0.075,3,238,0.01261,3.6,0.09,hospodin:3
-bible_BKR_1S.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,monotheism,3,40,0.075,3,238,0.01261,3.6,0.09,hospodin:3
-bible_BKR_1S.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_1S.txt,yhwh_elements,3,40,0.075,3,238,0.01261,3.6,0.09,hospodin:3
-bible_BKR_1Te.txt,christian_elements,2,40,0.05,2,237,0.00844,2.1,0.0525,evangelium:1; ježíš:1
-bible_BKR_1Te.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,divine,2,40,0.05,2,237,0.00844,1.8,0.045,bůh:1; ježíš:1
-bible_BKR_1Te.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,monotheism,1,40,0.025,1,237,0.00422,1.0,0.025,bůh:1
-bible_BKR_1Te.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Te.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,christian_elements,2,40,0.05,3,237,0.01266,3.3,0.0825,apoštol:1; ježíš:1; evangelium:1
-bible_BKR_1Tm.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,divine,2,40,0.05,2,237,0.00844,2.0,0.05,ježíš:1; milost:1
-bible_BKR_1Tm.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,monotheism,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,moral,1,40,0.025,1,237,0.00422,1.0,0.025,dobrý:1
-bible_BKR_1Tm.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_1Tm.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_2J.txt,christian_elements,1,13,0.07692,1,77,0.01299,1.0,0.07692,kristus:1
-bible_BKR_2J.txt,covenant_law,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,divine,1,13,0.07692,1,77,0.01299,1.0,0.07692,kristus:1
-bible_BKR_2J.txt,divine_hierarchy,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,eschatology,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,genealogy_lineage,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,kinship,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,legal,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,life_death,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,monotheism,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,moral,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,prophetic_speech,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,ritual_sacrifice,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,royal_power,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,sacred_space,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,war_conflict,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,wisdom,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2J.txt,yhwh_elements,0,13,0.0,0,77,0.0,0.0,0.0,
-bible_BKR_2K.txt,christian_elements,4,40,0.1,6,240,0.025,6.1,0.1525,kristus:3; ježíš:2; apoštol:1
-bible_BKR_2K.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,divine,6,40,0.15,7,240,0.02917,7.4,0.185,kristus:3; ježíš:2; milost:1; bůh:1
-bible_BKR_2K.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,monotheism,1,40,0.025,1,240,0.00417,1.3,0.0325,bůh:1
-bible_BKR_2K.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2K.txt,yhwh_elements,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,christian_elements,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:2
-bible_BKR_2Kr.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,divine,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:2
-bible_BKR_2Kr.txt,divine_hierarchy,2,40,0.05,2,240,0.00833,2.3,0.0575,anděl:2
-bible_BKR_2Kr.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,monotheism,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:2
-bible_BKR_2Kr.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,royal_power,1,40,0.025,1,240,0.00417,1.0,0.025,král:1
-bible_BKR_2Kr.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Kr.txt,yhwh_elements,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:2
-bible_BKR_2P.txt,christian_elements,1,40,0.025,2,238,0.0084,1.8,0.045,apoštol:1; ježíš:1
-bible_BKR_2P.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,divine,3,40,0.075,3,238,0.01261,3.1,0.0775,ježíš:1; milost:1; bůh:1
-bible_BKR_2P.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,monotheism,1,40,0.025,1,238,0.0042,1.0,0.025,bůh:1
-bible_BKR_2P.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,prophetic_speech,1,40,0.025,1,238,0.0042,0.8,0.02,proroctví:1
-bible_BKR_2P.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2P.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,christian_elements,4,40,0.1,4,240,0.01667,3.6,0.09,hospodin:4
-bible_BKR_2Pa.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,divine,6,40,0.15,7,240,0.02917,6.4,0.16,hospodin:4; bůh:3
-bible_BKR_2Pa.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,kinship,1,40,0.025,1,240,0.00417,0.8,0.02,syn:1
-bible_BKR_2Pa.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,monotheism,6,40,0.15,7,240,0.02917,6.4,0.16,hospodin:4; bůh:3
-bible_BKR_2Pa.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,ritual_sacrifice,1,40,0.025,1,240,0.00417,1.3,0.0325,oltář:1
-bible_BKR_2Pa.txt,royal_power,2,40,0.05,2,240,0.00833,2.0,0.05,král:2
-bible_BKR_2Pa.txt,sacred_space,1,40,0.025,1,240,0.00417,1.3,0.0325,oltář:1
-bible_BKR_2Pa.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Pa.txt,wisdom,2,40,0.05,2,240,0.00833,2.3,0.0575,moudrost:2
-bible_BKR_2Pa.txt,yhwh_elements,4,40,0.1,4,240,0.01667,3.6,0.09,hospodin:4
-bible_BKR_2S.txt,christian_elements,1,40,0.025,1,235,0.00426,0.8,0.02,hospodin:1
-bible_BKR_2S.txt,covenant_law,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,divine,1,40,0.025,1,235,0.00426,0.8,0.02,hospodin:1
-bible_BKR_2S.txt,divine_hierarchy,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,eschatology,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,genealogy_lineage,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,kinship,4,40,0.1,4,235,0.01702,3.8,0.095,syn:4
-bible_BKR_2S.txt,legal,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,life_death,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,monotheism,1,40,0.025,1,235,0.00426,0.8,0.02,hospodin:1
-bible_BKR_2S.txt,moral,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,prophetic_speech,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,ritual_sacrifice,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,royal_power,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,sacred_space,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,war_conflict,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,wisdom,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_2S.txt,yhwh_elements,1,40,0.025,1,235,0.00426,0.8,0.02,hospodin:1
-bible_BKR_2Te.txt,christian_elements,2,40,0.05,2,238,0.0084,1.8,0.045,evangelium:1; ježíš:1
-bible_BKR_2Te.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,divine,3,40,0.075,4,238,0.01681,4.3,0.1075,milost:1; bůh:1; ježíš:1; pán:1
-bible_BKR_2Te.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,monotheism,1,40,0.025,1,238,0.0042,1.0,0.025,bůh:1
-bible_BKR_2Te.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Te.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,christian_elements,2,40,0.05,4,240,0.01667,4.3,0.1075,ježíš:2; apoštol:1; kristus:1
-bible_BKR_2Tm.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,divine,3,40,0.075,4,240,0.01667,4.0,0.1,ježíš:2; bůh:1; kristus:1
-bible_BKR_2Tm.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,monotheism,1,40,0.025,1,240,0.00417,1.0,0.025,bůh:1
-bible_BKR_2Tm.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_2Tm.txt,yhwh_elements,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_3J.txt,christian_elements,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,covenant_law,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,divine,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,divine_hierarchy,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,eschatology,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,genealogy_lineage,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,kinship,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,legal,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,life_death,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,monotheism,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,moral,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,prophetic_speech,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,ritual_sacrifice,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,royal_power,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,sacred_space,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,war_conflict,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,wisdom,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_3J.txt,yhwh_elements,0,15,0.0,0,90,0.0,0.0,0.0,
-bible_BKR_Abd.txt,christian_elements,2,21,0.09524,2,126,0.01587,1.8,0.08571,hospodin:2
-bible_BKR_Abd.txt,covenant_law,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,divine,2,21,0.09524,2,126,0.01587,1.8,0.08571,hospodin:2
-bible_BKR_Abd.txt,divine_hierarchy,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,eschatology,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,genealogy_lineage,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,kinship,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,legal,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,life_death,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,monotheism,2,21,0.09524,2,126,0.01587,1.8,0.08571,hospodin:2
-bible_BKR_Abd.txt,moral,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,prophetic_speech,1,21,0.04762,1,126,0.00794,1.3,0.0619,vidění:1
-bible_BKR_Abd.txt,ritual_sacrifice,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,royal_power,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,sacred_space,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,war_conflict,1,21,0.04762,1,126,0.00794,1.0,0.04762,vojsko:1
-bible_BKR_Abd.txt,wisdom,0,21,0.0,0,126,0.0,0.0,0.0,
-bible_BKR_Abd.txt,yhwh_elements,2,21,0.09524,2,126,0.01587,1.8,0.08571,hospodin:2
-bible_BKR_Abk.txt,christian_elements,3,40,0.075,3,238,0.01261,3.4,0.085,hospodin:3
-bible_BKR_Abk.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,divine,6,40,0.15,7,238,0.02941,7.5,0.1875,hospodin:3; duch:1; svatý:1; modlitba:1; bůh:1
-bible_BKR_Abk.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,legal,1,40,0.025,1,238,0.0042,0.8,0.02,soud:1
-bible_BKR_Abk.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,monotheism,4,40,0.1,4,238,0.01681,4.4,0.11,hospodin:3; bůh:1
-bible_BKR_Abk.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,prophetic_speech,1,40,0.025,1,238,0.0042,1.0,0.025,vidění:1
-bible_BKR_Abk.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Abk.txt,wisdom,1,40,0.025,1,238,0.0042,0.8,0.02,přísloví:1
-bible_BKR_Abk.txt,yhwh_elements,3,40,0.075,3,238,0.01261,3.4,0.085,hospodin:3
-bible_BKR_Ag.txt,christian_elements,10,38,0.26316,10,226,0.04425,10.0,0.26316,hospodin:10
-bible_BKR_Ag.txt,covenant_law,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,divine,10,38,0.26316,10,226,0.04425,10.0,0.26316,hospodin:10
-bible_BKR_Ag.txt,divine_hierarchy,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,eschatology,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,genealogy_lineage,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,kinship,1,38,0.02632,1,226,0.00442,1.0,0.02632,syn:1
-bible_BKR_Ag.txt,legal,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,life_death,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,monotheism,10,38,0.26316,10,226,0.04425,10.0,0.26316,hospodin:10
-bible_BKR_Ag.txt,moral,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,prophetic_speech,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,ritual_sacrifice,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,royal_power,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,sacred_space,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,war_conflict,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,wisdom,0,38,0.0,0,226,0.0,0.0,0.0,
-bible_BKR_Ag.txt,yhwh_elements,10,38,0.26316,10,226,0.04425,10.0,0.26316,hospodin:10
-bible_BKR_Am.txt,christian_elements,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Am.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,divine,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Am.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,legal,1,40,0.025,1,240,0.00417,1.0,0.025,soudce:1
-bible_BKR_Am.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,monotheism,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Am.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,royal_power,1,40,0.025,1,240,0.00417,1.0,0.025,král:1
-bible_BKR_Am.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Am.txt,yhwh_elements,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Da.txt,christian_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,divine,2,40,0.05,3,238,0.01261,2.8,0.07,bůh:2; milost:1
-bible_BKR_Da.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,monotheism,2,40,0.05,2,238,0.0084,1.8,0.045,bůh:2
-bible_BKR_Da.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,prophetic_speech,1,40,0.025,1,238,0.0042,0.8,0.02,vidění:1
-bible_BKR_Da.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,royal_power,6,40,0.15,6,238,0.02521,6.4,0.16,král:6
-bible_BKR_Da.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Da.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Dt.txt,christian_elements,6,40,0.15,6,239,0.0251,6.7,0.1675,hospodin:6
-bible_BKR_Dt.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,divine,7,40,0.175,11,239,0.04603,12.9,0.3225,hospodin:6; bůh:5
-bible_BKR_Dt.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,genealogy_lineage,1,40,0.025,1,239,0.00418,1.0,0.025,pokolení:1
-bible_BKR_Dt.txt,kinship,1,40,0.025,1,239,0.00418,1.3,0.0325,syn:1
-bible_BKR_Dt.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,monotheism,7,40,0.175,11,239,0.04603,12.9,0.3225,hospodin:6; bůh:5
-bible_BKR_Dt.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,ritual_sacrifice,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Dt.txt,yhwh_elements,6,40,0.15,6,239,0.0251,6.7,0.1675,hospodin:6
-bible_BKR_Ef.txt,christian_elements,2,40,0.05,3,238,0.01261,3.3,0.0825,apoštol:1; kristus:1; ježíš:1
-bible_BKR_Ef.txt,covenant_law,1,40,0.025,1,238,0.0042,1.0,0.025,zákon:1
-bible_BKR_Ef.txt,divine,4,40,0.1,5,238,0.02101,5.9,0.1475,bůh:2; milost:1; kristus:1; ježíš:1
-bible_BKR_Ef.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,legal,1,40,0.025,1,238,0.0042,1.0,0.025,zákon:1
-bible_BKR_Ef.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,monotheism,2,40,0.05,2,238,0.0084,2.6,0.065,bůh:2
-bible_BKR_Ef.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ef.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Est.txt,christian_elements,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,divine,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,monotheism,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,royal_power,6,40,0.15,6,240,0.025,5.8,0.145,král:5; království:1
-bible_BKR_Est.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Est.txt,yhwh_elements,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Ex.txt,christian_elements,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,covenant_law,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,divine,1,40,0.025,1,233,0.00429,1.0,0.025,bůh:1
-bible_BKR_Ex.txt,divine_hierarchy,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,eschatology,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,genealogy_lineage,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,kinship,4,40,0.1,4,233,0.01717,4.3,0.1075,dcera:3; sestra:1
-bible_BKR_Ex.txt,legal,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,life_death,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,monotheism,1,40,0.025,1,233,0.00429,1.0,0.025,bůh:1
-bible_BKR_Ex.txt,moral,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,prophetic_speech,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,ritual_sacrifice,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,royal_power,4,40,0.1,4,233,0.01717,4.1,0.1025,král:3; kníže:1
-bible_BKR_Ex.txt,sacred_space,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,war_conflict,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,wisdom,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ex.txt,yhwh_elements,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Ez.txt,christian_elements,1,40,0.025,1,234,0.00427,0.8,0.02,hospodin:1
-bible_BKR_Ez.txt,covenant_law,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,divine,1,40,0.025,1,234,0.00427,0.8,0.02,hospodin:1
-bible_BKR_Ez.txt,divine_hierarchy,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,eschatology,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,genealogy_lineage,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,kinship,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,legal,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,life_death,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,monotheism,1,40,0.025,1,234,0.00427,0.8,0.02,hospodin:1
-bible_BKR_Ez.txt,moral,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,prophetic_speech,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,ritual_sacrifice,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,royal_power,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,sacred_space,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,war_conflict,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,wisdom,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ez.txt,yhwh_elements,1,40,0.025,1,234,0.00427,0.8,0.02,hospodin:1
-bible_BKR_Ezd.txt,christian_elements,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,covenant_law,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,divine,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,divine_hierarchy,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,eschatology,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,genealogy_lineage,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,kinship,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,legal,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,life_death,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,monotheism,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,moral,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,prophetic_speech,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,ritual_sacrifice,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,royal_power,3,40,0.075,3,220,0.01364,3.3,0.0825,král:3
-bible_BKR_Ezd.txt,sacred_space,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,war_conflict,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,wisdom,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Ezd.txt,yhwh_elements,0,40,0.0,0,220,0.0,0.0,0.0,
-bible_BKR_Fm.txt,christian_elements,2,25,0.08,2,149,0.01342,2.0,0.08,kristus:1; ježíš:1
-bible_BKR_Fm.txt,covenant_law,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,divine,3,25,0.12,4,149,0.02685,4.6,0.184,milost:2; kristus:1; ježíš:1
-bible_BKR_Fm.txt,divine_hierarchy,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,eschatology,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,genealogy_lineage,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,kinship,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,legal,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,life_death,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,monotheism,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,moral,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,prophetic_speech,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,ritual_sacrifice,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,royal_power,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,sacred_space,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,war_conflict,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,wisdom,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fm.txt,yhwh_elements,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Fp.txt,christian_elements,5,40,0.125,5,238,0.02101,4.8,0.12,ježíš:2; kristus:2; evangelium:1
-bible_BKR_Fp.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,divine,6,40,0.15,6,238,0.02521,6.1,0.1525,ježíš:2; kristus:2; milost:1; bůh:1
-bible_BKR_Fp.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,legal,1,40,0.025,1,238,0.0042,1.3,0.0325,svědek:1
-bible_BKR_Fp.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,monotheism,1,40,0.025,1,238,0.0042,1.0,0.025,bůh:1
-bible_BKR_Fp.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,war_conflict,1,40,0.025,1,238,0.0042,1.3,0.0325,boj:1
-bible_BKR_Fp.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Fp.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ga.txt,christian_elements,1,40,0.025,1,239,0.00418,0.8,0.02,evangelium:1
-bible_BKR_Ga.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,divine,2,40,0.05,2,239,0.00837,2.3,0.0575,milost:2
-bible_BKR_Ga.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,kinship,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,monotheism,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,ritual_sacrifice,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Ga.txt,yhwh_elements,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Gn.txt,christian_elements,3,40,0.075,3,235,0.01277,3.0,0.075,hospodin:3
-bible_BKR_Gn.txt,covenant_law,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,divine,17,40,0.425,20,235,0.08511,20.0,0.5,bůh:17; hospodin:3
-bible_BKR_Gn.txt,divine_hierarchy,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,eschatology,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,genealogy_lineage,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,kinship,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,legal,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,life_death,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,monotheism,17,40,0.425,20,235,0.08511,20.0,0.5,bůh:17; hospodin:3
-bible_BKR_Gn.txt,moral,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,prophetic_speech,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,ritual_sacrifice,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,royal_power,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,sacred_space,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,war_conflict,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,wisdom,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Gn.txt,yhwh_elements,3,40,0.075,3,235,0.01277,3.0,0.075,hospodin:3
-bible_BKR_Iz.txt,christian_elements,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Iz.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,divine,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Iz.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,kinship,2,40,0.05,2,237,0.00844,2.0,0.05,dcera:1; syn:1
-bible_BKR_Iz.txt,legal,1,40,0.025,1,237,0.00422,1.0,0.025,soudce:1
-bible_BKR_Iz.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,monotheism,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Iz.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,prophetic_speech,1,40,0.025,1,237,0.00422,1.3,0.0325,vidění:1
-bible_BKR_Iz.txt,ritual_sacrifice,1,40,0.025,1,237,0.00422,1.0,0.025,oběť:1
-bible_BKR_Iz.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Iz.txt,yhwh_elements,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_J.txt,christian_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,covenant_law,1,40,0.025,1,237,0.00422,1.3,0.0325,zákon:1
-bible_BKR_J.txt,divine,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,legal,1,40,0.025,1,237,0.00422,1.3,0.0325,zákon:1
-bible_BKR_J.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,monotheism,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_J.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jb.txt,christian_elements,6,40,0.15,6,238,0.02521,6.0,0.15,hospodin:6
-bible_BKR_Jb.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,divine,6,40,0.15,6,238,0.02521,6.0,0.15,hospodin:6
-bible_BKR_Jb.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,monotheism,6,40,0.15,6,238,0.02521,6.0,0.15,hospodin:6
-bible_BKR_Jb.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jb.txt,yhwh_elements,6,40,0.15,6,238,0.02521,6.0,0.15,hospodin:6
-bible_BKR_Jk.txt,christian_elements,1,40,0.025,1,237,0.00422,1.0,0.025,ježíš:1
-bible_BKR_Jk.txt,covenant_law,2,40,0.05,2,237,0.00844,1.8,0.045,zákon:2
-bible_BKR_Jk.txt,divine,2,40,0.05,2,237,0.00844,1.8,0.045,ježíš:1; bůh:1
-bible_BKR_Jk.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,kinship,1,40,0.025,1,237,0.00422,1.0,0.025,bratr:1
-bible_BKR_Jk.txt,legal,2,40,0.05,2,237,0.00844,1.8,0.045,zákon:2
-bible_BKR_Jk.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,monotheism,1,40,0.025,1,237,0.00422,0.8,0.02,bůh:1
-bible_BKR_Jk.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jk.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Jl.txt,christian_elements,2,40,0.05,2,232,0.00862,2.1,0.0525,hospodin:2
-bible_BKR_Jl.txt,covenant_law,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,divine,2,40,0.05,2,232,0.00862,2.1,0.0525,hospodin:2
-bible_BKR_Jl.txt,divine_hierarchy,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,eschatology,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,genealogy_lineage,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,kinship,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,legal,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,life_death,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,monotheism,2,40,0.05,2,232,0.00862,2.1,0.0525,hospodin:2
-bible_BKR_Jl.txt,moral,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,prophetic_speech,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,ritual_sacrifice,1,40,0.025,1,232,0.00431,0.8,0.02,oběť:1
-bible_BKR_Jl.txt,royal_power,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,sacred_space,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,war_conflict,1,40,0.025,1,232,0.00431,1.0,0.025,vojsko:1
-bible_BKR_Jl.txt,wisdom,0,40,0.0,0,232,0.0,0.0,0.0,
-bible_BKR_Jl.txt,yhwh_elements,2,40,0.05,2,232,0.00862,2.1,0.0525,hospodin:2
-bible_BKR_Jon.txt,christian_elements,7,40,0.175,7,238,0.02941,7.3,0.1825,hospodin:7
-bible_BKR_Jon.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,divine,8,40,0.2,8,238,0.03361,8.3,0.2075,hospodin:7; bůh:1
-bible_BKR_Jon.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,monotheism,8,40,0.2,8,238,0.03361,8.3,0.2075,hospodin:7; bůh:1
-bible_BKR_Jon.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Jon.txt,yhwh_elements,7,40,0.175,7,238,0.02941,7.3,0.1825,hospodin:7
-bible_BKR_Joz.txt,christian_elements,2,40,0.05,2,238,0.0084,1.8,0.045,hospodin:2
-bible_BKR_Joz.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,divine,2,40,0.05,2,238,0.0084,1.8,0.045,hospodin:2
-bible_BKR_Joz.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,genealogy_lineage,1,40,0.025,1,238,0.0042,1.0,0.025,pokolení:1
-bible_BKR_Joz.txt,kinship,1,40,0.025,1,238,0.0042,1.0,0.025,syn:1
-bible_BKR_Joz.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,monotheism,2,40,0.05,2,238,0.0084,1.8,0.045,hospodin:2
-bible_BKR_Joz.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,royal_power,1,40,0.025,1,238,0.0042,1.0,0.025,král:1
-bible_BKR_Joz.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Joz.txt,yhwh_elements,2,40,0.05,2,238,0.0084,1.8,0.045,hospodin:2
-bible_BKR_Jr.txt,christian_elements,8,40,0.2,8,239,0.03347,7.9,0.1975,hospodin:8
-bible_BKR_Jr.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,divine,8,40,0.2,8,239,0.03347,7.9,0.1975,hospodin:8
-bible_BKR_Jr.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,kinship,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,monotheism,8,40,0.2,8,239,0.03347,7.9,0.1975,hospodin:8
-bible_BKR_Jr.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,ritual_sacrifice,1,40,0.025,1,239,0.00418,1.3,0.0325,kněží:1
-bible_BKR_Jr.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Jr.txt,yhwh_elements,8,40,0.2,8,239,0.03347,7.9,0.1975,hospodin:8
-bible_BKR_Ju.txt,christian_elements,1,25,0.04,2,149,0.01342,2.3,0.092,kristus:1; ježíš:1
-bible_BKR_Ju.txt,covenant_law,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,divine,1,25,0.04,2,149,0.01342,2.3,0.092,kristus:1; ježíš:1
-bible_BKR_Ju.txt,divine_hierarchy,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,eschatology,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,genealogy_lineage,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,kinship,1,25,0.04,1,149,0.00671,1.0,0.04,bratr:1
-bible_BKR_Ju.txt,legal,1,25,0.04,1,149,0.00671,1.0,0.04,soud:1
-bible_BKR_Ju.txt,life_death,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,monotheism,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,moral,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,prophetic_speech,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,ritual_sacrifice,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,royal_power,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,sacred_space,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,war_conflict,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,wisdom,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Ju.txt,yhwh_elements,0,25,0.0,0,149,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,christian_elements,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,covenant_law,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,divine,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,divine_hierarchy,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,eschatology,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,genealogy_lineage,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,kinship,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,legal,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,life_death,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,monotheism,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,moral,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,prophetic_speech,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,ritual_sacrifice,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,royal_power,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,sacred_space,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,war_conflict,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,wisdom,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Kaz.txt,yhwh_elements,0,40,0.0,0,234,0.0,0.0,0.0,
-bible_BKR_Ko.txt,christian_elements,3,40,0.075,5,238,0.02101,4.9,0.1225,ježíš:2; kristus:2; apoštol:1
-bible_BKR_Ko.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,divine,4,40,0.1,5,238,0.02101,4.9,0.1225,ježíš:2; kristus:2; bůh:1
-bible_BKR_Ko.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,genealogy_lineage,1,40,0.025,1,238,0.0042,0.8,0.02,prvorozený:1
-bible_BKR_Ko.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,monotheism,1,40,0.025,1,238,0.0042,1.3,0.0325,bůh:1
-bible_BKR_Ko.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Ko.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,christian_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,divine,1,40,0.025,1,238,0.0042,0.8,0.02,duch:1
-bible_BKR_L.txt,divine_hierarchy,1,40,0.025,1,238,0.0042,1.0,0.025,anděl:1
-bible_BKR_L.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,kinship,1,40,0.025,1,238,0.0042,1.0,0.025,syn:1
-bible_BKR_L.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,monotheism,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_L.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Lv.txt,christian_elements,1,40,0.025,1,237,0.00422,1.0,0.025,hospodin:1
-bible_BKR_Lv.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,divine,1,40,0.025,1,237,0.00422,1.0,0.025,hospodin:1
-bible_BKR_Lv.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,monotheism,1,40,0.025,1,237,0.00422,1.0,0.025,hospodin:1
-bible_BKR_Lv.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,ritual_sacrifice,20,40,0.5,22,237,0.09283,22.3,0.5575,oběť:17; kněz:3; oltář:1; kadidlo:1
-bible_BKR_Lv.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,sacred_space,1,40,0.025,1,237,0.00422,0.8,0.02,oltář:1
-bible_BKR_Lv.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Lv.txt,yhwh_elements,1,40,0.025,1,237,0.00422,1.0,0.025,hospodin:1
-bible_BKR_Mal.txt,christian_elements,5,40,0.125,5,240,0.02083,5.3,0.1325,hospodin:5
-bible_BKR_Mal.txt,covenant_law,3,40,0.075,3,240,0.0125,3.4,0.085,přikázání:1; smlouva:1; zákon:1
-bible_BKR_Mal.txt,divine,5,40,0.125,5,240,0.02083,5.3,0.1325,hospodin:5
-bible_BKR_Mal.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,kinship,2,40,0.05,2,240,0.00833,2.3,0.0575,syn:1; otec:1
-bible_BKR_Mal.txt,legal,3,40,0.075,3,240,0.0125,3.4,0.085,přikázání:1; smlouva:1; zákon:1
-bible_BKR_Mal.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,monotheism,5,40,0.125,5,240,0.02083,5.3,0.1325,hospodin:5
-bible_BKR_Mal.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,ritual_sacrifice,2,40,0.05,3,240,0.0125,2.8,0.07,oběť:2; oltář:1
-bible_BKR_Mal.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,sacred_space,1,40,0.025,1,240,0.00417,1.0,0.025,oltář:1
-bible_BKR_Mal.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Mal.txt,yhwh_elements,5,40,0.125,5,240,0.02083,5.3,0.1325,hospodin:5
-bible_BKR_Mi.txt,christian_elements,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Mi.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,divine,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Mi.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,monotheism,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Mi.txt,moral,1,40,0.025,1,237,0.00422,1.0,0.025,nepravost:1
-bible_BKR_Mi.txt,prophetic_speech,1,40,0.025,1,237,0.00422,0.8,0.02,vidění:1
-bible_BKR_Mi.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,royal_power,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Mi.txt,yhwh_elements,2,40,0.05,2,237,0.00844,2.0,0.05,hospodin:2
-bible_BKR_Mk.txt,christian_elements,1,40,0.025,2,238,0.0084,2.3,0.0575,evangelium:1; ježíš:1
-bible_BKR_Mk.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,divine,3,40,0.075,3,238,0.01261,3.0,0.075,duch:2; ježíš:1
-bible_BKR_Mk.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,monotheism,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mk.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Mt.txt,christian_elements,2,40,0.05,3,233,0.01288,3.0,0.075,ježíš:2; kristus:1
-bible_BKR_Mt.txt,covenant_law,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,divine,2,40,0.05,3,233,0.01288,3.0,0.075,ježíš:2; kristus:1
-bible_BKR_Mt.txt,divine_hierarchy,1,40,0.025,1,233,0.00429,0.8,0.02,anděl:1
-bible_BKR_Mt.txt,eschatology,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,genealogy_lineage,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,kinship,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,legal,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,life_death,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,monotheism,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,moral,1,40,0.025,1,233,0.00429,1.0,0.025,spravedlivý:1
-bible_BKR_Mt.txt,prophetic_speech,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,ritual_sacrifice,1,40,0.025,1,233,0.00429,0.8,0.02,kněží:1
-bible_BKR_Mt.txt,royal_power,1,40,0.025,1,233,0.00429,0.8,0.02,král:1
-bible_BKR_Mt.txt,sacred_space,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,war_conflict,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,wisdom,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Mt.txt,yhwh_elements,0,40,0.0,0,233,0.0,0.0,0.0,
-bible_BKR_Na.txt,christian_elements,5,40,0.125,5,238,0.02101,5.2,0.13,hospodin:5
-bible_BKR_Na.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,divine,5,40,0.125,6,238,0.02521,6.2,0.155,hospodin:5; bůh:1
-bible_BKR_Na.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,monotheism,5,40,0.125,6,238,0.02521,6.2,0.155,hospodin:5; bůh:1
-bible_BKR_Na.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,prophetic_speech,1,40,0.025,1,238,0.0042,1.0,0.025,vidění:1
-bible_BKR_Na.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,sacred_space,1,40,0.025,1,238,0.0042,0.8,0.02,chrám:1
-bible_BKR_Na.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Na.txt,yhwh_elements,5,40,0.125,5,238,0.02101,5.2,0.13,hospodin:5
-bible_BKR_Neh.txt,christian_elements,1,40,0.025,1,240,0.00417,1.0,0.025,hospodin:1
-bible_BKR_Neh.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,divine,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:1; bůh:1
-bible_BKR_Neh.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,kinship,4,40,0.1,4,240,0.01667,3.2,0.08,syn:4
-bible_BKR_Neh.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,monotheism,2,40,0.05,2,240,0.00833,2.0,0.05,hospodin:1; bůh:1
-bible_BKR_Neh.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,ritual_sacrifice,1,40,0.025,1,240,0.00417,1.0,0.025,kněz:1
-bible_BKR_Neh.txt,royal_power,2,40,0.05,2,240,0.00833,2.0,0.05,král:2
-bible_BKR_Neh.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Neh.txt,yhwh_elements,1,40,0.025,1,240,0.00417,1.0,0.025,hospodin:1
-bible_BKR_Nu.txt,christian_elements,2,40,0.05,2,231,0.00866,2.0,0.05,hospodin:2
-bible_BKR_Nu.txt,covenant_law,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,divine,2,40,0.05,2,231,0.00866,2.0,0.05,hospodin:2
-bible_BKR_Nu.txt,divine_hierarchy,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,eschatology,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,genealogy_lineage,13,40,0.325,13,231,0.05628,13.4,0.335,pokolení:13
-bible_BKR_Nu.txt,kinship,9,40,0.225,9,231,0.03896,7.6,0.19,syn:9
-bible_BKR_Nu.txt,legal,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,life_death,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,monotheism,2,40,0.05,2,231,0.00866,2.0,0.05,hospodin:2
-bible_BKR_Nu.txt,moral,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,prophetic_speech,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,ritual_sacrifice,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,royal_power,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,sacred_space,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,war_conflict,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,wisdom,0,40,0.0,0,231,0.0,0.0,0.0,
-bible_BKR_Nu.txt,yhwh_elements,2,40,0.05,2,231,0.00866,2.0,0.05,hospodin:2
-bible_BKR_Oz.txt,christian_elements,1,40,0.025,1,239,0.00418,1.3,0.0325,hospodin:1
-bible_BKR_Oz.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,divine,1,40,0.025,1,239,0.00418,1.3,0.0325,hospodin:1
-bible_BKR_Oz.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,kinship,1,40,0.025,1,239,0.00418,1.0,0.025,matka:1
-bible_BKR_Oz.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,monotheism,1,40,0.025,1,239,0.00418,1.3,0.0325,hospodin:1
-bible_BKR_Oz.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,ritual_sacrifice,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Oz.txt,yhwh_elements,1,40,0.025,1,239,0.00418,1.3,0.0325,hospodin:1
-bible_BKR_Pis.txt,christian_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,covenant_law,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,divine,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,divine_hierarchy,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,eschatology,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,genealogy_lineage,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,kinship,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,legal,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,life_death,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,monotheism,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,moral,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,prophetic_speech,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,ritual_sacrifice,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,royal_power,1,40,0.025,1,237,0.00422,1.0,0.025,král:1
-bible_BKR_Pis.txt,sacred_space,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,war_conflict,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,wisdom,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pis.txt,yhwh_elements,0,40,0.0,0,237,0.0,0.0,0.0,
-bible_BKR_Pl.txt,christian_elements,2,40,0.05,2,239,0.00837,2.6,0.065,hospodin:2
-bible_BKR_Pl.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,divine,2,40,0.05,2,239,0.00837,2.6,0.065,hospodin:2
-bible_BKR_Pl.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,kinship,3,40,0.075,3,239,0.01255,3.3,0.0825,dcera:3
-bible_BKR_Pl.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,monotheism,2,40,0.05,2,239,0.00837,2.6,0.065,hospodin:2
-bible_BKR_Pl.txt,moral,1,40,0.025,1,239,0.00418,1.3,0.0325,spravedlivý:1
-bible_BKR_Pl.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,ritual_sacrifice,1,40,0.025,1,239,0.00418,1.0,0.025,oltář:1
-bible_BKR_Pl.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,sacred_space,1,40,0.025,1,239,0.00418,1.0,0.025,oltář:1
-bible_BKR_Pl.txt,war_conflict,1,40,0.025,1,239,0.00418,1.0,0.025,nepřítel:1
-bible_BKR_Pl.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Pl.txt,yhwh_elements,2,40,0.05,2,239,0.00837,2.6,0.065,hospodin:2
-bible_BKR_Pr.txt,christian_elements,2,40,0.05,2,240,0.00833,2.6,0.065,hospodin:2
-bible_BKR_Pr.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,divine,2,40,0.05,2,240,0.00833,2.6,0.065,hospodin:2
-bible_BKR_Pr.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,monotheism,2,40,0.05,2,240,0.00833,2.6,0.065,hospodin:2
-bible_BKR_Pr.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Pr.txt,wisdom,4,40,0.1,4,240,0.01667,4.9,0.1225,přísloví:1; poznání:1; moudrost:1; rozumnost:1
-bible_BKR_Pr.txt,yhwh_elements,2,40,0.05,2,240,0.00833,2.6,0.065,hospodin:2
-bible_BKR_R.txt,christian_elements,1,40,0.025,1,240,0.00417,1.0,0.025,evangelium:1
-bible_BKR_R.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,divine,3,40,0.075,3,240,0.0125,3.0,0.075,bůh:2; milost:1
-bible_BKR_R.txt,divine_hierarchy,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,kinship,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,legal,3,40,0.075,3,240,0.0125,3.6,0.09,svědek:1; spravedlnost:1; soud:1
-bible_BKR_R.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,monotheism,2,40,0.05,2,240,0.00833,2.0,0.05,bůh:2
-bible_BKR_R.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_R.txt,yhwh_elements,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Rt.txt,christian_elements,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_Rt.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,divine,2,40,0.05,2,239,0.00837,2.0,0.05,hospodin:1; milost:1
-bible_BKR_Rt.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,kinship,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,monotheism,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_Rt.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,ritual_sacrifice,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Rt.txt,yhwh_elements,1,40,0.025,1,239,0.00418,1.0,0.025,hospodin:1
-bible_BKR_Sd.txt,christian_elements,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Sd.txt,covenant_law,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,divine,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Sd.txt,divine_hierarchy,2,40,0.05,2,240,0.00833,1.8,0.045,anděl:2
-bible_BKR_Sd.txt,eschatology,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,genealogy_lineage,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,kinship,1,40,0.025,1,240,0.00417,1.0,0.025,syn:1
-bible_BKR_Sd.txt,legal,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,life_death,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,monotheism,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Sd.txt,moral,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,prophetic_speech,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,ritual_sacrifice,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,royal_power,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,sacred_space,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,war_conflict,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,wisdom,0,40,0.0,0,240,0.0,0.0,0.0,
-bible_BKR_Sd.txt,yhwh_elements,3,40,0.075,3,240,0.0125,2.8,0.07,hospodin:3
-bible_BKR_Sf.txt,christian_elements,4,40,0.1,4,236,0.01695,4.2,0.105,hospodin:4
-bible_BKR_Sf.txt,covenant_law,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,divine,4,40,0.1,4,236,0.01695,4.2,0.105,hospodin:4
-bible_BKR_Sf.txt,divine_hierarchy,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,eschatology,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,genealogy_lineage,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,kinship,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,legal,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,life_death,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,monotheism,4,40,0.1,4,236,0.01695,4.2,0.105,hospodin:4
-bible_BKR_Sf.txt,moral,1,40,0.025,1,236,0.00424,1.3,0.0325,spravedlivý:1
-bible_BKR_Sf.txt,prophetic_speech,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,ritual_sacrifice,1,40,0.025,1,236,0.00424,0.8,0.02,oběť:1
-bible_BKR_Sf.txt,royal_power,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,sacred_space,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,war_conflict,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,wisdom,0,40,0.0,0,236,0.0,0.0,0.0,
-bible_BKR_Sf.txt,yhwh_elements,4,40,0.1,4,236,0.01695,4.2,0.105,hospodin:4
-bible_BKR_Sk.txt,christian_elements,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,covenant_law,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,divine,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,divine_hierarchy,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,eschatology,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,genealogy_lineage,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,kinship,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,legal,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,life_death,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,monotheism,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,moral,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,prophetic_speech,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,ritual_sacrifice,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,royal_power,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,sacred_space,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,war_conflict,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,wisdom,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Sk.txt,yhwh_elements,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Tit.txt,christian_elements,1,40,0.025,2,239,0.00837,1.8,0.045,apoštol:1; ježíš:1
-bible_BKR_Tit.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,divine,2,40,0.05,2,239,0.00837,1.8,0.045,ježíš:1; milost:1
-bible_BKR_Tit.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,kinship,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,monotheism,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,ritual_sacrifice,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Tit.txt,yhwh_elements,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,christian_elements,4,40,0.1,4,239,0.01674,4.3,0.1075,hospodin:4
-bible_BKR_Z.txt,covenant_law,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,divine,4,40,0.1,4,239,0.01674,4.3,0.1075,hospodin:4
-bible_BKR_Z.txt,divine_hierarchy,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,eschatology,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,genealogy_lineage,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,kinship,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,legal,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,life_death,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,monotheism,4,40,0.1,4,239,0.01674,4.3,0.1075,hospodin:4
-bible_BKR_Z.txt,moral,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,prophetic_speech,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,ritual_sacrifice,1,40,0.025,1,239,0.00418,1.3,0.0325,oběť:1
-bible_BKR_Z.txt,royal_power,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,sacred_space,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,war_conflict,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,wisdom,0,40,0.0,0,239,0.0,0.0,0.0,
-bible_BKR_Z.txt,yhwh_elements,4,40,0.1,4,239,0.01674,4.3,0.1075,hospodin:4
-bible_BKR_Za.txt,christian_elements,9,40,0.225,9,238,0.03782,9.1,0.2275,hospodin:9
-bible_BKR_Za.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,divine,9,40,0.225,9,238,0.03782,9.1,0.2275,hospodin:9
-bible_BKR_Za.txt,divine_hierarchy,3,40,0.075,3,238,0.01261,3.0,0.075,anděl:3
-bible_BKR_Za.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,monotheism,9,40,0.225,9,238,0.03782,9.1,0.2275,hospodin:9
-bible_BKR_Za.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,royal_power,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Za.txt,yhwh_elements,9,40,0.225,9,238,0.03782,9.1,0.2275,hospodin:9
-bible_BKR_Zd.txt,christian_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,covenant_law,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,divine,2,40,0.05,2,238,0.0084,2.0,0.05,bůh:1; duch:1
-bible_BKR_Zd.txt,divine_hierarchy,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,eschatology,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,genealogy_lineage,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,kinship,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,legal,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,life_death,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,monotheism,1,40,0.025,1,238,0.0042,1.0,0.025,bůh:1
-bible_BKR_Zd.txt,moral,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,prophetic_speech,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,ritual_sacrifice,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,royal_power,1,40,0.025,1,238,0.0042,1.0,0.025,stolice:1
-bible_BKR_Zd.txt,sacred_space,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,war_conflict,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,wisdom,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zd.txt,yhwh_elements,0,40,0.0,0,238,0.0,0.0,0.0,
-bible_BKR_Zj.txt,christian_elements,2,40,0.05,2,235,0.00851,2.3,0.0575,ježíš:2
-bible_BKR_Zj.txt,covenant_law,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,divine,5,40,0.125,5,235,0.02128,4.7,0.1175,duch:3; ježíš:2
-bible_BKR_Zj.txt,divine_hierarchy,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,eschatology,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,genealogy_lineage,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,kinship,1,40,0.025,1,235,0.00426,0.8,0.02,bratr:1
-bible_BKR_Zj.txt,legal,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,life_death,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,monotheism,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,moral,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,prophetic_speech,1,40,0.025,1,235,0.00426,1.3,0.0325,zjevení:1
-bible_BKR_Zj.txt,ritual_sacrifice,1,40,0.025,1,235,0.00426,0.8,0.02,kněží:1
-bible_BKR_Zj.txt,royal_power,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,sacred_space,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,war_conflict,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,wisdom,0,40,0.0,0,235,0.0,0.0,0.0,
-bible_BKR_Zj.txt,yhwh_elements,0,40,0.0,0,235,0.0,0.0,0.0,
+bible_BKR_1J.txt,christian_elements,4,40,0.1,7,652,0.01074,6.4,0.16,ježíš:4; kristus:3
+bible_BKR_1J.txt,covenant_law,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,divine,6,40,0.15,9,652,0.0138,8.4,0.21,ježíš:4; kristus:3; bůh:2
+bible_BKR_1J.txt,divine_hierarchy,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,eschatology,2,40,0.05,3,652,0.0046,3.1,0.0775,antikrist:2; poslední:1
+bible_BKR_1J.txt,genealogy_lineage,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,kinship,7,40,0.175,9,652,0.0138,7.4,0.185,otec:7; syn:2
+bible_BKR_1J.txt,legal,1,40,0.025,1,652,0.00153,0.8,0.02,spravedlnost:1
+bible_BKR_1J.txt,life_death,2,40,0.05,4,652,0.00613,3.7,0.0925,věčný:2; život:2
+bible_BKR_1J.txt,monotheism,2,40,0.05,2,652,0.00307,2.0,0.05,bůh:2
+bible_BKR_1J.txt,moral,9,40,0.225,13,652,0.01994,12.5,0.3125,pravda:4; hřích:4; spravedlivý:3; nepravost:1; lež:1
+bible_BKR_1J.txt,prophetic_speech,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,ritual_sacrifice,1,40,0.025,1,652,0.00153,1.3,0.0325,oběť:1
+bible_BKR_1J.txt,royal_power,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,sacred_space,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,war_conflict,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,wisdom,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1J.txt,yhwh_elements,0,40,0.0,0,652,0.0,0.0,0.0,
+bible_BKR_1K.txt,christian_elements,16,40,0.4,24,557,0.04309,23.4,0.585,kristus:11; ježíš:10; apoštol:1; evangelium:1; kříž:1
+bible_BKR_1K.txt,covenant_law,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,divine,25,40,0.625,36,557,0.06463,36.0,0.9,kristus:11; bůh:11; ježíš:10; milost:2; duch:1; víra:1
+bible_BKR_1K.txt,divine_hierarchy,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,eschatology,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,genealogy_lineage,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,kinship,1,40,0.025,1,557,0.0018,0.8,0.02,bratr:1
+bible_BKR_1K.txt,legal,1,40,0.025,1,557,0.0018,0.8,0.02,spravedlnost:1
+bible_BKR_1K.txt,life_death,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,monotheism,11,40,0.275,11,557,0.01975,11.3,0.2825,bůh:11
+bible_BKR_1K.txt,moral,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,prophetic_speech,1,40,0.025,1,557,0.0018,0.8,0.02,zjevení:1
+bible_BKR_1K.txt,ritual_sacrifice,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,royal_power,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,sacred_space,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,war_conflict,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1K.txt,wisdom,12,40,0.3,12,557,0.02154,12.1,0.3025,moudrost:12
+bible_BKR_1K.txt,yhwh_elements,0,40,0.0,0,557,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,christian_elements,5,40,0.125,5,789,0.00634,5.4,0.135,hospodin:5
+bible_BKR_1Kr.txt,covenant_law,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,divine,5,40,0.125,8,789,0.01014,8.5,0.2125,hospodin:5; bůh:3
+bible_BKR_1Kr.txt,divine_hierarchy,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,eschatology,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,genealogy_lineage,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,kinship,11,40,0.275,12,789,0.01521,12.3,0.3075,syn:10; otec:2
+bible_BKR_1Kr.txt,legal,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,life_death,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,monotheism,5,40,0.125,8,789,0.01014,8.5,0.2125,hospodin:5; bůh:3
+bible_BKR_1Kr.txt,moral,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,prophetic_speech,5,40,0.125,5,789,0.00634,5.1,0.1275,prorok:5
+bible_BKR_1Kr.txt,ritual_sacrifice,8,40,0.2,8,789,0.01014,9.2,0.23,kněz:8
+bible_BKR_1Kr.txt,royal_power,26,40,0.65,26,789,0.03295,27.8,0.695,král:26
+bible_BKR_1Kr.txt,sacred_space,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,war_conflict,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,wisdom,0,40,0.0,0,789,0.0,0.0,0.0,
+bible_BKR_1Kr.txt,yhwh_elements,5,40,0.125,5,789,0.00634,5.4,0.135,hospodin:5
+bible_BKR_1P.txt,christian_elements,9,40,0.225,15,664,0.02259,14.6,0.365,kristus:7; ježíš:6; apoštol:1; evangelium:1
+bible_BKR_1P.txt,covenant_law,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,divine,15,40,0.375,29,664,0.04367,28.5,0.7125,kristus:7; ježíš:6; bůh:6; duch:4; milost:3; víra:3
+bible_BKR_1P.txt,divine_hierarchy,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,eschatology,1,40,0.025,1,664,0.00151,0.8,0.02,vzkříšení:1
+bible_BKR_1P.txt,genealogy_lineage,1,40,0.025,1,664,0.00151,1.3,0.0325,rod:1
+bible_BKR_1P.txt,kinship,2,40,0.05,2,664,0.00301,2.6,0.065,syn:1; otec:1
+bible_BKR_1P.txt,legal,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,life_death,1,40,0.025,1,664,0.00151,0.8,0.02,vzkříšení:1
+bible_BKR_1P.txt,monotheism,6,40,0.15,6,664,0.00904,6.3,0.1575,bůh:6
+bible_BKR_1P.txt,moral,2,40,0.05,2,664,0.00301,2.3,0.0575,pravda:1; dobrý:1
+bible_BKR_1P.txt,prophetic_speech,2,40,0.05,2,664,0.00301,1.6,0.04,zjevení:2
+bible_BKR_1P.txt,ritual_sacrifice,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,royal_power,1,40,0.025,1,664,0.00151,0.8,0.02,král:1
+bible_BKR_1P.txt,sacred_space,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,war_conflict,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,wisdom,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1P.txt,yhwh_elements,0,40,0.0,0,664,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,christian_elements,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,covenant_law,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,divine,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,divine_hierarchy,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,eschatology,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,genealogy_lineage,1,40,0.025,1,307,0.00326,1.0,0.025,prvorozený:1
+bible_BKR_1Pa.txt,kinship,19,40,0.475,20,307,0.06515,24.4,0.61,syn:19; sestra:1
+bible_BKR_1Pa.txt,legal,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,life_death,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,monotheism,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,moral,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,prophetic_speech,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,ritual_sacrifice,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,royal_power,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,sacred_space,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,war_conflict,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,wisdom,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1Pa.txt,yhwh_elements,0,40,0.0,0,307,0.0,0.0,0.0,
+bible_BKR_1S.txt,christian_elements,26,40,0.65,26,763,0.03408,25.3,0.6325,hospodin:26
+bible_BKR_1S.txt,covenant_law,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,divine,28,40,0.7,32,763,0.04194,31.4,0.785,hospodin:26; bůh:3; duch:1; milost:1; svatý:1
+bible_BKR_1S.txt,divine_hierarchy,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,eschatology,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,genealogy_lineage,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,kinship,2,40,0.05,3,763,0.00393,2.9,0.0725,syn:1; žena:1; muž:1
+bible_BKR_1S.txt,legal,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,life_death,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,monotheism,27,40,0.675,29,763,0.03801,28.1,0.7025,hospodin:26; bůh:3
+bible_BKR_1S.txt,moral,3,40,0.075,3,763,0.00393,3.3,0.0825,bezbožný:2; dobrý:1
+bible_BKR_1S.txt,prophetic_speech,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,ritual_sacrifice,3,40,0.075,3,763,0.00393,2.6,0.065,kněz:2; oběť:1
+bible_BKR_1S.txt,royal_power,1,40,0.025,1,763,0.00131,0.8,0.02,král:1
+bible_BKR_1S.txt,sacred_space,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,war_conflict,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,wisdom,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_1S.txt,yhwh_elements,26,40,0.65,26,763,0.03408,25.3,0.6325,hospodin:26
+bible_BKR_1Te.txt,christian_elements,13,40,0.325,15,738,0.02033,14.6,0.365,ježíš:6; evangelium:6; kristus:3
+bible_BKR_1Te.txt,covenant_law,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,divine,23,40,0.575,31,738,0.04201,31.0,0.775,bůh:13; ježíš:6; víra:6; kristus:3; duch:2; milost:1
+bible_BKR_1Te.txt,divine_hierarchy,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,eschatology,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,genealogy_lineage,1,40,0.025,1,738,0.00136,0.8,0.02,pokolení:1
+bible_BKR_1Te.txt,kinship,3,40,0.075,3,738,0.00407,3.3,0.0825,syn:1; matka:1; otec:1
+bible_BKR_1Te.txt,legal,1,40,0.025,1,738,0.00136,0.8,0.02,svědek:1
+bible_BKR_1Te.txt,life_death,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,monotheism,13,40,0.325,13,738,0.01762,13.6,0.34,bůh:13
+bible_BKR_1Te.txt,moral,2,40,0.05,2,738,0.00271,1.8,0.045,pravda:1; hřích:1
+bible_BKR_1Te.txt,prophetic_speech,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,ritual_sacrifice,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,royal_power,1,40,0.025,1,738,0.00136,0.8,0.02,království:1
+bible_BKR_1Te.txt,sacred_space,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,war_conflict,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,wisdom,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Te.txt,yhwh_elements,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,christian_elements,10,40,0.25,18,592,0.03041,17.8,0.445,kristus:8; ježíš:7; apoštol:1; evangelium:1; církev:1
+bible_BKR_1Tm.txt,covenant_law,3,40,0.075,3,592,0.00507,3.0,0.075,zákon:3
+bible_BKR_1Tm.txt,divine,15,40,0.375,30,592,0.05068,28.6,0.715,kristus:8; ježíš:7; bůh:6; víra:6; milost:2; sláva:1
+bible_BKR_1Tm.txt,divine_hierarchy,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,eschatology,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,genealogy_lineage,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,kinship,1,40,0.025,1,592,0.00169,1.3,0.0325,syn:1
+bible_BKR_1Tm.txt,legal,3,40,0.075,3,592,0.00507,3.0,0.075,zákon:3
+bible_BKR_1Tm.txt,life_death,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,monotheism,6,40,0.15,6,592,0.01014,6.1,0.1525,bůh:6
+bible_BKR_1Tm.txt,moral,7,40,0.175,7,592,0.01182,6.5,0.1625,dobrý:5; pravda:2
+bible_BKR_1Tm.txt,prophetic_speech,1,40,0.025,1,592,0.00169,1.0,0.025,proroctví:1
+bible_BKR_1Tm.txt,ritual_sacrifice,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,royal_power,2,40,0.05,2,592,0.00338,2.6,0.065,král:2
+bible_BKR_1Tm.txt,sacred_space,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,war_conflict,1,40,0.025,1,592,0.00169,0.8,0.02,boj:1
+bible_BKR_1Tm.txt,wisdom,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_1Tm.txt,yhwh_elements,0,40,0.0,0,592,0.0,0.0,0.0,
+bible_BKR_2J.txt,christian_elements,3,13,0.23077,3,216,0.01389,3.3,0.25385,ježíš:2; kristus:1
+bible_BKR_2J.txt,covenant_law,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,divine,4,13,0.30769,6,216,0.02778,6.6,0.50769,bůh:2; ježíš:2; kristus:1; milost:1
+bible_BKR_2J.txt,divine_hierarchy,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,eschatology,1,13,0.07692,1,216,0.00463,0.8,0.06154,antikrist:1
+bible_BKR_2J.txt,genealogy_lineage,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,kinship,2,13,0.15385,2,216,0.00926,2.1,0.16154,otec:1; syn:1
+bible_BKR_2J.txt,legal,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,life_death,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,monotheism,2,13,0.15385,2,216,0.00926,2.0,0.15385,bůh:2
+bible_BKR_2J.txt,moral,3,13,0.23077,3,216,0.01389,2.6,0.2,pravda:3
+bible_BKR_2J.txt,prophetic_speech,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,ritual_sacrifice,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,royal_power,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,sacred_space,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,war_conflict,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,wisdom,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2J.txt,yhwh_elements,0,13,0.0,0,216,0.0,0.0,0.0,
+bible_BKR_2K.txt,christian_elements,10,40,0.25,14,673,0.0208,16.0,0.4,kristus:7; ježíš:5; apoštol:1; evangelium:1
+bible_BKR_2K.txt,covenant_law,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,divine,18,40,0.45,27,673,0.04012,28.5,0.7125,bůh:10; kristus:7; ježíš:5; milost:3; duch:2
+bible_BKR_2K.txt,divine_hierarchy,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,eschatology,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,genealogy_lineage,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,kinship,1,40,0.025,1,673,0.00149,1.0,0.025,bratr:1
+bible_BKR_2K.txt,legal,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,life_death,3,40,0.075,4,673,0.00594,4.1,0.1025,smrt:2; mrtvý:1; život:1
+bible_BKR_2K.txt,monotheism,10,40,0.25,10,673,0.01486,10.4,0.26,bůh:10
+bible_BKR_2K.txt,moral,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,prophetic_speech,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,ritual_sacrifice,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,royal_power,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,sacred_space,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,war_conflict,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2K.txt,wisdom,1,40,0.025,1,673,0.00149,1.0,0.025,moudrost:1
+bible_BKR_2K.txt,yhwh_elements,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,christian_elements,14,40,0.35,14,935,0.01497,15.8,0.395,hospodin:14
+bible_BKR_2Kr.txt,covenant_law,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,divine,17,40,0.425,22,935,0.02353,23.4,0.585,hospodin:14; bůh:5; duch:3
+bible_BKR_2Kr.txt,divine_hierarchy,2,40,0.05,2,935,0.00214,2.6,0.065,anděl:2
+bible_BKR_2Kr.txt,eschatology,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,genealogy_lineage,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,kinship,2,40,0.05,2,935,0.00214,2.1,0.0525,syn:2
+bible_BKR_2Kr.txt,legal,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,life_death,2,40,0.05,2,935,0.00214,1.6,0.04,smrt:2
+bible_BKR_2Kr.txt,monotheism,15,40,0.375,19,935,0.02032,20.6,0.515,hospodin:14; bůh:5
+bible_BKR_2Kr.txt,moral,1,40,0.025,1,935,0.00107,0.8,0.02,zlý:1
+bible_BKR_2Kr.txt,prophetic_speech,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,ritual_sacrifice,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,royal_power,6,40,0.15,6,935,0.00642,5.7,0.1425,král:6
+bible_BKR_2Kr.txt,sacred_space,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,war_conflict,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,wisdom,0,40,0.0,0,935,0.0,0.0,0.0,
+bible_BKR_2Kr.txt,yhwh_elements,14,40,0.35,14,935,0.01497,15.8,0.395,hospodin:14
+bible_BKR_2P.txt,christian_elements,6,40,0.15,9,702,0.01282,8.9,0.2225,ježíš:6; kristus:2; apoštol:1
+bible_BKR_2P.txt,covenant_law,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,divine,10,40,0.25,17,702,0.02422,17.1,0.4275,ježíš:6; bůh:4; kristus:2; víra:2; milost:1; pán:1; duch:1
+bible_BKR_2P.txt,divine_hierarchy,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,eschatology,1,40,0.025,1,702,0.00142,0.8,0.02,věčnost:1
+bible_BKR_2P.txt,genealogy_lineage,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,kinship,2,40,0.05,2,702,0.00285,1.8,0.045,syn:2
+bible_BKR_2P.txt,legal,2,40,0.05,2,702,0.00285,1.8,0.045,spravedlnost:2
+bible_BKR_2P.txt,life_death,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,monotheism,4,40,0.1,4,702,0.0057,4.4,0.11,bůh:4
+bible_BKR_2P.txt,moral,7,40,0.175,7,702,0.00997,7.3,0.1825,pravda:3; spravedlivý:2; nepravost:2
+bible_BKR_2P.txt,prophetic_speech,2,40,0.05,2,702,0.00285,2.0,0.05,proroctví:2
+bible_BKR_2P.txt,ritual_sacrifice,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,royal_power,1,40,0.025,1,702,0.00142,1.0,0.025,království:1
+bible_BKR_2P.txt,sacred_space,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,war_conflict,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,wisdom,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2P.txt,yhwh_elements,0,40,0.0,0,702,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,christian_elements,8,40,0.2,8,915,0.00874,9.0,0.225,hospodin:8
+bible_BKR_2Pa.txt,covenant_law,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,divine,12,40,0.3,16,915,0.01749,18.5,0.4625,bůh:8; hospodin:8
+bible_BKR_2Pa.txt,divine_hierarchy,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,eschatology,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,genealogy_lineage,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,kinship,6,40,0.15,7,915,0.00765,7.2,0.18,otec:5; syn:2
+bible_BKR_2Pa.txt,legal,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,life_death,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,monotheism,12,40,0.3,16,915,0.01749,18.5,0.4625,bůh:8; hospodin:8
+bible_BKR_2Pa.txt,moral,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,prophetic_speech,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,ritual_sacrifice,1,40,0.025,1,915,0.00109,1.3,0.0325,oltář:1
+bible_BKR_2Pa.txt,royal_power,10,40,0.25,10,915,0.01093,10.1,0.2525,král:8; království:2
+bible_BKR_2Pa.txt,sacred_space,1,40,0.025,1,915,0.00109,1.3,0.0325,oltář:1
+bible_BKR_2Pa.txt,war_conflict,0,40,0.0,0,915,0.0,0.0,0.0,
+bible_BKR_2Pa.txt,wisdom,3,40,0.075,3,915,0.00328,3.4,0.085,moudrost:3
+bible_BKR_2Pa.txt,yhwh_elements,8,40,0.2,8,915,0.00874,9.0,0.225,hospodin:8
+bible_BKR_2S.txt,christian_elements,6,40,0.15,6,739,0.00812,5.7,0.1425,hospodin:6
+bible_BKR_2S.txt,covenant_law,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,divine,7,40,0.175,8,739,0.01083,7.3,0.1825,hospodin:6; milost:2
+bible_BKR_2S.txt,divine_hierarchy,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,eschatology,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,genealogy_lineage,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,kinship,8,40,0.2,8,739,0.01083,8.9,0.2225,syn:8
+bible_BKR_2S.txt,legal,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,life_death,2,40,0.05,2,739,0.00271,2.3,0.0575,smrt:2
+bible_BKR_2S.txt,monotheism,6,40,0.15,6,739,0.00812,5.7,0.1425,hospodin:6
+bible_BKR_2S.txt,moral,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,prophetic_speech,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,ritual_sacrifice,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,royal_power,4,40,0.1,4,739,0.00541,4.1,0.1025,král:4
+bible_BKR_2S.txt,sacred_space,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,war_conflict,3,40,0.075,3,739,0.00406,2.4,0.06,meč:2; kopí:1
+bible_BKR_2S.txt,wisdom,0,40,0.0,0,739,0.0,0.0,0.0,
+bible_BKR_2S.txt,yhwh_elements,6,40,0.15,6,739,0.00812,5.7,0.1425,hospodin:6
+bible_BKR_2Te.txt,christian_elements,11,40,0.275,15,680,0.02206,14.1,0.3525,ježíš:9; kristus:4; evangelium:2
+bible_BKR_2Te.txt,covenant_law,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,divine,19,40,0.475,36,680,0.05294,35.4,0.885,bůh:11; ježíš:9; kristus:4; víra:4; milost:3; duch:3; pán:2
+bible_BKR_2Te.txt,divine_hierarchy,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,eschatology,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,genealogy_lineage,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,kinship,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,legal,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,life_death,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,monotheism,11,40,0.275,11,680,0.01618,11.4,0.285,bůh:11
+bible_BKR_2Te.txt,moral,7,40,0.175,9,680,0.01324,8.9,0.2225,nepravost:3; pravda:3; spravedlivý:1; lež:1; zlý:1
+bible_BKR_2Te.txt,prophetic_speech,1,40,0.025,1,680,0.00147,1.0,0.025,zjevení:1
+bible_BKR_2Te.txt,ritual_sacrifice,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,royal_power,1,40,0.025,1,680,0.00147,0.8,0.02,království:1
+bible_BKR_2Te.txt,sacred_space,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,war_conflict,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Te.txt,wisdom,1,40,0.025,1,680,0.00147,0.8,0.02,naučení:1
+bible_BKR_2Te.txt,yhwh_elements,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,christian_elements,11,40,0.275,22,642,0.03427,20.3,0.5075,ježíš:9; kristus:9; evangelium:3; apoštol:1
+bible_BKR_2Tm.txt,covenant_law,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,divine,15,40,0.375,30,642,0.04673,29.8,0.745,ježíš:9; kristus:9; bůh:4; milost:3; duch:2; víra:2; pán:1
+bible_BKR_2Tm.txt,divine_hierarchy,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,eschatology,1,40,0.025,1,642,0.00156,0.8,0.02,vzkříšení:1
+bible_BKR_2Tm.txt,genealogy_lineage,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,kinship,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,legal,1,40,0.025,1,642,0.00156,1.0,0.025,spravedlnost:1
+bible_BKR_2Tm.txt,life_death,2,40,0.05,3,642,0.00467,2.8,0.07,smrt:1; život:1; vzkříšení:1
+bible_BKR_2Tm.txt,monotheism,4,40,0.1,4,642,0.00623,4.9,0.1225,bůh:4
+bible_BKR_2Tm.txt,moral,3,40,0.075,3,642,0.00467,2.9,0.0725,pravda:2; nepravost:1
+bible_BKR_2Tm.txt,prophetic_speech,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,ritual_sacrifice,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,royal_power,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,sacred_space,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,war_conflict,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,wisdom,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_2Tm.txt,yhwh_elements,0,40,0.0,0,642,0.0,0.0,0.0,
+bible_BKR_3J.txt,christian_elements,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,covenant_law,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,divine,2,15,0.13333,2,208,0.00962,1.6,0.10667,bůh:2
+bible_BKR_3J.txt,divine_hierarchy,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,eschatology,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,genealogy_lineage,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,kinship,1,15,0.06667,1,208,0.00481,1.0,0.06667,syn:1
+bible_BKR_3J.txt,legal,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,life_death,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,monotheism,2,15,0.13333,2,208,0.00962,1.6,0.10667,bůh:2
+bible_BKR_3J.txt,moral,5,15,0.33333,6,208,0.02885,5.9,0.39333,pravda:3; zlý:2; dobrý:1
+bible_BKR_3J.txt,prophetic_speech,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,ritual_sacrifice,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,royal_power,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,sacred_space,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,war_conflict,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,wisdom,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_3J.txt,yhwh_elements,0,15,0.0,0,208,0.0,0.0,0.0,
+bible_BKR_Abd.txt,christian_elements,6,21,0.28571,6,413,0.01453,6.0,0.28571,hospodin:6
+bible_BKR_Abd.txt,covenant_law,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,divine,6,21,0.28571,6,413,0.01453,6.0,0.28571,hospodin:6
+bible_BKR_Abd.txt,divine_hierarchy,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,eschatology,1,21,0.04762,1,413,0.00242,0.8,0.0381,věčnost:1
+bible_BKR_Abd.txt,genealogy_lineage,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,kinship,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,legal,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,life_death,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,monotheism,6,21,0.28571,6,413,0.01453,6.0,0.28571,hospodin:6
+bible_BKR_Abd.txt,moral,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,prophetic_speech,1,21,0.04762,1,413,0.00242,1.3,0.0619,vidění:1
+bible_BKR_Abd.txt,ritual_sacrifice,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,royal_power,1,21,0.04762,1,413,0.00242,0.8,0.0381,království:1
+bible_BKR_Abd.txt,sacred_space,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,war_conflict,2,21,0.09524,2,413,0.00484,2.3,0.10952,vojsko:2
+bible_BKR_Abd.txt,wisdom,0,21,0.0,0,413,0.0,0.0,0.0,
+bible_BKR_Abd.txt,yhwh_elements,6,21,0.28571,6,413,0.01453,6.0,0.28571,hospodin:6
+bible_BKR_Abk.txt,christian_elements,6,40,0.15,6,738,0.00813,7.8,0.195,hospodin:6
+bible_BKR_Abk.txt,covenant_law,1,40,0.025,1,738,0.00136,1.3,0.0325,zákon:1
+bible_BKR_Abk.txt,divine,12,40,0.3,16,738,0.02168,18.5,0.4625,hospodin:6; bůh:4; duch:2; svatý:2; víra:1; modlitba:1
+bible_BKR_Abk.txt,divine_hierarchy,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,eschatology,1,40,0.025,1,738,0.00136,1.0,0.025,peklo:1
+bible_BKR_Abk.txt,genealogy_lineage,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,kinship,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,legal,2,40,0.05,3,738,0.00407,3.3,0.0825,soud:2; zákon:1
+bible_BKR_Abk.txt,life_death,1,40,0.025,1,738,0.00136,1.0,0.025,smrt:1
+bible_BKR_Abk.txt,monotheism,9,40,0.225,10,738,0.01355,12.0,0.3,hospodin:6; bůh:4
+bible_BKR_Abk.txt,moral,5,40,0.125,6,738,0.00813,6.4,0.16,spravedlivý:2; nepravost:1; bezbožný:1; zlý:1; lež:1
+bible_BKR_Abk.txt,prophetic_speech,3,40,0.075,4,738,0.00542,4.1,0.1025,vidění:3; prorok:1
+bible_BKR_Abk.txt,ritual_sacrifice,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,royal_power,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,sacred_space,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,war_conflict,0,40,0.0,0,738,0.0,0.0,0.0,
+bible_BKR_Abk.txt,wisdom,1,40,0.025,1,738,0.00136,1.3,0.0325,přísloví:1
+bible_BKR_Abk.txt,yhwh_elements,6,40,0.15,6,738,0.00813,7.8,0.195,hospodin:6
+bible_BKR_Ag.txt,christian_elements,23,38,0.60526,23,742,0.031,24.3,0.63947,hospodin:23
+bible_BKR_Ag.txt,covenant_law,1,38,0.02632,1,742,0.00135,0.8,0.02105,zákon:1
+bible_BKR_Ag.txt,divine,24,38,0.63158,28,742,0.03774,29.7,0.78158,hospodin:23; bůh:2; duch:2; sláva:1
+bible_BKR_Ag.txt,divine_hierarchy,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,eschatology,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,genealogy_lineage,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,kinship,1,38,0.02632,1,742,0.00135,1.3,0.03421,syn:1
+bible_BKR_Ag.txt,legal,1,38,0.02632,1,742,0.00135,0.8,0.02105,zákon:1
+bible_BKR_Ag.txt,life_death,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,monotheism,23,38,0.60526,25,742,0.03369,26.1,0.68684,hospodin:23; bůh:2
+bible_BKR_Ag.txt,moral,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,prophetic_speech,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,ritual_sacrifice,5,38,0.13158,5,742,0.00674,4.7,0.12368,kněz:5
+bible_BKR_Ag.txt,royal_power,3,38,0.07895,3,742,0.00404,3.4,0.08947,král:2; království:1
+bible_BKR_Ag.txt,sacred_space,1,38,0.02632,1,742,0.00135,0.8,0.02105,chrám:1
+bible_BKR_Ag.txt,war_conflict,1,38,0.02632,1,742,0.00135,0.8,0.02105,meč:1
+bible_BKR_Ag.txt,wisdom,0,38,0.0,0,742,0.0,0.0,0.0,
+bible_BKR_Ag.txt,yhwh_elements,23,38,0.60526,23,742,0.031,24.3,0.63947,hospodin:23
+bible_BKR_Am.txt,christian_elements,19,40,0.475,19,706,0.02691,20.7,0.5175,hospodin:19
+bible_BKR_Am.txt,covenant_law,1,40,0.025,2,706,0.00283,2.0,0.05,ustanovení:1; zákon:1
+bible_BKR_Am.txt,divine,19,40,0.475,19,706,0.02691,20.7,0.5175,hospodin:19
+bible_BKR_Am.txt,divine_hierarchy,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,eschatology,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,genealogy_lineage,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,kinship,2,40,0.05,3,706,0.00425,2.8,0.07,syn:2; otec:1
+bible_BKR_Am.txt,legal,2,40,0.05,3,706,0.00425,3.3,0.0825,soudce:1; ustanovení:1; zákon:1
+bible_BKR_Am.txt,life_death,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,monotheism,19,40,0.475,19,706,0.02691,20.7,0.5175,hospodin:19
+bible_BKR_Am.txt,moral,2,40,0.05,2,706,0.00283,1.8,0.045,spravedlivý:1; zlý:1
+bible_BKR_Am.txt,prophetic_speech,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,ritual_sacrifice,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,royal_power,3,40,0.075,3,706,0.00425,3.1,0.0775,král:3
+bible_BKR_Am.txt,sacred_space,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,war_conflict,1,40,0.025,1,706,0.00142,1.0,0.025,meč:1
+bible_BKR_Am.txt,wisdom,0,40,0.0,0,706,0.0,0.0,0.0,
+bible_BKR_Am.txt,yhwh_elements,19,40,0.475,19,706,0.02691,20.7,0.5175,hospodin:19
+bible_BKR_Da.txt,christian_elements,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,covenant_law,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,divine,7,40,0.175,9,791,0.01138,9.8,0.245,bůh:5; duch:2; pán:1; milost:1
+bible_BKR_Da.txt,divine_hierarchy,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,eschatology,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,genealogy_lineage,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,kinship,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,legal,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,life_death,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,monotheism,5,40,0.125,5,791,0.00632,5.5,0.1375,bůh:5
+bible_BKR_Da.txt,moral,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,prophetic_speech,2,40,0.05,2,791,0.00253,1.8,0.045,vidění:2
+bible_BKR_Da.txt,ritual_sacrifice,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,royal_power,21,40,0.525,23,791,0.02908,26.2,0.655,král:21; království:1; kníže:1
+bible_BKR_Da.txt,sacred_space,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,war_conflict,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Da.txt,wisdom,3,40,0.075,3,791,0.00379,3.3,0.0825,moudrost:3
+bible_BKR_Da.txt,yhwh_elements,0,40,0.0,0,791,0.0,0.0,0.0,
+bible_BKR_Dt.txt,christian_elements,17,40,0.425,17,763,0.02228,17.4,0.435,hospodin:17
+bible_BKR_Dt.txt,covenant_law,1,40,0.025,1,763,0.00131,0.8,0.02,zákon:1
+bible_BKR_Dt.txt,divine,17,40,0.425,28,763,0.0367,28.9,0.7225,hospodin:17; bůh:11
+bible_BKR_Dt.txt,divine_hierarchy,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,eschatology,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,genealogy_lineage,4,40,0.1,4,763,0.00524,4.1,0.1025,pokolení:4
+bible_BKR_Dt.txt,kinship,2,40,0.05,2,763,0.00262,2.3,0.0575,syn:2
+bible_BKR_Dt.txt,legal,2,40,0.05,2,763,0.00262,1.8,0.045,zákon:1; soud:1
+bible_BKR_Dt.txt,life_death,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,monotheism,17,40,0.425,28,763,0.0367,28.9,0.7225,hospodin:17; bůh:11
+bible_BKR_Dt.txt,moral,2,40,0.05,4,763,0.00524,4.0,0.1,zlý:2; dobrý:2
+bible_BKR_Dt.txt,prophetic_speech,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,ritual_sacrifice,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,royal_power,1,40,0.025,1,763,0.00131,1.0,0.025,král:1
+bible_BKR_Dt.txt,sacred_space,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,war_conflict,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,wisdom,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Dt.txt,yhwh_elements,17,40,0.425,17,763,0.02228,17.4,0.435,hospodin:17
+bible_BKR_Ef.txt,christian_elements,17,40,0.425,25,600,0.04167,24.3,0.6075,kristus:12; ježíš:10; apoštol:1; evangelium:1; kříž:1
+bible_BKR_Ef.txt,covenant_law,1,40,0.025,1,600,0.00167,1.3,0.0325,zákon:1
+bible_BKR_Ef.txt,divine,22,40,0.55,39,600,0.065,38.8,0.97,kristus:12; ježíš:10; bůh:7; milost:6; duch:3; víra:1
+bible_BKR_Ef.txt,divine_hierarchy,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,eschatology,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,genealogy_lineage,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,kinship,1,40,0.025,1,600,0.00167,0.8,0.02,syn:1
+bible_BKR_Ef.txt,legal,1,40,0.025,1,600,0.00167,1.3,0.0325,zákon:1
+bible_BKR_Ef.txt,life_death,2,40,0.05,2,600,0.00333,2.0,0.05,mrtvý:2
+bible_BKR_Ef.txt,monotheism,7,40,0.175,7,600,0.01167,7.5,0.1875,bůh:7
+bible_BKR_Ef.txt,moral,2,40,0.05,2,600,0.00333,2.0,0.05,dobrý:1; pravda:1
+bible_BKR_Ef.txt,prophetic_speech,1,40,0.025,1,600,0.00167,0.8,0.02,zjevení:1
+bible_BKR_Ef.txt,ritual_sacrifice,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,royal_power,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,sacred_space,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,war_conflict,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Ef.txt,wisdom,2,40,0.05,3,600,0.005,2.8,0.07,moudrost:2; poznání:1
+bible_BKR_Ef.txt,yhwh_elements,0,40,0.0,0,600,0.0,0.0,0.0,
+bible_BKR_Est.txt,christian_elements,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,covenant_law,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,divine,2,40,0.05,2,938,0.00213,2.3,0.0575,milost:2
+bible_BKR_Est.txt,divine_hierarchy,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,eschatology,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,genealogy_lineage,1,40,0.025,1,938,0.00107,0.8,0.02,pokolení:1
+bible_BKR_Est.txt,kinship,2,40,0.05,2,938,0.00213,2.0,0.05,syn:1; otec:1
+bible_BKR_Est.txt,legal,1,40,0.025,1,938,0.00107,1.3,0.0325,nařízení:1
+bible_BKR_Est.txt,life_death,1,40,0.025,1,938,0.00107,0.8,0.02,smrt:1
+bible_BKR_Est.txt,monotheism,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,moral,1,40,0.025,1,938,0.00107,1.3,0.0325,dobrý:1
+bible_BKR_Est.txt,prophetic_speech,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,ritual_sacrifice,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,royal_power,30,40,0.75,33,938,0.03518,35.9,0.8975,král:28; království:5
+bible_BKR_Est.txt,sacred_space,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,war_conflict,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,wisdom,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Est.txt,yhwh_elements,0,40,0.0,0,938,0.0,0.0,0.0,
+bible_BKR_Ex.txt,christian_elements,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,covenant_law,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,divine,3,40,0.075,3,699,0.00429,3.6,0.09,bůh:3
+bible_BKR_Ex.txt,divine_hierarchy,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,eschatology,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,genealogy_lineage,2,40,0.05,2,699,0.00286,1.6,0.04,rod:1; pokolení:1
+bible_BKR_Ex.txt,kinship,11,40,0.275,12,699,0.01717,13.1,0.3275,syn:5; dcera:4; otec:2; sestra:1
+bible_BKR_Ex.txt,legal,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,life_death,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,monotheism,3,40,0.075,3,699,0.00429,3.6,0.09,bůh:3
+bible_BKR_Ex.txt,moral,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,prophetic_speech,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,ritual_sacrifice,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,royal_power,5,40,0.125,5,699,0.00715,5.9,0.1475,král:4; kníže:1
+bible_BKR_Ex.txt,sacred_space,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,war_conflict,1,40,0.025,1,699,0.00143,1.0,0.025,válka:1
+bible_BKR_Ex.txt,wisdom,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ex.txt,yhwh_elements,0,40,0.0,0,699,0.0,0.0,0.0,
+bible_BKR_Ez.txt,christian_elements,2,40,0.05,2,737,0.00271,2.1,0.0525,hospodin:2
+bible_BKR_Ez.txt,covenant_law,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,divine,6,40,0.15,6,737,0.00814,6.5,0.1625,duch:4; hospodin:2
+bible_BKR_Ez.txt,divine_hierarchy,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,eschatology,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,genealogy_lineage,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,kinship,5,40,0.125,5,737,0.00678,6.5,0.1625,syn:5
+bible_BKR_Ez.txt,legal,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,life_death,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,monotheism,2,40,0.05,2,737,0.00271,2.1,0.0525,hospodin:2
+bible_BKR_Ez.txt,moral,1,40,0.025,1,737,0.00136,1.3,0.0325,pravda:1
+bible_BKR_Ez.txt,prophetic_speech,3,40,0.075,3,737,0.00407,2.6,0.065,vidění:2; prorok:1
+bible_BKR_Ez.txt,ritual_sacrifice,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,royal_power,1,40,0.025,1,737,0.00136,0.8,0.02,král:1
+bible_BKR_Ez.txt,sacred_space,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,war_conflict,1,40,0.025,1,737,0.00136,1.3,0.0325,boj:1
+bible_BKR_Ez.txt,wisdom,0,40,0.0,0,737,0.0,0.0,0.0,
+bible_BKR_Ez.txt,yhwh_elements,2,40,0.05,2,737,0.00271,2.1,0.0525,hospodin:2
+bible_BKR_Ezd.txt,christian_elements,5,40,0.125,5,448,0.01116,4.6,0.115,hospodin:5
+bible_BKR_Ezd.txt,covenant_law,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,divine,5,40,0.125,11,448,0.02455,10.4,0.26,hospodin:5; bůh:4; duch:2
+bible_BKR_Ezd.txt,divine_hierarchy,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,eschatology,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,genealogy_lineage,1,40,0.025,1,448,0.00223,1.3,0.0325,pokolení:1
+bible_BKR_Ezd.txt,kinship,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,legal,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,life_death,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,monotheism,5,40,0.125,9,448,0.02009,8.4,0.21,hospodin:5; bůh:4
+bible_BKR_Ezd.txt,moral,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,prophetic_speech,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,ritual_sacrifice,2,40,0.05,2,448,0.00446,1.8,0.045,oběť:1; kněz:1
+bible_BKR_Ezd.txt,royal_power,5,40,0.125,7,448,0.01562,8.3,0.2075,král:5; království:2
+bible_BKR_Ezd.txt,sacred_space,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,war_conflict,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,wisdom,0,40,0.0,0,448,0.0,0.0,0.0,
+bible_BKR_Ezd.txt,yhwh_elements,5,40,0.125,5,448,0.01116,4.6,0.115,hospodin:5
+bible_BKR_Fm.txt,christian_elements,8,25,0.32,12,324,0.03704,10.7,0.428,ježíš:6; kristus:5; evangelium:1
+bible_BKR_Fm.txt,covenant_law,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,divine,9,25,0.36,18,324,0.05556,17.9,0.716,ježíš:6; kristus:5; bůh:2; milost:2; víra:2; duch:1
+bible_BKR_Fm.txt,divine_hierarchy,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,eschatology,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,genealogy_lineage,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,kinship,2,25,0.08,2,324,0.00617,2.0,0.08,bratr:1; syn:1
+bible_BKR_Fm.txt,legal,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,life_death,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,monotheism,2,25,0.08,2,324,0.00617,2.3,0.092,bůh:2
+bible_BKR_Fm.txt,moral,2,25,0.08,2,324,0.00617,2.0,0.08,dobrý:2
+bible_BKR_Fm.txt,prophetic_speech,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,ritual_sacrifice,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,royal_power,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,sacred_space,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,war_conflict,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fm.txt,wisdom,1,25,0.04,1,324,0.00309,1.0,0.04,poznání:1
+bible_BKR_Fm.txt,yhwh_elements,0,25,0.0,0,324,0.0,0.0,0.0,
+bible_BKR_Fp.txt,christian_elements,22,40,0.55,27,611,0.04419,25.6,0.64,kristus:14; ježíš:8; evangelium:5
+bible_BKR_Fp.txt,covenant_law,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,divine,25,40,0.625,36,611,0.05892,34.5,0.8625,kristus:14; ježíš:8; bůh:6; milost:3; duch:3; víra:2
+bible_BKR_Fp.txt,divine_hierarchy,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,eschatology,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,genealogy_lineage,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,kinship,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,legal,2,40,0.05,2,611,0.00327,2.6,0.065,svědek:1; spravedlnost:1
+bible_BKR_Fp.txt,life_death,2,40,0.05,3,611,0.00491,2.4,0.06,smrt:2; život:1
+bible_BKR_Fp.txt,monotheism,6,40,0.15,6,611,0.00982,6.2,0.155,bůh:6
+bible_BKR_Fp.txt,moral,2,40,0.05,2,611,0.00327,2.0,0.05,dobrý:1; pravda:1
+bible_BKR_Fp.txt,prophetic_speech,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,ritual_sacrifice,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,royal_power,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,sacred_space,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,war_conflict,1,40,0.025,1,611,0.00164,1.3,0.0325,boj:1
+bible_BKR_Fp.txt,wisdom,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Fp.txt,yhwh_elements,0,40,0.0,0,611,0.0,0.0,0.0,
+bible_BKR_Ga.txt,christian_elements,15,40,0.375,20,656,0.03049,18.4,0.46,evangelium:8; kristus:6; ježíš:5; apoštol:1
+bible_BKR_Ga.txt,covenant_law,2,40,0.05,2,656,0.00305,2.1,0.0525,ustanovení:1; zákon:1
+bible_BKR_Ga.txt,divine,14,40,0.35,22,656,0.03354,20.5,0.5125,bůh:6; kristus:6; ježíš:5; milost:4; víra:1
+bible_BKR_Ga.txt,divine_hierarchy,1,40,0.025,1,656,0.00152,1.0,0.025,anděl:1
+bible_BKR_Ga.txt,eschatology,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,genealogy_lineage,1,40,0.025,1,656,0.00152,1.0,0.025,pokolení:1
+bible_BKR_Ga.txt,kinship,1,40,0.025,1,656,0.00152,1.3,0.0325,syn:1
+bible_BKR_Ga.txt,legal,2,40,0.05,2,656,0.00305,2.1,0.0525,ustanovení:1; zákon:1
+bible_BKR_Ga.txt,life_death,1,40,0.025,1,656,0.00152,1.0,0.025,život:1
+bible_BKR_Ga.txt,monotheism,6,40,0.15,6,656,0.00915,5.9,0.1475,bůh:6
+bible_BKR_Ga.txt,moral,3,40,0.075,4,656,0.0061,4.6,0.115,pravda:2; hřích:1; zlý:1
+bible_BKR_Ga.txt,prophetic_speech,2,40,0.05,2,656,0.00305,2.1,0.0525,zjevení:2
+bible_BKR_Ga.txt,ritual_sacrifice,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,royal_power,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,sacred_space,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,war_conflict,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,wisdom,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Ga.txt,yhwh_elements,0,40,0.0,0,656,0.0,0.0,0.0,
+bible_BKR_Gn.txt,christian_elements,5,40,0.125,5,682,0.00733,5.5,0.1375,hospodin:5
+bible_BKR_Gn.txt,covenant_law,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,divine,33,40,0.825,38,682,0.05572,45.0,1.125,bůh:32; hospodin:5; duch:1
+bible_BKR_Gn.txt,divine_hierarchy,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,eschatology,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,genealogy_lineage,5,40,0.125,5,682,0.00733,5.0,0.125,pokolení:5
+bible_BKR_Gn.txt,kinship,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,legal,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,life_death,2,40,0.05,2,682,0.00293,1.8,0.045,život:2
+bible_BKR_Gn.txt,monotheism,32,40,0.8,37,682,0.05425,44.2,1.105,bůh:32; hospodin:5
+bible_BKR_Gn.txt,moral,8,40,0.2,9,682,0.0132,7.6,0.19,dobrý:8; zlý:1
+bible_BKR_Gn.txt,prophetic_speech,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,ritual_sacrifice,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,royal_power,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,sacred_space,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,war_conflict,1,40,0.025,1,682,0.00147,0.8,0.02,vojsko:1
+bible_BKR_Gn.txt,wisdom,0,40,0.0,0,682,0.0,0.0,0.0,
+bible_BKR_Gn.txt,yhwh_elements,5,40,0.125,5,682,0.00733,5.5,0.1375,hospodin:5
+bible_BKR_Iz.txt,christian_elements,11,40,0.275,11,673,0.01634,11.3,0.2825,hospodin:11
+bible_BKR_Iz.txt,covenant_law,2,40,0.05,2,673,0.00297,1.8,0.045,zákon:2
+bible_BKR_Iz.txt,divine,11,40,0.275,14,673,0.0208,14.6,0.365,hospodin:11; bůh:2; pán:1
+bible_BKR_Iz.txt,divine_hierarchy,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,eschatology,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,genealogy_lineage,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,kinship,3,40,0.075,3,673,0.00446,3.6,0.09,syn:2; dcera:1
+bible_BKR_Iz.txt,legal,7,40,0.175,8,673,0.01189,7.3,0.1825,spravedlnost:5; zákon:2; soudce:1
+bible_BKR_Iz.txt,life_death,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,monotheism,11,40,0.275,13,673,0.01932,13.3,0.3325,hospodin:11; bůh:2
+bible_BKR_Iz.txt,moral,2,40,0.05,2,673,0.00297,1.8,0.045,nepravost:1; dobrý:1
+bible_BKR_Iz.txt,prophetic_speech,1,40,0.025,1,673,0.00149,1.3,0.0325,vidění:1
+bible_BKR_Iz.txt,ritual_sacrifice,2,40,0.05,2,673,0.00297,2.3,0.0575,oběť:1; červec:1
+bible_BKR_Iz.txt,royal_power,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,sacred_space,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,war_conflict,2,40,0.05,2,673,0.00297,2.0,0.05,meč:2
+bible_BKR_Iz.txt,wisdom,0,40,0.0,0,673,0.0,0.0,0.0,
+bible_BKR_Iz.txt,yhwh_elements,11,40,0.275,11,673,0.01634,11.3,0.2825,hospodin:11
+bible_BKR_J.txt,christian_elements,7,40,0.175,8,542,0.01476,7.6,0.19,ježíš:5; kristus:3
+bible_BKR_J.txt,covenant_law,1,40,0.025,1,542,0.00185,1.3,0.0325,zákon:1
+bible_BKR_J.txt,divine,16,40,0.4,18,542,0.03321,16.7,0.4175,bůh:5; ježíš:5; milost:3; kristus:3; duch:2
+bible_BKR_J.txt,divine_hierarchy,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,eschatology,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,genealogy_lineage,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,kinship,1,40,0.025,1,542,0.00185,0.8,0.02,otec:1
+bible_BKR_J.txt,legal,1,40,0.025,1,542,0.00185,1.3,0.0325,zákon:1
+bible_BKR_J.txt,life_death,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,monotheism,5,40,0.125,5,542,0.00923,4.7,0.1175,bůh:5
+bible_BKR_J.txt,moral,3,40,0.075,3,542,0.00554,2.6,0.065,pravda:2; hřích:1
+bible_BKR_J.txt,prophetic_speech,3,40,0.075,3,542,0.00554,2.4,0.06,prorok:3
+bible_BKR_J.txt,ritual_sacrifice,3,40,0.075,3,542,0.00554,2.8,0.07,beránek:2; kněz:1
+bible_BKR_J.txt,royal_power,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,sacred_space,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,war_conflict,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,wisdom,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_J.txt,yhwh_elements,0,40,0.0,0,542,0.0,0.0,0.0,
+bible_BKR_Jb.txt,christian_elements,11,40,0.275,11,781,0.01408,13.1,0.3275,hospodin:11
+bible_BKR_Jb.txt,covenant_law,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,divine,17,40,0.425,20,781,0.02561,20.7,0.5175,hospodin:11; bůh:9
+bible_BKR_Jb.txt,divine_hierarchy,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,eschatology,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,genealogy_lineage,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,kinship,3,40,0.075,3,781,0.00384,3.6,0.09,syn:3
+bible_BKR_Jb.txt,legal,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,life_death,1,40,0.025,1,781,0.00128,1.0,0.025,smrt:1
+bible_BKR_Jb.txt,monotheism,17,40,0.425,20,781,0.02561,20.7,0.5175,hospodin:11; bůh:9
+bible_BKR_Jb.txt,moral,3,40,0.075,3,781,0.00384,2.6,0.065,zlý:3
+bible_BKR_Jb.txt,prophetic_speech,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,ritual_sacrifice,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,royal_power,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,sacred_space,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,war_conflict,2,40,0.05,2,781,0.00256,1.8,0.045,meč:2
+bible_BKR_Jb.txt,wisdom,0,40,0.0,0,781,0.0,0.0,0.0,
+bible_BKR_Jb.txt,yhwh_elements,11,40,0.275,11,781,0.01408,13.1,0.3275,hospodin:11
+bible_BKR_Jk.txt,christian_elements,2,40,0.05,2,597,0.00335,1.8,0.045,ježíš:2
+bible_BKR_Jk.txt,covenant_law,6,40,0.15,6,597,0.01005,6.1,0.1525,zákon:6
+bible_BKR_Jk.txt,divine,7,40,0.175,9,597,0.01508,9.4,0.235,bůh:4; víra:3; ježíš:2
+bible_BKR_Jk.txt,divine_hierarchy,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,eschatology,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,genealogy_lineage,1,40,0.025,1,597,0.00168,0.8,0.02,pokolení:1
+bible_BKR_Jk.txt,kinship,2,40,0.05,2,597,0.00335,2.0,0.05,bratr:1; otec:1
+bible_BKR_Jk.txt,legal,7,40,0.175,7,597,0.01173,7.1,0.1775,zákon:6; spravedlnost:1
+bible_BKR_Jk.txt,life_death,1,40,0.025,1,597,0.00168,0.8,0.02,smrt:1
+bible_BKR_Jk.txt,monotheism,4,40,0.1,4,597,0.0067,4.6,0.115,bůh:4
+bible_BKR_Jk.txt,moral,3,40,0.075,3,597,0.00503,3.3,0.0825,hřích:1; dobrý:1; pravda:1
+bible_BKR_Jk.txt,prophetic_speech,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,ritual_sacrifice,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,royal_power,1,40,0.025,1,597,0.00168,0.8,0.02,království:1
+bible_BKR_Jk.txt,sacred_space,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,war_conflict,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jk.txt,wisdom,1,40,0.025,1,597,0.00168,1.0,0.025,moudrost:1
+bible_BKR_Jk.txt,yhwh_elements,0,40,0.0,0,597,0.0,0.0,0.0,
+bible_BKR_Jl.txt,christian_elements,13,40,0.325,13,720,0.01806,14.4,0.36,hospodin:13
+bible_BKR_Jl.txt,covenant_law,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,divine,15,40,0.375,20,720,0.02778,20.9,0.5225,hospodin:13; bůh:6; milost:1
+bible_BKR_Jl.txt,divine_hierarchy,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,eschatology,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,genealogy_lineage,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,kinship,1,40,0.025,1,720,0.00139,1.0,0.025,syn:1
+bible_BKR_Jl.txt,legal,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,life_death,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,monotheism,15,40,0.375,19,720,0.02639,19.6,0.49,hospodin:13; bůh:6
+bible_BKR_Jl.txt,moral,1,40,0.025,1,720,0.00139,0.8,0.02,zlý:1
+bible_BKR_Jl.txt,prophetic_speech,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,ritual_sacrifice,4,40,0.1,6,720,0.00833,6.0,0.15,oběť:3; kněz:3
+bible_BKR_Jl.txt,royal_power,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,sacred_space,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,war_conflict,2,40,0.05,2,720,0.00278,2.1,0.0525,meč:1; vojsko:1
+bible_BKR_Jl.txt,wisdom,0,40,0.0,0,720,0.0,0.0,0.0,
+bible_BKR_Jl.txt,yhwh_elements,13,40,0.325,13,720,0.01806,14.4,0.36,hospodin:13
+bible_BKR_Jon.txt,christian_elements,16,40,0.4,16,754,0.02122,17.1,0.4275,hospodin:16
+bible_BKR_Jon.txt,covenant_law,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,divine,22,40,0.55,27,754,0.03581,28.4,0.71,hospodin:16; bůh:10; modlitba:1
+bible_BKR_Jon.txt,divine_hierarchy,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,eschatology,1,40,0.025,1,754,0.00133,1.0,0.025,věčnost:1
+bible_BKR_Jon.txt,genealogy_lineage,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,kinship,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,legal,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,life_death,2,40,0.05,2,754,0.00265,1.8,0.045,smrt:1; život:1
+bible_BKR_Jon.txt,monotheism,22,40,0.55,26,754,0.03448,27.6,0.69,hospodin:16; bůh:10
+bible_BKR_Jon.txt,moral,5,40,0.125,5,754,0.00663,4.6,0.115,zlý:5
+bible_BKR_Jon.txt,prophetic_speech,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,ritual_sacrifice,1,40,0.025,1,754,0.00133,0.8,0.02,oběť:1
+bible_BKR_Jon.txt,royal_power,1,40,0.025,1,754,0.00133,1.3,0.0325,král:1
+bible_BKR_Jon.txt,sacred_space,1,40,0.025,1,754,0.00133,0.8,0.02,chrám:1
+bible_BKR_Jon.txt,war_conflict,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,wisdom,0,40,0.0,0,754,0.0,0.0,0.0,
+bible_BKR_Jon.txt,yhwh_elements,16,40,0.4,16,754,0.02122,17.1,0.4275,hospodin:16
+bible_BKR_Joz.txt,christian_elements,11,40,0.275,11,931,0.01182,11.6,0.29,hospodin:11
+bible_BKR_Joz.txt,covenant_law,2,40,0.05,2,931,0.00215,2.3,0.0575,zákon:2
+bible_BKR_Joz.txt,divine,11,40,0.275,17,931,0.01826,17.0,0.425,hospodin:11; bůh:6
+bible_BKR_Joz.txt,divine_hierarchy,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,eschatology,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,genealogy_lineage,1,40,0.025,1,931,0.00107,1.3,0.0325,pokolení:1
+bible_BKR_Joz.txt,kinship,3,40,0.075,3,931,0.00322,3.6,0.09,otec:2; syn:1
+bible_BKR_Joz.txt,legal,2,40,0.05,2,931,0.00215,2.3,0.0575,zákon:2
+bible_BKR_Joz.txt,life_death,3,40,0.075,3,931,0.00322,3.1,0.0775,smrt:3
+bible_BKR_Joz.txt,monotheism,11,40,0.275,17,931,0.01826,17.0,0.425,hospodin:11; bůh:6
+bible_BKR_Joz.txt,moral,1,40,0.025,1,931,0.00107,1.0,0.025,pravda:1
+bible_BKR_Joz.txt,prophetic_speech,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,ritual_sacrifice,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,royal_power,2,40,0.05,2,931,0.00215,2.6,0.065,král:2
+bible_BKR_Joz.txt,sacred_space,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,war_conflict,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,wisdom,0,40,0.0,0,931,0.0,0.0,0.0,
+bible_BKR_Joz.txt,yhwh_elements,11,40,0.275,11,931,0.01182,11.6,0.29,hospodin:11
+bible_BKR_Jr.txt,christian_elements,23,40,0.575,23,743,0.03096,25.8,0.645,hospodin:23
+bible_BKR_Jr.txt,covenant_law,1,40,0.025,1,743,0.00135,1.0,0.025,zákon:1
+bible_BKR_Jr.txt,divine,23,40,0.575,25,743,0.03365,27.6,0.69,hospodin:23; bůh:2
+bible_BKR_Jr.txt,divine_hierarchy,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,eschatology,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,genealogy_lineage,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,kinship,2,40,0.05,2,743,0.00269,2.6,0.065,syn:2
+bible_BKR_Jr.txt,legal,1,40,0.025,1,743,0.00135,1.0,0.025,zákon:1
+bible_BKR_Jr.txt,life_death,1,40,0.025,1,743,0.00135,0.8,0.02,smrt:1
+bible_BKR_Jr.txt,monotheism,23,40,0.575,25,743,0.03365,27.6,0.69,hospodin:23; bůh:2
+bible_BKR_Jr.txt,moral,4,40,0.1,4,743,0.00538,3.8,0.095,zlý:2; nepravost:1; dobrý:1
+bible_BKR_Jr.txt,prophetic_speech,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,ritual_sacrifice,2,40,0.05,2,743,0.00269,2.3,0.0575,kněz:2
+bible_BKR_Jr.txt,royal_power,3,40,0.075,3,743,0.00404,3.1,0.0775,král:2; království:1
+bible_BKR_Jr.txt,sacred_space,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,war_conflict,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,wisdom,0,40,0.0,0,743,0.0,0.0,0.0,
+bible_BKR_Jr.txt,yhwh_elements,23,40,0.575,23,743,0.03096,25.8,0.645,hospodin:23
+bible_BKR_Ju.txt,christian_elements,5,25,0.2,7,464,0.01509,6.6,0.264,ježíš:4; kristus:2; hospodin:1
+bible_BKR_Ju.txt,covenant_law,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,divine,7,25,0.28,15,464,0.03233,14.5,0.58,ježíš:4; bůh:3; kristus:2; duch:2; milost:1; hospodin:1; víra:1; sláva:1
+bible_BKR_Ju.txt,divine_hierarchy,1,25,0.04,1,464,0.00216,1.3,0.052,archanděl:1
+bible_BKR_Ju.txt,eschatology,1,25,0.04,1,464,0.00216,0.8,0.032,věčnost:1
+bible_BKR_Ju.txt,genealogy_lineage,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,kinship,1,25,0.04,1,464,0.00216,1.3,0.052,bratr:1
+bible_BKR_Ju.txt,legal,1,25,0.04,1,464,0.00216,1.3,0.052,soud:1
+bible_BKR_Ju.txt,life_death,1,25,0.04,1,464,0.00216,0.8,0.032,mrtvý:1
+bible_BKR_Ju.txt,monotheism,3,25,0.12,4,464,0.00862,4.1,0.164,bůh:3; hospodin:1
+bible_BKR_Ju.txt,moral,2,25,0.08,2,464,0.00431,2.3,0.092,bezbožný:2
+bible_BKR_Ju.txt,prophetic_speech,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,ritual_sacrifice,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,royal_power,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,sacred_space,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,war_conflict,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,wisdom,0,25,0.0,0,464,0.0,0.0,0.0,
+bible_BKR_Ju.txt,yhwh_elements,1,25,0.04,1,464,0.00216,0.8,0.032,hospodin:1
+bible_BKR_Kaz.txt,christian_elements,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,covenant_law,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,divine,5,40,0.125,5,734,0.00681,4.0,0.1,duch:4; bůh:1
+bible_BKR_Kaz.txt,divine_hierarchy,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,eschatology,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,genealogy_lineage,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,kinship,1,40,0.025,1,734,0.00136,1.0,0.025,syn:1
+bible_BKR_Kaz.txt,legal,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,life_death,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,monotheism,1,40,0.025,1,734,0.00136,0.8,0.02,bůh:1
+bible_BKR_Kaz.txt,moral,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,prophetic_speech,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,ritual_sacrifice,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,royal_power,3,40,0.075,3,734,0.00409,2.8,0.07,král:3
+bible_BKR_Kaz.txt,sacred_space,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,war_conflict,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Kaz.txt,wisdom,8,40,0.2,8,734,0.0109,7.9,0.1975,moudrost:8
+bible_BKR_Kaz.txt,yhwh_elements,0,40,0.0,0,734,0.0,0.0,0.0,
+bible_BKR_Ko.txt,christian_elements,15,40,0.375,21,643,0.03266,19.6,0.49,kristus:11; ježíš:6; evangelium:2; apoštol:1; církev:1
+bible_BKR_Ko.txt,covenant_law,1,40,0.025,1,643,0.00156,0.8,0.02,ustanovení:1
+bible_BKR_Ko.txt,divine,18,40,0.45,31,643,0.04821,30.2,0.755,kristus:11; ježíš:6; bůh:6; víra:4; milost:2; duch:2
+bible_BKR_Ko.txt,divine_hierarchy,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,eschatology,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,genealogy_lineage,2,40,0.05,2,643,0.00311,1.8,0.045,prvorozený:2
+bible_BKR_Ko.txt,kinship,3,40,0.075,3,643,0.00467,3.1,0.0775,otec:2; syn:1
+bible_BKR_Ko.txt,legal,2,40,0.05,2,643,0.00311,1.8,0.045,řád:1; ustanovení:1
+bible_BKR_Ko.txt,life_death,1,40,0.025,1,643,0.00156,1.3,0.0325,smrt:1
+bible_BKR_Ko.txt,monotheism,6,40,0.15,6,643,0.00933,6.2,0.155,bůh:6
+bible_BKR_Ko.txt,moral,4,40,0.1,4,643,0.00622,3.2,0.08,pravda:3; zlý:1
+bible_BKR_Ko.txt,prophetic_speech,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,ritual_sacrifice,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,royal_power,1,40,0.025,1,643,0.00156,0.8,0.02,království:1
+bible_BKR_Ko.txt,sacred_space,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,war_conflict,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_Ko.txt,wisdom,5,40,0.125,5,643,0.00778,4.6,0.115,moudrost:4; poznání:1
+bible_BKR_Ko.txt,yhwh_elements,0,40,0.0,0,643,0.0,0.0,0.0,
+bible_BKR_L.txt,christian_elements,1,40,0.025,1,625,0.0016,0.8,0.02,ježíš:1
+bible_BKR_L.txt,covenant_law,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,divine,12,40,0.3,15,625,0.024,14.9,0.3725,bůh:6; duch:3; milost:2; modlitba:1; ježíš:1; pán:1; svatý:1
+bible_BKR_L.txt,divine_hierarchy,8,40,0.2,8,625,0.0128,9.3,0.2325,anděl:8
+bible_BKR_L.txt,eschatology,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,genealogy_lineage,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,kinship,3,40,0.075,3,625,0.0048,2.8,0.07,syn:3
+bible_BKR_L.txt,legal,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,life_death,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,monotheism,6,40,0.15,6,625,0.0096,5.4,0.135,bůh:6
+bible_BKR_L.txt,moral,1,40,0.025,1,625,0.0016,1.3,0.0325,spravedlivý:1
+bible_BKR_L.txt,prophetic_speech,1,40,0.025,1,625,0.0016,1.0,0.025,vidění:1
+bible_BKR_L.txt,ritual_sacrifice,1,40,0.025,1,625,0.0016,1.3,0.0325,kněz:1
+bible_BKR_L.txt,royal_power,2,40,0.05,2,625,0.0032,2.3,0.0575,král:1; království:1
+bible_BKR_L.txt,sacred_space,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,war_conflict,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,wisdom,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_L.txt,yhwh_elements,0,40,0.0,0,625,0.0,0.0,0.0,
+bible_BKR_Lv.txt,christian_elements,17,40,0.425,17,757,0.02246,15.9,0.3975,hospodin:17
+bible_BKR_Lv.txt,covenant_law,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,divine,18,40,0.45,18,757,0.02378,16.9,0.4225,hospodin:17; bůh:1
+bible_BKR_Lv.txt,divine_hierarchy,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,eschatology,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,genealogy_lineage,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,kinship,5,40,0.125,5,757,0.00661,5.2,0.13,syn:5
+bible_BKR_Lv.txt,legal,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,life_death,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,monotheism,18,40,0.45,18,757,0.02378,16.9,0.4225,hospodin:17; bůh:1
+bible_BKR_Lv.txt,moral,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,prophetic_speech,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,ritual_sacrifice,37,40,0.925,54,757,0.07133,56.6,1.415,oběť:31; kněz:13; krev:4; oltář:4; kadidlo:2
+bible_BKR_Lv.txt,royal_power,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,sacred_space,4,40,0.1,4,757,0.00528,3.6,0.09,oltář:4
+bible_BKR_Lv.txt,war_conflict,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,wisdom,0,40,0.0,0,757,0.0,0.0,0.0,
+bible_BKR_Lv.txt,yhwh_elements,17,40,0.425,17,757,0.02246,15.9,0.3975,hospodin:17
+bible_BKR_Mal.txt,christian_elements,28,40,0.7,28,893,0.03135,26.7,0.6675,hospodin:28
+bible_BKR_Mal.txt,covenant_law,7,40,0.175,7,893,0.00784,7.9,0.1975,zákon:3; smlouva:2; přikázání:1; ustanovení:1
+bible_BKR_Mal.txt,divine,32,40,0.8,38,893,0.04255,37.0,0.925,hospodin:28; bůh:6; duch:2; pán:1; milost:1
+bible_BKR_Mal.txt,divine_hierarchy,1,40,0.025,1,893,0.00112,0.8,0.02,anděl:1
+bible_BKR_Mal.txt,eschatology,0,40,0.0,0,893,0.0,0.0,0.0,
+bible_BKR_Mal.txt,genealogy_lineage,1,40,0.025,1,893,0.00112,0.8,0.02,pokolení:1
+bible_BKR_Mal.txt,kinship,1,40,0.025,1,893,0.00112,1.0,0.025,bratr:1
+bible_BKR_Mal.txt,legal,8,40,0.2,8,893,0.00896,8.7,0.2175,zákon:3; smlouva:2; přikázání:1; spravedlnost:1; ustanovení:1
+bible_BKR_Mal.txt,life_death,0,40,0.0,0,893,0.0,0.0,0.0,
+bible_BKR_Mal.txt,monotheism,31,40,0.775,34,893,0.03807,32.9,0.8225,hospodin:28; bůh:6
+bible_BKR_Mal.txt,moral,3,40,0.075,4,893,0.00448,4.3,0.1075,zlý:2; nepravost:1; pravda:1
+bible_BKR_Mal.txt,prophetic_speech,0,40,0.0,0,893,0.0,0.0,0.0,
+bible_BKR_Mal.txt,ritual_sacrifice,10,40,0.25,12,893,0.01344,11.8,0.295,oběť:7; kněz:3; oltář:2
+bible_BKR_Mal.txt,royal_power,1,40,0.025,1,893,0.00112,1.0,0.025,král:1
+bible_BKR_Mal.txt,sacred_space,2,40,0.05,2,893,0.00224,2.6,0.065,oltář:2
+bible_BKR_Mal.txt,war_conflict,0,40,0.0,0,893,0.0,0.0,0.0,
+bible_BKR_Mal.txt,wisdom,0,40,0.0,0,893,0.0,0.0,0.0,
+bible_BKR_Mal.txt,yhwh_elements,28,40,0.7,28,893,0.03135,26.7,0.6675,hospodin:28
+bible_BKR_Mi.txt,christian_elements,11,40,0.275,11,763,0.01442,12.1,0.3025,hospodin:11
+bible_BKR_Mi.txt,covenant_law,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,divine,11,40,0.275,13,763,0.01704,14.4,0.36,hospodin:11; duch:2
+bible_BKR_Mi.txt,divine_hierarchy,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,eschatology,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,genealogy_lineage,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,kinship,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,legal,1,40,0.025,1,763,0.00131,0.8,0.02,soud:1
+bible_BKR_Mi.txt,life_death,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,monotheism,11,40,0.275,11,763,0.01442,12.1,0.3025,hospodin:11
+bible_BKR_Mi.txt,moral,8,40,0.2,11,763,0.01442,11.6,0.29,zlý:5; hřích:2; dobrý:2; nepravost:1; lež:1
+bible_BKR_Mi.txt,prophetic_speech,2,40,0.05,2,763,0.00262,2.1,0.0525,vidění:2
+bible_BKR_Mi.txt,ritual_sacrifice,1,40,0.025,1,763,0.00131,1.3,0.0325,kněz:1
+bible_BKR_Mi.txt,royal_power,2,40,0.05,2,763,0.00262,1.6,0.04,král:2
+bible_BKR_Mi.txt,sacred_space,0,40,0.0,0,763,0.0,0.0,0.0,
+bible_BKR_Mi.txt,war_conflict,1,40,0.025,1,763,0.00131,1.0,0.025,nepřítel:1
+bible_BKR_Mi.txt,wisdom,1,40,0.025,1,763,0.00131,1.3,0.0325,přísloví:1
+bible_BKR_Mi.txt,yhwh_elements,11,40,0.275,11,763,0.01442,12.1,0.3025,hospodin:11
+bible_BKR_Mk.txt,christian_elements,8,40,0.2,11,541,0.02033,11.2,0.28,ježíš:6; evangelium:3; kristus:1; křest:1
+bible_BKR_Mk.txt,covenant_law,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,divine,11,40,0.275,13,541,0.02403,13.0,0.325,ježíš:6; duch:5; kristus:1; svatý:1
+bible_BKR_Mk.txt,divine_hierarchy,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,eschatology,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,genealogy_lineage,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,kinship,3,40,0.075,3,541,0.00555,2.8,0.07,syn:2; otec:1
+bible_BKR_Mk.txt,legal,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,life_death,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,monotheism,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,moral,1,40,0.025,1,541,0.00185,0.8,0.02,hřích:1
+bible_BKR_Mk.txt,prophetic_speech,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,ritual_sacrifice,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,royal_power,2,40,0.05,2,541,0.0037,1.8,0.045,království:2
+bible_BKR_Mk.txt,sacred_space,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,war_conflict,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,wisdom,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mk.txt,yhwh_elements,0,40,0.0,0,541,0.0,0.0,0.0,
+bible_BKR_Mt.txt,christian_elements,7,40,0.175,9,599,0.01503,8.3,0.2075,ježíš:5; kristus:4
+bible_BKR_Mt.txt,covenant_law,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,divine,11,40,0.275,13,599,0.0217,12.0,0.3,ježíš:5; kristus:4; duch:2; bůh:2
+bible_BKR_Mt.txt,divine_hierarchy,3,40,0.075,3,599,0.00501,3.6,0.09,anděl:3
+bible_BKR_Mt.txt,eschatology,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,genealogy_lineage,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,kinship,5,40,0.125,5,599,0.00835,5.1,0.1275,syn:4; matka:1
+bible_BKR_Mt.txt,legal,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,life_death,1,40,0.025,1,599,0.00167,1.3,0.0325,smrt:1
+bible_BKR_Mt.txt,monotheism,2,40,0.05,2,599,0.00334,2.1,0.0525,bůh:2
+bible_BKR_Mt.txt,moral,1,40,0.025,1,599,0.00167,1.3,0.0325,spravedlivý:1
+bible_BKR_Mt.txt,prophetic_speech,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,ritual_sacrifice,2,40,0.05,2,599,0.00334,1.8,0.045,kněz:1; kadidlo:1
+bible_BKR_Mt.txt,royal_power,5,40,0.125,5,599,0.00835,5.9,0.1475,král:5
+bible_BKR_Mt.txt,sacred_space,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,war_conflict,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,wisdom,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Mt.txt,yhwh_elements,0,40,0.0,0,599,0.0,0.0,0.0,
+bible_BKR_Na.txt,christian_elements,10,40,0.25,10,695,0.01439,12.2,0.305,hospodin:10
+bible_BKR_Na.txt,covenant_law,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,divine,10,40,0.25,12,695,0.01727,14.5,0.3625,hospodin:10; bůh:2
+bible_BKR_Na.txt,divine_hierarchy,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,eschatology,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,genealogy_lineage,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,kinship,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,legal,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,life_death,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,monotheism,10,40,0.25,12,695,0.01727,14.5,0.3625,hospodin:10; bůh:2
+bible_BKR_Na.txt,moral,2,40,0.05,2,695,0.00288,1.8,0.045,zlý:1; lež:1
+bible_BKR_Na.txt,prophetic_speech,1,40,0.025,1,695,0.00144,1.0,0.025,vidění:1
+bible_BKR_Na.txt,ritual_sacrifice,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,royal_power,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,sacred_space,1,40,0.025,1,695,0.00144,0.8,0.02,chrám:1
+bible_BKR_Na.txt,war_conflict,2,40,0.05,3,695,0.00432,3.6,0.09,meč:2; kopí:1
+bible_BKR_Na.txt,wisdom,0,40,0.0,0,695,0.0,0.0,0.0,
+bible_BKR_Na.txt,yhwh_elements,10,40,0.25,10,695,0.01439,12.2,0.305,hospodin:10
+bible_BKR_Neh.txt,christian_elements,2,40,0.05,2,907,0.00221,2.6,0.065,hospodin:2
+bible_BKR_Neh.txt,covenant_law,1,40,0.025,1,907,0.0011,1.0,0.025,ustanovení:1
+bible_BKR_Neh.txt,divine,8,40,0.2,9,907,0.00992,9.9,0.2475,bůh:7; hospodin:2
+bible_BKR_Neh.txt,divine_hierarchy,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,eschatology,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,genealogy_lineage,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,kinship,8,40,0.2,8,907,0.00882,8.8,0.22,syn:7; otec:1
+bible_BKR_Neh.txt,legal,1,40,0.025,1,907,0.0011,1.0,0.025,ustanovení:1
+bible_BKR_Neh.txt,life_death,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,monotheism,8,40,0.2,9,907,0.00992,9.9,0.2475,bůh:7; hospodin:2
+bible_BKR_Neh.txt,moral,4,40,0.1,4,907,0.00441,3.9,0.0975,dobrý:3; hřích:1
+bible_BKR_Neh.txt,prophetic_speech,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,ritual_sacrifice,1,40,0.025,1,907,0.0011,1.3,0.0325,kněz:1
+bible_BKR_Neh.txt,royal_power,10,40,0.25,10,907,0.01103,11.2,0.28,král:10
+bible_BKR_Neh.txt,sacred_space,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,war_conflict,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,wisdom,0,40,0.0,0,907,0.0,0.0,0.0,
+bible_BKR_Neh.txt,yhwh_elements,2,40,0.05,2,907,0.00221,2.6,0.065,hospodin:2
+bible_BKR_Nu.txt,christian_elements,2,40,0.05,2,575,0.00348,2.3,0.0575,hospodin:2
+bible_BKR_Nu.txt,covenant_law,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,divine,2,40,0.05,2,575,0.00348,2.3,0.0575,hospodin:2
+bible_BKR_Nu.txt,divine_hierarchy,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,eschatology,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,genealogy_lineage,16,40,0.4,16,575,0.02783,16.9,0.4225,pokolení:16
+bible_BKR_Nu.txt,kinship,11,40,0.275,11,575,0.01913,9.4,0.235,syn:11
+bible_BKR_Nu.txt,legal,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,life_death,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,monotheism,2,40,0.05,2,575,0.00348,2.3,0.0575,hospodin:2
+bible_BKR_Nu.txt,moral,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,prophetic_speech,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,ritual_sacrifice,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,royal_power,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,sacred_space,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,war_conflict,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,wisdom,0,40,0.0,0,575,0.0,0.0,0.0,
+bible_BKR_Nu.txt,yhwh_elements,2,40,0.05,2,575,0.00348,2.3,0.0575,hospodin:2
+bible_BKR_Oz.txt,christian_elements,11,40,0.275,11,788,0.01396,12.1,0.3025,hospodin:11
+bible_BKR_Oz.txt,covenant_law,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,divine,13,40,0.325,16,788,0.0203,16.7,0.4175,hospodin:11; bůh:4; víra:1
+bible_BKR_Oz.txt,divine_hierarchy,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,eschatology,1,40,0.025,1,788,0.00127,1.0,0.025,věčnost:1
+bible_BKR_Oz.txt,genealogy_lineage,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,kinship,7,40,0.175,7,788,0.00888,7.0,0.175,syn:5; muž:1; matka:1
+bible_BKR_Oz.txt,legal,1,40,0.025,1,788,0.00127,1.0,0.025,spravedlnost:1
+bible_BKR_Oz.txt,life_death,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,monotheism,13,40,0.325,15,788,0.01904,15.7,0.3925,hospodin:11; bůh:4
+bible_BKR_Oz.txt,moral,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,prophetic_speech,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,ritual_sacrifice,1,40,0.025,1,788,0.00127,1.0,0.025,oběť:1
+bible_BKR_Oz.txt,royal_power,4,40,0.1,4,788,0.00508,3.6,0.09,král:3; království:1
+bible_BKR_Oz.txt,sacred_space,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,war_conflict,2,40,0.05,2,788,0.00254,1.8,0.045,meč:2
+bible_BKR_Oz.txt,wisdom,0,40,0.0,0,788,0.0,0.0,0.0,
+bible_BKR_Oz.txt,yhwh_elements,11,40,0.275,11,788,0.01396,12.1,0.3025,hospodin:11
+bible_BKR_Pis.txt,christian_elements,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,covenant_law,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,divine,3,40,0.075,3,579,0.00518,2.4,0.06,milost:3
+bible_BKR_Pis.txt,divine_hierarchy,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,eschatology,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,genealogy_lineage,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,kinship,1,40,0.025,1,579,0.00173,1.0,0.025,syn:1
+bible_BKR_Pis.txt,legal,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,life_death,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,monotheism,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,moral,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,prophetic_speech,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,ritual_sacrifice,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,royal_power,2,40,0.05,2,579,0.00345,2.6,0.065,král:2
+bible_BKR_Pis.txt,sacred_space,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,war_conflict,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,wisdom,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pis.txt,yhwh_elements,0,40,0.0,0,579,0.0,0.0,0.0,
+bible_BKR_Pl.txt,christian_elements,11,40,0.275,11,1002,0.01098,11.4,0.285,hospodin:11
+bible_BKR_Pl.txt,covenant_law,1,40,0.025,1,1002,0.001,0.8,0.02,zákon:1
+bible_BKR_Pl.txt,divine,11,40,0.275,11,1002,0.01098,11.4,0.285,hospodin:11
+bible_BKR_Pl.txt,divine_hierarchy,0,40,0.0,0,1002,0.0,0.0,0.0,
+bible_BKR_Pl.txt,eschatology,0,40,0.0,0,1002,0.0,0.0,0.0,
+bible_BKR_Pl.txt,genealogy_lineage,0,40,0.0,0,1002,0.0,0.0,0.0,
+bible_BKR_Pl.txt,kinship,4,40,0.1,4,1002,0.00399,4.7,0.1175,dcera:3; syn:1
+bible_BKR_Pl.txt,legal,1,40,0.025,1,1002,0.001,0.8,0.02,zákon:1
+bible_BKR_Pl.txt,life_death,1,40,0.025,1,1002,0.001,0.8,0.02,smrt:1
+bible_BKR_Pl.txt,monotheism,11,40,0.275,11,1002,0.01098,11.4,0.285,hospodin:11
+bible_BKR_Pl.txt,moral,2,40,0.05,2,1002,0.002,2.3,0.0575,spravedlivý:1; nepravost:1
+bible_BKR_Pl.txt,prophetic_speech,1,40,0.025,1,1002,0.001,0.8,0.02,vidění:1
+bible_BKR_Pl.txt,ritual_sacrifice,4,40,0.1,4,1002,0.00399,4.1,0.1025,kněz:3; oltář:1
+bible_BKR_Pl.txt,royal_power,3,40,0.075,3,1002,0.00299,2.6,0.065,král:2; království:1
+bible_BKR_Pl.txt,sacred_space,2,40,0.05,2,1002,0.002,2.3,0.0575,svatyně:1; oltář:1
+bible_BKR_Pl.txt,war_conflict,5,40,0.125,5,1002,0.00499,5.0,0.125,nepřítel:4; meč:1
+bible_BKR_Pl.txt,wisdom,0,40,0.0,0,1002,0.0,0.0,0.0,
+bible_BKR_Pl.txt,yhwh_elements,11,40,0.275,11,1002,0.01098,11.4,0.285,hospodin:11
+bible_BKR_Pr.txt,christian_elements,2,40,0.05,2,429,0.00466,2.6,0.065,hospodin:2
+bible_BKR_Pr.txt,covenant_law,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,divine,3,40,0.075,3,429,0.00699,3.6,0.09,hospodin:2; duch:1
+bible_BKR_Pr.txt,divine_hierarchy,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,eschatology,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,genealogy_lineage,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,kinship,5,40,0.125,6,429,0.01399,7.2,0.18,syn:5; otec:1
+bible_BKR_Pr.txt,legal,1,40,0.025,1,429,0.00233,1.0,0.025,spravedlnost:1
+bible_BKR_Pr.txt,life_death,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,monotheism,2,40,0.05,2,429,0.00466,2.6,0.065,hospodin:2
+bible_BKR_Pr.txt,moral,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,prophetic_speech,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,ritual_sacrifice,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,royal_power,1,40,0.025,1,429,0.00233,1.0,0.025,král:1
+bible_BKR_Pr.txt,sacred_space,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,war_conflict,0,40,0.0,0,429,0.0,0.0,0.0,
+bible_BKR_Pr.txt,wisdom,8,40,0.2,9,429,0.02098,10.3,0.2575,moudrost:5; přísloví:1; poznání:1; naučení:1; rozumnost:1
+bible_BKR_Pr.txt,yhwh_elements,2,40,0.05,2,429,0.00466,2.6,0.065,hospodin:2
+bible_BKR_R.txt,christian_elements,8,40,0.2,14,655,0.02137,13.0,0.325,kristus:5; evangelium:4; ježíš:4; apoštol:1
+bible_BKR_R.txt,covenant_law,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,divine,16,40,0.4,27,655,0.04122,28.4,0.71,bůh:10; kristus:5; ježíš:4; víra:3; milost:3; duch:2
+bible_BKR_R.txt,divine_hierarchy,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,eschatology,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,genealogy_lineage,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,kinship,1,40,0.025,1,655,0.00153,1.3,0.0325,syn:1
+bible_BKR_R.txt,legal,3,40,0.075,3,655,0.00458,3.9,0.0975,svědek:1; spravedlnost:1; soud:1
+bible_BKR_R.txt,life_death,1,40,0.025,1,655,0.00153,0.8,0.02,smrt:1
+bible_BKR_R.txt,monotheism,10,40,0.25,10,655,0.01527,12.2,0.305,bůh:10
+bible_BKR_R.txt,moral,6,40,0.15,7,655,0.01069,6.2,0.155,spravedlivý:2; nepravost:2; pravda:2; lež:1
+bible_BKR_R.txt,prophetic_speech,1,40,0.025,1,655,0.00153,0.8,0.02,zjevení:1
+bible_BKR_R.txt,ritual_sacrifice,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,royal_power,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,sacred_space,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,war_conflict,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,wisdom,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_R.txt,yhwh_elements,0,40,0.0,0,655,0.0,0.0,0.0,
+bible_BKR_Rt.txt,christian_elements,8,40,0.2,8,865,0.00925,8.2,0.205,hospodin:8
+bible_BKR_Rt.txt,covenant_law,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,divine,11,40,0.275,12,865,0.01387,12.1,0.3025,hospodin:8; bůh:2; milost:2
+bible_BKR_Rt.txt,divine_hierarchy,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,eschatology,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,genealogy_lineage,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,kinship,1,40,0.025,1,865,0.00116,1.0,0.025,otec:1
+bible_BKR_Rt.txt,legal,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,life_death,2,40,0.05,2,865,0.00231,1.8,0.045,smrt:2
+bible_BKR_Rt.txt,monotheism,10,40,0.25,12,865,0.01387,11.6,0.29,hospodin:8; bůh:2; všemohoucí:2
+bible_BKR_Rt.txt,moral,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,prophetic_speech,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,ritual_sacrifice,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,royal_power,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,sacred_space,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,war_conflict,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,wisdom,0,40,0.0,0,865,0.0,0.0,0.0,
+bible_BKR_Rt.txt,yhwh_elements,8,40,0.2,8,865,0.00925,8.2,0.205,hospodin:8
+bible_BKR_Sd.txt,christian_elements,7,40,0.175,7,731,0.00958,8.2,0.205,hospodin:7
+bible_BKR_Sd.txt,covenant_law,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,divine,9,40,0.225,9,731,0.01231,9.8,0.245,hospodin:7; bůh:1; milost:1
+bible_BKR_Sd.txt,divine_hierarchy,2,40,0.05,2,731,0.00274,2.6,0.065,anděl:2
+bible_BKR_Sd.txt,eschatology,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,genealogy_lineage,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,kinship,6,40,0.15,6,731,0.00821,7.2,0.18,syn:5; otec:1
+bible_BKR_Sd.txt,legal,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,life_death,1,40,0.025,1,731,0.00137,1.3,0.0325,smrt:1
+bible_BKR_Sd.txt,monotheism,8,40,0.2,8,731,0.01094,9.0,0.225,hospodin:7; bůh:1
+bible_BKR_Sd.txt,moral,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,prophetic_speech,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,ritual_sacrifice,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,royal_power,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,sacred_space,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,war_conflict,2,40,0.05,2,731,0.00274,1.8,0.045,meč:2
+bible_BKR_Sd.txt,wisdom,0,40,0.0,0,731,0.0,0.0,0.0,
+bible_BKR_Sd.txt,yhwh_elements,7,40,0.175,7,731,0.00958,8.2,0.205,hospodin:7
+bible_BKR_Sf.txt,christian_elements,20,40,0.5,20,727,0.02751,20.7,0.5175,hospodin:20
+bible_BKR_Sf.txt,covenant_law,1,40,0.025,1,727,0.00138,0.8,0.02,zákon:1
+bible_BKR_Sf.txt,divine,20,40,0.5,23,727,0.03164,23.6,0.59,hospodin:20; bůh:3
+bible_BKR_Sf.txt,divine_hierarchy,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,eschatology,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,genealogy_lineage,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,kinship,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,legal,3,40,0.075,4,727,0.0055,3.8,0.095,soud:2; spravedlnost:1; zákon:1
+bible_BKR_Sf.txt,life_death,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,monotheism,20,40,0.5,23,727,0.03164,23.6,0.59,hospodin:20; bůh:3
+bible_BKR_Sf.txt,moral,1,40,0.025,2,727,0.00275,2.3,0.0575,spravedlivý:1; nepravost:1
+bible_BKR_Sf.txt,prophetic_speech,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,ritual_sacrifice,4,40,0.1,4,727,0.0055,3.9,0.0975,kněz:2; oběť:2
+bible_BKR_Sf.txt,royal_power,1,40,0.025,1,727,0.00138,0.8,0.02,král:1
+bible_BKR_Sf.txt,sacred_space,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,war_conflict,1,40,0.025,1,727,0.00138,1.0,0.025,meč:1
+bible_BKR_Sf.txt,wisdom,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Sf.txt,yhwh_elements,20,40,0.5,20,727,0.02751,20.7,0.5175,hospodin:20
+bible_BKR_Sk.txt,christian_elements,4,40,0.1,4,680,0.00588,3.4,0.085,ježíš:4
+bible_BKR_Sk.txt,covenant_law,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,divine,8,40,0.2,11,680,0.01618,10.8,0.27,duch:5; ježíš:4; svatý:1; pán:1
+bible_BKR_Sk.txt,divine_hierarchy,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,eschatology,1,40,0.025,1,680,0.00147,0.8,0.02,vzkříšení:1
+bible_BKR_Sk.txt,genealogy_lineage,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,kinship,1,40,0.025,1,680,0.00147,0.8,0.02,otec:1
+bible_BKR_Sk.txt,legal,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,life_death,1,40,0.025,1,680,0.00147,0.8,0.02,vzkříšení:1
+bible_BKR_Sk.txt,monotheism,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,moral,1,40,0.025,1,680,0.00147,1.0,0.025,nepravost:1
+bible_BKR_Sk.txt,prophetic_speech,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,ritual_sacrifice,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,royal_power,2,40,0.05,2,680,0.00294,1.6,0.04,království:2
+bible_BKR_Sk.txt,sacred_space,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,war_conflict,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,wisdom,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Sk.txt,yhwh_elements,0,40,0.0,0,680,0.0,0.0,0.0,
+bible_BKR_Tit.txt,christian_elements,4,40,0.1,6,609,0.00985,5.9,0.1475,ježíš:4; kristus:1; apoštol:1
+bible_BKR_Tit.txt,covenant_law,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,divine,15,40,0.375,21,609,0.03448,19.6,0.49,bůh:8; ježíš:4; víra:4; milost:3; kristus:1; duch:1
+bible_BKR_Tit.txt,divine_hierarchy,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,eschatology,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,genealogy_lineage,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,kinship,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,legal,1,40,0.025,1,609,0.00164,1.3,0.0325,spravedlnost:1
+bible_BKR_Tit.txt,life_death,1,40,0.025,1,609,0.00164,1.3,0.0325,život:1
+bible_BKR_Tit.txt,monotheism,8,40,0.2,8,609,0.01314,7.1,0.1775,bůh:8
+bible_BKR_Tit.txt,moral,5,40,0.125,5,609,0.00821,4.2,0.105,pravda:2; spravedlivý:1; zlý:1; nepravost:1
+bible_BKR_Tit.txt,prophetic_speech,1,40,0.025,1,609,0.00164,1.0,0.025,prorok:1
+bible_BKR_Tit.txt,ritual_sacrifice,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,royal_power,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,sacred_space,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,war_conflict,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,wisdom,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Tit.txt,yhwh_elements,0,40,0.0,0,609,0.0,0.0,0.0,
+bible_BKR_Z.txt,christian_elements,16,40,0.4,16,495,0.03232,17.8,0.445,hospodin:16
+bible_BKR_Z.txt,covenant_law,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,divine,19,40,0.475,20,495,0.0404,22.2,0.555,hospodin:16; bůh:4
+bible_BKR_Z.txt,divine_hierarchy,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,eschatology,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,genealogy_lineage,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,kinship,2,40,0.05,2,495,0.00404,2.6,0.065,syn:2
+bible_BKR_Z.txt,legal,2,40,0.05,2,495,0.00404,2.3,0.0575,spravedlnost:2
+bible_BKR_Z.txt,life_death,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,monotheism,19,40,0.475,20,495,0.0404,22.2,0.555,hospodin:16; bůh:4
+bible_BKR_Z.txt,moral,4,40,0.1,4,495,0.00808,3.8,0.095,bezbožný:2; lež:1; dobrý:1
+bible_BKR_Z.txt,prophetic_speech,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,ritual_sacrifice,1,40,0.025,1,495,0.00202,1.3,0.0325,oběť:1
+bible_BKR_Z.txt,royal_power,2,40,0.05,2,495,0.00404,2.0,0.05,král:2
+bible_BKR_Z.txt,sacred_space,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,war_conflict,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,wisdom,0,40,0.0,0,495,0.0,0.0,0.0,
+bible_BKR_Z.txt,yhwh_elements,16,40,0.4,16,495,0.03232,17.8,0.445,hospodin:16
+bible_BKR_Za.txt,christian_elements,23,40,0.575,23,727,0.03164,24.4,0.61,hospodin:23
+bible_BKR_Za.txt,covenant_law,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,divine,23,40,0.575,23,727,0.03164,24.4,0.61,hospodin:23
+bible_BKR_Za.txt,divine_hierarchy,6,40,0.15,6,727,0.00825,6.7,0.1675,anděl:6
+bible_BKR_Za.txt,eschatology,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,genealogy_lineage,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,kinship,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,legal,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,life_death,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,monotheism,23,40,0.575,23,727,0.03164,24.4,0.61,hospodin:23
+bible_BKR_Za.txt,moral,2,40,0.05,2,727,0.00275,1.6,0.04,dobrý:1; nepravost:1
+bible_BKR_Za.txt,prophetic_speech,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,ritual_sacrifice,1,40,0.025,1,727,0.00138,1.3,0.0325,kněz:1
+bible_BKR_Za.txt,royal_power,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,sacred_space,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,war_conflict,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,wisdom,0,40,0.0,0,727,0.0,0.0,0.0,
+bible_BKR_Za.txt,yhwh_elements,23,40,0.575,23,727,0.03164,24.4,0.61,hospodin:23
+bible_BKR_Zd.txt,christian_elements,3,40,0.075,4,658,0.00608,4.2,0.105,ježíš:2; kristus:2
+bible_BKR_Zd.txt,covenant_law,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,divine,11,40,0.275,15,658,0.0228,14.5,0.3625,bůh:7; duch:2; ježíš:2; kristus:2; milost:1; svatý:1
+bible_BKR_Zd.txt,divine_hierarchy,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,eschatology,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,genealogy_lineage,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,kinship,1,40,0.025,2,658,0.00304,2.1,0.0525,otec:1; syn:1
+bible_BKR_Zd.txt,legal,1,40,0.025,1,658,0.00152,1.3,0.0325,spravedlnost:1
+bible_BKR_Zd.txt,life_death,3,40,0.075,4,658,0.00608,3.6,0.09,smrt:3; život:1
+bible_BKR_Zd.txt,monotheism,7,40,0.175,7,658,0.01064,6.7,0.1675,bůh:7
+bible_BKR_Zd.txt,moral,1,40,0.025,1,658,0.00152,1.0,0.025,nepravost:1
+bible_BKR_Zd.txt,prophetic_speech,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,ritual_sacrifice,2,40,0.05,2,658,0.00304,2.0,0.05,kněz:2
+bible_BKR_Zd.txt,royal_power,1,40,0.025,2,658,0.00304,2.1,0.0525,stolice:1; království:1
+bible_BKR_Zd.txt,sacred_space,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,war_conflict,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,wisdom,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zd.txt,yhwh_elements,0,40,0.0,0,658,0.0,0.0,0.0,
+bible_BKR_Zj.txt,christian_elements,3,40,0.075,6,804,0.00746,7.2,0.18,ježíš:3; kristus:3
+bible_BKR_Zj.txt,covenant_law,0,40,0.0,0,804,0.0,0.0,0.0,
+bible_BKR_Zj.txt,divine,10,40,0.25,15,804,0.01866,17.1,0.4275,duch:4; ježíš:3; kristus:3; bůh:2; milost:1; sláva:1; víra:1
+bible_BKR_Zj.txt,divine_hierarchy,0,40,0.0,0,804,0.0,0.0,0.0,
+bible_BKR_Zj.txt,eschatology,4,40,0.1,4,804,0.00498,3.9,0.0975,poslední:4
+bible_BKR_Zj.txt,genealogy_lineage,2,40,0.05,2,804,0.00249,1.8,0.045,prvorozený:1; pokolení:1
+bible_BKR_Zj.txt,kinship,2,40,0.05,2,804,0.00249,2.3,0.0575,bratr:1; syn:1
+bible_BKR_Zj.txt,legal,2,40,0.05,2,804,0.00249,2.1,0.0525,svědek:2
+bible_BKR_Zj.txt,life_death,5,40,0.125,8,804,0.00995,7.3,0.1825,mrtvý:3; smrt:3; živý:1; život:1
+bible_BKR_Zj.txt,monotheism,3,40,0.075,3,804,0.00373,3.1,0.0775,bůh:2; všemohoucí:1
+bible_BKR_Zj.txt,moral,0,40,0.0,0,804,0.0,0.0,0.0,
+bible_BKR_Zj.txt,prophetic_speech,2,40,0.05,2,804,0.00249,2.3,0.0575,zjevení:1; proroctví:1
+bible_BKR_Zj.txt,ritual_sacrifice,1,40,0.025,1,804,0.00124,1.3,0.0325,kněz:1
+bible_BKR_Zj.txt,royal_power,4,40,0.1,4,804,0.00498,4.6,0.115,kníže:1; král:1; království:1; stolice:1
+bible_BKR_Zj.txt,sacred_space,0,40,0.0,0,804,0.0,0.0,0.0,
+bible_BKR_Zj.txt,war_conflict,3,40,0.075,3,804,0.00373,2.8,0.07,meč:3
+bible_BKR_Zj.txt,wisdom,0,40,0.0,0,804,0.0,0.0,0.0,
+bible_BKR_Zj.txt,yhwh_elements,0,40,0.0,0,804,0.0,0.0,0.0,
