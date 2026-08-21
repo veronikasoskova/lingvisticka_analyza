@@ -78,7 +78,7 @@ class WordNetworkTokenTests(unittest.TestCase):
             "sentence": "",
         }
         tokens = _get_tokens(row)
-        self.assertEqual(tokens, ["zástupů"])
+        self.assertEqual(tokens, ["hospodin", "zástupů"])
 
     def test_tokenize_raw_sentence_drops_function_words(self):
         tokens = _tokenize("Když jsem k vám přišel, protož jich neviděl.")

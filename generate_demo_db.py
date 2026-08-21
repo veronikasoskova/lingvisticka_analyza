@@ -30,7 +30,7 @@ sys.path.insert(0, str(SRC))
 from a_paths import BIBLE_FOLDER, OUTPUT_DIR, DB_PATH, list_bible_files
 from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 from t_config_tradition import canonicalize_lemma
-from lexicons_common import STOP_LEMMAS, content_tokens
+from lexicons_common import clean_surface_token
 from i_q_skinner_lexicons import ILLOCUTIONARY_FORCE_MAP, RHETORICAL_STRATEGY_VALUES
 from j_q_skinner_taxonomy import CONVENTION_MAP
 from m_verbal_relations import RELATION_TYPE_VALUES
@@ -197,13 +197,15 @@ def _make_relation_row(sentence_id: int, sentence: str, file_name: str) -> dict:
 
 def _make_refined_row(sentence_id: int, sentence: str, file_name: str) -> dict:
     dtype = _weighted_choice(DESCRIPTION_TYPES, DESC_WEIGHTS)
-    # Strip punctuation and drop function words *before* storing lemmas so
-    # centrality / PMI consume content tokens only (zástupů, not "zástupů:").
-    words = [
-        canonicalize_lemma(tok)
-        for tok in content_tokens(sentence, stop=STOP_LEMMAS)
-    ]
-    lemmas = " ".join(dict.fromkeys(words[:8]))
+    # Strip punctuation from every token, then keep all unique lemmas in the
+    # verse (not a 8-token cap). Function-word filtering happens at analysis
+    # time in r_word_network / q_text_patterns.
+    words = []
+    for raw in str(sentence or "").split():
+        tok = clean_surface_token(raw)
+        if tok:
+            words.append(canonicalize_lemma(tok))
+    lemmas = " ".join(dict.fromkeys(words))
     return {
         "sentence_id":    sentence_id,
         "sentence":       sentence,

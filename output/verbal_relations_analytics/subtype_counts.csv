@@ -1,8 +1,10 @@
 subtype,count
-reported_speech,593
-narrative,502
-command_obedience,472
-lyrical,347
-doctrinal,321
-prophetic,183
-wisdom,119
+reported_speech,490
+historical_event_relation,397
+request_relation,350
+lyrical_relation,334
+descriptive_relation,323
+prophetic_relation,225
+wisdom_relation,178
+genealogical_relation,141
+autoclitic_relation,99

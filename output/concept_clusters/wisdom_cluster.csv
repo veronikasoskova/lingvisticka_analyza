@@ -1,3 +1,9 @@
 cluster,word1,word2,pair_count,pmi,matched_seed
-wisdom_cluster,hospodinovo,slovo,17,9.742,slovo
-wisdom_cluster,slovo,stalo,15,8.291,slovo
+wisdom_cluster,moudrost,umění,10,11.881,moudrost
+wisdom_cluster,hospodin,srdce,10,7.303,srdce
+wisdom_cluster,bůh,moudrost,8,7.462,moudrost
+wisdom_cluster,bůh,srdce,8,7.425,srdce
+wisdom_cluster,boží,moudrost,6,8.805,moudrost
+wisdom_cluster,bláznovství,moudrost,5,12.161,moudrost
+wisdom_cluster,kristus,moudrost,5,8.014,moudrost
+wisdom_cluster,den,srdce,5,7.866,srdce

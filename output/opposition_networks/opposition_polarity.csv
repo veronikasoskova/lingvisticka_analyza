@@ -1,4 +1,23 @@
 opposition_pair,total,positive,negative,both,polarity_ratio
-nebe | země,4,1,1,2,0.5
-zákon | milosrdenství,3,0,0,3,
-moudrost | bláznovství,1,0,0,1,
+den | noc,117,12,4,101,0.75
+nebe | země,102,4,16,82,0.2
+život | smrt,67,4,12,51,0.25
+světlo | tma,64,9,6,49,0.6
+víra | skutek,58,5,4,49,0.556
+duch | tělo,48,7,7,34,0.5
+moudrost | bláznovství,37,9,3,25,0.75
+dobrý | zlý,37,0,1,36,0.0
+první | poslední,25,1,0,24,1.0
+spravedlnost | nepravost,23,2,2,19,0.5
+pravda | lež,14,3,1,10,0.75
+bůh | modla,13,4,1,8,0.8
+milost | zákon,11,2,0,9,1.0
+milosrdenství | zákon,10,0,4,6,0.0
+oběť | milosrdenství,10,1,3,6,0.25
+kristus | antikrist,8,0,0,8,
+duše | tělo,8,1,1,6,0.5
+chudý | bohatý,8,1,1,6,0.5
+spravedlivý | bezbožný,7,0,0,7,
+spása | zahynutí,7,0,0,7,
+pravice | levice,7,0,0,7,
+milosrdenství | soud,6,1,1,4,0.5

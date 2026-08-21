@@ -1,224 +1,349 @@
 element,matched_words,sentence,file_name
-ritual_sacrifice,oběť,"A onť jest obět slitování za hříchy naše, a netoliko za naše, ale i za všeho světa.",bible_BKR_1J.txt
-ritual_sacrifice,kněz,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt
-ritual_sacrifice,kněz,"I pomaže ho tam Sádoch kněz a Nátan prorok za krále nad Izraelem, a troubiti budete troubou, a díte: Živ buď král Šalomoun.",bible_BKR_1Kr.txt
-ritual_sacrifice,kněz,"A tak šli dolů Sádoch kněz a Nátan prorok, a Banaiáš syn Joiadův, Cheretejští také i Peletejští, a vsadili Šalomouna na mezkyni krále Davida, a dovedli jej k Gihonu.",bible_BKR_1Kr.txt
-ritual_sacrifice,kněz,"Vzal také Sádoch kněz roh oleje z stánku, a pomazal Šalomouna. Potom troubili trubou, a řekl všecken lid: Živ buď král Šalomoun.",bible_BKR_1Kr.txt
-ritual_sacrifice,oltář,"A oltář měděný, kterýž byl udělal Bezeleel syn Uri, syna Hur, byl tam před stánkem Hospodinovým, kdež hledal ho Šalomoun i všecko to shromáždění.",bible_BKR_2Pa.txt
-ritual_sacrifice,oběť,"Nepřinášejte více oběti oklamání. Kadění v ohavnosti mám, novměsíců a sobot a svolávání nemohu trpěti, (nepravost jest), ani shromáždění.",bible_BKR_Iz.txt
-ritual_sacrifice,oběť,"Odjata jest suchá i mokrá obět z domu Hospodinova, kvílí kněží, služebníci Hospodinovi.",bible_BKR_Jl.txt
-ritual_sacrifice,kněží,"Kněží neřekli: Kde jest Hospodin? a ti, kteříž se obírají s zákonem, nepoznali mne, pastýři pak odstoupili ode mne, a proroci prorokovali skrze Bále, a za věcmi neužitečnými chodili.",bible_BKR_Jr.txt
-ritual_sacrifice,oběť,"Jestliže zápalná obět jeho byla by z skotů, samce bez vady obětovati bude. U dveří stánku úmluvy obětovati jej bude dobrovolně, před oblíčejem Hospodinovým.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"I stáhne kůži s oběti zápalné, a rozseká ji na díly své.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Jestliže pak z ptactva obět zápalnou obětovati bude Hospodinu, tedy ať obětuje z hrdliček aneb z holoubat obět svou.",bible_BKR_Lv.txt
-ritual_sacrifice,kněz; oltář,"I vloží je kněz na oltář a nehtem natrhne hlavy jeho, a zapálí na oltáři, vytlače krev jeho na stranu oltáře.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Ostatek pak té oběti suché bude Aronovi i synům jeho, svaté svatých, z ohnivých obětí Hospodinových.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Když bys pak obětoval dar oběti suché, pečené v peci, ať jsou z mouky bělné koláčové nekvašení, zadělaní olejem, aneb oplatkové přesní olejem pomazaní.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Jestliže pak obět suchou na pánvici smaženou obětovati budeš, bude z mouky bělné olejem zadělané a nenakvašené.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Pakli obět suchou v kotlíku připravenou obětovati budeš, z mouky bělné s olejem bude.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"I přineseš obět suchou, kteráž z těch věcí bude Hospodinu, a dáš ji knězi, kterýžto donese ji k oltáři.",bible_BKR_Lv.txt
-ritual_sacrifice,kněz; oběť,"A vezma kněz z oběti té pamětné její, páliti je bude na oltáři, v obět ohnivou, vůně spokojující Hospodina.",bible_BKR_Lv.txt
-ritual_sacrifice,oběť,"Což pak zůstane z oběti té suché, bude Aronovi i synům jeho, svaté svatých, z ohnivých obětí Hospodinových.",bible_BKR_Lv.txt
-eschatology,poslední,"Dítky, poslední hodina jest, a jakož jste slýchali, že antikrist přijíti má, i nyníť antikristové mnozí povstali. Odkudž známe, že poslední hodina jest.",bible_BKR_1J.txt
-moral,spravedlivý,"Poněvadž víte, že on spravedlivý jest, znejtež také, že každý, kdož činí spravedlnost, z něho jest narozen.",bible_BKR_1J.txt
-moral,dobrý,"Víme pak, že dobrý jest zákon, když by ho kdo náležitě užíval,",bible_BKR_1Tm.txt
-moral,nepravost,"Běda těm, kteříž vymýšlejí nepravost a ukládají zlé na ložcích svých, a na úsvitě ráno vykonávají je, když jest v moci rukou jejich.",bible_BKR_Mi.txt
-moral,spravedlivý,"Ale Jozef muž její spravedlivý jsa, a nechtěv jí v lehkost uvésti, chtěl ji tajně propustiti.",bible_BKR_Mt.txt
-moral,spravedlivý,"Spravedlivý jest Hospodin, neboť jsem na odpor činila ústům jeho. Slyšte medle všickni lidé, a vizte bolest mou; panny mé i mládenci moji odebrali se do zajetí.",bible_BKR_Pl.txt
-moral,spravedlivý,"Hospodin spravedlivý u prostřed něho jest, nelibuje nepravosti, každého dne soud svůj vynáší na světlo bez přestání, a však nešlechetník neumí se styděti.",bible_BKR_Sf.txt
-divine,ježíš,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt
-divine,milost,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt
-divine,kristus,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt
-divine,kristus,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt
-divine,kristus,"Myť pak kážeme Krista ukřižovaného, Židům zajisté pohoršení, a Řekům bláznovství,",bible_BKR_1K.txt
-divine,víra,"Aby víra vaše nebyla na moudrosti lidské založena, ale na moci Boží.",bible_BKR_1K.txt
-divine,hospodin,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt
-divine,ježíš,"Petr, apoštol Ježíše Krista, příchozím rozptýleným v Pontu, Galacii, Kappadocii, v Azii, a v Bitynii,",bible_BKR_1P.txt
-divine,bůh,"Požehnaný Bůh a Otec Pána našeho Ježíše Krista, kterýž podlé mnohého milosrdenství svého znovu zplodil nás v naději živou skrze vzkříšení Ježíše Krista z mrtvých,",bible_BKR_1P.txt
-divine,hospodin,"A učinila slib, řkuci: Hospodine zástupů, jestliže vzhlédneš na trápení děvky své a rozpomeneš se na mne, a nezapomeneš na děvku svou, ale dáš služebnici své plod pohlaví mužského: tedy dám jej tobě, Hospodine, po všecky dny života jeho, a břitva nevejde na hlavu jeho.",bible_BKR_1S.txt
-divine,hospodin,"Hospodin umrtvuje i obživuje, uvodí do pekla i vyvodí.",bible_BKR_1S.txt
-divine,hospodin,"Hospodin ochuzuje i zbohacuje, ponižuje i povyšuje.",bible_BKR_1S.txt
-divine,bůh,"Ale jakož Bůh nás oblíbil, aby nám svěřeno bylo evangelium, takť mluvíme, ne jako lidem se líbíce, ale Bohu, kterýž libuje srdce naše.",bible_BKR_1Te.txt
-divine,ježíš,"Kteříž i Pána Ježíše zabili, i své vlastní proroky, a nás vyhnali, a Bohu se nelíbí, a všechněm lidem jsou odporní,",bible_BKR_1Te.txt
-divine,ježíš,"Pavel, apoštol Ježíše Krista, podlé zřízení Boha spasitele našeho, a Pána Jezukrista, naděje naší,",bible_BKR_1Tm.txt
-divine,milost,"Rozhojnila se pak náramně milost Pána našeho, s věrou a s milováním v Kristu Ježíši.",bible_BKR_1Tm.txt
-divine,kristus,"Starší v Kristu vyvolené paní i synům jejím, kteréž já miluji v pravdě, a ne sám já, ale i všickni, kteříž poznali pravdu,",bible_BKR_2J.txt
-divine,ježíš; kristus,"Pavel apoštol Ježíše Krista skrze vůli Boží, a Timoteus bratr, církvi Boží, kteráž jest v Korintu, se všechněmi svatými, kteříž jsou ve vší Achaii:",bible_BKR_2K.txt
-divine,milost,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_2K.txt
-divine,bůh,"Požehnaný Bůh a Otec Pána našeho Jezukrista, Otec milosrdenství, a Bůh všelikého potěšení,",bible_BKR_2K.txt
-christian_elements,apoštol; ježíš,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt
-christian_elements,kristus,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt
-christian_elements,kristus,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt
-christian_elements,kristus,"Myť pak kážeme Krista ukřižovaného, Židům zajisté pohoršení, a Řekům bláznovství,",bible_BKR_1K.txt
-christian_elements,hospodin,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt
-christian_elements,apoštol; ježíš,"Petr, apoštol Ježíše Krista, příchozím rozptýleným v Pontu, Galacii, Kappadocii, v Azii, a v Bitynii,",bible_BKR_1P.txt
-christian_elements,hospodin,"A učinila slib, řkuci: Hospodine zástupů, jestliže vzhlédneš na trápení děvky své a rozpomeneš se na mne, a nezapomeneš na děvku svou, ale dáš služebnici své plod pohlaví mužského: tedy dám jej tobě, Hospodine, po všecky dny života jeho, a břitva nevejde na hlavu jeho.",bible_BKR_1S.txt
-christian_elements,hospodin,"Hospodin umrtvuje i obživuje, uvodí do pekla i vyvodí.",bible_BKR_1S.txt
-christian_elements,hospodin,"Hospodin ochuzuje i zbohacuje, ponižuje i povyšuje.",bible_BKR_1S.txt
-christian_elements,evangelium,"Nebo evangelium naše k vám nezáleželo toliko v slovu, ale i v moci, i v Duchu svatém, a v jistotě mnohé, jakož víte, jací jsme byli mezi vámi pro vás.",bible_BKR_1Te.txt
-christian_elements,ježíš,"Kteříž i Pána Ježíše zabili, i své vlastní proroky, a nás vyhnali, a Bohu se nelíbí, a všechněm lidem jsou odporní,",bible_BKR_1Te.txt
-christian_elements,apoštol; ježíš,"Pavel, apoštol Ježíše Krista, podlé zřízení Boha spasitele našeho, a Pána Jezukrista, naděje naší,",bible_BKR_1Tm.txt
-christian_elements,evangelium,"Podlé slavného evangelium blahoslaveného Boha, kteréž mně jest svěřeno.",bible_BKR_1Tm.txt
-christian_elements,kristus,"Starší v Kristu vyvolené paní i synům jejím, kteréž já miluji v pravdě, a ne sám já, ale i všickni, kteříž poznali pravdu,",bible_BKR_2J.txt
-christian_elements,apoštol; ježíš; kristus,"Pavel apoštol Ježíše Krista skrze vůli Boží, a Timoteus bratr, církvi Boží, kteráž jest v Korintu, se všechněmi svatými, kteříž jsou ve vší Achaii:",bible_BKR_2K.txt
-christian_elements,kristus,"Nebo jakož se rozhojňují utrpení Kristova při nás, tak skrze Krista rozhojňuje se i potěšení naše.",bible_BKR_2K.txt
-christian_elements,ježíš,"Nebo Syn Boží Ježíš Kristus, kterýž mezi vámi kázán jest skrze nás, skrze mne a Silvána a Timotea, nebyl: Jest, a není, ale bylo v něm: Jest.",bible_BKR_2K.txt
-christian_elements,kristus,"Neboť jsme Kristova vůně dobrá Bohu v těch, kteříž k spasení přicházejí, i v těch, kteříž hynou,",bible_BKR_2K.txt
-christian_elements,hospodin,"Ale anděl Hospodinův řekl Eliášovi Tesbitskému: Vstana, jdi vstříc poslům krále Samařského a mluv k nim: Zdali není Boha v Izraeli, že jdete dotazovati se Belzebuba, boha Akaron?",bible_BKR_2Kr.txt
-christian_elements,hospodin,"Řekl pak anděl Hospodinův Eliášovi: Sstup s ním, neboj se nic tváři jeho. Tedy vstav, šel s ním k králi.",bible_BKR_2Kr.txt
-wisdom,moudrost,"Nebo psáno jest: Zahladím moudrost moudrých, a opatrnost opatrných zavrhu.",bible_BKR_1K.txt
-wisdom,moudrost,"Moudrost pak mluvíme mezi dokonalými, ale moudrost ne tohoto světa, ani knížat světa tohoto, kteráž hynou.",bible_BKR_1K.txt
-wisdom,moudrost,"Ale mluvíme tu moudrost Boží v tajemství skrytou, kterouž Bůh předuložil před věky k slávě naší,",bible_BKR_1K.txt
-wisdom,moudrost,"Protož dej mi moudrost a umění, aťbych vycházeti mohl před lidem tímto i vcházeti. Nebo kdož by mohl souditi tento lid tvůj tak mnohý?",bible_BKR_2Pa.txt
-wisdom,moudrost,"Moudrost a umění dáno jest tobě, k čemužť přidám i bohatství a zboží, i slávy, tak že žádný z králů, kteříž byli před tebou, nebyl tobě rovný, aniž bude po tobě takového.",bible_BKR_2Pa.txt
-wisdom,přísloví,"Zdaliž všickni ti proti němu přísloví nevynesou, a světlých slov i pohádek o něm? A neřeknou-liž: Běda tomu, kterýž rozmnožuje věci ne své, (až dokud pak?) a obtěžuje se hustým blátem?",bible_BKR_Abk.txt
-wisdom,přísloví,"Přísloví Šalomouna syna Davidova, krále Izraelského,",bible_BKR_Pr.txt
-wisdom,poznání,"Ku poznání moudrosti a cvičení, k vyrozumívání řečem rozumnosti,",bible_BKR_Pr.txt
-wisdom,moudrost,"Moudrost vně volá, na ulicech vydává hlas svůj.",bible_BKR_Pr.txt
-wisdom,rozumnost,"Ovšem, jestliže na rozumnost zavoláš, a na opatrnost zvoláš-li;",bible_BKR_Pr.txt
-royal_power,král,"Král pak David sstaral se a sešel věkem, a ačkoli jej šaty přikrývali, však nemohl se zahřívati.",bible_BKR_1Kr.txt
-royal_power,král,"A odpovídaje král David, řekl: Zavolejte mi Betsabé. Kteráž všedši před krále, stála před ním.",bible_BKR_1Kr.txt
-royal_power,král,"Řekl ještě král David: Zavolejte ke mně Sádocha kněze a Nátana proroka, a Banaiáše syna Joiadova. Kteřížto vešli před krále.",bible_BKR_1Kr.txt
-royal_power,král,"Opět poslal k němu král padesátníka jiného s padesáti jeho. Kterýž mluvil a řekl jemu: Muži Boží, takto rozkázal král: Rychle sstup dolů.",bible_BKR_2Kr.txt
-royal_power,král,"I složil král stříbra a zlata v Jeruzalémě jako kamení, a dříví cedrového jako planého fíkoví, kteréž roste v údolí u velikém množství.",bible_BKR_2Pa.txt
-royal_power,král,"I odpověděl Chíram král Tyrský psáním, kteréž poslal k Šalomounovi: Jistě, žeť miluje Hospodin lid svůj, protož tě ustanovil nad nimi za krále.",bible_BKR_2Pa.txt
-royal_power,král,"I půjde král jejich v zajetí, on i knížata jeho s ním, praví Hospodin.",bible_BKR_Am.txt
-royal_power,král,"Rozkázal také král Ašpenazovi, správci dvořanů svých, aby přivedl z synů Izraelských, z semene královského a z knížat,",bible_BKR_Da.txt
-royal_power,král,"I nařídil jim král odměřený pokrm na každý den z stolu královského, i vína, kteréž on sám pil, a aby je tak choval za tři léta, a po dokonání jich aby stávali před králem.",bible_BKR_Da.txt
-royal_power,král,"I rozkázal král svolati mudrce, a hvězdáře i kouzedlníky a Kaldejské, aby oznámili králi sen jeho. Kteřížto přišli, a postavili se před králem.",bible_BKR_Da.txt
-royal_power,král,"Odpověděl král a řekl Kaldejským: Ten sen mi již z paměti vyšel. Neoznámíte-li mi snu i výkladu jeho, na kusy rozsekáni budete, a domové vaši v záchody obráceni budou.",bible_BKR_Da.txt
-royal_power,král,"Odpověděl král a řekl: Jistotně rozumím tomu, že naschvál odtahujete, vidouce, že mi vyšel z paměti ten sen.",bible_BKR_Da.txt
-royal_power,král,"Z té příčiný rozlítil se král a rozhněval velmi, a přikázal, aby zhubili všecky mudrce Babylonské.",bible_BKR_Da.txt
-royal_power,král,"Že toho času, když seděl král Asverus na stolici království svého, jenž byla v Susan, městě královském,",bible_BKR_Est.txt
-royal_power,království,"Ukazuje bohatství, slávu království svého a čest, i ozdobu důstojnosti své za mnoho dnů, totiž za sto a osmdesáte dnů.",bible_BKR_Est.txt
-royal_power,král,"I řekl král mudrcům znajícím časy, (nebo tak každé věci podával král na všecky zběhlé v právích a soudech),",bible_BKR_Est.txt
-royal_power,král,"A nechť zřídí král úředníky ve všech krajinách království svého, kteříž by shromáždili všecky mladice, panny krásné, do Susan města královského, do domu ženského, pod stráž Hegai komorníka královského, strážce žen, a ať jim vydává okrasy jejich.",bible_BKR_Est.txt
-royal_power,král,"I zamiloval král Ester nade všecky jiné ženy, a nalezla milost a lásku u něho nade všecky panny, tak že vstavil korunu královskou na hlavu její, a učinil ji královnou místo Vasti.",bible_BKR_Est.txt
-royal_power,král,"K tomu také učinil král hody veliké všechněm knížatům svým a služebníkům svým, totiž hody Estery, a dal odpočinutí krajinám, a daroval je tak, jakž slušelo na krále.",bible_BKR_Est.txt
-royal_power,král,"V tom povstal král nový v Egyptě, kterýž neznal Jozefa.",bible_BKR_Ex.txt
+kinship,otec,"(Nebo ten život zjeven jest, a my jsme viděli, a svědčíme, i zvěstujeme vám ten život věčný, kterýž byl u Otce, a zjeven jest nám),",bible_BKR_1J.txt
+kinship,otec,"Což jsme viděli a slyšeli, zvěstujeme vám, abyste i vy s námi obecenství měli, a obecenství naše aby bylo s Otcem i s Synem jeho Jezukristem.",bible_BKR_1J.txt
+kinship,otec,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt
+kinship,otec,"Nebo všecko, což jest na světě, jako žádost těla, a žádost očí, a pýcha života, toť není z Otce, ale jest z světa.",bible_BKR_1J.txt
+kinship,otec,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt
+kinship,otec; syn,"Každý kdož zapírá Syna, nemáť ani Otce.",bible_BKR_1J.txt
+kinship,otec; syn,"A protož zůstaniž v vás to, což jste slýchali od počátku. Zůstane-liť v vás to, co jste slýchali od počátku, i vy také v Synu i v Otci zůstanete.",bible_BKR_1J.txt
+kinship,bratr,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt
 kinship,syn,"Adoniáš pak syn Haggity pozdvihoval se, říkaje: Jáť budu kralovati. I najednal sobě vozů a jezdců, a padesáte mužů, kteříž by běhali před ním.",bible_BKR_1Kr.txt
 kinship,otec,"A nikdy ho nezarmoutil otec jeho, aby řekl: Proč jsi to učinil? Nebo byl i on velmi krásné postavy, kteréhož porodila po Absolonovi.",bible_BKR_1Kr.txt
 kinship,syn,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt
-kinship,syn,"A odpovídaje Banaiáš syn Joiadův králi, řekl: Amen. Způsobiž to Hospodin, Bůh pána mého krále.",bible_BKR_1Kr.txt
-kinship,syn,"Když se pak zmocnil Šalomoun syn Davidův v království svém, a Hospodin Bůh jeho byl s ním, a zvelebil ho náramně:",bible_BKR_2Pa.txt
-kinship,syn,"Abner pak syn Nerův, hejtman vojska Saulova, vzal Izbozeta syna Saulova a uvedl ho do Mahanaim.",bible_BKR_2S.txt
-kinship,syn,"Ve čtyřidcíti letech byl Izbozet syn Saulův, když počal kralovati nad Izraelem, a kraloval dvě létě. (Toliko dům Judův přídržel se Davida.",bible_BKR_2S.txt
-kinship,syn,"Potom vytáhl Abner syn Nerův, a služebníci Izbozeta syna Saulova z Mahanaim do Gabaon.",bible_BKR_2S.txt
-kinship,syn,"Joáb také syn Sarvie a služebníci Davidovi vytáhše, potkali se s nimi právě u rybníka Gabaon. I pozůstali tito u rybníka s strany jedné, oni pak u rybníka s druhé strany.",bible_BKR_2S.txt
-kinship,syn,"I uposlechl Zorobábel syn Salatielův, a Jozue syn Jozadakův, kněz nejvyšší, i všickni ostatkové lidu hlasu Hospodina Boha svého, a slov Aggea proroka, poněvadž jej poslal Hospodin Bůh jejich; nebo se bál lid tváři Hospodinovy.",bible_BKR_Ag.txt
-kinship,syn,"Jozue, syn Nun, kterýž stojí před tebou, onť vejde tam, jeho posilň, nebo on rozdělí ji losem Izraelovi.",bible_BKR_Dt.txt
-kinship,dcera,"A v tom sešla dcera Faraonova, aby se myla v řece; a děvečky její procházely se po břehu řeky. A uzřevši ošitku mezi rákosím, poslala děvečku svou, a vzala ji.",bible_BKR_Ex.txt
-kinship,sestra,"I řekla sestra jeho k dceři Faraonově: Mám-li jíti a zavolati tobě chůvy z žen Hebrejských, kteráž by odchovala tobě dítě?",bible_BKR_Ex.txt
-kinship,dcera,Odpověděla dcera Faraonova: Jdi. Tedy šla děvečka a zavolala matky toho dítěte.,bible_BKR_Ex.txt
-kinship,dcera,"I řekla jí dcera Faraonova: Vezmi toto dítě, a odchovej mi je; a jáť dám mzdu tvou. I vzala žena dítě, a chovala je.",bible_BKR_Ex.txt
-kinship,dcera,"I zůstala dcera Sionská jako boudka na vinici, jako chaloupka v zahradě tykevné, a jako město zkažené.",bible_BKR_Iz.txt
-kinship,syn,"Slovo, kteréž viděl Izaiáš syn Amosův o Judovi a Jeruzalému.",bible_BKR_Iz.txt
-kinship,bratr,"Chlubiž se pak bratr ponížený v povýšení svém,",bible_BKR_Jk.txt
-kinship,syn,"Poslal pak byl Jozue, syn Nun, z Setim dva muže špehéře tajně, řka: Jděte, shlédněte zemi, zvlášť Jericho. I šli a vešli do domu ženy nevěstky, jejíž jméno bylo Raab, a odpočinuli tu.",bible_BKR_Joz.txt
-kinship,bratr,"Judas, Ježíše Krista služebník, bratr pak Jakubův, posvěceným od Boha Otce, a Kristu Ježíši zachovaným i povolaným:",bible_BKR_Ju.txt
+kinship,syn,"I mluvil Nátan k Betsabé matce Šalomounově, řka: Neslyšela-lis, že kraluje Adoniáš syn Haggity, a pán náš David nic neví o tom?",bible_BKR_1Kr.txt
+kinship,syn,"Protož nyní poď, prosím, a dámť radu, kterouž vysvobodíš život svůj, i život syna svého Šalomouna.",bible_BKR_1Kr.txt
+kinship,syn,"Jdiž, a vejda k králi Davidovi, rci jemu: Zdaliž jsi ty, pane můj králi, nepřisáhl služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a onť seděti bude na stolici mé? Pročež tedy kraluje Adoniáš?",bible_BKR_1Kr.txt
+kinship,otec; syn,"Sic jinak bude to, když usne pán můj král s otci svými, že já a syn můj Šalomoun budeme jako hříšníci.",bible_BKR_1Kr.txt
+kinship,syn,"Mne pak služebníka tvého, a Sádocha kněze, a Banaiáše syna Joiadova, a Šalomouna služebníka tvého nepozval.",bible_BKR_1Kr.txt
+kinship,syn,"Řekl ještě král David: Zavolejte ke mně Sádocha kněze a Nátana proroka, a Banaiáše syna Joiadova. Kteřížto vešli před krále.",bible_BKR_1Kr.txt
+kinship,syn,"I řekl jim král: Vezměte s sebou služebníky pána svého, a vsaďte Šalomouna syna mého na mezkyni mou, a veďte ji k Gihonu.",bible_BKR_1Kr.txt
+kinship,syn,"A tak šli dolů Sádoch kněz a Nátan prorok, a Banaiáš syn Joiadův, Cheretejští také i Peletejští, a vsadili Šalomouna na mezkyni krále Davida, a dovedli jej k Gihonu.",bible_BKR_1Kr.txt
+kinship,syn,"Jakožto synové poslušní, nepřirovnávající se prvním neznámosti své žádostem.",bible_BKR_1P.txt
+life_death,věčný; život,"(Nebo ten život zjeven jest, a my jsme viděli, a svědčíme, i zvěstujeme vám ten život věčný, kterýž byl u Otce, a zjeven jest nám),",bible_BKR_1J.txt
+life_death,věčný; život,"A toť jest to zaslíbení, kteréž on nám zaslíbil, totiž ten život věčný.",bible_BKR_1J.txt
+life_death,vzkříšení,"Požehnaný Bůh a Otec Pána našeho Ježíše Krista, kterýž podlé mnohého milosrdenství svého znovu zplodil nás v naději živou skrze vzkříšení Ježíše Krista z mrtvých,",bible_BKR_1P.txt
+life_death,mrtvý,"Nýbrž sami v sobě již jsme byli tak usoudili, že nebylo lze než umříti, abychom nedoufali sami v sobě, ale v Bohu i mrtvé křísícím.",bible_BKR_2K.txt
+life_death,smrt,"Kterýž od takové smrti vytrhl nás, a vytrhuje, v něhož doufáme, že i ještě vytrhne,",bible_BKR_2K.txt
+life_death,smrt; život,"Těmto zajisté vůně smrtelná k smrti, oněmno pak vůně života k životu. Ale k tomu kdo jest způsobný?",bible_BKR_2K.txt
+life_death,smrt,V tom zprotivil se Moáb Izraelovi po smrti Achabově.,bible_BKR_2Kr.txt
+life_death,smrt,"A vyšed k pramenu těch vod, vsypal tam sůl a řekl: Takto praví Hospodin: Uzdravuji vody tyto; nebudeť více odtud smrti, ani nedochůdčete.",bible_BKR_2Kr.txt
+life_death,smrt,"Stalo se pak po smrti Saulově, když se navrátil David od porážky Amalechitských, že pobyl v Sicelechu za dva dni.",bible_BKR_2S.txt
+life_death,smrt,"Saul a Jonata milí a utěšení v životě svém, také při smrti své nejsou rozloučeni. Nad orlice bystřejší, nad lvy silnější byli.",bible_BKR_2S.txt
+life_death,smrt; život,"Nyní pak zjevené skrze příští patrné spasitele našeho Jezukrista, kterýž zahladil smrt, život pak na světlo vyvedl, i nesmrtelnost skrze evangelium,",bible_BKR_2Tm.txt
+life_death,vzkříšení,"Kteříž při pravdě pobloudili od cíle, pravíce, že by se již stalo vzkříšení, a převracejí víru některých.",bible_BKR_2Tm.txt
+life_death,smrt,"Ovšem pak více opilec, nešlechetnost a pýchu provodě, neostojí v příbytku; kterýž rozšiřuje jako peklo duši svou, jest jako smrt, kteráž se nemůže nasytiti, byť pak shromáždil k sobě všecky národy, a shrnul k sobě všecky lidi.",bible_BKR_Abk.txt
+life_death,mrtvý,"I vás obživil mrtvé v vinách a hříších,",bible_BKR_Ef.txt
+life_death,mrtvý,"Také i nás, když jsme mrtví byli v hříších, obživil spolu s Kristem, (milostí spaseni jste),",bible_BKR_Ef.txt
+life_death,smrt,"Ten choval Hadassu, jinak Esteru, dceru strýce svého, proto že neměla otce ani matky. A děvečka ta byla pěkné postavy a krásné tváři, kterouž po smrti otce a matky její vzal sobě Mardocheus za dceru.",bible_BKR_Est.txt
+life_death,smrt; život,"Podlé pečlivého očekávání a naděje mé, že v ničem nebudu zahanben, ale ve vší doufanlivé smělosti, jakž prvé vždycky, tak i nyní veleben bude Kristus na těle mém, buď skrze život, buď skrze smrt.",bible_BKR_Fp.txt
+life_death,smrt,"A v způsobu nalezen jako člověk, ponížil se, poslušný byv až do smrti, a to smrti kříže.",bible_BKR_Fp.txt
+life_death,život,"Ale když se zalíbilo Bohu, kterýž mne byl oddělil z života matky mé, a povolal skrze milost svou,",bible_BKR_Ga.txt
+life_death,život,"I učinil Hospodin Bůh člověka z prachu země, a vdechl v chřípě jeho dchnutí života, i byl člověk v duši živou.",bible_BKR_Gn.txt
+divine,ježíš,"Což jsme viděli a slyšeli, zvěstujeme vám, abyste i vy s námi obecenství měli, a obecenství naše aby bylo s Otcem i s Synem jeho Jezukristem.",bible_BKR_1J.txt
+divine,bůh,"Toť jest tedy zvěstování to, kteréž jsme slýchali od něho, a zvěstujeme vám: Že Bůh jest světlo, a tmy v něm nižádné není.",bible_BKR_1J.txt
+divine,ježíš; kristus,"Pakliť chodíme v světle, jako on jest v světle, obecenství máme vespolek, a krev Krista Ježíše Syna jeho očišťuje nás od všelikého hříchu.",bible_BKR_1J.txt
+divine,bůh,"Jestliže pak budeme vyznávati hříchy své, věrnýť jest Bůh a spravedlivý, aby nám odpustil hříchy, a očistil nás od všeliké nepravosti.",bible_BKR_1J.txt
+divine,ježíš; kristus,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt
+divine,ježíš; kristus,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt
+divine,ježíš; kristus,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt
+divine,ježíš; kristus,"Církvi Boží, kteráž jest v Korintu, posvěceným v Kristu Ježíši, povolaným svatým, spolu se všechněmi, kteříž vzývají jméno Pána našeho Jezukrista na všelikém místě, i jejich i našem:",bible_BKR_1K.txt
+divine,bůh; ježíš; milost,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt
+divine,bůh; ježíš; kristus; milost,"Děkuji Bohu svému vždycky z vás pro tu milost Boží, kteráž dána jest vám v Kristu Ježíši,",bible_BKR_1K.txt
+divine,kristus,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt
+divine,ježíš,"Tak že, nemáte žádného nedostatku v žádném daru, očekávajíce zjevení Pána našeho Jezukrista,",bible_BKR_1K.txt
+divine,ježíš,Kterýž i utvrdí vás až do konce bez ouhony ke dni Pána našeho Jezukrista.,bible_BKR_1K.txt
+divine,bůh; ježíš,"Věrnýť jest Bůh, skrze něhož povoláni jste k účastenství Syna jeho Jezukrista, Pána našeho.",bible_BKR_1K.txt
+divine,ježíš,"Prosímť pak vás, bratří, skrze jméno Pána našeho Jezukrista, abyste jednostejně mluvili všickni, a aby nebylo mezi vámi roztržek, ale buďte spojeni jednostejnou myslí, a jednostejným smyslem.",bible_BKR_1K.txt
+divine,kristus,"Míním pak toto, že jeden každý z vás říká: Já jsem Pavlův, já Apollův, já Petrův, já pak Kristův.",bible_BKR_1K.txt
+divine,kristus,Rozdělen-liž jest Kristus? Zdali Pavel ukřižován jest za vás? aneb zdali jste ve jménu Pavlovu pokřtěni byli?,bible_BKR_1K.txt
+divine,bůh,"Děkuji Bohu, že jsem žádného z vás nekřtil, než Krispa a Gáia,",bible_BKR_1K.txt
+divine,kristus,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt
+divine,bůh,Kde jest moudrý? A kde učený? A kde chytrák tohoto světa? Zdaliž Bůh neobrátil moudrosti tohoto světa v bláznovství?,bible_BKR_1K.txt
+christian_elements,ježíš,"Což jsme viděli a slyšeli, zvěstujeme vám, abyste i vy s námi obecenství měli, a obecenství naše aby bylo s Otcem i s Synem jeho Jezukristem.",bible_BKR_1J.txt
+christian_elements,ježíš; kristus,"Pakliť chodíme v světle, jako on jest v světle, obecenství máme vespolek, a krev Krista Ježíše Syna jeho očišťuje nás od všelikého hříchu.",bible_BKR_1J.txt
+christian_elements,ježíš; kristus,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt
+christian_elements,ježíš; kristus,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt
+christian_elements,apoštol; ježíš; kristus,"Pavel, povolaný apoštol Ježíše Krista, skrze vůli Boží, a bratr Sostenes,",bible_BKR_1K.txt
+christian_elements,ježíš; kristus,"Církvi Boží, kteráž jest v Korintu, posvěceným v Kristu Ježíši, povolaným svatým, spolu se všechněmi, kteříž vzývají jméno Pána našeho Jezukrista na všelikém místě, i jejich i našem:",bible_BKR_1K.txt
+christian_elements,ježíš,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt
+christian_elements,ježíš; kristus,"Děkuji Bohu svému vždycky z vás pro tu milost Boží, kteráž dána jest vám v Kristu Ježíši,",bible_BKR_1K.txt
+christian_elements,kristus,"Jakož svědectví Kristovo upevněno jest mezi vámi,",bible_BKR_1K.txt
+christian_elements,ježíš,"Tak že, nemáte žádného nedostatku v žádném daru, očekávajíce zjevení Pána našeho Jezukrista,",bible_BKR_1K.txt
+christian_elements,ježíš,Kterýž i utvrdí vás až do konce bez ouhony ke dni Pána našeho Jezukrista.,bible_BKR_1K.txt
+christian_elements,ježíš,"Věrnýť jest Bůh, skrze něhož povoláni jste k účastenství Syna jeho Jezukrista, Pána našeho.",bible_BKR_1K.txt
+christian_elements,ježíš,"Prosímť pak vás, bratří, skrze jméno Pána našeho Jezukrista, abyste jednostejně mluvili všickni, a aby nebylo mezi vámi roztržek, ale buďte spojeni jednostejnou myslí, a jednostejným smyslem.",bible_BKR_1K.txt
+christian_elements,kristus,"Míním pak toto, že jeden každý z vás říká: Já jsem Pavlův, já Apollův, já Petrův, já pak Kristův.",bible_BKR_1K.txt
+christian_elements,kristus,Rozdělen-liž jest Kristus? Zdali Pavel ukřižován jest za vás? aneb zdali jste ve jménu Pavlovu pokřtěni byli?,bible_BKR_1K.txt
+christian_elements,evangelium; kristus; kříž,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt
+christian_elements,kristus,"Myť pak kážeme Krista ukřižovaného, Židům zajisté pohoršení, a Řekům bláznovství,",bible_BKR_1K.txt
+christian_elements,kristus,"Ale povolaným i Židům i Řekům Krista, Boží moc a Boží moudrost.",bible_BKR_1K.txt
+christian_elements,ježíš; kristus,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt
+christian_elements,ježíš; kristus,"Nebo tak jsem usoudil nic jiného neuměti mezi vámi, nežli Ježíše Krista, a to toho ukřižovaného.",bible_BKR_1K.txt
+monotheism,bůh,"Toť jest tedy zvěstování to, kteréž jsme slýchali od něho, a zvěstujeme vám: Že Bůh jest světlo, a tmy v něm nižádné není.",bible_BKR_1J.txt
+monotheism,bůh,"Jestliže pak budeme vyznávati hříchy své, věrnýť jest Bůh a spravedlivý, aby nám odpustil hříchy, a očistil nás od všeliké nepravosti.",bible_BKR_1J.txt
+monotheism,bůh,Milost vám a pokoj od Boha Otce našeho a Pána Jezukrista.,bible_BKR_1K.txt
+monotheism,bůh,"Děkuji Bohu svému vždycky z vás pro tu milost Boží, kteráž dána jest vám v Kristu Ježíši,",bible_BKR_1K.txt
+monotheism,bůh,"Věrnýť jest Bůh, skrze něhož povoláni jste k účastenství Syna jeho Jezukrista, Pána našeho.",bible_BKR_1K.txt
+monotheism,bůh,"Děkuji Bohu, že jsem žádného z vás nekřtil, než Krispa a Gáia,",bible_BKR_1K.txt
+monotheism,bůh,Kde jest moudrý? A kde učený? A kde chytrák tohoto světa? Zdaliž Bůh neobrátil moudrosti tohoto světa v bláznovství?,bible_BKR_1K.txt
+monotheism,bůh,"Nebo když v moudrosti Boží svět nepoznal skrze moudrost Boha, zalíbilo se Bohu skrze bláznové kázaní spasiti věřící,",bible_BKR_1K.txt
+monotheism,bůh,"Ale což bláznivého jest u světa, to vyvolil Bůh, aby zahanbil moudré, a to, což jest u světa mdlé, vyvolil Bůh, aby zahanbil silné.",bible_BKR_1K.txt
+monotheism,bůh,"A neurozené u světa a za nic položené vyvolil Bůh, anobrž kteréž nejsou, aby ty věci, kteréž jsou, zahladil,",bible_BKR_1K.txt
+monotheism,bůh,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt
+monotheism,bůh,"Ale mluvíme tu moudrost Boží v tajemství skrytou, kterouž Bůh předuložil před věky k slávě naší,",bible_BKR_1K.txt
+monotheism,bůh,"Ale jakož psáno jest: Čeho oko nevídalo, ani ucho neslýchalo, ani na srdce lidské nevstoupilo, co připravil Bůh těm, kteříž jej milují.",bible_BKR_1K.txt
+monotheism,bůh; hospodin,"I odpověděla jemu: Pane můj, ty jsi přisáhl skrze Hospodina Boha svého služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a on seděti bude na stolici mé.",bible_BKR_1Kr.txt
+monotheism,hospodin,"I přisáhl král, řka: Živť jest Hospodin, kterýž vysvobodil duši mou ze všelikých úzkostí,",bible_BKR_1Kr.txt
+monotheism,bůh; hospodin,"Že jakož jsem přisáhl tobě skrze Hospodina Boha Izraelského, řka, že syn tvůj Šalomoun kralovati bude po mně, a on seděti bude na stolici mé místo mně, takť učiním dnes.",bible_BKR_1Kr.txt
+monotheism,bůh; hospodin,"A odpovídaje Banaiáš syn Joiadův králi, řekl: Amen. Způsobiž to Hospodin, Bůh pána mého krále.",bible_BKR_1Kr.txt
 monotheism,hospodin,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt
+monotheism,bůh,"Vyvoleným podlé předzvědění Boha Otce, v posvěcení Ducha, ku poslušenství a skropení krví Ježíše Krista: Milost vám a pokoj rozmnožen buď.",bible_BKR_1P.txt
 monotheism,bůh,"Požehnaný Bůh a Otec Pána našeho Ježíše Krista, kterýž podlé mnohého milosrdenství svého znovu zplodil nás v naději živou skrze vzkříšení Ježíše Krista z mrtvých,",bible_BKR_1P.txt
-monotheism,hospodin,"A učinila slib, řkuci: Hospodine zástupů, jestliže vzhlédneš na trápení děvky své a rozpomeneš se na mne, a nezapomeneš na děvku svou, ale dáš služebnici své plod pohlaví mužského: tedy dám jej tobě, Hospodine, po všecky dny života jeho, a břitva nevejde na hlavu jeho.",bible_BKR_1S.txt
-monotheism,hospodin,"Hospodin umrtvuje i obživuje, uvodí do pekla i vyvodí.",bible_BKR_1S.txt
-monotheism,hospodin,"Hospodin ochuzuje i zbohacuje, ponižuje i povyšuje.",bible_BKR_1S.txt
-monotheism,bůh,"Ale jakož Bůh nás oblíbil, aby nám svěřeno bylo evangelium, takť mluvíme, ne jako lidem se líbíce, ale Bohu, kterýž libuje srdce naše.",bible_BKR_1Te.txt
-monotheism,bůh,"Požehnaný Bůh a Otec Pána našeho Jezukrista, Otec milosrdenství, a Bůh všelikého potěšení,",bible_BKR_2K.txt
-monotheism,hospodin,"Ale anděl Hospodinův řekl Eliášovi Tesbitskému: Vstana, jdi vstříc poslům krále Samařského a mluv k nim: Zdali není Boha v Izraeli, že jdete dotazovati se Belzebuba, boha Akaron?",bible_BKR_2Kr.txt
-monotheism,hospodin,"Řekl pak anděl Hospodinův Eliášovi: Sstup s ním, neboj se nic tváři jeho. Tedy vstav, šel s ním k králi.",bible_BKR_2Kr.txt
-monotheism,bůh,"Nebo poněvadžť Bůh andělům, kteříž zhřešili, neodpustil, ale strhna je do žaláře, řetězům mrákoty oddal, aby k odsouzení chováni byli,",bible_BKR_2P.txt
-monotheism,hospodin,"I obětoval tam Šalomoun před Hospodinem na oltáři měděném, kterýž byl před stánkem úmluvy, a obětoval na něm tisíc zápalů.",bible_BKR_2Pa.txt
-monotheism,bůh,"Té noci ukázal se Bůh Šalomounovi, a řekl jemu: Žádej, zač chceš, a dám tobě.",bible_BKR_2Pa.txt
-monotheism,hospodin,"Již tedy, Hospodine Bože, budiž stálé slovo tvé mluvené s Davidem otcem mým; nebo ty jsi mne ustanovil za krále nad lidem tak mnohým, jako jest prachu zemského.",bible_BKR_2Pa.txt
-monotheism,bůh,"Tedy odpověděl Bůh Šalomounovi: Proto že bylo to v srdci tvém, a nežádal jsi bohatství, ani zboží, ani slávy, ani bezživotí těch, jenž tebe nenávidí, aniž jsi také za dlouhý věk žádal, ale žádal jsi sobě moudrosti a umění, abys soudil lid můj, nad nímž jsem tě ustanovil za krále:",bible_BKR_2Pa.txt
-monotheism,bůh; hospodin,"Řekl dále Chíram: Požehnaný Hospodin Bůh Izraelský, kterýž učinil nebe i zemi, a kterýž dal králi Davidovi syna moudrého, umělého, rozumného a opatrného, aby vystavěl dům Hospodinu a dům svůj královský.",bible_BKR_2Pa.txt
-monotheism,hospodin,"I začal stavěti Šalomoun domu Hospodinova v Jeruzalémě na hoře Moria, kteráž byla ukázána Davidovi otci jeho, na místě, kteréž byl připravil David, na humně Ornana Jebuzejského.",bible_BKR_2Pa.txt
-monotheism,hospodin,"Protož nyní učiniž s vámi Hospodin milosrdenství a pravdu; ano i jáť s vámi učiním milost, kteříž jste to učinili.",bible_BKR_2S.txt
-monotheism,bůh,"A protož pošle jim Bůh mocné dílo podvodů aby věřili lži,",bible_BKR_2Te.txt
-monotheism,bůh,"Nebo nedal nám Bůh ducha bázně, ale moci, a milování, a mysli způsobné.",bible_BKR_2Tm.txt
-monotheism,hospodin,"Vidění Abdiášovo. Takto praví Panovník Hospodin o zemi Idumejské: Pověst jsme slyšeli od Hospodina, a legáta k národům vyslaného: Nuže, povstaňmež k boji proti ní.",bible_BKR_Abd.txt
+moral,pravda,"Díme-li, že s ním obecenství máme, a ve tmě chodíme, lžeme, a nečiníme pravdy.",bible_BKR_1J.txt
+moral,hřích,"Pakliť chodíme v světle, jako on jest v světle, obecenství máme vespolek, a krev Krista Ježíše Syna jeho očišťuje nás od všelikého hříchu.",bible_BKR_1J.txt
+moral,hřích; pravda,"Pakliť díme, že hříchu nemáme, sami se svodíme, a pravdy v nás není.",bible_BKR_1J.txt
+moral,hřích; nepravost; spravedlivý,"Jestliže pak budeme vyznávati hříchy své, věrnýť jest Bůh a spravedlivý, aby nám odpustil hříchy, a očistil nás od všeliké nepravosti.",bible_BKR_1J.txt
+moral,spravedlivý,"Synáčkové moji, totoť vám píši, abyste nehřešili. Pakliť by kdo zhřešil, přímluvci máme u Otce, Ježíše Krista spravedlivého.",bible_BKR_1J.txt
+moral,hřích,"A onť jest obět slitování za hříchy naše, a netoliko za naše, ale i za všeho světa.",bible_BKR_1J.txt
+moral,pravda,"Dí-liť kdo: Znám jej, a přikázaní jeho neostříhá, lhářť jest, a pravdy v něm není.",bible_BKR_1J.txt
+moral,lež; pravda,"Nepsal jsem vám, proto že byste neznali pravdy, ale že ji znáte, a že všeliká lež není z pravdy.",bible_BKR_1J.txt
+moral,spravedlivý,"Poněvadž víte, že on spravedlivý jest, znejtež také, že každý, kdož činí spravedlnost, z něho jest narozen.",bible_BKR_1J.txt
+moral,pravda,"Poněvadž duše své očistili jste poslušenstvím pravdy skrze Ducha, k milování neošemetnému bratrstva, z čistého srdce jedni druhé milujte snažně,",bible_BKR_1P.txt
+moral,dobrý,"Obcování své mezi pohany majíce dobré, aby místo toho, kdež utrhají vám jako zločincům, dobré skutky vaše spatřujíce, velebili Boha v den navštívení.",bible_BKR_1P.txt
+moral,dobrý,"I řekl jí Elkána muž její: Učiň, cožť se dobrého vidí, zůstaň, dokudž neodchováš jeho. Ó by toliko utvrdil Hospodin slovo své! A tak zůstala žena, a krmila syna svého, až jej i odchovala.",bible_BKR_1S.txt
+moral,bezbožný,"Onť ostříhá noh svatých svých, ale bezbožní ve tmě umlknou; nebo ne v síle záleží síla člověka.",bible_BKR_1S.txt
+moral,bezbožný,"Synové pak Elí byli bezbožní, a neznali Hospodina.",bible_BKR_1S.txt
+moral,pravda,"Protož i my díky činíme Bohu bez přestání, že přijavše slovo Boží, kteréž jste slyšeli od nás, přijali jste ne jako slovo lidské, ale (jakož v pravdě jest), jako slovo Boží, kterýž i dílo své působí v vás věřících.",bible_BKR_1Te.txt
+moral,hřích,"Nedopouštějíce nám mluviti pohanům, aby spaseni byli, aby tak vždy doplňovali hříchy své. Nebo vylit jest na ně hněv konečný.",bible_BKR_1Te.txt
+moral,dobrý,"Ješto konec přikázaní jest láska z srdce čistého, a z svědomí dobrého a z víry neošemetné.",bible_BKR_1Tm.txt
+moral,dobrý,"Víme pak, že dobrý jest zákon, když by ho kdo náležitě užíval,",bible_BKR_1Tm.txt
+moral,dobrý,"Totoť přikázaní poroučím tobě, synu Timotee, abys podlé předešlých o tobě proroctví bojoval v tom dobrý boj,",bible_BKR_1Tm.txt
+moral,dobrý,"Maje víru a dobré svědomí, kteréž někteří potrativše, zhynuli u víře.",bible_BKR_1Tm.txt
+ritual_sacrifice,oběť,"A onť jest obět slitování za hříchy naše, a netoliko za naše, ale i za všeho světa.",bible_BKR_1J.txt
+ritual_sacrifice,kněz,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"Nebo nabiv volů a krmného dobytka a ovec množství, pozval všech synů královských, i Abiatara kněze a Joába hejtmana vojska, Šalomouna pak služebníka tvého nepozval.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"Nebo odšed dnes, nabil volů a krmného dobytka, i ovec množství, a sezval všecky syny královy a hejtmany vojska, i Abiatara kněze. A hle, oni jedí a pijí před ním, a praví: Živ buď král Adoniáš.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"Mne pak služebníka tvého, a Sádocha kněze, a Banaiáše syna Joiadova, a Šalomouna služebníka tvého nepozval.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"Řekl ještě král David: Zavolejte ke mně Sádocha kněze a Nátana proroka, a Banaiáše syna Joiadova. Kteřížto vešli před krále.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"I pomaže ho tam Sádoch kněz a Nátan prorok za krále nad Izraelem, a troubiti budete troubou, a díte: Živ buď král Šalomoun.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"A tak šli dolů Sádoch kněz a Nátan prorok, a Banaiáš syn Joiadův, Cheretejští také i Peletejští, a vsadili Šalomouna na mezkyni krále Davida, a dovedli jej k Gihonu.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"Vzal také Sádoch kněz roh oleje z stánku, a pomazal Šalomouna. Potom troubili trubou, a řekl všecken lid: Živ buď král Šalomoun.",bible_BKR_1Kr.txt
+ritual_sacrifice,kněz,"I chodíval muž ten z města svého každého roku, aby se klaněl a obětoval Hospodinu zástupů, do Sílo, kdež byli dva synové Elí, Ofni a Fínes, kněží Hospodinovi.",bible_BKR_1S.txt
+ritual_sacrifice,kněz,"Vstala tedy Anna, když pojedli v Sílo a napili se; a Elí kněz seděl na stolici u veřeje chrámu Hospodinova.",bible_BKR_1S.txt
+ritual_sacrifice,oběť,"Šel pak muž ten Elkána se vší čeledí svou, aby obětoval Hospodinu obět výroční a slib svůj.",bible_BKR_1S.txt
+ritual_sacrifice,oltář,"A oltář měděný, kterýž byl udělal Bezeleel syn Uri, syna Hur, byl tam před stánkem Hospodinovým, kdež hledal ho Šalomoun i všecko to shromáždění.",bible_BKR_2Pa.txt
+ritual_sacrifice,kněz,"I uposlechl Zorobábel syn Salatielův, a Jozue syn Jozadakův, kněz nejvyšší, i všickni ostatkové lidu hlasu Hospodina Boha svého, a slov Aggea proroka, poněvadž jej poslal Hospodin Bůh jejich; nebo se bál lid tváři Hospodinovy.",bible_BKR_Ag.txt
+ritual_sacrifice,kněz,"V tom vzbudil Hospodin ducha Zorobábele syna Salatielova, knížete Judského, a ducha Jozue syna Jozadakova, kněze nejvyššího, a ducha ostatků všeho lidu, a přišedše, dělali dílo v domě Hospodina zástupů, Boha svého.",bible_BKR_Ag.txt
+ritual_sacrifice,kněz,"Takto praví Hospodin zástupů: Vzeptej se nyní kněží na zákon, řka:",bible_BKR_Ag.txt
+ritual_sacrifice,kněz,"Ej, kdyby někdo nesl maso svaté v křídle sukně své, aneb dotkl by se křídlem svým chleba, neb vaření, neb vína, neb oleje, neb jakéžkoli krmě, zdali bude posvěcen? I odpověděli kněží a řekli: Nikoli.",bible_BKR_Ag.txt
+ritual_sacrifice,kněz,"Tedy řekl Aggeus: Jestliže někdo jsa nečistý od těla mrtvého, dotkl by se něčeho z těch věcí, bude-li nečisté? I odpověděli kněží a řekli: Nečisté bude.",bible_BKR_Ag.txt
+ritual_sacrifice,oběť,"Kdož by pak zůstal na kterémkoli místě, kdež jest pohostinu, lidé místa toho ať mu pomohou stříbrem a zlatem, statkem i hovady, mimo oběti dobrovolné k domu Božímu, kterýž jest v Jeruzalémě.",bible_BKR_Ezd.txt
+ritual_sacrifice,kněz,"I povstali přední z čeledí otců z pokolení Judova a Beniaminova, kněží také a Levítové i každý, číhož ducha vzbudil Bůh, aby šli k stavení domu Hospodinova, kterýž jest v Jeruzalémě.",bible_BKR_Ezd.txt
+eschatology,antikrist; poslední,"Dítky, poslední hodina jest, a jakož jste slýchali, že antikrist přijíti má, i nyníť antikristové mnozí povstali. Odkudž známe, že poslední hodina jest.",bible_BKR_1J.txt
+eschatology,antikrist,"A kdo jest lhář? Není-li ten, kdož zapírá, že by Ježíš nebyl Kristus? Tenť jest antikrist, kdož zapírá Otce i Syna.",bible_BKR_1J.txt
+eschatology,vzkříšení,"Požehnaný Bůh a Otec Pána našeho Ježíše Krista, kterýž podlé mnohého milosrdenství svého znovu zplodil nás v naději živou skrze vzkříšení Ježíše Krista z mrtvých,",bible_BKR_1P.txt
+eschatology,antikrist,"Nebo mnozí bludaři vyšli na svět, kteříž nevyznávají Jezukrista přišlého v těle. Takový každý jest bludař a antikrist.",bible_BKR_2J.txt
+eschatology,věčnost,"Tiť jsou studnice bez vody, mlhy vichrem zbouřené, jimžto mrákota tmy schována jest na věčnost.",bible_BKR_2P.txt
+eschatology,vzkříšení,"Kteříž při pravdě pobloudili od cíle, pravíce, že by se již stalo vzkříšení, a převracejí víru některých.",bible_BKR_2Tm.txt
+eschatology,věčnost,"Pro nátisk bratru tvému Jákobovi činěný přikryje tě hanba, a vypléněn budeš na věčnost.",bible_BKR_Abd.txt
+eschatology,peklo,"Ovšem pak více opilec, nešlechetnost a pýchu provodě, neostojí v příbytku; kterýž rozšiřuje jako peklo duši svou, jest jako smrt, kteráž se nemůže nasytiti, byť pak shromáždil k sobě všecky národy, a shrnul k sobě všecky lidi.",bible_BKR_Abk.txt
+eschatology,věčnost,"Až k spodkům hor dostal jsem se, země závorami svými zalehla mi na věčnost, ty jsi však vysvobodil od porušení život můj, ó Hospodine Bože můj.",bible_BKR_Jon.txt
+eschatology,věčnost,"Vzteklé vody mořské, vymítající své hanebnosti, hvězdy bludné, jimžto mrákota tmy zachována jest na věčnost.",bible_BKR_Ju.txt
+eschatology,věčnost,"I zasnoubím tě sobě na věčnost, zasnoubím tě sobě, pravím, v spravedlnosti a v soudu a v dobrotivosti a v hojném milosrdenství.",bible_BKR_Oz.txt
+eschatology,vzkříšení,"Počav od křtu Janova až do dne toho, v kterémž zhůru vzat jest od nás, býti svědkem spolu s námi vzkříšení jeho.",bible_BKR_Sk.txt
+eschatology,poslední,"An dí: Já jsem Alfa i Oméga, ten první i poslední, a což vidíš, piš do knihy, a pošli sedmi zborům, kteříž jsou v Azii, do Efezu, a do Smyrny, a do Pergamu, a do Tyatiru, a do Sardy, a do Filadelfie, i do Laodicie.",bible_BKR_Zj.txt
+eschatology,poslední,"A jakž jsem jej uzřel, padl jsem k nohám jeho, jako mrtvý. I položil ruku svou pravou na mne, řka ke mně: Neboj se. Já jsem ten první i poslední,",bible_BKR_Zj.txt
+eschatology,poslední,"Andělu pak Smyrnenské církve piš: Toto praví ten první i poslední, kterýž byl mrtvý, a ožil:",bible_BKR_Zj.txt
+eschatology,poslední,"Známť skutky tvé, i lásku, i přisluhování, i věrnost, i trpělivost tvou, a skutky tvé, i ty poslední větší nežli první.",bible_BKR_Zj.txt
+legal,spravedlnost,"Poněvadž víte, že on spravedlivý jest, znejtež také, že každý, kdož činí spravedlnost, z něho jest narozen.",bible_BKR_1J.txt
+legal,spravedlnost,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt
+legal,svědek,"Anižť jsme zajisté kdy užívali řeči pochlebné, jakož víte, ani za příčinou něčeho lakomství provodili. Bůhť jest svědek.",bible_BKR_1Te.txt
+legal,zákon,"Chtěvše býti učitelé zákona, a nerozuměvše, ani co mluví, ani čeho zastávají.",bible_BKR_1Tm.txt
+legal,zákon,"Víme pak, že dobrý jest zákon, když by ho kdo náležitě užíval,",bible_BKR_1Tm.txt
+legal,zákon,"Toto znaje, že spravedlivému není uložen zákon, ale nepravým a nepoddaným, bezbožným a hříšníkům, nešlechetným a nečistým, mordéřům otců a matek, vražedlníkům,",bible_BKR_1Tm.txt
+legal,spravedlnost,"Šimon Petr, služebník a apoštol Ježíše Krista, těm, kteříž spolu s námi zaroveň drahé dosáhli víry, pro spravedlnost Boha našeho a spasitele Jezukrista:",bible_BKR_2P.txt
+legal,spravedlnost,"I prvnímu světu neodpustil, ale sama osmého Noé, kazatele spravedlnosti, zachoval, když potopu na svět bezbožníků uvedl,",bible_BKR_2P.txt
+legal,spravedlnost,"Mládenčích pak žádostí utíkej, ale následuj spravedlnosti, víry, lásky, pokoje, s těmi, kteříž vzývají Pána z srdce čistého.",bible_BKR_2Tm.txt
+legal,soud; zákon,"Odkudž se děje opuštění zákona, a nedochází nikdá soud. Nebo bezbožný obkličuje spravedlivého, pročež vychází soud převrácený.",bible_BKR_Abk.txt
+legal,soud,"Strašlivý a hrozný, od něhož soud jeho i vyvýšenost jeho vyjde.",bible_BKR_Abk.txt
+legal,zákon,"Takto praví Hospodin zástupů: Vzeptej se nyní kněží na zákon, řka:",bible_BKR_Ag.txt
+legal,soudce,"A vypléním soudce jeho, i všecka knížata jeho zmorduji s ním, praví Hospodin.",bible_BKR_Am.txt
+legal,ustanovení; zákon,"Takto praví Hospodin: Pro troji nešlechetnost Judovu, ovšem pro čtveru neslituji se nad ním, proto že oni pohrdají zákonem Hospodinovým, a ustanovení jeho neostříhají, a svodí se lžmi svými, jichž následovali otcové jejich.",bible_BKR_Am.txt
+legal,zákon,"Před Jordánem, v zemi Moábské, počal Mojžíš vysvětlovati zákona tohoto, řka:",bible_BKR_Dt.txt
+legal,soud,"Nebudete přijímati osoby v soudu; jakž malého tak i velikého slyšeti budete, nebudete se báti žádného, nebo Boží soud jest. Jestliže byste pak měli jakou věc nesnadnou, vznesete na mne, a vyslyším ji.",bible_BKR_Dt.txt
+legal,zákon,"A nepřátelství, totiž zákon přikázaní v ustanoveních, vyprázdniv skrze tělo své, aby ty oboje vzdělal v samém sobě v jednoho nového člověka, tak čině pokoj,",bible_BKR_Ef.txt
+legal,nařízení,"Ale ku pití, podlé nařízení, žádný nenutil. Nebo tak poručil král všechněm správcům domu svého, aby činili podlé vůle jednoho každého.",bible_BKR_Est.txt
+legal,svědek,"Svědek mi jest zajisté Bůh, kterak po všech po vás toužím v střevách Ježíše Krista.",bible_BKR_Fp.txt
+legal,spravedlnost,"Naplněni jsouce ovocem spravedlnosti, kteréž nesete skrze Jezukrista, k slávě a k chvále Boží.",bible_BKR_Fp.txt
+prophetic_speech,zjevení,"Tak že, nemáte žádného nedostatku v žádném daru, očekávajíce zjevení Pána našeho Jezukrista,",bible_BKR_1K.txt
+prophetic_speech,prorok,"Ale Sádoch kněz a Banaiáš syn Joiadův, též Nátan prorok a Simei i Rehi, a jiní přednější, kteréž měl David, nebyli s Adoniášem.",bible_BKR_1Kr.txt
+prophetic_speech,prorok,"A aj, když ještě ona mluvila s králem, přišel Nátan prorok.",bible_BKR_1Kr.txt
+prophetic_speech,prorok,"I oznámili králi, řkouce: Aj, teď Nátan prorok. A tak všel před krále, a poklonil se jemu tváří svou až k zemi.",bible_BKR_1Kr.txt
+prophetic_speech,prorok,"I pomaže ho tam Sádoch kněz a Nátan prorok za krále nad Izraelem, a troubiti budete troubou, a díte: Živ buď král Šalomoun.",bible_BKR_1Kr.txt
+prophetic_speech,prorok,"A tak šli dolů Sádoch kněz a Nátan prorok, a Banaiáš syn Joiadův, Cheretejští také i Peletejští, a vsadili Šalomouna na mezkyni krále Davida, a dovedli jej k Gihonu.",bible_BKR_1Kr.txt
+prophetic_speech,zjevení,"Aby zkušení víry vaší, mnohem dražší nežli zlato, kteréž hyne, a však se v ohni zkušuje, nalezeno bylo vám k chvále, a ke cti i k slávě při zjevení Ježíše Krista.",bible_BKR_1P.txt
+prophetic_speech,zjevení,"Protož přepášíce bedra mysli své, a střízlivi jsouce, dokonale doufejte v té milosti, kteráž vám dána bude při zjevení Ježíše Krista,",bible_BKR_1P.txt
+prophetic_speech,proroctví,"Totoť přikázaní poroučím tobě, synu Timotee, abys podlé předešlých o tobě proroctví bojoval v tom dobrý boj,",bible_BKR_1Tm.txt
+prophetic_speech,proroctví,"Toto nejprvé znajíce, že žádného proroctví písma výklad nezáleží na rozumu lidském.",bible_BKR_2P.txt
+prophetic_speech,proroctví,"Nebo nikdy z lidské vůle nepošlo proroctví, ale Duchem svatým puzeni byvše, mluvili svatí Boží lidé.",bible_BKR_2P.txt
+prophetic_speech,zjevení,"Vám pak, kteříž úzkost trpíte, odpočinutím s námi, při zjevení Pána Ježíše s nebe s anděly moci jeho,",bible_BKR_2Te.txt
+prophetic_speech,vidění,"Vidění Abdiášovo. Takto praví Panovník Hospodin o zemi Idumejské: Pověst jsme slyšeli od Hospodina, a legáta k národům vyslaného: Nuže, povstaňmež k boji proti ní.",bible_BKR_Abd.txt
+prophetic_speech,prorok; vidění,"Břímě, kteréž u vidění viděl Abakuk prorok.",bible_BKR_Abk.txt
+prophetic_speech,vidění,"I odpověděl mi Hospodin, a řekl: Napiš vidění, a to zřetelně na dskách, aby je přeběhl čtenář,",bible_BKR_Abk.txt
+prophetic_speech,vidění,"Proto že ještě do jistého času bude vidění, a směle mluviti bude až do konce, a nesklamáť. Jestliže by pak poprodlilo, posečkej na ně; neboť jistotně dojde, aniž bude meškati.",bible_BKR_Abk.txt
+prophetic_speech,vidění,"Mládence pak ty čtyři obdařil Bůh povědomostí a rozumností ve všelikém literním umění a moudrostí; nadto Danielovi dal, aby rozuměl všelikému vidění a snům.",bible_BKR_Da.txt
+prophetic_speech,vidění,I zjevena jest Danielovi u vidění nočním ta věc tajná. Pročež Daniel dobrořečil Bohu nebeskému.,bible_BKR_Da.txt
+prophetic_speech,zjevení,"Aby Bůh Pána našeho Jezukrista, Otec slávy, dal vám Ducha moudrosti a zjevení ku poznání jeho,",bible_BKR_Ef.txt
+prophetic_speech,vidění,"Stalo se pak třidcátého léta, čtvrtého měsíce, dne pátého, když jsem byl mezi zajatými u řeky Chebar, že otevřína byla nebesa, a viděl jsem vidění Boží.",bible_BKR_Ez.txt
+wisdom,moudrost,"Nebo neposlal mne Kristus křtíti, ale evangelium kázati, ne v moudrosti řeči, aby nebyl vyprázdněn kříž Kristův.",bible_BKR_1K.txt
+wisdom,moudrost,"Nebo psáno jest: Zahladím moudrost moudrých, a opatrnost opatrných zavrhu.",bible_BKR_1K.txt
+wisdom,moudrost,Kde jest moudrý? A kde učený? A kde chytrák tohoto světa? Zdaliž Bůh neobrátil moudrosti tohoto světa v bláznovství?,bible_BKR_1K.txt
+wisdom,moudrost,"Nebo když v moudrosti Boží svět nepoznal skrze moudrost Boha, zalíbilo se Bohu skrze bláznové kázaní spasiti věřící,",bible_BKR_1K.txt
+wisdom,moudrost,"Poněvadž i Židé zázraků žádají, i Řekové hledají moudrosti.",bible_BKR_1K.txt
+wisdom,moudrost,"Ale povolaným i Židům i Řekům Krista, Boží moc a Boží moudrost.",bible_BKR_1K.txt
+wisdom,moudrost,"Vy pak jste z něho v Kristu Ježíši, kterýž učiněn jest nám moudrost od Boha, i spravedlnost, i posvěcení, i vykoupení,",bible_BKR_1K.txt
+wisdom,moudrost,"I já přišed k vám, bratří, nepřišel jsem s důstojností řeči neb moudrosti, zvěstuje vám svědectví Boží.",bible_BKR_1K.txt
+wisdom,moudrost,"A řeč má a kázaní mé nebylo v slibných lidské moudrosti řečech, ale v dokázaní Ducha a moci,",bible_BKR_1K.txt
+wisdom,moudrost,"Aby víra vaše nebyla na moudrosti lidské založena, ale na moci Boží.",bible_BKR_1K.txt
+wisdom,moudrost,"Moudrost pak mluvíme mezi dokonalými, ale moudrost ne tohoto světa, ani knížat světa tohoto, kteráž hynou.",bible_BKR_1K.txt
+wisdom,moudrost,"Ale mluvíme tu moudrost Boží v tajemství skrytou, kterouž Bůh předuložil před věky k slávě naší,",bible_BKR_1K.txt
+wisdom,moudrost,"Nebo chlouba naše tato jest, svědectví svědomí našeho, že v sprostnosti a v upřímosti Boží, ne v moudrosti tělesné, ale v milosti Boží obcovali jsme na světě, zvláště pak u vás.",bible_BKR_2K.txt
+wisdom,moudrost,"Protož dej mi moudrost a umění, aťbych vycházeti mohl před lidem tímto i vcházeti. Nebo kdož by mohl souditi tento lid tvůj tak mnohý?",bible_BKR_2Pa.txt
+wisdom,moudrost,"Tedy odpověděl Bůh Šalomounovi: Proto že bylo to v srdci tvém, a nežádal jsi bohatství, ani zboží, ani slávy, ani bezživotí těch, jenž tebe nenávidí, aniž jsi také za dlouhý věk žádal, ale žádal jsi sobě moudrosti a umění, abys soudil lid můj, nad nímž jsem tě ustanovil za krále:",bible_BKR_2Pa.txt
+wisdom,moudrost,"Moudrost a umění dáno jest tobě, k čemužť přidám i bohatství a zboží, i slávy, tak že žádný z králů, kteříž byli před tebou, nebyl tobě rovný, aniž bude po tobě takového.",bible_BKR_2Pa.txt
+wisdom,naučení,"Přikazujemeť pak vám, bratří, ve jménu Pána našeho Jezukrista, abyste se oddělovali od každého bratra, kterýž by se choval neřádně, a ne podlé naučení vydaného, kteréž přijal od nás.",bible_BKR_2Te.txt
+wisdom,přísloví,"Zdaliž všickni ti proti němu přísloví nevynesou, a světlých slov i pohádek o něm? A neřeknou-liž: Běda tomu, kterýž rozmnožuje věci ne své, (až dokud pak?) a obtěžuje se hustým blátem?",bible_BKR_Abk.txt
+wisdom,moudrost,"Mládence, na nichž by nebylo žádné poškvrny, a krásného oblíčeje, a vtipné ke vší moudrosti, a schopné k umění i k nabývání jeho, a v kterýchž by byla síla, aby stávali na palácu královském, a učili se liternímu umění a jazyku Kaldejskému.",bible_BKR_Da.txt
+wisdom,moudrost,"Mládence pak ty čtyři obdařil Bůh povědomostí a rozumností ve všelikém literním umění a moudrostí; nadto Danielovi dal, aby rozuměl všelikému vidění a snům.",bible_BKR_Da.txt
+royal_power,král,"Král pak David sstaral se a sešel věkem, a ačkoli jej šaty přikrývali, však nemohl se zahřívati.",bible_BKR_1Kr.txt
+royal_power,král,"I řekli jemu služebníci jeho: Nechť pohledají pánu našemu králi děvečky panny, kteráž by byla při králi a opatrovala jej, a aby spala v lůnu jeho, a zahřívala pána našeho krále.",bible_BKR_1Kr.txt
+royal_power,král,"A protož hledajíce děvečky krásné ve všech končinách Izraelských, nalezli Abizag Sunamitskou, a přivedli ji k králi.",bible_BKR_1Kr.txt
+royal_power,král,"Kterážto děvečka byla velmi krásná. I opatrovala krále a přisluhovala jemu, ale král jí nepoznal.",bible_BKR_1Kr.txt
+royal_power,král,"Jdiž, a vejda k králi Davidovi, rci jemu: Zdaliž jsi ty, pane můj králi, nepřisáhl služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a onť seděti bude na stolici mé? Pročež tedy kraluje Adoniáš?",bible_BKR_1Kr.txt
+royal_power,král,"A aj, když ty ještě tam mluviti budeš s králem, přijduť za tebou a doplním řeč tvou.",bible_BKR_1Kr.txt
+royal_power,král,"A tak vešla Betsabé k králi do pokoje. Král pak již byl velmi starý, a Abizag Sunamitská přisluhovala králi.",bible_BKR_1Kr.txt
+royal_power,král,"Tedy Betsabé naklonivši hlavy, poklonila se králi. Jížto řekl král: Což chceš?",bible_BKR_1Kr.txt
+royal_power,král,"A nyní, hle, Adoniáš kraluje, ty pak nyní, pane můj králi, nic nevíš o tom.",bible_BKR_1Kr.txt
+royal_power,král,"Ješto ty, pane můj králi, víš, že oči všeho Izraele na tebe jsou obráceny, abys jim oznámil, kdo by seděti měl na stolici pána mého krále po tobě.",bible_BKR_1Kr.txt
+royal_power,král,"Sic jinak bude to, když usne pán můj král s otci svými, že já a syn můj Šalomoun budeme jako hříšníci.",bible_BKR_1Kr.txt
+royal_power,král,"A aj, když ještě ona mluvila s králem, přišel Nátan prorok.",bible_BKR_1Kr.txt
+royal_power,král,"I oznámili králi, řkouce: Aj, teď Nátan prorok. A tak všel před krále, a poklonil se jemu tváří svou až k zemi.",bible_BKR_1Kr.txt
+royal_power,král,"Zatím řekl Nátan: Pane můj králi, ty-lis pověděl: Adoniáš kralovati bude po mně, a on seděti bude na stolici mé?",bible_BKR_1Kr.txt
+royal_power,král,"Nebo odšed dnes, nabil volů a krmného dobytka, i ovec množství, a sezval všecky syny královy a hejtmany vojska, i Abiatara kněze. A hle, oni jedí a pijí před ním, a praví: Živ buď král Adoniáš.",bible_BKR_1Kr.txt
+royal_power,král,"Tak-liž jest ode pána mého krále nařízeno? Mně jsi zajisté neoznámil služebníku svému, kdo bude seděti na stolici pána mého krále po tobě?",bible_BKR_1Kr.txt
+royal_power,král,"A odpovídaje král David, řekl: Zavolejte mi Betsabé. Kteráž všedši před krále, stála před ním.",bible_BKR_1Kr.txt
+royal_power,král,"I přisáhl král, řka: Živť jest Hospodin, kterýž vysvobodil duši mou ze všelikých úzkostí,",bible_BKR_1Kr.txt
+royal_power,král,"A naklonivši hlavy Betsabé tváří k zemi, poklonu učinila králi a řekla: Živ buď pán můj král David na věky.",bible_BKR_1Kr.txt
+royal_power,král,"Řekl ještě král David: Zavolejte ke mně Sádocha kněze a Nátana proroka, a Banaiáše syna Joiadova. Kteřížto vešli před krále.",bible_BKR_1Kr.txt
+yhwh_elements,hospodin,"I odpověděla jemu: Pane můj, ty jsi přisáhl skrze Hospodina Boha svého služebnici své, řka: Šalomoun syn tvůj kralovati bude po mně, a on seděti bude na stolici mé.",bible_BKR_1Kr.txt
+yhwh_elements,hospodin,"I přisáhl král, řka: Živť jest Hospodin, kterýž vysvobodil duši mou ze všelikých úzkostí,",bible_BKR_1Kr.txt
+yhwh_elements,hospodin,"Že jakož jsem přisáhl tobě skrze Hospodina Boha Izraelského, řka, že syn tvůj Šalomoun kralovati bude po mně, a on seděti bude na stolici mé místo mně, takť učiním dnes.",bible_BKR_1Kr.txt
+yhwh_elements,hospodin,"A odpovídaje Banaiáš syn Joiadův králi, řekl: Amen. Způsobiž to Hospodin, Bůh pána mého krále.",bible_BKR_1Kr.txt
 yhwh_elements,hospodin,"A jakož byl Hospodin se pánem mým králem, tak budiž i s Šalomounem, a zvelebiž stolici jeho více, než stolici pána mého krále Davida.",bible_BKR_1Kr.txt
+yhwh_elements,hospodin,"I chodíval muž ten z města svého každého roku, aby se klaněl a obětoval Hospodinu zástupů, do Sílo, kdež byli dva synové Elí, Ofni a Fínes, kněží Hospodinovi.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Anně pak dal díl jeden výborný, nebo Annu miloval, ale Hospodin zavřel byl život její.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Přesto kormoutila ji také velmi protivnice její, toliko aby ji popouzela, proto že Hospodin zavřel byl život její.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"To když činíval každého roku, a Anna též chodívala do domu Hospodinova, tak ji kormoutívala protivnice; ona pak plakávala a nic nejídala.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Vstala tedy Anna, když pojedli v Sílo a napili se; a Elí kněz seděl na stolici u veřeje chrámu Hospodinova.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Ona pak jsuci v hořkosti srdce, modlila se Hospodinu a plakala velmi.",bible_BKR_1S.txt
 yhwh_elements,hospodin,"A učinila slib, řkuci: Hospodine zástupů, jestliže vzhlédneš na trápení děvky své a rozpomeneš se na mne, a nezapomeneš na děvku svou, ale dáš služebnici své plod pohlaví mužského: tedy dám jej tobě, Hospodine, po všecky dny života jeho, a břitva nevejde na hlavu jeho.",bible_BKR_1S.txt
-yhwh_elements,hospodin,"Hospodin umrtvuje i obživuje, uvodí do pekla i vyvodí.",bible_BKR_1S.txt
-yhwh_elements,hospodin,"Hospodin ochuzuje i zbohacuje, ponižuje i povyšuje.",bible_BKR_1S.txt
-yhwh_elements,hospodin,"Ale anděl Hospodinův řekl Eliášovi Tesbitskému: Vstana, jdi vstříc poslům krále Samařského a mluv k nim: Zdali není Boha v Izraeli, že jdete dotazovati se Belzebuba, boha Akaron?",bible_BKR_2Kr.txt
-yhwh_elements,hospodin,"Řekl pak anděl Hospodinův Eliášovi: Sstup s ním, neboj se nic tváři jeho. Tedy vstav, šel s ním k králi.",bible_BKR_2Kr.txt
-yhwh_elements,hospodin,"I obětoval tam Šalomoun před Hospodinem na oltáři měděném, kterýž byl před stánkem úmluvy, a obětoval na něm tisíc zápalů.",bible_BKR_2Pa.txt
-yhwh_elements,hospodin,"Již tedy, Hospodine Bože, budiž stálé slovo tvé mluvené s Davidem otcem mým; nebo ty jsi mne ustanovil za krále nad lidem tak mnohým, jako jest prachu zemského.",bible_BKR_2Pa.txt
-yhwh_elements,hospodin,"Řekl dále Chíram: Požehnaný Hospodin Bůh Izraelský, kterýž učinil nebe i zemi, a kterýž dal králi Davidovi syna moudrého, umělého, rozumného a opatrného, aby vystavěl dům Hospodinu a dům svůj královský.",bible_BKR_2Pa.txt
-yhwh_elements,hospodin,"I začal stavěti Šalomoun domu Hospodinova v Jeruzalémě na hoře Moria, kteráž byla ukázána Davidovi otci jeho, na místě, kteréž byl připravil David, na humně Ornana Jebuzejského.",bible_BKR_2Pa.txt
-yhwh_elements,hospodin,"Protož nyní učiniž s vámi Hospodin milosrdenství a pravdu; ano i jáť s vámi učiním milost, kteříž jste to učinili.",bible_BKR_2S.txt
-yhwh_elements,hospodin,"Vidění Abdiášovo. Takto praví Panovník Hospodin o zemi Idumejské: Pověst jsme slyšeli od Hospodina, a legáta k národům vyslaného: Nuže, povstaňmež k boji proti ní.",bible_BKR_Abd.txt
-yhwh_elements,hospodin,"Nebo blízko jest den Hospodinův proti všechněm těm národům. Jakž jsi činil, tak se stane tobě, odplata tvá navrátí se na hlavu tvou.",bible_BKR_Abd.txt
-yhwh_elements,hospodin,"Hospodine Bože můj, Svatý můj, zdaliž ty nejsi od věčnosti? Myť nezemřeme. Hospodine, k soudu postavil jsi jej, ty, ó skálo, k trestání nastrojil jsi ho.",bible_BKR_Abk.txt
-yhwh_elements,hospodin,"Aj, zdaliž to není od Hospodina zástupů, že, o čemž pracují lidé a národové až do ustání nadarmo, oheň zkazí.",bible_BKR_Abk.txt
-yhwh_elements,hospodin,"Hospodin pak v chrámě svatosti své jest, umlkniž před oblíčejem jeho všecka země.",bible_BKR_Abk.txt
-yhwh_elements,hospodin,"Takto dí Hospodin zástupů, řka: Lid tento praví, že nepřišel čas, čas, v němž by dům Hospodinův staven byl.",bible_BKR_Ag.txt
-yhwh_elements,hospodin,"Pročež stalo se slovo Hospodinovo skrze Aggea proroka, řkoucí:",bible_BKR_Ag.txt
-yhwh_elements,hospodin,Protož nyní takto praví Hospodin zástupů: Přiložte srdce své k cestám svým.,bible_BKR_Ag.txt
-yhwh_elements,hospodin,Takto praví Hospodin zástupů: Přiložte srdce své k cestám svým.,bible_BKR_Ag.txt
+yhwh_elements,hospodin,"I stalo se, když se dlouho modlila před Hospodinem, že Elí pozor měl na ústa její.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Odpověděla Anna, řkuci: Nikoli, pane můj, žena jsem ducha truchlivého, ani vína ani nápoje opojného jsem nepila, ale vylila jsem duši svou před Hospodinem.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"I vstali velmi ráno, a poklonu učinivše před Hospodinem, navrátili se, a přišli do domu svého do Ramata. Poznal pak Elkána Annu manželku svou, a Hospodin rozpomenul se na ni.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"I stalo se po vyplnění dnů, jakž počala Anna, že porodila syna, a nazvala jméno jeho Samuel; nebo řekla: Vyprosila jsem ho na Hospodinu.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Šel pak muž ten Elkána se vší čeledí svou, aby obětoval Hospodinu obět výroční a slib svůj.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Ale Anna nešla, nebo řekla muži svému: Až odchovám dítě, tehdy povedu je, aby ukáže se před Hospodinem, zůstalo tam na věky.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"I řekl jí Elkána muž její: Učiň, cožť se dobrého vidí, zůstaň, dokudž neodchováš jeho. Ó by toliko utvrdil Hospodin slovo své! A tak zůstala žena, a krmila syna svého, až jej i odchovala.",bible_BKR_1S.txt
+yhwh_elements,hospodin,"Potom, když ho odchovala, vedla jej s sebou, se třmi volky a jednou efi mouky a nádobou vína, i uvedla jej do domu Hospodinova v Sílo; dítě pak ještě bylo malé.",bible_BKR_1S.txt
 genealogy_lineage,rod,"Ale vy jste rod vyvolený, královské kněžstvo, národ svatý, lid dobytý, abyste zvěstovali ctnosti toho, kterýž vás povolal ze tmy v předivné světlo své.",bible_BKR_1P.txt
 genealogy_lineage,prvorozený,"Tito jsou rodové jejich: Prvorozený Izmaelův Nabajot, Cedar, Adbeel a Mabsan,",bible_BKR_1Pa.txt
+genealogy_lineage,pokolení,"Vy zajisté, bratří, následovníci učiněni jste církví Božích, kteréž jsou v Židovstvu v Kristu Ježíši; nebo jste takovéž věci i vy trpěli od svého pokolení, jako i oni od Židů.",bible_BKR_1Te.txt
+genealogy_lineage,pokolení,"Vydejte z sebe muže moudré a opatrné, a zkušené z pokolení svých, abych je vám představil.",bible_BKR_Dt.txt
 genealogy_lineage,pokolení,"Vzav tedy přední z pokolení vašich, muže moudré a zkušené, ustanovil jsem je knížaty nad vámi, hejtmany nad tisíci, setníky, padesátníky, desátníky a správce v pokoleních vašich.",bible_BKR_Dt.txt
+genealogy_lineage,pokolení,"Kterážto řeč líbila se mně, a vzal jsem z vás dvanácte mužů, jednoho muže z každého pokolení.",bible_BKR_Dt.txt
+genealogy_lineage,pokolení,"Jistě že nižádný z lidí těchto pokolení zlého neuzří země té dobré, kterouž jsem s přísahou zaslíbil dáti otcům vašim,",bible_BKR_Dt.txt
+genealogy_lineage,pokolení,"Byl pak jeden Žid v Susan, městě královském, jménem Mardocheus syn Jairův, syna Simei, syna Cis, z pokolení Beniamin.",bible_BKR_Est.txt
+genealogy_lineage,rod,"I umřel Jozef a všickni bratří jeho, a všecken ten rod.",bible_BKR_Ex.txt
+genealogy_lineage,pokolení,"Odšed pak muž jeden z domu Léví, vzal dceru z pokolení Léví.",bible_BKR_Ex.txt
+genealogy_lineage,pokolení,"I povstali přední z čeledí otců z pokolení Judova a Beniaminova, kněží také a Levítové i každý, číhož ducha vzbudil Bůh, aby šli k stavení domu Hospodinova, kterýž jest v Jeruzalémě.",bible_BKR_Ezd.txt
+genealogy_lineage,pokolení,"A že jsem prospíval v Židovstvu nad mnohé mně rovné v pokolení svém, byv velmi horlivý milovník otcovských ustanovení.",bible_BKR_Ga.txt
+genealogy_lineage,pokolení,"Potom řekl Bůh: Zploď země trávu, a bylinu vydávající símě, a strom plodný, nesoucí ovoce podlé pokolení svého, v němž by bylo símě jeho na zemi. A stalo se tak.",bible_BKR_Gn.txt
+genealogy_lineage,pokolení,"Nebo země vydala trávu, a bylinu nesoucí semeno podlé pokolení svého, i strom přinášející ovoce, v němž bylo símě jeho, podlé pokolení jeho. A viděl Bůh, že to bylo dobré.",bible_BKR_Gn.txt
+genealogy_lineage,pokolení,"I stvořil Bůh velryby veliké a všelijakou duši živou, hýbající se, kteroužto v hojnosti vydaly vody podlé pokolení jejich, a všeliké ptactvo křídla mající, podlé pokolení jeho. A viděl Bůh, že to bylo dobré.",bible_BKR_Gn.txt
+genealogy_lineage,pokolení,"Řekl též Bůh: Vydej země duši živou, jednu každou podlé pokolení jejího, hovada a zeměplazy, i zvěř zemskou, podlé pokolení jejího. A stalo se tak.",bible_BKR_Gn.txt
+genealogy_lineage,pokolení,"I učinil Bůh zvěř zemskou podlé pokolení jejího, též hovada vedlé pokolení jejich, i všeliký zeměplaz podlé pokolení jeho. A viděl Bůh, že bylo dobré.",bible_BKR_Gn.txt
+genealogy_lineage,pokolení,"Jakub, Boží a Pána Jezukrista služebník, dvanácteru pokolení rozptýlenému pozdravení.",bible_BKR_Jk.txt
 genealogy_lineage,pokolení,"Rubenovu pak pokolení a Gádovu, a polovici pokolení Manassesova mluvil Jozue, řka:",bible_BKR_Joz.txt
 genealogy_lineage,prvorozený,"Kterýž jest obraz Boha neviditelného, prvorozený všeho stvoření.",bible_BKR_Ko.txt
-genealogy_lineage,pokolení,"Z synů Jozefových, z pokolení Efraimova Elisama, syn Amiudův; z Manassesova Gamaliel, syn Fadasurův;",bible_BKR_Nu.txt
-genealogy_lineage,pokolení,"Z pokolení Dan Ahiezer, syn Amisaddai;",bible_BKR_Nu.txt
-genealogy_lineage,pokolení,"Z pokolení Gád Eliazaf, syn Duelův;",bible_BKR_Nu.txt
-genealogy_lineage,pokolení,A načteno jich z pokolení Rubenova čtyřidceti šest tisíců a pět set.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Simeonova padesáte devět tisíců a tři sta.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,"Načteno jich z pokolení Gádova čtyřidceti pět tisíců, šest set a padesát.",bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Judova sedmdesáte čtyři tisíce a šest set.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Izacharova padesáte čtyři tisíce a čtyři sta.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Zabulonova padesáte sedm tisíců a čtyři sta.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Efraimova čtyřidceti tisíc a pět set.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Manassesova třidceti dva tisíce a dvě stě.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Beniaminova třidceti pět tisíců a čtyři sta.,bible_BKR_Nu.txt
-genealogy_lineage,pokolení,Načteno jich z pokolení Dan šedesáte dva tisíce a sedm set.,bible_BKR_Nu.txt
+covenant_law,zákon,"Chtěvše býti učitelé zákona, a nerozuměvše, ani co mluví, ani čeho zastávají.",bible_BKR_1Tm.txt
+covenant_law,zákon,"Víme pak, že dobrý jest zákon, když by ho kdo náležitě užíval,",bible_BKR_1Tm.txt
+covenant_law,zákon,"Toto znaje, že spravedlivému není uložen zákon, ale nepravým a nepoddaným, bezbožným a hříšníkům, nešlechetným a nečistým, mordéřům otců a matek, vražedlníkům,",bible_BKR_1Tm.txt
+covenant_law,zákon,"Odkudž se děje opuštění zákona, a nedochází nikdá soud. Nebo bezbožný obkličuje spravedlivého, pročež vychází soud převrácený.",bible_BKR_Abk.txt
+covenant_law,zákon,"Takto praví Hospodin zástupů: Vzeptej se nyní kněží na zákon, řka:",bible_BKR_Ag.txt
+covenant_law,ustanovení; zákon,"Takto praví Hospodin: Pro troji nešlechetnost Judovu, ovšem pro čtveru neslituji se nad ním, proto že oni pohrdají zákonem Hospodinovým, a ustanovení jeho neostříhají, a svodí se lžmi svými, jichž následovali otcové jejich.",bible_BKR_Am.txt
+covenant_law,zákon,"Před Jordánem, v zemi Moábské, počal Mojžíš vysvětlovati zákona tohoto, řka:",bible_BKR_Dt.txt
+covenant_law,zákon,"A nepřátelství, totiž zákon přikázaní v ustanoveních, vyprázdniv skrze tělo své, aby ty oboje vzdělal v samém sobě v jednoho nového člověka, tak čině pokoj,",bible_BKR_Ef.txt
+covenant_law,ustanovení,"A že jsem prospíval v Židovstvu nad mnohé mně rovné v pokolení svém, byv velmi horlivý milovník otcovských ustanovení.",bible_BKR_Ga.txt
+covenant_law,zákon,"Vědouce, že nebývá člověk ospravedlněn z skutků zákona, ale skrze víru v Jezukrista, i my v Krista uvěřili jsme, abychom ospravedlněni byli z víry Kristovy, a ne z skutků zákona, proto že nebude ospravedlněn z skutků zákona žádný člověk.",bible_BKR_Ga.txt
+covenant_law,zákon,"Slyšte slovo Hospodinovo, knížata Sodomská, ušima pozorujte zákona Boha našeho, lide Gomorský:",bible_BKR_Iz.txt
+covenant_law,zákon,"A půjdou lidé mnozí, říkajíce: Poďte, a vstupme na horu Hospodinovu, do domu Boha Jákobova, a bude nás vyučovati cestám svým, i budeme choditi po stezkách jeho. Nebo z Siona vyjde zákon, a slovo Hospodinovo z Jeruzaléma.",bible_BKR_Iz.txt
+covenant_law,zákon,"Nebo zákon skrze Mojžíše dán jest, milost a pravda skrze Ježíše Krista stala se.",bible_BKR_J.txt
+covenant_law,zákon,"Ale kdož by se vzhlédl v dokonalý zákon svobody, a zůstával by v něm, ten nejsa posluchač zapominatelný, ale činitel skutku, blahoslavený bude v skutku svém.",bible_BKR_Jk.txt
+covenant_law,zákon,"Jestliže pak plníte zákon královský podlé písma: Milovati budeš bližního svého, jako sebe samého, dobře činíte.",bible_BKR_Jk.txt
+covenant_law,zákon,"Pakliť osoby přijímáte, hřešíte, a zákon vás tresce jako přestupníky.",bible_BKR_Jk.txt
+covenant_law,zákon,"Nebo kdo by koli celého zákona ostříhal, přestoupil by pak jediné, všechněmi jest vinen.",bible_BKR_Jk.txt
+covenant_law,zákon,"Ten zajisté, kterýž řekl: Nesesmilníš, takéť řekl: Nezabiješ. Pakli bys nesesmilnil, ale zabil bys, učiněn jsi přestupníkem zákona.",bible_BKR_Jk.txt
+covenant_law,zákon,"Tak mluvte, a tak čiňte, jako ti, kteříž podlé zákona svobody souzeni býti máte.",bible_BKR_Jk.txt
+covenant_law,zákon,"Toliko posilň se a udatně sobě počínej, abys ostříhal a činil všecko podlé zákona, kterýž přikázal tobě Mojžíš, služebník můj; neuchyluj se od něho na pravo ani na levo, abys byl opatrný ve všem, k čemuž se obrátíš.",bible_BKR_Joz.txt
+war_conflict,boj,"Totoť přikázaní poroučím tobě, synu Timotee, abys podlé předešlých o tobě proroctví bojoval v tom dobrý boj,",bible_BKR_1Tm.txt
+war_conflict,kopí,"Odpověděl mládenec, kterýž to oznamoval jemu: Náhodou přišel jsem na horu Gelboe, a aj, Saul nalehl byl na kopí své, a vozové i jezdci postihali ho.",bible_BKR_2S.txt
+war_conflict,meč,"A nesouce smutek, plakali a postili se až do večera pro Saule a pro Jonatu syna jeho, i pro lid Hospodinův a pro dům Izraelský, že padli od meče.",bible_BKR_2S.txt
+war_conflict,meč,"Od krve raněných a od tuku udatných lučiště Jonatovo nikdy zpět neodskočilo, a meč Saulův nenavracoval se prázdný.",bible_BKR_2S.txt
+war_conflict,vojsko,"Stál jsi v ten den naproti, a když zajímali cizí vojsko jeho, a když cizozemci vcházeli do bran jeho, a o Jeruzalém metali losy, ty jsi také byl jako jeden z nich.",bible_BKR_Abd.txt
+war_conflict,vojsko,"I zajaté vojsko toto synů Izraelských v tom, což bylo Kananejských až do Sarepty, zajatí pak Jeruzalémští v tom, což jest na konci panství, děditi budou s městy na poledne.",bible_BKR_Abd.txt
+war_conflict,meč,"A podvrátím stolici království, a zkazím sílu království pohanských; podvrátím, pravím, vůz i ty, kteříž na něm jezdí, a sejdou koni i jezdci jejich jeden každý od meče bratra svého.",bible_BKR_Ag.txt
+war_conflict,meč,"Takto praví Hospodin: Pro troji nešlechetnost Edoma, ovšem pro čtveru neslituji se nad ním, proto že udusiv v sobě všecku lítostivost, stihá mečem bratra svého, a hněv jeho ustavičně rozsapává, anobrž vzteklost jeho špehuje bez přestání.",bible_BKR_Am.txt
+war_conflict,válka,"Nuže, opatrně sobě počínejme před ním, aby se nerozmohl; a když by přišla válka, aby se nepřipojil i on k nepřátelům našim, a nebojoval proti nám, a nevyšel z země.",bible_BKR_Ex.txt
+war_conflict,boj,"Ty pak synu člověčí, neboj se jich, aniž se boj slov jejich, že zpurní a jako trní jsou proti tobě, a že mezi štíry bydlíš. Slov jejich neboj se, a tváři jejich se nestrachuj, proto že dům zpurný jsou.",bible_BKR_Ez.txt
+war_conflict,boj,"Týž boj majíce, jakýž jste při mně viděli, i nyní o mně slyšíte.",bible_BKR_Fp.txt
+war_conflict,vojsko,"A tak dokonána jsou nebesa a země, i všecko vojsko jejich.",bible_BKR_Gn.txt
+war_conflict,meč,"Pakli nebudete povolní, ale zpurní, od meče sežráni budete; nebo ústa Hospodinova mluvila.",bible_BKR_Iz.txt
+war_conflict,meč,"Onť bude souditi mezi národy, a trestati bude lidi mnohé. I zkují meče své v motyky, a oštípy své v srpy. Nepozdvihne národ proti národu meče, a nebudou se více učiti boji.",bible_BKR_Iz.txt
+war_conflict,meč,"Vpád učinivše Sabejští, zajali je, a služebníky zbili ostrostí meče, a utekl jsem toliko já sám, abych oznámil tobě.",bible_BKR_Jb.txt
+war_conflict,meč,"A když ten ještě mluvil, jiný přišed, řekl: Kaldejští sšikovavše tři houfy, připadli na velbloudy, a zajali je, a služebníky zbili ostrostí meče, a utekl jsem toliko já sám, abych oznámil tobě.",bible_BKR_Jb.txt
+war_conflict,meč,"Jeden druhého nebude tlačiti, každý silnicí svou půjde, a byť i na meč upadli, nebudou raněni.",bible_BKR_Jl.txt
+war_conflict,vojsko,"Nebo půlnoční vojsko vzdálím od vás, a zaženu je do země vyprahlé a pusté, přední houf jeho k moři východnímu, konec pak jeho k moři nejdalšímu; i vzejde z něho smrad a puch, jakžkoli sobě mocně počíná.",bible_BKR_Jl.txt
+war_conflict,nepřítel,"Včera byl lidem mým, již jako nepřítel povstává. Majíce oděv, plášť strhujete s těch, kteříž chodí bezpečně, vyhýbajíce se bitvě.",bible_BKR_Mi.txt
+war_conflict,meč,"Aj, já proti tobě, praví Hospodin zástupů, a popálím na prach vozy tvé, a lvíčata tvá sžíře meč; i vypléním z země loupež tvou, a nebude slyšán více hlas poslů tvých.",bible_BKR_Na.txt
 divine_hierarchy,anděl,"Ale anděl Hospodinův řekl Eliášovi Tesbitskému: Vstana, jdi vstříc poslům krále Samařského a mluv k nim: Zdali není Boha v Izraeli, že jdete dotazovati se Belzebuba, boha Akaron?",bible_BKR_2Kr.txt
 divine_hierarchy,anděl,"Řekl pak anděl Hospodinův Eliášovi: Sstup s ním, neboj se nic tváři jeho. Tedy vstav, šel s ním k králi.",bible_BKR_2Kr.txt
+divine_hierarchy,anděl,"Ale bychom pak i my neb anděl s nebe kázal vám mimo to, což jsme vám kázali, prokletý buď.",bible_BKR_Ga.txt
+divine_hierarchy,archanděl,"Ješto Michal archanděl, když s ďáblem odpor maje, hádal se o tělo Mojžíšovo, nesměl vynésti soudu zlořečení, ale řekl: Ztresciž tě Pán.",bible_BKR_Ju.txt
 divine_hierarchy,anděl,"Tedy ukázal se jemu anděl Páně, stoje na pravé straně oltáře zápalu.",bible_BKR_L.txt
+divine_hierarchy,anděl,"I řekl jemu anděl: Neboj se, Zachariáši, neboť jest uslyšána modlitba tvá, a Alžběta manželka tvá porodí tobě syna, a nazůveš jméno jeho Jan.",bible_BKR_L.txt
+divine_hierarchy,anděl,"I odpověděv anděl, řekl jemu: Jáť jsem Gabriel, kterýž stojím před oblíčejem Božím, a poslán jsem, abych mluvil s tebou, a tyto věci veselé tobě zvěstoval.",bible_BKR_L.txt
+divine_hierarchy,anděl,"V měsíci pak šestém poslán jest anděl Gabriel od Boha do města Galilejského, kterémuž jméno Nazarét,",bible_BKR_L.txt
+divine_hierarchy,anděl,"I všed k ní anděl, dí: Zdráva buď milostí obdařená, Pán s tebou, požehnaná ty mezi ženami.",bible_BKR_L.txt
+divine_hierarchy,anděl,"I řekl jí anděl: Neboj se, Maria, nebo jsi nalezla milost u Boha.",bible_BKR_L.txt
+divine_hierarchy,anděl,"A odpověděv anděl, řekl jí: Duch svatý sstoupí v tě, a moc Nejvyššího zastíní tobě; a protož i to, což se z tebe svatého narodí, slouti bude Syn Boží.",bible_BKR_L.txt
+divine_hierarchy,anděl,"I řekla Maria: Aj, děvka Páně, staniž mi se podlé slova tvého. I odšel od ní anděl.",bible_BKR_L.txt
+divine_hierarchy,anděl,"Aj, já posílám anděla svého, kterýž připraví cestu před tváří mou. V tom hned přijde do chrámu svého Panovník, kteréhož vy hledáte, a anděl smlouvy, v němž vy líbost máte. Aj, přijdeť, praví Hospodin zástupů.",bible_BKR_Mal.txt
+divine_hierarchy,anděl,"Když pak on o tom přemyšloval, aj, anděl Páně ve snách ukázal se jemu, řka: Jozefe synu Davidův, neboj se přijíti Marie manželky své; nebo což v ní jest počato, z Ducha svatého jest.",bible_BKR_Mt.txt
+divine_hierarchy,anděl,"Procítiv pak Jozef ze sna, učinil, jakož mu přikázal anděl Páně, a přijal manželku svou.",bible_BKR_Mt.txt
 divine_hierarchy,anděl,"Když pak oni odjeli, aj, anděl Páně ukázal se Jozefovi ve snách, řka: Vstana, vezmi děťátko i matku jeho, a utec do Egypta, a buď tam, dokudž nepovím tobě; neboť bude Heródes hledati děťátka, aby je zahubil.",bible_BKR_Mt.txt
 divine_hierarchy,anděl,"Vstoupil pak anděl Hospodinův z Galgala do Bochim a řekl: Vyvedl jsem vás z Egypta a uvedl jsem vás do země, kterouž jsem s přísahou zaslíbil otcům vašim, a řekl jsem: Nezruším smlouvy své s vámi na věky.",bible_BKR_Sd.txt
 divine_hierarchy,anděl,"I stalo se, když mluvil anděl Hospodinův slova tato všechněm synům Izraelským, že pozdvihl hlasu svého lid a plakal.",bible_BKR_Sd.txt
+divine_hierarchy,anděl,"I řekl jsem: Kdo jsou tito, Pane můj? Řekl mi anděl ten, kterýž mluvil se mnou: Já ukáži tobě, kdo jsou tito.",bible_BKR_Za.txt
 divine_hierarchy,anděl,"Tedy odpověděl anděl Hospodinův a řekl: Ó Hospodine zástupů, až dokudž ty se nesmiluješ nad Jeruzalémem a nad městy Judskými, na kteréž jsi hněval se již sedmdesáte let?",bible_BKR_Za.txt
-divine_hierarchy,anděl,"A aj, když anděl ten, kterýž mluvil se mnou, vycházel, jiný anděl vycházel jemu vstříc.",bible_BKR_Za.txt
-divine_hierarchy,anděl,"A osvědčil anděl Hospodinův Jozue, řka:",bible_BKR_Za.txt
-prophetic_speech,proroctví,"Toto nejprvé znajíce, že žádného proroctví písma výklad nezáleží na rozumu lidském.",bible_BKR_2P.txt
-prophetic_speech,vidění,"Vidění Abdiášovo. Takto praví Panovník Hospodin o zemi Idumejské: Pověst jsme slyšeli od Hospodina, a legáta k národům vyslaného: Nuže, povstaňmež k boji proti ní.",bible_BKR_Abd.txt
-prophetic_speech,vidění,"Břímě, kteréž u vidění viděl Abakuk prorok.",bible_BKR_Abk.txt
-prophetic_speech,vidění,I zjevena jest Danielovi u vidění nočním ta věc tajná. Pročež Daniel dobrořečil Bohu nebeskému.,bible_BKR_Da.txt
-prophetic_speech,vidění,"Vidění Izaiáše syna Amosova, kteréž viděl o Judovi a Jeruzalému, za dnů Uziáše, Jotama, Achasa a Ezechiáše, králů Judských.",bible_BKR_Iz.txt
-prophetic_speech,vidění,"A protož obrátí se vám vidění v noc, a předpovídání vaše v tmu; nebo zajde slunce těm prorokům, a zatmí se jim den.",bible_BKR_Mi.txt
-prophetic_speech,vidění,Břímě Ninive: Kniha vidění Nahuma Elkošského.,bible_BKR_Na.txt
-prophetic_speech,zjevení,"Zjevení Ježíše Krista, kteréž dal jemu Bůh, aby ukázal služebníkům svým, které věci měly by se díti brzo, on pak zjevil, poslav je skrze anděla svého služebníku svému Janovi,",bible_BKR_Zj.txt
 sacred_space,oltář,"A oltář měděný, kterýž byl udělal Bezeleel syn Uri, syna Hur, byl tam před stánkem Hospodinovým, kdež hledal ho Šalomoun i všecko to shromáždění.",bible_BKR_2Pa.txt
+sacred_space,chrám,"Přiložte již srdce své od tohoto dne až do onoho, ode dne dvadcátého čtvrtého, měsíce devátého, až do dne, v kterémž založen byl chrám Hospodinův, (přiložte srdce své).",bible_BKR_Ag.txt
+sacred_space,chrám,"Bylť jsem již řekl: Vyhnán jsem od očí tvých, ale ještěť pohledím na tvůj svatý chrám.",bible_BKR_Jon.txt
+sacred_space,oltář,"A dají synové Arona kněze oheň na oltář, a narovnají dříví na tom ohni.",bible_BKR_Lv.txt
 sacred_space,oltář,"I vloží je kněz na oltář a nehtem natrhne hlavy jeho, a zapálí na oltáři, vytlače krev jeho na stranu oltáře.",bible_BKR_Lv.txt
+sacred_space,oltář,"V oběti prvotin toliko obětovati budete je Hospodinu, ale na tento oltář neobětujte jich u vůni spokojující.",bible_BKR_Lv.txt
+sacred_space,oltář,"Tedy položí ruku svou na hlavu oběti své, i zabije ji u dveří stánku úmluvy; a kropiti budou kněží synové Aronovi krví na oltář vůkol.",bible_BKR_Lv.txt
 sacred_space,oltář,"Kteříž přinášejíce na oltář můj obět poškvrněnou, říkáte: Čímž jsme tě poškvrnili? Tím, když říkáte: Stůl Hospodinův v pohrdání jest.",bible_BKR_Mal.txt
+sacred_space,oltář,"Již to podruhé činíte, že přikrýváte slzami oltář Hospodinův, pláčem a křikem, pročež nikoli nepatří již více k daru, aniž přijímá oběti vzácné z ruky vaší.",bible_BKR_Mal.txt
 sacred_space,chrám,"Brány při řekách se otevrou, chrám se rozplyne.",bible_BKR_Na.txt
+sacred_space,svatyně,"Sáhl rukou svou nepřítel na všecky drahé věci její; nebo musí se dívati pohanům, an chodí do svatyně její, o čemž jsi byl přikázal, aby tobě nevcházeli do shromáždění.",bible_BKR_Pl.txt
 sacred_space,oltář,"Zavrhl Pán oltář svůj, v ošklivost vzal svatyni svou, vydal v ruku nepřítele zdi a paláce Sionské; křičeli v domě Hospodinově jako v den slavnosti.",bible_BKR_Pl.txt
-war_conflict,vojsko,"I zajaté vojsko toto synů Izraelských v tom, což bylo Kananejských až do Sarepty, zajatí pak Jeruzalémští v tom, což jest na konci panství, děditi budou s městy na poledne.",bible_BKR_Abd.txt
-war_conflict,boj,"Týž boj majíce, jakýž jste při mně viděli, i nyní o mně slyšíte.",bible_BKR_Fp.txt
-war_conflict,vojsko,"Nebo půlnoční vojsko vzdálím od vás, a zaženu je do země vyprahlé a pusté, přední houf jeho k moři východnímu, konec pak jeho k moři nejdalšímu; i vzejde z něho smrad a puch, jakžkoli sobě mocně počíná.",bible_BKR_Jl.txt
-war_conflict,nepřítel,"Sáhl rukou svou nepřítel na všecky drahé věci její; nebo musí se dívati pohanům, an chodí do svatyně její, o čemž jsi byl přikázal, aby tobě nevcházeli do shromáždění.",bible_BKR_Pl.txt
-legal,soud,"Strašlivý a hrozný, od něhož soud jeho i vyvýšenost jeho vyjde.",bible_BKR_Abk.txt
-legal,soudce,"A vypléním soudce jeho, i všecka knížata jeho zmorduji s ním, praví Hospodin.",bible_BKR_Am.txt
-legal,zákon,"A nepřátelství, totiž zákon přikázaní v ustanoveních, vyprázdniv skrze tělo své, aby ty oboje vzdělal v samém sobě v jednoho nového člověka, tak čině pokoj,",bible_BKR_Ef.txt
-legal,svědek,"Svědek mi jest zajisté Bůh, kterak po všech po vás toužím v střevách Ježíše Krista.",bible_BKR_Fp.txt
-legal,soudce,"A obnovím soudce tvé tak jako na počátku, a rádce tvé jako s prvu. A tu potom slouti budeš městem spravedlnosti, městem věrným.",bible_BKR_Iz.txt
-legal,zákon,"Nebo zákon skrze Mojžíše dán jest, milost a pravda skrze Ježíše Krista stala se.",bible_BKR_J.txt
-legal,zákon,"Jestliže pak plníte zákon královský podlé písma: Milovati budeš bližního svého, jako sebe samého, dobře činíte.",bible_BKR_Jk.txt
-legal,zákon,"Pakliť osoby přijímáte, hřešíte, a zákon vás tresce jako přestupníky.",bible_BKR_Jk.txt
-legal,soud,"Aby učinil soud všechněm, a trestal všecky, kteříž by koli mezi nimi byli bezbožní, ze všech skutků bezbožnosti jejich, v nichž bezbožnost páchali, i ze všech tvrdých řečí, kteréž mluvili proti němu hříšníci bezbožní.",bible_BKR_Ju.txt
-legal,přikázání,"A tak nyní k vám přikázání to, ó kněží.",bible_BKR_Mal.txt
-legal,smlouva,"Smlouva má byla s ním života a pokoje, a dal jsem jemu to pro bázeň; nebo se bál mne, a pro jméno mé potřín byl.",bible_BKR_Mal.txt
-legal,zákon,"Zákon pravdy byl v ústech jeho, a nepravost nebyla nalezena ve rtech jeho, v pokoji a upřímosti chodil se mnou, a mnohé odvrátil od nepravosti.",bible_BKR_Mal.txt
-legal,svědek,"Svědek mi jest zajisté Bůh, kterémuž sloužím duchem svým v evangelium Syna jeho, žeť bez přestání zmínku o vás činím,",bible_BKR_R.txt
-legal,spravedlnost,"Nebo spravedlnost Boží zjevuje se skrze ně z víry u víru, jakož psáno jest: Spravedlivý pak z víry živ bude.",bible_BKR_R.txt
-legal,soud,"Vímeť zajisté, že soud Boží jest podlé pravdy proti těm, kteříž takové věci činí.",bible_BKR_R.txt
-covenant_law,zákon,"A nepřátelství, totiž zákon přikázaní v ustanoveních, vyprázdniv skrze tělo své, aby ty oboje vzdělal v samém sobě v jednoho nového člověka, tak čině pokoj,",bible_BKR_Ef.txt
-covenant_law,zákon,"Nebo zákon skrze Mojžíše dán jest, milost a pravda skrze Ježíše Krista stala se.",bible_BKR_J.txt
-covenant_law,zákon,"Jestliže pak plníte zákon královský podlé písma: Milovati budeš bližního svého, jako sebe samého, dobře činíte.",bible_BKR_Jk.txt
-covenant_law,zákon,"Pakliť osoby přijímáte, hřešíte, a zákon vás tresce jako přestupníky.",bible_BKR_Jk.txt
-covenant_law,přikázání,"A tak nyní k vám přikázání to, ó kněží.",bible_BKR_Mal.txt
-covenant_law,smlouva,"Smlouva má byla s ním života a pokoje, a dal jsem jemu to pro bázeň; nebo se bál mne, a pro jméno mé potřín byl.",bible_BKR_Mal.txt
-covenant_law,zákon,"Zákon pravdy byl v ústech jeho, a nepravost nebyla nalezena ve rtech jeho, v pokoji a upřímosti chodil se mnou, a mnohé odvrátil od nepravosti.",bible_BKR_Mal.txt

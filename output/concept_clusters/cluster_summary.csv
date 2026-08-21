@@ -1,5 +1,12 @@
 cluster,edge_count,avg_pmi,total_pair_count
-kinship_cluster,1,10.742,10
-wisdom_cluster,2,9.017,32
-theological_cluster,2,9.186,16
-royal_cluster,2,6.293,19
+prophetic_cluster,6,10.283,38
+theological_cluster,307,8.136,2945
+cultic_cluster,25,10.25,212
+kinship_cluster,62,8.311,595
+wisdom_cluster,8,8.865,57
+creation_cluster,64,8.482,550
+moral_cluster,23,8.769,180
+covenant_cluster,3,9.766,19
+royal_cluster,50,8.652,373
+salvation_cluster,9,7.998,57
+war_cluster,1,7.566,6
