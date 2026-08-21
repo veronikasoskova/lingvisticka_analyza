@@ -21,7 +21,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from a_paths import BIBLE_FOLDER, OUTPUT_DIR as ROOT_OUTPUT, list_bible_files
 from b_analytics_utils import export_counter, export_rows
 from n_db import load_rows as _db_load, TABLE_REFINED
-from lexicons_common import STYLE_STOP_LEMMAS as STYLE_STOPWORDS, SEMANTIC_STOP_LEMMAS as SEMANTIC_STOPWORDS
+from lexicons_common import (
+    STYLE_STOP_LEMMAS as STYLE_STOPWORDS,
+    SEMANTIC_STOP_LEMMAS as SEMANTIC_STOPWORDS,
+    content_tokens,
+)
 
 OUTPUT_DIR = ROOT_OUTPUT / "text_patterns"
 
@@ -69,14 +73,8 @@ def _chapter_from_key(verse_key: str) -> str:
 
 
 def _tokenize_raw(text: str) -> list[str]:
-    cleaned = (
-        text.lower()
-        .replace(".", " ").replace(",", " ")
-        .replace(";", " ").replace(":", " ")
-        .replace("?", " ").replace("!", " ")
-        .replace("\n", " ")
-    )
-    return [t for t in cleaned.split() if len(t) > 2]
+    """Strip punctuation and drop function words from raw BKR verse text."""
+    return content_tokens(text, stop=SEMANTIC_STOPWORDS)
 
 
 # ==========================================================
@@ -99,7 +97,7 @@ def load_documents() -> list[dict]:
             if not fname:
                 continue
             by_file.setdefault(fname, []).extend(
-                t for t in lemmas.split() if len(t) > 2
+                content_tokens(lemmas, stop=SEMANTIC_STOPWORDS)
             )
         return [
             {"file_name": fname, "tokens": tokens}

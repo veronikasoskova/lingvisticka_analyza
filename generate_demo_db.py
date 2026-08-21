@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import ast
 import random
-import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -31,6 +30,7 @@ sys.path.insert(0, str(SRC))
 from a_paths import BIBLE_FOLDER, OUTPUT_DIR, DB_PATH, list_bible_files
 from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 from t_config_tradition import canonicalize_lemma
+from lexicons_common import STOP_LEMMAS, content_tokens
 from i_q_skinner_lexicons import ILLOCUTIONARY_FORCE_MAP, RHETORICAL_STRATEGY_VALUES
 from j_q_skinner_taxonomy import CONVENTION_MAP
 from m_verbal_relations import RELATION_TYPE_VALUES
@@ -197,13 +197,13 @@ def _make_relation_row(sentence_id: int, sentence: str, file_name: str) -> dict:
 
 def _make_refined_row(sentence_id: int, sentence: str, file_name: str) -> dict:
     dtype = _weighted_choice(DESCRIPTION_TYPES, DESC_WEIGHTS)
-    raw_words = sentence.lower().split()
-    words = []
-    for token in raw_words:
-        token = re.sub(r"[^\wáéíóúýěščřžďťňůäöüľĺŕ]+", "", token, flags=re.UNICODE)
-        if token:
-            words.append(canonicalize_lemma(token))
-    lemmas = " ".join(dict.fromkeys(words[:8]))   # pseudo-lemmas + BKR aliases
+    # Strip punctuation and drop function words *before* storing lemmas so
+    # centrality / PMI consume content tokens only (zástupů, not "zástupů:").
+    words = [
+        canonicalize_lemma(tok)
+        for tok in content_tokens(sentence, stop=STOP_LEMMAS)
+    ]
+    lemmas = " ".join(dict.fromkeys(words[:8]))
     return {
         "sentence_id":    sentence_id,
         "sentence":       sentence,

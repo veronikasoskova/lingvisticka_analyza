@@ -19,7 +19,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import normalize
 
 from a_paths import OUTPUT_DIR as ROOT_OUTPUT
-from q_text_patterns import STYLE_STOPWORDS
+from lexicons_common import STYLE_STOP_LEMMAS as STYLE_STOPWORDS, content_tokens
 from n_db import load_rows as _db_load, TABLE_REFINED
 
 
@@ -91,33 +91,20 @@ def load_rows():
 # ==========================================================
 
 def _tokenize(sentence):
-
-    cleaned = (
-        sentence.lower()
-        .replace(".", " ").replace(",", " ")
-        .replace(";", " ").replace(":", " ")
-        .replace("?", " ").replace("!", " ")
-        .replace('"', " ").replace("\n", " ")
-    )
-
-    return [
-        token for token in cleaned.split()
-        if len(token) >= 3 and token.isalpha()
-    ]
+    """Strip punctuation and drop function words from a raw sentence."""
+    return content_tokens(sentence, stop=STYLE_STOPWORDS)
 
 
 def _get_tokens(row):
+    """
+    Content tokens for PMI / centrality.
 
-    tokens = (
-        row["lemmas"].split()
-        if row.get("lemmas")
-        else _tokenize(row["sentence"])
-    )
-
-    return [
-        t for t in tokens
-        if t not in STYLE_STOPWORDS and len(t) >= 3
-    ]
+    Cleaning happens here, at the start of the word-network program:
+    commas, colons and similar marks are stripped from each token, then
+    BKR function words (jsem, kterýž, protož, jich, vám, takto, …) are dropped.
+    """
+    raw = row.get("lemmas") or row.get("sentence") or ""
+    return content_tokens(raw, stop=STYLE_STOPWORDS)
 
 
 def compute_word_frequency(rows):
