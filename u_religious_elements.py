@@ -6,9 +6,15 @@ from collections import Counter, defaultdict
 from t_config_tradition import (
     get_active_elements,
     detect_tradition,
-    UNIVERSAL_RELIGIOUS_ELEMENTS,
+    detect_tradition_from_lemmas,
     PHILOSOPHICAL_INFLUENCES,
     BKR_PHILOSOPHICAL_INFLUENCES,
+    SHARED_MOTIFS,
+    TRADITION_DIAGNOSTIC,
+    canonicalize_lemma,
+    field_hits,
+    motif_hits,
+    lexicon_hits,
 )
 from n_db import load_rows as _db_load, TABLE_REFINED
 
@@ -28,8 +34,12 @@ def load_rows():
     return _db_load(TABLE_REFINED)
 
 
+def get_lemma_list(row):
+    return [canonicalize_lemma(w) for w in row.get("lemmas", "").split() if w]
+
+
 def get_lemmas(row):
-    return set(row.get("lemmas", "").split())
+    return set(get_lemma_list(row))
 
 
 # ==========================================================
@@ -91,7 +101,7 @@ def _role_weight(lemma: str, row: dict) -> float:
         return 1.0
     # Fallback: position heuristic
     _ROLE_WEIGHT_COUNTER["positional"] += 1  # TEMP
-    lemma_list = row.get("lemmas", "").split()
+    lemma_list = get_lemma_list(row)
     return _role_weight_position(lemma, lemma_list)
 
 
@@ -115,7 +125,7 @@ def compute_density_by_book(rows, active_elements):
         lemmas = get_lemmas(row)
 
         for element_name, lexicon in active_elements.items():
-            hits = lemmas & lexicon
+            hits = field_hits(lemmas, element_name, lexicon)
             s    = by_book[fname][element_name]
             s["total_sentences"] += 1
             s["total_lemmas"]    += len(lemmas)
@@ -173,7 +183,7 @@ def compute_fields_by_sentence(rows, active_elements):
         matched   = {}
 
         for element_name, lexicon in active_elements.items():
-            hits = lemmas & lexicon
+            hits = field_hits(lemmas, element_name, lexicon)
             if hits:
                 matched[element_name] = hits
 
@@ -223,10 +233,16 @@ def compute_fields_by_sentence(rows, active_elements):
 
 def compute_philosophy_by_book(rows, bkr_filter: bool = True):
     """
-    Detect philosophical lexicon hits per book.
-    bkr_filter=True (default): use BKR_PHILOSOPHICAL_INFLUENCES — removes
-    Greek/English/modern terms absent from Králická Bible (1613).
-    bkr_filter=False: use full PHILOSOPHICAL_INFLUENCES for cross-tradition work.
+    Detect distinctive philosophical lexicon hits per book.
+
+    Only high-precision terms count (gnóze, platón, akáša, nirvána…).
+    Polyvalent biblical words (světlo, duše, tajemství) are tracked
+    separately as shared motifs — they are not evidence of Platonism
+    or Gnosticism in the Bible.
+
+    bkr_filter=True (default): BKR_PHILOSOPHICAL_INFLUENCES (distinctive
+    terms only; expected empty on Kralická Bible).
+    bkr_filter=False: full PHILOSOPHICAL_INFLUENCES for uploaded texts.
     """
     lexicons = BKR_PHILOSOPHICAL_INFLUENCES if bkr_filter else PHILOSOPHICAL_INFLUENCES
 
@@ -240,7 +256,9 @@ def compute_philosophy_by_book(rows, bkr_filter: bool = True):
         lemmas = get_lemmas(row)
 
         for phil_name, lexicon in lexicons.items():
-            hits = lemmas & lexicon
+            if not lexicon:
+                continue
+            hits = lexicon_hits(lemmas, lexicon)
             if hits:
                 by_book[fname][phil_name]["matched_count"] += 1
                 by_book[fname][phil_name]["top_words"].update(hits)
@@ -255,12 +273,91 @@ def compute_philosophy_by_book(rows, bkr_filter: bool = True):
                 "philosophy":    phil_name,
                 "matched_count": s["matched_count"],
                 "bkr_filter":    bkr_filter,
+                "hit_kind":      "distinctive",
                 "top_words":     "; ".join(
                     f"{w}:{n}"
                     for w, n in s["top_words"].most_common(5)
                 ),
             })
 
+    return out_rows
+
+
+def compute_shared_motifs_by_book(rows):
+    """
+    Polyvalent motifs that exist in the Bible and were later reused
+    by other traditions.  These are NOT tradition attributions.
+    """
+    by_book = defaultdict(lambda: defaultdict(lambda: {
+        "matched_count": 0,
+        "top_words":     Counter(),
+    }))
+
+    for row in rows:
+        fname  = row["file_name"]
+        lemmas = get_lemmas(row)
+        for motif_name, meta in SHARED_MOTIFS.items():
+            hits = motif_hits(lemmas, meta)
+            if hits:
+                by_book[fname][motif_name]["matched_count"] += 1
+                by_book[fname][motif_name]["top_words"].update(hits)
+
+    out_rows = []
+    for fname in sorted(by_book):
+        for motif_name, s in sorted(by_book[fname].items()):
+            if s["matched_count"] == 0:
+                continue
+            meta = SHARED_MOTIFS[motif_name]
+            out_rows.append({
+                "file_name":         fname,
+                "motif":             motif_name,
+                "matched_count":     s["matched_count"],
+                "hit_kind":          "shared_polyvalent",
+                "biblical_home":     meta["biblical_home"],
+                "later_traditions":  "; ".join(meta["later_traditions"]),
+                "top_words":         "; ".join(
+                    f"{w}:{n}"
+                    for w, n in s["top_words"].most_common(5)
+                ),
+            })
+    return out_rows
+
+
+def compute_tradition_diagnostics_by_book(rows):
+    """
+    High-precision tradition identifiers (buddha, akáša, alláh, sefírot…).
+    On a Christian Bible corpus this should be empty or nearly empty,
+    except for YHWH names (hospodin) and NT christological terms (kristus).
+    """
+    by_book = defaultdict(lambda: defaultdict(lambda: {
+        "matched_count": 0,
+        "top_words":     Counter(),
+    }))
+
+    for row in rows:
+        fname  = row["file_name"]
+        lemmas = get_lemmas(row)
+        for trad_name, lexicon in TRADITION_DIAGNOSTIC.items():
+            hits = lexicon_hits(lemmas, lexicon)
+            if hits:
+                by_book[fname][trad_name]["matched_count"] += 1
+                by_book[fname][trad_name]["top_words"].update(hits)
+
+    out_rows = []
+    for fname in sorted(by_book):
+        for trad_name, s in sorted(by_book[fname].items()):
+            if s["matched_count"] == 0:
+                continue
+            out_rows.append({
+                "file_name":     fname,
+                "tradition":     trad_name,
+                "matched_count": s["matched_count"],
+                "hit_kind":      "distinctive",
+                "top_words":     "; ".join(
+                    f"{w}:{n}"
+                    for w, n in s["top_words"].most_common(5)
+                ),
+            })
     return out_rows
 
 
@@ -325,7 +422,8 @@ def export_combined_density(density_rows):
 
 
 def export_all(density_rows, sentence_rows,
-               summary_rows, example_rows, phil_rows):
+               summary_rows, example_rows, phil_rows,
+               shared_rows=None, diagnostic_rows=None):
 
     _write_csv(
         density_rows,
@@ -356,7 +454,36 @@ def export_all(density_rows, sentence_rows,
     _write_csv(
         phil_rows,
         OUTPUT_DIR / "philosophy_by_book.csv",
-        ["file_name", "philosophy", "matched_count", "bkr_filter", "top_words"],
+        ["file_name", "philosophy", "matched_count", "bkr_filter",
+         "hit_kind", "top_words"],
+    )
+
+    _write_csv(
+        shared_rows or [],
+        OUTPUT_DIR / "shared_motifs_by_book.csv",
+        ["file_name", "motif", "matched_count", "hit_kind",
+         "biblical_home", "later_traditions", "top_words"],
+    )
+
+    _write_csv(
+        diagnostic_rows or [],
+        OUTPUT_DIR / "tradition_diagnostics_by_book.csv",
+        ["file_name", "tradition", "matched_count", "hit_kind", "top_words"],
+    )
+
+    catalog_rows = [
+        {
+            "motif":            name,
+            "biblical_home":    meta["biblical_home"],
+            "later_traditions": "; ".join(meta["later_traditions"]),
+            "lemmas":           "; ".join(sorted(meta["lemmas"])),
+        }
+        for name, meta in SHARED_MOTIFS.items()
+    ]
+    _write_csv(
+        catalog_rows,
+        OUTPUT_DIR / "shared_motifs_catalog.csv",
+        ["motif", "biblical_home", "later_traditions", "lemmas"],
     )
 
     export_wide_pivot(density_rows)
@@ -390,10 +517,20 @@ def main(tradition=TRADITION):
     )
 
     phil_rows = compute_philosophy_by_book(rows)
+    shared_rows = compute_shared_motifs_by_book(rows)
+    diagnostic_rows = compute_tradition_diagnostics_by_book(rows)
+
+    lemma_counts = Counter()
+    for row in rows:
+        lemma_counts.update(get_lemmas(row))
+    detected_from_lemmas = detect_tradition_from_lemmas(lemma_counts)
+    print(f"Detekovaná tradícia (diagnostické lemy): {detected_from_lemmas}")
 
     export_all(
         density_rows, sentence_rows,
-        summary_rows, example_rows, phil_rows
+        summary_rows, example_rows, phil_rows,
+        shared_rows=shared_rows,
+        diagnostic_rows=diagnostic_rows,
     )
 
     # ── top 3 elementy per kniha ──────────────────────────
@@ -414,14 +551,33 @@ def main(tradition=TRADITION):
         )
         print(f"  {book:<6} {parts}")
 
-    # ── filozofické vplyvy ────────────────────────────────
+    # ── filozofické vplyvy (len diagnostické termíny) ─────
     phil_detected = sorted({r["philosophy"] for r in phil_rows})
-    print(f"\nDetekované filozofické vplyvy ({len(phil_detected)}):")
+    print(f"\nDiagnostické filozofické vplyvy ({len(phil_detected)}):")
+    if not phil_rows:
+        print("  (žiadne — očakávané pri biblickom korpuse)")
     phil_totals = Counter()
     for r in phil_rows:
         phil_totals[r["philosophy"]] += r["matched_count"]
     for phil, total in phil_totals.most_common():
         print(f"  {phil:<20} {total:>6} matched sentences")
+
+    shared_totals = Counter()
+    for r in shared_rows:
+        shared_totals[r["motif"]] += r["matched_count"]
+    print(f"\nZdieľané / polyvalentné motívy ({len(shared_totals)}):")
+    for motif, total in shared_totals.most_common():
+        later = SHARED_MOTIFS[motif]["later_traditions"]
+        print(f"  {motif:<22} {total:>6}  (neskôr aj: {', '.join(later)})")
+
+    diag_totals = Counter()
+    for r in diagnostic_rows:
+        diag_totals[r["tradition"]] += r["matched_count"]
+    print(f"\nDiagnostické tradície ({len(diag_totals)}):")
+    if not diag_totals:
+        print("  (žiadne cudzie diagnostické termíny)")
+    for trad, total in diag_totals.most_common():
+        print(f"  {trad:<20} {total:>6} matched sentences")
 
     print(f"\nDONE — Output: {OUTPUT_DIR}")
 

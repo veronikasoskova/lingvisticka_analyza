@@ -1,0 +1,54 @@
+file_name,tradition,matched_count,hit_kind,top_words
+bible_BKR_1K.txt,christian,4,distinctive,kristus:3; apoštol:1; ježíš:1
+bible_BKR_1Kr.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_1P.txt,christian,1,distinctive,apoštol:1; ježíš:1
+bible_BKR_1S.txt,yhwh,3,distinctive,hospodin:3
+bible_BKR_1Te.txt,christian,2,distinctive,evangelium:1; ježíš:1
+bible_BKR_1Tm.txt,christian,2,distinctive,apoštol:1; ježíš:1; evangelium:1
+bible_BKR_2J.txt,christian,1,distinctive,kristus:1
+bible_BKR_2K.txt,christian,4,distinctive,kristus:3; ježíš:2; apoštol:1
+bible_BKR_2Kr.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_2P.txt,christian,1,distinctive,apoštol:1; ježíš:1
+bible_BKR_2Pa.txt,yhwh,4,distinctive,hospodin:4
+bible_BKR_2S.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_2Te.txt,christian,2,distinctive,evangelium:1; ježíš:1
+bible_BKR_2Tm.txt,christian,2,distinctive,ježíš:2; apoštol:1; kristus:1
+bible_BKR_Abd.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Abk.txt,yhwh,3,distinctive,hospodin:3
+bible_BKR_Ag.txt,yhwh,10,distinctive,hospodin:10
+bible_BKR_Am.txt,yhwh,3,distinctive,hospodin:3
+bible_BKR_Dt.txt,yhwh,6,distinctive,hospodin:6
+bible_BKR_Ef.txt,christian,2,distinctive,apoštol:1; kristus:1; ježíš:1
+bible_BKR_Ez.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_Fm.txt,christian,2,distinctive,kristus:1; ježíš:1
+bible_BKR_Fp.txt,christian,5,distinctive,ježíš:2; kristus:2; evangelium:1
+bible_BKR_Ga.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Gn.txt,yhwh,3,distinctive,hospodin:3
+bible_BKR_Iz.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Jb.txt,yhwh,6,distinctive,hospodin:6
+bible_BKR_Jk.txt,christian,1,distinctive,ježíš:1
+bible_BKR_Jl.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Jon.txt,yhwh,7,distinctive,hospodin:7
+bible_BKR_Joz.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Jr.txt,yhwh,8,distinctive,hospodin:8
+bible_BKR_Ju.txt,christian,1,distinctive,kristus:1; ježíš:1
+bible_BKR_Ko.txt,christian,3,distinctive,ježíš:2; kristus:2; apoštol:1
+bible_BKR_Lv.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_Mal.txt,yhwh,5,distinctive,hospodin:5
+bible_BKR_Mi.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Mk.txt,christian,1,distinctive,evangelium:1; ježíš:1
+bible_BKR_Mt.txt,christian,2,distinctive,ježíš:2; kristus:1
+bible_BKR_Na.txt,yhwh,5,distinctive,hospodin:5
+bible_BKR_Neh.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_Nu.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Oz.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_Pl.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_Pr.txt,yhwh,2,distinctive,hospodin:2
+bible_BKR_R.txt,christian,1,distinctive,evangelium:1
+bible_BKR_Rt.txt,yhwh,1,distinctive,hospodin:1
+bible_BKR_Sd.txt,yhwh,3,distinctive,hospodin:3
+bible_BKR_Sf.txt,yhwh,4,distinctive,hospodin:4
+bible_BKR_Tit.txt,christian,1,distinctive,apoštol:1; ježíš:1
+bible_BKR_Z.txt,yhwh,4,distinctive,hospodin:4
+bible_BKR_Za.txt,yhwh,9,distinctive,hospodin:9
+bible_BKR_Zj.txt,christian,2,distinctive,ježíš:2

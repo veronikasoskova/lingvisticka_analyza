@@ -23,6 +23,8 @@ INPUT_FILES = {
     "philosophy_by_book":    Path("output/religious_elements/philosophy_by_book.csv"),
     "religious_combined":    Path("output/religious_elements/combined_density_by_book.csv"),
     "religious_fields_wide": Path("output/religious_elements/fields_by_book_wide.csv"),
+    "shared_motifs":         Path("output/religious_elements/shared_motifs_by_book.csv"),
+    "tradition_diagnostics": Path("output/religious_elements/tradition_diagnostics_by_book.csv"),
     "concept_clusters":      Path("output/concept_clusters/cluster_summary.csv"),
     "opposition_networks":   Path("output/opposition_networks/opposition_counts.csv"),
     "style_authorship":      Path("output/style_authorship/book_style_clusters.csv"),

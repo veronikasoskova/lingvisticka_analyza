@@ -1,15 +1,1 @@
-file_name,philosophy,matched_count,bkr_filter,top_words
-bible_BKR_1P.txt,platonic,2,True,duše:1; tělo:1
-bible_BKR_2Te.txt,gnostic,1,True,tajemství:1
-bible_BKR_Ef.txt,gnostic,1,True,tajemství:1
-bible_BKR_Ef.txt,platonic,1,True,tělo:1
-bible_BKR_Ez.txt,neoplatonic,1,True,jedno:1
-bible_BKR_Gn.txt,gnostic,1,True,světlo:1
-bible_BKR_J.txt,gnostic,1,True,světlo:1
-bible_BKR_J.txt,platonic,1,True,tělo:1
-bible_BKR_Jon.txt,platonic,1,True,duše:1
-bible_BKR_Joz.txt,platonic,1,True,duše:1
-bible_BKR_Ko.txt,gnostic,1,True,tajemství:1
-bible_BKR_Pis.txt,platonic,1,True,duše:1
-bible_BKR_Za.txt,platonic,1,True,tělo:1
-bible_BKR_Zj.txt,gnostic,1,True,tajemství:1
+file_name,philosophy,matched_count,bkr_filter,hit_kind,top_words
