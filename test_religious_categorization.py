@@ -279,6 +279,10 @@ class AliasAndEncliticTests(unittest.TestCase):
         self.assertEqual(canonicalize_lemma("obět"), "oběť")
         self.assertEqual(canonicalize_lemma("temnostech"), "temnota")
         self.assertEqual(canonicalize_lemma("Jezukrista"), "ježíš")
+        self.assertEqual(canonicalize_lemma("tmy"), "tma")
+        self.assertEqual(canonicalize_lemma("boha"), "bůh")
+        self.assertEqual(canonicalize_lemma("zemi"), "země")
+        self.assertEqual(canonicalize_lemma("skutky"), "skutek")
 
     def test_aliased_forms_detect_christian_and_yhwh(self):
         scored = analyze_lemma_set({"Krista", "Hospodina", "obět"})

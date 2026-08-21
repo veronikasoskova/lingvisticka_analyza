@@ -1,6 +1,7 @@
 from pathlib import Path
 import csv
 import math
+import re
 from collections import Counter, defaultdict
 from itertools import combinations
 
@@ -19,8 +20,25 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import normalize
 
 from a_paths import OUTPUT_DIR as ROOT_OUTPUT
-from q_text_patterns import STYLE_STOPWORDS
+from lexicons_common import CLUSTER_NOISE_LEMMAS, SEMANTIC_STOP_LEMMAS
 from n_db import load_rows as _db_load, TABLE_REFINED
+from t_config_tradition import (
+    COVENANT_LAW,
+    DIVINE_ELEMENTS,
+    ESCHATOLOGY,
+    GENEALOGY_LINEAGE,
+    KINSHIP_ELEMENTS,
+    LEGAL_ELEMENTS,
+    LIFE_DEATH_ELEMENTS,
+    MORAL_ELEMENTS,
+    PROPHETIC_SPEECH,
+    RITUAL_SACRIFICE,
+    ROYAL_POWER_ELEMENTS,
+    SACRED_SPACE,
+    WAR_CONFLICT_ELEMENTS,
+    WISDOM_ELEMENTS,
+    canonicalize_lemma,
+)
 
 
 # ==========================================================
@@ -50,32 +68,55 @@ PER_TYPE_EXPORTS = {
 }
 
 CLUSTER_SEEDS = {
-    "cultic_cluster": {
-        "volek", "skopec", "kozel", "beránek", "krev",
-        "oltář", "kněz", "kadidlo", "olej", "tuk",
-        "svatyně", "roucho", "efod", "náprsník",
+    "cultic_cluster": set(RITUAL_SACRIFICE) | set(SACRED_SPACE) | {
+        "stan", "schrána", "levita", "obětovat", "posvětit", "zápal",
+        "svatyně", "roucho", "efod", "náprsník", "kadidlo",
     },
-    "royal_cluster": {
-        "král", "david", "šalomoun", "saul",
-        "trůn", "království", "kníže",
+    "royal_cluster": set(ROYAL_POWER_ELEMENTS) | {
+        "david", "šalomoun", "saul", "farao", "královna", "žezlo",
+        "koruna", "místodržitel", "místokrál",
     },
-    "kinship_cluster": {
-        "syn", "otec", "bratr", "dcera",
-        "žena", "muž", "matka", "rod", "pokolení",
+    "kinship_cluster": set(KINSHIP_ELEMENTS) | set(GENEALOGY_LINEAGE) | {
+        "pokolení", "vdova", "sirotek", "manžel", "nevěsta", "ženich",
+        "dědictví", "rodina",
     },
-    "war_cluster": {
-        "vojsko", "boj", "bitva", "meč", "kopí",
-        "nepřítel", "zabít", "pobít", "město", "brána",
+    "war_cluster": set(WAR_CONFLICT_ELEMENTS) | {
+        "štít", "luk", "vozba", "hradba", "obléhat", "vítězství",
+        "porážka", "kořist", "tábor", "brána", "město",
     },
-    "theological_cluster": {
-        "bůh", "hospodin", "duch", "svatý", "kristus",
-        "ježíš", "víra", "hřích", "pravda", "milost", "spasení",
+    "theological_cluster": set(DIVINE_ELEMENTS) | {
+        "pravda", "hřích", "spasení", "spása", "evangelium", "církev",
+        "kříž", "slovo", "víra", "milost", "duch", "svatý",
     },
-    "wisdom_cluster": {
-        "moudrost", "poznání", "rozumnost", "srdce",
-        "slovo", "přikázání", "zákon", "učení",
+    "wisdom_cluster": set(WISDOM_ELEMENTS) | {
+        "srdce", "bázeň", "rozum", "blázen", "přísloví", "kázeň",
+        "poznání", "moudrost",
+    },
+    "covenant_cluster": set(COVENANT_LAW) | set(LEGAL_ELEMENTS) | {
+        "smlouva", "desatero", "svědectví", "ustanovení", "přikázání",
+    },
+    "judgment_cluster": {
+        "soud", "hněv", "trest", "pokání", "vina", "rozsudek",
+        "odplata", "zatracení", "proklít", "soudce", "svědek",
+    },
+    "salvation_cluster": set(LIFE_DEATH_ELEMENTS) | set(ESCHATOLOGY) | {
+        "spasení", "spása", "vykoupení", "kříž", "odpuštění",
+        "evangelium", "zachránit", "vysvobodit",
+    },
+    "creation_cluster": {
+        "stvořit", "stvoření", "nebe", "země", "světlo", "tma",
+        "počátek", "voda", "den", "temnota", "stvořitel",
+    },
+    "prophetic_cluster": set(PROPHETIC_SPEECH) | {
+        "prorokovat", "břímě", "sen", "anděl", "vidění", "zjevení",
+    },
+    "moral_cluster": set(MORAL_ELEMENTS) | {
+        "pokora", "pýcha", "milosrdenství", "odpuštění", "láska",
+        "nenávist", "ctnost", "hřích", "nepravost",
     },
 }
+
+_PUNCT_RE = re.compile(r"[^\wáéíóúýěščřžďťňůäöüľĺŕ]+", re.UNICODE)
 
 
 # ==========================================================
@@ -92,31 +133,28 @@ def load_rows():
 
 def _tokenize(sentence):
 
-    cleaned = (
-        sentence.lower()
-        .replace(".", " ").replace(",", " ")
-        .replace(";", " ").replace(":", " ")
-        .replace("?", " ").replace("!", " ")
-        .replace('"', " ").replace("\n", " ")
-    )
+    cleaned = _PUNCT_RE.sub(" ", (sentence or "").lower())
 
     return [
-        token for token in cleaned.split()
-        if len(token) >= 3 and token.isalpha()
+        canonicalize_lemma(token) for token in cleaned.split()
+        if len(token) >= 3
     ]
 
 
 def _get_tokens(row):
 
-    tokens = (
-        row["lemmas"].split()
-        if row.get("lemmas")
-        else _tokenize(row["sentence"])
-    )
+    if row.get("lemmas"):
+        raw = [_PUNCT_RE.sub("", t.lower()) for t in row["lemmas"].split()]
+        tokens = [canonicalize_lemma(t) for t in raw if t]
+    else:
+        tokens = _tokenize(row.get("sentence", ""))
 
     return [
         t for t in tokens
-        if t not in STYLE_STOPWORDS and len(t) >= 3
+        if t not in SEMANTIC_STOP_LEMMAS
+        and t not in CLUSTER_NOISE_LEMMAS
+        and len(t) >= 3
+        and t.isalpha()
     ]
 
 
@@ -352,15 +390,28 @@ def assign_clusters(relations):
         pair_count = int(row["pair_count"])
 
         for cluster_name, seeds in CLUSTER_SEEDS.items():
-            if word1 in seeds or word2 in seeds:
-                cluster_edges[cluster_name].append({
-                    "cluster":      cluster_name,
-                    "word1":        word1,
-                    "word2":        word2,
-                    "pair_count":   pair_count,
-                    "pmi":          pmi,
-                    "matched_seed": word1 if word1 in seeds else word2,
-                })
+            hit1 = word1 in seeds
+            hit2 = word2 in seeds
+            if not (hit1 or hit2):
+                continue
+            # Drop edges whose non-seed side is formulaic noise / a stop lemma.
+            partner = word2 if hit1 else word1
+            if (
+                partner not in seeds
+                and (
+                    partner in CLUSTER_NOISE_LEMMAS
+                    or partner in SEMANTIC_STOP_LEMMAS
+                )
+            ):
+                continue
+            cluster_edges[cluster_name].append({
+                "cluster":      cluster_name,
+                "word1":        word1,
+                "word2":        word2,
+                "pair_count":   pair_count,
+                "pmi":          pmi,
+                "matched_seed": word1 if hit1 else word2,
+            })
 
     return cluster_edges
 
@@ -843,6 +894,9 @@ def main():
     cluster_edges = assign_clusters(relations_network)
     export_cluster_edges(cluster_edges)
     export_cluster_summary(cluster_edges)
+    print("\nConcept clusters:")
+    for name, rows in sorted(cluster_edges.items(), key=lambda x: -len(x[1])):
+        print(f"  {name:<22} {len(rows):>4} edges")
 
     # ── R5b: LOUVAIN COMMUNITY DETECTION ─────────────────
     print("\nLouvain community detection ...")

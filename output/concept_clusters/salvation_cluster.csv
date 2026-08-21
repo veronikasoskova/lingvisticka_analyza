@@ -1,0 +1,10 @@
+cluster,word1,word2,pair_count,pmi,matched_seed
+salvation_cluster,hospodin,život,10,7.363,život
+salvation_cluster,hospodin,smrt,8,7.513,smrt
+salvation_cluster,duch,evangelium,6,9.111,evangelium
+salvation_cluster,boží,evangelium,6,8.97,evangelium
+salvation_cluster,evangelium,kristus,6,8.442,evangelium
+salvation_cluster,evangelium,ježíš,6,8.277,evangelium
+salvation_cluster,smrt,život,5,10.038,smrt
+salvation_cluster,bůh,evangelium,5,6.948,evangelium
+salvation_cluster,bůh,život,5,6.807,život

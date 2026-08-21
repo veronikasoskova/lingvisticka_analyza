@@ -4,44 +4,18 @@ from collections import Counter, defaultdict
 
 from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from n_db import load_rows as _db_load, TABLE_REFINED
+from t_config_tradition import canonicalize_lemma
+from lexicons_common import (
+    OPPOSITION_GROUPS,
+    OPPOSITION_PAIRS,  # re-exported for app.py live / PDF callers
+    POSITIVE_WORDS,
+    dominant_opposition_pole,
+    matching_opposition_groups,
+)
 
 
 OUTPUT_DIR = ROOT_OUTPUT / "opposition_networks"
 
-
-OPPOSITION_PAIRS = {
-    ("život", "smrt"),
-    ("světlo", "tma"),
-    ("dobrý", "zlý"),
-    ("spravedlivý", "bezbožný"),
-    ("pravda", "lež"),
-    ("duch", "tělo"),
-    ("čistý", "nečistý"),
-    ("víra", "skutek"),
-    ("milost", "zákon"),
-    ("bůh", "modla"),
-    ("hospodin", "baal"),
-    ("moudrost", "bláznovství"),
-    ("požehnání", "zlořečení"),
-    ("nebe", "země"),
-    ("den", "noc"),
-    ("pravice", "levice"),
-    ("chudý", "bohatý"),
-    ("pokoj", "boj"),
-    ("dobrý", "špatný"),
-    ("požehnat", "proklat"),
-    ("zákon", "milosrdenství"),
-    ("spravedlnost", "nepravost"),
-    ("víra", "nevěra"),
-}
-
-# Semantically "positive" pole for each word that appears in OPPOSITION_PAIRS.
-# Used to label direction in the oriented network.
-POSITIVE_WORDS: frozenset = frozenset({
-    "život", "světlo", "dobrý", "spravedlivý", "pravda", "duch", "čistý",
-    "víra", "milost", "bůh", "hospodin", "moudrost", "požehnání", "požehnat",
-    "nebe", "den", "pravice", "chudý", "pokoj", "milosrdenství", "spravedlnost",
-})
 
 NEGATION_LEMMAS: frozenset = frozenset({
     "ne", "ani", "nikdy", "nikde", "nic", "žádný", "bez", "nelze",
@@ -52,23 +26,20 @@ def load_rows():
     return _db_load(TABLE_REFINED)
 
 
+def _token_set(lemmas: str) -> set[str]:
+    return {
+        canonicalize_lemma(t)
+        for t in str(lemmas or "").split()
+        if t
+    }
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # CORE DETECTION
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _dominant_pole(anchor_tokens: set, word1: str, word2: str) -> str:
-    """Return which pole (word1 / word2 / 'both') is present in anchor tokens."""
-    has1 = word1 in anchor_tokens
-    has2 = word2 in anchor_tokens
-    if has1 and not has2:
-        return word1
-    if has2 and not has1:
-        return word2
-    return "both"
-
-
 def find_oppositions(rows, window: int = 3):
-    """Detect opposition pairs within a ±window sentence context per book."""
+    """Detect opposition groups within a ±window sentence context per book."""
 
     pair_counter = Counter()
     examples = defaultdict(list)
@@ -79,23 +50,22 @@ def find_oppositions(rows, window: int = 3):
 
     for file_name, file_rows in by_file.items():
         n = len(file_rows)
+        tokenised = [_token_set(r.get("lemmas", "")) for r in file_rows]
         for i, anchor in enumerate(file_rows):
             lo = max(0, i - window)
             hi = min(n, i + window + 1)
             window_tokens: set = set()
             for j in range(lo, hi):
-                window_tokens |= set(file_rows[j].get("lemmas", "").split())
+                window_tokens |= tokenised[j]
 
-            for word1, word2 in OPPOSITION_PAIRS:
-                if word1 in window_tokens and word2 in window_tokens:
-                    key = f"{word1} | {word2}"
-                    pair_counter[key] += 1
-                    if len(examples[key]) < 10:
-                        examples[key].append({
-                            "opposition_pair": key,
-                            "sentence": anchor["sentence"],
-                            "file_name": file_name,
-                        })
+            for group in matching_opposition_groups(window_tokens):
+                pair_counter[group.key] += 1
+                if len(examples[group.key]) < 10:
+                    examples[group.key].append({
+                        "opposition_pair": group.key,
+                        "sentence": anchor["sentence"],
+                        "file_name": file_name,
+                    })
 
     return pair_counter, examples
 
@@ -119,32 +89,28 @@ def find_opposition_polarity(rows, window: int = 3):
 
     for file_name, file_rows in by_file.items():
         n = len(file_rows)
+        tokenised = [_token_set(r.get("lemmas", "")) for r in file_rows]
         for i, anchor in enumerate(file_rows):
-            anchor_tokens: set = set(anchor.get("lemmas", "").split())
+            anchor_tokens = tokenised[i]
 
             lo = max(0, i - window)
             hi = min(n, i + window + 1)
             window_tokens: set = set()
             for j in range(lo, hi):
-                window_tokens |= set(file_rows[j].get("lemmas", "").split())
+                window_tokens |= tokenised[j]
 
             has_negation = bool(anchor_tokens & NEGATION_LEMMAS)
 
-            for word1, word2 in OPPOSITION_PAIRS:
-                if not (word1 in window_tokens and word2 in window_tokens):
-                    continue
+            for group in matching_opposition_groups(window_tokens):
+                key = group.key
+                pos_label, neg_label = key.split(" | ")
+                dominant = dominant_opposition_pole(anchor_tokens, group)
 
-                key = f"{word1} | {word2}"
-                dominant = _dominant_pole(anchor_tokens, word1, word2)
-
-                # Determine semantic label: positive / negative / both
                 if dominant == "both":
                     polarity_stats[key]["both"] += 1
-                    # No clear direction for directed graph
                     continue
 
                 dominant_is_positive = dominant in POSITIVE_WORDS
-                # Flip if anchor has negation (negated positive → negative context)
                 if has_negation:
                     dominant_is_positive = not dominant_is_positive
 
@@ -153,11 +119,28 @@ def find_opposition_polarity(rows, window: int = 3):
                 else:
                     polarity_stats[key]["negative"] += 1
 
-                # Directed edge: dominant → subordinate
-                subordinate = word2 if dominant == word1 else word1
+                subordinate = neg_label if dominant == pos_label else pos_label
                 directed_counts[(dominant, subordinate)] += 1
 
     return dict(polarity_stats), directed_counts
+
+
+def count_oppositions_in_lemma_windows(lemma_strings: list[str], window: int = 3) -> Counter:
+    """
+    Count opposition groups over a linear list of lemma strings (live UI / PDF).
+    Each item is a space-separated lemma string for one sentence.
+    """
+    tokenised = [_token_set(ls) for ls in lemma_strings]
+    counts: Counter = Counter()
+    n = len(tokenised)
+    for i in range(n):
+        lo = max(0, i - window)
+        hi = min(n, i + window + 1)
+        window_tokens: set = set()
+        for j in range(lo, hi):
+            window_tokens |= tokenised[j]
+        counts.update(g.key for g in matching_opposition_groups(window_tokens))
+    return counts
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -236,6 +219,7 @@ def export_directed_edges(directed_counts: Counter, top_n: int = 60):
 def main():
     rows = load_rows()
     print(f"Loaded rows: {len(rows)}")
+    print(f"Opposition groups: {len(OPPOSITION_GROUPS)}")
 
     pair_counter, examples = find_oppositions(rows)
     export_counts(pair_counter)
@@ -250,6 +234,10 @@ def main():
     print(f"Polarity stats:         {len(polarity_stats)} pairs")
     print(f"Directed edges:         {len(directed_counts)} unique edges")
     print(f"Output folder: {OUTPUT_DIR}")
+    if pair_counter:
+        print("Top pairs:")
+        for key, n in pair_counter.most_common(12):
+            print(f"  {key:<28} {n}")
 
 
 if __name__ == "__main__":
