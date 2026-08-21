@@ -616,7 +616,7 @@ def extract_features(
             lemmas=" ".join(
               token.lemma.lower()
               for token in sentence.tokens
-              if token.lemma
+              if token.lemma and token.pos != "PUNCT"
             ),
         )
 

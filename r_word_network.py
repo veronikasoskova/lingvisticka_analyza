@@ -1,7 +1,6 @@
 from pathlib import Path
 import csv
 import math
-import re
 from collections import Counter, defaultdict
 from itertools import combinations
 
@@ -20,7 +19,11 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import normalize
 
 from a_paths import OUTPUT_DIR as ROOT_OUTPUT
-from lexicons_common import CLUSTER_NOISE_LEMMAS, SEMANTIC_STOP_LEMMAS
+from lexicons_common import (
+    CLUSTER_NOISE_LEMMAS,
+    SEMANTIC_STOP_LEMMAS,
+    content_tokens,
+)
 from n_db import load_rows as _db_load, TABLE_REFINED
 from t_config_tradition import (
     COVENANT_LAW,
@@ -116,7 +119,8 @@ CLUSTER_SEEDS = {
     },
 }
 
-_PUNCT_RE = re.compile(r"[^\wáéíóúýěščřžďťňůäöüľĺŕ]+", re.UNICODE)
+
+_NETWORK_STOP = SEMANTIC_STOP_LEMMAS | CLUSTER_NOISE_LEMMAS
 
 
 # ==========================================================
@@ -132,30 +136,27 @@ def load_rows():
 # ==========================================================
 
 def _tokenize(sentence):
-
-    cleaned = _PUNCT_RE.sub(" ", (sentence or "").lower())
-
-    return [
-        canonicalize_lemma(token) for token in cleaned.split()
-        if len(token) >= 3
-    ]
+    """Strip punctuation, canonicalize, drop function words and cluster noise."""
+    tokens = []
+    for tok in content_tokens(sentence, stop=_NETWORK_STOP):
+        canon = canonicalize_lemma(tok)
+        if len(canon) >= 3 and canon not in _NETWORK_STOP:
+            tokens.append(canon)
+    return tokens
 
 
 def _get_tokens(row):
+    """
+    Content tokens for PMI / centrality.
 
-    if row.get("lemmas"):
-        raw = [_PUNCT_RE.sub("", t.lower()) for t in row["lemmas"].split()]
-        tokens = [canonicalize_lemma(t) for t in raw if t]
-    else:
-        tokens = _tokenize(row.get("sentence", ""))
-
-    return [
-        t for t in tokens
-        if t not in SEMANTIC_STOP_LEMMAS
-        and t not in CLUSTER_NOISE_LEMMAS
-        and len(t) >= 3
-        and t.isalpha()
-    ]
+    Cleaning happens here, at the start of the word-network program:
+    commas, colons and similar marks are stripped from each token, then
+    BKR function words (jsem, kterýž, protož, jich, vám, takto, …) and
+    formulaic speech verbs (řekl, praví, stalo) are dropped. Remaining
+    tokens are canonicalised so "boha," / "tmy" match lexicon seeds.
+    """
+    raw = row.get("lemmas") or row.get("sentence") or ""
+    return _tokenize(raw)
 
 
 def compute_word_frequency(rows):

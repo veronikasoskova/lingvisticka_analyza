@@ -1,9 +1,9 @@
 cluster,word1,word2,pair_count,pmi,matched_seed
-wisdom_cluster,moudrost,umění,10,12.046,moudrost
-wisdom_cluster,hospodin,srdce,10,7.467,srdce
-wisdom_cluster,bůh,moudrost,8,7.626,moudrost
-wisdom_cluster,bůh,srdce,8,7.59,srdce
-wisdom_cluster,boží,moudrost,6,8.97,moudrost
-wisdom_cluster,bláznovství,moudrost,5,12.326,moudrost
-wisdom_cluster,kristus,moudrost,5,8.179,moudrost
-wisdom_cluster,den,srdce,5,8.03,srdce
+wisdom_cluster,moudrost,umění,10,11.881,moudrost
+wisdom_cluster,hospodin,srdce,10,7.303,srdce
+wisdom_cluster,bůh,moudrost,8,7.462,moudrost
+wisdom_cluster,bůh,srdce,8,7.425,srdce
+wisdom_cluster,boží,moudrost,6,8.805,moudrost
+wisdom_cluster,bláznovství,moudrost,5,12.161,moudrost
+wisdom_cluster,kristus,moudrost,5,8.014,moudrost
+wisdom_cluster,den,srdce,5,7.866,srdce
