@@ -37,6 +37,7 @@ from reportlab.platypus import (
     PageBreak,
 )
 from reportlab.platypus.flowables import HRFlowable
+from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 
 # ── Fonts ───────────────────────────────────────────────────────────────────
