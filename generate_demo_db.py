@@ -11,7 +11,7 @@ based on known distributions of the BKR biblical corpus.
 
 Usage
 -----
-    python generate_demo_db.py          # all books, ~10 verses each
+    python generate_demo_db.py          # all books, 40 verses each
     python generate_demo_db.py --full   # all books, all verses (slower)
 """
 
@@ -20,7 +20,6 @@ from __future__ import annotations
 import ast
 import random
 import re
-import sqlite3
 import sys
 from collections import Counter
 from pathlib import Path
@@ -29,70 +28,71 @@ from pathlib import Path
 SRC = Path(__file__).parent
 sys.path.insert(0, str(SRC))
 
-from a_paths import BIBLE_FOLDER, OUTPUT_DIR
+from a_paths import BIBLE_FOLDER, OUTPUT_DIR, DB_PATH, list_bible_files
+from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 from t_config_tradition import canonicalize_lemma
+from i_q_skinner_lexicons import ILLOCUTIONARY_FORCE_MAP, RHETORICAL_STRATEGY_VALUES
+from j_q_skinner_taxonomy import CONVENTION_MAP
+from m_verbal_relations import RELATION_TYPE_VALUES
+from p_refine_descriptions import DESCRIPTION_TYPE_VALUES
 
-DB_PATH = OUTPUT_DIR / "bible_analysis.db"
 RUN_ID  = "2024-01-01T00:00:00"        # fixed run_id for demo data
 
-# ── classification vocabularies ────────────────────────────────────────────
+# Vocabularies are the production classifier labels so the demo DB is
+# schema-compatible with a real k_apply_all_to_bible run.  Weights are
+# synthetic (statistically plausible for BKR), not empirical.
 INTENTIONS = [
     "legitimation", "commanding", "warning", "record", "praising",
     "declaring", "promising", "condemning", "justifying", "intervention",
-    "mobilizing", "ideological_contestation",
+    "mobilizing", "ideological_contestation", "persuading", "questioning",
+    "narrative",
 ]
 
 INTENTION_WEIGHTS = [
-    0.14, 0.13, 0.12, 0.11, 0.10, 0.09, 0.08, 0.07, 0.06, 0.05, 0.03, 0.02,
+    0.13, 0.12, 0.11, 0.10, 0.09,
+    0.08, 0.07, 0.06, 0.05, 0.04,
+    0.03, 0.02, 0.03, 0.03, 0.04,
 ]
 
+# Intention → typical rhetorical strategy (RHETORICAL_STRATEGY_VALUES).
+# Convention names belong in the `convention` column, not primary_strategy.
 STRATEGIES = {
-    "legitimation":             "theophanic_self_presentation",
-    "commanding":               "apodictic_law",
-    "warning":                  "prophetic_admonition",
-    "record":                   "narrative_chronicle",
-    "praising":                 "doxological_hymn",
-    "declaring":                "declarative_assertion",
-    "promising":                "covenant_promise",
-    "condemning":               "woe_oracle",
-    "justifying":               "theological_rationale",
-    "intervention":             "dialogic_controversy",
-    "mobilizing":               "missionary_commission",
-    "ideological_contestation": "antithetical_disputation",
-}
-
-FORCES = {
-    "legitimation":             "assertive",
-    "commanding":               "directive",
-    "warning":                  "directive",
-    "record":                   "assertive",
-    "praising":                 "expressive",
-    "declaring":                "declarative_assertion",
-    "promising":                "commissive",
-    "condemning":               "expressive",
-    "justifying":               "assertive",
-    "intervention":             "assertive",
-    "mobilizing":               "directive",
-    "ideological_contestation": "assertive",
+    "legitimation":             "appeal_to_authority",
+    "commanding":               "direct_address",
+    "warning":                  "conditional_threat",
+    "record":                   "narrative_example",
+    "praising":                 "repetition",
+    "declaring":                "appeal_to_authority",
+    "promising":                "promise_of_reward",
+    "condemning":               "contrast",
+    "justifying":               "appeal_to_scripture",
+    "intervention":             "rhetorical_question",
+    "mobilizing":               "direct_address",
+    "ideological_contestation": "contrast",
+    "persuading":               "appeal_to_tradition",
+    "questioning":              "rhetorical_question",
+    "narrative":                "narrative_example",
 }
 
 RELATION_TYPES = [
-    "reported_speech", "command_obedience", "lyrical", "narrative",
-    "doctrinal", "prophetic", "wisdom",
+    "reported_speech", "request_relation", "lyrical_relation",
+    "historical_event_relation", "descriptive_relation",
+    "prophetic_relation", "wisdom_relation", "genealogical_relation",
+    "autoclitic_relation",
 ]
-RELATION_WEIGHTS = [0.22, 0.18, 0.15, 0.20, 0.12, 0.08, 0.05]
+RELATION_WEIGHTS = [0.20, 0.14, 0.13, 0.16, 0.12, 0.08, 0.07, 0.06, 0.04]
 
 DESCRIPTION_TYPES = [
-    "divine_speech", "prophetic_oracle", "narrative_event",
-    "legal_injunction", "wisdom_saying", "doxological_praise",
-    "covenant_formula", "lament", "blessing_formula", "theological_statement",
+    "theological_statement", "prophetic_announcement", "general_narrative",
+    "legal_normative", "wisdom_maxim", "ritual_liturgical",
+    "moral_statement", "social_relation", "creation_narrative",
+    "genealogical_record", "eschatological", "attribute_description",
+    "state_description",
 ]
-DESC_WEIGHTS = [0.18, 0.15, 0.14, 0.12, 0.10, 0.09, 0.08, 0.07, 0.05, 0.02]
+DESC_WEIGHTS = [0.14, 0.12, 0.13, 0.10, 0.09, 0.08, 0.08, 0.07, 0.05, 0.05, 0.04, 0.03, 0.02]
 
 SEMANTIC_CLUSTERS = [
-    "divine_authority", "covenant_relationship", "moral_command",
-    "historical_narrative", "eschatological_warning", "worship",
-    "wisdom_instruction", "prophetic_judgment",
+    "description", "neutral", "request", "negation", "uncertainty",
 ]
 
 LOCUTION_TMPL = [
@@ -132,7 +132,7 @@ def _make_skinner_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         secondary = None
 
     strategy  = STRATEGIES[intention]
-    force     = FORCES[intention]
+    force     = ILLOCUTIONARY_FORCE_MAP.get(intention, "unknown")
     conf      = round(rng.gauss(0.62, 0.15), 3)
     conf      = max(0.10, min(0.99, conf))
 
@@ -156,7 +156,7 @@ def _make_skinner_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         "primary_strategy":      strategy,
         "secondary_strategy":    None,
         "locution":              rng.choice(LOCUTION_TMPL),
-        "convention":            rng.choice(CONVENTION_TMPL),
+        "convention":            CONVENTION_MAP.get(intention, "undetermined"),
         "linguistic_context":    "biblical_czech_bkr",
         "political_vocabulary":  rng.choice(POLITICAL_VOCAB_TMPL),
         "anti_anachronism":      "",
@@ -172,6 +172,7 @@ def _make_skinner_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         "adverb_count":          adv_c,
         "pronoun_count":         pro_c,
         "rst_relation":          rng.choice(["elaboration", "contrast", "cause", "sequence", "background"]),
+        "lemmas":                "",
     }
 
 
@@ -221,32 +222,12 @@ def _make_refined_row(sentence_id: int, sentence: str, file_name: str) -> dict:
 
 
 # ── DB writer ────────────────────────────────────────────────────────────────
-
-def _insert_rows(conn: sqlite3.Connection, table: str, rows: list[dict],
-                 run_id: str):
-    if not rows:
-        return
-    cols = list(rows[0].keys()) + ["run_id"]
-    placeholders = ", ".join("?" * len(cols))
-    col_sql = ", ".join(f'"{c}"' for c in cols)
-    # Create table if absent (auto-schema from first row)
-    col_defs = ", ".join(
-        f'"{c}" TEXT' if isinstance(rows[0].get(c, ""), str) else f'"{c}"'
-        for c in cols
-    )
-    conn.execute(
-        f'CREATE TABLE IF NOT EXISTS "{table}" '
-        f'(id INTEGER PRIMARY KEY AUTOINCREMENT, {col_defs})'
-    )
-    conn.executemany(
-        f'INSERT INTO "{table}" ({col_sql}) VALUES ({placeholders})',
-        [list(r.values()) + [run_id] for r in rows],
-    )
+# Writes go through n_db.insert_rows so demo and production share one schema.
 
 
 def _load_bible_files(limit_per_book: int | None) -> list[tuple[str, list[str]]]:
     """Return list of (file_name, sentences) from bible_BKR_*.txt files."""
-    files = sorted(BIBLE_FOLDER.glob("bible_BKR_*.txt"))
+    files = list_bible_files()
     if not files:
         raise FileNotFoundError(
             f"No bible_BKR_*.txt files in {BIBLE_FOLDER}. "
@@ -269,7 +250,28 @@ def _load_bible_files(limit_per_book: int | None) -> list[tuple[str, list[str]]]
 
 # ── main ─────────────────────────────────────────────────────────────────────
 
+def assert_demo_vocab_aligned() -> None:
+    """Guard: demo labels must be a subset of production classifier vocabularies."""
+    unknown_strategies = set(STRATEGIES.values()) - RHETORICAL_STRATEGY_VALUES
+    if unknown_strategies:
+        raise ValueError(f"Demo strategies not in production vocab: {unknown_strategies}")
+    unknown_relations = set(RELATION_TYPES) - RELATION_TYPE_VALUES
+    if unknown_relations:
+        raise ValueError(f"Demo relation types not in production vocab: {unknown_relations}")
+    unknown_descriptions = set(DESCRIPTION_TYPES) - DESCRIPTION_TYPE_VALUES
+    if unknown_descriptions:
+        raise ValueError(f"Demo description types not in production vocab: {unknown_descriptions}")
+    unknown_forces = {
+        ILLOCUTIONARY_FORCE_MAP[i]
+        for i in INTENTIONS
+        if i in ILLOCUTIONARY_FORCE_MAP
+    } - {"assertive", "directive", "commissive", "expressive", "declarative"}
+    if unknown_forces:
+        raise ValueError(f"Demo forces not in production vocab: {unknown_forces}")
+
+
 def main(full: bool = False):
+    assert_demo_vocab_aligned()
     limit = None if full else 40   # verses per book in demo mode
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -287,30 +289,26 @@ def main(full: bool = False):
             verse = verse.strip()
             if not verse:
                 continue
-            skinner_rows.append(_make_skinner_row(sent_id, verse, file_name))
-            relation_rows.append(_make_relation_row(sent_id, verse, file_name))
-            refined_rows.append(_make_refined_row(sent_id, verse, file_name))
+            sk = _make_skinner_row(sent_id, verse, file_name)
+            rel = _make_relation_row(sent_id, verse, file_name)
+            ref = _make_refined_row(sent_id, verse, file_name)
+            sk["lemmas"] = ref["lemmas"]
+            skinner_rows.append(sk)
+            relation_rows.append(rel)
+            refined_rows.append(ref)
             sent_id += 1
 
     print(f"  {sent_id - 1:,} sentences across {len(books)} books")
     print(f"Writing to: {DB_PATH}")
 
     DB_PATH.unlink(missing_ok=True)
-    conn = sqlite3.connect(DB_PATH)
-    conn.execute("PRAGMA journal_mode=WAL")
-
-    _insert_rows(conn, "skinner_analysis",   skinner_rows,  RUN_ID)
-    _insert_rows(conn, "verbal_relations",   relation_rows, RUN_ID)
-    _insert_rows(conn, "refined_descriptions", refined_rows, RUN_ID)
-
-    conn.commit()
-    conn.close()
+    insert_rows(TABLE_SKINNER, skinner_rows, RUN_ID)
+    insert_rows(TABLE_RELATIONS, relation_rows, RUN_ID)
+    insert_rows(TABLE_REFINED, refined_rows, RUN_ID)
     print("  DB written.")
 
-    # ── generate analytics CSVs ───────────────────────────────────────────
+    # Analytics modules resolve output via a_paths.OUTPUT_DIR (cwd-independent).
     print("\nGenerating analytics CSV files…")
-    import os
-    os.chdir(SRC)   # analytics scripts use relative "output/" paths
 
     try:
         from l_taxonomy_analytics import main as _tax_main

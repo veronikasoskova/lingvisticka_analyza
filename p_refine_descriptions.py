@@ -130,6 +130,25 @@ def _is_creation_sentence(feature, lemma_set: frozenset) -> bool:
     return bool(lemma_set & CREATION_NARRATIVE_LEMMAS)
 
 
+# Canonical description_type vocabulary emitted by refine_description().
+# generate_demo_db and UI labels must stay in sync with this set.
+DESCRIPTION_TYPE_VALUES = frozenset({
+    "general_narrative",
+    "genealogical_record",
+    "ritual_liturgical",
+    "legal_normative",
+    "prophetic_announcement",
+    "creation_narrative",
+    "eschatological",
+    "wisdom_maxim",
+    "social_relation",
+    "moral_statement",
+    "theological_statement",
+    "attribute_description",
+    "state_description",
+})
+
+
 # ==========================================================
 # OUTPUT DATACLASS
 # ==========================================================

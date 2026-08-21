@@ -1,21 +1,28 @@
+import logging
 import sqlite3
 from datetime import datetime
-from pathlib import Path
 
-from a_paths import OUTPUT_DIR
+from a_paths import DB_PATH
+
+
+logger = logging.getLogger(__name__)
 
 
 # ==========================================================
 # N1. CONFIG
 # ==========================================================
 
-DB_PATH = OUTPUT_DIR / "bible_analysis.db"
-
 # Primary pipeline tables → written by k_apply_all_to_bible
 TABLE_SKINNER     = "skinner_analysis"
 TABLE_RELATIONS   = "verbal_relations"
 TABLE_REFINED     = "refined_descriptions"
 TABLE_TRAINING    = "training_data"
+
+# Optional fields stored as SQL NULL rather than the string "None".
+_NULLISH_FIELDS = frozenset({
+    "secondary_intention",
+    "secondary_strategy",
+})
 
 
 # ==========================================================
@@ -36,6 +43,19 @@ def get_conn() -> sqlite3.Connection:
 
 def make_run_id() -> str:
     return datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+
+
+def _sql_value(column: str, value):
+    """Coerce a cell for SQLite.
+
+    ``None`` is stored as SQL NULL (not the string ``"None"``).  All other
+    values stay TEXT-compatible via ``str()``, matching the auto-schema.
+    """
+    if value is None:
+        return None
+    if column in _NULLISH_FIELDS and value == "":
+        return None
+    return str(value)
 
 
 def insert_rows(table: str, rows: list, run_id: str) -> int:
@@ -79,7 +99,10 @@ def insert_rows(table: str, rows: list, run_id: str) -> int:
 
     conn.executemany(
         f'INSERT INTO "{table}" ({col_list}) VALUES ({placeholders})',
-        [tuple(str(r.get(c, "")) for c in cols) + (run_id,) for r in rows],
+        [
+            tuple(_sql_value(c, r.get(c)) for c in cols) + (run_id,)
+            for r in rows
+        ],
     )
     conn.commit()
     conn.close()
@@ -89,6 +112,14 @@ def insert_rows(table: str, rows: list, run_id: str) -> int:
 # ==========================================================
 # N4. READ
 # ==========================================================
+
+def _normalize_row(row: dict) -> dict:
+    """Map legacy ``"None"`` strings on optional fields back to Python None."""
+    for key in _NULLISH_FIELDS:
+        if key in row and row[key] in (None, "None", ""):
+            row[key] = None
+    return row
+
 
 def load_rows(table: str, run_id: str | None = None) -> list:
     """Return rows for the given run_id (or latest non-upload run if None)."""
@@ -107,9 +138,13 @@ def load_rows(table: str, run_id: str | None = None) -> list:
         for r in cur:
             row = dict(r)
             row.pop("id", None)
-            rows.append(row)
-    except sqlite3.OperationalError:
-        pass
+            rows.append(_normalize_row(row))
+    except sqlite3.OperationalError as exc:
+        msg = str(exc).lower()
+        if "no such table" in msg:
+            logger.info("Table %s is missing (%s); returning no rows.", table, exc)
+        else:
+            logger.warning("Failed to load rows from %s: %s", table, exc)
     finally:
         conn.close()
     return rows
@@ -120,7 +155,8 @@ def count_table_rows(table: str) -> int | None:
     conn = get_conn()
     try:
         n = conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
-    except sqlite3.OperationalError:
+    except sqlite3.OperationalError as exc:
+        logger.info("count_table_rows(%s): %s", table, exc)
         n = None
     conn.close()
     return n
@@ -134,7 +170,8 @@ def list_runs(table: str) -> list:
             r[0] for r in
             conn.execute(f'SELECT DISTINCT run_id FROM "{table}" ORDER BY id')
         ]
-    except sqlite3.OperationalError:
+    except sqlite3.OperationalError as exc:
+        logger.info("list_runs(%s): %s", table, exc)
         runs = []
     conn.close()
     return runs
@@ -166,7 +203,8 @@ def _latest_pipeline_run_id(table: str) -> str | None:
                 f' ORDER BY id DESC LIMIT 1'
             ).fetchone()
         return row[0] if row else None
-    except sqlite3.OperationalError:
+    except sqlite3.OperationalError as exc:
+        logger.info("_latest_pipeline_run_id(%s): %s", table, exc)
         return None
     finally:
         conn.close()

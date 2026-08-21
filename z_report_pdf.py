@@ -37,7 +37,7 @@ from reportlab.platypus import (
     PageBreak,
 )
 from reportlab.platypus.flowables import HRFlowable
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 
 # ── Fonts ───────────────────────────────────────────────────────────────────
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
@@ -46,11 +46,10 @@ pdfmetrics.registerFont(TTFont("DV-B",   str(FONT_DIR / "DejaVuSans-Bold.ttf")))
 pdfmetrics.registerFont(TTFont("DV-Ser", str(FONT_DIR / "DejaVuSerif.ttf")))
 
 # ── Paths ────────────────────────────────────────────────────────────────────
-BASE = Path(__file__).parent
-OUT  = BASE / "output" / "final_summary"
+OUT  = ROOT_OUTPUT / "final_summary"
 OUT.mkdir(parents=True, exist_ok=True)
 
-ANA = BASE / "output" / "q_skinner_analytics"
+ANA = ROOT_OUTPUT / "q_skinner_analytics"
 CORPUS_CSV      = ANA / "q_skinner_corpus_full.csv"
 BY_BOOK_CSV     = ANA / "q_intention_by_book.csv"
 INTENT_CNT_CSV  = ANA / "q_intention_counts.csv"

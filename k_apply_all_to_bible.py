@@ -11,7 +11,7 @@ from j0_context_profile import get_builtin_profile
 from k_pipeline_core import process_unit
 
 _BKR_PROFILE = get_builtin_profile("biblical_czech_bkr")
-from a_paths import BIBLE_FOLDER
+from a_paths import BIBLE_FOLDER, BIBLE_GLOB, list_bible_files
 from n_db import (
     insert_rows, make_run_id, DB_PATH,
     TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED, TABLE_TRAINING,
@@ -133,10 +133,10 @@ def _build_training_rows(
 def make_training_data_from_bible() -> None:
     """Generate B.F. Skinner-style training rows (training-only pathway)."""
 
-    files = sorted(BIBLE_FOLDER.glob("*.txt"))[:FILES_LIMIT]
+    files = list_bible_files(limit=FILES_LIMIT)
 
     if not files:
-        raise FileNotFoundError(f"No txt files found: {BIBLE_FOLDER}")
+        raise FileNotFoundError(f"No {BIBLE_GLOB} files found: {BIBLE_FOLDER}")
 
     run_id = make_run_id()
     all_rows = []
@@ -155,11 +155,11 @@ def make_training_data_from_bible() -> None:
 
 def main():
 
-    files = sorted(BIBLE_FOLDER.glob("*.txt"))[:FILES_LIMIT]
+    files = list_bible_files(limit=FILES_LIMIT)
 
     if not files:
         raise FileNotFoundError(
-            f"No txt files found: {BIBLE_FOLDER}"
+            f"No {BIBLE_GLOB} files found: {BIBLE_FOLDER}"
         )
 
     print(f"Files: {len(files)}  (limit={FILES_LIMIT})")

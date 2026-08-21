@@ -18,6 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 import joblib
 
+from a_paths import DATA_DIR, MODELS_DIR, OUTPUT_DIR
 from c_input import TextInput, create_input_from_text
 from d_preprocessing import preprocess_text
 from e_extraction import extract_features, SentenceFeatures
@@ -29,10 +30,10 @@ import g_skinner_rules as rules
 # F1. PATHS / CONFIG
 # ==========================================================
 
-DATA_PATH      = Path("data/annotated_skinner.csv")
-SEED_PATH      = Path("data/annotated_skinner_seed.csv")
-MODEL_DIR      = Path("models")
-EVAL_OUT       = Path("output/eval_rule_classifier.csv")
+DATA_PATH      = DATA_DIR / "annotated_skinner.csv"
+SEED_PATH      = DATA_DIR / "annotated_skinner_seed.csv"
+MODEL_DIR      = MODELS_DIR
+EVAL_OUT       = OUTPUT_DIR / "eval_rule_classifier.csv"
 TARGET_COLUMN  = "skinner_class"
 
 # Categorical and boolean feature columns used by build_feature_transformer().
@@ -104,7 +105,11 @@ def calibrate_confidence(data_path: Path = DATA_PATH) -> None:
 
     try:
         df = pd.read_csv(data_path)
-    except Exception:
+    except Exception as exc:
+        import logging
+        logging.getLogger(__name__).warning(
+            "Could not load calibration CSV %s: %s", data_path, exc
+        )
         return
 
     if "sentence" not in df.columns or "label" not in df.columns:
@@ -1215,7 +1220,7 @@ def train_and_evaluate_target(
     slug    = label.lower().replace(" ", "_")
     eval_nb  = _per_class_df(y_test, nb_pred,  "naive_bayes")
     eval_svm = _per_class_df(y_test, svm_pred, "svm")
-    eval_out = Path("output") / f"eval_ml_{slug}.csv"
+    eval_out = OUTPUT_DIR / f"eval_ml_{slug}.csv"
     eval_out.parent.mkdir(exist_ok=True)
     pd.concat([eval_nb, eval_svm]).to_csv(eval_out, index=False)
     print(f"\nPer-class metrics saved: {eval_out}")
@@ -1330,8 +1335,12 @@ def generate_annotation_seed(
                 "previous_was_trigger":       False,
                 "label":                      "",  # to be filled by annotator
             })
-        except Exception:
+        except Exception as exc:
             errors += 1
+            import logging
+            logging.getLogger(__name__).debug(
+                "generate_annotation_seed skipped a sentence: %s", exc
+            )
             continue
 
     if not buckets:

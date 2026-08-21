@@ -3,12 +3,11 @@ import csv
 from collections import Counter, defaultdict
 
 from b_analytics_utils import export_counter, export_rows
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from n_db import load_rows as _db_load, TABLE_RELATIONS
 
 
-OUTPUT_DIR = Path(
-    "output/verbal_relations_analytics"
-)
+OUTPUT_DIR = ROOT_OUTPUT / "verbal_relations_analytics"
 
 
 def load_rows():

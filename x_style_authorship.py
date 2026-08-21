@@ -10,11 +10,11 @@ from sklearn.metrics import silhouette_score
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import normalize
 
-from a_paths import BIBLE_FOLDER
+from a_paths import BIBLE_FOLDER, OUTPUT_DIR as ROOT_OUTPUT, list_bible_files
 from n_db import load_rows as _db_load, TABLE_REFINED
 from genre_maps import BOOK_GENRES as _GENRE_MAP  # canonical file-keyed map
 
-OUTPUT_DIR = Path("output/style_authorship")
+OUTPUT_DIR = ROOT_OUTPUT / "style_authorship"
 
 N_CLUSTERS_RANGE = range(3, 11)
 
@@ -43,9 +43,9 @@ def load_documents():
         ]
 
     # fallback: raw text from bible files
-    files = sorted(BIBLE_FOLDER.glob("*.txt"))
+    files = list_bible_files()
     if not files:
-        raise FileNotFoundError(f"No txt files found: {BIBLE_FOLDER}")
+        raise FileNotFoundError(f"No bible_BKR_*.txt files found: {BIBLE_FOLDER}")
     return [
         {"file_name": f.name, "text": f.read_text(encoding="utf-8")}
         for f in files

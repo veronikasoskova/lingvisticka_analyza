@@ -3338,9 +3338,19 @@ def run_upload_pipeline(
         all_rel.extend(result.relation_rows)
         all_ref.extend(result.refined_rows)
 
-    # Build backward-compat lemmas list from skinner rows (sentence + lemmas col)
+    # Lemmas are copied onto skinner rows in process_unit(); refined_rows is
+    # the original source. Prefer refined, fall back to skinner.
+    lemma_by_sentence = {
+        row.get("sentence", ""): row.get("lemmas", "")
+        for row in all_ref
+        if row.get("lemmas")
+    }
     for row in all_sk:
-        lemmas.append((row.get("sentence", ""), row.get("lemmas", "")))
+        sent = row.get("sentence", "")
+        lemmas.append((
+            sent,
+            lemma_by_sentence.get(sent) or row.get("lemmas", "") or "",
+        ))
 
     skinner_df = pd.DataFrame(all_sk) if all_sk else pd.DataFrame()
     rel_df = pd.DataFrame(all_rel) if all_rel else pd.DataFrame()
@@ -3355,7 +3365,12 @@ def run_pipeline(
     interaction: str = "unknown",
     stimulus: str = "unknown",
 ) -> tuple:
-    """Legacy single-stage pipeline (Q. Skinner only). Kept for compatibility."""
+    """Legacy single-stage pipeline (Q. Skinner only).
+
+    Kept for compatibility with older callers.  New UI code should use
+    ``run_upload_pipeline()``, which shares ``k_pipeline_core.process_unit()``
+    with the Bible batch runner.
+    """
     from dataclasses import asdict
     mk_input, preprocess, extract, enrich, classify = _pipeline()
     inp = mk_input(text=text, source=source, interaction=interaction, stimulus=stimulus)
@@ -5708,15 +5723,17 @@ with tab_results:
             if _units and len(_units) >= 3 and not _df.empty and "unit_id" in _df.columns:
                 st.divider()
                 _tfidf_items = []
+                _tfidf_src = (
+                    _ref_df if (not _ref_df.empty and "lemmas" in _ref_df.columns)
+                    else _df
+                )
                 for _u in _units:
-                    _u_lems = " ".join(
-                        ls for _, ls in _ldat
-                        if ls  # all lemmas available (per-sentence)
-                    ) if not _df[_df["unit_id"] == _u.unit_id].empty else ""
-                    # Use lemmas from skinner rows that belong to this unit
-                    _u_rows = _df[_df["unit_id"] == _u.unit_id]
-                    if "lemmas" in _u_rows.columns:
-                        _u_lems = " ".join(_u_rows["lemmas"].dropna().astype(str))
+                    if _tfidf_src.empty or "unit_id" not in _tfidf_src.columns:
+                        continue
+                    if "lemmas" not in _tfidf_src.columns:
+                        continue
+                    _u_rows = _tfidf_src[_tfidf_src["unit_id"] == _u.unit_id]
+                    _u_lems = " ".join(_u_rows["lemmas"].dropna().astype(str))
                     if _u_lems.strip():
                         _tfidf_items.append((_u.display_name, _u_lems))
                 if len(_tfidf_items) >= 3:
@@ -5766,11 +5783,12 @@ with tab_results:
                                 use_container_width=True,
                             )
                 # TF-IDF chapter style clustering
-                if not _df.empty and "lemmas" in _df.columns and len(_units) >= 4:
+                _sty_src = _ref_df if not _ref_df.empty and "lemmas" in _ref_df.columns else _df
+                if not _sty_src.empty and "lemmas" in _sty_src.columns and len(_units) >= 4:
                     st.divider()
                     _sty_items = []
                     for _u in _units:
-                        _u_rows = _df[_df["unit_id"] == _u.unit_id]
+                        _u_rows = _sty_src[_sty_src["unit_id"] == _u.unit_id] if "unit_id" in _sty_src.columns else _sty_src
                         _u_lems = " ".join(_u_rows["lemmas"].dropna().astype(str))
                         if _u_lems.strip():
                             _sty_items.append((_u.display_name, _u_lems))

@@ -1446,6 +1446,10 @@ _CONVENTION_MAP: dict[str, str] = {
     "unclassified":             "undetermined",
 }
 
+# Public alias for demo DB / UI consumers.  Keep _CONVENTION_MAP as the
+# implementation name so existing internal references stay unchanged.
+CONVENTION_MAP = _CONVENTION_MAP
+
 
 def _derive_convention(
     primary_intention: str,
@@ -2040,16 +2044,14 @@ if __name__ == "__main__":
     _limit = int(sys.argv[_limit_idx + 1]) if _limit_idx >= 0 else None
 
     if _corpus_mode:
-        from a_paths import BIBLE_FOLDER
+        from a_paths import list_bible_files
         from c_input import create_input_from_file
         from j0_context_profile import get_builtin_profile
         from j0_discursive_context import resolve_discursive_context
 
         _bkr_profile = get_builtin_profile("biblical_czech_bkr")
 
-        files = sorted(BIBLE_FOLDER.glob("*.txt"))
-        if _limit:
-            files = files[:_limit]
+        files = list_bible_files(limit=_limit)
 
         print(f"Processing {len(files)} kníh ...", flush=True)
 

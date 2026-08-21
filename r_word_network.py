@@ -18,6 +18,7 @@ from scipy.sparse import lil_matrix
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import normalize
 
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from q_text_patterns import STYLE_STOPWORDS
 from n_db import load_rows as _db_load, TABLE_REFINED
 
@@ -26,12 +27,12 @@ from n_db import load_rows as _db_load, TABLE_REFINED
 # R1. PATHS / CONFIG
 # ==========================================================
 
-OUTPUT_DIR_PMI        = Path("output/word_relations")
-OUTPUT_DIR_CENTRALITY = Path("output/weighted_centrality")
-OUTPUT_DIR_CLUSTERS   = Path("output/concept_clusters")
-OUTPUT_DIR_GRAPH      = Path("output/word_network_graph")
-OUTPUT_DIR_COMMUNITY  = Path("output/word_communities")
-OUTPUT_DIR_EMBEDDINGS = Path("output/word_embeddings")
+OUTPUT_DIR_PMI        = ROOT_OUTPUT / "word_relations"
+OUTPUT_DIR_CENTRALITY = ROOT_OUTPUT / "weighted_centrality"
+OUTPUT_DIR_CLUSTERS   = ROOT_OUTPUT / "concept_clusters"
+OUTPUT_DIR_GRAPH      = ROOT_OUTPUT / "word_network_graph"
+OUTPUT_DIR_COMMUNITY  = ROOT_OUTPUT / "word_communities"
+OUTPUT_DIR_EMBEDDINGS = ROOT_OUTPUT / "word_embeddings"
 
 PER_TYPE_EXPORTS = {
     # Original three (kept for backward compat with existing CSVs)

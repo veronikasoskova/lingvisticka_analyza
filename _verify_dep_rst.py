@@ -6,10 +6,9 @@ Spúšťa sa na jedinej knihe (Abd) cez _process_book().
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 
-from pathlib import Path
+from a_paths import BIBLE_FOLDER
 from collections import Counter
 
-BIBLE_FOLDER = Path("/home/veronika/Desktop/Uni/Digital Humanities/bible_files")
 ABD = BIBLE_FOLDER / "bible_BKR_Abd.txt"
 
 # ── 1. Run pipeline on Abd ─────────────────────────────────────────────────

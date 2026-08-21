@@ -18,12 +18,12 @@ from pathlib import Path
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from a_paths import BIBLE_FOLDER
+from a_paths import BIBLE_FOLDER, OUTPUT_DIR as ROOT_OUTPUT, list_bible_files
 from b_analytics_utils import export_counter, export_rows
 from n_db import load_rows as _db_load, TABLE_REFINED
 from lexicons_common import STYLE_STOP_LEMMAS as STYLE_STOPWORDS, SEMANTIC_STOP_LEMMAS as SEMANTIC_STOPWORDS
 
-OUTPUT_DIR = Path("output/text_patterns")
+OUTPUT_DIR = ROOT_OUTPUT / "text_patterns"
 
 
 # DEAD: presunuté do lexicons_common.py (lemmatizované formy nahradzujú povrchové tvary)
@@ -107,9 +107,9 @@ def load_documents() -> list[dict]:
         ]
 
     # Fallback — raw text
-    files = sorted(BIBLE_FOLDER.glob("*.txt"))[:10]
+    files = list_bible_files(limit=10)
     if not files:
-        raise FileNotFoundError(f"No txt files found: {BIBLE_FOLDER}")
+        raise FileNotFoundError(f"No bible_BKR_*.txt files found: {BIBLE_FOLDER}")
 
     return [
         {"file_name": p.name, "tokens": _tokenize_raw(_parse_bkr_file(p)
@@ -136,7 +136,7 @@ def load_documents_with_chapters(max_files: int | None = None) -> list[dict]:
     max_files : int, optional
         Limit the number of bible files to process (useful for testing).
     """
-    files = sorted(BIBLE_FOLDER.glob("*.txt"))
+    files = list_bible_files()
     if max_files:
         files = files[:max_files]
 

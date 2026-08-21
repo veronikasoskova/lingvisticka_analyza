@@ -1,13 +1,27 @@
 """
 Post-run analysis script — runs after full pipeline completes.
-Compares new run vs. 2026-06-04T20:27:40.
-"""
-import sqlite3, sys
-from collections import Counter, defaultdict
-from pathlib import Path
 
-DB = Path("output/bible_analysis.db")
-OLD_RUN = "2026-06-04T20:27:40"
+Compare a new run against a previous one.  Defaults to the historical
+baseline ``2026-06-04T20:27:40``; override with ``--old-run`` or the
+``ANALYSIS_OLD_RUN`` environment variable.
+
+Usage:
+    python _analysis_new_run.py
+    python _analysis_new_run.py --old-run 2026-06-04T20:27:40
+"""
+import os
+import sqlite3
+import sys
+from collections import Counter, defaultdict
+
+from a_paths import DB_PATH, PROJECT_ROOT
+
+DB = DB_PATH
+OLD_RUN = os.environ.get("ANALYSIS_OLD_RUN", "2026-06-04T20:27:40")
+if "--old-run" in sys.argv:
+    _idx = sys.argv.index("--old-run")
+    if _idx + 1 < len(sys.argv):
+        OLD_RUN = sys.argv[_idx + 1]
 
 conn = sqlite3.connect(DB)
 conn.row_factory = sqlite3.Row
@@ -103,7 +117,7 @@ print("=" * 60)
 conn.close()
 
 import importlib, sys
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(PROJECT_ROOT))
 
 # Reset counter before run
 import u_religious_elements as ure

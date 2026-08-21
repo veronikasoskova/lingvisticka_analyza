@@ -328,6 +328,21 @@ def has_parallelismus_pattern(feature) -> bool:
     )
 
 
+# Canonical relation_type vocabulary emitted by classify_relation().
+# generate_demo_db and UI labels must stay in sync with this set.
+RELATION_TYPE_VALUES = frozenset({
+    "descriptive_relation",
+    "lyrical_relation",
+    "reported_speech",
+    "request_relation",
+    "genealogical_relation",
+    "wisdom_relation",
+    "historical_event_relation",
+    "autoclitic_relation",
+    "prophetic_relation",
+})
+
+
 # ==========================================================
 # OUTPUT DATACLASS
 # ==========================================================

@@ -2,16 +2,12 @@ from pathlib import Path
 import csv
 from collections import Counter, defaultdict
 
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from b_analytics_utils import export_counter, export_rows
 
 
-INPUT_FILE = Path(
-    "output/word_relations/semantic_relations.csv"
-)
-
-OUTPUT_DIR = Path(
-    "output/word_relations_analytics"
-)
+INPUT_FILE = ROOT_OUTPUT / "word_relations" / "semantic_relations.csv"
+OUTPUT_DIR = ROOT_OUTPUT / "word_relations_analytics"
 
 
 def load_rows():

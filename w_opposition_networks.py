@@ -2,12 +2,11 @@ from pathlib import Path
 import csv
 from collections import Counter, defaultdict
 
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from n_db import load_rows as _db_load, TABLE_REFINED
 
 
-OUTPUT_DIR = Path(
-    "output/opposition_networks"
-)
+OUTPUT_DIR = ROOT_OUTPUT / "opposition_networks"
 
 
 OPPOSITION_PAIRS = {
