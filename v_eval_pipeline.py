@@ -18,6 +18,7 @@ from pathlib import Path
 
 from genre_maps import BOOK_GENRES as GENRE_MAP  # canonical file-keyed map
 
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT, DATA_DIR
 from n_db import (
     load_rows as _db_load,
     insert_rows, get_conn, list_runs, count_table_rows,
@@ -28,7 +29,7 @@ from n_db import (
 # V1. CONFIG
 # ==========================================================
 
-OUTPUT_DIR = Path("output/eval")
+OUTPUT_DIR = ROOT_OUTPUT / "eval"
 
 LABEL_FIELD      = "illocutionary_force"
 BOOK_FIELD       = "file_name"
@@ -43,13 +44,13 @@ SAMPLE_SIZE      = 20
 TOP_LEMMAS       = 20
 
 LEGACY_CSV = {
-    TABLE_SKINNER:   Path("output/q_skinner_bible_analysis.csv"),
-    TABLE_RELATIONS: Path("output/verbal_relations_bible.csv"),
-    TABLE_REFINED:   Path("output/refined_descriptions_bible.csv"),
+    TABLE_SKINNER:   ROOT_OUTPUT / "q_skinner_bible_analysis.csv",
+    TABLE_RELATIONS: ROOT_OUTPUT / "verbal_relations_bible.csv",
+    TABLE_REFINED:   ROOT_OUTPUT / "refined_descriptions_bible.csv",
 }
 
 # Gold standard annotation file (two-annotator CSV)
-GOLD_STANDARD_PATH = Path("data/annotated_q_intentions.csv")
+GOLD_STANDARD_PATH = DATA_DIR / "annotated_q_intentions.csv"
 GOLD_STANDARD_FIELDS = [
     "sentence_id", "file_name", "sentence",
     "system_label",        # filled by generate_annotation_template()
@@ -611,7 +612,7 @@ def load_gold_standard(path: Path = GOLD_STANDARD_PATH) -> list[dict]:
 
 def generate_annotation_template(
     sk_rows: list,
-    output_path: Path = Path("data/annotation_template.csv"),
+    output_path: Path = DATA_DIR / "annotation_template.csv",
     n: int = GOLD_TEMPLATE_N,
 ) -> Path:
     """

@@ -4,11 +4,9 @@ from collections import Counter, defaultdict
 
 from c_input import create_input_from_file
 from d_preprocessing import preprocess_text
-from a_paths import BIBLE_FOLDER
+from a_paths import BIBLE_FOLDER, OUTPUT_DIR as ROOT_OUTPUT, list_bible_files
 
-OUTPUT_DIR = Path(
-    "output/dependency_hierarchy"
-)
+OUTPUT_DIR = ROOT_OUTPUT / "dependency_hierarchy"
 
 
 def analyze_file(file_path):
@@ -47,13 +45,11 @@ def collect_dependency_rows():
 
     all_rows = []
 
-    files = sorted(
-        BIBLE_FOLDER.glob("*.txt")
-    )[:10]
+    files = list_bible_files(limit=10)
 
     if not files:
         raise FileNotFoundError(
-            f"No txt files found: {BIBLE_FOLDER}"
+            f"No bible_BKR_*.txt files found: {BIBLE_FOLDER}"
         )
 
     for file_path in files:

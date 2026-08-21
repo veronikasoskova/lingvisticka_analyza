@@ -138,10 +138,10 @@ def export_bkr_text() -> Path:
         print(f"  Saved {len(rows)} lines → {bkr_path}")
     except Exception as e:
         print(f"  DB unavailable ({e}); falling back to bible_files")
-        from a_paths import BIBLE_FOLDER
+        from a_paths import list_bible_files
         n = 0
         with bkr_path.open("w", encoding="utf-8") as f:
-            for txt in sorted(BIBLE_FOLDER.glob("*.txt")):
+            for txt in list_bible_files():
                 for line in txt.open(encoding="utf-8"):
                     line = line.strip()
                     if line:

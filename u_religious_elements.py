@@ -16,12 +16,11 @@ from t_config_tradition import (
     motif_hits,
     lexicon_hits,
 )
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from n_db import load_rows as _db_load, TABLE_REFINED
 
 
-OUTPUT_DIR = Path(
-    "output/religious_elements"
-)
+OUTPUT_DIR = ROOT_OUTPUT / "religious_elements"
 
 TRADITION = "christian_czech"
 
@@ -81,7 +80,8 @@ def _role_weight_position(lemma: str, lemma_list: list[str]) -> float:
     return 1.0
 
 
-_ROLE_WEIGHT_COUNTER = {"dep_tree": 0, "positional": 0}  # TEMP: remove after full-Bible verification
+_ROLE_WEIGHT_COUNTER = {"dep_tree": 0, "positional": 0}
+# Debug counters consumed by _analysis_new_run.py after a full-Bible run.
 
 
 def _role_weight(lemma: str, row: dict) -> float:
@@ -92,7 +92,7 @@ def _role_weight(lemma: str, row: dict) -> float:
     """
     dep_tree = row.get("dep_tree", "")
     if dep_tree:
-        _ROLE_WEIGHT_COUNTER["dep_tree"] += 1  # TEMP
+        _ROLE_WEIGHT_COUNTER["dep_tree"] += 1
         nsubj, obj = _parse_dep_roles(dep_tree)
         if lemma in nsubj:
             return 1.5
@@ -100,7 +100,7 @@ def _role_weight(lemma: str, row: dict) -> float:
             return 0.7
         return 1.0
     # Fallback: position heuristic
-    _ROLE_WEIGHT_COUNTER["positional"] += 1  # TEMP
+    _ROLE_WEIGHT_COUNTER["positional"] += 1
     lemma_list = get_lemma_list(row)
     return _role_weight_position(lemma, lemma_list)
 

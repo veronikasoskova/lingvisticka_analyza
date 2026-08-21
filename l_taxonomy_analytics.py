@@ -3,12 +3,13 @@ import csv
 import math
 from collections import Counter, defaultdict
 
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT
 from b_analytics_utils import export_counter, export_rows
 from n_db import load_rows as _db_load, TABLE_SKINNER, TABLE_REFINED
 
 
-OUTPUT_DIR   = Path("output/taxonomy_analytics")
-Q_OUTPUT_DIR = Path("output/q_skinner_analytics")
+OUTPUT_DIR   = ROOT_OUTPUT / "taxonomy_analytics"
+Q_OUTPUT_DIR = ROOT_OUTPUT / "q_skinner_analytics"
 
 
 # ==========================================================
@@ -776,7 +777,7 @@ def q_political_vocabulary_by_book(rows):
 # K11. REFINED DESCRIPTIONS INDEX  (absorbed from q_description_index)
 # ==========================================================
 
-OUTPUT_DIR_REFINED = Path("output/description_index")
+OUTPUT_DIR_REFINED = ROOT_OUTPUT / "description_index"
 
 
 def load_refined_rows():

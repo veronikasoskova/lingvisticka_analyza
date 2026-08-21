@@ -82,6 +82,10 @@ def process_unit(
         sk_row["display_name"] = unit.display_name
         sk_row["file_name"] = unit.unit_id          # backward-compat alias
         sk_row["rst_relation"] = rst_relations[i]
+        # Lemmas live on SentenceFeatures / RefinedDescription, not QSkinnerDecision.
+        # Copy them onto the skinner row so upload UI / wordcloud / TF-IDF can
+        # read a single table without joining refined_descriptions.
+        sk_row["lemmas"] = feat.lemmas or ""
         result.skinner_rows.append(sk_row)
 
         # ── Stage 2: Verbal relations ────────────────────────────────────────

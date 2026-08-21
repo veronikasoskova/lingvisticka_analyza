@@ -78,13 +78,27 @@ generate_demo_db.py       Demo DB generator (no Stanza required)
 setup.sh                  One-command bootstrap script
 requirements.txt          Python dependencies
 bible_BKR_*.txt           Bible text files (BKR edition, 66 books)
-output/                   Generated artifacts (gitignored)
+output/                   Generated artifacts (demo DB + analytics CSVs are tracked
+                          so Tab 2 works on a fresh clone; regenerate with
+                          generate_demo_db.py or k_apply_all_to_bible.py)
   bible_analysis.db       SQLite database (Bible corpus)
   q_skinner_analytics/    Analytics CSVs — intentions / strategies
   style_authorship/       Style clustering
   opposition_networks/    Opposition pair analysis
   ...
+a_paths.py                Canonical paths, DB location, bible_BKR_*.txt discovery
+k_pipeline_core.py        Shared 4-stage pipeline (Bible batch + upload)
+n_db.py                   Single SQLite read/write path
 ```
+
+Demo data from `generate_demo_db.py` uses the same classifier vocabularies as
+the production pipeline (intentions, strategies, illocutionary forces,
+verbal-relation types, description types).  Values are synthetic.
+
+The production path is Quentin Skinner illocutionary analysis
+(`j_q_skinner_taxonomy` via `k_pipeline_core.process_unit`).  B.F. Skinner
+verbal-behavior rules (`h_classifiers`) are kept for training-data generation
+only (`k_apply_all_to_bible.make_training_data_from_bible`).
 
 ---
 
@@ -96,5 +110,6 @@ See `requirements.txt`. Key packages:
 - `stanza` — Czech NLP (tokenisation, lemmatisation, dependency parsing)
 - `pandas`, `plotly` — data processing and charts
 - `scikit-learn` — clustering and style analysis
-- `reportlab` — PDF export
+- `reportlab`, `kaleido` — PDF export (charts as images)
 - `wordcloud`, `pdfplumber` — word cloud and PDF upload support
+- `python-louvain` — word-network community detection

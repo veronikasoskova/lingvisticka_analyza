@@ -1,12 +1,11 @@
 from pathlib import Path
 import csv
 
-from n_db import count_table_rows, DB_PATH, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
+from a_paths import OUTPUT_DIR as ROOT_OUTPUT, DB_PATH
+from n_db import count_table_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 
 
-OUTPUT_DIR = Path(
-    "output/final_summary"
-)
+OUTPUT_DIR = ROOT_OUTPUT / "final_summary"
 
 # Primary tables stored in SQLite (key → table name)
 DB_TABLES = {
@@ -17,20 +16,20 @@ DB_TABLES = {
 
 # Derived analytics outputs still written as CSV
 INPUT_FILES = {
-    "weighted_centrality":   Path("output/weighted_centrality/weighted_semantic_centrality.csv"),
-    "religious_density":     Path("output/religious_elements/density_by_book.csv"),
-    "religious_fields":      Path("output/religious_elements/field_summary.csv"),
-    "philosophy_by_book":    Path("output/religious_elements/philosophy_by_book.csv"),
-    "religious_combined":    Path("output/religious_elements/combined_density_by_book.csv"),
-    "religious_fields_wide": Path("output/religious_elements/fields_by_book_wide.csv"),
-    "shared_motifs":         Path("output/religious_elements/shared_motifs_by_book.csv"),
-    "tradition_diagnostics": Path("output/religious_elements/tradition_diagnostics_by_book.csv"),
-    "concept_clusters":      Path("output/concept_clusters/cluster_summary.csv"),
-    "opposition_networks":   Path("output/opposition_networks/opposition_counts.csv"),
-    "style_authorship":      Path("output/style_authorship/book_style_clusters.csv"),
-    "dependency_counts":     Path("output/dependency_hierarchy/dependency_counts.csv"),
-    "q_intention_counts":    Path("output/q_skinner_analytics/q_intention_counts.csv"),
-    "taxonomy_analytics":    Path("output/taxonomy_analytics/skinner_class_counts.csv"),
+    "weighted_centrality":   ROOT_OUTPUT / "weighted_centrality" / "weighted_semantic_centrality.csv",
+    "religious_density":     ROOT_OUTPUT / "religious_elements" / "density_by_book.csv",
+    "religious_fields":      ROOT_OUTPUT / "religious_elements" / "field_summary.csv",
+    "philosophy_by_book":    ROOT_OUTPUT / "religious_elements" / "philosophy_by_book.csv",
+    "religious_combined":    ROOT_OUTPUT / "religious_elements" / "combined_density_by_book.csv",
+    "religious_fields_wide": ROOT_OUTPUT / "religious_elements" / "fields_by_book_wide.csv",
+    "shared_motifs":         ROOT_OUTPUT / "religious_elements" / "shared_motifs_by_book.csv",
+    "tradition_diagnostics": ROOT_OUTPUT / "religious_elements" / "tradition_diagnostics_by_book.csv",
+    "concept_clusters":      ROOT_OUTPUT / "concept_clusters" / "cluster_summary.csv",
+    "opposition_networks":   ROOT_OUTPUT / "opposition_networks" / "opposition_counts.csv",
+    "style_authorship":      ROOT_OUTPUT / "style_authorship" / "book_style_clusters.csv",
+    "dependency_counts":     ROOT_OUTPUT / "dependency_hierarchy" / "dependency_counts.csv",
+    "q_intention_counts":    ROOT_OUTPUT / "q_skinner_analytics" / "q_intention_counts.csv",
+    "taxonomy_analytics":    ROOT_OUTPUT / "taxonomy_analytics" / "skinner_class_counts.csv",
 }
 
 
