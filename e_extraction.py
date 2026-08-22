@@ -9,8 +9,8 @@ from d_preprocessing import (
 )
 
 
-# Subordinate clause dependency relations — shared with y_dependency_hierarchy.py
-_CLAUSE_DEPS = frozenset({
+# Subordinate clause dependency relations — also used by y_dependency_hierarchy.
+CLAUSE_DEPS = frozenset({
     "advcl", "relcl", "acl", "csubj", "ccomp", "xcomp", "parataxis",
 })
 
@@ -424,7 +424,7 @@ def clause_count(sentence: SentenceData) -> int:
     Returns at least 1 for any non-empty sentence.
     """
     subordinate = sum(
-        1 for t in sentence.tokens if t.dep.split(":")[0] in _CLAUSE_DEPS
+        1 for t in sentence.tokens if t.dep.split(":")[0] in CLAUSE_DEPS
     )
     return 1 + subordinate
 

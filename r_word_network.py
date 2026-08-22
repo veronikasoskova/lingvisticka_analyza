@@ -181,42 +181,6 @@ def compute_cooccurrence(rows):
     return pair_counter
 
 
-# DEAD: nahradené compute_ppmi — žiadni externí volajúci (grep: compute_pmi len z compute_pmi_per_type)
-# def compute_pmi(
-#     word_counter,
-#     pair_counter,
-#     total_sentences,
-#     min_pair_count=5,
-# ):
-#     total_words = sum(word_counter.values())
-#     relations   = []
-#     for (word1, word2), pair_count in pair_counter.items():
-#         if pair_count < min_pair_count:
-#             continue
-#         p_xy = pair_count / total_sentences
-#         p_x  = word_counter[word1] / total_words
-#         p_y  = word_counter[word2] / total_words
-#         pmi = math.log2(p_xy / (p_x * p_y))
-#         relations.append({"word1": word1, "word2": word2,
-#                           "pair_count": pair_count, "pmi": round(pmi, 3)})
-#     return sorted(relations, key=lambda x: x["pmi"], reverse=True)
-
-
-# DEAD: žiadni externí volajúci — volá iba compute_pmi (tiež DEAD)
-# def compute_pmi_per_type(rows, description_type):
-#     type_rows = [r for r in rows if r["description_type"] == description_type]
-#     if not type_rows:
-#         return []
-#     word_counter = Counter()
-#     pair_counter = Counter()
-#     for row in type_rows:
-#         tokens = sorted(set(_get_tokens(row)))
-#         word_counter.update(tokens)
-#         for pair in combinations(tokens, 2):
-#             pair_counter[pair] += 1
-#     return compute_pmi(word_counter, pair_counter, len(type_rows), min_pair_count=3)
-
-
 def compute_ppmi(
     word_counter,
     pair_counter,

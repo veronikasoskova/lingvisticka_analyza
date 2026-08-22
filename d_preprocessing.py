@@ -2,7 +2,7 @@ import os
 import re
 import unicodedata
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List, Dict
 
 from c_input import TextInput
@@ -245,23 +245,10 @@ def parse_token(
 # SENTENCE PARSER
 # ==========================================================
 
-def parse_sentence(
-    sentence
-) -> SentenceData:
-
-    tokens = []
-
-    for word in sentence.words:
-        tokens.append(
-            parse_token(
-                word,
-                sentence.words
-            )
-        )
-
+def parse_sentence(sentence) -> SentenceData:
     return SentenceData(
         text=sentence.text,
-        tokens=tokens
+        tokens=[parse_token(word, sentence.words) for word in sentence.words],
     )
 
 
@@ -282,17 +269,9 @@ def preprocess_text(
         raw_text = _normalize_universal(raw_text)
 
     doc = nlp(raw_text)
-
-    sentences = []
-
-    for sent in doc.sentences:
-        sentences.append(
-            parse_sentence(sent)
-        )
-
     return PreprocessedText(
         original=text_input,
-        sentences=sentences
+        sentences=[parse_sentence(sent) for sent in doc.sentences],
     )
 
 

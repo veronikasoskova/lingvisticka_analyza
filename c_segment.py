@@ -20,7 +20,7 @@ from __future__ import annotations
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 from c_unit import AnalysisUnit
 
@@ -141,21 +141,10 @@ def _split_long(chunks: List[str]) -> List[str]:
 # C4. SEGMENTATION TIERS
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _segment_by_chapter_markers(text: str) -> Optional[List[str]]:
-    """Tier 1: split on explicit chapter headings (requires ≥3 markers)."""
-    positions = [m.start() for m in _CHAPTER_RE.finditer(text)]
-    if len(positions) < 3:
-        return None
-    chunks: List[str] = []
-    for i, pos in enumerate(positions):
-        end = positions[i + 1] if i + 1 < len(positions) else len(text)
-        chunks.append(text[pos:end].strip())
-    return chunks or None
-
-
-def _segment_by_section_markers(text: str) -> Optional[List[str]]:
-    """Tier 2: split on section / subchapter headings (requires ≥3 markers)."""
-    positions = [m.start() for m in _SECTION_RE.finditer(text)]
+def _segment_by_markers(text: str, pattern: re.Pattern) -> Optional[List[str]]:
+    """Split on heading matches. Requires ≥3 markers so a lone 'Chapter 1'
+    mention in running text is not treated as document structure."""
+    positions = [m.start() for m in pattern.finditer(text)]
     if len(positions) < 3:
         return None
     chunks: List[str] = []
@@ -173,7 +162,6 @@ def segment_book(
     text: str,
     corpus_id: str,
     source_name: str = "uploaded_text",
-    sentence_window: int = 150,  # kept for API compatibility, not used
 ) -> List[AnalysisUnit]:
     """
     Segment *text* into a list of AnalysisUnit objects.
@@ -188,7 +176,6 @@ def segment_book(
     text           : full text of the uploaded document
     corpus_id      : stable corpus identifier, e.g. 'upload_book_20240101T120000'
     source_name    : original filename / display label for the whole document
-    sentence_window: ignored — kept for backward-compatible call signatures only
 
     Returns
     -------
@@ -196,19 +183,16 @@ def segment_book(
     """
     text = text.strip()
 
-    # Tier 1: real chapter structure
-    chunks = _segment_by_chapter_markers(text)
+    chunks = _segment_by_markers(text, _CHAPTER_RE)
     if chunks:
         unit_type = "chapter"
         seg_method: str = "chapter_markers"
     else:
-        # Tier 2: real section/subchapter structure
-        chunks = _segment_by_section_markers(text)
+        chunks = _segment_by_markers(text, _SECTION_RE)
         if chunks:
             unit_type = "section"
             seg_method = "section_markers"
         else:
-            # Tier 3: no reliable structure → single whole-text unit
             chunks = [text]
             unit_type = "document"
             seg_method = "single_unit"

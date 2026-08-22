@@ -76,11 +76,7 @@ def process_unit(
             context=disc_context,
             profile=profile,
         )
-        sk_row = asdict(sk)
-        sk_row["unit_id"] = unit.unit_id
-        sk_row["corpus_id"] = unit.corpus_id
-        sk_row["display_name"] = unit.display_name
-        sk_row["file_name"] = unit.unit_id          # backward-compat alias
+        sk_row = _with_unit(asdict(sk), unit)
         sk_row["rst_relation"] = rst_relations[i]
         # Lemmas live on SentenceFeatures / RefinedDescription, not QSkinnerDecision.
         # Copy them onto the skinner row so upload UI / wordcloud / TF-IDF can
@@ -90,20 +86,23 @@ def process_unit(
 
         # ── Stage 2: Verbal relations ────────────────────────────────────────
         rel = classify_relation(feat, sem, file_name=unit.unit_id)
-        rel_row = asdict(rel)
-        rel_row["unit_id"] = unit.unit_id
-        rel_row["corpus_id"] = unit.corpus_id
-        rel_row["display_name"] = unit.display_name
-        rel_row["file_name"] = unit.unit_id         # backward-compat alias
-        result.relation_rows.append(rel_row)
+        result.relation_rows.append(_with_unit(asdict(rel), unit))
 
         # ── Stage 3: Refined descriptions ────────────────────────────────────
         ref = refine_description(feat, sem)
-        ref_row = asdict(ref)
-        ref_row["unit_id"] = unit.unit_id
-        ref_row["corpus_id"] = unit.corpus_id
-        ref_row["display_name"] = unit.display_name
-        ref_row["file_name"] = unit.unit_id         # backward-compat alias
-        result.refined_rows.append(ref_row)
+        result.refined_rows.append(_with_unit(asdict(ref), unit))
 
     return result
+
+
+def _with_unit(row: dict, unit: AnalysisUnit) -> dict:
+    """Stamp shared unit identity onto a pipeline row.
+
+    ``file_name`` is a backward-compat alias of ``unit_id`` (Bible books use
+    the source filename; uploads use chapter/section/document ids).
+    """
+    row["unit_id"] = unit.unit_id
+    row["corpus_id"] = unit.corpus_id
+    row["display_name"] = unit.display_name
+    row["file_name"] = unit.unit_id
+    return row

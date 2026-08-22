@@ -2725,10 +2725,8 @@ with st.sidebar:
         label_visibility="collapsed",
         help="Vyber jazyk NLP modelu zodpovedajúci textu ktorý chceš analyzovať. / Select the NLP model language matching the text you want to analyse.",
     )
-    # Propagate to d_preprocessing at module level so get_nlp() picks it up
-    import sys as _sys
-    if "d_preprocessing" in _sys.modules:
-        _sys.modules["d_preprocessing"].PIPELINE_LANG = pipeline_lang
+    import d_preprocessing as _dpre
+    _dpre.PIPELINE_LANG = pipeline_lang
 
 T = TRANSLATIONS[lang]
 
@@ -3126,17 +3124,8 @@ def csv(rel: str) -> pd.DataFrame | None:
 
 @st.cache_data(ttl=300)
 def load_db(lang: str = "sk") -> pd.DataFrame | None:
-    db = OUTPUT / "bible_analysis.db"
-    if not db.exists():
-        return None
-    import sqlite3
-    from n_db import latest_bible_run_id
-    conn = sqlite3.connect(db)
-    run_id = latest_bible_run_id("skinner_analysis")
-    if run_id is None:
-        conn.close()
-        return None
-    df = pd.read_sql(
+    return _load_bible_sql(
+        "skinner_analysis",
         """SELECT sentence_id, sentence, file_name,
                   illocutionary_force, primary_intention, secondary_intention,
                   primary_strategy, CAST(confidence AS REAL) AS confidence,
@@ -3144,9 +3133,24 @@ def load_db(lang: str = "sk") -> pd.DataFrame | None:
                   has_coordination, dative_present, indirect_object_present,
                   adjective_count, adverb_count, pronoun_count
            FROM skinner_analysis WHERE run_id = ?""",
-        conn, params=(run_id,),
     )
-    conn.close()
+
+
+def _load_bible_sql(table: str, sql: str) -> pd.DataFrame | None:
+    """Load one Bible-corpus table for the latest bible_bkr run and localize book names."""
+    from a_paths import DB_PATH
+    from n_db import latest_bible_run_id
+    import sqlite3
+    if not DB_PATH.exists():
+        return None
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        run_id = latest_bible_run_id(table)
+        if run_id is None:
+            return None
+        df = pd.read_sql(sql, conn, params=(run_id,))
+    finally:
+        conn.close()
     return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
@@ -3750,13 +3754,9 @@ def _read_upload(f) -> str:
 
 
 @st.cache_resource(show_spinner="Loading Stanza NLP model (first run ~10 s)…")
-def _pipeline():
-    from c_input import create_input_from_text
-    from d_preprocessing import preprocess_text
-    from e_extraction import extract_features
-    from f_semantics import semantic_enrichment
-    from j_q_skinner_taxonomy import classify_q_skinner
-    return create_input_from_text, preprocess_text, extract_features, semantic_enrichment, classify_q_skinner
+def _warm_nlp(lang: str):
+    from d_preprocessing import get_nlp
+    return get_nlp(lang)
 
 
 def run_upload_pipeline(
@@ -3765,7 +3765,6 @@ def run_upload_pipeline(
     source: str = "uploaded_document",
     interaction: str = "unknown",
     stimulus: str = "unknown",
-    sentence_window: int = 150,
 ) -> tuple:
     """Run the full 4-stage pipeline on an uploaded text, segmented into chapters.
 
@@ -3782,14 +3781,12 @@ def run_upload_pipeline(
         text=text,
         corpus_id=corpus_id,
         source_name=corpus_id,
-        sentence_window=sentence_window,
     )
 
     all_sk, all_rel, all_ref = [], [], []
     lemmas = []
 
-    # Warm up Stanza via existing cache
-    _pipeline()
+    _warm_nlp(pipeline_lang)
 
     for unit in units:
         # Override source/interaction/stimulus on the unit from user selection
@@ -3824,42 +3821,22 @@ def run_upload_pipeline(
     return skinner_df, rel_df, ref_df, units, lemmas
 
 
-def run_pipeline(
-    text: str,
-    source: str = "uploaded_document",
-    interaction: str = "unknown",
-    stimulus: str = "unknown",
-) -> tuple:
-    """Legacy single-stage pipeline (Q. Skinner only).
-
-    Kept for compatibility with older callers.  New UI code should use
-    ``run_upload_pipeline()``, which shares ``k_pipeline_core.process_unit()``
-    with the Bible batch runner.
-    """
-    from dataclasses import asdict
-    mk_input, preprocess, extract, enrich, classify = _pipeline()
-    inp = mk_input(text=text, source=source, interaction=interaction, stimulus=stimulus)
-    pre = preprocess(inp)
-    feats = extract(pre)
-    sems = enrich(feats)
-    rows = [asdict(classify(f, s, inp)) for f, s in zip(feats, sems)]
-    lemmas = [(f.sentence, f.lemmas) for f in feats]
-    return pd.DataFrame(rows), lemmas
-
+_CTX_WARN_KEYS = {
+    "qa_mono": "ctx_warn_qa_mono",
+    "audio_written": "ctx_warn_audio_written",
+    "written_spoken": "ctx_warn_written_spoken",
+    "dialogue_none": "ctx_warn_dialogue_none",
+}
 
 
 def _context_warnings(source: str, interaction: str, stimulus: str, T: dict) -> list[str]:
-    """Return list of localised warning strings for inconsistent context params."""
-    warns = []
-    if interaction == "monologue" and stimulus in {"question_prompt", "answer_context"}:
-        warns.append(T["ctx_warn_qa_mono"])
-    if source in {"written_record", "uploaded_document"} and stimulus == "auditory_verbal_stimulus":
-        warns.append(T["ctx_warn_audio_written"])
-    if source == "spoken_record" and stimulus == "written_verbal_stimulus":
-        warns.append(T["ctx_warn_written_spoken"])
-    if interaction == "dialogue" and stimulus == "none":
-        warns.append(T["ctx_warn_dialogue_none"])
-    return warns
+    """Localised warnings for the same Skinner-context rules as TextInput.validate()."""
+    from c_input import context_inconsistency_codes
+    return [
+        T[key]
+        for code in context_inconsistency_codes(source, interaction, stimulus)
+        if (key := _CTX_WARN_KEYS.get(code))
+    ]
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -3943,46 +3920,22 @@ def _top_n_cols(df_wide: pd.DataFrame, id_col: str, n: int) -> pd.DataFrame:
 
 @st.cache_data(ttl=300)
 def load_refined(lang: str = "sk") -> pd.DataFrame | None:
-    db = OUTPUT / "bible_analysis.db"
-    if not db.exists():
-        return None
-    import sqlite3
-    from n_db import latest_bible_run_id
-    conn = sqlite3.connect(db)
-    run_id = latest_bible_run_id("refined_descriptions")
-    if run_id is None:
-        conn.close()
-        return None
-    df = pd.read_sql(
+    return _load_bible_sql(
+        "refined_descriptions",
         """SELECT sentence_id, sentence, file_name,
                   description_type, semantic_cluster, lemmas
            FROM refined_descriptions WHERE run_id=?""",
-        conn, params=(run_id,),
     )
-    conn.close()
-    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=300)
 def load_verbal_full(lang: str = "sk") -> pd.DataFrame | None:
-    db = OUTPUT / "bible_analysis.db"
-    if not db.exists():
-        return None
-    import sqlite3
-    from n_db import latest_bible_run_id
-    conn = sqlite3.connect(db)
-    run_id = latest_bible_run_id("verbal_relations")
-    if run_id is None:
-        conn.close()
-        return None
-    df = pd.read_sql(
+    return _load_bible_sql(
+        "verbal_relations",
         """SELECT sentence_id, sentence, file_name,
                   local_pattern, semantic_cluster
            FROM verbal_relations WHERE run_id=?""",
-        conn, params=(run_id,),
     )
-    conn.close()
-    return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
 @st.cache_data(ttl=600)

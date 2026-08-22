@@ -124,7 +124,7 @@ def _normalize_row(row: dict) -> dict:
 def load_rows(table: str, run_id: str | None = None) -> list:
     """Return rows for the given run_id (or latest non-upload run if None)."""
     if run_id is None:
-        run_id = _latest_pipeline_run_id(table)
+        run_id = latest_bible_run_id(table)
     conn = get_conn()
     conn.execute("PRAGMA cache_size = -32768")  # 32 MB page cache
     rows = []
@@ -183,11 +183,11 @@ def latest_run_id(table: str) -> str | None:
     return runs[-1] if runs else None
 
 
-def _latest_pipeline_run_id(table: str) -> str | None:
-    """Return the most recent Bible-corpus run_id (ordered by rowid), or None.
+def latest_bible_run_id(table: str) -> str | None:
+    """Return the most-recent Bible-corpus run_id in *table*, or None.
 
     Prefers rows where corpus_id = 'bible_bkr' when that column exists.
-    Falls back to the old run_id NOT LIKE 'upload_%' guard for backward compat.
+    Falls back to run_id NOT LIKE 'upload_%' for older databases.
     """
     conn = get_conn()
     try:
@@ -204,17 +204,7 @@ def _latest_pipeline_run_id(table: str) -> str | None:
             ).fetchone()
         return row[0] if row else None
     except sqlite3.OperationalError as exc:
-        logger.info("_latest_pipeline_run_id(%s): %s", table, exc)
+        logger.info("latest_bible_run_id(%s): %s", table, exc)
         return None
     finally:
         conn.close()
-
-
-def latest_bible_run_id(table: str) -> str | None:
-    """Public alias of _latest_pipeline_run_id().
-
-    Returns the most-recent run_id for Bible-corpus rows in *table*, or None.
-    Uses corpus_id = 'bible_bkr' when the column exists; falls back to the
-    run_id NOT LIKE 'upload_%' guard for older databases.
-    """
-    return _latest_pipeline_run_id(table)

@@ -127,5 +127,38 @@ class DemoVocabularyTests(unittest.TestCase):
         self.assertAlmostEqual(sum(DESC_WEIGHTS), 1.0, places=9)
 
 
+class ContextConsistencyTests(unittest.TestCase):
+    def test_consistent_written_monologue_is_clean(self):
+        from c_input import context_inconsistency_codes
+        self.assertEqual(
+            context_inconsistency_codes("written_record", "monologue", "unknown"),
+            [],
+        )
+
+    def test_qa_stimulus_requires_dialogue(self):
+        from c_input import CONTEXT_ISSUE_QA_MONO, context_inconsistency_codes, create_input_from_text
+        self.assertEqual(
+            context_inconsistency_codes("written_record", "monologue", "question_prompt"),
+            [CONTEXT_ISSUE_QA_MONO],
+        )
+        with self.assertRaises(ValueError) as ctx:
+            create_input_from_text(
+                text="Otázka?",
+                source="written_record",
+                interaction="monologue",
+                stimulus="question_prompt",
+            )
+        self.assertIn("dialogue", str(ctx.exception))
+
+    def test_written_source_rejects_auditory_stimulus(self):
+        from c_input import CONTEXT_ISSUE_AUDIO_WRITTEN, context_inconsistency_codes
+        self.assertEqual(
+            context_inconsistency_codes(
+                "uploaded_document", "unknown", "auditory_verbal_stimulus"
+            ),
+            [CONTEXT_ISSUE_AUDIO_WRITTEN],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
