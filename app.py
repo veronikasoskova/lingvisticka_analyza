@@ -11,6 +11,8 @@ SRC = Path(__file__).parent
 sys.path.insert(0, str(SRC))
 OUTPUT = SRC / "output"
 
+from genre_maps import GENRE_LABELS, detect_book_genre
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -415,6 +417,13 @@ TRANSLATIONS = {
         "lbl_intervention": "Intervence",
         "col_style_cluster": "Stylový shluk",
         "col_silhouette": "Silhouette",
+        "col_genre": "Žánr",
+        "sec_genre": "📜 Literární žánry",
+        "genre_table_desc": "Kanonický **literární žánr** každé knihy a počet vět v aktuálním výběru korpusu.",
+        "genre_bar_title": "Počet vět podle žánru",
+        "genre_bar_desc": "Rozložení analyzovaných vět napříč biblickými literárními žánry. Žánr se přiřazuje z mapy knih, ne z klasifikátoru vět.",
+        "genre_intention_title": "Záměry podle žánru",
+        "genre_intention_desc": "Distribuce primárních záměrů v jednotlivých literárních žánrech — ukazuje, čím se rétorika žánrů liší.",
         # Section 16 — Linguistic features
         "sec_ling_features": "🔡 Lingvistické příznaky",
         "ling_ttr_desc": "**Lexikální diverzita** (type-token ratio) — poměr jedinečných lemmat k celkovému počtu. Nižší hodnota = formulaičtější, rituálnější text.",
@@ -1159,6 +1168,13 @@ TRANSLATIONS = {
         "lbl_intervention": "Intervencia",
         "col_style_cluster": "Štýlový zhluk",
         "col_silhouette": "Silhouette",
+        "col_genre": "Žáner",
+        "sec_genre": "📜 Literárne žánre",
+        "genre_table_desc": "Kanonický **literárny žáner** každej knihy a počet viet v aktuálnom výbere korpusu.",
+        "genre_bar_title": "Počet viet podľa žánru",
+        "genre_bar_desc": "Rozloženie analyzovaných viet naprieč biblickými literárnymi žánrami. Žáner sa priraďuje z mapy kníh, nie z klasifikátora viet.",
+        "genre_intention_title": "Zámery podľa žánru",
+        "genre_intention_desc": "Distribúcia primárnych zámerov v jednotlivých literárnych žánroch — ukazuje, čím sa rétorika žánrov líši.",
         # Section 16 — Linguistic features
         "sec_ling_features": "🔡 Lingvistické príznaky",
         "ling_ttr_desc": "**Lexikálna diverzita** (type-token ratio) — pomer jedinečných lemiem k celkovému počtu. Nižšia hodnota = formulaickejší, rituálnejší text.",
@@ -1901,6 +1917,13 @@ TRANSLATIONS = {
         "lbl_intervention": "Intervention",
         "col_style_cluster": "Style cluster",
         "col_silhouette": "Silhouette",
+        "col_genre": "Genre",
+        "sec_genre": "📜 Literary genres",
+        "genre_table_desc": "Canonical **literary genre** of each book and sentence count in the current corpus selection.",
+        "genre_bar_title": "Sentence count by genre",
+        "genre_bar_desc": "Distribution of analysed sentences across biblical literary genres. Genre is assigned from the book map, not from the sentence classifier.",
+        "genre_intention_title": "Intentions by genre",
+        "genre_intention_desc": "Distribution of primary intentions across literary genres — shows how the rhetoric of each genre differs.",
         # Section 16 — Linguistic features
         "sec_ling_features": "🔡 Linguistic Features",
         "ling_ttr_desc": "**Lexical diversity** (type-token ratio) — ratio of unique lemmas to total lemmas. Lower = more formulaic or ritual text.",
@@ -2594,15 +2617,6 @@ VALUE_LABELS = {
             "eschatological": "Eschatologický",
             "attribute_description": "Popis vlastnosti",
             "state_description": "Popis stavu",
-            "prophetic_oracle": "Prorocký výrok",
-            "blessing_formula": "Požehnání",
-            "lament": "Nářek",
-            "wisdom_saying": "Mudroslovný výrok",
-            "legal_injunction": "Právní příkaz",
-            "divine_speech": "Boží řeč",
-            "narrative_event": "Narativní událost",
-            "doxological_praise": "Doxologická chvála",
-            "covenant_formula": "Smluvní formule",
         },
         "sk": {
             "theological_statement": "Teologické tvrdenie",
@@ -2618,15 +2632,6 @@ VALUE_LABELS = {
             "eschatological": "Eschatologický",
             "attribute_description": "Popis vlastnosti",
             "state_description": "Popis stavu",
-            "prophetic_oracle": "Prorocký výrok",
-            "blessing_formula": "Požehnanie",
-            "lament": "Nárek",
-            "wisdom_saying": "Mudroslovný výrok",
-            "legal_injunction": "Právny príkaz",
-            "divine_speech": "Božia reč",
-            "narrative_event": "Naratívna udalosť",
-            "doxological_praise": "Doxologická chvála",
-            "covenant_formula": "Zmluvná formula",
         },
         "en": {
             "theological_statement": "Theological statement",
@@ -2642,15 +2647,6 @@ VALUE_LABELS = {
             "eschatological": "Eschatological",
             "attribute_description": "Attribute description",
             "state_description": "State description",
-            "prophetic_oracle": "Prophetic oracle",
-            "blessing_formula": "Blessing formula",
-            "lament": "Lament",
-            "wisdom_saying": "Wisdom saying",
-            "legal_injunction": "Legal injunction",
-            "divine_speech": "Divine speech",
-            "narrative_event": "Narrative event",
-            "doxological_praise": "Doxological praise",
-            "covenant_formula": "Covenant formula",
         },
     },
     "convention": {
@@ -2965,6 +2961,8 @@ VALUE_LABELS = {
     },
 }
 
+VALUE_LABELS["genre"] = GENRE_LABELS
+
 # ──────────────────────────────────────────────────────────────────────────────
 # SIDEBAR — LANGUAGE SELECTOR
 # ──────────────────────────────────────────────────────────────────────────────
@@ -3007,6 +3005,7 @@ VVT = VALUE_LABELS["verbal_type"][lang]
 VD  = VALUE_LABELS["description_type"][lang]
 VC  = VALUE_LABELS["convention"][lang]
 VL  = VALUE_LABELS["locution"][lang]
+VG  = VALUE_LABELS["genre"][lang]
 VP  = VALUE_LABELS["perlocution"][lang]
 VRST = VALUE_LABELS["rst"][lang]
 VMODE = VALUE_LABELS["discourse_mode"][lang]
@@ -3081,6 +3080,7 @@ def _localize_df_values(df: pd.DataFrame) -> pd.DataFrame:
         "description_type": VD,
         "skinner_class": VSK,
         "control_role": VCR,
+        "genre": VG,
     }
     for col, mp in col_maps.items():
         if col in out.columns:
@@ -3235,6 +3235,16 @@ def _bkr_abbr(v: object) -> str:
         if x in names.values():
             return abbr
     return x
+
+
+def _book_genre_key(v: object) -> str:
+    """Literary genre key for a BKR file name, abbreviation, or localized book label."""
+    return detect_book_genre(_bkr_abbr(v))
+
+
+def _book_genre_label(v: object) -> str:
+    key = _book_genre_key(v)
+    return VG.get(key, key)
 
 
 def _bkr_book(s: "pd.Series") -> "pd.Series":
@@ -5146,10 +5156,12 @@ with tab_bible:
                         sd["file_name"]
                         .str.replace("bible_BKR_", "", regex=False)
                         .str.replace(".txt", "", regex=False))
+                    sd["genre"] = sd["file_name"].map(_book_genre_label)
                     st.caption(T["style_table_desc"])
                     st.dataframe(
-                        sd[["book", "style_cluster", "silhouette_score"]].rename(columns={
+                        sd[["book", "genre", "style_cluster", "silhouette_score"]].rename(columns={
                             "book":             T["x_book"],
+                            "genre":            T["col_genre"],
                             "style_cluster":    T["col_style_cluster"],
                             "silhouette_score": T["col_silhouette"],
                         }),
@@ -5174,6 +5186,52 @@ with tab_bible:
                         )
             else:
                 st.info(T["no_style"])
+
+        # ── 7b. LITERARY GENRES ───────────────────────────────────────────────
+        with st.expander("📖 " + T["sec_genre"]):
+            _gdf = db_df.copy()
+            if not _gdf.empty and "book" in _gdf.columns:
+                _gdf["_genre"] = _gdf["book"].map(_book_genre_label)
+                _gcounts = (
+                    _gdf["_genre"].value_counts()
+                    .rename_axis("_genre")
+                    .reset_index(name="n")
+                )
+                c1, c2 = st.columns([1, 2])
+                with c1:
+                    st.caption(T["genre_table_desc"])
+                    st.dataframe(
+                        _gcounts.rename(columns={
+                            "_genre": T["col_genre"],
+                            "n": T["x_sentences"],
+                        }),
+                        use_container_width=True, height=420,
+                    )
+                with c2:
+                    st.caption(T["genre_bar_desc"])
+                    st.plotly_chart(
+                        fig_hbar(_gcounts, "n", "_genre",
+                                 T["genre_bar_title"], h=420,
+                                 xlabel=T["x_sentences"], ylabel=T["col_genre"]),
+                        use_container_width=True,
+                    )
+                if "primary_intention" in _gdf.columns:
+                    _gh = (
+                        _gdf.groupby(["_genre", "primary_intention"])
+                        .size()
+                        .unstack(fill_value=0)
+                        .reset_index()
+                    )
+                    _gh = _gh.rename(columns={
+                        c: VI.get(c, c) for c in _gh.columns if c != "_genre"
+                    })
+                    st.caption(T["genre_intention_desc"])
+                    st.plotly_chart(
+                        fig_heatmap(_gh, "_genre", T["genre_intention_title"], h=420),
+                        use_container_width=True,
+                    )
+            else:
+                st.info(T["no_db"])
 
         # ── 8. DEPENDENCY HIERARCHY ───────────────────────────────────────────────
         with st.expander("📖 " + T["sec_dependency"]):
@@ -5712,6 +5770,7 @@ with tab_bible:
                     sample_display["file_name"]
                     .str.replace("bible_BKR_", "", regex=False)
                     .str.replace(".txt", "", regex=False))
+                sample_display[T["col_genre"]] = sample["file_name"].map(_book_genre_label)
                 sample_display = sample_display.rename(columns={
                     "file_name":         T["x_book"],
                     "illocutionary_force": T["col_force"],
@@ -5719,7 +5778,7 @@ with tab_bible:
                     "confidence":        T["col_confidence"],
                     "sentence":          T["col_sentence"],
                 })
-                keep = [T["x_book"], T["col_force"], T["col_intention"],
+                keep = [T["x_book"], T["col_genre"], T["col_force"], T["col_intention"],
                         T["col_confidence"], T["col_sentence"]]
                 keep = [c for c in keep if c in sample_display.columns]
                 st.caption(T["sample_desc"])

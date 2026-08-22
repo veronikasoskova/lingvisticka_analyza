@@ -52,7 +52,7 @@ bible_BKR_Na.txt,Na,prophetic_minor,954,1,0,-0.072,0.3816,0.7179,7.0119
 bible_BKR_Neh.txt,Neh,narrative_historical,7940,3,1,-0.2391,-0.0535,1.2151,-2.4776
 bible_BKR_Nu.txt,Nu,narrative_pentateuch,24034,3,3,-0.3163,-0.1339,5.5714,1.5955
 bible_BKR_Oz.txt,Oz,prophetic_minor,3933,1,0,-0.167,0.2041,1.2159,3.3868
-bible_BKR_Pis.txt,Pis,wisdom_poetry,2059,1,2,-0.0491,0.1667,-1.2588,7.0947
+bible_BKR_Pis.txt,Pis,lyrical_poetry,2059,1,2,-0.0491,0.1667,-1.2588,7.0947
 bible_BKR_Pl.txt,Pl,lyrical_poetry,2585,1,0,-0.082,0.2699,-0.1029,5.1616
 bible_BKR_Pr.txt,Pr,wisdom_poetry,10767,1,8,-0.0556,0.0335,-0.7226,3.4023
 bible_BKR_R.txt,R,epistle_pauline,7245,2,4,0.3558,-0.2058,-5.534,-2.2883
