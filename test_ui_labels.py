@@ -6,6 +6,7 @@ import sqlite3
 import unittest
 
 from a_paths import DB_PATH, PROJECT_ROOT
+from generate_demo_db import RUN_ID as DEMO_RUN_ID
 
 
 def _load_assign(name: str):
@@ -77,7 +78,8 @@ class DemoDbDisplayLabelTests(unittest.TestCase):
                     labels = VALUE_LABELS[mapping_name][lang]
                     rows = conn.execute(
                         f'SELECT DISTINCT "{col}" FROM "{table}" '
-                        f'WHERE "{col}" IS NOT NULL AND "{col}" != ""'
+                        f'WHERE run_id = ? AND "{col}" IS NOT NULL AND "{col}" != ""',
+                        (DEMO_RUN_ID,),
                     )
                     for (raw,) in rows:
                         if str(raw) not in labels:

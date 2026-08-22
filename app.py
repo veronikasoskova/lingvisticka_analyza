@@ -3144,7 +3144,7 @@ def load_db(lang: str = "sk") -> pd.DataFrame | None:
 def _load_bible_sql(table: str, sql: str) -> pd.DataFrame | None:
     """Load one Bible-corpus table for the latest bible_bkr run and localize book names."""
     from a_paths import DB_PATH
-    from n_db import latest_bible_run_id
+    from n_db import coerce_numeric_columns, latest_bible_run_id
     import sqlite3
     if not DB_PATH.exists():
         return None
@@ -3156,14 +3156,12 @@ def _load_bible_sql(table: str, sql: str) -> pd.DataFrame | None:
         df = pd.read_sql(sql, conn, params=(run_id,))
     finally:
         conn.close()
-    # Demo/live DBs store counts and 0/1 flags as TEXT; Tab 2 charts need numbers.
-    for col in (
+    # Demo/live DBs store counts and flags as TEXT ("0"/"1" or "True"/"False").
+    coerce_numeric_columns(df, (
         "confidence", "type_token_ratio",
         "has_coordination", "dative_present", "indirect_object_present",
         "adjective_count", "adverb_count", "pronoun_count",
-    ):
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
+    ))
     return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 

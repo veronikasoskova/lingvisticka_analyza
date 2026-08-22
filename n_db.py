@@ -45,17 +45,47 @@ def make_run_id() -> str:
     return datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
 
+# Tab 2 charts call groupby().mean() on these flags.  Live rows used to be
+# stored as the strings "True"/"False"; pandas to_numeric() turns those into NaN.
+_BOOL_TEXT = {
+    "true": 1.0, "false": 0.0,
+    "1": 1.0, "0": 0.0,
+    "1.0": 1.0, "0.0": 0.0,
+    "yes": 1.0, "no": 0.0,
+}
+
+
 def _sql_value(column: str, value):
     """Coerce a cell for SQLite.
 
-    ``None`` is stored as SQL NULL (not the string ``"None"``).  All other
-    values stay TEXT-compatible via ``str()``, matching the auto-schema.
+    ``None`` is stored as SQL NULL (not the string ``"None"``).
+    Booleans are stored as ``"0"``/``"1"`` so Tab 2 ``mean()`` charts work.
+    All other values stay TEXT-compatible via ``str()``, matching the auto-schema.
     """
     if value is None:
         return None
     if column in _NULLISH_FIELDS and value == "":
         return None
+    if isinstance(value, bool):
+        return "1" if value else "0"
     return str(value)
+
+
+def coerce_numeric_columns(df, columns):
+    """Turn TEXT 0/1 and True/False flags into numbers for aggregation."""
+    import pandas as pd
+
+    for col in columns:
+        if col not in df.columns:
+            continue
+        series = df[col]
+        if pd.api.types.is_bool_dtype(series):
+            df[col] = series.astype(int)
+            continue
+        numeric = pd.to_numeric(series, errors="coerce")
+        mapped = series.astype(str).str.strip().str.lower().map(_BOOL_TEXT)
+        df[col] = mapped.fillna(numeric)
+    return df
 
 
 def insert_rows(table: str, rows: list, run_id: str) -> int:
