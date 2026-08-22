@@ -259,11 +259,6 @@ def is_imperative_like(sentence: SentenceData) -> bool:
                 text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
             ):
                 return True
-            # negated imperatives: ne-Xej / ne-Xaj / ne-Xuj
-            if pos == "VERB" and text.startswith("ne") and (
-                text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
-            ):
-                return True
             # Slovak 2pl endings not always tagged
             if lang == "sk" and pos == "VERB" and (
                 text.endswith("ajte") or text.endswith("ujte")

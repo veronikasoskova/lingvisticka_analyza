@@ -109,12 +109,12 @@ def load_documents() -> list[dict]:
     if not files:
         raise FileNotFoundError(f"No bible_BKR_*.txt files found: {BIBLE_FOLDER}")
 
-    return [
-        {"file_name": p.name, "tokens": _tokenize_raw(_parse_bkr_file(p)
-                                                       and " ".join(_parse_bkr_file(p).values())
-                                                       or p.read_text(encoding="utf-8"))}
-        for p in files
-    ]
+    docs = []
+    for p in files:
+        parsed = _parse_bkr_file(p)
+        raw = " ".join(parsed.values()) if parsed else p.read_text(encoding="utf-8")
+        docs.append({"file_name": p.name, "tokens": _tokenize_raw(raw)})
+    return docs
 
 
 def load_documents_with_chapters(max_files: int | None = None) -> list[dict]:

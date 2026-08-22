@@ -3118,6 +3118,11 @@ STR_CLR = translate_clr(STRATEGY_CLR, VS)
 # ──────────────────────────────────────────────────────────────────────────────
 
 def csv(rel: str) -> pd.DataFrame | None:
+    return _csv_cached(rel, lang)
+
+
+@st.cache_data(ttl=300)
+def _csv_cached(rel: str, lang: str) -> pd.DataFrame | None:
     p = OUTPUT / rel
     return _localize_book_columns(pd.read_csv(p)) if p.exists() else None
 
@@ -3732,8 +3737,6 @@ def _save_to_db(
     ref_df: "pd.DataFrame | None" = None,
 ) -> int:
     """Write all three analysis DataFrames to DB under run_id. Returns total row count."""
-    import sys as _sys
-    _sys.path.insert(0, str(SRC))
     from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
     total = 0
     if skinner_df is not None and not skinner_df.empty:
@@ -5035,7 +5038,6 @@ with tab_bible:
             ref_df = load_refined(lang)
             if ref_df is not None:
                 ref_df = ref_df.copy()
-                ref_df["book"] = _bkr_book(ref_df["book"])
 
             if ref_df is None:
                 st.info(T["no_patterns"])
@@ -5099,10 +5101,8 @@ with tab_bible:
             verb_df = load_verbal_full(lang)
             if ref_df2 is not None:
                 ref_df2 = ref_df2.copy()
-                ref_df2["book"] = _bkr_book(ref_df2["book"])
             if verb_df is not None:
                 verb_df = verb_df.copy()
-                verb_df["book"] = _bkr_book(verb_df["book"])
 
             if ref_df2 is None:
                 st.info(T["no_db"])
@@ -5350,7 +5350,6 @@ with tab_bible:
             if db_df is not None and _ling_cols.issubset(db_df.columns):
 
                 _ldf = db_df.copy()
-                _ldf["book"] = _bkr_book(_ldf["book"])
 
                 # ── 1. TTR bar chart ──────────────────────────────────────────────
                 st.caption(T["ling_ttr_desc"])

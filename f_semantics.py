@@ -65,7 +65,7 @@ DESCRIPTION_WORDS: frozenset = frozenset({
     "jevit", "zdát", "zdáti", "vypadat",
     "stávat", "stát",
     # Existential / locative
-    "nacházet", "ležet", "sedět",  # "stát" — DEAD: duplicitné (viš copular vyššie)
+    "nacházet", "ležet", "sedět",
     # Named / identified as
     "nazývat", "nazvat", "jmenovat", "zvát",
     "znamenat", "sloužit",
@@ -73,8 +73,6 @@ DESCRIPTION_WORDS: frozenset = frozenset({
     "patřit", "náležet", "vlastnit",
     # Creation / formation
     "učinit", "udělat", "vytvořit", "utvořit", "zformovat",
-    # Change-of-state (becoming)
-    "stávat",
 })
 
 # ── Reported speech ──────────────────────────────────────────────────────────
@@ -82,7 +80,7 @@ REPORTED_SPEECH_WORDS: frozenset = frozenset({
     # Original 5
     "říci", "odpovědět", "mluvit", "volat", "pravit",
     # Extended speech verbs (Stanza lemmas from BKR)
-    "pravit", "promluvit", "oznámit", "zvěstovat", "kázat",
+    "promluvit", "oznámit", "zvěstovat", "kázat",
     "vzkázat", "hlásit", "ohlásit", "vypravovat",
     "svědčit", "vyznávat", "přiznat",
     "tázat", "ptát", "zpovídat",
@@ -99,7 +97,6 @@ UNCERTAINTY_WORDS: frozenset = frozenset({
     "nevědět", "neznát", "tázat", "ptát",
     "nejistý", "pochybný",
     "hádat", "odhadovat",
-    "snad",
 })
 
 # ── Negation ─────────────────────────────────────────────────────────────────
@@ -418,7 +415,6 @@ def semantic_enrichment(
 
         if (
             not _has_override
-            and hasattr(f, "local_pattern")
             and f.local_pattern == "copular_description"
         ):
             description_score += _DESC_COPULAR_BONUS
@@ -474,11 +470,6 @@ def export_semantics_csv(semantics: List[SemanticFeatures], output_path: str):
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
 
-    rows = [
-        {k: v for k, v in vars(s).items()}
-        for s in semantics
-    ]
-    # Use asdict-equivalent for dataclasses
     from dataclasses import asdict
     rows = [asdict(s) for s in semantics]
 

@@ -85,21 +85,22 @@ def _count_sentences(text: str) -> int:
     return max(1, len(_SENTENCE_END_RE.split(text.strip())))
 
 
+_UNIT_META = {
+    "chapter": ("Kapitola", "chapter"),
+    "section": ("Sekce", "section"),
+}
+
+
 def _make_display(index: int, total: int, unit_type: str) -> str:
     """Return a zero-padded unit label, e.g. 'Kapitola 03' or 'Sekce 03'."""
     width = len(str(total))
-    if unit_type == "chapter":
-        label = "Kapitola"
-    elif unit_type == "section":
-        label = "Sekce"
-    else:
-        label = "Dokument"
+    label, _ = _UNIT_META.get(unit_type, ("Dokument", "document"))
     return f"{label} {index:0{width}d}"
 
 
 def _make_unit_id(index: int, total: int, unit_type: str) -> str:
     width = len(str(total))
-    prefix = "chapter" if unit_type == "chapter" else ("section" if unit_type == "section" else "document")
+    _, prefix = _UNIT_META.get(unit_type, ("Dokument", "document"))
     return f"{prefix}_{index:0{width}d}"
 
 

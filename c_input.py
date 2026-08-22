@@ -257,84 +257,44 @@ def load_text_from_file(
 # ==========================================================
 
 def create_input_from_text(
-
     text: str,
-
     source: SourceType = "unknown",
-
     interaction: InteractionType = "unknown",
-
     stimulus: StimulusType = "unknown",
-
     speaker: Optional[str] = None,
-
     addressee: Optional[str] = None,
-
     notes: Optional[str] = None,
-
     corpus_id: Optional[str] = None,
-
     source_id: Optional[str] = None,
-
     document_id: Optional[str] = None,
-
     book: Optional[str] = None,
-
     chapter: Optional[int] = None,
-
     verse: Optional[int] = None,
-
     unit: TextUnitType = "unknown",
-
     text_id: Optional[str] = None,
-
 ) -> TextInput:
-
-    context = InputContext(
-
-        source=source,
-
-        interaction=interaction,
-
-        stimulus=stimulus,
-
-        speaker=speaker,
-
-        addressee=addressee,
-
-        notes=notes,
-    )
-
-    metadata = TextMetadata(
-
-        text_id=text_id or str(uuid4()),
-
-        corpus_id=corpus_id,
-
-        source_id=source_id,
-
-        document_id=document_id,
-
-        book=book,
-
-        chapter=chapter,
-
-        verse=verse,
-
-        unit=unit,
-    )
-
     text_input = TextInput(
-
         text=text,
-
-        context=context,
-
-        metadata=metadata,
+        context=InputContext(
+            source=source,
+            interaction=interaction,
+            stimulus=stimulus,
+            speaker=speaker,
+            addressee=addressee,
+            notes=notes,
+        ),
+        metadata=TextMetadata(
+            text_id=text_id or str(uuid4()),
+            corpus_id=corpus_id,
+            source_id=source_id,
+            document_id=document_id,
+            book=book,
+            chapter=chapter,
+            verse=verse,
+            unit=unit,
+        ),
     )
-
     text_input.validate()
-
     return text_input
 
 # ==========================================================
@@ -342,75 +302,38 @@ def create_input_from_text(
 # ==========================================================
 
 def create_input_from_file(
-
     file_path: str,
-
     source: SourceType = "written_record",
-
     interaction: InteractionType = "monologue",
-
     stimulus: StimulusType = "unknown",
-
     speaker: Optional[str] = None,
-
     addressee: Optional[str] = None,
-
     notes: Optional[str] = None,
-
     corpus_id: Optional[str] = None,
-
     source_id: Optional[str] = None,
-
     document_id: Optional[str] = None,
-
     book: Optional[str] = None,
-
     chapter: Optional[int] = None,
-
     verse: Optional[int] = None,
-
     unit: TextUnitType = "document",
-
     text_id: Optional[str] = None,
-
 ) -> TextInput:
-
     path = Path(file_path)
-
-    text = load_text_from_file(
-        str(path)
-    )
-
     return create_input_from_text(
-
-        text=text,
-
+        text=load_text_from_file(str(path)),
         source=source,
-
         interaction=interaction,
-
         stimulus=stimulus,
-
         speaker=speaker,
-
         addressee=addressee,
-
         notes=notes,
-
         corpus_id=corpus_id,
-
         source_id=source_id or path.name,
-
         document_id=document_id,
-
         book=book,
-
         chapter=chapter,
-
         verse=verse,
-
         unit=unit,
-
         text_id=text_id,
     )
 
