@@ -299,6 +299,7 @@ TRANSLATIONS = {
         "tax_dialogue_desc": "**Podíl vět, které jsou součástí dialogu** (přímé řeči) v každé biblické knize. Vyšší hodnota = kniha obsahuje více dialogů a přímých promluv.",
         "tax_control_title": "Role kontroly",
         "tax_control_desc": "Klasifikace vět z hlediska **vztahu kontroly** mezi mluvčím a posluchačem: `stimulus` = mluvčí kontroluje posluchače, `response` = mluvčí reaguje na podnět, `record` = neutrální záznam bez jasné kontroly.",
+        "tax_bf_live_missing": "Živé BKR výsledky ukládají Quentin Skinnerovu vrstvu. Třídy B. F. Skinnera (`tact` / `mand`…) v tomto korpusu nejsou — dialog a tact/autoclitic níže jsou odvozené z ilokuční síly.",
         # Section 11
         "sec_word_rel": "🔤 Sémantické asociace slov",
         "top_pmi_title": "Nejsilnější sémantické asociace",
@@ -1037,6 +1038,7 @@ TRANSLATIONS = {
         "tax_dialogue_desc": "**Podiel viet, ktoré sú súčasťou dialógu** (priamej reči) v každej biblickej knihe. Vyššia hodnota = kniha obsahuje viac dialógov a priamych prehovorov.",
         "tax_control_title": "Rola kontroly",
         "tax_control_desc": "Klasifikácia viet z hľadiska **vzťahu kontroly** medzi hovoriacim a poslucháčom: `stimulus` = hovoriaci kontroluje poslucháča, `response` = hovoriaci reaguje na podnet, `record` = neutrálny záznam bez jasnej kontroly.",
+        "tax_bf_live_missing": "Živé BKR výsledky ukladajú Quentin Skinnerovu vrstvu. Triedy B. F. Skinnera (`tact` / `mand`…) v tomto korpuse nie sú — dialóg a tact/autoclitic nižšie sú odvodené z ilokučnej sily.",
         "sec_word_rel": "🔤 Sémantické asociácie slov",
         "top_pmi_title": "Najsilnejšie sémantické asociácie",
         "top_pmi_desc": "Dvojice slov s **najvyšším skóre PMI** (Pointwise Mutual Information) — miera toho, ako silno sa dve slová v texte navzájom priťahujú. Vysoké PMI = tieto dve slová sa v texte vyskytujú spolu oveľa častejšie, ako by zodpovedalo náhode.",
@@ -1770,6 +1772,7 @@ TRANSLATIONS = {
         "tax_dialogue_desc": "**Proportion of sentences that are part of a dialogue** (direct speech) in each biblical book. Higher = book contains more dialogues and direct speech.",
         "tax_control_title": "Control Role",
         "tax_control_desc": "Classification of sentences in terms of the **control relationship** between speaker and listener: `stimulus` = speaker controls listener, `response` = speaker reacts to a stimulus, `record` = neutral record with no clear control.",
+        "tax_bf_live_missing": "The live BKR corpus stores the Quentin Skinner layer. B. F. Skinner classes (`tact` / `mand`…) are not in this database — dialogue density and tact/autoclitic below are derived from illocutionary force.",
         "sec_word_rel": "🔤 Semantic Word Associations",
         "top_pmi_title": "Strongest Semantic Associations",
         "top_pmi_desc": "Word pairs with the **highest PMI score** (Pointwise Mutual Information) — a measure of how strongly two words attract each other in the text. High PMI = these two words co-occur far more often than chance would predict.",
@@ -4992,6 +4995,9 @@ with tab_bible:
             tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
             tax_control = csv("taxonomy_analytics/control_role_counts.csv")
 
+            if tax_class is None and tax_control is None:
+                st.info(T.get("tax_bf_live_missing", ""))
+
             c1, c2 = st.columns(2)
 
             with c1:
@@ -5087,8 +5093,10 @@ with tab_bible:
 
                 with c2:
                     if most_con is not None:
-                        d = most_con.head(25).copy()
-                        d.columns = [T["x_word"], T["x_connections"]]
+                        d = most_con.head(25).rename(columns={
+                            "word": T["x_word"],
+                            "connection_count": T["x_connections"],
+                        })
                         st.caption(T["most_connected_desc"])
                         st.plotly_chart(
                             fig_hbar(d, T["x_connections"], T["x_word"],
