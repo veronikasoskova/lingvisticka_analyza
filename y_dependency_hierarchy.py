@@ -4,6 +4,7 @@ from collections import Counter, defaultdict
 
 from c_input import create_input_from_file
 from d_preprocessing import preprocess_text
+from e_extraction import CLAUSE_DEPS
 from a_paths import BIBLE_FOLDER, OUTPUT_DIR as ROOT_OUTPUT, list_bible_files
 
 OUTPUT_DIR = ROOT_OUTPUT / "dependency_hierarchy"
@@ -45,7 +46,7 @@ def collect_dependency_rows():
 
     all_rows = []
 
-    files = list_bible_files(limit=10)
+    files = list_bible_files()
 
     if not files:
         raise FileNotFoundError(
@@ -148,9 +149,6 @@ def export_head_lemma_counts(rows):
                 "head": head,
                 "count": count
             })
-
-
-CLAUSE_DEPS = {"advcl", "relcl", "acl", "csubj", "ccomp", "xcomp", "parataxis"}
 
 
 def _tree_depth(sentence_token_rows: list) -> int:

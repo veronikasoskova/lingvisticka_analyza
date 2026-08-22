@@ -270,10 +270,7 @@ def is_imperative_like(token, lang: str = "cs") -> bool:
             text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
         ):
             return True
-        if pos == "VERB" and text.startswith("ne") and (
-            text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
-        ):
-            return True
+        # negated ne-(e/a/u)j already matches the suffixes above
         return False
 
     # ── Slovak ───────────────────────────────────────────────────────────────
@@ -720,10 +717,6 @@ def is_intraverbal_response_candidate(
 # ==========================================================
 # E7. ECHOIC RULE SEARCH
 # ==========================================================
-
-# DEAD: presunuté do lexicons_common.STOP_LEMMAS (importované vyššie ako _REPEATED_STOP_LEMMAS)
-# _REPEATED_STOP_LEMMAS = frozenset({ ".", ",", "být", "a", "ale", ... })
-
 
 def repeated_content_lemma_present(
     feature: SentenceFeatures,

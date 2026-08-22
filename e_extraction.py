@@ -9,8 +9,8 @@ from d_preprocessing import (
 )
 
 
-# Subordinate clause dependency relations — shared with y_dependency_hierarchy.py
-_CLAUSE_DEPS = frozenset({
+# Subordinate clause dependency relations — also used by y_dependency_hierarchy.
+CLAUSE_DEPS = frozenset({
     "advcl", "relcl", "acl", "csubj", "ccomp", "xcomp", "parataxis",
 })
 
@@ -259,11 +259,6 @@ def is_imperative_like(sentence: SentenceData) -> bool:
                 text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
             ):
                 return True
-            # negated imperatives: ne-Xej / ne-Xaj / ne-Xuj
-            if pos == "VERB" and text.startswith("ne") and (
-                text.endswith("ej") or text.endswith("aj") or text.endswith("uj")
-            ):
-                return True
             # Slovak 2pl endings not always tagged
             if lang == "sk" and pos == "VERB" and (
                 text.endswith("ajte") or text.endswith("ujte")
@@ -424,7 +419,7 @@ def clause_count(sentence: SentenceData) -> int:
     Returns at least 1 for any non-empty sentence.
     """
     subordinate = sum(
-        1 for t in sentence.tokens if t.dep.split(":")[0] in _CLAUSE_DEPS
+        1 for t in sentence.tokens if t.dep.split(":")[0] in CLAUSE_DEPS
     )
     return 1 + subordinate
 

@@ -112,6 +112,45 @@ class DatabaseNullHandlingTests(unittest.TestCase):
             finally:
                 n_db.DB_PATH = original
 
+    def test_bool_flags_stored_as_zero_one(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "flags.db"
+            original = n_db.DB_PATH
+            n_db.DB_PATH = db_path
+            try:
+                n_db.insert_rows(
+                    TABLE_SKINNER,
+                    [{
+                        "sentence": "x",
+                        "has_coordination": True,
+                        "dative_present": False,
+                    }],
+                    "run1",
+                )
+                conn = sqlite3.connect(db_path)
+                raw = conn.execute(
+                    "SELECT has_coordination, dative_present FROM skinner_analysis"
+                ).fetchone()
+                conn.close()
+                self.assertEqual(raw[0], "1")
+                self.assertEqual(raw[1], "0")
+            finally:
+                n_db.DB_PATH = original
+
+    def test_coerce_numeric_columns_handles_true_false_text(self):
+        import pandas as pd
+
+        df = pd.DataFrame({
+            "has_coordination": ["True", "False", "1", "0"],
+            "confidence": ["0.73", "0.4", "0.9", "0.3"],
+        })
+        n_db.coerce_numeric_columns(df, ("has_coordination", "confidence"))
+        self.assertEqual(list(df["has_coordination"]), [1.0, 0.0, 1.0, 0.0])
+        self.assertAlmostEqual(df["has_coordination"].mean(), 0.5)
+        self.assertAlmostEqual(float(df["confidence"].mean()), 0.5825)
+
 
 class DemoVocabularyTests(unittest.TestCase):
     def test_demo_vocab_matches_production_classifiers(self):
@@ -125,6 +164,39 @@ class DemoVocabularyTests(unittest.TestCase):
         self.assertAlmostEqual(sum(INTENTION_WEIGHTS), 1.0, places=9)
         self.assertAlmostEqual(sum(RELATION_WEIGHTS), 1.0, places=9)
         self.assertAlmostEqual(sum(DESC_WEIGHTS), 1.0, places=9)
+
+
+class ContextConsistencyTests(unittest.TestCase):
+    def test_consistent_written_monologue_is_clean(self):
+        from c_input import context_inconsistency_codes
+        self.assertEqual(
+            context_inconsistency_codes("written_record", "monologue", "unknown"),
+            [],
+        )
+
+    def test_qa_stimulus_requires_dialogue(self):
+        from c_input import CONTEXT_ISSUE_QA_MONO, context_inconsistency_codes, create_input_from_text
+        self.assertEqual(
+            context_inconsistency_codes("written_record", "monologue", "question_prompt"),
+            [CONTEXT_ISSUE_QA_MONO],
+        )
+        with self.assertRaises(ValueError) as ctx:
+            create_input_from_text(
+                text="Otázka?",
+                source="written_record",
+                interaction="monologue",
+                stimulus="question_prompt",
+            )
+        self.assertIn("dialogue", str(ctx.exception))
+
+    def test_written_source_rejects_auditory_stimulus(self):
+        from c_input import CONTEXT_ISSUE_AUDIO_WRITTEN, context_inconsistency_codes
+        self.assertEqual(
+            context_inconsistency_codes(
+                "uploaded_document", "unknown", "auditory_verbal_stimulus"
+            ),
+            [CONTEXT_ISSUE_AUDIO_WRITTEN],
+        )
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ from __future__ import annotations
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 from c_unit import AnalysisUnit
 
@@ -85,21 +85,22 @@ def _count_sentences(text: str) -> int:
     return max(1, len(_SENTENCE_END_RE.split(text.strip())))
 
 
+_UNIT_META = {
+    "chapter": ("Kapitola", "chapter"),
+    "section": ("Sekce", "section"),
+}
+
+
 def _make_display(index: int, total: int, unit_type: str) -> str:
     """Return a zero-padded unit label, e.g. 'Kapitola 03' or 'Sekce 03'."""
     width = len(str(total))
-    if unit_type == "chapter":
-        label = "Kapitola"
-    elif unit_type == "section":
-        label = "Sekce"
-    else:
-        label = "Dokument"
+    label, _ = _UNIT_META.get(unit_type, ("Dokument", "document"))
     return f"{label} {index:0{width}d}"
 
 
 def _make_unit_id(index: int, total: int, unit_type: str) -> str:
     width = len(str(total))
-    prefix = "chapter" if unit_type == "chapter" else ("section" if unit_type == "section" else "document")
+    _, prefix = _UNIT_META.get(unit_type, ("Dokument", "document"))
     return f"{prefix}_{index:0{width}d}"
 
 
@@ -141,21 +142,10 @@ def _split_long(chunks: List[str]) -> List[str]:
 # C4. SEGMENTATION TIERS
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _segment_by_chapter_markers(text: str) -> Optional[List[str]]:
-    """Tier 1: split on explicit chapter headings (requires ≥3 markers)."""
-    positions = [m.start() for m in _CHAPTER_RE.finditer(text)]
-    if len(positions) < 3:
-        return None
-    chunks: List[str] = []
-    for i, pos in enumerate(positions):
-        end = positions[i + 1] if i + 1 < len(positions) else len(text)
-        chunks.append(text[pos:end].strip())
-    return chunks or None
-
-
-def _segment_by_section_markers(text: str) -> Optional[List[str]]:
-    """Tier 2: split on section / subchapter headings (requires ≥3 markers)."""
-    positions = [m.start() for m in _SECTION_RE.finditer(text)]
+def _segment_by_markers(text: str, pattern: re.Pattern) -> Optional[List[str]]:
+    """Split on heading matches. Requires ≥3 markers so a lone 'Chapter 1'
+    mention in running text is not treated as document structure."""
+    positions = [m.start() for m in pattern.finditer(text)]
     if len(positions) < 3:
         return None
     chunks: List[str] = []
@@ -173,7 +163,6 @@ def segment_book(
     text: str,
     corpus_id: str,
     source_name: str = "uploaded_text",
-    sentence_window: int = 150,  # kept for API compatibility, not used
 ) -> List[AnalysisUnit]:
     """
     Segment *text* into a list of AnalysisUnit objects.
@@ -188,7 +177,6 @@ def segment_book(
     text           : full text of the uploaded document
     corpus_id      : stable corpus identifier, e.g. 'upload_book_20240101T120000'
     source_name    : original filename / display label for the whole document
-    sentence_window: ignored — kept for backward-compatible call signatures only
 
     Returns
     -------
@@ -196,19 +184,16 @@ def segment_book(
     """
     text = text.strip()
 
-    # Tier 1: real chapter structure
-    chunks = _segment_by_chapter_markers(text)
+    chunks = _segment_by_markers(text, _CHAPTER_RE)
     if chunks:
         unit_type = "chapter"
         seg_method: str = "chapter_markers"
     else:
-        # Tier 2: real section/subchapter structure
-        chunks = _segment_by_section_markers(text)
+        chunks = _segment_by_markers(text, _SECTION_RE)
         if chunks:
             unit_type = "section"
             seg_method = "section_markers"
         else:
-            # Tier 3: no reliable structure → single whole-text unit
             chunks = [text]
             unit_type = "document"
             seg_method = "single_unit"

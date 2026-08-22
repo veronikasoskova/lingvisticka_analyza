@@ -45,17 +45,47 @@ def make_run_id() -> str:
     return datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
 
+# Tab 2 charts call groupby().mean() on these flags.  Live rows used to be
+# stored as the strings "True"/"False"; pandas to_numeric() turns those into NaN.
+_BOOL_TEXT = {
+    "true": 1.0, "false": 0.0,
+    "1": 1.0, "0": 0.0,
+    "1.0": 1.0, "0.0": 0.0,
+    "yes": 1.0, "no": 0.0,
+}
+
+
 def _sql_value(column: str, value):
     """Coerce a cell for SQLite.
 
-    ``None`` is stored as SQL NULL (not the string ``"None"``).  All other
-    values stay TEXT-compatible via ``str()``, matching the auto-schema.
+    ``None`` is stored as SQL NULL (not the string ``"None"``).
+    Booleans are stored as ``"0"``/``"1"`` so Tab 2 ``mean()`` charts work.
+    All other values stay TEXT-compatible via ``str()``, matching the auto-schema.
     """
     if value is None:
         return None
     if column in _NULLISH_FIELDS and value == "":
         return None
+    if isinstance(value, bool):
+        return "1" if value else "0"
     return str(value)
+
+
+def coerce_numeric_columns(df, columns):
+    """Turn TEXT 0/1 and True/False flags into numbers for aggregation."""
+    import pandas as pd
+
+    for col in columns:
+        if col not in df.columns:
+            continue
+        series = df[col]
+        if pd.api.types.is_bool_dtype(series):
+            df[col] = series.astype(int)
+            continue
+        numeric = pd.to_numeric(series, errors="coerce")
+        mapped = series.astype(str).str.strip().str.lower().map(_BOOL_TEXT)
+        df[col] = mapped.fillna(numeric)
+    return df
 
 
 def insert_rows(table: str, rows: list, run_id: str) -> int:
@@ -124,7 +154,7 @@ def _normalize_row(row: dict) -> dict:
 def load_rows(table: str, run_id: str | None = None) -> list:
     """Return rows for the given run_id (or latest non-upload run if None)."""
     if run_id is None:
-        run_id = _latest_pipeline_run_id(table)
+        run_id = latest_bible_run_id(table)
     conn = get_conn()
     conn.execute("PRAGMA cache_size = -32768")  # 32 MB page cache
     rows = []
@@ -183,11 +213,11 @@ def latest_run_id(table: str) -> str | None:
     return runs[-1] if runs else None
 
 
-def _latest_pipeline_run_id(table: str) -> str | None:
-    """Return the most recent Bible-corpus run_id (ordered by rowid), or None.
+def latest_bible_run_id(table: str) -> str | None:
+    """Return the most-recent Bible-corpus run_id in *table*, or None.
 
     Prefers rows where corpus_id = 'bible_bkr' when that column exists.
-    Falls back to the old run_id NOT LIKE 'upload_%' guard for backward compat.
+    Falls back to run_id NOT LIKE 'upload_%' for older databases.
     """
     conn = get_conn()
     try:
@@ -204,17 +234,7 @@ def _latest_pipeline_run_id(table: str) -> str | None:
             ).fetchone()
         return row[0] if row else None
     except sqlite3.OperationalError as exc:
-        logger.info("_latest_pipeline_run_id(%s): %s", table, exc)
+        logger.info("latest_bible_run_id(%s): %s", table, exc)
         return None
     finally:
         conn.close()
-
-
-def latest_bible_run_id(table: str) -> str | None:
-    """Public alias of _latest_pipeline_run_id().
-
-    Returns the most-recent run_id for Bible-corpus rows in *table*, or None.
-    Uses corpus_id = 'bible_bkr' when the column exists; falls back to the
-    run_id NOT LIKE 'upload_%' guard for older databases.
-    """
-    return _latest_pipeline_run_id(table)

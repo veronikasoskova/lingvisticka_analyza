@@ -92,7 +92,65 @@ class TextMetadata:
     unit: TextUnitType = "unknown"
 
 # ==========================================================
-# 4. HLAVNÝ INPUT OBJEKT
+# 4. SKINNER CONTEXT CONSISTENCY
+# ==========================================================
+
+# Codes are shared with the Streamlit UI (app._context_warnings) so the same
+# four Skinner-context rules cannot drift between validate() and the sidebar.
+CONTEXT_ISSUE_QA_MONO = "qa_mono"
+CONTEXT_ISSUE_AUDIO_WRITTEN = "audio_written"
+CONTEXT_ISSUE_WRITTEN_SPOKEN = "written_spoken"
+CONTEXT_ISSUE_DIALOGUE_NONE = "dialogue_none"
+
+_CONTEXT_ERROR_MESSAGES = {
+    CONTEXT_ISSUE_QA_MONO: (
+        "Inconsistent context: stimulus='{stimulus}' implies a dialogue partner, "
+        "but interaction='{interaction}'. "
+        "Set interaction='dialogue' or use a non-conversational stimulus."
+    ),
+    CONTEXT_ISSUE_AUDIO_WRITTEN: (
+        "Inconsistent context: source='{source}' is a written artefact, "
+        "but stimulus='{stimulus}' presupposes a spoken/auditory origin. "
+        "Use stimulus='written_verbal_stimulus' or 'nonverbal_object' for written texts."
+    ),
+    CONTEXT_ISSUE_WRITTEN_SPOKEN: (
+        "Inconsistent context: source='{source}' describes live speech, "
+        "but stimulus='{stimulus}' implies the speaker was reading a text. "
+        "Use stimulus='auditory_verbal_stimulus' for spoken responses."
+    ),
+    CONTEXT_ISSUE_DIALOGUE_NONE: (
+        "Inconsistent context: interaction='{interaction}' requires a verbal stimulus, "
+        "but stimulus='{stimulus}' explicitly denies one. "
+        "Use stimulus='auditory_verbal_stimulus', 'question_prompt', or 'answer_context' "
+        "for dialogues."
+    ),
+}
+
+
+def context_inconsistency_codes(
+    source: str,
+    interaction: str,
+    stimulus: str,
+) -> list[str]:
+    """Return Skinner-context inconsistency codes (empty if the triple is valid).
+
+    Q&A stimuli require dialogue; written artefacts cannot be auditory-controlled;
+    spoken records cannot be written-controlled; dialogue cannot have stimulus=none.
+    """
+    codes: list[str] = []
+    if interaction == "monologue" and stimulus in {"question_prompt", "answer_context"}:
+        codes.append(CONTEXT_ISSUE_QA_MONO)
+    if source in {"written_record", "uploaded_document"} and stimulus == "auditory_verbal_stimulus":
+        codes.append(CONTEXT_ISSUE_AUDIO_WRITTEN)
+    if source == "spoken_record" and stimulus == "written_verbal_stimulus":
+        codes.append(CONTEXT_ISSUE_WRITTEN_SPOKEN)
+    if interaction == "dialogue" and stimulus == "none":
+        codes.append(CONTEXT_ISSUE_DIALOGUE_NONE)
+    return codes
+
+
+# ==========================================================
+# 5. HLAVNÝ INPUT OBJEKT
 # ==========================================================
 
 @dataclass
@@ -140,51 +198,20 @@ class TextInput:
                 "Verse must be a positive integer."
             )
 
-        self._validate_context_consistency()
-
-    def _validate_context_consistency(self) -> None:
-        source      = self.context.source
-        interaction = self.context.interaction
-        stimulus    = self.context.stimulus
-
-        # Q&A stimuli are only meaningful in a dialogue, not in a monologue.
-        if interaction == "monologue" and stimulus in {"question_prompt", "answer_context"}:
+        for code in context_inconsistency_codes(
+            self.context.source, self.context.interaction, self.context.stimulus
+        ):
             raise ValueError(
-                f"Inconsistent context: stimulus='{stimulus}' implies a dialogue partner, "
-                f"but interaction='{interaction}'. "
-                f"Set interaction='dialogue' or use a non-conversational stimulus."
-            )
-
-        # A written or uploaded document cannot be the behavioural result of
-        # hearing someone speak — that is an auditory verbal interaction.
-        if source in {"written_record", "uploaded_document"} and stimulus == "auditory_verbal_stimulus":
-            raise ValueError(
-                f"Inconsistent context: source='{source}' is a written artefact, "
-                f"but stimulus='{stimulus}' presupposes a spoken/auditory origin. "
-                f"Use stimulus='written_verbal_stimulus' or 'nonverbal_object' for written texts."
-            )
-
-        # A spoken recording cannot be controlled by a written text as stimulus.
-        if source == "spoken_record" and stimulus == "written_verbal_stimulus":
-            raise ValueError(
-                f"Inconsistent context: source='{source}' describes live speech, "
-                f"but stimulus='{stimulus}' implies the speaker was reading a text. "
-                f"Use stimulus='auditory_verbal_stimulus' for spoken responses."
-            )
-
-        # A genuine dialogue must involve some form of verbal exchange;
-        # 'none' explicitly rules out any controlling stimulus.
-        if interaction == "dialogue" and stimulus == "none":
-            raise ValueError(
-                f"Inconsistent context: interaction='{interaction}' requires a verbal stimulus, "
-                f"but stimulus='{stimulus}' explicitly denies one. "
-                f"Use stimulus='auditory_verbal_stimulus', 'question_prompt', or 'answer_context' "
-                f"for dialogues."
+                _CONTEXT_ERROR_MESSAGES[code].format(
+                    source=self.context.source,
+                    interaction=self.context.interaction,
+                    stimulus=self.context.stimulus,
+                )
             )
 
 
 # ==========================================================
-# 5. FILE LOADER
+# 6. FILE LOADER
 # ==========================================================
 
 def load_text_from_file(
@@ -230,84 +257,44 @@ def load_text_from_file(
 # ==========================================================
 
 def create_input_from_text(
-
     text: str,
-
     source: SourceType = "unknown",
-
     interaction: InteractionType = "unknown",
-
     stimulus: StimulusType = "unknown",
-
     speaker: Optional[str] = None,
-
     addressee: Optional[str] = None,
-
     notes: Optional[str] = None,
-
     corpus_id: Optional[str] = None,
-
     source_id: Optional[str] = None,
-
     document_id: Optional[str] = None,
-
     book: Optional[str] = None,
-
     chapter: Optional[int] = None,
-
     verse: Optional[int] = None,
-
     unit: TextUnitType = "unknown",
-
     text_id: Optional[str] = None,
-
 ) -> TextInput:
-
-    context = InputContext(
-
-        source=source,
-
-        interaction=interaction,
-
-        stimulus=stimulus,
-
-        speaker=speaker,
-
-        addressee=addressee,
-
-        notes=notes,
-    )
-
-    metadata = TextMetadata(
-
-        text_id=text_id or str(uuid4()),
-
-        corpus_id=corpus_id,
-
-        source_id=source_id,
-
-        document_id=document_id,
-
-        book=book,
-
-        chapter=chapter,
-
-        verse=verse,
-
-        unit=unit,
-    )
-
     text_input = TextInput(
-
         text=text,
-
-        context=context,
-
-        metadata=metadata,
+        context=InputContext(
+            source=source,
+            interaction=interaction,
+            stimulus=stimulus,
+            speaker=speaker,
+            addressee=addressee,
+            notes=notes,
+        ),
+        metadata=TextMetadata(
+            text_id=text_id or str(uuid4()),
+            corpus_id=corpus_id,
+            source_id=source_id,
+            document_id=document_id,
+            book=book,
+            chapter=chapter,
+            verse=verse,
+            unit=unit,
+        ),
     )
-
     text_input.validate()
-
     return text_input
 
 # ==========================================================
@@ -315,75 +302,38 @@ def create_input_from_text(
 # ==========================================================
 
 def create_input_from_file(
-
     file_path: str,
-
     source: SourceType = "written_record",
-
     interaction: InteractionType = "monologue",
-
     stimulus: StimulusType = "unknown",
-
     speaker: Optional[str] = None,
-
     addressee: Optional[str] = None,
-
     notes: Optional[str] = None,
-
     corpus_id: Optional[str] = None,
-
     source_id: Optional[str] = None,
-
     document_id: Optional[str] = None,
-
     book: Optional[str] = None,
-
     chapter: Optional[int] = None,
-
     verse: Optional[int] = None,
-
     unit: TextUnitType = "document",
-
     text_id: Optional[str] = None,
-
 ) -> TextInput:
-
     path = Path(file_path)
-
-    text = load_text_from_file(
-        str(path)
-    )
-
     return create_input_from_text(
-
-        text=text,
-
+        text=load_text_from_file(str(path)),
         source=source,
-
         interaction=interaction,
-
         stimulus=stimulus,
-
         speaker=speaker,
-
         addressee=addressee,
-
         notes=notes,
-
         corpus_id=corpus_id,
-
         source_id=source_id or path.name,
-
         document_id=document_id,
-
         book=book,
-
         chapter=chapter,
-
         verse=verse,
-
         unit=unit,
-
         text_id=text_id,
     )
 
