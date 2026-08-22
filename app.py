@@ -3773,8 +3773,9 @@ def generate_pdf_report(
     if session.get("sel_dashboard", True):
         story += _section(T.get("ana_dashboard_name","Dashboard"), "⚡")
         story.append(Paragraph(T.get("ana_dashboard_q",""), sty["caption"]))
-        from n_db import count_table_rows, list_runs, TABLE_SKINNER
-        _db_n = count_table_rows(TABLE_SKINNER)
+        from n_db import count_table_rows, list_runs, latest_bible_run_id, TABLE_SKINNER
+        _bible_run = latest_bible_run_id(TABLE_SKINNER)
+        _db_n = count_table_rows(TABLE_SKINNER, run_id=_bible_run)
         _runs = list_runs(TABLE_SKINNER)
         _upr  = [r for r in _runs if r.startswith("upload_")]
         dash_data = [
@@ -6381,8 +6382,9 @@ with tab_results:
     # ── 10. Dashboard ─────────────────────────────────────────────────────────
     if st.session_state.get("sel_dashboard", True):
         with st.expander(f"📤 ⚡ {T['ana_dashboard_name']}"):
-            from n_db import count_table_rows, list_runs, TABLE_SKINNER
-            _db_n = count_table_rows(TABLE_SKINNER)
+            from n_db import count_table_rows, list_runs, latest_bible_run_id, TABLE_SKINNER
+            _bible_run = latest_bible_run_id(TABLE_SKINNER)
+            _db_n = count_table_rows(TABLE_SKINNER, run_id=_bible_run)
             _runs = list_runs(TABLE_SKINNER)
             _upload_runs = [r for r in _runs if "upload_" in r]
             _seg_method = "marker" if _units and len(_units) > 1 else "single"

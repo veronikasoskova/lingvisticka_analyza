@@ -24,6 +24,25 @@ _NULLISH_FIELDS = frozenset({
     "secondary_strategy",
 })
 
+# Declared SQLite types for columns that Tab 2 aggregates with mean().
+_COLUMN_SQL_TYPE = {
+    "has_coordination": "INTEGER",
+    "dative_present": "INTEGER",
+    "indirect_object_present": "INTEGER",
+    "adjective_count": "INTEGER",
+    "adverb_count": "INTEGER",
+    "pronoun_count": "INTEGER",
+    "has_negation": "INTEGER",
+    "confidence": "REAL",
+    "type_token_ratio": "REAL",
+}
+_INT_COLUMNS = frozenset(
+    name for name, typ in _COLUMN_SQL_TYPE.items() if typ == "INTEGER"
+)
+_REAL_COLUMNS = frozenset(
+    name for name, typ in _COLUMN_SQL_TYPE.items() if typ == "REAL"
+)
+
 
 # ==========================================================
 # N2. CONNECTION
@@ -56,19 +75,29 @@ _BOOL_TEXT = {
 }
 
 
+def _col_sql(name: str) -> str:
+    return f'"{name}" {_COLUMN_SQL_TYPE.get(name, "TEXT")}'
+
+
 def _sql_value(column: str, value):
     """Coerce a cell for SQLite.
 
     ``None`` is stored as SQL NULL (not the string ``"None"``).
-    Booleans are stored as ``"0"``/``"1"`` so Tab 2 ``mean()`` charts work.
-    All other values stay TEXT-compatible via ``str()``, matching the auto-schema.
+    Known flag/count columns are INTEGER; confidence/TTR are REAL.
+    All other values stay TEXT-compatible via ``str()``.
     """
     if value is None:
         return None
     if column in _NULLISH_FIELDS and value == "":
         return None
+    if column in _INT_COLUMNS:
+        if isinstance(value, str) and value.strip().lower() in _BOOL_TEXT:
+            return int(_BOOL_TEXT[value.strip().lower()])
+        return int(value)
+    if column in _REAL_COLUMNS:
+        return float(value)
     if isinstance(value, bool):
-        return "1" if value else "0"
+        return 1 if value else 0
     return str(value)
 
 
@@ -105,7 +134,7 @@ def insert_rows(table: str, rows: list, run_id: str) -> int:
     existing = {row[1] for row in conn.execute(f'PRAGMA table_info("{table}")')}
 
     if not existing:
-        col_defs = ", ".join(f'"{c}" TEXT' for c in all_cols)
+        col_defs = ", ".join(_col_sql(c) for c in all_cols)
         conn.execute(
             f'CREATE TABLE "{table}" '
             f'(id INTEGER PRIMARY KEY AUTOINCREMENT, {col_defs})'
@@ -123,7 +152,9 @@ def insert_rows(table: str, rows: list, run_id: str) -> int:
         for c in all_cols:
             if c not in existing:
                 try:
-                    conn.execute(f'ALTER TABLE "{table}" ADD COLUMN "{c}" TEXT')
+                    conn.execute(
+                        f'ALTER TABLE "{table}" ADD COLUMN {_col_sql(c)}'
+                    )
                 except sqlite3.OperationalError as exc:
                     if "duplicate column" not in str(exc).lower():
                         raise
@@ -181,11 +212,16 @@ def load_rows(table: str, run_id: str | None = None) -> list:
     return rows
 
 
-def count_table_rows(table: str) -> int | None:
-    """Return row count or None if table doesn't exist."""
+def count_table_rows(table: str, run_id: str | None = None) -> int | None:
+    """Return row count (optionally for one run_id) or None if table is missing."""
     conn = get_conn()
     try:
-        n = conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+        if run_id:
+            n = conn.execute(
+                f'SELECT COUNT(*) FROM "{table}" WHERE run_id = ?', (run_id,)
+            ).fetchone()[0]
+        else:
+            n = conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
     except sqlite3.OperationalError as exc:
         logger.info("count_table_rows(%s): %s", table, exc)
         n = None
@@ -212,6 +248,76 @@ def latest_run_id(table: str) -> str | None:
     """Return the most recent run_id or None."""
     runs = list_runs(table)
     return runs[-1] if runs else None
+
+
+def compact_bible_db(keep_run_id: str | None = None) -> str:
+    """Keep one Bible run, drop the others, and restamp numeric columns.
+
+    Recreates the three pipeline tables with INTEGER/REAL affinity so Tab 2
+    ``groupby.mean()`` does not depend on TEXT ``"0"``/``"1"``.
+    """
+    keep_run_id = keep_run_id or latest_bible_run_id(TABLE_SKINNER)
+    if not keep_run_id:
+        raise ValueError("No Bible run to keep")
+
+    conn = get_conn()
+    try:
+        for table in (TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED):
+            existing = [row[1] for row in conn.execute(f'PRAGMA table_info("{table}")')]
+            if not existing:
+                continue
+            data_cols = [c for c in existing if c != "id"]
+            tmp = f"{table}__typed"
+            conn.execute(f'DROP TABLE IF EXISTS "{tmp}"')
+            col_defs = ", ".join(_col_sql(c) for c in data_cols)
+            conn.execute(
+                f'CREATE TABLE "{tmp}" '
+                f'(id INTEGER PRIMARY KEY AUTOINCREMENT, {col_defs})'
+            )
+            selects = []
+            for c in data_cols:
+                typ = _COLUMN_SQL_TYPE.get(c)
+                if typ == "INTEGER":
+                    selects.append(f'CAST("{c}" AS INTEGER)')
+                elif typ == "REAL":
+                    selects.append(f'CAST("{c}" AS REAL)')
+                else:
+                    selects.append(f'"{c}"')
+            col_list = ", ".join(f'"{c}"' for c in data_cols)
+            sel_list = ", ".join(selects)
+            conn.execute(
+                f'INSERT INTO "{tmp}" ({col_list}) '
+                f'SELECT {sel_list} FROM "{table}" WHERE run_id = ?',
+                (keep_run_id,),
+            )
+            conn.execute(f'DROP TABLE "{table}"')
+            conn.execute(f'ALTER TABLE "{tmp}" RENAME TO "{table}"')
+            for idx_col in ("file_name", "run_id"):
+                if idx_col in data_cols:
+                    conn.execute(
+                        f'CREATE INDEX IF NOT EXISTS '
+                        f'"idx_{table}_{idx_col}" ON "{table}" ("{idx_col}")'
+                    )
+        conn.commit()
+        conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        conn.execute("VACUUM")
+    finally:
+        conn.close()
+    return keep_run_id
+
+
+def pack_bible_db() -> None:
+    """Gzip the unpacked DB so git tracks ``output/bible_analysis.db.gz``."""
+    import gzip
+    import shutil
+
+    from a_paths import DB_GZ_PATH
+
+    ensure_bible_db()
+    tmp_path = DB_GZ_PATH.with_name(DB_GZ_PATH.name + ".tmp")
+    with DB_PATH.open("rb") as src, gzip.open(tmp_path, "wb", compresslevel=9) as dst:
+        shutil.copyfileobj(src, dst)
+    tmp_path.replace(DB_GZ_PATH)
 
 
 def latest_bible_run_id(table: str) -> str | None:

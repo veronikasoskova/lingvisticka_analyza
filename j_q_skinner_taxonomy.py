@@ -1450,6 +1450,34 @@ _CONVENTION_MAP: dict[str, str] = {
 # implementation name so existing internal references stay unchanged.
 CONVENTION_MAP = _CONVENTION_MAP
 
+# When no rhetorical-device pattern fires, keep the speech-act readable
+# instead of storing primary_strategy = "unclassified".  Same mapping the
+# demo DB already used (intention → typical strategy).
+INTENTION_DEFAULT_STRATEGY: dict[str, str] = {
+    "legitimation":             "appeal_to_authority",
+    "commanding":               "direct_address",
+    "warning":                  "conditional_threat",
+    "record":                   "narrative_example",
+    "praising":                 "repetition",
+    "declaring":                "appeal_to_authority",
+    "promising":                "promise_of_reward",
+    "condemning":               "contrast",
+    "justifying":               "appeal_to_scripture",
+    "intervention":             "rhetorical_question",
+    "mobilizing":               "direct_address",
+    "ideological_contestation": "contrast",
+    "persuading":               "appeal_to_tradition",
+    "questioning":              "rhetorical_question",
+    "narrative":                "narrative_example",
+}
+
+
+def apply_strategy_fallback(intention: str, strategy: str) -> str:
+    """Replace a bare ``unclassified`` strategy with the intention default."""
+    if strategy != "unclassified":
+        return strategy
+    return INTENTION_DEFAULT_STRATEGY.get(intention, strategy)
+
 
 def _derive_convention(
     primary_intention: str,
@@ -1808,6 +1836,7 @@ def classify_q_skinner(
             primary_strategy = label
             primary_strat_idx = i
             break
+    primary_strategy = apply_strategy_fallback(primary_intention, primary_strategy)
 
     # KROK 4 — secondary_strategy
     secondary_strategy: Optional[str] = None

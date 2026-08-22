@@ -156,9 +156,15 @@ class DatabaseNullHandlingTests(unittest.TestCase):
                 raw = conn.execute(
                     "SELECT has_coordination, dative_present FROM skinner_analysis"
                 ).fetchone()
+                types = {
+                    row[1]: row[2]
+                    for row in conn.execute("PRAGMA table_info(skinner_analysis)")
+                }
                 conn.close()
-                self.assertEqual(raw[0], "1")
-                self.assertEqual(raw[1], "0")
+                self.assertEqual(raw[0], 1)
+                self.assertEqual(raw[1], 0)
+                self.assertEqual(types["has_coordination"], "INTEGER")
+                self.assertEqual(types["dative_present"], "INTEGER")
             finally:
                 n_db.DB_PATH = original
 
@@ -220,6 +226,95 @@ class ContextConsistencyTests(unittest.TestCase):
             ),
             [CONTEXT_ISSUE_AUDIO_WRITTEN],
         )
+
+
+class StrategyFallbackTests(unittest.TestCase):
+    def test_unclassified_record_becomes_narrative_example(self):
+        from j_q_skinner_taxonomy import apply_strategy_fallback
+        self.assertEqual(
+            apply_strategy_fallback("record", "unclassified"),
+            "narrative_example",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("commanding", "unclassified"),
+            "direct_address",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("record", "appeal_to_authority"),
+            "appeal_to_authority",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("unclassified", "unclassified"),
+            "unclassified",
+        )
+
+    def test_demo_strategies_are_the_live_defaults(self):
+        from generate_demo_db import STRATEGIES
+        from j_q_skinner_taxonomy import INTENTION_DEFAULT_STRATEGY
+        self.assertIs(STRATEGIES, INTENTION_DEFAULT_STRATEGY)
+
+
+class CompactBibleDbTests(unittest.TestCase):
+    def test_compact_keeps_one_run_and_types_flags(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "both.db"
+            original = n_db.DB_PATH
+            n_db.DB_PATH = db_path
+            try:
+                n_db.insert_rows(
+                    TABLE_SKINNER,
+                    [{"sentence": "demo", "has_coordination": True, "corpus_id": "bible_bkr"}],
+                    "2024-01-01T00:00:00",
+                )
+                n_db.insert_rows(
+                    TABLE_SKINNER,
+                    [{"sentence": "live", "has_coordination": False, "corpus_id": "bible_bkr"}],
+                    "2026-08-22T10:01:10",
+                )
+                kept = n_db.compact_bible_db("2026-08-22T10:01:10")
+                self.assertEqual(kept, "2026-08-22T10:01:10")
+                self.assertEqual(n_db.list_runs(TABLE_SKINNER), ["2026-08-22T10:01:10"])
+                self.assertEqual(n_db.count_table_rows(TABLE_SKINNER), 1)
+                self.assertEqual(
+                    n_db.count_table_rows(TABLE_SKINNER, "2026-08-22T10:01:10"),
+                    1,
+                )
+                conn = sqlite3.connect(db_path)
+                types = {
+                    row[1]: row[2]
+                    for row in conn.execute("PRAGMA table_info(skinner_analysis)")
+                }
+                kind, val = conn.execute(
+                    "SELECT typeof(has_coordination), has_coordination FROM skinner_analysis"
+                ).fetchone()
+                conn.close()
+                self.assertEqual(types["has_coordination"], "INTEGER")
+                self.assertEqual(kind, "integer")
+                self.assertEqual(val, 0)
+            finally:
+                n_db.DB_PATH = original
+
+
+class GenerateDemoGuardTests(unittest.TestCase):
+    def test_refuses_to_overwrite_packed_live_db(self):
+        import tempfile
+        from generate_demo_db import main as demo_main
+        import a_paths
+
+        with tempfile.TemporaryDirectory() as tmp:
+            orig = (a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH)
+            a_paths.OUTPUT_DIR = Path(tmp)
+            a_paths.DB_PATH = Path(tmp) / "bible_analysis.db"
+            a_paths.DB_GZ_PATH = Path(tmp) / "bible_analysis.db.gz"
+            a_paths.DB_GZ_PATH.write_bytes(b"not-empty-gz")
+            try:
+                with self.assertRaises(SystemExit) as ctx:
+                    demo_main(force=False)
+                self.assertIn("Refusing to overwrite", str(ctx.exception))
+            finally:
+                a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH = orig
 
 
 if __name__ == "__main__":

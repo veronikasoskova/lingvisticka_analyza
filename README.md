@@ -52,8 +52,9 @@ Tab 2 ships with a **live** Stanza analysis of all 66 BKR books
 `output/bible_analysis.db.gz` and unpacked to `output/bible_analysis.db`
 on first use.
 
-Do **not** run `python generate_demo_db.py` on that file — it would replace
-real labels with synthetic ones and can break Tab 2 `mean()` charts.
+Do **not** run `python generate_demo_db.py` on that file — the script now
+exits unless you pass `--force`.  Without the guard it would replace real
+labels with synthetic ones.
 
 To refresh the live corpus:
 
