@@ -140,5 +140,48 @@ class DemoDbDisplayLabelTests(unittest.TestCase):
         self.assertEqual(missing, [], f"untranslated live keys: {missing[:40]}")
 
 
+class SkinnerDisplayColumnTests(unittest.TestCase):
+    def test_rst_and_perlocution_label_maps_exist(self):
+        for lang in ("cs", "sk", "en"):
+            self.assertIn("rst", VALUE_LABELS)
+            self.assertIn("perlocution", VALUE_LABELS)
+            self.assertIn("continuation", VALUE_LABELS["rst"][lang])
+            self.assertIn("evoke_fear_urgency", VALUE_LABELS["perlocution"][lang])
+            self.assertNotIn("_", VALUE_LABELS["rst"][lang]["cause"])
+
+    def test_live_rst_keys_have_ui_labels(self):
+        from a_paths import ensure_bible_db
+        from n_db import latest_bible_run_id, TABLE_SKINNER
+
+        ensure_bible_db()
+        if not DB_PATH.exists():
+            self.skipTest("no bible DB")
+        run_id = latest_bible_run_id(TABLE_SKINNER)
+        if run_id is None:
+            self.skipTest("no bible run")
+        conn = sqlite3.connect(DB_PATH)
+        missing = []
+        for lang in ("cs", "sk", "en"):
+            labels = VALUE_LABELS["rst"][lang]
+            for (raw,) in conn.execute(
+                'SELECT DISTINCT rst_relation FROM skinner_analysis '
+                'WHERE run_id = ? AND rst_relation IS NOT NULL AND rst_relation != ""',
+                (run_id,),
+            ):
+                if str(raw) not in labels:
+                    missing.append(f"{lang}:rst={raw}")
+        conn.close()
+        self.assertEqual(missing, [], f"untranslated RST keys: {missing}")
+
+    def test_sentence_table_translations_present(self):
+        T = _load_assign("TRANSLATIONS")
+        for lang in ("cs", "sk", "en"):
+            for key in (
+                "col_perlocution", "col_rst", "col_context_note",
+                "sec_skinner_sentences", "context_tension_label",
+            ):
+                self.assertIn(key, T[lang], f"{lang}.{key}")
+
+
 if __name__ == "__main__":
     unittest.main()

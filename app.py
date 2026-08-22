@@ -82,6 +82,14 @@ TRANSLATIONS = {
         "col_locution": "Lokuce",
         "col_convention": "Konvence",
         "col_pol_vocab": "Polit. slovník",
+        "col_perlocution": "Perlokuce",
+        "col_rst": "RST relace",
+        "col_context_note": "Kontext",
+        "sec_skinner_sentences": "Perlokuce, RST a kontext vět",
+        "skinner_sentences_desc": "Klasifikace jednotlivých vět: záměr, zamýšlený účinek na čtenáře (perlokuce), vztah k předchozí větě (RST) a napětí vůči diskurzivnímu módu textu.",
+        "rst_dist_title": "RST relace mezi větami",
+        "rst_dist_desc": "Jak aktuální věta navazuje na předchozí — příčina, kontrast, otázka, podmínka…",
+        "context_tension_label": "Napětí módu",
         # Tab 2
         "bible_header": "Analýza biblického korpusu",
         "bible_caption": "Předpočítáno z české Bible (Kralická, BKR) — spusťte `k_apply_all_to_bible.py` pro aktualizaci.",
@@ -679,7 +687,7 @@ TRANSLATIONS = {
             "creation":    "Stvoření",
             "prophetic":   "Prorocké",
         },
-        "traditions_desc": "Počet aktivních lexikálních kategorií pro každou tradici / počet termínů pro každý filozofický vliv zahrnutý v analýze.",
+        "traditions_desc": "Počet lexikálních kategorií ve slovníku tradice / počet termínů filozofického vlivu. Závorka u tradice je jazyk slovníku (angličtina, hebrejština…), ne jazyk rozhraní; české slovníky jsou výchozí a bez závorky.",
         "x_depth": "Průměrná hloubka stromu",
         "x_clauses": "Průměrný počet klauzulí",
         "x_terms": "Termíny",
@@ -839,6 +847,14 @@ TRANSLATIONS = {
         "col_locution": "Lokúcia",
         "col_convention": "Konvencia",
         "col_pol_vocab": "Polit. slovník",
+        "col_perlocution": "Perlokúcia",
+        "col_rst": "RST relácia",
+        "col_context_note": "Kontext",
+        "sec_skinner_sentences": "Perlokúcia, RST a kontext viet",
+        "skinner_sentences_desc": "Klasifikácia jednotlivých viet: zámer, zamýšľaný účinok na čitateľa (perlokúcia), vzťah k predchádzajúcej vete (RST) a napätie voči diskurzívnemu módu textu.",
+        "rst_dist_title": "RST relácie medzi vetami",
+        "rst_dist_desc": "Ako aktuálna veta nadväzuje na predchádzajúcu — príčina, kontrast, otázka, podmienka…",
+        "context_tension_label": "Napätie módu",
         "bible_header": "Analýza biblického korpusu",
         "bible_caption": "Predpočítané z českej Biblie (Kralická, BKR) — spustite `k_apply_all_to_bible.py` pre aktualizáciu.",
         "metric_total": "Viet celkom",
@@ -1419,7 +1435,7 @@ TRANSLATIONS = {
             "creation":    "Stvorenie",
             "prophetic":   "Prorocké",
         },
-        "traditions_desc": "Počet aktívnych lexikálnych kategórií pre každú tradíciu / počet termínov pre každý filozofický vplyv zahrnutý v analýze.",
+        "traditions_desc": "Počet lexikálnych kategórií v slovníku tradície / počet termínov filozofického vplyvu. Zátvorka pri tradícii je jazyk slovníka (angličtina, hebrejčina…), nie jazyk rozhrania; české slovníky sú predvolené a bez zátvorky.",
         "x_depth": "Priemerná hĺbka stromu",
         "x_clauses": "Priemerný počet klauzúl",
         "x_terms": "Termíny",
@@ -1578,6 +1594,14 @@ TRANSLATIONS = {
         "col_locution": "Locution",
         "col_convention": "Convention",
         "col_pol_vocab": "Pol. vocab",
+        "col_perlocution": "Perlocution",
+        "col_rst": "RST relation",
+        "col_context_note": "Context",
+        "sec_skinner_sentences": "Perlocution, RST and sentence context",
+        "skinner_sentences_desc": "Sentence-level classification: intention, intended effect on the reader (perlocution), link to the previous sentence (RST), and tension with the text's discursive mode.",
+        "rst_dist_title": "RST relations between sentences",
+        "rst_dist_desc": "How the current sentence continues from the previous one — cause, contrast, question, condition…",
+        "context_tension_label": "Mode tension",
         "bible_header": "Bible Corpus Analytics",
         "bible_caption": "Pre-computed from Czech Bible (Kralická, BKR) — run `k_apply_all_to_bible.py` to refresh.",
         "metric_total": "Total sentences",
@@ -2162,7 +2186,7 @@ TRANSLATIONS = {
             "creation":    "Creation",
             "prophetic":   "Prophetic",
         },
-        "traditions_desc": "Number of active lexical categories per tradition / number of terms per philosophical influence included in the analysis.",
+        "traditions_desc": "Lexical categories in each tradition wordlist / terms per philosophical influence. Parentheses on a tradition name mark the lemma-list language (English, Hebrew, …), not the UI language; Czech lists are the default and unlabeled.",
         "x_depth": "Avg tree depth",
         "x_clauses": "Avg clause count",
         "x_terms": "Terms",
@@ -2782,6 +2806,159 @@ VALUE_LABELS = {
             "teologické tvrzení": "theological statement",
         },
     },
+    "rst": {
+        "cs": {
+            "continuation": "pokračování",
+            "cause": "příčina",
+            "condition": "podmínka",
+            "contrast": "kontrast",
+            "elaboration": "rozvedení",
+            "temporal": "časová návaznost",
+            "question": "otázka",
+            "answer": "odpověď",
+            "motivation": "motivace",
+        },
+        "sk": {
+            "continuation": "pokračovanie",
+            "cause": "príčina",
+            "condition": "podmienka",
+            "contrast": "kontrast",
+            "elaboration": "rozvedenie",
+            "temporal": "časová nadväznosť",
+            "question": "otázka",
+            "answer": "odpoveď",
+            "motivation": "motivácia",
+        },
+        "en": {
+            "continuation": "continuation",
+            "cause": "cause",
+            "condition": "condition",
+            "contrast": "contrast",
+            "elaboration": "elaboration",
+            "temporal": "temporal",
+            "question": "question",
+            "answer": "answer",
+            "motivation": "motivation",
+        },
+    },
+    "perlocution": {
+        "cs": {
+            "evoke_fear_urgency": "vyvolat strach / naléhavost",
+            "evoke_shame_guilt": "vyvolat hanbu / vinu",
+            "evoke_compliance_obedience": "vyvolat poslušnost",
+            "evoke_commitment_action": "vyvolat závazek k činu",
+            "evoke_hope_trust": "vyvolat naději / důvěru",
+            "evoke_awe_reverence": "vyvolat úžas / úctu",
+            "evoke_conviction_assent": "vyvolat souhlas",
+            "evoke_doubt_reflection": "vyvolat pochybnost / zamyšlení",
+            "evoke_trust_assurance": "vyvolat jistotu",
+            "evoke_belief_understanding": "vyvolat víru / porozumění",
+            "evoke_deference_submission": "vyvolat úctu k autoritě",
+            "evoke_critical_reappraisal": "vyvolat přehodnocení",
+            "evoke_reconsideration": "vyvolat přehodnocení postoje",
+            "evoke_credibility_witness": "vyvolat důvěryhodnost svědectví",
+            "evoke_orientation_memory": "vyvolat orientaci / paměť",
+            "effect_indeterminate": "účinek neurčen",
+            "lexically_confirmed": "lexikálně potvrzeno",
+            "reader_directly_addressed": "přímé oslovení čtenáře",
+            "hope_despite_judgment": "naděje navzdory soudu",
+            "guilt_awareness": "vědomí viny",
+            "awe_reverence": "úžas / úcta",
+            "fear_evoked": "strach",
+            "hope_evoked": "naděje",
+            "wonder_evoked": "úžas",
+            "guilt_evoked": "vina",
+            "deontic_evoked": "deontika",
+        },
+        "sk": {
+            "evoke_fear_urgency": "vyvolať strach / naliehavosť",
+            "evoke_shame_guilt": "vyvolať hanbu / vinu",
+            "evoke_compliance_obedience": "vyvolať poslušnosť",
+            "evoke_commitment_action": "vyvolať záväzok k činu",
+            "evoke_hope_trust": "vyvolať nádej / dôveru",
+            "evoke_awe_reverence": "vyvolať úžas / úctu",
+            "evoke_conviction_assent": "vyvolať súhlas",
+            "evoke_doubt_reflection": "vyvolať pochybnosť / zamyslenie",
+            "evoke_trust_assurance": "vyvolať istotu",
+            "evoke_belief_understanding": "vyvolať vieru / porozumenie",
+            "evoke_deference_submission": "vyvolať úctu k autorite",
+            "evoke_critical_reappraisal": "vyvolať prehodnotenie",
+            "evoke_reconsideration": "vyvolať prehodnotenie postoja",
+            "evoke_credibility_witness": "vyvolať dôveryhodnosť svedectva",
+            "evoke_orientation_memory": "vyvolať orientáciu / pamäť",
+            "effect_indeterminate": "účinok neurčený",
+            "lexically_confirmed": "lexikálne potvrdené",
+            "reader_directly_addressed": "priame oslovenie čitateľa",
+            "hope_despite_judgment": "nádej napriek súdu",
+            "guilt_awareness": "vedomie viny",
+            "awe_reverence": "úžas / úcta",
+            "fear_evoked": "strach",
+            "hope_evoked": "nádej",
+            "wonder_evoked": "úžas",
+            "guilt_evoked": "vina",
+            "deontic_evoked": "deontika",
+        },
+        "en": {
+            "evoke_fear_urgency": "evoke fear / urgency",
+            "evoke_shame_guilt": "evoke shame / guilt",
+            "evoke_compliance_obedience": "evoke compliance",
+            "evoke_commitment_action": "evoke commitment to act",
+            "evoke_hope_trust": "evoke hope / trust",
+            "evoke_awe_reverence": "evoke awe / reverence",
+            "evoke_conviction_assent": "evoke conviction",
+            "evoke_doubt_reflection": "evoke doubt / reflection",
+            "evoke_trust_assurance": "evoke assurance",
+            "evoke_belief_understanding": "evoke belief / understanding",
+            "evoke_deference_submission": "evoke deference",
+            "evoke_critical_reappraisal": "evoke reappraisal",
+            "evoke_reconsideration": "evoke reconsideration",
+            "evoke_credibility_witness": "evoke witness credibility",
+            "evoke_orientation_memory": "evoke orientation / memory",
+            "effect_indeterminate": "effect indeterminate",
+            "lexically_confirmed": "lexically confirmed",
+            "reader_directly_addressed": "reader directly addressed",
+            "hope_despite_judgment": "hope despite judgment",
+            "guilt_awareness": "guilt awareness",
+            "awe_reverence": "awe / reverence",
+            "fear_evoked": "fear",
+            "hope_evoked": "hope",
+            "wonder_evoked": "wonder",
+            "guilt_evoked": "guilt",
+            "deontic_evoked": "deontic",
+        },
+    },
+    "discourse_mode": {
+        "cs": {
+            "narrative": "narativní",
+            "directive": "direktivní",
+            "hymnic": "hymnický",
+            "argumentative": "argumentační",
+            "prophetic": "prorocký",
+            "dialogic": "dialogický",
+            "didactic": "didaktický",
+            "undetermined": "neurčený",
+        },
+        "sk": {
+            "narrative": "naratívny",
+            "directive": "direktívny",
+            "hymnic": "hymnický",
+            "argumentative": "argumentačný",
+            "prophetic": "prorocký",
+            "dialogic": "dialogický",
+            "didactic": "didaktický",
+            "undetermined": "neurčený",
+        },
+        "en": {
+            "narrative": "narrative",
+            "directive": "directive",
+            "hymnic": "hymnic",
+            "argumentative": "argumentative",
+            "prophetic": "prophetic",
+            "dialogic": "dialogic",
+            "didactic": "didactic",
+            "undetermined": "undetermined",
+        },
+    },
 }
 
 VALUE_LABELS["genre"] = GENRE_LABELS
@@ -2829,6 +3006,9 @@ VD  = VALUE_LABELS["description_type"][lang]
 VC  = VALUE_LABELS["convention"][lang]
 VL  = VALUE_LABELS["locution"][lang]
 VG  = VALUE_LABELS["genre"][lang]
+VP  = VALUE_LABELS["perlocution"][lang]
+VRST = VALUE_LABELS["rst"][lang]
+VMODE = VALUE_LABELS["discourse_mode"][lang]
 
 
 def _vlabel(value, mapping: dict) -> str:
@@ -2844,6 +3024,39 @@ def _vlabel(value, mapping: dict) -> str:
     if not s or s in {"None", "nan", "NaN"}:
         return ""
     return mapping.get(s, s)
+
+
+def _localize_perlocution(value) -> str:
+    """Translate composite perlocution strings (atoms, +joins, reader suffix)."""
+    s = _vlabel(value, {})
+    if not s:
+        return ""
+    bits = [p.strip() for p in s.split(";") if p.strip()]
+    core, extras = bits[0], bits[1:]
+    confirmed = "[lexically_confirmed]" in core
+    core = core.replace("[lexically_confirmed]", "")
+    atoms = [a.strip() for a in core.split("+") if a.strip()]
+    text = " + ".join(VP.get(a, a) for a in atoms)
+    if confirmed:
+        text = f"{text} ({VP.get('lexically_confirmed', 'lex.')})"
+    for ex in extras:
+        text = f"{text} · {VP.get(ex, ex)}"
+    return text
+
+
+def _localize_context_note(value) -> str:
+    s = _vlabel(value, {})
+    if not s:
+        return ""
+    if s.startswith("context_tension:"):
+        body = s.split(":", 1)[1]
+        if "_mode+" in body:
+            mode, intent = body.split("_mode+", 1)
+            return (
+                f"{T.get('context_tension_label', 'tension')}: "
+                f"{VMODE.get(mode, mode)} + {VI.get(intent, intent)}"
+            )
+    return s
 
 
 def _vmap_series(s: pd.Series, mapping: dict) -> pd.Series:
@@ -2872,6 +3085,12 @@ def _localize_df_values(df: pd.DataFrame) -> pd.DataFrame:
     for col, mp in col_maps.items():
         if col in out.columns:
             out[col] = _vmap_series(out[col], mp)
+    if "rst_relation" in out.columns:
+        out["rst_relation"] = _vmap_series(out["rst_relation"], VRST)
+    if "perlocutionary_effect" in out.columns:
+        out["perlocutionary_effect"] = out["perlocutionary_effect"].map(_localize_perlocution)
+    if "context_note" in out.columns:
+        out["context_note"] = out["context_note"].map(_localize_context_note)
     return out
 
 
@@ -2890,6 +3109,35 @@ def _labeled_multiselect(label: str, raw_values, mapping: dict, widget_key: str)
     inv = {lab: k for k, lab in zip(keys, labels)}
     chosen = st.multiselect(label, labels, key=widget_key)
     return [inv[c] for c in chosen if c in inv]
+
+
+_SKINNER_SENTENCE_COLS = (
+    "sentence_id", "sentence", "book",
+    "primary_intention", "secondary_intention",
+    "illocutionary_force", "primary_strategy",
+    "perlocutionary_effect", "rst_relation", "context_note",
+    "confidence", "reason", "locution", "convention", "political_vocabulary",
+)
+
+
+def _skinner_sentence_colnames() -> dict:
+    return {
+        "sentence_id": T["col_id"],
+        "sentence": T["col_sentence"],
+        "book": T.get("x_book", "Book"),
+        "primary_intention": T["col_intention"],
+        "secondary_intention": T["col_2nd_intention"],
+        "illocutionary_force": T["col_force"],
+        "primary_strategy": T["col_strategy"],
+        "perlocutionary_effect": T["col_perlocution"],
+        "rst_relation": T["col_rst"],
+        "context_note": T["col_context_note"],
+        "confidence": T["col_confidence"],
+        "reason": T["col_reason"],
+        "locution": T["col_locution"],
+        "convention": T["col_convention"],
+        "political_vocabulary": T["col_pol_vocab"],
+    }
 
 # ──────────────────────────────────────────────────────────────────────────────
 # BIBLE BOOK NAME MAPPING  (BKR abbreviation → full name per language)
@@ -3234,7 +3482,8 @@ def load_db(lang: str = "sk") -> pd.DataFrame | None:
         """SELECT sentence_id, sentence, file_name,
                   illocutionary_force, primary_intention, secondary_intention,
                   primary_strategy, secondary_strategy, convention, reason,
-                  political_vocabulary, rst_relation,
+                  political_vocabulary, rst_relation, perlocutionary_effect,
+                  context_note,
                   CAST(confidence AS REAL) AS confidence,
                   CAST(type_token_ratio AS REAL) AS type_token_ratio,
                   has_coordination, dative_present, indirect_object_present,
@@ -3490,21 +3739,9 @@ def generate_pdf_report(
         # Sentence table — extended columns
         story.append(Spacer(1, 0.2*cm))
         story.append(Paragraph(T.get("section_sentence_table","Sentences"), sty["h2"]))
-        disp_cols = ["sentence_id","sentence","primary_intention","secondary_intention",
-                     "illocutionary_force","primary_strategy","secondary_strategy",
-                     "convention","confidence","reason"]
-        show = [c for c in disp_cols if c in df.columns]
-        _pdf_tbl = df[show].head(40).copy()
-        _conv_map = VALUE_LABELS["convention"][lang]
-        _loc_map = VALUE_LABELS["locution"][lang]
-        for _col, _mp in (
-            ("primary_intention", vi), ("secondary_intention", vi),
-            ("illocutionary_force", vf), ("primary_strategy", vs),
-            ("secondary_strategy", vs), ("convention", _conv_map),
-            ("locution", _loc_map),
-        ):
-            if _col in _pdf_tbl.columns:
-                _pdf_tbl[_col] = _pdf_tbl[_col].map(lambda v, m=_mp: m.get(str(v), v) if pd.notna(v) else v)
+        show = [c for c in _SKINNER_SENTENCE_COLS if c in df.columns]
+        _pdf_tbl = _localize_df_values(df[show].head(40).copy())
+        _pdf_tbl = _pdf_tbl.rename(columns=_skinner_sentence_colnames())
         story += _table(_pdf_tbl)
 
         # Secondary intention
@@ -4394,6 +4631,55 @@ with tab_bible:
 
         st.divider()
 
+        with st.expander("📖 " + T["sec_skinner_sentences"], expanded=True):
+            st.caption(T["skinner_sentences_desc"])
+            if "rst_relation" in db_df.columns:
+                _rst_cnt = value_counts_df(db_df["rst_relation"])
+                if not _rst_cnt.empty:
+                    _rd = _rst_cnt.sort_values("count", ascending=False).copy()
+                    _rd.columns = ["_raw", T["x_count"]]
+                    _rd[T["col_rst"]] = _rd["_raw"].map(VRST).fillna(_rd["_raw"])
+                    st.caption(T["rst_dist_desc"])
+                    st.plotly_chart(
+                        fig_hbar(_rd, T["x_count"], T["col_rst"],
+                                 T["rst_dist_title"],
+                                 xlabel=T["x_count"], ylabel=T["col_rst"]),
+                        use_container_width=True,
+                    )
+            _bfi, _bfs = st.columns(2)
+            with _bfi:
+                _bsel_int = _labeled_multiselect(
+                    T["filter_intention"], db_df["primary_intention"].unique(), VI, "bible_sent_fi")
+            with _bfs:
+                _bsel_rst = _labeled_multiselect(
+                    T["col_rst"],
+                    db_df["rst_relation"].unique() if "rst_relation" in db_df.columns else [],
+                    VRST, "bible_sent_rst")
+            _bview = db_df
+            if _bsel_int:
+                _bview = _bview[_bview["primary_intention"].isin(_bsel_int)]
+            if _bsel_rst:
+                _bview = _bview[_bview["rst_relation"].isin(_bsel_rst)]
+            _bshow = [c for c in _SKINNER_SENTENCE_COLS if c in _bview.columns]
+            st.dataframe(
+                _localize_df_values(_bview[_bshow].head(400)).rename(
+                    columns=_skinner_sentence_colnames()
+                ),
+                use_container_width=True, height=440,
+                column_config={
+                    T["col_sentence"]: st.column_config.TextColumn(width="large"),
+                    T["col_perlocution"]: st.column_config.TextColumn(width="medium"),
+                    T["col_confidence"]: st.column_config.NumberColumn(format="%.2f"),
+                },
+            )
+            st.caption(f"{min(400, len(_bview))} / {len(_bview)}")
+            st.download_button(
+                T["download_csv"],
+                _bview.to_csv(index=False).encode(),
+                "bible_skinner_sentences.csv", "text/csv",
+                key="bible_sent_dl",
+            )
+
         # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_intention"], expanded=True):
 
@@ -4651,20 +4937,19 @@ with tab_bible:
                 )
 
             st.divider()
-            from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
+            from t_config_tradition import (
+                TRADITIONS,
+                PHILOSOPHICAL_INFLUENCES,
+                format_tradition_chart_label,
+            )
             st.caption(T["traditions_desc"])
             c1, c2 = st.columns(2)
-            _LANG_SFXS = ("_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit")
+            _base_lbl = T.get("tradition_base", {})
+            _lang_lbl = T.get("tradition_lang", {})
             def _fmt_trad(k: str) -> str:
-                base, lang_key = k, ""
-                for sfx in _LANG_SFXS:
-                    if k.endswith(sfx):
-                        base = k[:-len(sfx)]
-                        lang_key = sfx[1:]
-                        break
-                label = T.get("tradition_base", {}).get(base, base.replace("_", " ").title())
-                lang_l = T.get("tradition_lang", {}).get(lang_key, "")
-                return f"{label} ({lang_l})" if lang_l else label
+                return format_tradition_chart_label(
+                    k, base_labels=_base_lbl, lang_labels=_lang_lbl,
+                )
 
             with c1:
                 trad_df = pd.DataFrame(
@@ -5831,24 +6116,14 @@ with tab_results:
             _view = _df.copy()
             if _sel_int: _view = _view[_view["primary_intention"].isin(_sel_int)]
             if _sel_str: _view = _view[_view["primary_strategy"].isin(_sel_str)]
-            _DISP = ["sentence_id","sentence","primary_intention","secondary_intention",
-                     "illocutionary_force","primary_strategy","confidence","reason",
-                     "locution","convention","political_vocabulary"]
+            _DISP = list(_SKINNER_SENTENCE_COLS)
             _show = [c for c in _DISP if c in _view.columns]
             st.dataframe(
-                _localize_df_values(_view[_show]).rename(columns={
-                    "sentence_id": T["col_id"], "sentence": T["col_sentence"],
-                    "primary_intention": T["col_intention"],
-                    "secondary_intention": T["col_2nd_intention"],
-                    "illocutionary_force": T["col_force"],
-                    "primary_strategy": T["col_strategy"],
-                    "confidence": T["col_confidence"], "reason": T["col_reason"],
-                    "locution": T["col_locution"], "convention": T["col_convention"],
-                    "political_vocabulary": T["col_pol_vocab"],
-                }),
+                _localize_df_values(_view[_show]).rename(columns=_skinner_sentence_colnames()),
                 use_container_width=True, height=400,
                 column_config={
                     T["col_sentence"]: st.column_config.TextColumn(width="large"),
+                    T["col_perlocution"]: st.column_config.TextColumn(width="medium"),
                     T["col_confidence"]: st.column_config.NumberColumn(format="%.2f"),
                 },
             )

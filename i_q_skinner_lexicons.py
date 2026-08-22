@@ -66,7 +66,8 @@ RHETORICAL_STRATEGY_VALUES = {
 
 WARNING_CONDITION_LEMMAS = {
     "jestliže",
-    "pakliť",    # Stanza lemma od "Pakli" (BKR forma) — potvrdené v DB; pakliže sa v BKR nevyskytuje
+    "pakliť",    # Stanza lemma od "Pakli" (BKR forma) — potvrdené v DB
+    "pakliže",   # moderná čeština / povrchový tvar; v BKR vzácne
     "kdož",
     "kdožkoli",
     "kdo",       # "Kdo nepřijme / Kdo neposlechne" — relativizačná podmienková štruktúra
@@ -118,7 +119,7 @@ WARNING_PREVENTIVE_LEMMAS = {
     "hledět",
     "dbát",
     # English (ewt)
-    "beware", "heed", "watch", "guard", "take care", "warn",
+    "beware", "heed", "watch", "guard", "care", "warn",
 }
 
 BĚDA_LEMMAS = {
@@ -312,10 +313,11 @@ QUESTIONING_MARKER_LEMMAS = {
     "co",
     "kde",
     "kdy",
-    "přivázat",
-    "povolat",
-    "svobodný",
-    "služebník",
+    # "přivázat"/"povolat"/"svobodný"/"služebník" sem nepatria — sú obsahové
+    # slová z 1K 7 ("Přivázáns k ženě?" / "Služebníkem povolán jsi?"),
+    # nie otázkové markery. Tie vety zachytáva copular_description v
+    # has_questioning_pattern(); tu by "služebník" falošne zosilňoval
+    # questioning pri každej otázke so sluhom.
     # English (ewt)
     "what", "who", "how", "why", "where", "when", "which", "doth",
     "hath", "can", "could", "whether",
@@ -647,7 +649,8 @@ TRADITION_CONTINUITY_LEMMAS = {
 
 THREAT_CONDITION_LEMMAS = {
     "jestliže",
-    "pakliže",
+    "pakliť",    # Stanza lemma od "Pakli" (BKR) — zhodné s WARNING_CONDITION_LEMMAS
+    "pakliže",   # moderná čeština; v BKR vzácne
     # DEAD: Stanza lemmatizuje na být (AUX), nikdy nebudeš/nebudete (viď komentár pri WARNING_CONDITION_LEMMAS)
     # "nebudeš",
     # "nebudete",
@@ -711,10 +714,11 @@ REWARD_BEATITUDE_LEMMAS = {
 }
 
 REWARD_CONDITION_LEMMAS = {
-    "budete",
+    # "budete" odstránené — Stanza lemmatizuje na "být" (AUX), nikdy nie "budete"
     "jestliže",
     "kdo",
     "kdož",
+    "li",        # "budete-li hledat" → token "li" (rovnaký vzor ako WARNING/THREAT)
     "hledat",
     "vytrvat",
 }
@@ -1200,7 +1204,7 @@ def lexicon_coverage_report(lang: str = "cs") -> list[dict]:
     # Collect all unique lemmas seen in the DB
     db_lemmas: set = set()
     for row in db_rows:
-        db_lemmas.update(row.get("lemmas", "").split())
+        db_lemmas.update((row.get("lemmas") or "").split())
 
     lexicons = get_lexicons(lang)
     results  = []
@@ -1250,7 +1254,7 @@ EMOTIVE_FEAR_LEMMAS: frozenset = frozenset({
 # Evokácia nádeje, útechy, uistenia  [CS only — EN: lexicons/en/lexicons_en_manual.json]
 EMOTIVE_HOPE_LEMMAS: frozenset = frozenset({
     "naděje", "útěcha", "doufat", "potěšit", "utěšit",
-    "upokojiť", "uklidnit", "posilnit", "povzbudit",
+    "upokojit", "uklidnit", "posilnit", "povzbudit",
     "ujistit", "ujištění", "čekat", "očekávat",
 })
 
@@ -1346,7 +1350,7 @@ def compute_corpus_idf(rows: list[dict]) -> dict[str, float]:
         return {}
     df: dict[str, int] = {}
     for row in rows:
-        seen = set(row.get("lemmas", "").split())
+        seen = set((row.get("lemmas") or "").split())
         for lemma in seen:
             df[lemma] = df.get(lemma, 0) + 1
     return {
