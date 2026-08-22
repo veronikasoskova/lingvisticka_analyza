@@ -1,22 +1,18 @@
 file_name,tradition,matched_count,hit_kind,top_words
 bible_BKR_1J.txt,christian,13,distinctive,ježíš:12; kristus:6; spasitel:1
 bible_BKR_1K.txt,christian,86,distinctive,kristus:49; ježíš:18; církev:15; evangelium:8; apoštol:5
-bible_BKR_1Kr.txt,jewish,1,distinctive,tanach:1
 bible_BKR_1Kr.txt,yhwh,210,distinctive,hospodin:210
 bible_BKR_1P.txt,christian,22,distinctive,kristus:16; ježíš:9; evangelium:3; apoštol:1; křest:1
-bible_BKR_1Pa.txt,jewish,1,distinctive,tanach:1
 bible_BKR_1Pa.txt,yhwh,137,distinctive,hospodin:137
 bible_BKR_1S.txt,yhwh,261,distinctive,hospodin:261
 bible_BKR_1Te.txt,christian,23,distinctive,ježíš:15; kristus:7; evangelium:6; církev:2
 bible_BKR_1Tm.txt,christian,17,distinctive,kristus:10; ježíš:10; církev:3; spasitel:2; apoštol:1
 bible_BKR_2J.txt,christian,3,distinctive,kristus:2; ježíš:2
 bible_BKR_2K.txt,christian,55,distinctive,kristus:38; ježíš:15; evangelium:9; církev:6; ježíšův:2
-bible_BKR_2Kr.txt,jewish,1,distinctive,sukkot:1
 bible_BKR_2Kr.txt,yhwh,229,distinctive,hospodin:229
 bible_BKR_2P.txt,christian,8,distinctive,ježíš:7; spasitel:5; kristus:2; apoštol:2
 bible_BKR_2Pa.txt,yhwh,324,distinctive,hospodin:324
 bible_BKR_2S.txt,christian,1,distinctive,spasitel:1
-bible_BKR_2S.txt,gnostic,1,distinctive,jiskra:1
 bible_BKR_2S.txt,yhwh,132,distinctive,hospodin:132
 bible_BKR_2Te.txt,christian,10,distinctive,ježíš:9; kristus:4; evangelium:2; církev:1
 bible_BKR_2Tm.txt,christian,12,distinctive,kristus:11; ježíš:11; apoštol:2; evangelium:2; spasitel:1
@@ -29,7 +25,6 @@ bible_BKR_Da.txt,yhwh,6,distinctive,hospodin:6
 bible_BKR_Dt.txt,yhwh,409,distinctive,hospodin:409
 bible_BKR_Ef.txt,christian,40,distinctive,kristus:29; ježíš:15; církev:8; evangelium:4; apoštol:2
 bible_BKR_Ex.txt,yhwh,359,distinctive,hospodin:359
-bible_BKR_Ez.txt,hermetic,1,distinctive,smaragd:1
 bible_BKR_Ez.txt,yhwh,373,distinctive,hospodin:373
 bible_BKR_Ezd.txt,yhwh,28,distinctive,hospodin:28
 bible_BKR_Fm.txt,christian,6,distinctive,ježíš:5; kristus:4; církev:1; evangelium:1
@@ -37,19 +32,14 @@ bible_BKR_Fp.txt,christian,39,distinctive,kristus:30; ježíš:18; evangelium:7;
 bible_BKR_Ga.txt,christian,45,distinctive,kristus:32; ježíš:14; evangelium:9; kříž:3; apoštol:2
 bible_BKR_Gn.txt,yhwh,152,distinctive,hospodin:152
 bible_BKR_Iz.txt,christian,21,distinctive,vykupitel:13; spasitel:8; evangelium:1
-bible_BKR_Iz.txt,gnostic,2,distinctive,jiskra:2
 bible_BKR_Iz.txt,yhwh,401,distinctive,hospodin:401
 bible_BKR_J.txt,christian,279,distinctive,ježíš:237; kristus:21; ježíšův:11; křtít:9; ukřižovat:7
 bible_BKR_J.txt,jewish,1,distinctive,rabbi:1
 bible_BKR_Jb.txt,christian,1,distinctive,vykupitel:1
-bible_BKR_Jb.txt,gnostic,1,distinctive,jiskra:1
-bible_BKR_Jb.txt,hermetic,1,distinctive,smaragd:1
 bible_BKR_Jb.txt,yhwh,27,distinctive,hospodin:27
 bible_BKR_Jk.txt,christian,2,distinctive,ježíš:2
 bible_BKR_Jl.txt,yhwh,28,distinctive,hospodin:28
 bible_BKR_Jon.txt,yhwh,22,distinctive,hospodin:22
-bible_BKR_Joz.txt,jewish,3,distinctive,tanach:3
-bible_BKR_Joz.txt,jungian,1,distinctive,nevědomí:1
 bible_BKR_Joz.txt,yhwh,177,distinctive,hospodin:177
 bible_BKR_Jr.txt,christian,1,distinctive,vykupitel:1
 bible_BKR_Jr.txt,yhwh,596,distinctive,hospodin:596
@@ -61,9 +51,7 @@ bible_BKR_L.txt,yhwh,2,distinctive,hospodin:2
 bible_BKR_Lv.txt,yhwh,261,distinctive,hospodin:261
 bible_BKR_Mal.txt,yhwh,43,distinctive,hospodin:43
 bible_BKR_Mi.txt,yhwh,37,distinctive,hospodin:37
-bible_BKR_Mk.txt,buddhist,1,distinctive,lama:1
-bible_BKR_Mk.txt,christian,118,distinctive,ježíš:94; evangelium:8; kristus:8; kříž:5; křtít:3
-bible_BKR_Mt.txt,buddhist,1,distinctive,lama:1
+bible_BKR_Mk.txt,christian,118,distinctive,ježíš:94; kristus:8; evangelium:8; kříž:5; křtít:3
 bible_BKR_Mt.txt,christian,197,distinctive,ježíš:168; kristus:15; evangelium:5; kříž:5; ježíšův:4
 bible_BKR_Na.txt,yhwh,12,distinctive,hospodin:12
 bible_BKR_Neh.txt,yhwh,16,distinctive,hospodin:16
@@ -74,11 +62,9 @@ bible_BKR_Pr.txt,yhwh,87,distinctive,hospodin:87
 bible_BKR_R.txt,christian,69,distinctive,kristus:47; ježíš:33; evangelium:11; církev:4; apoštol:3
 bible_BKR_R.txt,yhwh,1,distinctive,hospodin:1
 bible_BKR_Rt.txt,yhwh,17,distinctive,hospodin:17
-bible_BKR_Sd.txt,jewish,2,distinctive,tanach:2
 bible_BKR_Sd.txt,yhwh,147,distinctive,hospodin:147
 bible_BKR_Sf.txt,yhwh,30,distinctive,hospodin:30
 bible_BKR_Sk.txt,christian,116,distinctive,ježíš:65; kristus:28; církev:18; apoštol:14; evangelium:7
-bible_BKR_Sk.txt,jungian,1,distinctive,nevědomí:1
 bible_BKR_Sk.txt,yhwh,1,distinctive,hospodin:1
 bible_BKR_Tit.txt,christian,5,distinctive,spasitel:5; ježíš:3; kristus:1; apoštol:1
 bible_BKR_Z.txt,christian,6,distinctive,spasitel:4; vykupitel:2
@@ -86,4 +72,3 @@ bible_BKR_Z.txt,yhwh,648,distinctive,hospodin:648
 bible_BKR_Za.txt,yhwh,103,distinctive,hospodin:103
 bible_BKR_Zd.txt,christian,21,distinctive,kristus:12; ježíš:11; ježíšův:1; kříž:1; církev:1
 bible_BKR_Zj.txt,christian,33,distinctive,církev:16; kristus:8; ježíš:7; ježíšův:5; evangelium:1
-bible_BKR_Zj.txt,hermetic,1,distinctive,smaragd:1

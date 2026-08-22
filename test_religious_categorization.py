@@ -31,6 +31,9 @@ from t_config_tradition import (
     YHWH_ELEMENTS,
     CHRISTIAN_ELEMENTS,
     CHRISTOLOGICAL_ELEMENTS,
+    JEWISH_ELEMENTS,
+    HERMETIC_ELEMENTS,
+    JUNGIAN_ELEMENTS,
     analyze_lemma_set,
     analyze_sentences,
     detect_tradition_from_lemmas,
@@ -202,6 +205,45 @@ class TheosophyKeywordTests(unittest.TestCase):
         self.assertIn("jóga", HINDU_ELEMENTS)
         scored = analyze_lemma_set({"moudrost", "zákon", "modlitba"})
         self.assertNotIn("hindu", scored["tradition_diagnostic"])
+        # Live BKR homographs that used to paint the Bible as gnostic / hermetic /
+        # Buddhist / Jungian / Jewish-canon.
+        self.assertNotIn("jiskra", GNOSTIC_INFLUENCE)
+        self.assertNotIn("spark", GNOSTIC_INFLUENCE)
+        self.assertNotIn("smaragd", HERMETIC_ELEMENTS)
+        self.assertNotIn("emerald", HERMETIC_ELEMENTS)
+        self.assertNotIn("lama", BUDDHIST_ELEMENTS)
+        self.assertIn("dalajlama", BUDDHIST_ELEMENTS)
+        self.assertNotIn("nevědomí", JUNGIAN_ELEMENTS)
+        self.assertIn("unconscious", JUNGIAN_ELEMENTS)
+        self.assertNotIn("tanach", JEWISH_ELEMENTS)
+        self.assertIn("tanakh", JEWISH_ELEMENTS)
+        self.assertNotIn("sukkot", JEWISH_ELEMENTS)
+
+    def test_bkr_homographs_do_not_attribute_foreign_traditions(self):
+        spark = analyze_lemma_set({"uhasit", "jiskra", "oheň"})
+        self.assertNotIn("gnostic", spark["tradition_diagnostic"])
+        self.assertNotIn("gnostic", spark["philosophical"])
+
+        gem = analyze_lemma_set({"smaragd", "jaspis", "trůn"})
+        self.assertNotIn("hermetic", gem["tradition_diagnostic"])
+        self.assertNotIn("hermetic", gem["philosophical"])
+
+        cry = analyze_lemma_set({"eli", "lama", "zabachtani", "ježíš"})
+        self.assertNotIn("buddhist", cry["tradition_diagnostic"])
+        self.assertIn("christian", cry["tradition_diagnostic"])
+
+        city = analyze_lemma_set({"král", "tanach", "mageddo"})
+        self.assertNotIn("jewish", city["tradition_diagnostic"])
+
+        ignorance = analyze_lemma_set({"z", "nevědomí", "učinit", "bratr"})
+        self.assertNotIn("jungian", ignorance["tradition_diagnostic"])
+        self.assertNotIn("jungian", ignorance["philosophical"])
+
+        # Distinctive terms must still fire.
+        self.assertIn("gnostic", analyze_lemma_set({"gnóze", "demiurg"})["tradition_diagnostic"])
+        self.assertIn("hermetic", analyze_lemma_set({"kybalion", "hermes"})["tradition_diagnostic"])
+        self.assertIn("buddhist", analyze_lemma_set({"dalajlama", "nirvána"})["tradition_diagnostic"])
+        self.assertIn("jungian", analyze_lemma_set({"archetyp", "individuation"})["tradition_diagnostic"])
 
 
 class LogosCompromiseTests(unittest.TestCase):
