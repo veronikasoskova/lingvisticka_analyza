@@ -8,6 +8,9 @@ matplotlib>=3.7.0
 networkx>=3.1.0
 joblib>=1.3.0
 stanza>=1.4.0,<1.8.0
+# Stanza 1.7 checkpoints need torch.load(weights_only=False). torch>=2.6 defaults
+# weights_only=True and Tab 1 crashes with UnpicklingError on model load.
+torch>=2.0.0,<2.6.0
 reportlab>=4.0.0
 wordcloud>=1.9.0
 pdfplumber>=0.10.0

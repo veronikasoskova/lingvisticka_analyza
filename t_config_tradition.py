@@ -562,8 +562,12 @@ JEWISH_ELEMENTS = distinctive((
     "košer", "kosher", "kašrut", "kashrut",
     "tefilin", "tefillin", "mezuza", "mezuzah",
     "rabi", "rabbi", "rabín",
-    "midraš", "midrash", "tanach", "tanakh",
-    "menora", "menorah", "chanuka", "hanukkah", "pesach", "sukot", "sukkot",
+    "midraš", "midrash", "tanakh",
+    # "tanach" omitted: BKR city Taanach (Joz, Sd, 1Kr), not the Jewish canon
+    "menora", "menorah", "chanuka", "hanukkah", "pesach",
+    # "sukkot"/"sukot" omitted: BKR only hits the idol "Sukkot Benot" (2Kr 17:30);
+    # the feast is called "svátek stánků" in Kralice Czech
+
     "synagoga", "synagogue",
     # yhwh / jahve / adonai / elohim live in YHWH_ELEMENTS (theonym layer)
 ))
@@ -597,7 +601,9 @@ BUDDHIST_ELEMENTS = distinctive((
     "vajrayana", "vadžrajána", "hinayana", "hinajána",
     "arhat", "arahant", "tathagata", "tathágata",
     "stupa", "stúpa", "pagoda",
-    "dalajlama", "dalajláma", "lama",
+    "dalajlama", "dalajláma",
+    # "lama" omitted: BKR "Eli, Eli, lama zabachtani" (Mt 27 / Mk 15), not a tulku
+
     "sunyata", "šúnjatá", "skandha", "khandha",
     "pratitya", "pratítja",
     "osmidílná", "eightfold", "madhjamaka", "madhyamaka",
@@ -627,7 +633,8 @@ HINDU_ELEMENTS = distinctive((
 HERMETIC_ELEMENTS = distinctive((
     "hermes", "trismegistos", "trismegistus",
     "hermetismus", "hermetism", "hermetic", "hermetický",
-    "smaragd", "emerald", "kybalion",
+    # "smaragd" / "emerald" omitted: BKR gemstones (Ex, Jb, Ez, Zj), not the Emerald Tablet
+    "kybalion",
     "alchymie", "alchemy", "alchymista",
     "poimandres", "poimandrès", "corpus hermeticum",
     "mentalismus", "mentalism",
@@ -676,7 +683,8 @@ THEOSOPHICAL_ELEMENTS = distinctive((
 
 JUNGIAN_ELEMENTS = distinctive((
     "archetyp", "archetype", "archetypový",
-    "nevědomí", "unconscious",
+    # "nevědomí" omitted: BKR "z nevědomí" = in ignorance (Sk 3:17), not Jung's unconscious
+    "unconscious",
     "anima", "animus",
     "individuace", "individuation",
     "mandala", "synchronicita", "synchronicity",
@@ -721,7 +729,8 @@ GNOSTIC_ELEMENTS = distinctive((
     "yaldabaoth", "ialdabaoth",
     "valentinos", "valentinus", "basilides", "sethian", "sethiánský",
     "nag hammadi", "hammadi",
-    "jiskra", "spark",
+    # "jiskra" / "spark" omitted: BKR uses jiskra for literal sparks (2S, Iz, Jb),
+    # not the Gnostic divine spark
     # "sophia" kept as loanword; Czech "moudrost" is biblical Hokhmah
     "sophia",
     # "světlo" / "tma" omitted — Johannine, not Gnostic evidence

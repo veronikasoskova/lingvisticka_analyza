@@ -1,10 +1,2 @@
 file_name,philosophy,matched_count,bkr_filter,hit_kind,top_words
-bible_BKR_2S.txt,gnostic,1,True,distinctive,jiskra:1
-bible_BKR_Ez.txt,hermetic,1,True,distinctive,smaragd:1
-bible_BKR_Iz.txt,gnostic,2,True,distinctive,jiskra:2
-bible_BKR_Jb.txt,gnostic,1,True,distinctive,jiskra:1
-bible_BKR_Jb.txt,hermetic,1,True,distinctive,smaragd:1
-bible_BKR_Joz.txt,jungian,1,True,distinctive,nevědomí:1
-bible_BKR_Sk.txt,jungian,1,True,distinctive,nevědomí:1
 bible_BKR_Sk.txt,stoic,1,True,distinctive,stoický:1
-bible_BKR_Zj.txt,hermetic,1,True,distinctive,smaragd:1

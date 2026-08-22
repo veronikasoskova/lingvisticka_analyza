@@ -13,6 +13,7 @@ Usage
 -----
     python generate_demo_db.py          # all books, 40 verses each
     python generate_demo_db.py --full   # all books, all verses (slower)
+    python generate_demo_db.py --force  # overwrite even if bible_analysis.db.gz exists
 """
 
 from __future__ import annotations
@@ -32,7 +33,7 @@ from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 from t_config_tradition import canonicalize_lemma
 from lexicons_common import clean_surface_token
 from i_q_skinner_lexicons import ILLOCUTIONARY_FORCE_MAP, RHETORICAL_STRATEGY_VALUES
-from j_q_skinner_taxonomy import CONVENTION_MAP
+from j_q_skinner_taxonomy import CONVENTION_MAP, INTENTION_DEFAULT_STRATEGY, derive_locution, LOCUTION_LABELS
 from m_verbal_relations import RELATION_TYPE_VALUES
 from p_refine_descriptions import DESCRIPTION_TYPE_VALUES
 
@@ -54,25 +55,9 @@ INTENTION_WEIGHTS = [
     0.03, 0.02, 0.03, 0.03, 0.04,
 ]
 
-# Intention → typical rhetorical strategy (RHETORICAL_STRATEGY_VALUES).
+# Intention → typical rhetorical strategy (shared with the live classifier).
 # Convention names belong in the `convention` column, not primary_strategy.
-STRATEGIES = {
-    "legitimation":             "appeal_to_authority",
-    "commanding":               "direct_address",
-    "warning":                  "conditional_threat",
-    "record":                   "narrative_example",
-    "praising":                 "repetition",
-    "declaring":                "appeal_to_authority",
-    "promising":                "promise_of_reward",
-    "condemning":               "contrast",
-    "justifying":               "appeal_to_scripture",
-    "intervention":             "rhetorical_question",
-    "mobilizing":               "direct_address",
-    "ideological_contestation": "contrast",
-    "persuading":               "appeal_to_tradition",
-    "questioning":              "rhetorical_question",
-    "narrative":                "narrative_example",
-}
+STRATEGIES = INTENTION_DEFAULT_STRATEGY
 
 RELATION_TYPES = [
     "reported_speech", "request_relation", "lyrical_relation",
@@ -95,11 +80,7 @@ SEMANTIC_CLUSTERS = [
     "description", "neutral", "request", "negation", "uncertainty",
 ]
 
-LOCUTION_TMPL = [
-    "výrok o Bohu", "přímý příkaz", "zaslíbení", "výzva k poslušnosti",
-    "narativní popis", "prorocké zvolání", "chvála", "nářek",
-    "právní předpis", "teologické tvrzení",
-]
+LOCUTION_TMPL = list(LOCUTION_LABELS)
 
 CONVENTION_TMPL = [
     "právní formule", "prorocký žánr", "narativní žánr", "hymnický žánr",
@@ -155,7 +136,7 @@ def _make_skinner_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         "secondary_intention":   secondary,
         "primary_strategy":      strategy,
         "secondary_strategy":    None,
-        "locution":              rng.choice(LOCUTION_TMPL),
+        "locution":              derive_locution(intention),
         "convention":            CONVENTION_MAP.get(intention, "undetermined"),
         "linguistic_context":    "biblical_czech_bkr",
         "political_vocabulary":  rng.choice(POLITICAL_VOCAB_TMPL),
@@ -272,7 +253,14 @@ def assert_demo_vocab_aligned() -> None:
         raise ValueError(f"Demo forces not in production vocab: {unknown_forces}")
 
 
-def main(full: bool = False):
+def main(full: bool = False, force: bool = False):
+    from a_paths import DB_GZ_PATH
+
+    if not force and DB_GZ_PATH.exists() and DB_GZ_PATH.stat().st_size > 0:
+        raise SystemExit(
+            f"Refusing to overwrite the live packed corpus ({DB_GZ_PATH}). "
+            "Pass --force to generate synthetic demo data anyway."
+        )
     assert_demo_vocab_aligned()
     limit = None if full else 40   # verses per book in demo mode
 
@@ -377,4 +365,5 @@ def main(full: bool = False):
 
 if __name__ == "__main__":
     full = "--full" in sys.argv
-    main(full=full)
+    force = "--force" in sys.argv
+    main(full=full, force=force)

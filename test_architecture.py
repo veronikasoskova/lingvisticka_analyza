@@ -156,9 +156,15 @@ class DatabaseNullHandlingTests(unittest.TestCase):
                 raw = conn.execute(
                     "SELECT has_coordination, dative_present FROM skinner_analysis"
                 ).fetchone()
+                types = {
+                    row[1]: row[2]
+                    for row in conn.execute("PRAGMA table_info(skinner_analysis)")
+                }
                 conn.close()
-                self.assertEqual(raw[0], "1")
-                self.assertEqual(raw[1], "0")
+                self.assertEqual(raw[0], 1)
+                self.assertEqual(raw[1], 0)
+                self.assertEqual(types["has_coordination"], "INTEGER")
+                self.assertEqual(types["dative_present"], "INTEGER")
             finally:
                 n_db.DB_PATH = original
 
@@ -220,6 +226,216 @@ class ContextConsistencyTests(unittest.TestCase):
             ),
             [CONTEXT_ISSUE_AUDIO_WRITTEN],
         )
+
+
+class StrategyFallbackTests(unittest.TestCase):
+    def test_unclassified_record_becomes_narrative_example(self):
+        from j_q_skinner_taxonomy import apply_strategy_fallback
+        self.assertEqual(
+            apply_strategy_fallback("record", "unclassified"),
+            "narrative_example",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("commanding", "unclassified"),
+            "direct_address",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("record", "appeal_to_authority"),
+            "appeal_to_authority",
+        )
+        self.assertEqual(
+            apply_strategy_fallback("unclassified", "unclassified"),
+            "unclassified",
+        )
+
+    def test_demo_strategies_are_the_live_defaults(self):
+        from generate_demo_db import STRATEGIES
+        from j_q_skinner_taxonomy import INTENTION_DEFAULT_STRATEGY
+        self.assertIs(STRATEGIES, INTENTION_DEFAULT_STRATEGY)
+
+
+class IntentionFallbackTests(unittest.TestCase):
+    def test_decalogue_and_ne_z_become_commanding(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Nepokradeš."),
+            "commanding",
+        )
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Vidíš ty to, Hospodine, neodmlčujž se, Pane.",
+            ),
+            "commanding",
+        )
+
+    def test_selah_and_acrostic_become_record(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Sélah.", "sélah"),
+            "record",
+        )
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Aleph."),
+            "record",
+        )
+
+    def test_kdoz_and_leftover_present_become_declaring(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Kdož ť nemiluje mne, slov mých neostříhá;",
+                "kdož milovat",
+            ),
+            "declaring",
+        )
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Kdož nemiluje, nezná Boha;",
+            ),
+            "declaring",
+        )
+
+    def test_keeps_classified_intention(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("record", "Nepokradeš."),
+            "record",
+        )
+
+
+class LocutionTests(unittest.TestCase):
+    def test_locution_is_a_category_not_the_sentence(self):
+        from j_q_skinner_taxonomy import derive_locution, LOCUTION_LABELS
+        label = derive_locution("record", "", "Přibral se Roboám do Sichem.")
+        self.assertIn(label, LOCUTION_LABELS)
+        self.assertNotIn("Roboám", label)
+
+    def test_commanding_prohibition_is_direct_command(self):
+        from j_q_skinner_taxonomy import derive_locution
+        self.assertEqual(
+            derive_locution("commanding", "", "Nepokradeš."),
+            "přímý příkaz",
+        )
+
+    def test_divine_declaring_is_statement_about_god(self):
+        from j_q_skinner_taxonomy import derive_locution
+        self.assertEqual(
+            derive_locution("declaring", "bůh pravda", "Bůh jest pravda."),
+            "výrok o Bohu",
+        )
+
+    def test_demo_locution_comes_from_intention(self):
+        from generate_demo_db import LOCUTION_TMPL
+        from j_q_skinner_taxonomy import LOCUTION_LABELS, derive_locution
+        self.assertEqual(tuple(LOCUTION_TMPL), LOCUTION_LABELS)
+        self.assertEqual(derive_locution("praising"), "chvála")
+
+    def test_refresh_rewrites_sentence_locution(self):
+        from j_q_skinner_taxonomy import refresh_stored_skinner_row
+        row = refresh_stored_skinner_row({
+            "primary_intention": "record",
+            "primary_strategy": "narrative_example",
+            "sentence": "Přibral se Roboám do Sichem.",
+            "lemmas": "přibrat se roboám",
+            "locution": "Přibral se Roboám do Sichem.",
+            "convention": "narrative_chronicle",
+            "illocutionary_force": "assertive",
+            "reason": "old",
+            "confidence": 0.7,
+        })
+        self.assertEqual(row["locution"], "narativní popis")
+        self.assertEqual(row["primary_intention"], "record")
+        self.assertEqual(row["reason"], "old")
+
+
+class BookGroupFilterTests(unittest.TestCase):
+    def test_filter_keeps_only_selected_abbrevs(self):
+        import pandas as pd
+        from b_analytics_utils import filter_by_abbrevs, value_counts_df
+
+        df = pd.DataFrame({
+            "book": ["Matúš", "Marek", "Žalm 1"],
+            "file_name": ["bible_BKR_Mt.txt", "bible_BKR_Mk.txt", "bible_BKR_Z.txt"],
+            "primary_intention": ["commanding", "record", "praising"],
+        })
+        abbr = {
+            "Matúš": "Mt", "Marek": "Mk", "Žalm 1": "Z",
+            "bible_BKR_Mt.txt": "Mt", "bible_BKR_Mk.txt": "Mk",
+            "bible_BKR_Z.txt": "Z",
+        }
+        filtered = filter_by_abbrevs(
+            df, {"Mt", "Mk"}, col="book", abbr_of=lambda v: abbr[v],
+        )
+        self.assertEqual(list(filtered["book"]), ["Matúš", "Marek"])
+        counts = value_counts_df(filtered["primary_intention"])
+        self.assertEqual(int(counts["count"].sum()), 2)
+        self.assertIs(filter_by_abbrevs(df, None, col="book", abbr_of=lambda v: v), df)
+
+
+class CompactBibleDbTests(unittest.TestCase):
+    def test_compact_keeps_one_run_and_types_flags(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "both.db"
+            original = n_db.DB_PATH
+            n_db.DB_PATH = db_path
+            try:
+                n_db.insert_rows(
+                    TABLE_SKINNER,
+                    [{"sentence": "demo", "has_coordination": True, "corpus_id": "bible_bkr"}],
+                    "2024-01-01T00:00:00",
+                )
+                n_db.insert_rows(
+                    TABLE_SKINNER,
+                    [{"sentence": "live", "has_coordination": False, "corpus_id": "bible_bkr"}],
+                    "2026-08-22T10:01:10",
+                )
+                kept = n_db.compact_bible_db("2026-08-22T10:01:10")
+                self.assertEqual(kept, "2026-08-22T10:01:10")
+                self.assertEqual(n_db.list_runs(TABLE_SKINNER), ["2026-08-22T10:01:10"])
+                self.assertEqual(n_db.count_table_rows(TABLE_SKINNER), 1)
+                self.assertEqual(
+                    n_db.count_table_rows(TABLE_SKINNER, "2026-08-22T10:01:10"),
+                    1,
+                )
+                conn = sqlite3.connect(db_path)
+                types = {
+                    row[1]: row[2]
+                    for row in conn.execute("PRAGMA table_info(skinner_analysis)")
+                }
+                kind, val = conn.execute(
+                    "SELECT typeof(has_coordination), has_coordination FROM skinner_analysis"
+                ).fetchone()
+                conn.close()
+                self.assertEqual(types["has_coordination"], "INTEGER")
+                self.assertEqual(kind, "integer")
+                self.assertEqual(val, 0)
+            finally:
+                n_db.DB_PATH = original
+
+
+class GenerateDemoGuardTests(unittest.TestCase):
+    def test_refuses_to_overwrite_packed_live_db(self):
+        import tempfile
+        from generate_demo_db import main as demo_main
+        import a_paths
+
+        with tempfile.TemporaryDirectory() as tmp:
+            orig = (a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH)
+            a_paths.OUTPUT_DIR = Path(tmp)
+            a_paths.DB_PATH = Path(tmp) / "bible_analysis.db"
+            a_paths.DB_GZ_PATH = Path(tmp) / "bible_analysis.db.gz"
+            a_paths.DB_GZ_PATH.write_bytes(b"not-empty-gz")
+            try:
+                with self.assertRaises(SystemExit) as ctx:
+                    demo_main(force=False)
+                self.assertIn("Refusing to overwrite", str(ctx.exception))
+            finally:
+                a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH = orig
 
 
 if __name__ == "__main__":

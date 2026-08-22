@@ -120,6 +120,14 @@ class DemoDbDisplayLabelTests(unittest.TestCase):
             ):
                 if str(raw) not in labels:
                     missing.append(f"{lang}:convention={raw}")
+            loc_labels = VALUE_LABELS["locution"][lang]
+            for (raw,) in conn.execute(
+                'SELECT DISTINCT locution FROM skinner_analysis '
+                'WHERE run_id = ? AND locution IS NOT NULL AND locution != ""',
+                (run_id,),
+            ):
+                if str(raw) not in loc_labels:
+                    missing.append(f"{lang}:locution={raw}")
             vlabels = VALUE_LABELS["verbal_type"][lang]
             for (raw,) in conn.execute(
                 'SELECT DISTINCT subtype FROM verbal_relations '
