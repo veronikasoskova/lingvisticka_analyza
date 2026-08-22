@@ -46,7 +46,7 @@ def collect_dependency_rows():
 
     all_rows = []
 
-    files = list_bible_files(limit=10)
+    files = list_bible_files()
 
     if not files:
         raise FileNotFoundError(
