@@ -32,6 +32,10 @@ from j0_discursive_context import (
     resolve_discursive_context,
 )
 from j0_rst_relations import annotate_rst, classify_rst_relation, rst_profile
+from j_r_perlocutionary_effect import (
+    _INTENTION_TO_EFFECT,
+    derive_perlocutionary_effect,
+)
 
 
 def _feat(**kwargs):
@@ -165,6 +169,61 @@ class RstRelationTests(unittest.TestCase):
         profile = rst_profile(["continuation", "contrast", "cause", "continuation"])
         self.assertEqual(profile["total"], 4)
         self.assertEqual(profile["coherence_density"], 0.5)
+
+
+class PerlocutionaryEffectTests(unittest.TestCase):
+    def test_map_covers_every_intention(self):
+        self.assertTrue(INTENTION_VALUES <= set(_INTENTION_TO_EFFECT))
+        self.assertEqual(_INTENTION_TO_EFFECT["unclassified"], "effect_indeterminate")
+
+    def test_warning_without_emotive_stays_inferred(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="jestliže zahynout"), "warning"),
+            "evoke_fear_urgency",
+        )
+
+    def test_warning_plus_fear_is_lexical_confirmation(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="strach zahynout"), "warning"),
+            "evoke_fear_urgency[lexically_confirmed]",
+        )
+
+    def test_condemning_plus_fear_does_not_rewrite_to_fear(self):
+        # Fear does not confirm shame/guilt; keep the inferred effect and attach fear.
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="strach hřích"), "condemning"),
+            "evoke_shame_guilt+fear_evoked",
+        )
+
+    def test_justifying_plus_hope_does_not_rewrite_to_hope_trust(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="naděje neboť"), "justifying"),
+            "evoke_trust_assurance+hope_evoked",
+        )
+
+    def test_promising_plus_hope_is_lexical_confirmation(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="naděje dát"), "promising"),
+            "evoke_hope_trust[lexically_confirmed]",
+        )
+
+    def test_condemning_plus_hope_is_tension(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="naděje běda"), "condemning"),
+            "evoke_fear_urgency+hope_despite_judgment",
+        )
+
+    def test_reader_address_is_suffixed(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="vy slovo"), "declaring"),
+            "evoke_belief_understanding; reader_directly_addressed",
+        )
+
+    def test_unknown_intention_is_indeterminate(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas=""), "not_a_real_intention"),
+            "effect_indeterminate",
+        )
 
 
 if __name__ == "__main__":

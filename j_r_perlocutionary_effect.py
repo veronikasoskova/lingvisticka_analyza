@@ -11,11 +11,6 @@ from i_q_skinner_lexicons import (
     READER_ADDRESS_LEMMAS,
     DIRECT_ADDRESS_PRONOUN_LEMMAS,
     DIRECT_ADDRESS_VOCATIVE_LEMMAS,
-    COMMANDING_DEONTIC_LEMMAS,
-    THREAT_DIVINE_WRATH_LEMMAS,
-    THREAT_OUTCOME_LEMMAS,
-    REWARD_ESCHATOLOGICAL_LEMMAS,
-    REWARD_BEATITUDE_LEMMAS,
 )
 
 
@@ -46,9 +41,21 @@ _INTENTION_TO_EFFECT: dict[str, str] = {
     "unclassified":             "effect_indeterminate",
 }
 
+# Emotívny signál, ktorý skutočne potvrdzuje inferovaný efekt — nie iný.
+_EFFECT_CONFIRMED_BY: dict[str, str] = {
+    "evoke_fear_urgency":      "fear",
+    "evoke_hope_trust":        "hope",
+    "evoke_awe_reverence":     "wonder",
+    "evoke_shame_guilt":       "guilt",
+}
+
 
 def _infer_from_intention(primary_intention: str) -> str:
     return _INTENTION_TO_EFFECT.get(primary_intention, "effect_indeterminate")
+
+
+def _with_reader(effect: str, has_reader: bool) -> str:
+    return f"{effect}; reader_directly_addressed" if has_reader else effect
 
 
 # ==========================================================
@@ -76,39 +83,29 @@ def _confirm_from_lexicon(
     )
 
     # Ak žiaden emotívny signál nie je prítomný, vráť inferovaný efekt
-    if not any([has_fear, has_hope, has_wonder, has_guilt]):
-        if has_reader:
-            return f"{inferred_effect}; reader_directly_addressed"
-        return inferred_effect
+    if not any((has_fear, has_hope, has_wonder, has_guilt)):
+        return _with_reader(inferred_effect, has_reader)
 
     # Tenzionálne prípady: emotívny slovník kontrastuje s ilokučným zámerom
     if has_hope and primary_intention in {"condemning", "warning"}:
-        effect = "evoke_fear_urgency+hope_despite_judgment"
-        return f"{effect}; reader_directly_addressed" if has_reader else effect
+        return _with_reader("evoke_fear_urgency+hope_despite_judgment", has_reader)
 
     if has_guilt and primary_intention == "promising":
-        effect = "evoke_hope_trust+guilt_awareness"
-        return f"{effect}; reader_directly_addressed" if has_reader else effect
+        return _with_reader("evoke_hope_trust+guilt_awareness", has_reader)
 
     if has_wonder and primary_intention == "commanding":
-        effect = "evoke_compliance_obedience+awe_reverence"
-        return f"{effect}; reader_directly_addressed" if has_reader else effect
+        return _with_reader("evoke_compliance_obedience+awe_reverence", has_reader)
 
-    # Potvrdenie: emotívny slovník súhlasí s inferovaným efektom
-    if has_fear and primary_intention in {"warning", "condemning"}:
-        confirmed = "evoke_fear_urgency[lexically_confirmed]"
-    elif has_hope and primary_intention in {"promising", "justifying", "mobilizing"}:
-        confirmed = "evoke_hope_trust[lexically_confirmed]"
-    elif has_wonder and primary_intention in {"praising", "declaring", "legitimation"}:
-        confirmed = "evoke_awe_reverence[lexically_confirmed]"
-    elif has_guilt and primary_intention == "condemning":
-        confirmed = "evoke_shame_guilt[lexically_confirmed]"
+    # Potvrdenie len keď dominantný emotívny signál súhlasí s inferovaným efektom.
+    # Predtým sa napr. condemning+fear pretagoval ako evoke_fear_urgency[lexically_confirmed]
+    # a justifying+hope ako evoke_hope_trust[lexically_confirmed] — to nie je potvrdenie
+    # inferovaného efektu, ale jeho tichá náhrada.
+    dominant = _dominant_emotive(has_fear, has_hope, has_wonder, has_guilt)
+    if _EFFECT_CONFIRMED_BY.get(inferred_effect) == dominant:
+        confirmed = f"{inferred_effect}[lexically_confirmed]"
     else:
-        # Emotívny slovník prítomný, ale nesúhlasí s hlavným zámerom → obe vrstvy
-        dominant = _dominant_emotive(has_fear, has_hope, has_wonder, has_guilt)
         confirmed = f"{inferred_effect}+{dominant}_evoked"
-
-    return f"{confirmed}; reader_directly_addressed" if has_reader else confirmed
+    return _with_reader(confirmed, has_reader)
 
 
 def _dominant_emotive(
