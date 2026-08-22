@@ -11,6 +11,11 @@ from i_q_skinner_lexicons import (
     READER_ADDRESS_LEMMAS,
     DIRECT_ADDRESS_PRONOUN_LEMMAS,
     DIRECT_ADDRESS_VOCATIVE_LEMMAS,
+    COMMANDING_DEONTIC_LEMMAS,
+    THREAT_DIVINE_WRATH_LEMMAS,
+    THREAT_OUTCOME_LEMMAS,
+    REWARD_ESCHATOLOGICAL_LEMMAS,
+    REWARD_BEATITUDE_LEMMAS,
 )
 
 
@@ -41,12 +46,13 @@ _INTENTION_TO_EFFECT: dict[str, str] = {
     "unclassified":             "effect_indeterminate",
 }
 
-# Emotívny signál, ktorý skutočne potvrdzuje inferovaný efekt — nie iný.
+# Emotívny/ilokučný signál, ktorý skutočne potvrdzuje inferovaný efekt — nie iný.
 _EFFECT_CONFIRMED_BY: dict[str, str] = {
-    "evoke_fear_urgency":      "fear",
-    "evoke_hope_trust":        "hope",
-    "evoke_awe_reverence":     "wonder",
-    "evoke_shame_guilt":       "guilt",
+    "evoke_fear_urgency":           "fear",
+    "evoke_hope_trust":             "hope",
+    "evoke_awe_reverence":          "wonder",
+    "evoke_shame_guilt":            "guilt",
+    "evoke_compliance_obedience":   "deontic",
 }
 
 
@@ -59,10 +65,39 @@ def _with_reader(effect: str, has_reader: bool) -> str:
 
 
 # ==========================================================
-# JR2. KROK B — potvrdenie / spresnenie z emotívnych lexikónov
+# JR2. PERLOKUČNÉ EVIDENČNÉ SKUPINY
 # ==========================================================
 #
-# Kontroluje, či je emotívny lexikón prítomný vo vete.
+# Emotívne lexikóny (strach, nádej, úžas, vina) sú priame.
+# Threat / reward / deontic sú tá istá vrstva pre biblický register, kde
+# veta zriedka povie „strach“ a častejšie „zahyneš“ / „hněv“ / „království“.
+#
+# Odčítané sú lemmy, ktoré v zdrojovom sete sedia, ale samy perlokúciu
+# nenesú: boží (posesívum), zůstat/zůstávat (kopula), sláva (doxológia),
+# mít/have (všeobecné sloveso, nie deontika).
+
+_GENERIC_FEAR = frozenset({"boží", "zůstávat", "zůstat"})
+_GENERIC_HOPE = frozenset({"sláva"})
+_GENERIC_DEONTIC = frozenset({"mít", "have", "need", "shall"})
+
+PERLOCUTION_FEAR_LEMMAS: frozenset = frozenset(
+    EMOTIVE_FEAR_LEMMAS | THREAT_OUTCOME_LEMMAS | THREAT_DIVINE_WRATH_LEMMAS
+) - _GENERIC_FEAR
+
+PERLOCUTION_HOPE_LEMMAS: frozenset = frozenset(
+    EMOTIVE_HOPE_LEMMAS | REWARD_ESCHATOLOGICAL_LEMMAS | REWARD_BEATITUDE_LEMMAS
+) - _GENERIC_HOPE
+
+PERLOCUTION_WONDER_LEMMAS: frozenset = frozenset(EMOTIVE_WONDER_LEMMAS)
+PERLOCUTION_GUILT_LEMMAS: frozenset = frozenset(EMOTIVE_GUILT_LEMMAS)
+PERLOCUTION_DEONTIC_LEMMAS: frozenset = frozenset(COMMANDING_DEONTIC_LEMMAS) - _GENERIC_DEONTIC
+
+
+# ==========================================================
+# JR3. KROK B — potvrdenie / spresnenie z evidenčných skupín
+# ==========================================================
+#
+# Kontroluje, či je perlocučný signál prítomný vo vete.
 # Ak áno, spresní alebo reviduje inferovaný efekt.
 # Tenzionálne prípady (napr. HOPE v CONDEMNING) sú zachytené
 # explicitne ako kompozitné labely.
@@ -72,21 +107,21 @@ def _confirm_from_lexicon(
     inferred_effect: str,
     primary_intention: str,
 ) -> str:
-    has_fear   = rules.has_any_lemma(feature, EMOTIVE_FEAR_LEMMAS)
-    has_hope   = rules.has_any_lemma(feature, EMOTIVE_HOPE_LEMMAS)
-    has_wonder = rules.has_any_lemma(feature, EMOTIVE_WONDER_LEMMAS)
-    has_guilt  = rules.has_any_lemma(feature, EMOTIVE_GUILT_LEMMAS)
+    has_fear    = rules.has_any_lemma(feature, PERLOCUTION_FEAR_LEMMAS)
+    has_hope    = rules.has_any_lemma(feature, PERLOCUTION_HOPE_LEMMAS)
+    has_wonder  = rules.has_any_lemma(feature, PERLOCUTION_WONDER_LEMMAS)
+    has_guilt   = rules.has_any_lemma(feature, PERLOCUTION_GUILT_LEMMAS)
+    has_deontic = rules.has_any_lemma(feature, PERLOCUTION_DEONTIC_LEMMAS)
     has_reader = (
         rules.has_any_lemma(feature, READER_ADDRESS_LEMMAS)
         or rules.has_any_lemma(feature, DIRECT_ADDRESS_PRONOUN_LEMMAS)
         or rules.has_any_lemma(feature, DIRECT_ADDRESS_VOCATIVE_LEMMAS)
     )
 
-    # Ak žiaden emotívny signál nie je prítomný, vráť inferovaný efekt
-    if not any((has_fear, has_hope, has_wonder, has_guilt)):
+    if not any((has_fear, has_hope, has_wonder, has_guilt, has_deontic)):
         return _with_reader(inferred_effect, has_reader)
 
-    # Tenzionálne prípady: emotívny slovník kontrastuje s ilokučným zámerom
+    # Tenzionálne prípady: slovník kontrastuje s ilokučným zámerom
     if has_hope and primary_intention in {"condemning", "warning"}:
         return _with_reader("evoke_fear_urgency+hope_despite_judgment", has_reader)
 
@@ -96,11 +131,8 @@ def _confirm_from_lexicon(
     if has_wonder and primary_intention == "commanding":
         return _with_reader("evoke_compliance_obedience+awe_reverence", has_reader)
 
-    # Potvrdenie len keď dominantný emotívny signál súhlasí s inferovaným efektom.
-    # Predtým sa napr. condemning+fear pretagoval ako evoke_fear_urgency[lexically_confirmed]
-    # a justifying+hope ako evoke_hope_trust[lexically_confirmed] — to nie je potvrdenie
-    # inferovaného efektu, ale jeho tichá náhrada.
-    dominant = _dominant_emotive(has_fear, has_hope, has_wonder, has_guilt)
+    # Potvrdenie len keď dominantný signál súhlasí s inferovaným efektom.
+    dominant = _dominant_signal(has_fear, has_hope, has_wonder, has_guilt, has_deontic)
     if _EFFECT_CONFIRMED_BY.get(inferred_effect) == dominant:
         confirmed = f"{inferred_effect}[lexically_confirmed]"
     else:
@@ -108,24 +140,27 @@ def _confirm_from_lexicon(
     return _with_reader(confirmed, has_reader)
 
 
-def _dominant_emotive(
+def _dominant_signal(
     has_fear: bool,
     has_hope: bool,
     has_wonder: bool,
     has_guilt: bool,
+    has_deontic: bool,
 ) -> str:
-    # Priorita: strach > vina > nádej > úžas (hierarchia intenzity v biblickom texte)
+    # Priorita: strach > vina > nádej > úžas > deontika
     if has_fear:
         return "fear"
     if has_guilt:
         return "guilt"
     if has_hope:
         return "hope"
-    return "wonder"
+    if has_wonder:
+        return "wonder"
+    return "deontic"
 
 
 # ==========================================================
-# JR3. HLAVNÁ FUNKCIA
+# JR4. HLAVNÁ FUNKCIA
 # ==========================================================
 
 def derive_perlocutionary_effect(

@@ -34,6 +34,9 @@ from j0_discursive_context import (
 from j0_rst_relations import annotate_rst, classify_rst_relation, rst_profile
 from j_r_perlocutionary_effect import (
     _INTENTION_TO_EFFECT,
+    PERLOCUTION_DEONTIC_LEMMAS,
+    PERLOCUTION_FEAR_LEMMAS,
+    PERLOCUTION_HOPE_LEMMAS,
     derive_perlocutionary_effect,
 )
 
@@ -178,8 +181,71 @@ class PerlocutionaryEffectTests(unittest.TestCase):
 
     def test_warning_without_emotive_stays_inferred(self):
         self.assertEqual(
-            derive_perlocutionary_effect(_feat(lemmas="jestliže zahynout"), "warning"),
+            derive_perlocutionary_effect(_feat(lemmas="jestliže varovat"), "warning"),
             "evoke_fear_urgency",
+        )
+
+    def test_warning_plus_fear_is_lexical_confirmation(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="strach zahynout"), "warning"),
+            "evoke_fear_urgency[lexically_confirmed]",
+        )
+
+    def test_warning_plus_threat_outcome_confirms_fear(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="jestliže zahynout"), "warning"),
+            "evoke_fear_urgency[lexically_confirmed]",
+        )
+
+    def test_warning_plus_divine_wrath_confirms_fear(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="hněv soud"), "warning"),
+            "evoke_fear_urgency[lexically_confirmed]",
+        )
+
+    def test_bozi_alone_is_not_fear_evidence(self):
+        self.assertNotIn("boží", PERLOCUTION_FEAR_LEMMAS)
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="boží slovo"), "declaring"),
+            "evoke_belief_understanding",
+        )
+
+    def test_promising_plus_beatitude_confirms_hope(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="blahoslavený dát"), "promising"),
+            "evoke_hope_trust[lexically_confirmed]",
+        )
+
+    def test_promising_plus_eschatological_reward_confirms_hope(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="království věčný"), "promising"),
+            "evoke_hope_trust[lexically_confirmed]",
+        )
+
+    def test_slava_alone_is_not_hope_evidence(self):
+        self.assertNotIn("sláva", PERLOCUTION_HOPE_LEMMAS)
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="sláva amen"), "praising"),
+            "evoke_awe_reverence",
+        )
+
+    def test_commanding_plus_deontic_confirms_compliance(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="muset činit"), "commanding"),
+            "evoke_compliance_obedience[lexically_confirmed]",
+        )
+
+    def test_mit_alone_is_not_deontic_evidence(self):
+        self.assertNotIn("mít", PERLOCUTION_DEONTIC_LEMMAS)
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="mít dům"), "commanding"),
+            "evoke_compliance_obedience",
+        )
+
+    def test_condemning_plus_guilt_is_lexical_confirmation(self):
+        self.assertEqual(
+            derive_perlocutionary_effect(_feat(lemmas="vina hřích"), "condemning"),
+            "evoke_shame_guilt[lexically_confirmed]",
         )
 
     def test_warning_plus_fear_is_lexical_confirmation(self):
