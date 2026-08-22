@@ -3151,6 +3151,14 @@ def _load_bible_sql(table: str, sql: str) -> pd.DataFrame | None:
         df = pd.read_sql(sql, conn, params=(run_id,))
     finally:
         conn.close()
+    # Demo/live DBs store counts and 0/1 flags as TEXT; Tab 2 charts need numbers.
+    for col in (
+        "confidence", "type_token_ratio",
+        "has_coordination", "dative_present", "indirect_object_present",
+        "adjective_count", "adverb_count", "pronoun_count",
+    ):
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
     return _localize_book_columns(df.assign(book=_bkr_book(df["file_name"])))
 
 
