@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import List
 import os
 
-from c_input import create_input_from_file
+from c_input import create_input_from_file, load_text_from_file
 from c_unit import AnalysisUnit
 # B.F. Skinner verbal-behavior rules are used here only for training-data
 # generation (make_training_data_from_bible), not in the production process_unit().
@@ -51,7 +51,8 @@ def _process_book(file_path):
     Run the shared 4-stage pipeline on one Bible book.
     Returns (skinner_rows, relation_rows, refined_rows).
     """
-    text = file_path.read_text(encoding="utf-8")
+    # BKR sources are Python dicts of verses; join verse text, not the dict syntax.
+    text = load_text_from_file(str(file_path))
     unit = AnalysisUnit(
         corpus_id="bible_bkr",
         unit_id=file_path.name,
@@ -162,33 +163,45 @@ def main():
             f"No {BIBLE_GLOB} files found: {BIBLE_FOLDER}"
         )
 
-    print(f"Files: {len(files)}  (limit={FILES_LIMIT})")
+    print(f"Files: {len(files)}  (limit={FILES_LIMIT})", flush=True)
 
     run_id = make_run_id()
-    all_skinner   = []
-    all_relations = []
-    all_refined   = []
+    n_skinner = n_relations = n_refined = 0
+    failed = []
 
-    for file_path in files:
-        print(f"  Processing: {file_path.name}")
+    for i, file_path in enumerate(files, start=1):
+        print(f"  [{i}/{len(files)}] Processing: {file_path.name}", flush=True)
+        try:
+            sk_rows, rel_rows, ref_rows = _process_book(file_path)
+        except Exception as exc:
+            failed.append((file_path.name, str(exc)))
+            print(f"    ERROR {file_path.name}: {exc}", flush=True)
+            continue
+        if not sk_rows:
+            print(f"    WARN: no classified sentences in {file_path.name}", flush=True)
+            continue
+        _write_db(sk_rows, TABLE_SKINNER, run_id)
+        _write_db(rel_rows, TABLE_RELATIONS, run_id)
+        _write_db(ref_rows, TABLE_REFINED, run_id)
+        n_skinner += len(sk_rows)
+        n_relations += len(rel_rows)
+        n_refined += len(ref_rows)
+        print(
+            f"    {len(sk_rows)} sentences  (total {n_skinner})",
+            flush=True,
+        )
 
-        sk_rows, rel_rows, ref_rows = _process_book(file_path)
-
-        all_skinner.extend(sk_rows)
-        all_relations.extend(rel_rows)
-        all_refined.extend(ref_rows)
-
-    if not all_skinner:
+    if not n_skinner:
         raise ValueError("No results produced.")
 
-    _write_db(all_skinner,   TABLE_SKINNER,   run_id)
-    _write_db(all_relations, TABLE_RELATIONS, run_id)
-    _write_db(all_refined,   TABLE_REFINED,   run_id)
-
-    print(f"\nDONE  run={run_id}  db={DB_PATH}")
-    print(f"  {TABLE_SKINNER:<40} {len(all_skinner):>6} rows")
-    print(f"  {TABLE_RELATIONS:<40} {len(all_relations):>6} rows")
-    print(f"  {TABLE_REFINED:<40} {len(all_refined):>6} rows")
+    print(f"\nDONE  run={run_id}  db={DB_PATH}", flush=True)
+    print(f"  {TABLE_SKINNER:<40} {n_skinner:>6} rows", flush=True)
+    print(f"  {TABLE_RELATIONS:<40} {n_relations:>6} rows", flush=True)
+    print(f"  {TABLE_REFINED:<40} {n_refined:>6} rows", flush=True)
+    if failed:
+        print(f"  Failed books ({len(failed)}):", flush=True)
+        for name, err in failed:
+            print(f"    {name}: {err}", flush=True)
 
 
 if __name__ == "__main__":
