@@ -6,6 +6,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Optional, List
 import csv
+import re
 from collections import Counter
 
 from c_input import TextInput
@@ -1479,6 +1480,144 @@ def apply_strategy_fallback(intention: str, strategy: str) -> str:
     return INTENTION_DEFAULT_STRATEGY.get(intention, strategy)
 
 
+# BKR 2nd-person prohibition / Decalogue future: "Nepokradeš", "neodmlčujž se".
+_BKR_PROHIBITIVE_Z_RE = re.compile(
+    r"(?iu)(?:^|[\s,;:])ne[a-záčďéěíňóřšťúůýž]{3,}ž\b"
+)
+_BKR_NEG_START_RE = re.compile(
+    r"(?iu)^(?:a\s+|ale\s+|i\s+|protož\s+)?"
+    r"ne(?!boť|bo\b|žli|ž\b|kteř|kter)[a-záčďéěíňóřšťúůýž]{3,}"
+)
+_KDOZ_START_RE = re.compile(r"(?iu)^kdož?\b")
+_LITURGICAL_RECORD = frozenset({
+    "sélah", "selah", "aleph", "beth", "gimel", "daleth", "he", "vau",
+    "zain", "cheth", "teth", "jod", "caph", "lamed", "mem", "nun",
+    "samech", "ain", "pe", "zade", "koph", "res", "schin", "thau",
+})
+
+# Czech locution keys expected by VALUE_LABELS["locution"] (not the raw sentence).
+LOCUTION_LABELS = (
+    "výrok o Bohu",
+    "přímý příkaz",
+    "zaslíbení",
+    "výzva k poslušnosti",
+    "narativní popis",
+    "prorocké zvolání",
+    "chvála",
+    "nářek",
+    "právní předpis",
+    "teologické tvrzení",
+)
+
+
+def has_bkr_prohibitive_surface(sentence: str) -> bool:
+    """True for BKR negated imperatives / Decalogue futures Stanza often misses."""
+    text = sentence or ""
+    return bool(
+        _BKR_PROHIBITIVE_Z_RE.search(text)
+        or _BKR_NEG_START_RE.search(text.strip())
+    )
+
+
+def is_liturgical_fragment(sentence: str, lemmas: str = "") -> bool:
+    """True for Selah / psalm-acrostic headings that are not speech acts."""
+    text = re.sub(r"[.!?]+$", "", (sentence or "").strip().lower())
+    if text in _LITURGICAL_RECORD:
+        return True
+    toks = {t.strip(".,;:!?") for t in (lemmas or "").lower().split() if t}
+    return bool(toks) and toks <= _LITURGICAL_RECORD
+
+
+def apply_intention_fallback(
+    intention: str,
+    sentence: str,
+    lemmas: str = "",
+    *,
+    has_question: bool = False,
+) -> str:
+    """Fill a bare ``unclassified`` intention from surface cues, else declaring.
+
+    Past-tense narrative already falls back to ``record`` earlier in
+    ``classify_q_skinner``. What remains is mostly present-tense gnomic
+    prose, missed BKR prohibitions, and liturgical fragments.
+    """
+    if intention != "unclassified":
+        return intention
+    if has_bkr_prohibitive_surface(sentence):
+        return "commanding"
+    if is_liturgical_fragment(sentence, lemmas):
+        return "record"
+    if has_question:
+        return "unclassified"
+    if _KDOZ_START_RE.match((sentence or "").strip()):
+        return "declaring"
+    return "declaring"
+
+
+def derive_locution(intention: str, lemmas: str = "", sentence: str = "") -> str:
+    """Map an intention onto one of the ten Czech locution labels."""
+    lemma_set = {t.lower() for t in (lemmas or "").split()}
+    if intention == "commanding":
+        if (
+            has_bkr_prohibitive_surface(sentence)
+            or lemma_set & {x.lower() for x in COMMANDING_PROHIBITION_LEMMAS}
+        ):
+            return "přímý příkaz"
+        if lemma_set & {x.lower() for x in COMMANDING_NORMATIVE_LEMMAS}:
+            return "právní předpis"
+        return "výzva k poslušnosti"
+    if intention == "promising":
+        return "zaslíbení"
+    if intention == "praising":
+        return "chvála"
+    if intention in {"warning", "condemning"}:
+        if lemma_set & {"plakat", "nářek", "bědovat", "běda", "lament"}:
+            return "nářek"
+        return "prorocké zvolání"
+    if intention in {"record", "narrative"}:
+        return "narativní popis"
+    if intention == "legitimation":
+        return "výrok o Bohu"
+    if intention in {"declaring", "justifying"}:
+        if lemma_set & {x.lower() for x in AUTHORITY_DIVINE_LEMMAS}:
+            return "výrok o Bohu"
+        return "teologické tvrzení"
+    if intention in {"persuading", "mobilizing"}:
+        return "výzva k poslušnosti"
+    if intention in {"questioning", "intervention", "ideological_contestation"}:
+        return "teologické tvrzení"
+    return "narativní popis"
+
+
+def refresh_stored_skinner_row(row: dict) -> dict:
+    """Recompute locution; fill unclassified intention from surface cues."""
+    old_int = row.get("primary_intention") or "unclassified"
+    sentence = row.get("sentence") or ""
+    lemmas = row.get("lemmas") or ""
+    new_int = apply_intention_fallback(
+        old_int,
+        sentence,
+        lemmas,
+        has_question="?" in sentence,
+    )
+    out = dict(row)
+    out["primary_intention"] = new_int
+    out["locution"] = derive_locution(new_int, lemmas, sentence)
+    if new_int != old_int:
+        out["illocutionary_force"] = get_illocutionary_force(new_int)
+        out["primary_strategy"] = apply_strategy_fallback(
+            new_int, row.get("primary_strategy") or "unclassified"
+        )
+        out["convention"] = CONVENTION_MAP.get(
+            new_int, row.get("convention") or "undetermined"
+        )
+        out["reason"] = (
+            f"{new_int}: surface fallback for previously unclassified intention."
+        )
+        out["confidence"] = 0.55
+    return out
+
+
 def _derive_convention(
     primary_intention: str,
     primary_strategy: str,
@@ -1818,6 +1957,16 @@ def classify_q_skinner(
         primary_intention = "record"
         _primary_label = "record"
 
+    if primary_intention == "unclassified":
+        primary_intention = apply_intention_fallback(
+            primary_intention,
+            feature.sentence,
+            feature.lemmas,
+            has_question=feature.has_question,
+        )
+        if primary_intention != "unclassified":
+            _primary_label = primary_intention
+
     # KROK 2 — secondary_intention
     secondary_intention: Optional[str] = None
     for fn, label in _active_checks:
@@ -1910,7 +2059,7 @@ def classify_q_skinner(
         secondary_intention=secondary_intention,
         primary_strategy=primary_strategy,
         secondary_strategy=secondary_strategy,
-        locution=feature.sentence,
+        locution=derive_locution(primary_intention, feature.lemmas, feature.sentence),
         convention=_convention,
         linguistic_context=_linguistic_context,
         political_vocabulary=_political_vocab,

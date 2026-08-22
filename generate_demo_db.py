@@ -33,7 +33,7 @@ from n_db import insert_rows, TABLE_SKINNER, TABLE_RELATIONS, TABLE_REFINED
 from t_config_tradition import canonicalize_lemma
 from lexicons_common import clean_surface_token
 from i_q_skinner_lexicons import ILLOCUTIONARY_FORCE_MAP, RHETORICAL_STRATEGY_VALUES
-from j_q_skinner_taxonomy import CONVENTION_MAP, INTENTION_DEFAULT_STRATEGY
+from j_q_skinner_taxonomy import CONVENTION_MAP, INTENTION_DEFAULT_STRATEGY, derive_locution, LOCUTION_LABELS
 from m_verbal_relations import RELATION_TYPE_VALUES
 from p_refine_descriptions import DESCRIPTION_TYPE_VALUES
 
@@ -80,11 +80,7 @@ SEMANTIC_CLUSTERS = [
     "description", "neutral", "request", "negation", "uncertainty",
 ]
 
-LOCUTION_TMPL = [
-    "výrok o Bohu", "přímý příkaz", "zaslíbení", "výzva k poslušnosti",
-    "narativní popis", "prorocké zvolání", "chvála", "nářek",
-    "právní předpis", "teologické tvrzení",
-]
+LOCUTION_TMPL = list(LOCUTION_LABELS)
 
 CONVENTION_TMPL = [
     "právní formule", "prorocký žánr", "narativní žánr", "hymnický žánr",
@@ -140,7 +136,7 @@ def _make_skinner_row(sentence_id: int, sentence: str, file_name: str) -> dict:
         "secondary_intention":   secondary,
         "primary_strategy":      strategy,
         "secondary_strategy":    None,
-        "locution":              rng.choice(LOCUTION_TMPL),
+        "locution":              derive_locution(intention),
         "convention":            CONVENTION_MAP.get(intention, "undetermined"),
         "linguistic_context":    "biblical_czech_bkr",
         "political_vocabulary":  rng.choice(POLITICAL_VOCAB_TMPL),

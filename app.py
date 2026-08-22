@@ -4335,21 +4335,9 @@ with tab_bible:
     if db_df is None:
         st.warning(T["no_db"])
     else:
-        # ── TOP METRICS ──────────────────────────────────────────────────────────
-        total_b = len(db_df)
-        books_b = db_df["book"].nunique()
-        cov_b = 100 * (db_df["primary_intention"] != "unclassified").mean()
-        conf_b = db_df["confidence"].mean()
-
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric(T["metric_total"], f"{total_b:,}")
-        c2.metric(T["metric_books"], books_b)
-        c3.metric(T["metric_coverage"], f"{cov_b:.1f} %")
-        c4.metric(T["metric_mean_conf"], f"{conf_b:.2f}")
-
-        st.divider()
-
         # ── BOOK GROUP FILTER ─────────────────────────────────────────────────────
+        from b_analytics_utils import filter_by_abbrevs, value_counts_df
+
         _all_grps_lbl = T.get("group_all", "— All groups")
         _grp_label_options = [_all_grps_lbl] + [T.get(gk, gk) for gk, _ in BOOK_GROUPS]
         _sel_grp = st.selectbox(
@@ -4358,7 +4346,6 @@ with tab_bible:
             key="bible_top_group",
         )
 
-        # Build the set of localized book names belonging to the chosen group
         if _sel_grp == _all_grps_lbl:
             _grp_book_set: "set[str] | None" = None
         else:
@@ -4372,32 +4359,42 @@ with tab_bible:
 
         def _flt(df: "pd.DataFrame | None", col: str = "book") -> "pd.DataFrame | None":
             """Filter df rows to the selected book group (no-op when all groups selected)."""
-            if _grp_book_set is None or df is None or col not in df.columns:
-                return df
-            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
+            return filter_by_abbrevs(df, _grp_book_set, col=col, abbr_of=_bkr_abbr)
 
         def _flt_csv(df: "pd.DataFrame | None", col: str = "file_name") -> "pd.DataFrame | None":
             """Filter wide CSV (rows = books) to the selected book group."""
-            if _grp_book_set is None or df is None or col not in df.columns:
-                return df
-            return df[df[col].map(_bkr_abbr).isin(_grp_book_set)]
+            return filter_by_abbrevs(df, _grp_book_set, col=col, abbr_of=_bkr_abbr)
 
-        # Apply the group filter to the main DB frame used by all later sections
         db_df = _flt(db_df)
+
+        # ── TOP METRICS (after the group filter) ─────────────────────────────────
+        total_b = len(db_df)
+        books_b = int(db_df["book"].nunique()) if total_b else 0
+        cov_b = (
+            100 * (db_df["primary_intention"] != "unclassified").mean()
+            if total_b else 0.0
+        )
+        conf_b = float(db_df["confidence"].mean()) if total_b else 0.0
+
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric(T["metric_total"], f"{total_b:,}")
+        c2.metric(T["metric_books"], books_b)
+        c3.metric(T["metric_coverage"], f"{cov_b:.1f} %")
+        c4.metric(T["metric_mean_conf"], f"{conf_b:.2f}")
 
         st.divider()
 
         # ── 1. INTENTION ANALYSIS ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_intention"], expanded=True):
 
-            int_cnt  = csv("q_skinner_analytics/q_intention_counts.csv")
+            int_cnt  = value_counts_df(db_df["primary_intention"])
             int_book = csv("q_skinner_analytics/q_intention_by_book.csv")
-            force_cnt = csv("q_skinner_analytics/q_illocutionary_force_counts.csv")
+            force_cnt = value_counts_df(db_df["illocutionary_force"])
 
             c1, c2 = st.columns(2)
 
             with c1:
-                if int_cnt is not None:
+                if not int_cnt.empty:
                     d = int_cnt.sort_values("count", ascending=False).copy()
                     d.columns = ["_raw", T["x_count"]]
                     d[T["x_intention"]] = d["_raw"].map(VI).fillna(d["_raw"])
@@ -4409,7 +4406,7 @@ with tab_bible:
                         use_container_width=True,
                     )
             with c2:
-                if force_cnt is not None:
+                if not force_cnt.empty:
                     d = force_cnt.copy()
                     d.columns = ["_raw", T["x_count"]]
                     d[T["x_force"]] = d["_raw"].map(VF).fillna(d["_raw"])
@@ -4440,16 +4437,29 @@ with tab_bible:
         # ── 2. STRATEGY ANALYSIS ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_strategy"]):
 
-            strat_cnt  = csv("q_skinner_analytics/q_strategy_counts.csv")
+            strat_cnt  = value_counts_df(
+                db_df["primary_strategy"], exclude=("unclassified",)
+            )
             strat_book = csv("q_skinner_analytics/q_strategy_by_book.csv")
-            pvoc       = csv("q_skinner_analytics/q_political_vocabulary_counts.csv")
+            pvoc = None
+            if "political_vocabulary" in db_df.columns:
+                _pvoc_c: dict[str, int] = {}
+                for _val in db_df["political_vocabulary"].dropna():
+                    for _part in str(_val).split(","):
+                        _term = _part.strip().split("[")[0].strip()
+                        if _term:
+                            _pvoc_c[_term] = _pvoc_c.get(_term, 0) + 1
+                if _pvoc_c:
+                    pvoc = (
+                        pd.DataFrame(list(_pvoc_c.items()), columns=["term", "count"])
+                        .sort_values("count", ascending=False)
+                    )
 
             c1, c2 = st.columns(2)
 
             with c1:
-                if strat_cnt is not None:
-                    d = strat_cnt[strat_cnt["primary_strategy"] != "unclassified"].copy()
-                    d = d.sort_values("count", ascending=False)
+                if not strat_cnt.empty:
+                    d = strat_cnt.sort_values("count", ascending=False).copy()
                     d.columns = ["_raw", T["x_count"]]
                     d[T["x_strategy"]] = d["_raw"].map(VS).fillna(d["_raw"])
                     st.caption(T["all_strategies_desc"])
@@ -4486,9 +4496,9 @@ with tab_bible:
         # ── 3. KEY RATIOS ─────────────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_ratios"]):
 
-            ratios = csv("q_skinner_analytics/q_key_ratios_by_book.csv")
+            ratios = _flt_csv(csv("q_skinner_analytics/q_key_ratios_by_book.csv"))
 
-            if ratios is not None:
+            if ratios is not None and not ratios.empty:
                 books_lbl = _bkr_book(
                     ratios["file_name"]
                     .str.replace("bible_BKR_", "", regex=False)
@@ -4537,10 +4547,10 @@ with tab_bible:
         with st.expander("📖 " + T["sec_religious"]):
 
             field_sum    = csv("religious_elements/field_summary.csv")
-            density_wide = csv("religious_elements/combined_density_by_book.csv")
-            phil         = csv("religious_elements/philosophy_by_book.csv")
-            shared       = csv("religious_elements/shared_motifs_by_book.csv")
-            diag         = csv("religious_elements/tradition_diagnostics_by_book.csv")
+            density_wide = _flt_csv(csv("religious_elements/combined_density_by_book.csv"))
+            phil         = _flt_csv(csv("religious_elements/philosophy_by_book.csv"))
+            shared       = _flt_csv(csv("religious_elements/shared_motifs_by_book.csv"))
+            diag         = _flt_csv(csv("religious_elements/tradition_diagnostics_by_book.csv"))
 
             st.markdown(T.get("religious_polyvalent_explainer", ""))
 
@@ -4839,10 +4849,10 @@ with tab_bible:
         # ── 7. STYLE & AUTHORSHIP ─────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_style"]):
 
-            style = csv("style_authorship/book_style_clusters.csv")
+            style = _flt_csv(csv("style_authorship/book_style_clusters.csv"))
             terms = csv("style_authorship/cluster_top_terms.csv")
 
-            if style is not None:
+            if style is not None and not style.empty:
                 c1, c2 = st.columns([1, 2])
 
                 with c1:
@@ -4905,7 +4915,10 @@ with tab_bible:
                         d_cols = [c for c in dep_book.columns if c not in excl2]
                         _n_dep = st.slider(T["top_n_slider"], 5, min(30, len(d_cols)),
                                            min(15, len(d_cols)), key="hm_dep_n")
-                        _dep_hm = _top_n_cols(dep_book[["file_name"] + d_cols], "file_name", _n_dep)
+                        _dep_hm = _top_n_cols(
+                            _flt_csv(dep_book)[["file_name"] + d_cols],
+                            "file_name", _n_dep,
+                        )
                         st.caption(T["dep_heatmap_desc"])
                         st.plotly_chart(
                             fig_heatmap(_dep_hm, "file_name",
@@ -4913,7 +4926,7 @@ with tab_bible:
                             use_container_width=True,
                         )
 
-            complexity_df = csv("dependency_hierarchy/complexity_by_book.csv")
+            complexity_df = _flt_csv(csv("dependency_hierarchy/complexity_by_book.csv"))
             if complexity_df is not None:
                 st.divider()
                 cplx = complexity_df.copy()
@@ -4943,7 +4956,7 @@ with tab_bible:
 
             vrel_cnt  = csv("verbal_relations_analytics/relation_type_counts.csv")
             vrel_conf = csv("verbal_relations_analytics/confidence_by_relation.csv")
-            vrel_book = csv("verbal_relations_analytics/relations_by_book.csv")
+            vrel_book = _flt_csv(csv("verbal_relations_analytics/relations_by_book.csv"))
 
             c1, c2 = st.columns(2)
 
@@ -4974,7 +4987,7 @@ with tab_bible:
                         use_container_width=True,
                     )
 
-            if vrel_book is not None:
+            if vrel_book is not None and not vrel_book.empty:
                 excl_v = {"file_name", "total"}
                 v_cols = [c for c in vrel_book.columns if c not in excl_v]
                 hm3 = vrel_book[["file_name"] + v_cols].copy()
@@ -4993,7 +5006,7 @@ with tab_bible:
         with st.expander("📖 " + T["sec_taxonomy"]):
 
             tax_class   = csv("taxonomy_analytics/skinner_class_counts.csv")
-            tax_dial    = csv("taxonomy_analytics/dialogue_density_by_book.csv")
+            tax_dial    = _flt_csv(csv("taxonomy_analytics/dialogue_density_by_book.csv"))
             tax_control = csv("taxonomy_analytics/control_role_counts.csv")
 
             if tax_class is None and tax_control is None:
@@ -5044,7 +5057,7 @@ with tab_bible:
                 fig.update_layout(showlegend=False, height=340, **_LAYOUT)
                 st.plotly_chart(fig, use_container_width=True)
 
-            tact_auto = csv("taxonomy_analytics/tact_vs_autoclitic_by_book.csv")
+            tact_auto = _flt_csv(csv("taxonomy_analytics/tact_vs_autoclitic_by_book.csv"))
             if tact_auto is not None:
                 st.divider()
                 ta = tact_auto.copy()
@@ -5109,9 +5122,9 @@ with tab_bible:
         # ── 12. CORPUS DENSITY ────────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_corpus_density"]):
 
-            corp_dens = csv("religious_elements/combined_density_by_book.csv")
+            corp_dens = _flt_csv(csv("religious_elements/combined_density_by_book.csv"))
 
-            if corp_dens is not None:
+            if corp_dens is not None and not corp_dens.empty:
                 s_cols = [c for c in corp_dens.columns
                           if c.endswith("_sentence_density")]
                 dn = corp_dens[["file_name"] + s_cols].copy()
@@ -5132,7 +5145,7 @@ with tab_bible:
         # ── 13. TEXT PATTERNS ─────────────────────────────────────────────────────
         with st.expander("📖 " + T["sec_patterns"]):
 
-            ref_df = load_refined(lang)
+            ref_df = _flt(load_refined(lang))
             if ref_df is not None:
                 ref_df = ref_df.copy()
 
@@ -5328,7 +5341,7 @@ with tab_bible:
                 st.plotly_chart(fig_bins, use_container_width=True)
 
             with c2:
-                cov_book = csv("eval/coverage_by_book.csv")
+                cov_book = _flt_csv(csv("eval/coverage_by_book.csv"), col="book")
                 if cov_book is not None:
                     cov_plot = cov_book.copy()
                     cov_plot["book"] = _bkr_book(
@@ -5374,7 +5387,7 @@ with tab_bible:
                     )
 
             with c2:
-                outliers = csv("eval/book_outliers.csv")
+                outliers = _flt_csv(csv("eval/book_outliers.csv"), col="book")
                 if outliers is not None:
                     out_display = outliers.copy()
                     out_display["book"] = _bkr_book(
@@ -5407,7 +5420,7 @@ with tab_bible:
             st.divider()
 
             # ── Sample sentences ──────────────────────────────────────────────────
-            sample = csv("eval/random_sample.csv")
+            sample = _flt_csv(csv("eval/random_sample.csv"))
             if sample is not None:
                 sample_display = _localize_df_values(sample.copy())
                 sample_display["file_name"] = _bkr_book(

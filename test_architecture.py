@@ -254,6 +254,127 @@ class StrategyFallbackTests(unittest.TestCase):
         self.assertIs(STRATEGIES, INTENTION_DEFAULT_STRATEGY)
 
 
+class IntentionFallbackTests(unittest.TestCase):
+    def test_decalogue_and_ne_z_become_commanding(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Nepokradeš."),
+            "commanding",
+        )
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Vidíš ty to, Hospodine, neodmlčujž se, Pane.",
+            ),
+            "commanding",
+        )
+
+    def test_selah_and_acrostic_become_record(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Sélah.", "sélah"),
+            "record",
+        )
+        self.assertEqual(
+            apply_intention_fallback("unclassified", "Aleph."),
+            "record",
+        )
+
+    def test_kdoz_and_leftover_present_become_declaring(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Kdož ť nemiluje mne, slov mých neostříhá;",
+                "kdož milovat",
+            ),
+            "declaring",
+        )
+        self.assertEqual(
+            apply_intention_fallback(
+                "unclassified",
+                "Kdož nemiluje, nezná Boha;",
+            ),
+            "declaring",
+        )
+
+    def test_keeps_classified_intention(self):
+        from j_q_skinner_taxonomy import apply_intention_fallback
+        self.assertEqual(
+            apply_intention_fallback("record", "Nepokradeš."),
+            "record",
+        )
+
+
+class LocutionTests(unittest.TestCase):
+    def test_locution_is_a_category_not_the_sentence(self):
+        from j_q_skinner_taxonomy import derive_locution, LOCUTION_LABELS
+        label = derive_locution("record", "", "Přibral se Roboám do Sichem.")
+        self.assertIn(label, LOCUTION_LABELS)
+        self.assertNotIn("Roboám", label)
+
+    def test_commanding_prohibition_is_direct_command(self):
+        from j_q_skinner_taxonomy import derive_locution
+        self.assertEqual(
+            derive_locution("commanding", "", "Nepokradeš."),
+            "přímý příkaz",
+        )
+
+    def test_divine_declaring_is_statement_about_god(self):
+        from j_q_skinner_taxonomy import derive_locution
+        self.assertEqual(
+            derive_locution("declaring", "bůh pravda", "Bůh jest pravda."),
+            "výrok o Bohu",
+        )
+
+    def test_demo_locution_comes_from_intention(self):
+        from generate_demo_db import LOCUTION_TMPL
+        from j_q_skinner_taxonomy import LOCUTION_LABELS, derive_locution
+        self.assertEqual(tuple(LOCUTION_TMPL), LOCUTION_LABELS)
+        self.assertEqual(derive_locution("praising"), "chvála")
+
+    def test_refresh_rewrites_sentence_locution(self):
+        from j_q_skinner_taxonomy import refresh_stored_skinner_row
+        row = refresh_stored_skinner_row({
+            "primary_intention": "record",
+            "primary_strategy": "narrative_example",
+            "sentence": "Přibral se Roboám do Sichem.",
+            "lemmas": "přibrat se roboám",
+            "locution": "Přibral se Roboám do Sichem.",
+            "convention": "narrative_chronicle",
+            "illocutionary_force": "assertive",
+            "reason": "old",
+            "confidence": 0.7,
+        })
+        self.assertEqual(row["locution"], "narativní popis")
+        self.assertEqual(row["primary_intention"], "record")
+        self.assertEqual(row["reason"], "old")
+
+
+class BookGroupFilterTests(unittest.TestCase):
+    def test_filter_keeps_only_selected_abbrevs(self):
+        import pandas as pd
+        from b_analytics_utils import filter_by_abbrevs, value_counts_df
+
+        df = pd.DataFrame({
+            "book": ["Matúš", "Marek", "Žalm 1"],
+            "file_name": ["bible_BKR_Mt.txt", "bible_BKR_Mk.txt", "bible_BKR_Z.txt"],
+            "primary_intention": ["commanding", "record", "praising"],
+        })
+        abbr = {
+            "Matúš": "Mt", "Marek": "Mk", "Žalm 1": "Z",
+            "bible_BKR_Mt.txt": "Mt", "bible_BKR_Mk.txt": "Mk",
+            "bible_BKR_Z.txt": "Z",
+        }
+        filtered = filter_by_abbrevs(
+            df, {"Mt", "Mk"}, col="book", abbr_of=lambda v: abbr[v],
+        )
+        self.assertEqual(list(filtered["book"]), ["Matúš", "Marek"])
+        counts = value_counts_df(filtered["primary_intention"])
+        self.assertEqual(int(counts["count"].sum()), 2)
+        self.assertIs(filter_by_abbrevs(df, None, col="book", abbr_of=lambda v: v), df)
+
+
 class CompactBibleDbTests(unittest.TestCase):
     def test_compact_keeps_one_run_and_types_flags(self):
         import tempfile
