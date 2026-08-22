@@ -741,11 +741,15 @@ if __name__ == "__main__":
     # ── Genre adjustment demo (bod 2) ─────────────────────────────────────
     print("\n=== Genre adjustment demo ===")
     _genre_demos = [
-        ("bible_BKR_Ž.txt",   "psalm"),
+        ("bible_BKR_Z.txt",   "psalm"),
+        ("bible_BKR_Ž.txt",   "psalm"),   # legacy alias
         ("bible_BKR_1K.txt",  "epistle"),
         ("bible_BKR_Jr.txt",  "prophetic"),
-        ("bible_BKR_Př.txt",  "wisdom"),
+        ("bible_BKR_Pr.txt",  "wisdom"),
+        ("bible_BKR_Př.txt",  "wisdom"),  # legacy alias
         ("bible_BKR_Gn.txt",  "historical"),
+        ("bible_BKR_Pis.txt", "lyrical"),
+        ("bible_BKR_Lv.txt",  "law"),
         ("",                   "unknown"),
     ]
     for fname, expected_genre in _genre_demos:

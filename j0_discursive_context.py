@@ -117,6 +117,7 @@ _GENRE_EXPECTED_MODE: dict[str, str] = {
     "gospel":     "didactic",
     "historical": "narrative",
     "lyrical":    "hymnic",
+    "law":        "directive",
 }
 
 

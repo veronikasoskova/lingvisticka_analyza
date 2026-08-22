@@ -22,7 +22,7 @@ class AnalysisUnit:
     """Stable corpus identifier.  'bible_bkr'  |  'upload_{stem}_{ts}'"""
 
     unit_id: str
-    """Unique identifier within the corpus.  e.g. 'genesis'  |  'chapter_03'"""
+    """Unique identifier within the corpus.  e.g. 'bible_BKR_Gn.txt'  |  'chapter_03'"""
 
     unit_type: TextUnitType
     """Granularity level: 'book' for Bible books, 'chapter' for upload segments."""
@@ -38,6 +38,17 @@ class AnalysisUnit:
     stimulus: StimulusType = "unknown"
     segmentation_method: Optional[SegmentationMethod] = None
     """How the document was split into units. None for Bible books (no segmentation)."""
+
+    genre: str = ""
+    """Fine-grained biblical literary genre from genre_maps. Empty for uploads."""
+
+    def __post_init__(self) -> None:
+        if self.genre or self.corpus_id != "bible_bkr":
+            return
+        from genre_maps import detect_book_genre
+        detected = detect_book_genre(self.unit_id)
+        if detected != "unknown":
+            self.genre = detected
 
 
 @dataclass

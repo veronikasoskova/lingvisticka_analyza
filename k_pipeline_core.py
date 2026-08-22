@@ -105,4 +105,6 @@ def _with_unit(row: dict, unit: AnalysisUnit) -> dict:
     row["corpus_id"] = unit.corpus_id
     row["display_name"] = unit.display_name
     row["file_name"] = unit.unit_id
+    if unit.genre:
+        row["genre"] = unit.genre
     return row
