@@ -123,16 +123,24 @@ def _scaled_idf(
 ) -> dict[str, float]:
     """
     Scale base_idf values based on which lexicon group each lemma belongs to.
-    Multiplier = max over all groups the lemma appears in.
-    Lemmas not in any tracked group retain their base weight (multiplier = 1.0).
+
+    Multiplier = max over groups the lemma belongs to that are *explicitly*
+    listed in idf_group_multipliers.  Unlisted groups do not contribute a
+    default 1.0 — that would cancel intended penalties (e.g. "běda" sits in
+    both CONDEMNING_PROPHETIC at 0.3 and REPETITION_ANAPHORIC, which a
+    profile may not mention).
+
+    Lemmas not in any specified group retain their base weight (1.0).
     """
     result: dict[str, float] = {}
     for lemma, base_weight in base_idf.items():
         groups = _LEMMA_TO_GROUPS.get(lemma, [])
-        multiplier = max(
-            (idf_group_multipliers.get(g, 1.0) for g in groups),
-            default=1.0,
-        )
+        specified = [
+            idf_group_multipliers[g]
+            for g in groups
+            if g in idf_group_multipliers
+        ]
+        multiplier = max(specified) if specified else 1.0
         result[lemma] = base_weight * multiplier
     return result
 
@@ -224,10 +232,18 @@ def compute_profile_idf_delta(
     if not base_vals:
         return 0.0
 
-    base_norm   = min(sum(base_vals)   / len(base_vals)   / _IDF_MAX, 1.0)
-    scaled_norm = min(sum(scaled_vals) / len(scaled_vals) / _IDF_MAX, 1.0) if scaled_vals else base_norm
+    base_mean = sum(base_vals) / len(base_vals) / _IDF_MAX
+    # Do not clamp the per-lemma means to 1.0 before subtracting: a group
+    # multiplier (e.g. 1.4×) on a max-IDF lemma would otherwise become
+    # min(1.4, 1.0) - 1.0 = 0 and wipe out the profile effect on the
+    # lemmas the profile is trying to boost. The final delta is still
+    # capped at ±max_effect.
+    scaled_mean = (
+        sum(scaled_vals) / len(scaled_vals) / _IDF_MAX
+        if scaled_vals else base_mean
+    )
 
-    return max(-max_effect, min((scaled_norm - base_norm) * 0.12, max_effect))
+    return max(-max_effect, min((scaled_mean - base_mean) * 0.12, max_effect))
 
 
 # ==========================================================
@@ -256,7 +272,7 @@ def load_profile(name_or_path: str, profiles_dir: Path = PROFILES_DIR) -> Contex
 def load_profile_or_none(name: str, profiles_dir: Path = PROFILES_DIR) -> Optional[ContextProfile]:
     try:
         return load_profile(name, profiles_dir)
-    except (FileNotFoundError, KeyError):
+    except (FileNotFoundError, KeyError, json.JSONDecodeError, TypeError, ValueError):
         return None
 
 

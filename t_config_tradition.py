@@ -1249,13 +1249,46 @@ _TRADITION_UNION: dict[str, frozenset] = {
 }
 
 
+# Suffix on TRADITIONS keys = lemma-list language, not UI language.
+# christian_czech and christian_english are the same tradition in two wordlists.
+TRADITION_LANG_SUFFIXES: tuple[str, ...] = (
+    "czech", "english", "arabic", "hebrew", "pali", "sanskrit",
+)
+DEFAULT_TRADITION_LEXICON_LANG = "czech"
+
+
+def tradition_key_parts(key: str) -> tuple[str, str]:
+    """Split ``christian_czech`` into ``('christian', 'czech')``."""
+    for lang in TRADITION_LANG_SUFFIXES:
+        sfx = f"_{lang}"
+        if key.endswith(sfx):
+            return key[: -len(sfx)], lang
+    return key, ""
+
+
+def format_tradition_chart_label(
+    key: str,
+    *,
+    base_labels: dict[str, str],
+    lang_labels: dict[str, str],
+    default_lang: str = DEFAULT_TRADITION_LEXICON_LANG,
+) -> str:
+    """Label for the traditions inventory chart.
+
+    Czech lists are the BKR default and stay untagged. Other copies keep a
+    parenthetical so ``christian_english`` does not collide with
+    ``christian_czech``.
+    """
+    base, lang_key = tradition_key_parts(key)
+    label = base_labels.get(base, base.replace("_", " ").title())
+    if not lang_key or lang_key == default_lang:
+        return label
+    lang_l = lang_labels.get(lang_key, "")
+    return f"{label} ({lang_l})" if lang_l else label
+
+
 def _family_of(tradition_name: str) -> str:
-    for sfx in (
-        "_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit",
-    ):
-        if tradition_name.endswith(sfx):
-            return tradition_name[: -len(sfx)]
-    return tradition_name
+    return tradition_key_parts(tradition_name)[0]
 
 
 _TRADITION_DIAGNOSTIC_UNION: dict[str, frozenset] = {}

@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Optional
+from pathlib import Path
+from typing import List
 
 from e_extraction import SentenceFeatures
 import g_skinner_rules as rules
 
 from i_q_skinner_lexicons import (
-    PRAISING_HYMNIC_LEMMAS, PRAISING_DIRECT_LEMMAS, PRAISING_DOXOLOGY_LEMMAS,
+    PRAISING_HYMNIC_LEMMAS, PRAISING_DIRECT_LEMMAS,
     REPETITION_FORMULA_LEMMAS, REPETITION_ANAPHORIC_LEMMAS,
     JUSTIFYING_CAUSAL_LEMMAS, JUSTIFYING_EXPLANATORY_LEMMAS,
     PERSUADING_CONNECTOR_LEMMAS, PERSUADING_APPEAL_LEMMAS,
@@ -15,7 +16,7 @@ from i_q_skinner_lexicons import (
     MOBILIZING_MISSIONARY_LEMMAS,
     CONDEMNING_PROPHETIC_LEMMAS, WARNING_CONDITION_LEMMAS,
     THREAT_DIVINE_WRATH_LEMMAS,
-    QUESTIONING_IRONIC_LEMMAS, INTERVENTION_RESPONSE_LEMMAS, INTERVENTION_DISPUTE_LEMMAS,
+    INTERVENTION_RESPONSE_LEMMAS, INTERVENTION_DISPUTE_LEMMAS,
     NARRATIVE_EXAMPLE_PARABLE_LEMMAS, DECLARING_ABSTRACT_LEMMAS,
     DIRECT_ADDRESS_VOCATIVE_LEMMAS, DIRECT_ADDRESS_PRONOUN_LEMMAS,
     DIRECT_ADDRESS_EPISTOLAR_LEMMAS,
@@ -100,7 +101,7 @@ _MODE_INTENTION_BOOSTS: dict[str, dict[str, float]] = {
 _MODE_EXPECTED: dict[str, frozenset] = {
     "narrative":     frozenset({"record", "narrative", "declaring", "justifying"}),
     "directive":     frozenset({"commanding", "mobilizing", "warning", "promising", "condemning"}),
-    "hymnic":        frozenset({"praising", "promising", "declaring", "repetition"}),
+    "hymnic":        frozenset({"praising", "promising", "declaring"}),
     "argumentative": frozenset({"justifying", "persuading", "declaring", "questioning",
                                 "ideological_contestation"}),
     "prophetic":     frozenset({"condemning", "warning", "declaring", "mobilizing", "promising"}),
@@ -117,6 +118,7 @@ _GENRE_EXPECTED_MODE: dict[str, str] = {
     "gospel":     "didactic",
     "historical": "narrative",
     "lyrical":    "hymnic",
+    "law":        "directive",
 }
 
 
@@ -199,10 +201,7 @@ def _detect_temporal_orientation(
     return "mixed"
 
 
-def _illocutionary_density(
-    features: List[SentenceFeatures],
-    ratios: dict[str, float],
-) -> float:
+def _illocutionary_density(features: List[SentenceFeatures]) -> float:
     active = sum(
         1 for f in features
         if (
@@ -227,7 +226,8 @@ def _genre_cross_validate(dominant_mode: str, file_name: str) -> tuple[str, str]
         return "unknown", ""
     try:
         from m_verbal_relations import detect_book_genre
-        genre = detect_book_genre(file_name)
+        # BOOK_GENRES is keyed by basename ('bible_BKR_Abd.txt'), not a full path.
+        genre = detect_book_genre(Path(file_name).name)
     except ImportError:
         return "unknown", ""
 
@@ -268,7 +268,8 @@ def resolve_discursive_context(
     best_mode, best_score = max(scores.items(), key=lambda kv: kv[1])
 
     dominant_mode = best_mode if best_score >= 0.08 else "undetermined"
-    boosts        = _MODE_INTENTION_BOOSTS.get(dominant_mode, {})
+    # Copy so callers cannot mutate the module-level _MODE_INTENTION_BOOSTS map.
+    boosts        = dict(_MODE_INTENTION_BOOSTS.get(dominant_mode, {}))
 
     # Potlač past-tense→record fallback pre argumentatívne/epistoliárne texty
     # kde minulý čas funguje rétoricky, nie chronisticky
@@ -288,7 +289,7 @@ def resolve_discursive_context(
         dominant_mode=dominant_mode,
         address_structure=_detect_address_structure(features, ratios),
         temporal_orientation=_detect_temporal_orientation(features, ratios),
-        illocutionary_density=_illocutionary_density(features, ratios),
+        illocutionary_density=_illocutionary_density(features),
         intention_boosts=boosts,
         suppress_past_tense_fallback=suppress_fallback,
         genre_signal=genre_signal,

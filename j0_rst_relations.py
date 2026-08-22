@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
 # ── RST connectors (match against first ~3 lemmas of current sentence) ────────
 
 _CONNECTORS: list[tuple[str, set[str]]] = [
-    ("condition",   {"jestliže", "pakliť", "li", "kdyby"}),
-    ("cause",       {"neboť", "protože", "poněvadž", "protož", "tedy"}),
+    ("condition",   {"jestliže", "pakliť", "pakliže", "li", "kdyby"}),
+    ("cause",       {"neboť", "protože", "poněvadž", "protož", "proto", "tedy", "jelikož"}),
     ("contrast",    {"ale", "však", "nýbrž", "naopak"}),
     ("elaboration", {"totiž", "zajisté"}),
     ("temporal",    {"potom", "pak", "tehdy", "když"}),
@@ -22,7 +22,9 @@ def _head_lemmas(feature) -> set[str]:
 def classify_rst_relation(prev_feature, cur_feature) -> str:
     """
     Return the RST relation between prev_feature and cur_feature.
-    Connector check is tried first; structural heuristics are the fallback.
+
+    Order: sentence-initial conditional flag, then head-lemma connectors,
+    then structural heuristics (question / imperative).
     """
     if getattr(cur_feature, "has_conditional", False):
         return "condition"
@@ -37,7 +39,8 @@ def classify_rst_relation(prev_feature, cur_feature) -> str:
     cur_q    = getattr(cur_feature,  "has_question",      False)
     prev_imp = getattr(prev_feature, "is_imperative_like", False)
 
-    if prev_q:
+    # Consecutive questions are still questions, not answers.
+    if prev_q and not cur_q:
         return "answer"
     if cur_q:
         return "question"

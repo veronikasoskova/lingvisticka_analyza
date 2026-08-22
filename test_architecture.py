@@ -50,6 +50,13 @@ class PathCanonicalizationTests(unittest.TestCase):
         src = (PROJECT_ROOT / "k_pipeline_core.py").read_text(encoding="utf-8")
         self.assertIn('sk_row["lemmas"]', src)
 
+    def test_tab2_load_db_selects_perlocution_and_context(self):
+        src = (PROJECT_ROOT / "app.py").read_text(encoding="utf-8")
+        self.assertIn("perlocutionary_effect", src)
+        self.assertIn("context_note", src)
+        self.assertIn("rst_relation", src)
+        self.assertIn('T["col_perlocution"]', src)
+
     def test_ensure_bible_db_unpacks_gz(self):
         import gzip
         import tempfile
