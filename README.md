@@ -13,7 +13,7 @@ using Quentin Skinner's speech-act framework.
 git clone https://github.com/veronikasoskova/lingvisticka_analyza.git
 cd lingvisticka_analyza
 
-# 2. Bootstrap (installs deps + generates demo Bible DB)
+# 2. Bootstrap (installs deps; unpacks the live Bible DB)
 bash setup.sh
 
 # 3. Launch
@@ -30,8 +30,8 @@ The app opens at **http://localhost:8501**.
 |------|-------------|
 | 1 | `pip install -r requirements.txt` — all runtime dependencies |
 | 2 | `stanza.download("cs")` — Stanza Czech NLP model for Tab 1 |
-| 3 | `python generate_demo_db.py` — builds `output/bible_analysis.db` + analytics CSVs so that the **Biblický korpus** tab renders immediately |
-| 4 | Instructions to run the full Stanza-based pipeline for real NLP results |
+| 3 | Unpacks `output/bible_analysis.db.gz` (full BKR Stanza run) so the **Biblický korpus** tab shows live results. Does **not** run `generate_demo_db.py` over that file. |
+| 4 | Instructions to re-run the full Stanza pipeline if you want to refresh the corpus |
 
 ---
 
@@ -40,31 +40,28 @@ The app opens at **http://localhost:8501**.
 | Tab | Description | Prerequisites |
 |-----|-------------|---------------|
 | **📝 Analyzovat text** | Upload or paste Czech text; runs full NLP pipeline | Stanza Czech model (step 2) |
-| **📚 Biblický korpus** | Pre-computed analysis of the full BKR Bible | `output/bible_analysis.db` (step 3) |
+| **📚 Biblický korpus** | Pre-computed analysis of the full BKR Bible (Stanza, 66 books) | `output/bible_analysis.db` (unpacked in step 3) |
 | **📊 Výsledky** | Results of the most recent text analysis | Requires running Tab 1 first |
 
 ---
 
 ## Regenerating the Bible corpus with real NLP
 
-The demo database created by `generate_demo_db.py` contains the actual
-Bible verses with **synthetic classification values** — sufficient to
-verify the UI but not for real research.
+Tab 2 ships with a **live** Stanza analysis of all 66 BKR books
+(`run_id` of the packed DB; ~38k sentences).  It is stored as
+`output/bible_analysis.db.gz` and unpacked to `output/bible_analysis.db`
+on first use.
 
-To replace it with genuine Stanza-based analysis:
+Do **not** run `python generate_demo_db.py` on that file — it would replace
+real labels with synthetic ones and can break Tab 2 `mean()` charts.
+
+To refresh the live corpus:
 
 ```bash
 # Requires Stanza Czech model (see step 2 of setup.sh)
-python k_apply_all_to_bible.py          # full Bible pipeline → output/bible_analysis.db
-python l_taxonomy_analytics.py          # analytics CSVs
-python o_verbal_relations_analytics.py  # verbal relations CSVs
-```
-
-By default `k_apply_all_to_bible.py` processes up to 10 books
-(`PIPELINE_FILES_LIMIT=10`). To process all 66:
-
-```bash
 PIPELINE_FILES_LIMIT=66 python k_apply_all_to_bible.py
+python l_taxonomy_analytics.py
+python o_verbal_relations_analytics.py
 ```
 
 ---
@@ -78,10 +75,11 @@ generate_demo_db.py       Demo DB generator (no Stanza required)
 setup.sh                  One-command bootstrap script
 requirements.txt          Python dependencies
 bible_BKR_*.txt           Bible text files (BKR edition, 66 books)
-output/                   Generated artifacts (demo DB + analytics CSVs are tracked
-                          so Tab 2 works on a fresh clone; regenerate with
-                          generate_demo_db.py or k_apply_all_to_bible.py)
-  bible_analysis.db       SQLite database (Bible corpus)
+output/                   Generated artifacts. Tab 2 on a fresh clone unpacks
+                          output/bible_analysis.db.gz (live full-BKR run) and
+                          reads the tracked analytics CSVs.
+  bible_analysis.db.gz    Packed SQLite (live Stanza corpus; unpacked at runtime)
+  bible_analysis.db       Unpacked SQLite (gitignored; written by the pipeline)
   q_skinner_analytics/    Analytics CSVs — intentions / strategies
   style_authorship/       Style clustering
   opposition_networks/    Opposition pair analysis
@@ -91,9 +89,8 @@ k_pipeline_core.py        Shared 4-stage pipeline (Bible batch + upload)
 n_db.py                   Single SQLite read/write path
 ```
 
-Demo data from `generate_demo_db.py` uses the same classifier vocabularies as
-the production pipeline (intentions, strategies, illocutionary forces,
-verbal-relation types, description types).  Values are synthetic.
+Demo data from `generate_demo_db.py` (optional, only if no packed live DB is
+present) uses the same classifier vocabularies as the production pipeline.
 
 The production path is Quentin Skinner illocutionary analysis
 (`j_q_skinner_taxonomy` via `k_pipeline_core.process_unit`).  B.F. Skinner

@@ -50,6 +50,29 @@ class PathCanonicalizationTests(unittest.TestCase):
         src = (PROJECT_ROOT / "k_pipeline_core.py").read_text(encoding="utf-8")
         self.assertIn('sk_row["lemmas"]', src)
 
+    def test_ensure_bible_db_unpacks_gz(self):
+        import gzip
+        import tempfile
+        import a_paths
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            orig = (a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH)
+            a_paths.OUTPUT_DIR = out
+            a_paths.DB_PATH = out / "bible_analysis.db"
+            a_paths.DB_GZ_PATH = out / "bible_analysis.db.gz"
+            try:
+                payload = b"not-a-real-sqlite"
+                with gzip.open(a_paths.DB_GZ_PATH, "wb") as fh:
+                    fh.write(payload)
+                path = a_paths.ensure_bible_db()
+                self.assertEqual(path.read_bytes(), payload)
+                # Existing unpacked file must not be overwritten.
+                path.write_bytes(b"keep-me")
+                self.assertEqual(a_paths.ensure_bible_db().read_bytes(), b"keep-me")
+            finally:
+                a_paths.OUTPUT_DIR, a_paths.DB_PATH, a_paths.DB_GZ_PATH = orig
+
 
 class DatabaseNullHandlingTests(unittest.TestCase):
     def test_none_stored_as_sql_null(self):

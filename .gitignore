@@ -11,5 +11,12 @@ build/
 venv/
 *.sqlite3
 .DS_Store
-# Generated DB files are tracked so the app works on a fresh clone.
-# To exclude them, add: output/*.db
+# Unpacked SQLite is derived from the tracked .db.gz (or written by the pipeline).
+output/bible_analysis.db
+output/bible_analysis.db-wal
+output/bible_analysis.db-shm
+output/bible_analysis.db.unpacking
+# Token-level dumps are too large for git; Tab 2 uses the summary CSVs.
+output/dependency_hierarchy/token_dependencies.csv
+output/dependency_hierarchy/sentence_complexity.csv
+output/text_patterns/

@@ -1,6 +1,6 @@
 semantic_cluster,count,avg_confidence
-description,506,0.571
-negation,499,0.577
-neutral,524,0.57
-request,511,0.574
-uncertainty,497,0.579
+description,20014,0.695
+negation,618,0.6
+neutral,10862,0.6
+request,7096,0.611
+uncertainty,65,0.572

@@ -1,0 +1,215 @@
+============================================================
+  SKINNER PIPELINE — QUALITY EVALUATION
+============================================================
+  Data source : DB
+  Total rows  : 38655
+
+── COVERAGE (classified vs unknown) ────────────────────────
+  Total sentences                38655
+  Classified                     37982  (98.3%)
+  Unknown / unclassified         673  (1.7%)
+
+  Book                            Total  Classif.   Coverage
+  ------------------------------ ------  --------  ---------
+  bible_BKR_1J.txt                  150       144      96.0%
+  bible_BKR_1K.txt                  559       541      96.8%
+  bible_BKR_1Kr.txt                1053      1051      99.8%
+  bible_BKR_1P.txt                   94        92      97.9%
+  bible_BKR_1Pa.txt                1007      1003      99.6%
+  bible_BKR_1S.txt                 1304      1299      99.6%
+  bible_BKR_1Te.txt                  82        80      97.6%
+  bible_BKR_1Tm.txt                 101        98      97.0%
+  bible_BKR_2J.txt                   14        14     100.0%
+  bible_BKR_2K.txt                  281       271      96.4%
+  bible_BKR_2Kr.txt                1089      1084      99.5%
+  bible_BKR_2P.txt                   48        47      97.9%
+  bible_BKR_2Pa.txt                1045      1043      99.8%
+  bible_BKR_2S.txt                 1057      1055      99.8%
+  bible_BKR_2Te.txt                  37        36      97.3%
+  bible_BKR_2Tm.txt                  85        83      97.6%
+  bible_BKR_3J.txt                   20        17      85.0%
+  bible_BKR_Abd.txt                  32        30      93.8%
+  bible_BKR_Abk.txt                  79        76      96.2%
+  bible_BKR_Ag.txt                   47        47     100.0%
+  bible_BKR_Am.txt                  176       170      96.6%
+  bible_BKR_Da.txt                  451       449      99.6%
+  bible_BKR_Dt.txt                  976       954      97.7%
+  bible_BKR_Ef.txt                   95        93      97.9%
+  bible_BKR_Est.txt                 219       218      99.5%
+  bible_BKR_Ex.txt                 1668      1646      98.7%
+  bible_BKR_Ez.txt                 1500      1485      99.0%
+  bible_BKR_Ezd.txt                 257       256      99.6%
+  bible_BKR_Fm.txt                   21        21     100.0%
+  bible_BKR_Fp.txt                   89        89     100.0%
+  bible_BKR_Ga.txt                  167       163      97.6%
+  bible_BKR_Gn.txt                 2268      2256      99.5%
+  bible_BKR_Iz.txt                 1770      1720      97.2%
+  bible_BKR_J.txt                  1218      1190      97.7%
+  bible_BKR_Jb.txt                 1134      1085      95.7%
+  bible_BKR_Jk.txt                  143       138      96.5%
+  bible_BKR_Jl.txt                   93        93     100.0%
+  bible_BKR_Jon.txt                  67        67     100.0%
+  bible_BKR_Joz.txt                 783       780      99.6%
+  bible_BKR_Jr.txt                 1715      1674      97.6%
+  bible_BKR_Ju.txt                   23        22      95.7%
+  bible_BKR_Kaz.txt                 297       290      97.6%
+  bible_BKR_Ko.txt                   74        73      98.6%
+  bible_BKR_L.txt                  1404      1384      98.6%
+  bible_BKR_Lv.txt                 1044      1025      98.2%
+  bible_BKR_Mal.txt                 100        99      99.0%
+  bible_BKR_Mi.txt                  155       153      98.7%
+  bible_BKR_Mk.txt                  905       892      98.6%
+  bible_BKR_Mt.txt                 1376      1356      98.5%
+  bible_BKR_Na.txt                   64        61      95.3%
+  bible_BKR_Neh.txt                 427       422      98.8%
+  bible_BKR_Nu.txt                 1488      1479      99.4%
+  bible_BKR_Oz.txt                  274       265      96.7%
+  bible_BKR_Pis.txt                 163       161      98.8%
+  bible_BKR_Pl.txt                  198       191      96.5%
+  bible_BKR_Pr.txt                  940       900      95.7%
+  bible_BKR_R.txt                   516       508      98.4%
+  bible_BKR_Rt.txt                  148       146      98.6%
+  bible_BKR_Sd.txt                  888       886      99.8%
+  bible_BKR_Sf.txt                   75        73      97.3%
+  bible_BKR_Sk.txt                 1156      1151      99.6%
+  bible_BKR_Tit.txt                  37        37     100.0%
+  bible_BKR_Z.txt                  2813      2665      94.7%
+  bible_BKR_Za.txt                  270       265      98.1%
+  bible_BKR_Zd.txt                  294       290      98.6%
+  bible_BKR_Zj.txt                  532       530      99.6%
+
+── CONSISTENCY (same lemma → same class) ───────────────────
+  Source: cross-table (skinner × refined_descriptions)
+
+  Unique lemmas analysed         5466
+  Consistently classified        3660  (67.0%)
+  Ambiguous lemmas               1806
+
+  Top ambiguous lemmas:
+    chodit                →  assertive, commissive, declarative, directive, expressive
+    bůh                   →  assertive, commissive, declarative, directive, expressive
+    ostříhat              →  assertive, commissive, declarative, directive, expressive
+    ť                     →  assertive, commissive, declarative, directive, expressive
+    být                   →  assertive, commissive, declarative, directive, expressive
+    zůstat                →  assertive, commissive, declarative, directive, expressive
+    pohledit              →  assertive, commissive, declarative, directive, expressive
+    vědět                 →  assertive, commissive, declarative, directive, expressive
+    spravedlivý           →  assertive, commissive, declarative, directive, expressive
+    ten                   →  assertive, commissive, declarative, directive, expressive
+
+── CLASS DISTRIBUTION ──────────────────────────────────────
+  Class                           Count       %  note
+  ------------------------------ ------  ------  ----
+  assertive                       23339   60.4%  ⚠ DOMINANT (>50%)
+  directive                        8788   22.7%  
+  declarative                      4620   12.0%  
+  expressive                        779    2.0%  
+  unknown                           673    1.7%  
+  commissive                        456    1.2%  
+
+── BOOK COMPARISON — OUTLIERS (|z| > 2) ────────────────────
+  bible_BKR_3J.txt           unknown               ratio=0.150  z=+5.87
+  bible_BKR_2Te.txt          commissive            ratio=0.081  z=+3.38
+  bible_BKR_2J.txt           commissive            ratio=0.071  z=+2.84
+  bible_BKR_Pr.txt           expressive            ratio=0.081  z=+2.66
+  bible_BKR_1Pa.txt          assertive             ratio=0.838  z=+2.50
+  bible_BKR_1Pa.txt          directive             ratio=0.061  z=-2.45
+  bible_BKR_Ag.txt           declarative           ratio=0.277  z=+2.44
+  bible_BKR_Abk.txt          expressive            ratio=0.076  z=+2.43
+  bible_BKR_Ezd.txt          declarative           ratio=0.276  z=+2.42
+  bible_BKR_Ezd.txt          directive             ratio=0.066  z=-2.39
+  bible_BKR_2P.txt           commissive            ratio=0.062  z=+2.36
+  bible_BKR_2P.txt           declarative           ratio=0.271  z=+2.34
+  bible_BKR_Tit.txt          declarative           ratio=0.270  z=+2.33
+  bible_BKR_2Tm.txt          commissive            ratio=0.059  z=+2.19
+  bible_BKR_2J.txt           expressive            ratio=0.071  z=+2.19
+
+── CONFIDENCE ANALYSIS ─────────────────────────────────────
+  Class                            Mean     Med     Min     Max    <0.5
+  ------------------------------ ------  ------  ------  ------  ------
+  assertive                       0.700   0.720   0.470   0.950    0.7%
+  commissive                      0.728   0.720   0.600   0.914    0.0%
+  declarative                     0.754   0.750   0.750   0.815    0.0%
+  directive                       0.812   0.806   0.650   0.950    0.0%
+  expressive                      0.846   0.862   0.650   0.950    0.0%
+  unknown                         0.301   0.300   0.300   0.319  100.0%
+
+  Confidence bins (all classes):
+    0.0-0.3      0  
+    0.3-0.6   1756  █
+    0.6-1.0  36899  ██████████████████████████████████████
+
+── FAILURE DETECTION ───────────────────────────────────────
+  Low confidence (< 0.30)        0  (0.0%)
+  Unknown / unclassified         673
+    of which high-conf (≥0.5)    0
+  Missing root_lemma (refined)   0
+
+  Most common locution patterns in unknown class:
+    Sélah.                          63x
+    Žalm Davidův.                   11x
+    Píseň stupňů.                   10x
+    Davidův.                        5x
+    Nikoli.                         4x
+    Žalm Azafovi.                   3x
+    Odstup to.                      2x
+    Nesesmilníš.                    2x
+    Nepokradeš.                     2x
+    Nepromluvíš proti bližnímu svému křivého svědectví.  2x
+
+── SQLITE UPGRADE VERIFICATION ─────────────────────────────
+  DB path                        /workspace/output/bible_analysis.db
+  DB exists                      True
+
+  Table counts:
+  Table                         DB rows    CSV rows  CSV path
+  ---------------------------- --------  ----------  ------------------------------
+  skinner_analysis                41192           —  q_skinner_bible_analysis.csv
+  verbal_relations                41192           —  verbal_relations_bible.csv
+  refined_descriptions            41192           —  refined_descriptions_bible.csv
+
+  Run history per table:
+    skinner_analysis: 2 run(s)
+      2024-01-01T00:00:00
+      2026-08-22T10:01:10
+    verbal_relations: 2 run(s)
+      2024-01-01T00:00:00
+      2026-08-22T10:01:10
+    refined_descriptions: 2 run(s)
+      2024-01-01T00:00:00
+      2026-08-22T10:01:10
+
+  Append test (insert×1 → count, insert×2 → count):
+    After 1st insert : 1 row  (expected 1)
+    After 2nd insert : 2 rows (expected 2)
+    Result           : PASSED ✓
+
+── GENRE-AWARE ANALYSIS (primary_intention per genre) ──────
+  Genre                       Total  Dominant label            Rate   Rhet%
+  -------------------------- ------  ----------------------  ------  ------
+  apocalyptic                   532  record                  33.7%  63.5%
+  epistle_general               602  commanding              22.9%  83.2%
+  epistle_johannine             184  commanding              24.5%  73.9%
+  epistle_pastoral              223  commanding              24.2%  80.7%
+  epistle_pauline              1921  commanding              20.9%  84.0%
+  gospel_johannine             1218  record                  32.8%  64.4%
+  gospel_synoptic              3685  record                  36.1%  61.5%
+  law_deuteronomic              976  commanding              20.9%  75.3%
+  law_levitical                1044  record                  27.6%  69.4%
+  lyrical_poetry                198  record                  34.8%  58.1%
+  narrative_acts               1156  record                  42.6%  56.7%
+  narrative_historical         9277  record                  42.8%  50.2%
+  narrative_pentateuch         5424  record                  45.5%  47.0%
+  prophetic_major              5436  record                  24.6%  71.0%
+  prophetic_minor              1432  record                  22.7%  73.1%
+  wisdom_poetry                2534  record                  23.4%  70.8%
+  wisdom_psalms                2813  record                  24.6%  65.5%
+
+── GOLD STANDARD EVALUATION ────────────────────────────────
+  ⚠ No gold standard found at: /workspace/data/annotated_q_intentions.csv
+  Generate annotation template:
+    python v_eval_pipeline.py --generate-template
+  Then fill human_label_1 (and optionally human_label_2),
+  save as data/annotated_q_intentions.csv, and re-run.
+
+============================================================

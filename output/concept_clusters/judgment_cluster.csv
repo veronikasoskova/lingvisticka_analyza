@@ -1,0 +1,8 @@
+cluster,word1,word2,pair_count,pmi,matched_seed
+judgment_cluster,hněv,prchlivost,81,11.915,hněv
+judgment_cluster,soud,ustanovení,60,10.952,soud
+judgment_cluster,soud,spravedlnost,59,10.16,soud
+judgment_cluster,hněv,rozpálení,8,13.357,hněv
+judgment_cluster,falešný,svědek,7,12.662,svědek
+judgment_cluster,pokání,čiň,5,13.437,pokání
+judgment_cluster,odpuštění,pokání,5,13.174,pokání

@@ -26,22 +26,27 @@ except Exception as e:
     print("  Re-run: python3 -c \"import stanza; stanza.download('cs')\"")
 EOF
 
-# 3. Generate the Bible corpus database and analytics CSVs
+# 3. Bible corpus for Tab 2 — unpack the tracked live DB; do NOT regenerate demo
+#    over it (generate_demo_db.py would replace real Stanza rows with synthetic
+#    labels and store boolean flags as TEXT, which breaks Tab 2 charts).
 echo ""
-echo "[3/4] Generating Bible corpus database (Tab 2 — Biblický korpus)..."
-echo "      This runs generate_demo_db.py to populate output/bible_analysis.db"
-echo "      and output/ analytics folders."
+echo "[3/4] Preparing Bible corpus database (Tab 2 — Biblický korpus)..."
 cd "$SCRIPT_DIR"
-python3 generate_demo_db.py
+if [[ -f "$SCRIPT_DIR/output/bible_analysis.db.gz" ]]; then
+  echo "      Unpacking output/bible_analysis.db.gz (full BKR Stanza run)."
+  python3 -c "from a_paths import ensure_bible_db; ensure_bible_db()"
+else
+  echo "      No packed live DB found; generating demo data."
+  python3 generate_demo_db.py
+fi
 
-# 4. (Optional) Full pipeline run
+# 4. (Optional) Full pipeline re-run
 echo ""
-echo "[4/4] Optional: re-run the full Stanza-based pipeline for real NLP results."
-echo "      This replaces the demo data with actual linguistic analysis."
+echo "[4/4] Optional: re-run the full Stanza-based pipeline to refresh NLP results."
 echo "      Requires the Stanza Czech model from step 2."
 echo ""
-echo "      python3 k_apply_all_to_bible.py        # full Bible pipeline"
-echo "      python3 l_taxonomy_analytics.py        # regenerate analytics CSVs"
+echo "      PIPELINE_FILES_LIMIT=66 python3 k_apply_all_to_bible.py"
+echo "      python3 l_taxonomy_analytics.py"
 
 echo ""
 echo "=== Setup complete. Start the app with: ==="

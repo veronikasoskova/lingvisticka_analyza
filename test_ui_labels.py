@@ -60,7 +60,9 @@ class DemoDbDisplayLabelTests(unittest.TestCase):
     }
 
     def test_demo_db_categorical_values_have_ui_labels(self):
-        self.assertTrue(DB_PATH.exists(), "demo bible_analysis.db must be present")
+        from a_paths import ensure_bible_db
+        ensure_bible_db()
+        self.assertTrue(DB_PATH.exists(), "bible_analysis.db must unpack from .db.gz")
         conn = sqlite3.connect(DB_PATH)
         missing = []
         tables = {
@@ -96,6 +98,38 @@ class DemoDbDisplayLabelTests(unittest.TestCase):
         ):
             self.assertIn(key, sk, key)
             self.assertNotIn("_", sk[key], f"{key} still looks like a raw key: {sk[key]}")
+
+    def test_live_run_classifier_keys_have_ui_labels(self):
+        from a_paths import ensure_bible_db
+        from n_db import latest_bible_run_id, TABLE_SKINNER, TABLE_RELATIONS
+
+        ensure_bible_db()
+        if not DB_PATH.exists():
+            self.skipTest("no bible DB")
+        run_id = latest_bible_run_id(TABLE_SKINNER)
+        if run_id is None or run_id == DEMO_RUN_ID:
+            self.skipTest("no live bible run")
+        conn = sqlite3.connect(DB_PATH)
+        missing = []
+        for lang in ("cs", "sk", "en"):
+            labels = VALUE_LABELS["convention"][lang]
+            for (raw,) in conn.execute(
+                'SELECT DISTINCT convention FROM skinner_analysis '
+                'WHERE run_id = ? AND convention IS NOT NULL AND convention != ""',
+                (run_id,),
+            ):
+                if str(raw) not in labels:
+                    missing.append(f"{lang}:convention={raw}")
+            vlabels = VALUE_LABELS["verbal_type"][lang]
+            for (raw,) in conn.execute(
+                'SELECT DISTINCT subtype FROM verbal_relations '
+                'WHERE run_id = ? AND subtype IS NOT NULL AND subtype != ""',
+                (run_id,),
+            ):
+                if str(raw) not in vlabels:
+                    missing.append(f"{lang}:subtype={raw}")
+        conn.close()
+        self.assertEqual(missing, [], f"untranslated live keys: {missing[:40]}")
 
 
 if __name__ == "__main__":

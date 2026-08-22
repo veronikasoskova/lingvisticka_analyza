@@ -2,7 +2,7 @@ import logging
 import sqlite3
 from datetime import datetime
 
-from a_paths import DB_PATH
+from a_paths import DB_PATH, ensure_bible_db
 
 
 logger = logging.getLogger(__name__)
@@ -30,6 +30,7 @@ _NULLISH_FIELDS = frozenset({
 # ==========================================================
 
 def get_conn() -> sqlite3.Connection:
+    ensure_bible_db()
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row

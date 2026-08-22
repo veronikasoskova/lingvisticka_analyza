@@ -1,41 +1,71 @@
 cluster,rank,term,tfidf_mean
-style_0,1,ježíš,0.07073
-style_0,2,kristus,0.06603
-style_0,3,bůh,0.04908
-style_0,4,víra,0.04561
-style_0,5,našeho,0.04559
-style_0,6,vám,0.04497
-style_0,7,pána,0.04363
-style_0,8,láska,0.04189
-style_0,9,pravda,0.04148
-style_0,10,vás,0.04075
-style_1,1,hospodin,0.07821
-style_1,2,praví hospodin,0.04576
-style_1,3,bude,0.04195
-style_1,4,budou,0.04028
-style_1,5,země,0.04019
-style_1,6,praví,0.03975
-style_1,7,své,0.03804
-style_1,8,zástupů,0.03766
-style_1,9,proti,0.03685
-style_1,10,jako,0.03666
-style_2,1,řekl,0.05003
-style_2,2,byl,0.03814
-style_2,3,tedy,0.03628
-style_2,4,král,0.03595
-style_2,5,země,0.03579
-style_2,6,syn,0.03569
-style_2,7,jim,0.03564
-style_2,8,jemu,0.03288
-style_2,9,hospodin,0.0326
-style_2,10,řekli,0.03089
-style_3,1,set,0.13257
-style_3,2,šest,0.11672
-style_3,3,tisíce,0.11646
-style_3,4,sta,0.11499
-style_3,5,šest set,0.11485
-style_3,6,tisíc,0.09631
-style_3,7,čtyři sta,0.0886
-style_3,8,čeledech,0.08836
-style_3,9,čtyři,0.08792
-style_3,10,pět,0.08721
+style_0,1,pravit hospodin,0.10811
+style_0,2,hospodin,0.10393
+style_0,3,hospodin zástup,0.08661
+style_0,4,hospodinův,0.08015
+style_0,5,zástup,0.07179
+style_0,6,pravit,0.0717
+style_0,7,takto pravit,0.06179
+style_0,8,země,0.06049
+style_0,9,národ,0.05915
+style_0,10,den hospodinův,0.05859
+style_1,1,hospodin,0.05067
+style_1,2,tvůj,0.04722
+style_1,3,země,0.04208
+style_1,4,hospodinův,0.03685
+style_1,5,dům,0.03491
+style_1,6,lid,0.03407
+style_1,7,král,0.03371
+style_1,8,hora,0.03362
+style_1,9,národ,0.03346
+style_1,10,všecka,0.0328
+style_2,1,kristus,0.10073
+style_2,2,ježíš,0.09679
+style_2,3,jezukrista,0.0863
+style_2,4,víra,0.08061
+style_2,5,kristus ježíš,0.07158
+style_2,6,pán,0.06771
+style_2,7,láska,0.06584
+style_2,8,ježíš kristus,0.06387
+style_2,9,náš jezukrista,0.06366
+style_2,10,náš,0.0635
+style_3,1,hospodin,0.03854
+style_3,2,král,0.03552
+style_3,3,říci,0.03358
+style_3,4,izraelský,0.03322
+style_3,5,sto,0.03289
+style_3,6,hospodinův,0.03222
+style_3,7,dům,0.03145
+style_3,8,muž,0.03141
+style_3,9,dva,0.03106
+style_3,10,kněz,0.03097
+style_4,1,jonáš,0.27086
+style_4,2,loď,0.11592
+style_4,3,být zahynout,0.11577
+style_4,4,bouřit,0.11218
+style_4,5,lidé hovada,0.104
+style_4,6,ryba,0.1036
+style_4,7,litovat,0.10298
+style_4,8,hospodin,0.10292
+style_4,9,moře,0.10048
+style_4,10,obklíčit,0.10032
+style_5,1,pozdravovat,0.1676
+style_5,2,pravda,0.14586
+style_5,3,přijímat,0.13601
+style_5,4,upřímnost,0.12833
+style_5,5,psát,0.11166
+style_5,6,zradovat,0.1114
+style_5,7,svědectví vydávat,0.11009
+style_5,8,chodit,0.10544
+style_5,9,paní,0.10424
+style_5,10,kdož,0.10228
+style_6,1,říci,0.04551
+style_6,2,učedlník,0.04335
+style_6,3,ježíš,0.04318
+style_6,4,jan,0.042
+style_6,5,jít,0.03589
+style_6,6,mrtvý,0.03564
+style_6,7,vysoký kněz,0.03559
+style_6,8,petr,0.03526
+style_6,9,hodina,0.03457
+style_6,10,tedy,0.03441

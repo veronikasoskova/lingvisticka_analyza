@@ -1,175 +1,483 @@
 file_name,motif,matched_count,hit_kind,biblical_home,later_traditions,top_words
-bible_BKR_1J.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2
-bible_BKR_1J.txt,light_darkness,7,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:5; tma:3; temnota:1
-bible_BKR_1J.txt,logos_word,3,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:3
-bible_BKR_1J.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_1J.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_1J.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_1J.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_1K.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1
-bible_BKR_1K.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2
-bible_BKR_1K.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
-bible_BKR_1K.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_1K.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_1J.txt,immortality,6,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:6
+bible_BKR_1J.txt,light_darkness,8,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:5; tma:3; temnota:3
+bible_BKR_1J.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_1J.txt,love,32,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:20; láska:16
+bible_BKR_1J.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_1J.txt,soul_body,4,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:3; duše:1
+bible_BKR_1J.txt,spirit,10,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:10
+bible_BKR_1J.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_1J.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_1K.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,nesmrtelnost:2
+bible_BKR_1K.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1
+bible_BKR_1K.txt,love,14,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:11; milovat:3
+bible_BKR_1K.txt,mystery,6,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:5; skrytý:2
+bible_BKR_1K.txt,one_unity,4,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:4
+bible_BKR_1K.txt,soul_body,44,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:43; duše:1
+bible_BKR_1K.txt,spirit,45,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:33; duchovní:13
+bible_BKR_1K.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_1K.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_1Kr.txt,consciousness_energy,1,shared_polyvalent,v BKR takmer neprítomné; v teozofii/New Age ide o kľúčový slovník,theosophical; new_age; tantric; jungian,vědomí:1
+bible_BKR_1Kr.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temný:1
+bible_BKR_1Kr.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_1Kr.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3
+bible_BKR_1Kr.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_1Kr.txt,one_unity,3,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:3
+bible_BKR_1Kr.txt,soul_body,17,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:9; duše:8
+bible_BKR_1Kr.txt,spirit,6,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:6
+bible_BKR_1Kr.txt,word_common,7,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:7
+bible_BKR_1Kr.txt,word_of_god,24,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:24
+bible_BKR_1P.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
 bible_BKR_1P.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; tma:1
-bible_BKR_1P.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1; tělo:1
-bible_BKR_1P.txt,spirit,5,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:4; duchovní:1
+bible_BKR_1P.txt,love,6,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:4; láska:2
+bible_BKR_1P.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_1P.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_1P.txt,soul_body,11,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:6; tělo:5
+bible_BKR_1P.txt,spirit,10,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:9; duchovní:1
+bible_BKR_1P.txt,virtue_nature_fate,1,shared_polyvalent,"NZ areté / stvorenie, nie stoická fyzika",stoic,ctnost:1
 bible_BKR_1P.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
-bible_BKR_1P.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_1S.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1
-bible_BKR_1S.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
-bible_BKR_1S.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
-bible_BKR_1S.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_1Te.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_1Te.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1; tělo:1
-bible_BKR_1Te.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_1Te.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
+bible_BKR_1P.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_1Pa.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_1Pa.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_1Pa.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_1Pa.txt,pleasure_pain,2,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:2
+bible_BKR_1Pa.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2; duše:1
+bible_BKR_1Pa.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
+bible_BKR_1Pa.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_1Pa.txt,word_of_god,9,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:9
+bible_BKR_1S.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1; světlo:1
+bible_BKR_1S.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_1S.txt,love,7,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:6; láska:1
+bible_BKR_1S.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_1S.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_1S.txt,soul_body,23,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:17; tělo:6
+bible_BKR_1S.txt,spirit,18,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:18
+bible_BKR_1S.txt,virtue_nature_fate,1,shared_polyvalent,"NZ areté / stvorenie, nie stoická fyzika",stoic,ctnost:1
+bible_BKR_1S.txt,word_common,22,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:22
+bible_BKR_1S.txt,word_of_god,10,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:10
+bible_BKR_1Te.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:2; světlo:1
+bible_BKR_1Te.txt,love,7,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:5; milovat:2
+bible_BKR_1Te.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_1Te.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:2; tělo:2
+bible_BKR_1Te.txt,spirit,5,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:5
+bible_BKR_1Te.txt,word_common,4,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:4
 bible_BKR_1Te.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_1Tm.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_2J.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_2K.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_2K.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_2Kr.txt,soul_body,5,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:5
+bible_BKR_1Tm.txt,immortality,4,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:4; nesmrtelnost:1
+bible_BKR_1Tm.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:2
+bible_BKR_1Tm.txt,love,4,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:4
+bible_BKR_1Tm.txt,mystery,2,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:2
+bible_BKR_1Tm.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_1Tm.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
+bible_BKR_1Tm.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
+bible_BKR_1Tm.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_1Tm.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_2J.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2; láska:2
+bible_BKR_2J.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
+bible_BKR_2K.txt,immortality,3,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:3
+bible_BKR_2K.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:3; temnota:2
+bible_BKR_2K.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_2K.txt,love,14,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:9; milovat:5
+bible_BKR_2K.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_2K.txt,soul_body,18,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:16; duše:2
+bible_BKR_2K.txt,spirit,16,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:16
+bible_BKR_2K.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
+bible_BKR_2K.txt,word_of_god,4,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:4
+bible_BKR_2Kr.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_2Kr.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_2Kr.txt,soul_body,16,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:9; tělo:7
 bible_BKR_2Kr.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
-bible_BKR_2Kr.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_2P.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
-bible_BKR_2P.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1
-bible_BKR_2P.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1; tělo:1
+bible_BKR_2Kr.txt,word_common,8,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:8
+bible_BKR_2Kr.txt,word_of_god,23,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:23
+bible_BKR_2P.txt,immortality,3,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2; věčnost:1
+bible_BKR_2P.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temný:1; tma:1
+bible_BKR_2P.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_2P.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_2P.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:2; tělo:2
 bible_BKR_2P.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
-bible_BKR_2P.txt,virtue_nature_fate,1,shared_polyvalent,"NZ areté / stvorenie, nie stoická fyzika",stoic,ctnost:1
-bible_BKR_2Pa.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_2S.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_2P.txt,virtue_nature_fate,2,shared_polyvalent,"NZ areté / stvorenie, nie stoická fyzika",stoic,ctnost:2
+bible_BKR_2P.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_2P.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_2Pa.txt,love,4,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:4
+bible_BKR_2Pa.txt,mystery,2,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:2
+bible_BKR_2Pa.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_2Pa.txt,pleasure_pain,2,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:2
+bible_BKR_2Pa.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:3
+bible_BKR_2Pa.txt,spirit,9,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:9
+bible_BKR_2Pa.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
+bible_BKR_2Pa.txt,word_of_god,20,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:20
+bible_BKR_2S.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_2S.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:2; světlo:1
+bible_BKR_2S.txt,love,4,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:4
+bible_BKR_2S.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_2S.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_2S.txt,soul_body,10,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:7; tělo:3
+bible_BKR_2S.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_2S.txt,word_common,12,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:12
+bible_BKR_2S.txt,word_of_god,7,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:7
+bible_BKR_2Te.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2
 bible_BKR_2Te.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:3
 bible_BKR_2Te.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1
 bible_BKR_2Te.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
-bible_BKR_2Te.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
-bible_BKR_2Tm.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,nesmrtelnost:1
+bible_BKR_2Te.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_2Te.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_2Tm.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,nesmrtelnost:1; věčný:1
 bible_BKR_2Tm.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
-bible_BKR_2Tm.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_2Tm.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_2Tm.txt,love,4,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:3; milovat:1
+bible_BKR_2Tm.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
 bible_BKR_2Tm.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_2Tm.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_3J.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_2Tm.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_3J.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1; láska:1
 bible_BKR_3J.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
 bible_BKR_Abd.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
-bible_BKR_Abk.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_Abk.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1; věčný:1
+bible_BKR_Abk.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:2
+bible_BKR_Abk.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_Abk.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:2
 bible_BKR_Abk.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Abk.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
 bible_BKR_Ag.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
 bible_BKR_Ag.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Ag.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ag.txt,word_of_god,5,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:5
+bible_BKR_Ag.txt,word_of_god,7,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:7
+bible_BKR_Am.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2
+bible_BKR_Am.txt,light_darkness,5,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:4; světlo:2; temnota:1
+bible_BKR_Am.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1
 bible_BKR_Am.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1
-bible_BKR_Am.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Am.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_Da.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Da.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Dt.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ef.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_Ef.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1
-bible_BKR_Ef.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jedno:2
-bible_BKR_Ef.txt,soul_body,4,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:4
-bible_BKR_Ef.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
-bible_BKR_Ef.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Est.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ez.txt,one_unity,4,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jedno:4
-bible_BKR_Ez.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2
-bible_BKR_Ez.txt,spirit,4,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:4
-bible_BKR_Ez.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ez.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Am.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Am.txt,word_common,4,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:4
+bible_BKR_Am.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Da.txt,immortality,7,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:7
+bible_BKR_Da.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; temnota:1
+bible_BKR_Da.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Da.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1; milovat:1
+bible_BKR_Da.txt,mystery,3,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:2; tajemství:1
+bible_BKR_Da.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Da.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Da.txt,soul_body,7,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:7
+bible_BKR_Da.txt,spirit,10,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:10
+bible_BKR_Da.txt,word_common,13,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:13
+bible_BKR_Da.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Dt.txt,immortality,3,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:3; věčnost:1
+bible_BKR_Dt.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:3
+bible_BKR_Dt.txt,logos_word,3,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:3
+bible_BKR_Dt.txt,love,17,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:17
+bible_BKR_Dt.txt,mystery,3,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:3
+bible_BKR_Dt.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_Dt.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Dt.txt,soul_body,24,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:21; tělo:3
+bible_BKR_Dt.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Dt.txt,word_common,20,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:20
+bible_BKR_Dt.txt,word_of_god,20,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:20
+bible_BKR_Ef.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Ef.txt,light_darkness,6,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:4; temnota:2; tma:1
+bible_BKR_Ef.txt,love,13,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:9; milovat:5
+bible_BKR_Ef.txt,mystery,6,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:6; skrytý:1
+bible_BKR_Ef.txt,one_unity,3,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jednota:2; jediný:1
+bible_BKR_Ef.txt,soul_body,14,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:13; duše:1
+bible_BKR_Ef.txt,spirit,16,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:14; duchovní:3
+bible_BKR_Ef.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
+bible_BKR_Ef.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Est.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
+bible_BKR_Est.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:1
+bible_BKR_Est.txt,word_common,8,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:8
+bible_BKR_Ex.txt,immortality,11,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:9; věčnost:2
+bible_BKR_Ex.txt,light_darkness,5,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:3; světlo:2
+bible_BKR_Ex.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Ex.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_Ex.txt,pleasure_pain,2,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:2
+bible_BKR_Ex.txt,soul_body,13,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:9; tělo:4
+bible_BKR_Ex.txt,spirit,6,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:6
+bible_BKR_Ex.txt,word_common,6,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:6
+bible_BKR_Ex.txt,word_of_god,20,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:20
+bible_BKR_Ez.txt,immortality,6,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:6
+bible_BKR_Ez.txt,light_darkness,6,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:5; světlo:2
+bible_BKR_Ez.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1
+bible_BKR_Ez.txt,pleasure_pain,3,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:3
+bible_BKR_Ez.txt,soul_body,37,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:22; tělo:15
+bible_BKR_Ez.txt,spirit,27,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:27
+bible_BKR_Ez.txt,word_common,12,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:12
+bible_BKR_Ez.txt,word_of_god,63,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:63
 bible_BKR_Ezd.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Ezd.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_Ezd.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
 bible_BKR_Fm.txt,consciousness_energy,1,shared_polyvalent,v BKR takmer neprítomné; v teozofii/New Age ide o kľúčový slovník,theosophical; new_age; tantric; jungian,vědomí:1
-bible_BKR_Fm.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
+bible_BKR_Fm.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Fm.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:3
 bible_BKR_Fm.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
 bible_BKR_Fm.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_Fp.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
+bible_BKR_Fp.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
 bible_BKR_Fp.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:3
-bible_BKR_Fp.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
+bible_BKR_Fp.txt,soul_body,6,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:6
+bible_BKR_Fp.txt,spirit,4,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:4
+bible_BKR_Fp.txt,virtue_nature_fate,1,shared_polyvalent,"NZ areté / stvorenie, nie stoická fyzika",stoic,ctnost:1
 bible_BKR_Fp.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ga.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_Gn.txt,light_darkness,7,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:6; tma:4
-bible_BKR_Gn.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jedno:1
-bible_BKR_Gn.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:2
-bible_BKR_Gn.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
-bible_BKR_Iz.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
-bible_BKR_Iz.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
-bible_BKR_Iz.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Iz.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_J.txt,light_darkness,5,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:5; temnota:1; tma:1
-bible_BKR_J.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
-bible_BKR_J.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2
-bible_BKR_J.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Jb.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1; světlo:1; tma:1
-bible_BKR_Jb.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
-bible_BKR_Jb.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Jk.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
-bible_BKR_Jk.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_Ga.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Ga.txt,love,6,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3; láska:3
+bible_BKR_Ga.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Ga.txt,soul_body,16,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:16
+bible_BKR_Ga.txt,spirit,15,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:15; duchovní:1
+bible_BKR_Ga.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_Ga.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Gn.txt,immortality,8,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:8
+bible_BKR_Gn.txt,light_darkness,11,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:8; tma:6
+bible_BKR_Gn.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Gn.txt,love,9,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:8; láska:1
+bible_BKR_Gn.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_Gn.txt,one_unity,5,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:5
+bible_BKR_Gn.txt,pleasure_pain,6,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:6
+bible_BKR_Gn.txt,soul_body,57,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:33; tělo:27
+bible_BKR_Gn.txt,spirit,7,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:7
+bible_BKR_Gn.txt,word_common,28,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:28
+bible_BKR_Gn.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Iz.txt,immortality,21,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:17; věčnost:4
+bible_BKR_Iz.txt,light_darkness,28,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:22; tma:10; temnota:5
+bible_BKR_Iz.txt,love,7,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:7
+bible_BKR_Iz.txt,mystery,3,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:3
+bible_BKR_Iz.txt,one_unity,3,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:3
+bible_BKR_Iz.txt,pleasure_pain,8,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:8
+bible_BKR_Iz.txt,soul_body,38,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:24; tělo:15
+bible_BKR_Iz.txt,spirit,32,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:32
+bible_BKR_Iz.txt,word_common,18,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:18
+bible_BKR_Iz.txt,word_of_god,24,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:24
+bible_BKR_J.txt,immortality,17,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:17
+bible_BKR_J.txt,light_darkness,21,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:18; tma:7; temnota:2
+bible_BKR_J.txt,logos_word,5,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:5
+bible_BKR_J.txt,love,41,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:40; láska:1
+bible_BKR_J.txt,one_unity,4,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:4
+bible_BKR_J.txt,soul_body,27,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:17; duše:10
+bible_BKR_J.txt,spirit,20,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:20
+bible_BKR_J.txt,word_common,27,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:27
+bible_BKR_J.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_Jb.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1; věčný:1
+bible_BKR_Jb.txt,light_darkness,42,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:30; temnota:13; tma:7
+bible_BKR_Jb.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1
+bible_BKR_Jb.txt,mystery,11,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:9; tajemství:2
+bible_BKR_Jb.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Jb.txt,pleasure_pain,13,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:13
+bible_BKR_Jb.txt,soul_body,33,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:25; tělo:12
+bible_BKR_Jb.txt,spirit,17,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:17
+bible_BKR_Jb.txt,word_common,22,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:22
+bible_BKR_Jb.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Jk.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
+bible_BKR_Jk.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Jk.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3
+bible_BKR_Jk.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Jk.txt,soul_body,7,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:5; duše:3
+bible_BKR_Jk.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
 bible_BKR_Jk.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
-bible_BKR_Jl.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1
+bible_BKR_Jl.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1; tma:1
+bible_BKR_Jl.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
+bible_BKR_Jl.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
 bible_BKR_Jl.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
 bible_BKR_Jon.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
-bible_BKR_Jon.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_Jon.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:3
 bible_BKR_Jon.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
-bible_BKR_Joz.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:3
-bible_BKR_Jr.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Jr.txt,word_of_god,8,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:8
-bible_BKR_Ju.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
+bible_BKR_Joz.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Joz.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Joz.txt,mystery,2,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:2
+bible_BKR_Joz.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_Joz.txt,soul_body,12,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:11; tělo:1
+bible_BKR_Joz.txt,word_common,7,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:7
+bible_BKR_Joz.txt,word_of_god,10,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:10
+bible_BKR_Jr.txt,immortality,19,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:16; věčnost:3
+bible_BKR_Jr.txt,light_darkness,5,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:4; tma:1
+bible_BKR_Jr.txt,logos_word,6,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:6
+bible_BKR_Jr.txt,love,8,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:7; láska:1
+bible_BKR_Jr.txt,mystery,4,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:4
+bible_BKR_Jr.txt,pleasure_pain,13,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:13
+bible_BKR_Jr.txt,soul_body,44,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:27; tělo:17
+bible_BKR_Jr.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
+bible_BKR_Jr.txt,word_common,31,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:31
+bible_BKR_Jr.txt,word_of_god,116,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:116
+bible_BKR_Ju.txt,immortality,4,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:3; věčnost:1
 bible_BKR_Ju.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1
 bible_BKR_Ju.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_Ju.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:3
+bible_BKR_Ju.txt,soul_body,4,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:4
 bible_BKR_Ju.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
 bible_BKR_Ju.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Kaz.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1; světlo:1; tma:1
+bible_BKR_Kaz.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Kaz.txt,light_darkness,7,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:4; světlo:3; tma:1
+bible_BKR_Kaz.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Kaz.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Kaz.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
 bible_BKR_Kaz.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
-bible_BKR_Kaz.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_Kaz.txt,spirit,4,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:4
-bible_BKR_Kaz.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ko.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; temnota:1
-bible_BKR_Ko.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
-bible_BKR_Ko.txt,mystery,3,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:3
-bible_BKR_Ko.txt,soul_body,6,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:6
-bible_BKR_Ko.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2; duchovní:1
-bible_BKR_Ko.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Ko.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Kaz.txt,soul_body,8,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:4; duše:4
+bible_BKR_Kaz.txt,spirit,13,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:13
+bible_BKR_Kaz.txt,word_common,11,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:11
+bible_BKR_Kaz.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_Ko.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; temnota:1
+bible_BKR_Ko.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Ko.txt,love,6,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:4; milovat:2
+bible_BKR_Ko.txt,mystery,5,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:4; skrytý:3
+bible_BKR_Ko.txt,soul_body,12,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:11; duše:1
+bible_BKR_Ko.txt,spirit,4,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2; duchovní:2
+bible_BKR_Ko.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
+bible_BKR_Ko.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_L.txt,immortality,4,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:4
+bible_BKR_L.txt,light_darkness,10,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:7; tma:3; temnota:2
 bible_BKR_L.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
-bible_BKR_L.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
-bible_BKR_L.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_L.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_Mal.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jedno:1
-bible_BKR_Mal.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Mal.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_Mi.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1
+bible_BKR_L.txt,love,13,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:12; láska:1
+bible_BKR_L.txt,mystery,5,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:4; tajemství:1
+bible_BKR_L.txt,one_unity,7,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:7
+bible_BKR_L.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_L.txt,soul_body,27,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:15; duše:12
+bible_BKR_L.txt,spirit,37,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:37
+bible_BKR_L.txt,word_common,33,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:33
+bible_BKR_L.txt,word_of_god,9,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:9
+bible_BKR_Lv.txt,immortality,20,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:19; věčnost:1
+bible_BKR_Lv.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Lv.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Lv.txt,mystery,4,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:4
+bible_BKR_Lv.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Lv.txt,soul_body,64,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:46; duše:22
+bible_BKR_Lv.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
+bible_BKR_Lv.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_Lv.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Mal.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3
+bible_BKR_Mal.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:3
+bible_BKR_Mal.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Mi.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Mi.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,tma:1; temnota:1; světlo:1
+bible_BKR_Mi.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Mi.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Mi.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Mi.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:3
 bible_BKR_Mi.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Mi.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_Mk.txt,spirit,5,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:5
-bible_BKR_Mt.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Mi.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_Mi.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Mk.txt,immortality,3,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:3
+bible_BKR_Mk.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; tma:1
+bible_BKR_Mk.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3
+bible_BKR_Mk.txt,mystery,2,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1; skrytý:1
+bible_BKR_Mk.txt,one_unity,10,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:10
+bible_BKR_Mk.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Mk.txt,soul_body,20,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:10; duše:10
+bible_BKR_Mk.txt,spirit,22,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:22
+bible_BKR_Mk.txt,word_common,14,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:14
+bible_BKR_Mk.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_Mt.txt,immortality,5,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:5
+bible_BKR_Mt.txt,light_darkness,11,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:7; temnota:4; tma:3
+bible_BKR_Mt.txt,love,11,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:10; láska:1
+bible_BKR_Mt.txt,mystery,5,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:4; tajemství:1
+bible_BKR_Mt.txt,one_unity,7,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:7
+bible_BKR_Mt.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Mt.txt,soul_body,29,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:20; duše:11
+bible_BKR_Mt.txt,spirit,18,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:18
+bible_BKR_Mt.txt,word_common,25,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:25
+bible_BKR_Mt.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
 bible_BKR_Na.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1
-bible_BKR_Na.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Na.txt,pleasure_pain,2,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:2
 bible_BKR_Na.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_Neh.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
-bible_BKR_Neh.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
+bible_BKR_Neh.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1; láska:1
+bible_BKR_Neh.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Neh.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2
+bible_BKR_Neh.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Neh.txt,word_common,6,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:6
+bible_BKR_Neh.txt,word_of_god,5,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:5
+bible_BKR_Nu.txt,immortality,9,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:9
+bible_BKR_Nu.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:2
+bible_BKR_Nu.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_Nu.txt,one_unity,4,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:4
+bible_BKR_Nu.txt,soul_body,27,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:14; tělo:13
+bible_BKR_Nu.txt,spirit,13,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:13
+bible_BKR_Nu.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_Nu.txt,word_of_god,11,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:11
 bible_BKR_Oz.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
-bible_BKR_Oz.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_Pis.txt,soul_body,5,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:5
+bible_BKR_Oz.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
+bible_BKR_Oz.txt,love,7,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:7
+bible_BKR_Oz.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:1
+bible_BKR_Oz.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Oz.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_Oz.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
+bible_BKR_Oz.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
+bible_BKR_Oz.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Pis.txt,love,8,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:7; láska:1
+bible_BKR_Pis.txt,one_unity,2,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:2
+bible_BKR_Pis.txt,soul_body,6,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:6
+bible_BKR_Pl.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčnost:1
+bible_BKR_Pl.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1; tma:1; temný:1
 bible_BKR_Pl.txt,pleasure_pain,2,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:2
-bible_BKR_Pl.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
-bible_BKR_Pr.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
-bible_BKR_Pr.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
-bible_BKR_R.txt,soul_body,2,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2
-bible_BKR_R.txt,spirit,3,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2; duchovní:1
-bible_BKR_Sd.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Pl.txt,soul_body,10,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:8; tělo:2
+bible_BKR_Pr.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Pr.txt,light_darkness,5,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:3; tma:1; temný:1
+bible_BKR_Pr.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Pr.txt,love,26,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:20; láska:6
+bible_BKR_Pr.txt,mystery,3,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:2; tajemství:1
+bible_BKR_Pr.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Pr.txt,soul_body,44,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:40; tělo:4
+bible_BKR_Pr.txt,spirit,12,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:12
+bible_BKR_Pr.txt,word_common,21,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:21
+bible_BKR_Pr.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_R.txt,immortality,6,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:6
+bible_BKR_R.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:2; tma:1; temnota:1
+bible_BKR_R.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_R.txt,love,11,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:8; milovat:3
+bible_BKR_R.txt,mystery,2,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:2; skrytý:1
+bible_BKR_R.txt,one_unity,3,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:3
+bible_BKR_R.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_R.txt,soul_body,35,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:32; duše:3
+bible_BKR_R.txt,spirit,33,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:30; duchovní:3
+bible_BKR_R.txt,word_common,3,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:3
+bible_BKR_R.txt,word_of_god,5,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:5
+bible_BKR_Rt.txt,love,1,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:1
+bible_BKR_Rt.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:1
+bible_BKR_Sd.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:2
+bible_BKR_Sd.txt,one_unity,3,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:3
+bible_BKR_Sd.txt,soul_body,8,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:5; tělo:3
+bible_BKR_Sd.txt,spirit,9,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:9
+bible_BKR_Sd.txt,word_common,7,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:7
+bible_BKR_Sd.txt,word_of_god,4,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:4
 bible_BKR_Sf.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,temnota:1; světlo:1
 bible_BKR_Sf.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
 bible_BKR_Sf.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_Sk.txt,spirit,5,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:5
-bible_BKR_Tit.txt,love,2,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2
+bible_BKR_Sk.txt,consciousness_energy,1,shared_polyvalent,v BKR takmer neprítomné; v teozofii/New Age ide o kľúčový slovník,theosophical; new_age; tantric; jungian,vědomí:1
+bible_BKR_Sk.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2
+bible_BKR_Sk.txt,light_darkness,13,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:11; temnota:2; tma:1
+bible_BKR_Sk.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Sk.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Sk.txt,soul_body,14,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:10; tělo:5
+bible_BKR_Sk.txt,spirit,67,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:67
+bible_BKR_Sk.txt,word_common,40,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:40
+bible_BKR_Sk.txt,word_of_god,21,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:21
+bible_BKR_Tit.txt,immortality,2,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:2
+bible_BKR_Tit.txt,logos_word,1,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:1
+bible_BKR_Tit.txt,love,4,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:2; milovat:2
 bible_BKR_Tit.txt,spirit,1,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:1
 bible_BKR_Tit.txt,word_common,1,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:1
-bible_BKR_Tit.txt,word_of_god,2,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:2
-bible_BKR_Z.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
-bible_BKR_Za.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_Za.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
-bible_BKR_Zd.txt,soul_body,1,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:1
-bible_BKR_Zd.txt,spirit,2,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:2
-bible_BKR_Zd.txt,word_common,2,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:2
-bible_BKR_Zj.txt,mystery,1,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:1
-bible_BKR_Zj.txt,spirit,4,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:4
-bible_BKR_Zj.txt,word_of_god,3,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:3
+bible_BKR_Tit.txt,word_of_god,1,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:1
+bible_BKR_Z.txt,immortality,45,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:43; věčnost:3
+bible_BKR_Z.txt,light_darkness,28,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:17; tma:9; temnota:3; temný:3
+bible_BKR_Z.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Z.txt,love,37,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:35; láska:2
+bible_BKR_Z.txt,mystery,4,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,skrytý:3; tajemství:1
+bible_BKR_Z.txt,pleasure_pain,18,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:18
+bible_BKR_Z.txt,soul_body,139,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:125; tělo:15
+bible_BKR_Z.txt,spirit,25,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:25
+bible_BKR_Z.txt,word_common,46,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:46
+bible_BKR_Z.txt,word_of_god,18,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:18
+bible_BKR_Za.txt,light_darkness,2,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:2; tma:1
+bible_BKR_Za.txt,love,3,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:3
+bible_BKR_Za.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Za.txt,pleasure_pain,1,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:1
+bible_BKR_Za.txt,soul_body,3,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:2; duše:1
+bible_BKR_Za.txt,spirit,6,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:6
+bible_BKR_Za.txt,word_of_god,17,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:17
+bible_BKR_Zd.txt,immortality,7,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:7
+bible_BKR_Zd.txt,light_darkness,1,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:1
+bible_BKR_Zd.txt,love,5,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,láska:3; milovat:2
+bible_BKR_Zd.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Zd.txt,soul_body,14,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,tělo:9; duše:5
+bible_BKR_Zd.txt,spirit,12,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:12
+bible_BKR_Zd.txt,word_common,5,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:5
+bible_BKR_Zd.txt,word_of_god,4,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:4
+bible_BKR_Zj.txt,immortality,1,shared_polyvalent,"NZ vzkriesenie a večný život, nie platónska nesmrteľnosť duše",platonic; theosophical; hindu; buddhist,věčný:1
+bible_BKR_Zj.txt,light_darkness,3,shared_polyvalent,Gn 1; J 1; 1J — stvoření a janovský dualismus,gnostic; zoroastrian; new_age; theosophical,světlo:3
+bible_BKR_Zj.txt,logos_word,2,shared_polyvalent,"J 1: BKR prekladá λόγος ako Slovo. Ide o kresťanský motív (Slovo u Boha / v tele), ktorý je formálne blízky stoickému Logu — nie dôkaz, že Ján je stoik, a nie každé české „slovo“.",stoic; neoplatonic; theosophical,slovo:2
+bible_BKR_Zj.txt,love,6,shared_polyvalent,"NT agapé — zmluva a prikázanie, nie súfijský 'wine/love'",sufi,milovat:4; láska:2
+bible_BKR_Zj.txt,mystery,5,shared_polyvalent,"Pavlov μυστήριον — skrytý plán spásy, nie gnostická gnóza",gnostic; hermetic; kabbalistic; theosophical,tajemství:4; skrytý:1
+bible_BKR_Zj.txt,one_unity,1,shared_polyvalent,"Shema / J 17 — jedinosť Boha, nie novoplatónske Jedno",neoplatonic; theosophical,jediný:1
+bible_BKR_Zj.txt,pleasure_pain,3,shared_polyvalent,"pastorálne listy a žalmy, nie epikurejská ataraxia",epicurean,bolest:3
+bible_BKR_Zj.txt,soul_body,12,shared_polyvalent,"hebr. nefeš / gr. psyché — antropológia, nie platónsky dualizmus",platonic; neoplatonic; pythagorean; theosophical; hindu; buddhist; new_age,duše:7; tělo:5
+bible_BKR_Zj.txt,spirit,23,shared_polyvalent,"hebr. rúach / gr. pneuma — Duch Boží, nie šamanizmus",shamanic; new_age; theosophical; stoic,duch:23
+bible_BKR_Zj.txt,word_common,6,shared_polyvalent,"bežné „slovo“ (reč, správa, výpoveď) — lemma ostáva v analýze, ale nie je λόγος ani dabar",,slovo:6
+bible_BKR_Zj.txt,word_of_god,13,shared_polyvalent,"dabar YHWH / slovo Hospodinovo alebo slovo Boží — prorocký a zmluvný register, nie stoický Logos",,slovo:13
