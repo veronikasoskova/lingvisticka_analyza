@@ -678,7 +678,7 @@ TRANSLATIONS = {
             "creation":    "Stvoření",
             "prophetic":   "Prorocké",
         },
-        "traditions_desc": "Počet aktivních lexikálních kategorií pro každou tradici / počet termínů pro každý filozofický vliv zahrnutý v analýze.",
+        "traditions_desc": "Počet lexikálních kategorií ve slovníku tradice / počet termínů filozofického vlivu. Závorka u tradice je jazyk slovníku (angličtina, hebrejština…), ne jazyk rozhraní; české slovníky jsou výchozí a bez závorky.",
         "x_depth": "Průměrná hloubka stromu",
         "x_clauses": "Průměrný počet klauzulí",
         "x_terms": "Termíny",
@@ -1419,7 +1419,7 @@ TRANSLATIONS = {
             "creation":    "Stvorenie",
             "prophetic":   "Prorocké",
         },
-        "traditions_desc": "Počet aktívnych lexikálnych kategórií pre každú tradíciu / počet termínov pre každý filozofický vplyv zahrnutý v analýze.",
+        "traditions_desc": "Počet lexikálnych kategórií v slovníku tradície / počet termínov filozofického vplyvu. Zátvorka pri tradícii je jazyk slovníka (angličtina, hebrejčina…), nie jazyk rozhrania; české slovníky sú predvolené a bez zátvorky.",
         "x_depth": "Priemerná hĺbka stromu",
         "x_clauses": "Priemerný počet klauzúl",
         "x_terms": "Termíny",
@@ -2163,7 +2163,7 @@ TRANSLATIONS = {
             "creation":    "Creation",
             "prophetic":   "Prophetic",
         },
-        "traditions_desc": "Number of active lexical categories per tradition / number of terms per philosophical influence included in the analysis.",
+        "traditions_desc": "Lexical categories in each tradition wordlist / terms per philosophical influence. Parentheses on a tradition name mark the lemma-list language (English, Hebrew, …), not the UI language; Czech lists are the default and unlabeled.",
         "x_depth": "Avg tree depth",
         "x_clauses": "Avg clause count",
         "x_terms": "Terms",
@@ -4927,20 +4927,19 @@ with tab_bible:
                 )
 
             st.divider()
-            from t_config_tradition import TRADITIONS, PHILOSOPHICAL_INFLUENCES
+            from t_config_tradition import (
+                TRADITIONS,
+                PHILOSOPHICAL_INFLUENCES,
+                format_tradition_chart_label,
+            )
             st.caption(T["traditions_desc"])
             c1, c2 = st.columns(2)
-            _LANG_SFXS = ("_czech", "_english", "_arabic", "_hebrew", "_pali", "_sanskrit")
+            _base_lbl = T.get("tradition_base", {})
+            _lang_lbl = T.get("tradition_lang", {})
             def _fmt_trad(k: str) -> str:
-                base, lang_key = k, ""
-                for sfx in _LANG_SFXS:
-                    if k.endswith(sfx):
-                        base = k[:-len(sfx)]
-                        lang_key = sfx[1:]
-                        break
-                label = T.get("tradition_base", {}).get(base, base.replace("_", " ").title())
-                lang_l = T.get("tradition_lang", {}).get(lang_key, "")
-                return f"{label} ({lang_l})" if lang_l else label
+                return format_tradition_chart_label(
+                    k, base_labels=_base_lbl, lang_labels=_lang_lbl,
+                )
 
             with c1:
                 trad_df = pd.DataFrame(

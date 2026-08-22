@@ -28,6 +28,7 @@ from t_config_tradition import (
     POLYVALENT_BIBLICAL_LEMMAS,
     PHILOSOPHICAL_INFLUENCES,
     SHARED_MOTIFS,
+    TRADITIONS,
     YHWH_ELEMENTS,
     CHRISTIAN_ELEMENTS,
     CHRISTOLOGICAL_ELEMENTS,
@@ -40,6 +41,8 @@ from t_config_tradition import (
     distinctive,
     canonicalize_lemma,
     field_hits,
+    format_tradition_chart_label,
+    tradition_key_parts,
 )
 
 
@@ -344,6 +347,35 @@ class AliasAndEncliticTests(unittest.TestCase):
         from d_preprocessing import normalize_bkr
         self.assertEqual(normalize_bkr("nyníť pravím"), "nyní ť pravím")
         self.assertEqual(normalize_bkr("neboť Bůh miloval"), "neboť Bůh miloval")
+
+
+class TraditionChartLabelTests(unittest.TestCase):
+    def test_key_parts_split_language_suffix(self):
+        self.assertEqual(tradition_key_parts("christian_czech"), ("christian", "czech"))
+        self.assertEqual(tradition_key_parts("jewish_hebrew"), ("jewish", "hebrew"))
+        self.assertEqual(tradition_key_parts("new_age_english"), ("new_age", "english"))
+        self.assertEqual(tradition_key_parts("christian"), ("christian", ""))
+
+    def test_every_traditions_key_has_a_known_language_suffix(self):
+        for key in TRADITIONS:
+            _base, lang = tradition_key_parts(key)
+            self.assertTrue(lang, msg=f"{key} has no language suffix")
+
+    def test_czech_lemma_lists_are_untagged_other_languages_keep_parentheses(self):
+        base = {"christian": "Kresťanstvo"}
+        langs = {"czech": "čeština", "english": "angličtina"}
+        self.assertEqual(
+            format_tradition_chart_label(
+                "christian_czech", base_labels=base, lang_labels=langs,
+            ),
+            "Kresťanstvo",
+        )
+        self.assertEqual(
+            format_tradition_chart_label(
+                "christian_english", base_labels=base, lang_labels=langs,
+            ),
+            "Kresťanstvo (angličtina)",
+        )
 
 
 if __name__ == "__main__":
